@@ -69,7 +69,7 @@ const Employer_Navbar = () => {
                     </ul>
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <a onClick={()=>handleClick()} className="nav-link   font-weight-bold" id="a5" ><button type="button"
+                            <a onClick={()=>handleClick()} className="nav-link   font-weight-bold" id="a5" data-toggle={collapse} data-target={id}><button type="button"
                                     className="btn  navbar-btn" data-toggle="modal" data-target="#MyModal"><i
                                         className="fas fa-user"></i> LOGOUT</button></a>
                         </li>

@@ -187,13 +187,13 @@ const Footer = () => {
                   <a to="#">
                     <i className="fab fa-linkedin"></i>
                   </a>
-                  <a to="#">
+                  <a href="https://www.instagram.com/pab.jobs/" target="_blank">
                     <i className="fab fa-instagram"></i>
                   </a>
-                  <a to="#">
+                  <a href="https://www.facebook.com/profile.php?id=100078190742811" target="_blank">
                     <i className="fab fa-facebook"></i>
                   </a>
-                  <a to="#">
+                  <a href="https://twitter.com/Pabjobs" target="_blank">
                     <i className="fab fa-twitter"></i>
                   </a>
                 </div>
