@@ -9,6 +9,8 @@ import axios from "axios";
 import moment from "moment";
 import { useEffect } from "react";
 import ChipInput from "material-ui-chip-input";
+import { toast } from "react-toastify";
+import apiList from "../lib/apiList";
 const Updatepost= () => {
   const {
     register,
@@ -19,7 +21,6 @@ const Updatepost= () => {
   } = useForm();
   let { id } = useParams();
   const [post, setPost] = useState({
-
     title: '',
     maxPositions: '',
     jobType: '',
@@ -43,25 +44,29 @@ console.log(post.skillsets)
   const handleUpdate = () => {
 
     axios
-      .put(`http://localhost:4444/api/jobs/${id}`, post, {
+
+      .put(`${apiList.jobs}/${id}`, post, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       })
       .then((response) => {
         console.log(response)
+        toast.success(response.data.message)
         getData();
       })
       .catch((err) => {
         console.log(err.response);
+        toast.error(err.response.data.message)
       });
   };
   useEffect(() => {
     getData();
 }, []);
+
 const getData = () => {
     axios
-        .get(`http://localhost:4444/api/jobs/${id}`, {
+        .get(`${apiList.jobs}/${id}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
@@ -70,7 +75,7 @@ const getData = () => {
 
           // const { skillsets,cities, ...updatedDetails } = response.data;
           console.log(response.data)
-            setPost(response.data)
+            setPost(response.data.job)
             
             // setskillsets(response.data.skillsets)
             // setcities(response.data.cities)
@@ -79,7 +84,6 @@ const getData = () => {
             console.log(err.response.data);
         });
 };
-
 
   return (
     <div>

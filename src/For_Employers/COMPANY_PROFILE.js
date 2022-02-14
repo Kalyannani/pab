@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios"
 import moment from "moment";
 import { toast } from "react-toastify";
+import apiList from "../lib/apiList";
 export const COMPANY_PROFILE = () => {
   // const dispatch = useDispatch();
   // const resultdata = useSelector((company) => company);
@@ -75,7 +76,7 @@ export const COMPANY_PROFILE = () => {
 
   const getData = () => {
     axios
-      .get("http://localhost:4444/api/user", {
+      .get(`${apiList.user}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -92,7 +93,7 @@ export const COMPANY_PROFILE = () => {
   const handleUpdate =(e)=>{
     e.preventDefault();
     axios
-      .put("http://localhost:4444/api/user", company, {
+      .put(`${apiList.user}`, company, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

@@ -138,7 +138,7 @@
      /* transform: translateX(-100%); */
 }
  .main .form_wrapper #signup:checked ~ .form_wrap .login_form {
-     opacity: 0;
+     /* opacity: 0; */
 }
  .main .form_wrapper a {
      color: #6A2A69;

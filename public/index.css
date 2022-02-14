@@ -137,6 +137,7 @@
 }
 .main {
   width: 100%;
+  margin-bottom: 65px;
   height: auto;
   background: white;
   border-radius: 3px;
@@ -761,7 +762,7 @@ input.home_input:focus {
 @media screen and (min-width: 0px) and (max-width: 325px) {
   #sec1 {
     background-position: center;
-    height: 123vh;
+    height: 85vh;
   }
 
   .hm1 {
@@ -14162,12 +14163,12 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @media screen and (min-width: 768px) and (max-width: 990px) {
   .forgot {
-    margin-top: 35% !important;
+    margin-top: 10px !important;
   }
 }
 @media screen and (min-width: 991px) and (max-width: 1024px) {
   .forgot {
-    margin-top: 35% !important;
+    margin-top: 10px !important;
     width: 86%;
   }
 }
@@ -14208,7 +14209,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 @media screen and (min-width: 0px) and (max-width: 767px) {
   .forgot {
-    margin-top: 35% !important;
+    margin-top: 10px !important;
   }
   #ctn_no {
     width: 100%;

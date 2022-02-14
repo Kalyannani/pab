@@ -8,6 +8,7 @@ import axios from 'axios';
 import ChipInput from "material-ui-chip-input";
 import {TagsInput} from "react-tag-input-component"
 import { toast } from 'react-toastify';
+import apiList from '../lib/apiList';
 const POST_A_JOB = (props) => {
     const navigate = useNavigate();
 
@@ -49,7 +50,7 @@ const POST_A_JOB = (props) => {
     const handleUpdate=(e)=>{
         e.preventDefault()
         axios
-      .post("http://localhost:4444/api/jobs", post, {
+      .post(`${apiList.jobs}`, post, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

@@ -136,7 +136,7 @@ const Navbar = () => {
                                         <li className="nav-item">
                                             <Link to="/auth">
                                                 <button type="button"
-                                                    className="btn  navbar-btn" /*onClick={() => setIsOpen(true)} */><i
+                                                    className="btn  navbar-btn" /*onClick={() => setIsOpen(true)} */ data-toggle={collapse} data-target={id}><i
                                                         className="fas fa-user"></i> SIGNUP/SIGNIN</button>
                                             </Link>
                                             
