@@ -896,6 +896,7 @@ useEffect(async()=>{
                   jobs.length >0?
                         currentPosts?.map((job)=>{
                             return(
+                              <Link to={`/jobdetailes/${job._id}`}>
                                 <ul className="filter_list_job_post">
                                    
                             <li>
@@ -905,7 +906,7 @@ useEffect(async()=>{
                                             <span><img alt="" src="" /></span>
                                         </div>
                                         <div className="filter_list_job_info">
-                                            <h4><Link to={`/jobdetailes/${job._id}`}>{job.title}</Link></h4>
+                                            <h4>{job.title}</h4>
                                             <ul>
                                                 <li><i className="fas fa-map-marker-alt"></i>Hyderabad</li>
                                                 <li><i className="far fa-bookmark"></i>{job.jobType}</li>
@@ -931,7 +932,7 @@ useEffect(async()=>{
                                 </div>
                             </li>
                         </ul>
-                            )
+                        </Link>)
                         }):
                         <div style={{textAlign:"-webkit-center"}}>
                         <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
