@@ -138,7 +138,6 @@ const Auth = (props) => {
                 dispatch({ type: "USER", payload: response.data })
                 toast.success("Login Successfully")
                 console.log(response);
-
                 navigate("/")
             })
             .catch((err) => {
