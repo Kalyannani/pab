@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, useRef} from 'react'
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
 import axios from 'axios'
@@ -7,8 +7,9 @@ import ReactPaginate from "react-paginate"
 import ReactLoading from 'react-loading';
 import moment from 'moment';
 const RecentJobs = () => {
+ 
     const [jobs,setJobs] = useState([])
-
+  
     // Pagination code
     const [offset, setOffset] = useState(1);
   //   const [data, setData] = useState([]);
@@ -17,11 +18,18 @@ const RecentJobs = () => {
     const indexOfLastPost = offset * perPage;
       const indexOfFirstPost = indexOfLastPost - perPage;
       const currentPosts = jobs.slice(indexOfFirstPost, indexOfLastPost);
+      
         const handlePageClick = (e) => {
+       
           const selectedPage = e.selected;
           setOffset(selectedPage + 1);
+          window.scrollTo({
+            top: 450,
+            behavior: 'smooth',
+          })
+          // window.scrollTo(0, 450)
         };
-
+     
 
     useEffect(() => {
       getData();
@@ -72,8 +80,14 @@ const RecentJobs = () => {
         //       {moment(date).startOf('day').fromNow() }
         //     </span>)
         // }
+        var utcDate = job.dateOfPosting;  // ISO-8601 formatted date returned from server
+        var localDate = new Date(utcDate);
+        console.log(localDate)
           return(<>
-          <ul className="job-post">
+          
+          <div >
+            <Link to={`/jobdetailes/${job._id}`}>
+          <ul className="job-post" >
         <li>
           <div className="job-box">
             <div className="d-flex mb-2">
@@ -84,9 +98,7 @@ const RecentJobs = () => {
               </div>
               <div className="job-info">
                 <h4>
-                  <Link to={`/jobdetailes/${job._id}`}>
-                    {job.title}
-                  </Link>
+                    {job.title.charAt(0).toUpperCase() + job.title.slice(1)}
                 </h4>
                 <ul>
                   <li>
@@ -126,6 +138,7 @@ const RecentJobs = () => {
                 <div className="mt-3">
                   {
                     job.skillsets.map((job)=>{
+                     
                       return(<>
                       <button className="home_job_btn">{job}</button>
                       </>)
@@ -143,8 +156,11 @@ const RecentJobs = () => {
                                   'minutes')
                                 .utc()
                                 } */}{" "}
+                                
+                               {/* {moment(job.dateOfPosting).format('YYYY-MM-DD hh:mm:ss').toString()} */}
+                                {/* {moment.utc(job.dateOfPosting).local().startOf('seconds').fromNow()} */}
                                 {moment.utc(job.dateOfPosting).local().startOf('seconds').fromNow()}
-                                {/* {moment(job.dateOfPosting).startOf('minutes').fromNow() } */}
+                                {/* {moment(job.dateOfPosting).format('YYYY-MM-DD hh:mm:ss A Z')} */}
                               </span>
                       </a>
                     </div>
@@ -155,6 +171,8 @@ const RecentJobs = () => {
           </div>
         </li>
     </ul>
+    </Link>
+    </div>
           </>)
         }): 
         <div style={{textAlign:"-webkit-center"}}>
