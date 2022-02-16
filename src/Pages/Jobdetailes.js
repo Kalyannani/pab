@@ -20,7 +20,7 @@ export const Jobdetailes = (props) => {
     }, []);
     const getData = () => {
         axios
-            .get(`http://localhost:4444/api/jobs/${id}`, {
+            .get(`${apiList.jobs}/${id}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
