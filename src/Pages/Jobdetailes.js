@@ -65,16 +65,18 @@ export const Jobdetailes = (props) => {
     return (
      <div>
      <div className="job_detail_wrapper">
-        <div className="heading_pic_job_detail w-100 h-100 text-white">
-            <h1 className="job_detail_heading_1 d-flex justify-content-center align-items-center">Job Details</h1>
+        <div className="heading_pic_job_detail w-100 h-100 ">
+            <h1 className="job_detail_heading_1 d-flex justify-content-center align-items-center text-white">Job Details</h1>
             <p className="text-center job_detail_sub_heading">
                 <Link to="/" className="job_detail_sub_heading_1 text-white font-weight-bold">Home</Link>
-                &gt;
+                {/* {" "}&gt;{" "} */}
+                <i class='fas fa-greater-than text-white px-2'></i>
+                {/* <span> &gt; </span> */}
                 <a href="#" className="job_detail_sub_heading_2 text-white font-weight-bold">Job Details</a>
             </p>
         </div>
     </div>
-    <div id="sec4" className="container job_details_main">
+    <div id="sec4" className="container job_details_main mb-5">
         <div className=" row">
             <div className="col-lg-12 col-md-12">
                 <ul className="job-post">
@@ -97,12 +99,14 @@ export const Jobdetailes = (props) => {
                                         </li> */}
                                     </ul>
                                     <ul className="home_job_details">
-                                        <li><i className="fas fa-map-marker-alt"></i>
-                                         {
-                                            jobs?.cities?.map(val=>{
-                                                return <>{val}/</>
-                                            })
-                                        }
+                                        <li>
+                                     <i className="fas fa-map-marker-alt"></i>
+                                     {jobs?.cities?.map((job,index,arr)=>{
+                                                return (<>
+                                                {job}{index!=(arr.length-1)?"/":""}
+                                                </>)
+                                            })}
+                                        
                                         </li>
                                         <li><i className="far fa-bookmark"></i>{jobs.jobType}</li>
                                        
@@ -144,7 +148,7 @@ export const Jobdetailes = (props) => {
                     </span></span>
                 <span className="stat mr-3"><label  className="pr-2">Openings: </label><span> {jobs.maxPositions}</span></span>
                 <span className="stat mr-3"><label>Job Applicants: </label><span>Less than 10</span></span>
-                <a className="send_like_jobs"><span> Send me jobs likethis </span> </a>
+                <a className="send_like_jobs"><span> Send me jobs like this </span> </a>
             </div>
         </div>
         <section className="job-description">
@@ -172,16 +176,18 @@ export const Jobdetailes = (props) => {
                 <p><strong>Thanks &amp; Regards,</strong></p>
                 <p><strong> {recruiter.companyname}</strong></p>
                 {/* <p><strong>Role - (Manager)</strong></p> */}
-                <p><strong>Mobile No :</strong> {recruiter.contactNumber}</p>
+                <p><strong>Mobile No :</strong> <span className='font-weight-bold' style={{fontSize: "17px"}}>xxxxxx </span>{recruiter.contactNumber?recruiter.contactNumber.toString().slice(-4):null}</p>
                 <p><strong>Email:</strong> {recruiter.email}</p>
                 {/* <p><strong>URL :</strong> https://perfextechnologies.com/</p> */}
             </div>
             <div className="other-details">
                 <div className="details"><label>Role</label><span><a href="#" target="_blank" className="pl-1 job_role">: {jobs.title}</a><span className="role">.</span></span></div>
-                <div className="details"><label>Industry Type</label><span><a href="#" target="_blank"
+                <div className="details"><label>Organization Type</label><span><a href="#" target="_blank"
                             className="pl-1 job_role">: {recruiter.organizationType}
                              {/* &amp; */}
-                            </a><span className="role">.</span></span></div>
+                            </a>
+                            {/* <span className="role">.</span> */}
+                            </span></div>
                 {/* <div className="details"><label>Functional Area</label><span><a href="#" target="_blank"
                             className="pl-1 job_role">: Engineering -
                             Software</a><span className="role">,</span></span></div> */}

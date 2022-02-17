@@ -47,7 +47,8 @@ useEffect(async()=>{
         <div className="heading_pic_filter_list">
             <h1 className="filter_list_heading_1">Browse Job List</h1>
             <p className="text-center filter_list_sub_heading">
-                <Link to="/" className="filter_list_sub_heading_1">Home</Link> &gt;
+                <Link to="/" className="filter_list_sub_heading_1">Home</Link>
+                <i class='fas fa-greater-than text-white px-2'></i>
                 <a href="#" className="filter_list_sub_heading_2 ">Browse Filter List</a></p>
         </div>
     </div>

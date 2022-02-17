@@ -18,6 +18,10 @@ import ReactPaginate from 'react-paginate'
         const handlePageClick = (e) => {
           const selectedPage = e.selected;
           setOffset(selectedPage + 1);
+          window.scrollTo({
+            top: 40,
+            behavior: 'smooth',
+          })
         };
     useEffect(() => {
         getData();
@@ -62,6 +66,7 @@ import ReactPaginate from 'react-paginate'
                       jobs.length>0?
         currentPosts.map((job)=>{
           return(<>
+           <Link to={`/jobdetailes/${job._id}`}>
           <ul className="job-post">
         <li>
           <div className="job-box">
@@ -73,9 +78,9 @@ import ReactPaginate from 'react-paginate'
               </div>
               <div className="job-info">
                 <h4>
-                  <Link to={`/jobdetailes/${job._id}`}>
+                 
                     {job.title}
-                  </Link>
+                
                 </h4>
                 <ul>
                   <li>
@@ -136,6 +141,7 @@ import ReactPaginate from 'react-paginate'
           </div>
         </li>
     </ul>
+    </Link>
           </>)
         }):
         <h1 variant="h5" style={{ textAlign: "center" }}>

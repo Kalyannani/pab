@@ -93,7 +93,7 @@ const MyProfile = (props) => {
 
 
   return (
-    <div className="container main_content">
+    <div className="container main_content my-5">
       <div className="row">
         <div className="col-lg-3">
           <Sidebar />
