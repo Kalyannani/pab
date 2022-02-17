@@ -67,11 +67,13 @@ import ReactPaginate from "react-paginate"
                                 </select>
                             </a> */}
                         </div>
+                        
                         {applications.length > 0 ? (
                             currentPosts.map((application) => (
+                                <Link to={`/jobdetailes/${application.job._id}`}>
                                 <div className="box">
                             <h5 className="heading_box">
-                                {application.job.title}
+                                {application.job.title.charAt(0).toUpperCase() + application.job.title.slice(1)}
                             </h5>
                             {/* <p className="designer"><span>UI/UX Designer</span> At Attract
                                 Solutions </p> */}
@@ -88,9 +90,10 @@ import ReactPaginate from "react-paginate"
                                         }
                             <div className="posted">
                                 <p className="posted_content">Posted : <span className="posted_content_sub">2 Days ago</span>
-                                    <button className="apply float-right">{application.status}</button></p>
+                                    <button className="apply float-right">{application.status.charAt(0).toUpperCase() + application.status.slice(1)}</button></p>
                             </div>
                         </div>
+                        </Link>
                             ))
                             ) : (
                             <h1 variant="h5" style={{ textAlign: "center" }}>

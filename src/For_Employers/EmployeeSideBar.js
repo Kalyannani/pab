@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link , NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
+import axios from 'axios';
+import apiList from '../lib/apiList';
 export const EmployeeSideBar = () => {
+    const [profile,setProfile] = useState({})
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const handleClick = () => {
@@ -10,9 +13,28 @@ export const EmployeeSideBar = () => {
         dispatch({type:"CLEAR"})
         navigate("/auth")
   };
+
+  useEffect(() => {
+    getData();
+  },[]);
+
+  console.log(profile)
+  const getData = () => {
+    axios
+      .get(apiList.user, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        setProfile(response.data);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        
+      });
+  };
     return (
-
-
         <div className="sticky-top">
         <p>
             <button className="sidebar_button" data-toggle="collapse" href="#collapseExample" role="button"
@@ -26,7 +48,7 @@ export const EmployeeSideBar = () => {
                 <div className="main_header text-center">
                     <div className="heading ">
                         <img src="images/girl_avtar.png" alt="" className="info_img" />
-                        <h4 className="company">@COMPANY</h4>
+                        <h4 className="company">{profile.companyname}</h4>
                     </div>
                 </div>
                 <NavLink to="/company_profile"><i className="fa fa-user" aria-hidden="true"></i>
@@ -44,7 +66,7 @@ export const EmployeeSideBar = () => {
                 <NavLink  to="/password"><i
                         className="fas fa-key"></i> Change Password</NavLink>
 
-                <a onClick={()=>handleClick()}><i className="fas fa-sign-out-alt"></i> Log Out</a>
+                <a className='cursor-pointer' onClick={()=>handleClick()}><i className="fas fa-sign-out-alt"></i> Log Out</a>
 
 
             </div>

@@ -169,7 +169,7 @@ const POST_A_JOB = (props) => {
                                                 <ChipInput
                                                     label="Skills"
                                                     variant="outlined"
-                                                    helperText="Press enter to add skills"
+                                                    // helperText="Press enter to add skills"
                                                     value={post.skillsets}
                                                     onAdd={(chip) =>
                                                       setPost({
@@ -187,6 +187,7 @@ const POST_A_JOB = (props) => {
                                                     }}
                                                     fullWidth
                                                   />
+                                                  <span>Press enter to add skills</span>
                                                 </div>
                                         </div>
 
@@ -210,7 +211,7 @@ const POST_A_JOB = (props) => {
                                                     // className={classes.inputBox}
                                                     label="Locations"
                                                     variant="outlined"
-                                                    helperText="Press enter to add cities"
+                                                    // helperText="Press enter to add cities"
                                                     value={post.cities}
                                                     onAdd={(chip) =>
                                                       setPost({
@@ -228,6 +229,7 @@ const POST_A_JOB = (props) => {
                                                     }}
                                                     fullWidth
                                                   />
+                                                  <span>Press enter to add cities</span>
                                                 </div>
                                         </div>
 

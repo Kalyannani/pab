@@ -5,7 +5,7 @@ import axios from 'axios'
 import apiList from "../lib/apiList"
 import ReactPaginate from "react-paginate"
 import ReactLoading from 'react-loading';
-import moment from 'moment';
+import moment from 'moment-timezone';
 const RecentJobs = () => {
  
     const [jobs,setJobs] = useState([])
@@ -40,7 +40,6 @@ const RecentJobs = () => {
         .get(apiList.alljobs)
         .then((response) => {
           setPageCount(Math.ceil(response.data.length)/perPage)
-          console.log(response.data);
           setJobs(response.data.reverse());
         })
         .catch((err) => {
@@ -70,7 +69,7 @@ const RecentJobs = () => {
     <div className="col-lg-12">
       {
         jobs.length>0?
-        currentPosts.map((job)=>{
+        currentPosts.map((job,i)=>{
         //  const dateOfPosting=()=> {
         //   const date =new Date(job.dateOfPosting).toLocaleString('en-US', {
         //     timeZone: 'Asia/Calcutta'})
@@ -80,15 +79,12 @@ const RecentJobs = () => {
         //       {moment(date).startOf('day').fromNow() }
         //     </span>)
         // }
-        var utcDate = job.dateOfPosting;  // ISO-8601 formatted date returned from server
-        var localDate = new Date(utcDate);
-        console.log(localDate)
           return(<>
           
           <div >
             <Link to={`/jobdetailes/${job._id}`}>
-          <ul className="job-post" >
-        <li>
+          <ul className="job-post">
+        <li >
           <div className="job-box">
             <div className="d-flex mb-2">
               <div className="job-company">
@@ -156,7 +152,6 @@ const RecentJobs = () => {
                                   'minutes')
                                 .utc()
                                 } */}{" "}
-                                
                                {/* {moment(job.dateOfPosting).format('YYYY-MM-DD hh:mm:ss').toString()} */}
                                 {/* {moment.utc(job.dateOfPosting).local().startOf('seconds').fromNow()} */}
                                 {moment.utc(job.dateOfPosting).local().startOf('seconds').fromNow()}
@@ -179,7 +174,7 @@ const RecentJobs = () => {
         <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
         </div>
       }
-       <div class="d-flex justify-content-center">
+       <div className="d-flex justify-content-center">
       <ReactPaginate
       previousLabel="Prev"
       nextLabel="Next"

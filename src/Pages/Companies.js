@@ -11,7 +11,8 @@ export const Companies = () => {
             <h1 className="companies_sec_1_heading_1 d-flex justify-content-center align-items-center">Companies</h1>
             <p className="text-center companies_sec_1_sub_heading_1"><a href="../../../index.html"
                     className="companies_sec_1_sub_heading_1 text-decoration-none text-white font-weight-bold">Home</a>
-                &gt; <a href="#" className="companies_sec_1_sub_heading_2  text-decoration-none text-white font-weight-bold">Companies</a></p>
+                <i class='fas fa-greater-than text-white px-2'></i>
+                <a href="#" className="companies_sec_1_sub_heading_2  text-decoration-none text-white font-weight-bold">Companies</a></p>
 
         </div>
     </div>

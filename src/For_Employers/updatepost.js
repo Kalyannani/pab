@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link,useParams } from "react-router-dom";
+import { Link,useParams , useNavigate} from "react-router-dom";
 import EmployeeSideBar from "./EmployeeSideBar";
 import { useDispatch, useSelector } from "react-redux";
 // import { getPostJob } from "../action/action";
@@ -12,6 +12,7 @@ import ChipInput from "material-ui-chip-input";
 import { toast } from "react-toastify";
 import apiList from "../lib/apiList";
 const Updatepost= () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -54,6 +55,7 @@ console.log(post.skillsets)
         console.log(response)
         toast.success(response.data.message)
         getData();
+        navigate("/Manage_jobs")
       })
       .catch((err) => {
         console.log(err.response);

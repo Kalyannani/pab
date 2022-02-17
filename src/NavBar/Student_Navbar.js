@@ -61,7 +61,7 @@ const Student_Navbar = () => {
                       My Resume
                     </Link>
                     <Link className="dropdown-item" to="appliedjobs">
-                      Applied Job
+                      Applied Jobs
                     </Link>
                     <Link className="dropdown-item" to="/jobalerts">
                       Job Alerts
