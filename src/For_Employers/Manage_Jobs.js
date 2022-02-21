@@ -98,8 +98,8 @@ export const Manage_Jobs = () => {
                                             <tr>
 
                                                 <th scope="col">JobTitle</th>
-                                                <th scope="col">Application</th>
-                                                <th scope="col">Status</th>
+                                                <th scope="col">Applications</th>
+                                                {/* <th scope="col">Status</th> */}
                                                 <th scope="col">Edit</th>
                                             </tr>
                                         </thead>
@@ -117,11 +117,11 @@ export const Manage_Jobs = () => {
 
                                                             </td>
                                                             <td>
-                                                                <p className="appications"><Link to={`/Applications/${job._id}`}>Applications</Link></p>
+                                                                <p className="appications"><Link to={`/Applications/${job._id}`}>View Applicants</Link></p>
                                                             </td>
-                                                            <td>
+                                                            {/* <td>
                                                                 <p className="pending">Pending</p>
-                                                            </td>
+                                                            </td> */}
                                                             <td>
                                                                 <div className="form-inline">
                                                                     <div className="content_del_eye">

@@ -15,7 +15,7 @@ import React from 'react'
                 <div className="card-img-overlay">
                     <div className="card-body text-left text-white">
                         <h4 className="card-title">Hyderabad</h4>
-                        <p>50 Jobs</p>
+                        {/* <p>50 Jobs</p> */}
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@ import React from 'react'
                 <div className="card-img-overlay">
                     <div className="card-body text-left text-white">
                         <h4 className="card-title">Mumbai</h4>
-                        <p>50 Jobs</p>
+                        {/* <p>50 Jobs</p> */}
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@ import React from 'react'
                 <div className="card-img-overlay">
                     <div className="card-body text-left text-white ">
                         <h4 className="card-title">Chennai</h4>
-                        <p>50 Jobs</p>
+                        {/* <p>50 Jobs</p> */}
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@ import React from 'react'
                 <div className="card-img-overlay">
                     <div className="card-body text-left text-white">
                         <h4 className="card-title">Pune</h4>
-                        <p>50 Jobs</p>
+                        {/* <p>50 Jobs</p> */}
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@ import React from 'react'
                 <div className="card-img-overlay">
                     <div className="card-body text-left text-white">
                         <h4 className="card-title">Bangalore</h4>
-                        <p>50 Jobs</p>
+                        {/* <p>50 Jobs</p> */}
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@ import React from 'react'
                 <div className="card-img-overlay">
                     <div className="card-body text-left text-white">
                         <h4 className="card-title">Delhi</h4>
-                        <p>50 Jobs</p>
+                        {/* <p>50 Jobs</p> */}
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@ import React from 'react'
                 <div className="card-img-overlay">
                     <div className="card-body text-left text-white">
                         <h4 className="card-title">Kolkata</h4>
-                        <p>50 Jobs</p>
+                        {/* <p>50 Jobs</p> */}
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@ import React from 'react'
                 <div className="card-img-overlay">
                     <div className="card-body text-left text-white">
                         <h4 className="card-title">Ahmedabad</h4>
-                        <p>50 Jobs</p>
+                        {/* <p>50 Jobs</p> */}
                     </div>
                 </div>
             </div>

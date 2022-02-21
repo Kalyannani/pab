@@ -118,7 +118,7 @@ export const COMPANY_PROFILE = () => {
         <div className="container main_content my-5">
           <div className="row">
             <div className="col-lg-3">
-              <EmployeeSideBar />
+              <EmployeeSideBar/>
             </div>
             <div className="col-lg-9">
               <div className="wrapper">

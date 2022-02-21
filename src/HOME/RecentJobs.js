@@ -1,14 +1,15 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, useRef} from 'react'
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
 import axios from 'axios'
 import apiList from "../lib/apiList"
 import ReactPaginate from "react-paginate"
 import ReactLoading from 'react-loading';
-import moment from 'moment';
+import moment from 'moment-timezone';
 const RecentJobs = () => {
+ 
     const [jobs,setJobs] = useState([])
-
+  
     // Pagination code
     const [offset, setOffset] = useState(1);
   //   const [data, setData] = useState([]);
@@ -17,11 +18,18 @@ const RecentJobs = () => {
     const indexOfLastPost = offset * perPage;
       const indexOfFirstPost = indexOfLastPost - perPage;
       const currentPosts = jobs.slice(indexOfFirstPost, indexOfLastPost);
+      
         const handlePageClick = (e) => {
+       
           const selectedPage = e.selected;
           setOffset(selectedPage + 1);
+          window.scrollTo({
+            top: 450,
+            behavior: 'smooth',
+          })
+          // window.scrollTo(0, 450)
         };
-
+     
 
     useEffect(() => {
       getData();
@@ -32,7 +40,6 @@ const RecentJobs = () => {
         .get(apiList.alljobs)
         .then((response) => {
           setPageCount(Math.ceil(response.data.length)/perPage)
-          console.log(response.data);
           setJobs(response.data.reverse());
         })
         .catch((err) => {
@@ -62,7 +69,7 @@ const RecentJobs = () => {
     <div className="col-lg-12">
       {
         jobs.length>0?
-        currentPosts.map((job)=>{
+        currentPosts.map((job,i)=>{
         //  const dateOfPosting=()=> {
         //   const date =new Date(job.dateOfPosting).toLocaleString('en-US', {
         //     timeZone: 'Asia/Calcutta'})
@@ -73,8 +80,11 @@ const RecentJobs = () => {
         //     </span>)
         // }
           return(<>
+          
+          <div >
+            <Link to={`/jobdetailes/${job._id}`}>
           <ul className="job-post">
-        <li>
+        <li >
           <div className="job-box">
             <div className="d-flex mb-2">
               <div className="job-company">
@@ -84,9 +94,7 @@ const RecentJobs = () => {
               </div>
               <div className="job-info">
                 <h4>
-                  <Link to={`/jobdetailes/${job._id}`}>
-                    {job.title}
-                  </Link>
+                    {job.title.charAt(0).toUpperCase() + job.title.slice(1)}
                 </h4>
                 <ul>
                   <li>
@@ -126,6 +134,7 @@ const RecentJobs = () => {
                 <div className="mt-3">
                   {
                     job.skillsets.map((job)=>{
+                     
                       return(<>
                       <button className="home_job_btn">{job}</button>
                       </>)
@@ -143,8 +152,10 @@ const RecentJobs = () => {
                                   'minutes')
                                 .utc()
                                 } */}{" "}
+                               {/* {moment(job.dateOfPosting).format('YYYY-MM-DD hh:mm:ss').toString()} */}
+                                {/* {moment.utc(job.dateOfPosting).local().startOf('seconds').fromNow()} */}
                                 {moment.utc(job.dateOfPosting).local().startOf('seconds').fromNow()}
-                                {/* {moment(job.dateOfPosting).startOf('minutes').fromNow() } */}
+                                {/* {moment(job.dateOfPosting).format('YYYY-MM-DD hh:mm:ss A Z')} */}
                               </span>
                       </a>
                     </div>
@@ -155,13 +166,15 @@ const RecentJobs = () => {
           </div>
         </li>
     </ul>
+    </Link>
+    </div>
           </>)
         }): 
         <div style={{textAlign:"-webkit-center"}}>
         <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
         </div>
       }
-       <div class="d-flex justify-content-center">
+       <div className="d-flex justify-content-center">
       <ReactPaginate
       previousLabel="Prev"
       nextLabel="Next"

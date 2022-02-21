@@ -449,7 +449,7 @@ const Auth = (props) => {
                         </div>
                     </section>
                 </div>
-                <div className="col-lg-4 d-none-sm">image</div>
+                {/* <div className="col-lg-4 d-none-sm">image</div> */}
             </div>
         </div>
         <Modal
