@@ -18,6 +18,10 @@ const apiList = {
   applicants: `${server}/api/applicants`,
   sendotp:`${server}/api/sendotp`,
   alljobs:`${server}/api/alljobs`,
+  jobSearch:`${server}/api/jobs/search`,
+  listFiveCompanies:`${server}/api/company/list/filter`,
+  listCompanies:`${server}/api/company/list`,
+  searchFilterList:`${server}/api/search/list`,
   changepassword:`${server}/api/changepassword`
 };
 
