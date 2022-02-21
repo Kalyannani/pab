@@ -1,24 +1,30 @@
 import React,{useState,useEffect, useRef} from 'react'
-import { Link } from 'react-router-dom';
+// import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+// import {toast} from 'react-toastify'
 import Pagination from './Pagination';
 import axios from 'axios'
 import apiList from "../lib/apiList"
 import ReactPaginate from "react-paginate"
 import ReactLoading from 'react-loading';
 import moment from 'moment-timezone';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 const RecentJobs = () => {
  
     const [jobs,setJobs] = useState([])
-  
+    const navigate = useNavigate();
     // Pagination code
     const [offset, setOffset] = useState(1);
   //   const [data, setData] = useState([]);
-    const [perPage, setPerPage] = useState(10);
+    const [perPage, setPerPage] = useState(30);
     const [pageCount, setPageCount] = useState(0);
     const indexOfLastPost = offset * perPage;
       const indexOfFirstPost = indexOfLastPost - perPage;
       const currentPosts = jobs.slice(indexOfFirstPost, indexOfLastPost);
-      
+      // const navigate = useNavigate();
+      const result = useSelector(state=>state.data)
+      console.log(result)
         const handlePageClick = (e) => {
        
           const selectedPage = e.selected;
@@ -41,12 +47,36 @@ const RecentJobs = () => {
         .then((response) => {
           setPageCount(Math.ceil(response.data.length)/perPage)
           setJobs(response.data.reverse());
+          console.log(response.data)
         })
         .catch((err) => {
           console.log(err.response.data);
         });
     };
   
+    const handleApply = (e,id) => {
+      e.preventDefault()
+      axios
+        .post(
+          `${apiList.jobs}/${id}/applications`,{
+              sop:"ksajdfk"
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+          }
+        )
+        .then((response) => {
+         console.log(response.data)
+      //    setApply(response.data.status)
+         toast.success(response.data.message)
+        })
+        .catch((err) => {
+          console.log(err.response);
+          toast.error(err.response.data.message)
+        });
+    };
 
 
     return (
@@ -57,7 +87,7 @@ const RecentJobs = () => {
   <div className="d-flex mb-4">
     <div className="mr-auto">
       <h2>Recent Jobs</h2>
-      <h6>10+ Recently Added Jobs</h6>
+      <h6>30+ Recently Added Jobs</h6>
     </div>
     <div className="align-self-end">
       <Link className="browse button" to="/alljobs">
@@ -93,6 +123,13 @@ const RecentJobs = () => {
                 </span>
               </div>
               <div className="job-info">
+              {/* <a href="#" type="btn" className="job_details_applybtn" disabled={result?.type === "recruiter"} onClick={(e)=>handleApply(e)}>Apply</a> */}
+              <label className="wishlist">
+             {result?.type==="applicant" ? 
+             <span  onClick={(e)=>handleApply(e,job._id)}> Apply </span>: 
+             result?.type==="recruiter"? null :  
+             <Link to="/auth" > Login to Apply </Link>} 
+            </label>
                 <h4>
                     {job.title.charAt(0).toUpperCase() + job.title.slice(1)}
                 </h4>
@@ -100,6 +137,7 @@ const RecentJobs = () => {
                   <li>
                     <h5 className="home_company_name">{job.recruiter.companyname}</h5>
                   </li>
+                
                   <li>
                     <h6 className="star_box">
                       {" "}
@@ -158,6 +196,7 @@ const RecentJobs = () => {
                                 {/* {moment(job.dateOfPosting).format('YYYY-MM-DD hh:mm:ss A Z')} */}
                               </span>
                       </a>
+                     
                     </div>
                   </div>
                 </div>

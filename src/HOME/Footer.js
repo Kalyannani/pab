@@ -184,7 +184,7 @@ const Footer = () => {
                   </p>
                 </div>
                 <div className="foot_web col-md-4">
-                  <a to="#">
+                  <a href="https://www.linkedin.com/in/pab-jobs-5a776b232/" target="_blank">
                     <i className="fab fa-linkedin"></i>
                   </a>
                   <a href="https://www.instagram.com/pab.jobs/" target="_blank">

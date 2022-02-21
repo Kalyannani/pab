@@ -96,8 +96,8 @@ export const Categories = () => {
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
-                    <span className="icon feature-box-col-six"><i className="fas fa-arrows-alt"></i></span>
-                    <h6>Surveyor</h6>
+                    <span className="icon feature-box-col-six"><i className="fa fa-industry"></i></span>
+                    <h6>Industries</h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
             </div>

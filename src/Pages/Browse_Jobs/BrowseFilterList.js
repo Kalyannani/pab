@@ -12,7 +12,7 @@ const [jobs,setJobs]=useState([])
  // Pagination code
  const [offset, setOffset] = useState(1);
  //   const [data, setData] = useState([]);
-   const [perPage, setPerPage] = useState(10);
+   const [perPage, setPerPage] = useState(30);
    const [pageCount, setPageCount] = useState(0);
    const indexOfLastPost = offset * perPage;
      const indexOfFirstPost = indexOfLastPost - perPage;
@@ -921,15 +921,16 @@ useEffect(async()=>{
                                             <a href="#"><span>Full Time</span></a>
                                         </div>
                                         <div className="filter_list_salary">
-                                            <span><i className="fas fa-rupee-sign"></i> {job.salary} - <i
-                                                    className="fas fa-rupee-sign"></i>
-                                                30000</span>
+                                            <span><i className="fas fa-rupee-sign"></i> {job.salary} 
+                                            {/* - <i
+                                                    className="fas fa-rupee-sign"></i> */}
+                                                </span>
                                         </div>
                                     </div>
-                                    <label className="filter_list_wishlist">
+                                    {/* <label className="filter_list_wishlist">
                                         <input type="checkbox" /><span className="filter_list_added"><i
                                                 className="fas fa-heart"></i></span>
-                                    </label>
+                                    </label> */}
                                 </div>
                             </li>
                         </ul>

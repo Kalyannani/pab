@@ -98,7 +98,7 @@ const Navbar = () => {
                                         <Link className="dropdown-item" to="/alljobs">All Jobs</Link>
                                         <Link className="dropdown-item" to="/companyjobs">Company Jobs</Link>
                                         <Link className="dropdown-item" to="/categoryjobs">Category Jobs</Link>
-                                        <Link className="dropdown-item" to="/locationaljobs">Locatinal Jobs</Link>
+                                        <Link className="dropdown-item" to="/locationaljobs">Locational Jobs</Link>
                                         <Link className="dropdown-item" to="/designationjobs">Designation Jobs</Link>
                                         <Link className="dropdown-item" to="/skilljobs">Skill Jobs</Link>
                                     </div>
