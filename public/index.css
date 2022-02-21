@@ -1200,7 +1200,7 @@ span {
   outline: 0 none;
   text-decoration: none;
   color: #6a2a69;
-  margin-top:5px;
+  /* margin-top:5px; */
 }
 #sec4 .job-type span {
   margin-bottom: 5px;
@@ -1245,6 +1245,25 @@ span {
   width: 0;
   position: absolute;
   cursor: pointer;
+}
+#sec4 .wishlist {
+  position: absolute;
+  cursor: pointer;
+  display: block;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  font-size: 22px;
+  user-select: none;
+  font-family: FontAwesome;
+  top: 25px;
+  right: 30px !important;
+  cursor: pointer;
+}
+
+.wishlist span{
+  color: #6a2a69 !important;
+  font-weight: 600;
+  font-size: 15px
 }
 #sec4 input[type="checkbox"] {
   box-sizing: border-box;
@@ -2153,6 +2172,8 @@ span {
   font-size: 14px;
   margin-bottom: 5px;
   margin-top: 10px;
+  letter-spacing: -0.5px;
+  line-height: 25px;
 }
 
 #sec7 .foot h4 {
@@ -2709,8 +2730,7 @@ margin-top: 70px;
       rgba(25, 38, 101, 0.7),
       rgb(9, 18, 63, 0.7),
       rgb(34, 40, 69, 0.7)
-    ),
-    url(images/bgimage.jpg);
+    );
   background-repeat: no-repeat;
   background-position: center;
   background-blend-mode: darken;
@@ -3221,13 +3241,7 @@ input:focus {
 /* heading-pic */
 
 .heading_pic_alljobs {
-  background: linear-gradient(
-      to right,
-      rgba(25, 38, 101, 0.7),
-      rgb(9, 18, 63, 0.7),
-      rgb(34, 40, 69, 0.7)
-    ),
-    url(images/bgimage.jpg);
+  background: rgba(0, 0, 0, 0.7);
   background-repeat: no-repeat;
   background-position: center;
   background-blend-mode: darken;
@@ -3396,13 +3410,7 @@ button.alljob_buttons_sub:focus {
 /* heading-pic */
 
 .heading_pic_companyjobs {
-  background: linear-gradient(
-      to right,
-      rgba(25, 38, 101, 0.7),
-      rgb(9, 18, 63, 0.7),
-      rgb(34, 40, 69, 0.7)
-    ),
-    url(images/bgimage.jpg);
+  background: rgba(0, 0, 0, 0.7);
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;
@@ -3579,13 +3587,7 @@ button.alljob_buttons_sub:focus {
 /* heading-pic */
 
 .heading_pic_skilljob {
-  background: linear-gradient(
-      to right,
-      rgba(25, 38, 101, 0.7),
-      rgb(9, 18, 63, 0.7),
-      rgb(34, 40, 69, 0.7)
-    ),
-    url(images/bgimage.jpg);
+  background: rgba(0, 0, 0, 0.7);
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;
@@ -3801,13 +3803,7 @@ button.alljob_buttons_sub:focus {
 /* heading-pic */
 
 .heading_pic_jobdesignation {
-  background: linear-gradient(
-      to right,
-      rgba(25, 38, 101, 0.7),
-      rgb(9, 18, 63, 0.7),
-      rgb(34, 40, 69, 0.7)
-    ),
-    url(images/bgimage.jpg);
+  background: rgba(0, 0, 0, 0.7);
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;
@@ -4024,13 +4020,7 @@ button.alljob_buttons_sub:focus {
 /* heading-pic */
 
 .heading_pic_jobscategory {
-  background: linear-gradient(
-      to right,
-      rgba(25, 38, 101, 0.7),
-      rgb(9, 18, 63, 0.7),
-      rgb(34, 40, 69, 0.7)
-    ),
-    url(images/bgimage.jpg);
+  background: rgba(0, 0, 0, 0.7);
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;
@@ -4218,13 +4208,7 @@ button.alljob_buttons_sub:focus {
 /* heading-pic */
 
 .heading_pic_joblocation {
-  background: linear-gradient(
-      to right,
-      rgba(25, 38, 101, 0.7),
-      rgb(9, 18, 63, 0.7),
-      rgb(34, 40, 69, 0.7)
-    ),
-    url(images/bgimage.jpg);
+  background: rgba(0, 0, 0, 0.7);
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;

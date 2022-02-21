@@ -54,8 +54,11 @@ const Auth = (props) => {
                 dispatch({ type: "USER", payload: response.data })
                 toast.success("Login Successful")
                 console.log(response);
-
-                navigate("/")
+                if(response.data.type === "applicant"){
+                    navigate("/appliedjobs")
+                }else{
+                    navigate("/Manage_jobs")
+                }
             })
             .catch((err) => {
                 toast.error(err.response.data.message)
@@ -89,7 +92,6 @@ const Auth = (props) => {
                 dispatch({ type: "USER", payload: response.data })
                 toast.success("Registered Successful")
                 console.log(response);
-
                 navigate("/")
             })
             .catch((err) => {

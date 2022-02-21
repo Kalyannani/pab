@@ -18,6 +18,7 @@ export const Jobdetailes = (props) => {
     useEffect(() => {
         getData();
     }, []);
+    
     const getData = () => {
         axios
             .get(`${apiList.jobs}/${id}`, {
@@ -60,6 +61,7 @@ export const Jobdetailes = (props) => {
             toast.error(err.response.data.message)
           });
       };
+
 
 
     return (
@@ -134,7 +136,7 @@ export const Jobdetailes = (props) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                     </li>
                     </ul>
