@@ -44,20 +44,20 @@ const Home = () => {
                     <h2 className="am2">Find Your Right Job Here .....
                     </h2>
                     <div className="browse_joblocation_list-search_box">
-                    <form className="form-control">
+                    <form className="form-control" action='/browsefilterlist' method='GET'>
                         <div className="row">
                             <div className="col-lg-5 col-md-5" id="input1_joblocation">
                                 <input type="text" className="form-control" id="search_box_input_joblocation"
-                                    placeholder="Job Title, Keywords, or Phrase" />
+                                    placeholder="Job Title, Keywords, or Phrase" name='keyword' />
                             </div>
                             <div className="col-lg-5 col-md-5" id="input2_joblocation">
                                 <input type="text" className="form-control" id="search_box_input_joblocation"
-                                    placeholder="City ,Province or Region" />
+                                    placeholder="City ,Province or Region" name='qlocation' />
                             </div>
                             <div className="col-lg-2 col-md-2 col-xs-offset-3 col-xs-6 c0l-xs-offset-3"
                                 id="input_btn_joblocation">
-                                <Link to="/browsefilterlist"><button id="search_box_btn_joblocation" type="submit" className="btn-block">
-                                    Search</button></Link>
+                                <button id="search_box_btn_joblocation" type="submit" className="btn-block">
+                                    Search</button>
                             </div>
 
                         </div>
