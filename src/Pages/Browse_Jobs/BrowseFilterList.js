@@ -16,20 +16,6 @@ import EducationFilter from './filters/EducationFilter';
 import SalaryFilter from './filters/SalaryFilter';
 import ReactTimeAgo from 'react-time-ago'
 
-<<<<<<< HEAD
- // Pagination code
- const [offset, setOffset] = useState(1);
- //   const [data, setData] = useState([]);
-   const [perPage, setPerPage] = useState(30);
-   const [pageCount, setPageCount] = useState(0);
-   const indexOfLastPost = offset * perPage;
-     const indexOfFirstPost = indexOfLastPost - perPage;
-     const currentPosts = jobs.slice(indexOfFirstPost, indexOfLastPost);
-       const handlePageClick = (e) => {
-         const selectedPage = e.selected;
-         setOffset(selectedPage + 1);
-       };
-=======
 const BrowseFilterList = () => {
   const [jobs, setJobs] = useState([])
   const [topCompanies, setTopCompanies] = useState([])
@@ -38,7 +24,6 @@ const BrowseFilterList = () => {
   const [education, setEducation] = useState([])
   const [salary, setSalary] = useState()
   const [listType, setListType] = useState('list')
->>>>>>> 5ddbccceae01f0be1bbd510f40d12c8acfa90214
 
   let { search } = useLocation();
   const query = new URLSearchParams(search);
