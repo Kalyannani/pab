@@ -67,7 +67,7 @@ const DesignationJobs = () => {
 
                 {/* <!-- buttons --> */}
                 <div className="jobdesignation_section_2_buttons text-left my-4">
-                    <button className="jobdesignation_section_2_button_sub current">Top 100</button>
+                    {/* <button className="jobdesignation_section_2_button_sub current">Top 100</button> */}
                     <button className="jobdesignation_section_2_button_sub">A</button>
                     <button className="jobdesignation_section_2_button_sub">B</button>
                     <button className="jobdesignation_section_2_button_sub">C</button>
@@ -94,7 +94,7 @@ const DesignationJobs = () => {
                     <button className="jobdesignation_section_2_button_sub">X</button>
                     <button className="jobdesignation_section_2_button_sub">Y</button>
                     <button className="jobdesignation_section_2_button_sub">Z</button>
-                    <button className="jobdesignation_section_2_button_sub">0-99</button>
+                    {/* <button className="jobdesignation_section_2_button_sub">0-99</button> */}
 
                 </div>
 

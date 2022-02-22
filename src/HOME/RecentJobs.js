@@ -2,6 +2,8 @@ import React,{useState,useEffect, useRef} from 'react'
 // import { Link,useNavigate } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom';
 // import {toast} from 'react-toastify'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import Pagination from './Pagination';
 import axios from 'axios'
 import apiList from "../lib/apiList"
@@ -14,6 +16,7 @@ const RecentJobs = () => {
  
     const [jobs,setJobs] = useState([])
     const navigate = useNavigate();
+    const list = [1, 2, 3, 4, 5, 6];
     // Pagination code
     const [offset, setOffset] = useState(1);
   //   const [data, setData] = useState([]);
@@ -70,6 +73,7 @@ const RecentJobs = () => {
         .then((response) => {
          console.log(response.data)
       //    setApply(response.data.status)
+        navigate("/appliedjobs")
          toast.success(response.data.message)
         })
         .catch((err) => {
@@ -110,7 +114,6 @@ const RecentJobs = () => {
         //     </span>)
         // }
           return(<>
-          
           <div >
             <Link to={`/jobdetailes/${job._id}`}>
           <ul className="job-post">
@@ -126,9 +129,9 @@ const RecentJobs = () => {
               {/* <a href="#" type="btn" className="job_details_applybtn" disabled={result?.type === "recruiter"} onClick={(e)=>handleApply(e)}>Apply</a> */}
               <label className="wishlist">
              {result?.type==="applicant" ? 
-             <span  onClick={(e)=>handleApply(e,job._id)}> Apply </span>: 
+             <button className='btn job_details_applybtn'  onClick={(e)=>handleApply(e,job._id)}> Apply </button>: 
              result?.type==="recruiter"? null :  
-             <Link to="/auth" > Login to Apply </Link>} 
+             <Link to="/auth" > <button className='btn job_details_applybtn'> Login to Apply </button>  </Link>} 
             </label>
                 <h4>
                     {job.title.charAt(0).toUpperCase() + job.title.slice(1)}
@@ -209,9 +212,54 @@ const RecentJobs = () => {
     </div>
           </>)
         }): 
-        <div style={{textAlign:"-webkit-center"}}>
-        <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
-        </div>
+        <div className="skeleton">
+          {list.map((item)=>{
+            return(
+          <div className="contact__item mb-5" key={item}>
+            <ul className="job-post">
+          <li >
+            <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
+              <div style={{ display: "flex", width: "100%" }}>
+                <Skeleton circle={false} height={50} width={50} />
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "100%"
+                  }}
+                >
+                  <Skeleton
+                    height={12}
+                    width="30%"
+                    style={{ marginLeft: "1rem", marginBottom: "0.5rem" }}
+                  />
+                  <Skeleton
+                    height={8}
+                    width="40%"
+                    style={{ marginLeft: "1rem" }}
+                  />
+                  <Skeleton
+                    height={8}
+                    width="50%"
+                    style={{ marginLeft: "1rem", marginTop: 0 }}
+                  />
+                  <Skeleton
+                    height={12}
+                    width="80%"
+                    style={{ marginLeft: "1rem", marginTop: "0.6rem" }}
+                  />
+                </div>
+              </div>
+            </SkeletonTheme>
+            </li>
+          </ul>
+          </div>
+            )
+          })}
+    </div>
+        // <div style={{textAlign:"-webkit-center"}}>
+        // <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
+        // </div>
       }
        <div className="d-flex justify-content-center">
       <ReactPaginate

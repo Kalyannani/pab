@@ -281,8 +281,8 @@ const getData = () => {
                         </span>{" "}
                         {
                           profile?.experience.experience?
-                          <span className="location_resume">{profile.experience.experience}</span>:
-                          <span className="location_resume">{profile.experience}</span>
+                          <span className="location_resume">{profile.experience.experience.charAt(0).toUpperCase() + profile.experience.experience.slice(1)}</span>:
+                          <span className="location_resume">{profile.experience.charAt(0).toUpperCase() + profile.experience.slice(1)}</span>
                         }
                       </p>
                       </div>

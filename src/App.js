@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 // import Categories from './HOME/categories';
@@ -38,13 +38,17 @@ import Login from './auth/Login';
 import Terms from './Terms&Conditions/Terms';
 import Privacypolicy from './Terms&Conditions/Privacypolicy';
 import Auth from './auth/Auth';
-import HireAndTrain from './NavBar/Services/HireAndTrain';
+// import HireAndTrain from './NavBar/Services/HireAndTrain';
+import { useDispatch } from 'react-redux';
+import Maze from './NavBar/Services/Maze'
 
-export const App = () => {
-  return (
-    <div>
+
+export const App = (props) => {
+
     
-   
+  return (
+    
+    <div>
    <BrowserRouter>
    <ScrollToTop />
    <div>
@@ -75,14 +79,13 @@ export const App = () => {
   <Route exact path="/designationjobs" element={<DesignationJobs />} />
   <Route exact path="/categoryjobs" element={<CategoryJobs />} />
   <Route exact path="/skilljobs" element={<SkillJobs />} />
-  <Route exact path="/hireandtrain" element={<HireAndTrain />} />
+  <Route exact path="/hireandtrain" element={<Maze />} />
   <Route exact path="/locationaljobs" element={<LocationalJobs />} />
   <Route exact path="/password" element={<Password />} />
   <Route exact path="/updatepost/:id" element={<Updatepost />} />
   <Route exact path="/termsandconditions" element={<Terms/>}/>
   <Route exact path="/Privacypolicy" element={<Privacypolicy/>}/>
    </Routes>
-   
    <Footer />
   
    </div>
