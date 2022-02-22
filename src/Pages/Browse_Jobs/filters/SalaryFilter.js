@@ -55,7 +55,7 @@ const SalaryFilter = (props) => {
                 >
                     Salary{" "}
                     <span className="float-right">
-                        <i className="fas fa-plus"></i>
+                        {/* <i className="fas fa-plus"></i> */}
                     </span>
                 </h5>
 

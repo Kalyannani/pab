@@ -35,7 +35,7 @@ const EducationFilter = (props) => {
                 >
                     Education
                     <span className="float-right">
-                        <i className="fas fa-plus"></i>
+                        {/* <i className="fas fa-plus"></i> */}
                     </span>
                 </h5>
 
