@@ -150,7 +150,7 @@ export const Jobdetailes = (props) => {
                     </span></span>
                 <span className="stat mr-3"><label  className="pr-2">Openings: </label><span> {jobs.maxPositions}</span></span>
                 <span className="stat mr-3"><label>Job Applicants: </label><span>Less than 10</span></span>
-                <a className="send_like_jobs"><span> Send me jobs like this </span> </a>
+                <a href='#' className="send_like_jobs"><span> Similar Jobs </span> </a>
             </div>
         </div>
         <section className="job-description">

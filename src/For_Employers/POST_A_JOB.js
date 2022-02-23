@@ -181,7 +181,7 @@ const POST_A_JOB = (props) => {
                                                       let skillsets = post.skillsets;
                                                       skillsets.splice(index, 1);
                                                       setPost({
-                                                        ...post,
+                                                        ...post, 
                                                         skillsets: skillsets,
                                                       });
                                                     }}

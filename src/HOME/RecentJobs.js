@@ -15,7 +15,7 @@ import { toast } from 'react-toastify';
 const RecentJobs = () => {
  
     const [jobs,setJobs] = useState([])
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
     const list = [1, 2, 3, 4, 5, 6];
     // Pagination code
     const [offset, setOffset] = useState(1);

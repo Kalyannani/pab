@@ -15,7 +15,7 @@ const Testimonials = () => {
   };
   return (
     <div>
-      <section id="clients" className="clients">
+      <section id="hire_clients" className="clients">
         <div className="container">
           <header className="section-header clients_header">
             <h2 className="clients_heading   ">Testimonials</h2>
@@ -24,7 +24,7 @@ const Testimonials = () => {
             <OwlCarousel className="owl-theme" {...options}>
               <div className="item text-center testimonial_item">
                 <div className="corousal_item">
-                  <img src="images/Testifour.png" className="img-fluid  mx-auto" alt="image"></img>
+                  <img src="images/rohith.jpeg" className="img-fluid  mx-auto" alt="image"></img>
                   <p>
                     I joined the Train and Hire at Hyderabad. Everything was
                     perfect, be it teaching, lab facilities and attitude of
@@ -33,12 +33,12 @@ const Testimonials = () => {
                     explained things interestingly. I would definitely recommend
                     PabJob's for anyone who aims to become an IT professional.
                   </p>
-                  <h4>Rahul</h4>
+                  <h4>Rohith</h4>
                 </div>
               </div>
               <div className="item text-center">
                 <div className="corousal_item testimonial_item">
-                  <img src='images/Testitwo.png' className="img-fluid testimonial_image_avatar mx-auto " alt='image'></img>
+                  <img src='images/balaji.jpeg' className="img-fluid testimonial_image_avatar mx-auto " alt='image'></img>
                   <p>
                     Being a fresher, I started looking for a job in the IT field
                     from June 2018. I attended 13 interviews including Top Company's
@@ -50,7 +50,7 @@ const Testimonials = () => {
                     India's top Company. The job Guarantee and excellent trainers
                     encouraged me to join the program. Thanks to PabJobs! Rahul
                   </p>
-                  <h4>Vinitha</h4>
+                  <h4>Balaji</h4>
                 </div>
               </div>
               <div className="item text-center">
