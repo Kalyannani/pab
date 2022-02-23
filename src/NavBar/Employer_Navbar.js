@@ -1,8 +1,10 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import { Link, useNavigate} from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
+import IdleTimer from 'react-idle-timer';
 const Employer_Navbar = () => {
+  const idleTimerRef = useRef(null)
     const[state, setState] = useState({navbar_content:"white",color:"black"});
     const [collapse,setCollapse]= useState();
     const [id,setId] = useState();
@@ -30,6 +32,13 @@ const Employer_Navbar = () => {
       dispatch({type:"CLEAR"})
       navigate("/auth")
 };
+
+const onIdle = ()=>{
+  localStorage.removeItem("token");
+      localStorage.removeItem("type");
+      dispatch({type:"CLEAR"})
+      navigate("/auth")
+}
     return (
         <>
         
@@ -76,7 +85,7 @@ const Employer_Navbar = () => {
                     </ul>
                 </div>
   
-
+                <IdleTimer ref={idleTimerRef} timeout={180*1000} onIdle={onIdle}></IdleTimer>
     </>
     )
 }

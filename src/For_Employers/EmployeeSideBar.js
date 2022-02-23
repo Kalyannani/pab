@@ -60,7 +60,7 @@ export const EmployeeSideBar = () => {
                     Job</NavLink>
               
                 <NavLink to="/Manage_jobs" ><i
-                        className="fas fa-briefcase"></i> Manage
+                        className="fas fa-briefcase"></i> My
                     Jobs</NavLink>
               
                 <NavLink  to="/password"><i

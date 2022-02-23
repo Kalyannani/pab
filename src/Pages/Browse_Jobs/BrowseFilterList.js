@@ -403,13 +403,14 @@ const BrowseFilterList = () => {
                   {
                     jobs.length > 0 ?
                       jobs?.map((job) => {
-                        return (
+                        return (<>
                           <div className="col-lg-6 col-sm-12">
+                             <Link to={`/jobdetailes/${job._id}`}>
                             <div className="job_filter_grid_box">
                               <div className="d-flex mb-4">
                                 <div className="job_filter_grid_info">
                                   <h5>
-                                  <Link to={`/jobdetailes/${job._id}`}>{job.title}</Link>
+                                 {job.title}
                                   </h5>
                                   <p />
                                   <div className="job_filter_grid_in_up">
@@ -442,32 +443,37 @@ const BrowseFilterList = () => {
                                 </span>
                               </label>
                             </div>
+                            </Link>
                           </div>
-
-                        )
-                      }) :
-                      <div style={{ textAlign: "-webkit-center" }}>
-                        <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
+                        </>)
+                      }) 
+                      
+                      :
+                      <div style={{ textAlign: "-webkit-center", margin:"100px auto" }}>
+                        <h1>No Jobs Found </h1>
+                        {/* <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} /> */}
                       </div>
                   }
                 </div>
               }
-
-              <div class="d-flex justify-content-center">
-                <ReactPaginate
-                  previousLabel="Prev"
-                  nextLabel="Next"
-                  breakLabel={"..."}
-                  breakClassName={"break-me"}
-                  pageCount={pageCount}
-                  marginPagesDisplayed={2}
-                  pageRangeDisplayed={3}
-                  onPageChange={handlePageClick}
-                  containerClassName={"pagination"}
-                  subContainerClassName={"pages pagination"}
-                  activeClassName={"active"}
-                />
-              </div>
+              
+             
+               <div class="d-flex justify-content-center">
+                          <ReactPaginate
+                            previousLabel="Prev"
+                            nextLabel="Next"
+                            breakLabel={"..."}
+                            breakClassName={"break-me"}
+                            pageCount={pageCount}
+                            marginPagesDisplayed={2}
+                            pageRangeDisplayed={3}
+                            onPageChange={handlePageClick}
+                            containerClassName={"pagination"}
+                            subContainerClassName={"pages pagination"}
+                            activeClassName={"active"}
+                          />
+                          </div>
+              
             </div>
 
           </div>

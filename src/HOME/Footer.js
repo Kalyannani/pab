@@ -14,7 +14,7 @@ const Footer = () => {
               <div className="col-lg-3 col-md-6 foot_add">
                 <img
                   className="img-fluid logo_img"
-                  src="images/ProHireeLogo.png"
+                  src="/images/ProHireeLogo.png"
                   style={{
                     background: "transparent",
                     height: "50px",

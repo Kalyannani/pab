@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import apiList from '../lib/apiList';
 
 export const Applications = () => {
@@ -41,8 +42,10 @@ export const Applications = () => {
       .then((response) => {
         console.log(response.data);
         setApplications(response.data);
+        toast.success(response.data.message)
       })
       .catch((err) => {
+        toast.error(err.response.data.message)
         console.log(err.response);
         setApplications([]);
         
@@ -58,12 +61,13 @@ export const Applications = () => {
             <Link to="/Manage_jobs"
                 class="site-button right-arrow button-sm float-right"> Back </Link>
             <div class="row my-4">
-                <div class="col-lg-4">
-                <div class="box">
+                <div class="col-lg-12">
+                
                     {applications.length > 0 ?
                         applications.map((application)=>{
                             console.log(application)
                             return(
+                              <div class="box">
                             <div>
                             <h5 class="heading_box">
                                {application.jobApplicant.name}</h5>
@@ -89,28 +93,40 @@ export const Applications = () => {
                             {
                               application.status==="applied"?   
                               (<>
+                              <div>
                               <button type="button" class="btn btn-warning" onClick={()=>updateStatus("shortlisted",`${application._id}`)}>shortlist</button>{ "  "}
                               <button type="button" class="btn btn-danger" onClick={()=>updateStatus("rejected",`${application._id}`)}>Reject</button>
+                              </div>
                               </>)
-                              :application.status==="shortlisted"?
+                              : application.status==="shortlisted"?
                               (<>
+                              <div>
                               <button type="button" class="btn btn-success" onClick={()=>updateStatus("accepted",`${application._id}`)}>accept</button>{ "  "}
                               <button type="button" class="btn btn-danger" onClick={()=>updateStatus("rejected",`${application._id}`)}>Reject</button>
+                              </div>
                               </>):application.status==="rejected"?
-                              <button type="button" class="btn btn-danger">Rejected</button>:
+                              <div>
+                              <button type="button" class="btn btn-danger">Rejected</button>
+                              </div> 
+                              :
                               application.status==="accepted"?
-                              <button type="button" class="btn btn-success">Accepted</button>:null
-                            }
+                              <div>
+                              <button type="button" class="btn btn-success">Accepted</button>
+                              </div>
+                              :null
+                               
+                           }
                          
                             
                             <a href="#" class="download_box"><i class="fa fa-download download_icon_app"></i></a>
                             {/* <a href="#" class="download_box"><i class="fas fa-list view_icon_app"></i></a>
                             <a href="#" class="download_box"><i class="fas fa-user-minus min_icon_app"></i></a> */}
                        </div>
+                       </div>
                        ) }):
                        <div>No applications found</div>
                     }
-                     </div>
+                    
                 </div>
                        </div>
                        

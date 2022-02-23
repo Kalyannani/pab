@@ -2,24 +2,19 @@ import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ChipInput from "material-ui-chip-input";
-// import TextField from "@mui/material/TextField";
-// import Autocomplete from "@mui/material/Autocomplete";
-// import data from "../components/data.json";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import data from "./data.json";
+// import Select from "react-select";
+import { TagsInput } from "react-tag-input-component";
+import {toast} from 'react-toastify'
 
-const Result = () => {
-  return (
-    <p style={{ color: "green" }}>
-      <h5>
-        <b>Form Submitted Successfully.....</b>
-      </h5>
-    </p>
-  );
-};
 
 const Home = () => {
   const [closemodal, setClosemodal] = useState(false);
 
   const navigate = useNavigate();
+
   const [hireandtraindetails, setHireandtraindetails] = useState({
     name: "",
     email: "",
@@ -52,7 +47,7 @@ const Home = () => {
         if (!value || value.trim() === "") {
           return "*Contact Number is Required";
         } else if (isNaN(value)) {
-          return "*Only enter a Numerical Values";
+          return "*Only enter Numbers";
         } else if (!value.match(/^[6-9]/)) {
           return "*Mobile Number Must be start With 6 or 7 or 8 or 9 ";
         } else if (value.length < 10) {
@@ -78,15 +73,16 @@ const Home = () => {
   };
 
   const [result, showResult] = useState(false);
+
   const [name, setFullName] = useState("");
   const [email, setmail] = useState("");
   const [phone, setphone] = useState("");
   const [graduation, setgraduation] = useState("");
   const [passedout, setpassedout] = useState("");
-  const [location, setlocation] = useState("");
+  const [location, setlocation] = useState([]);
   const [skills, setskills] = useState([]);
   const [message, setmessage] = useState("");
-
+  console.log(location)
   const sendEmail = (e) => {
     e.preventDefault();
     let validationErrors = {};
@@ -129,14 +125,14 @@ const Home = () => {
       PhoneNumber: phone,
       Email: email,
       Graduation: graduation,
-      passedout: passedout,
+      Passedout: passedout,
       Location: location,
       Skills: skills,
       Message: message,
     };
     axios
       .post(
-        "https://sheet.best/api/sheets/b8f02c3d-f6bf-4d1a-be06-6a6e793dfd7f",
+        "https://sheet.best/api/sheets/d33e221c-71b4-43fb-9f7a-d93a64d21e01",
         data
       )
       .then((res) => {
@@ -149,6 +145,8 @@ const Home = () => {
         setlocation("");
         setskills("");
         setmessage("");
+        console.log(res);
+        toast.success("Form Submitted Successfully")
         document
           .getElementById("exampleModalCenter")
           .classList.remove("show", "d-block");
@@ -159,6 +157,7 @@ const Home = () => {
       })
       .catch((err) => {
         console.log(err);
+        toast.error(err)
       });
     // navigate("/")
     // e.target.reset();
@@ -175,7 +174,11 @@ const Home = () => {
       [e.target.name]: validate(e.target.name, e.target.value),
     });
   };
-
+  const handlelocationChange=(e,value)=>{
+    value.map((data)=>{
+      setlocation([...location,data.location])
+    })
+  }
   const myRef = useRef(null);
   const executeScroll = () => myRef.current.scrollIntoView();
   return (
@@ -209,7 +212,6 @@ const Home = () => {
               src="images/clipart530434.png"
               className="img-fluid  pr-3 img_office"
             />
-        
           </div>
           {/* <div className="col-lg-1 col-md-1"></div> */}
           <div className="col-lg-4 col-md-4 col-sm-4">
@@ -313,6 +315,7 @@ const Home = () => {
                                     </label>
                                   </div>
                                 </div>
+
                                 <div className="text-danger error mb-4">
                                   {errors.name}
                                 </div>
@@ -436,32 +439,59 @@ const Home = () => {
                                 </div>
                               </div> */}
 
-                              {/* <div className="col-lg-12">
-                                <div className="form-group">
-                                <label>Location :</label>
-                                <Autocomplete
-                                  multiple
-                                  id="tags-outlined"
-                                  options={data}
-                                  getOptionLabel={(option) => option.location}
-                                  // defaultValue={[top100Films[13]]}
-                                  filterSelectedOptions
-                                  renderInput={(params) => (
-                                    <TextField
-                                      {...params}
-                                      label="filterSelectedOptions"
-                                      placeholder="Favorites"
-                                      type="text"
-                                      name="location"
-                                      onChange={(e) =>
-                                        setlocation(e.target.value)
+
+                                 
+
+                                <div className="col-lg-12">
+                                  <div className="form-group">
+                                    <label>Location :</label>
+                                    {/* <Select options={data}> */}
+                                    <Autocomplete
+                                      multiple
+                                      id="tags-outlined"
+                                      options={data}
+                                      getOptionLabel={(option) =>
+                                        option.location
                                       }
-                                      value={location}
+                                      onChange={handlelocationChange}
+                                      // defaultValue={[top100Films[13]]}
+                                      filterSelectedOptions
+                                      renderInput={(params) => (
+                                      
+                                        <TextField
+                                        
+                                        // onChange={(e) =>
+                                        //     setlocation(e.target.value)
+                                        //   }
+                                      
+                                          value={location}
+                                          {...params}
+                                          label="Enter preferred Locations"
+                                          // placeholder="Favorites"
+                                          type="text"
+                                          name="location"
+                                      //     onAdd={(newValue) => {
+                                      //   const newArray = [...location, newValue];
+                                      //   setlocation(newArray);
+                                      // }}
+                                      // onDelete={(deletedValue) => {
+                                      //   const newArray = location.filter(
+                                      //     (state) => state !== deletedValue
+                                      //   );
+                                      //   setlocation(newArray);
+                                      // }}
+                                      // fullWidth
+                                       />
+                                      )}
                                     />
-                                  )}
-                                />
+                                    {/* </Select> */}
+                                    
+                                  </div>
                                 </div>
-</div> */}
+
+
+
+
                                 <div className=" col-lg-12 col-md-12">
                                   <div className="form-group">
                                     <label>Skills:</label>
@@ -542,9 +572,6 @@ const Home = () => {
                               >
                                 Submit
                               </button>
-                              <div className="row">
-                                {result ? <Result /> : null}
-                              </div>
                             </form>
                           </div>
                         </div>
