@@ -76,7 +76,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <i className="fas fa-chevron-right"></i>{" "}
-                    <Link to="/Manage_jobs">Manage Job</Link>
+                    <Link to="/Manage_jobs">My Jobs</Link>
                   </li>
                 </ul>
               </div> 

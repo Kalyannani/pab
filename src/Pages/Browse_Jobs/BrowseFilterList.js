@@ -431,8 +431,9 @@ const BrowseFilterList = () => {
                                 </div>
                                 <div className="job_filter_grid_salary">
                                   <span>
-                                    <i className="fas fa-rupee-sign" /> {job.salary} -
-                                    <i className="fas fa-rupee-sign" /> 25000
+                                    <i className="fas fa-rupee-sign" /> {job.salary} 
+                                    {/* -
+                                    <i className="fas fa-rupee-sign" /> 25000 */}
                                   </span>
                                 </div>
                               </div>

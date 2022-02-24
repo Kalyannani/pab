@@ -48,7 +48,7 @@ const Testimonials = () => {
                     months of PabJob's training in Chennai and cleared the Top Company
                     interview. Now, I am working as a Programmer in one of
                     India's top Company. The job Guarantee and excellent trainers
-                    encouraged me to join the program. Thanks to PabJobs! Rahul
+                    encouraged me to join the program. Thanks to PabJobs! Balaji
                   </p>
                   <h4>Balaji</h4>
                 </div>
