@@ -25,7 +25,6 @@ const POST_A_JOB = (props) => {
 
 
     const [post, setPost] = useState({
-
         title: '',
         maxPositions: '',
         jobType: '',
@@ -37,9 +36,6 @@ const POST_A_JOB = (props) => {
         salary: '',
         skillsets:[],
         cities:[],
-    
-          
-
     })
 
     //console.log(register)

@@ -1,5 +1,8 @@
 import React from 'react'
 import CountUp from 'react-countup';
+import {RiBankLine} from 'react-icons/ri'
+import {FaHeadset,FaChartPie,FaLaptopCode} from 'react-icons/fa'
+// import {HiChartPie} from 'react-icons/hi'
 export const Categories = () => {
    
   const [loading, setLoading] = React.useState(false);
@@ -53,7 +56,7 @@ export const Categories = () => {
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
-                    <span className="icon feature-box-col-two"><i className="fab fa-uncharted"></i></span>
+                    <span className="icon feature-box-col-two"><span><FaLaptopCode /></span></span>
 
                     <h6>IT Industry Jobs</h6>
                     {/* <p>198 Open Positions</p> */}
@@ -61,14 +64,14 @@ export const Categories = () => {
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
-                    <span className="icon feature-box-col-three"><i className="fas fa-wallet"></i></span>
+                    <span className="icon feature-box-col-three"><span><FaChartPie /></span></span>
                     <h6> Marketing Jobs</h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
-                    <span className="icon feature-box-col-four"><i className="fas fa-cloud-upload-alt"></i></span>
+                    <span className="icon feature-box-col-four"><span><FaHeadset/></span></span>
                     <h6>BPO Jobs</h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
@@ -82,14 +85,17 @@ export const Categories = () => {
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
-                    <span className="icon feature-box-col-six"><i className="fas fa-search-location"></i></span>
+                    <span className="icon feature-box-col-six">
+                        {/* <span><MdRealEstateAgent/></span> */}
+                        <img src="/images/Construction.png" style={{height: "100px",marginTop: "-20px"}}/>
+                        </span>
                     <h6>Counstruction Jobs  </h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
-                    <span className="icon feature-box-col-six"><i className="fa fa-bank"></i></span>
+                    <span className="icon feature-box-col-six"><span className='svg_icons'><RiBankLine size='lg'/></span></span>
                     <h6>Bank Jobs</h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>

@@ -185,7 +185,7 @@ export const COMPANY_PROFILE = () => {
 
                       <div className=" col-lg-12 col-md-12">
                         <div className="form-group">
-                          <label> Organization Type</label>
+                          <label> Industry Type</label>
                           <input
                             type="text"
                             name="organizationType"

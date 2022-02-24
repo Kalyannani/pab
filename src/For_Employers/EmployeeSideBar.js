@@ -51,9 +51,7 @@ export const EmployeeSideBar = () => {
                         <h4 className="company">{profile.companyname}</h4>
                     </div>
                 </div>
-                <NavLink to="/company_profile"><i className="fa fa-user" aria-hidden="true"></i>
-                    Company
-                    Profile</NavLink>
+                <NavLink to="/company_profile"><i className="fa fa-user" aria-hidden="true"></i> Company Profile</NavLink>
 
                 <NavLink to="/post_jobs"><i
                         className="far fa-file-alt"></i> Post a

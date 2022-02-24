@@ -504,7 +504,9 @@ label {
 #a7 {
   font-size: 14px;
 }
-
+#a5{
+  margin-left: 12px;
+}
 #a1:hover,
 #a2:hover,
 #navbarDropdown:hover,
@@ -628,10 +630,29 @@ ul {
 .nav-link {
   color: #fff;
 }
+.profile-btn{
+  border-radius: 50% !important;
+}
+
+.logout-btn{
+  background-color: #6a2a69 !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  color: #fff;
+  margin-left: 8px;
+  margin-top: 5px;
+  padding: 6px 25px !important;
+}
+.logout-btn:hover{
+  background-color: #6a2a69;
+  font-weight: 600;
+  font-size: 15px;
+}
 
 .navbar-btn {
   color: #fff;
   background-color: #6a2a69;
+  /* border-radius: 50% !important; */
 }
 
 .navbar-btn:hover {
@@ -664,7 +685,7 @@ ul {
   .dropdown:hover .dropdown-content {
     display: block !important;
     color: #6a2a69 !important;
-    margin-left: -2px !important;
+    margin-left: -1px !important;
     width: 100% !important;
   }
 
@@ -675,19 +696,35 @@ ul {
     margin-left: -285px !important;
   }
 }
-
+#profile-dropdown {
+  margin-left: -145px;
+}
+@media screen and (max-width:992px) {
+  #profile-dropdown {
+    margin-left: 153px;
+  }
+}
+.dropdown-toggle::after{
+  margin-left: 0.8rem !important;
+  
+}
+.profile_dropdown:hover .dropdown-toggle::after{
+  color: #6A2A69;
+  
+}
 .dropdown-menu li > a:hover,
 .dropdown-menu li > a:focus,
 .dropdown-submenu:hover > a {
   background-color: transparent !important;
   color: #6a2a69 !important;
+
 }
 
 /* Navbar ends */
 
 /* ...........sec 1 starts........ */
 #sec1 {
-  background: rgba(0, 0, 0, 0.7);
+  background: url('/images/blur-1.jpg') rgba(0, 0, 0, 0.7);
   /* background: grey; */
   background-position: center;
   background-size: cover;
@@ -1015,14 +1052,18 @@ span {
 }
 
 .main-item-hover .main-item,
-.main-item:hover span.icon {
+.main-item:hover span.icon  {
   background: #fff;
   border-radius: 10px;
   -webkit-transition: all 0.5s ease 0s;
   transition: all 0.5s ease 0s;
 }
 
-.main-item:hover span.icon i {
+
+/* .main-item:hover span.icon i {
+  animation: rotation 1s;
+} */
+.main-item:hover span {
   animation: rotation 1s;
 }
 
@@ -2533,10 +2574,15 @@ button:focus {
 /* heading-pic */
 
 .companies_sec_1_heading_pic {
-  background:   rgba(0, 0, 0, 0.7);
-padding-top: 100px;
-padding-bottom: 100px;
-margin-top: 70px;
+  background: url('/images/blur-2.jpg') #000000a6;
+  /* background: grey; */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin-top: 70px;
 }
 
 .companies_sec_1_sub_heading_1 {
@@ -3252,8 +3298,9 @@ input:focus {
 /* heading-pic */
 
 .heading_pic_alljobs {
-  background: rgba(0, 0, 0, 0.7);
+  background: url('/images/blur-4.jpg') #00000094;
   background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
   background-blend-mode: darken;
   padding-top: 100px;
@@ -3421,7 +3468,7 @@ button.alljob_buttons_sub:focus {
 /* heading-pic */
 
 .heading_pic_companyjobs {
-  background: rgba(0, 0, 0, 0.7);
+  background: url(/images/blur-4.jpg) #00000094;
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;
@@ -3598,7 +3645,7 @@ button.alljob_buttons_sub:focus {
 /* heading-pic */
 
 .heading_pic_skilljob {
-  background: rgba(0, 0, 0, 0.7);
+  background: url(/images/blur-4.jpg) #00000094;
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;
@@ -3814,7 +3861,7 @@ button.alljob_buttons_sub:focus {
 /* heading-pic */
 
 .heading_pic_jobdesignation {
-  background: rgba(0, 0, 0, 0.7);
+  background: url(/images/blur-4.jpg) #00000094;
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;
@@ -4031,7 +4078,7 @@ button.alljob_buttons_sub:focus {
 /* heading-pic */
 
 .heading_pic_jobscategory {
-  background: rgba(0, 0, 0, 0.7);
+  background: url(/images/blur-4.jpg) #00000094;
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;
@@ -4219,7 +4266,7 @@ button.alljob_buttons_sub:focus {
 /* heading-pic */
 
 .heading_pic_joblocation {
-  background: rgba(0, 0, 0, 0.7);
+  background: url(/images/blur-4.jpg) #00000094;
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;
@@ -4924,10 +4971,10 @@ label {
 /* heading-pic */
 
 .heading_pic_filter_list {
-  background:   rgba(0, 0, 0, 0.7);
+  background: url('/images/blur-3.jpg')  rgba(0, 0, 0, 0.7);
   background-repeat: no-repeat;
   width: 100%;
-  /* background-size: cover; */
+  background-size: cover;
   background-position: center;
   background-blend-mode: darken;
   color: #fff;
@@ -15649,4 +15696,11 @@ svg {
     font-size: 25px !important;
   }
   
+}
+
+/* home icons svg */
+.svg_icons{
+  height: 50% !important;
+    width: 100% !important;
+    margin-top: 4px !important;
 }
