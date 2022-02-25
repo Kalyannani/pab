@@ -7,6 +7,9 @@ import apiList from '../lib/apiList';
 import {toast} from 'react-toastify'
 import moment from "moment";
 import { useSelector } from 'react-redux';
+import { RWebShare } from "react-web-share";
+
+
 export const Jobdetailes = (props) => {
     const [jobs, setJobs] = useState([]);
     const [recruiter,setRecruiter] = useState([])
@@ -89,7 +92,21 @@ export const Jobdetailes = (props) => {
                                     <span><img alt="" src="" /></span>
                                 </div>
                                 <div className="job-info">
-                                    <h4><a href="#">{jobs.title}</a>
+                                    <h4>
+                                        <a href="#">{jobs.title}</a>
+                                       
+                                    </h4>
+                                    <h4 className='float-right share_icon'>
+                                    <RWebShare
+                                        data={{
+                                        text: "Look at this job portal",
+                                        url: `http://localhost:3000/jobdetailes/${jobs._id}`,
+                                        title: "Pab Jobs"
+                                        }}
+                                        onClick={() => console.log("shared successfully!")}
+                                    >
+                                        <i class="fa fa-share-alt"></i>
+                                    </RWebShare>
                                     </h4>
                                     <ul>
                                         {/* <li>

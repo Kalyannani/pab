@@ -9,6 +9,9 @@ import ChipInput from "material-ui-chip-input";
 import {TagsInput} from "react-tag-input-component"
 import { toast } from 'react-toastify';
 import apiList from '../lib/apiList';
+import { Autocomplete } from '@mui/material';
+import { TextField } from '@material-ui/core';
+import data from '../JsonData/locations.json'
 const POST_A_JOB = (props) => {
     const navigate = useNavigate();
 
@@ -111,10 +114,6 @@ const POST_A_JOB = (props) => {
 
                                             </div>
                                         </div>
-
-
-
-
                                         <div className=" col-lg-6 col-md-6">
                                             <div className="form-group">
                                                 <label>Job Type</label>
@@ -203,28 +202,32 @@ const POST_A_JOB = (props) => {
                                         <div className=" col-lg-6 col-md-6">
                                         <div className="form-group">
                                                 <label>Locations</label>
-                                                <ChipInput
-                                                    // className={classes.inputBox}
-                                                    label="Locations"
-                                                    variant="outlined"
-                                                    // helperText="Press enter to add cities"
+                                                <Autocomplete
+                                                    id="combo-box-demo"
+                                                    multiple
                                                     value={post.cities}
-                                                    onAdd={(chip) =>
-                                                      setPost({
+                                                    options={data.map((res)=>{
+                                                    return res.location
+                                                    })}
+                                                    getOptionLabel={(option) => option}
+                                                    onChange={(e, value) => {
+                                                    setPost({
                                                         ...post,
-                                                        cities: [...post.cities, chip],
-                                                      })
-                                                    }
-                                                    onDelete={(chip, index) => {
-                                                      let cities = post.cities;
-                                                      cities.splice(index, 1);
-                                                      setPost({
-                                                        ...post,
-                                                        cities: cities,
-                                                      });
+                                                        cities:value
+                                                    });
                                                     }}
-                                                    fullWidth
-                                                  />
+                                                    
+                                                    renderInput={(params) => (
+                                                    <TextField
+                                                        {...params}
+                                                        name="multiple"
+                                                        label="Enter your current location"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                    />
+                                                    )}
+                                                />
+                                             
                                                   <span>Press enter to add cities</span>
                                                 </div>
                                         </div>

@@ -15,6 +15,7 @@ import Testimonials from './Testimonials';
 const Maze = () => {
   return (
     <div>
+      <div className='hire_train_main'>
     {/* <Navbar /> */}
     <Home />
     {/* <JobDetails /> */}
@@ -26,6 +27,7 @@ const Maze = () => {
     <Program />
      <Testimonials />
      {/* <Footer /> */}
+    </div>
     </div>
   )
 }

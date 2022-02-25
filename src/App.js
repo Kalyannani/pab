@@ -40,12 +40,12 @@ import Privacypolicy from './Terms&Conditions/Privacypolicy';
 import Auth from './auth/Auth';
 // import HireAndTrain from './NavBar/Services/HireAndTrain';
 import { useDispatch } from 'react-redux';
-import Maze from './NavBar/Services/Maze'
-
+import Maze from './Services/components/Maze'
+import FraudAlert from './FraudAlert/FraudAlert';
 
 export const App = (props) => {
 
-    
+
   return (
     
     <div>
@@ -85,6 +85,7 @@ export const App = (props) => {
   <Route exact path="/updatepost/:id" element={<Updatepost />} />
   <Route exact path="/termsandconditions" element={<Terms/>}/>
   <Route exact path="/Privacypolicy" element={<Privacypolicy/>}/>
+  <Route exact path="/fraudalert" element={<FraudAlert/>}/>
    </Routes>
    <Footer />
   
