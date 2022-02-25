@@ -19,7 +19,7 @@ const Program = () => {
           </p>
         </div>
         <div className="row program_image">
-          <img className="img-fluid" src="images/chart.svg" alt="image" />
+          <img className="img-fluid" src="images/hire_train_program.png" alt="image" />
         </div>
       </div>
     </div>

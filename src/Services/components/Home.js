@@ -4,11 +4,19 @@ import { useNavigate } from "react-router-dom";
 import ChipInput from "material-ui-chip-input";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import data from "./data.json";
-// import Select from "react-select";
+import data from "../../JsonData/locations.json";
+import Select from "react-select";
 import { TagsInput } from "react-tag-input-component";
-import {toast} from 'react-toastify'
 
+const Result = () => {
+  return (
+    <p style={{ color: "green" }}>
+      <h5>
+        <b>Form Submitted Successfully.....</b>
+      </h5>
+    </p>
+  );
+};
 
 const Home = () => {
   const [closemodal, setClosemodal] = useState(false);
@@ -146,7 +154,6 @@ const Home = () => {
         setskills("");
         setmessage("");
         console.log(res);
-        toast.success("Form Submitted Successfully")
         document
           .getElementById("exampleModalCenter")
           .classList.remove("show", "d-block");
@@ -157,7 +164,6 @@ const Home = () => {
       })
       .catch((err) => {
         console.log(err);
-        toast.error(err)
       });
     // navigate("/")
     // e.target.reset();
@@ -185,12 +191,13 @@ const Home = () => {
     <div>
       <div className="container-fluid home_content">
         <div className="row home_content_content">
+          
           <div className="col-lg-4 col-md-4 col-sm-4 home_image_one">
             <div className="row">
-              <div className="col-lg-9 col-md-9">
-                <img src="images/home_one.jpg" className="img-fluid" />
+              <div className="col-lg-8 col-md-9 col-sm-6 home_1">
+                <img src="images/home_one.jpg" className="img-fluid img_one" />
               </div>
-              <div className="col-lg-3 col-md-3 ">
+              <div className="col-lg-4 col-md-3  col-sm-6 ">
                 <div id="arrowAnim" className="home_arrow">
                   <div className="arrowSliding">
                     <div className="arrow"></div>
@@ -201,11 +208,13 @@ const Home = () => {
                   <div className="arrowSliding delay3">
                     <div className="arrow"></div>
                   </div>
+                  
                 </div>
               </div>
             </div>
           </div>
           {/* <div className="col-lg-1 col-md-1"></div> */}
+          
           <div className="col-lg-4 col-md-4 col-sm-4 home_text text-center">
             <h1>PAB JOBS</h1>
             <img
@@ -218,7 +227,7 @@ const Home = () => {
             <div className="row">
               <div className="col-lg-3 col-md-3">
                 <div id="arrowAnim" className="home_arrow_two">
-                  <div className="arrowSliding">
+                  <div className="arrowSliding"> 
                     <div className="arrow_two"></div>
                   </div>
                   <div className="arrowSliding delay2">
@@ -229,8 +238,8 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-9 col-md-9">
-                <img src="images/home_two.jpg" className="img-fluid" />
+              <div className="col-lg-9 col-md-9 ">
+                <img src="images/home_two.jpg" className="img-fluid img_two" />
               </div>
             </div>
           </div>
@@ -572,6 +581,9 @@ const Home = () => {
                               >
                                 Submit
                               </button>
+                              <div className="row">
+                                {result ? <Result /> : null}
+                              </div>
                             </form>
                           </div>
                         </div>

@@ -142,14 +142,14 @@ const RecentJobs = () => {
                   </li>
                 
                   <li>
-                    <h6 className="star_box">
+                    {/* <h6 className="star_box"> */}
                       {" "}
                       {/* <span>
                         {" "} */}
                         {/* 5<i className="fas fa-star star_rating"></i> */}
                         {/* <a href="#">(53 Reviews)</a> */}
                       {/* </span> */}
-                    </h6>
+                    {/* </h6> */}
                   </li>
                 </ul>
                 <ul className="home_job_details">

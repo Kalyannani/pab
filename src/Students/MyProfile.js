@@ -8,7 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Autocomplete } from "@mui/material";
 import { TextField } from "@material-ui/core";
-import data from '../NavBar/Services/data.json'
+import data from '../JsonData/locations.json'
 const MyProfile = (props) => {
   const [experience, setExperience] = useState(false);
 
@@ -226,7 +226,7 @@ console.log(typeof(profile.currentlocation))
                     ) : null}
                   </div>
 
-                  <div className="col-lg-12">
+                  <div className="col-lg-6 col-md-6">
                     <label> Current Location </label>
                     <Autocomplete
                         id="combo-box-demo"
@@ -236,7 +236,7 @@ console.log(typeof(profile.currentlocation))
                           return res.location
                         })}
                         getOptionLabel={(option) => option}
-                        // style={{ width: 300 }}
+                        // style={{ width: 368 }}
                         onChange={(e, value) => {
                           setProfile({
                             ...profile,

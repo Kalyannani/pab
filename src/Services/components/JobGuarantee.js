@@ -8,7 +8,10 @@ const JobGuarantee = () => {
           <h1>Job Guarantee</h1>
         </div>
         <div className="row align-items-center">
-          <div className="col-lg-7 col-md-7 col-sm-12 guarantee_text">
+          <div className="col-lg-1 col-md-1">
+
+          </div>
+          <div className="col-lg-5 col-md-5 col-sm-12 guarantee_text ">
             <p>
               PabJob's Train and Hire Program offers the best training
               facilities and multiple placement opportunities for leading IT
@@ -26,8 +29,11 @@ const JobGuarantee = () => {
               fees.
             </p> */}
           </div>
-          <div className="col-ld-5 col-md-5 guranatee_image">
+          <div className="col-lg-5  col-md-6 guranatee_image">
             <img src="images/guarantee.png" />
+          </div>
+          <div className="col-lg-1 col-md-1">
+            
           </div>
         </div>
       </div>

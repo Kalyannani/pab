@@ -4,8 +4,12 @@ import axios from 'axios'
 import Sidebar from './Sidebar'
 import {toast} from 'react-toastify'
 import apiList from '../lib/apiList'
+import {FaRegEyeSlash,FaRegEye} from 'react-icons/fa'
 const ChangePassword = () => {
     const [oldpassword,setoldPassword]=useState('')
+    const [isOldPassword, setIsOldPassword] = useState(false);
+    const [isNewPassword, setNewPassword] = useState(false);
+    const [isConPassword, setIsConPassword] = useState(false);
     const [password,setPassword] = useState({
         newpassword:'',
         confirmpassword:''
@@ -89,23 +93,41 @@ const ChangePassword = () => {
                             <div class="row m-b30">
                                 {/* <!-- first --> */}
                                 <div class=" col-lg-12 col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group ">
                                         <label>Old Password</label>
-                                        <input type="password" value={oldpassword} class="form_control" onChange={(e)=>oldpasswordHandle(e)}/>
+                                        <input type={isOldPassword ? "text" : "password"} value={oldpassword} class="form_control" onChange={(e)=>oldpasswordHandle(e)}/>
                                     </div>
+                                    <span className='password_change'
+                                        onClick={() => setIsOldPassword(prevState => !prevState)}
+                                        >
+                                    {isOldPassword ? <i class="fa fa-eye-slash" aria-hidden="true"></i>: <i class="fa fa-eye" aria-hidden="true"></i>}                                                      
+                                    </span>
                                 </div>
                                 {/* <!-- second --> */}
                                 <div class=" col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <label> New Password</label>
-                                        <input type="password" value={password.newpassword} name="newpassword" class="form_control" onChange={(e)=>newpasswordHandle(e)}/>
+                                        <div class="form-group ">
+                                        <input type={isNewPassword ? "text" : "password"} value={password.newpassword} name="newpassword" class="form_control" onChange={(e)=>newpasswordHandle(e)}/>
+                                        </div>
+                                        <span className='password_change'
+                                            onClick={() => setNewPassword(prevState => !prevState)}
+                                            >
+                                        {isNewPassword ? <i class="fa fa-eye-slash" aria-hidden="true"></i>: <i class="fa fa-eye" aria-hidden="true"></i>}                                                      
+                                        </span>
                                     </div>
                                 </div>
                                 <div class=" col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <label> Confirm Password</label>
-                                        <input type="password" value={password.confirmpassword} name="confirmpassword" class="form_control" onChange={(e)=>newpasswordHandle(e)}/>
-                                    </div>
+                                        <input type={isConPassword ? "text" : "password"} value={password.confirmpassword} name="confirmpassword" class="form_control" onChange={(e)=>newpasswordHandle(e)}/>
+                                        </div>
+                                        <span className='password_change'
+                                            onClick={() => setIsConPassword(prevState => !prevState)}
+                                            >
+                                        {isConPassword ? <i class="fa fa-eye-slash" aria-hidden="true"></i>: <i class="fa fa-eye" aria-hidden="true"></i>}                                                      
+                                        </span>
+                                      
                                 </div>
                             </div>
                         </form>

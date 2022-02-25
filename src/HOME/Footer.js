@@ -152,6 +152,10 @@ const Footer = () => {
                     <i className="fas fa-chevron-right"></i>{" "}
                     <Link to='/Privacypolicy'> Privacy Policy</Link> 
                   </li>
+                  <li>
+                    <i className="fas fa-chevron-right"></i>{" "}
+                    <Link to='/fraudalert'> Fraud Alert</Link> 
+                  </li>
                 </ul>
               </div>
             </div>
