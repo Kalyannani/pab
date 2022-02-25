@@ -21,8 +21,12 @@ const apiList = {
   jobSearch:`${server}/api/jobs/search`,
   listFiveCompanies:`${server}/api/company/list/filter`,
   listCompanies:`${server}/api/company/list`,
+  listSkills:`${server}/api/skills/list`,
   searchFilterList:`${server}/api/search/list`,
-  changepassword:`${server}/api/changepassword`
+  changepassword:`${server}/api/changepassword`,
+  resumeUpload: `${server}/api/resume/upload`,
+  profileUpload: `${server}/api/profile/upload`,
+  wishlist: `${server}/api/wishlist/`
 };
 
 export default apiList;
