@@ -3,6 +3,7 @@ import { Link , NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import axios from 'axios';
 import apiList from '../lib/apiList';
+import ProfileImageUpload from '../common/ProfileImageUpload';
 export const EmployeeSideBar = () => {
     const [profile,setProfile] = useState({})
     const dispatch = useDispatch()
@@ -46,10 +47,10 @@ export const EmployeeSideBar = () => {
             <div className="sidebar" id="sidebar">
 
                 <div className="main_header text-center">
-                    <div className="heading ">
-                        <img src="images/girl_avtar.png" alt="" className="info_img" />
+                        {/* <img src="images/girl_avtar.png" alt="" className="info_img" /> */}
+                        <ProfileImageUpload />
                         <h4 className="company">{profile.companyname}</h4>
-                    </div>
+                    
                 </div>
                 <NavLink to="/company_profile"><i className="fa fa-user" aria-hidden="true"></i> Company Profile</NavLink>
 

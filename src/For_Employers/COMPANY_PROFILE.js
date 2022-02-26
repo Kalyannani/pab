@@ -15,6 +15,7 @@ export const COMPANY_PROFILE = () => {
   // const { trigger } = useForm();
 
   const [company, setCompany] = useState({
+    profileImage:"",
     companyname:"",
     websitelink:"",
     foundedDate:"",

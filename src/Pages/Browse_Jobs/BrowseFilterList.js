@@ -13,27 +13,62 @@ import TopCompaniesFilter from './filters/TopCompaniesFilter';
 import ExperienceFilter from './filters/ExperienceFilter';
 import LocationFilter from './filters/LocationFilter';
 import IndustryFilter from './filters/IndustryFilter';
-import JobCategoryFilter from './filters/JobCategoryFilter';
+import JobCategoryFilter from './filters/DesignationFilter';
 import EducationFilter from './filters/EducationFilter';
 import SalaryFilter from './filters/SalaryFilter';
 import ReactTimeAgo from 'react-time-ago'
+import DesignationFilter from './filters/DesignationFilter';
 
 const BrowseFilterList = () => {
-  const [jobs, setJobs] = useState([])
-  const [topCompanies, setTopCompanies] = useState([])
-  const [experience, setExperience] = useState([])
-  const [location, setLocation] = useState([])
-  const [education, setEducation] = useState([])
-  const [salary, setSalary] = useState()
-  const [listType, setListType] = useState('list')
-  const list = [1, 2, 3, 4, 5, 6];
+
+
   let { search } = useLocation();
   const query = new URLSearchParams(search);
-   const paramKeyword = query.get('keyword');
-   const paramQLocation = query.get('qlocation');
+  console.log('qqqq ', query.get('keyword'));
+  let paramKeyword = ''
+  let paramQLocation = ''
+  let paramTopCompanies = []
+  let paramIndustryType = []
+  let paramLocation = []
+  let paramDesignation = []
+
+  paramKeyword = query.get('keyword');
+  paramQLocation = query.get('qlocation');
+
+  if (query.get('company')) {
+    paramTopCompanies.push(query.get('company'))
+  }
+
+  if (query.get('category')) {
+    paramIndustryType.push(query.get('category'))
+  }
+
+  if (query.get('locate')) {
+    paramLocation.push(query.get('locate'))
+  }
+
+  if (query.get('designate')) {
+    paramDesignation.push(query.get('designate'))
+  }
+
 
   const [keyword, setKeyword] = useState(paramKeyword)
   const [qlocation, setQLocation] = useState(paramQLocation)
+
+  const [jobs, setJobs] = useState([])
+  const [topCompanies, setTopCompanies] = useState(paramTopCompanies)
+  const [experience, setExperience] = useState([])
+  const [location, setLocation] = useState(paramLocation)
+  const [industryType, setIndustryType] = useState(paramIndustryType)
+  const [education, setEducation] = useState([])
+  const [designation, setDesignation] = useState(paramDesignation)
+  const [salary, setSalary] = useState()
+  const [listType, setListType] = useState('list')
+  const [isLoading, setLoading] = useState(false)
+  const [onHold, setOnHold] = useState(false)
+
+  const list = [1, 2, 3, 4, 5, 6];
+
 
 
 
@@ -80,6 +115,30 @@ const BrowseFilterList = () => {
 
   }
 
+  const handleIndustryTypeAdd = async (industry) => {
+    setIndustryType(industry)
+    fetchJobs();
+
+  }
+
+  const handleIndustryTypeRemove = async (industry) => {
+    setIndustryType(industry)
+    // fetchJobs();
+
+  }
+
+  const handleDesignationAdd = async (designate) => {
+    setDesignation(designate)
+    fetchJobs();
+
+  }
+
+  const handleDesignationRemove = async (designate) => {
+    setDesignation(designate)
+    // fetchJobs();
+
+  }
+
   const handleEducationAdd = async (educations) => {
     setEducation(educations)
     fetchJobs();
@@ -92,8 +151,80 @@ const BrowseFilterList = () => {
 
   }
 
+  const resetFilter = () => {
+    setTopCompanies([])
+    setExperience([])
+    setLocation([])
+    setEducation([])
+    setSalary()
+    setKeyword("")
+    setQLocation("")
+  }
+
+  const handleAddWishlist = async (id) => {
+    
+    let headers = {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    }
+    console.log('hhhh', headers);
+    if (onHold) {
+      return
+    }
+    setOnHold(true)
+    await axios.get(apiList.wishlist + 'add/' + id, {
+      headers
+    })
+      .then((response) => {
+        let jobList = jobs;
+        jobList = jobList.map(jobItem => {
+          if (jobItem._id == id) {
+            jobItem.wishlist = true
+          }
+          return jobItem;
+        })
+        setJobs(jobList);
+        toast.success("Added to Wishlist!")
+        setOnHold(false)
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        toast.error(err.response.data.message)
+      });
+  }
+
+  const handleRemoveWishlist = async (id) => {
+    let headers = {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    }
+    console.log('hhhh', headers);
+    if (onHold) {
+      return
+    }
+    setOnHold(true)
+    await axios.get(apiList.wishlist + 'remove/' + id, {
+      headers,
+    })
+      .then((response) => {
+        let jobList = jobs;
+        jobList = jobList.map(jobItem => {
+          if (jobItem._id == id) {
+            jobItem.wishlist = false
+          }
+          return jobItem;
+        })
+        setJobs(jobList);
+        toast.success("Removed from Wishlist!")
+        setOnHold(false)
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        toast.error(err.response.data.message)
+      });
+  }
+
   const fetchJobs = async (page = 0) => {
     setJobs([])
+    setLoading(true)
     console.log('topCompaniesssss', topCompanies);
     let token = localStorage.getItem("token");
     let headers = {}
@@ -107,6 +238,8 @@ const BrowseFilterList = () => {
       experience,
       companies: topCompanies,
       educations: education,
+      category: designation,
+      industryType
       // salaryMin: 0,
       // salaryMax: 18000
     }
@@ -114,7 +247,12 @@ const BrowseFilterList = () => {
       data.salaryMin = salary.salaryMin
       data.salaryMax = salary.salaryMax
     }
-    console.log('daaaaaaaaaaaaa ', data);
+    if (keyword !== '') {
+      data.q = keyword
+    }
+    if (qlocation !== '') {
+      data.qlocation = qlocation
+    }
     await axios.post(apiList.jobSearch + '?page=' + page, data, {
       headers,
     })
@@ -122,49 +260,7 @@ const BrowseFilterList = () => {
         setPageCount(Math.ceil(response.data.counts) / 20)
         console.log('posts', response.data.posts);
         setJobs(response.data.posts)
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        toast.error(err.response.data.message)
-      });
-  }
-
-  const searchJob = async (e) => {
-    e.preventDefault();
-    fetchJobsSearch(e.target.keyword.value, e.target.location.value)
-  }
-
-  const fetchJobsSearch = async (keyword, qlocation) => {
-    setJobs([])
-    let token = localStorage.getItem("token");
-    let headers = {}
-    if (token) {
-      headers = {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      }
-    }
-    let data = {
-      q: keyword,
-      qlocation,
-      location,
-      experience,
-      companies: topCompanies,
-      educations: education,
-      // salaryMin: 0,
-      // salaryMax: 18000
-    }
-    if (salary) {
-      data.salaryMin = salary.salaryMin
-      data.salaryMax = salary.salaryMax
-    }
-    console.log('daaaaaaaaaaaaa ', data);
-    await axios.post(apiList.jobSearch , data, {
-      headers,
-    })
-      .then((response) => {
-        setPageCount(Math.ceil(response.data.counts) / 20)
-        console.log('posts', response.data.posts);
-        setJobs(response.data.posts)
+        setLoading(false)
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -173,33 +269,29 @@ const BrowseFilterList = () => {
   }
 
   useEffect(async () => {
-    
-   if (keyword) {
-    fetchJobsSearch(keyword, qlocation)
-   }else{
+
     fetchJobs();
-   }
 
+  }, [topCompanies, experience, location, education, salary, industryType, designation])
 
-  }, [topCompanies, experience, location, education, salary])
-  console.log('saaaaaaaaaas <<<< ', salary);
+  console.log('kkkkkkkk', keyword, qlocation);
 
   return (
     <div>
       <div className="job_detail_wrapper">
         <div className="heading_pic_filter_list">
-            <h1 className="filter_list_heading_1">Browse Job List</h1>
-            <p className="text-center filter_list_sub_heading">
-                <Link to="/" className="filter_list_sub_heading_1">Home</Link>
-                <i class='fas fa-greater-than text-white px-2'></i>
-                <a href="#" className="filter_list_sub_heading_2 ">Browse Filter List</a></p>
+          <h1 className="filter_list_heading_1">Browse Job List</h1>
+          <p className="text-center filter_list_sub_heading">
+            <Link to="/" className="filter_list_sub_heading_1">Home</Link>
+            <i class='fas fa-greater-than text-white px-2'></i>
+            <a href="#" className="filter_list_sub_heading_2 ">Browse Filter List</a></p>
         </div>
       </div>
 
 
       <div className="container">
         <div className="filter_list_search-box">
-          <form className="form-control" action="" method='get'>
+          <form className="form-control" >
             <div className="row">
               <div className="col-lg-6 col-md-6">
                 <div className="form-group">
@@ -207,8 +299,8 @@ const BrowseFilterList = () => {
 
                   </label>
                   <div className="input-group">
-                    <input type="text" name="keyword" className="form-control" id="search_filter_list_input" defaultValue={keyword}
-                      placeholder="Job Title, Keywords, or Phrase" />
+                    <input type="text" name="keyword" className="form-control" id="search_filter_list_input"
+                      placeholder="Job Title, Keywords, or Phrase" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
                     <div className="input-group-append">
                       <span className="filter_list_group_icon">
                         <i className="fas fa-search ml-2" id="filter_list_search_icon1"></i>
@@ -222,7 +314,7 @@ const BrowseFilterList = () => {
                 <div className="form-group">
                   <label></label>
                   <div className="input-group">
-                    <input type="text" className="form-control" name="qlocation" id="search_filter_list_input" defaultValue={qlocation}
+                    <input type="text" className="form-control" name="qlocation" id="search_filter_list_input" value={qlocation} onChange={(e) => setQLocation(e.target.value)}
                       placeholder="Location" />
                     <div className="input-group-append">
                       <span className="filter_list_group_icon">
@@ -234,7 +326,7 @@ const BrowseFilterList = () => {
 
               <div className="col-lg-2 col-md-6 ">
                 <label for=""></label>
-                <a href="#"></a><button type="submit" id="filter_list_search_btn" type="submit" className=" btn-block">Find
+                <a href="#"></a><button id="filter_list_search_btn" className=" btn-block">Find
                   Job</button>
               </div>
 
@@ -277,11 +369,11 @@ const BrowseFilterList = () => {
 
                   {/* 4 */}
 
-                  {/* <IndustryFilter /> */}
+                  <IndustryFilter industryType={industryType} handleIndustryTypeAdd={handleIndustryTypeAdd} handleIndustryTypeRemove={handleIndustryTypeRemove} />
 
                   {/* 5 */}
 
-                  {/* <JobCategoryFilter /> */}
+                  <DesignationFilter designation={designation} handleDesignationAdd={handleDesignationAdd} handleDesignationRemove={handleDesignationRemove} />
 
                   {/* 6 */}
 
@@ -323,7 +415,7 @@ const BrowseFilterList = () => {
                                       </li>
                                       <li><i className="far fa-bookmark"></i>{job.jobType}</li>
                                       <li><i className="far fa-clock"></i>Published {" "}
-                                        <ReactTimeAgo date={job.dateOfPosting} locale="en-US"/>
+                                        <ReactTimeAgo date={job.dateOfPosting} locale="en-US" />
                                       </li>
 
                                     </ul>
@@ -338,61 +430,87 @@ const BrowseFilterList = () => {
                                       </span>
                                   </div>
                                 </div>
-                                <label className="filter_list_wishlist">
-                                  <input type="checkbox" /><span className="filter_list_added"><i
-                                    className="fas fa-heart"></i></span>
-                                </label>
+                                {job.wishlist ? (
+                                  <label className="filter_list_wishlist" onClick={() => handleRemoveWishlist(job._id)}>
+                                    <input type="checkbox" />
+                                    <span className="filter_grid_added" >
+
+                                      <i class="fab fa-gratipay" style={{ position: 'absolute', left: 6, top: 6 }} />
+                                    </span>
+                                  </label>
+                                ) : (
+                                  <label className="filter_list_wishlist" onClick={() => handleAddWishlist(job._id)}>
+                                    <input type="checkbox" />
+                                    <span className="filter_grid_added" >
+                                      <i className="fas fa-heart" />
+                                    </span>
+                                  </label>
+                                )}
                               </div>
                             </li>
                           </ul>
                           </Link>
                         )
                       }) :
-                      <div className="skeleton">
-          {list.map((item)=>{
-            return(
-          <div className="contact__item mb-5" key={item}>
-            <ul className="job-post">
-          <li >
-            <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
-              <div style={{ display: "flex", width: "100%" }}>
-                <Skeleton circle={false} height={50} width={50} />
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    width: "100%"
-                  }}
-                >
-                  <Skeleton
-                    height={12}
-                    width="30%"
-                    style={{ marginLeft: "1rem", marginBottom: "0.5rem" }}
-                  />
-                  <Skeleton
-                    height={8}
-                    width="40%"
-                    style={{ marginLeft: "1rem" }}
-                  />
-                  <Skeleton
-                    height={8}
-                    width="50%"
-                    style={{ marginLeft: "1rem", marginTop: 0 }}
-                  />
-                  <Skeleton
-                    height={12}
-                    width="80%"
-                    style={{ marginLeft: "1rem", marginTop: "0.6rem" }}
-                  />
-                </div>
-              </div>
-            </SkeletonTheme>
-            </li>
-          </ul>
-          </div>
-            )
-          })}
-    </div>
+                      <>
+                        {isLoading ?
+                          <div className="skeleton">
+                          {list.map((item)=>{
+                            return(
+                          <div className="contact__item mb-5" key={item}>
+                            <ul className="job-post">
+                          <li >
+                            <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
+                              <div style={{ display: "flex", width: "100%" }}>
+                                <Skeleton circle={false} height={50} width={50} />
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    width: "100%"
+                                  }}
+                                >
+                                  <Skeleton
+                                    height={12}
+                                    width="30%"
+                                    style={{ marginLeft: "1rem", marginBottom: "0.5rem" }}
+                                  />
+                                  <Skeleton
+                                    height={8}
+                                    width="40%"
+                                    style={{ marginLeft: "1rem" }}
+                                  />
+                                  <Skeleton
+                                    height={8}
+                                    width="50%"
+                                    style={{ marginLeft: "1rem", marginTop: 0 }}
+                                  />
+                                  <Skeleton
+                                    height={12}
+                                    width="80%"
+                                    style={{ marginLeft: "1rem", marginTop: "0.6rem" }}
+                                  />
+                                </div>
+                              </div>
+                            </SkeletonTheme>
+                            </li>
+                          </ul>
+                          </div>
+                            )
+                          })}
+                          </div>
+                          :
+                          <div style={{ textAlign: "-webkit-center" }}>
+                            <p>There is no jobs to list with the current filter</p>
+                            <button
+                              className={`btn list_view mb-2 `} onClick={resetFilter}>Reset Filter</button>
+
+                          </div>
+                        }
+
+                      </>
+
+                      
                       // <div style={{ textAlign: "-webkit-center" }}>
                       //   <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
                       // </div>
@@ -410,6 +528,7 @@ const BrowseFilterList = () => {
                               <div className="d-flex mb-4">
                                 <div className="job_filter_grid_info">
                                   <h5>
+                                    {/* <Link to={`/jobdetailes/${job._id}`}>{job.title}</Link> */}
                                  {job.title}
                                   </h5>
                                   <p />
@@ -419,7 +538,7 @@ const BrowseFilterList = () => {
                                     <i className="far fa-bookmark" />
                                     <span> {job.jobType}</span>
                                     <div className="job_filter_grid_in_down">
-                                      <i className="far fa-clock" /> <span> Published <ReactTimeAgo date={job.dateOfPosting} locale="en-US"/></span>
+                                      <i className="far fa-clock" /> <span> Published <ReactTimeAgo date={job.dateOfPosting} locale="en-US" /></span>
                                     </div>
                                   </div>
                                   <p />
@@ -437,46 +556,67 @@ const BrowseFilterList = () => {
                                   </span>
                                 </div>
                               </div>
-                              <label className="job_filter_grid_wishlist">
-                                <input type="checkbox" />
-                                <span className="filter_grid_added">
-                                  <i className="fas fa-heart" />
-                                </span>
-                              </label>
+                              {job.wishlist ? (
+                                <label className="job_filter_grid_wishlist" onClick={() => handleRemoveWishlist(job._id)}>
+                                  <input type="checkbox" />
+                                  <span className="filter_grid_added" >
+
+                                    <i class="fab fa-gratipay" style={{ position: 'absolute', left: 6, top: 6 }} />
+                                  </span>
+                                </label>
+                              ) : (
+                                <label className="job_filter_grid_wishlist" onClick={() => handleAddWishlist(job._id)}>
+                                  <input type="checkbox" />
+                                  <span className="filter_grid_added" >
+                                    <i className="fas fa-heart" />
+                                  </span>
+                                </label>
+                              )}
+
                             </div>
                             </Link>
                           </div>
-                        </>)
-                      }) 
-                      
-                      :
-                      <div style={{ textAlign: "-webkit-center", margin:"100px auto" }}>
-                        <h1>No Jobs Found </h1>
-                        {/* <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} /> */}
-                      </div>
+  </>
+                        )
+                      }) :
+                      <>
+                        {isLoading ?
+                          <div style={{ textAlign: "-webkit-center" }}>
+                            <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
+                          </div>
+                          :
+                          <div style={{ textAlign: "-webkit-center" }}>
+                            <p>There is no jobs to list with the current filter</p>
+                            <button
+                              className={`btn list_view mb-2 `} onClick={resetFilter}>Reset Filter</button>
+
+                          </div>
+                        }
+
+                      </>
                   }
                 </div>
               }
+
+
+              <div class="d-flex justify-content-center">
+                <ReactPaginate
+                  previousLabel="Prev"
+                  nextLabel="Next"
+                  breakLabel={"..."}
+                  breakClassName={"break-me"}
+                  pageCount={pageCount}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={3}
+                  onPageChange={handlePageClick}
+                  containerClassName={"pagination"}
+                  subContainerClassName={"pages pagination"}
+                  activeClassName={"active"}
+                />
+              </div>
               
              
-               <div class="d-flex justify-content-center">
-                          <ReactPaginate
-                            previousLabel="Prev"
-                            nextLabel="Next"
-                            breakLabel={"..."}
-                            breakClassName={"break-me"}
-                            pageCount={pageCount}
-                            marginPagesDisplayed={2}
-                            pageRangeDisplayed={3}
-                            onPageChange={handlePageClick}
-                            containerClassName={"pagination"}
-                            subContainerClassName={"pages pagination"}
-                            activeClassName={"active"}
-                          />
-                          </div>
-              
             </div>
-
           </div>
         </div>
       </div>
