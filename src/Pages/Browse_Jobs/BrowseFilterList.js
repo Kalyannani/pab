@@ -7,6 +7,8 @@ import ReactPaginate from 'react-paginate';
 import ReactLoading from 'react-loading';
 import { toast } from 'react-toastify';
 import moment from 'moment';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import TopCompaniesFilter from './filters/TopCompaniesFilter';
 import ExperienceFilter from './filters/ExperienceFilter';
 import LocationFilter from './filters/LocationFilter';
@@ -65,6 +67,7 @@ const BrowseFilterList = () => {
   const [isLoading, setLoading] = useState(false)
   const [onHold, setOnHold] = useState(false)
 
+  const list = [1, 2, 3, 4, 5, 6];
 
 
 
@@ -72,7 +75,7 @@ const BrowseFilterList = () => {
   // Pagination code
   const [offset, setOffset] = useState(1);
   //   const [data, setData] = useState([]);
-  const [perPage, setPerPage] = useState(10);
+  const [perPage, setPerPage] = useState(30);
   const [pageCount, setPageCount] = useState(0);
   // const indexOfLastPost = offset * perPage;
   // const indexOfFirstPost = indexOfLastPost - perPage;
@@ -82,6 +85,10 @@ const BrowseFilterList = () => {
     setOffset(selectedPage + 1);
     console.log('selectedPage', selectedPage);
     fetchJobs(selectedPage)
+    window.scrollTo({
+      top: 450,
+      behavior: 'smooth',
+    })
   };
 
   const handleTopCompaniesAdd = async (companies) => {
@@ -250,7 +257,7 @@ const BrowseFilterList = () => {
       headers,
     })
       .then((response) => {
-        setPageCount(Math.ceil(response.data.counts) / 10)
+        setPageCount(Math.ceil(response.data.counts) / 20)
         console.log('posts', response.data.posts);
         setJobs(response.data.posts)
         setLoading(false)
@@ -335,10 +342,10 @@ const BrowseFilterList = () => {
       <div id="job_filter_list">
         <div className="container">
           <div className="d-flex mb-4">
-            <div className="mr-auto">
+            {/* <div className="mr-auto">
               <h2 className="job_filter_list_title">2269 Jobs Found</h2>
-            </div>
-            <div className="view_list_grid ">
+            </div> */}
+            <div className="view_list_grid ml-auto">
               <button
                 className={`btn list_view mb-2 ${listType === 'list' && 'browse_active'}`} onClick={() => setListType('list')}>List View</button>
               <button
@@ -388,8 +395,8 @@ const BrowseFilterList = () => {
                     jobs.length > 0 ?
                       jobs?.map((job) => {
                         return (
+                          <Link to={`/jobdetailes/${job._id}`}>
                           <ul className="filter_list_job_post">
-
                             <li>
                               <div className="filter_list_job_box">
                                 <div className="d-flex mb-4">
@@ -397,9 +404,15 @@ const BrowseFilterList = () => {
                                     <span><img alt="" src="" /></span>
                                   </div>
                                   <div className="filter_list_job_info">
-                                    <h4><Link to={`/jobdetailes/${job._id}`}>{job.title}</Link></h4>
+                                    <h4>{job.title}</h4>
                                     <ul>
-                                      <li><i className="fas fa-map-marker-alt"></i>Hyderabad</li>
+                                      <li><i className="fas fa-map-marker-alt"></i>
+                                      {job.cities.map((job,index,arr)=>{
+                                        return (<>
+                                          {job}{index!=(arr.length-1)?"/":""}
+                                          </>)
+                                      })}
+                                      </li>
                                       <li><i className="far fa-bookmark"></i>{job.jobType}</li>
                                       <li><i className="far fa-clock"></i>Published {" "}
                                         <ReactTimeAgo date={job.dateOfPosting} locale="en-US" />
@@ -413,9 +426,8 @@ const BrowseFilterList = () => {
                                     <a href="#"><span>Full Time</span></a>
                                   </div>
                                   <div className="filter_list_salary">
-                                    <span><i className="fas fa-rupee-sign"></i> {job.salary} - <i
-                                      className="fas fa-rupee-sign"></i>
-                                      30000</span>
+                                    <span><i className="fas fa-rupee-sign"></i> {job.salary} 
+                                      </span>
                                   </div>
                                 </div>
                                 {job.wishlist ? (
@@ -437,12 +449,55 @@ const BrowseFilterList = () => {
                               </div>
                             </li>
                           </ul>
+                          </Link>
                         )
                       }) :
                       <>
                         {isLoading ?
-                          <div style={{ textAlign: "-webkit-center" }}>
-                            <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
+                          <div className="skeleton">
+                          {list.map((item)=>{
+                            return(
+                          <div className="contact__item mb-5" key={item}>
+                            <ul className="job-post">
+                          <li >
+                            <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
+                              <div style={{ display: "flex", width: "100%" }}>
+                                <Skeleton circle={false} height={50} width={50} />
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    width: "100%"
+                                  }}
+                                >
+                                  <Skeleton
+                                    height={12}
+                                    width="30%"
+                                    style={{ marginLeft: "1rem", marginBottom: "0.5rem" }}
+                                  />
+                                  <Skeleton
+                                    height={8}
+                                    width="40%"
+                                    style={{ marginLeft: "1rem" }}
+                                  />
+                                  <Skeleton
+                                    height={8}
+                                    width="50%"
+                                    style={{ marginLeft: "1rem", marginTop: 0 }}
+                                  />
+                                  <Skeleton
+                                    height={12}
+                                    width="80%"
+                                    style={{ marginLeft: "1rem", marginTop: "0.6rem" }}
+                                  />
+                                </div>
+                              </div>
+                            </SkeletonTheme>
+                            </li>
+                          </ul>
+                          </div>
+                            )
+                          })}
                           </div>
                           :
                           <div style={{ textAlign: "-webkit-center" }}>
@@ -455,6 +510,10 @@ const BrowseFilterList = () => {
 
                       </>
 
+                      
+                      // <div style={{ textAlign: "-webkit-center" }}>
+                      //   <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
+                      // </div>
                   }
                 </>
                 :
@@ -462,13 +521,15 @@ const BrowseFilterList = () => {
                   {
                     jobs.length > 0 ?
                       jobs?.map((job) => {
-                        return (
+                        return (<>
                           <div className="col-lg-6 col-sm-12">
+                             <Link to={`/jobdetailes/${job._id}`}>
                             <div className="job_filter_grid_box">
                               <div className="d-flex mb-4">
                                 <div className="job_filter_grid_info">
                                   <h5>
-                                    <Link to={`/jobdetailes/${job._id}`}>{job.title}</Link>
+                                    {/* <Link to={`/jobdetailes/${job._id}`}>{job.title}</Link> */}
+                                 {job.title}
                                   </h5>
                                   <p />
                                   <div className="job_filter_grid_in_up">
@@ -489,8 +550,9 @@ const BrowseFilterList = () => {
                                 </div>
                                 <div className="job_filter_grid_salary">
                                   <span>
-                                    <i className="fas fa-rupee-sign" /> {job.salary} -
-                                    <i className="fas fa-rupee-sign" /> 25000
+                                    <i className="fas fa-rupee-sign" /> {job.salary} 
+                                    {/* -
+                                    <i className="fas fa-rupee-sign" /> 25000 */}
                                   </span>
                                 </div>
                               </div>
@@ -512,8 +574,9 @@ const BrowseFilterList = () => {
                               )}
 
                             </div>
+                            </Link>
                           </div>
-
+  </>
                         )
                       }) :
                       <>
@@ -551,10 +614,9 @@ const BrowseFilterList = () => {
                   activeClassName={"active"}
                 />
               </div>
-
-
+              
+             
             </div>
-
           </div>
         </div>
       </div>

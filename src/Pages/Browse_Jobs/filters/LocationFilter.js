@@ -57,7 +57,7 @@ const LocationFilter = (props) => {
                 >
                     Location{" "}
                     <span className="float-right">
-                        <i className="fas fa-plus"></i>
+                        {/* <i className="fas fa-plus"></i> */}
                     </span>
                 </h5>
 

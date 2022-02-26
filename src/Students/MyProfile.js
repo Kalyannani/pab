@@ -6,12 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import apiList from "../lib/apiList";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Autocomplete } from "@mui/material";
+import { TextField } from "@material-ui/core";
+import data from '../JsonData/locations.json'
 const MyProfile = (props) => {
   const [experience, setExperience] = useState(false);
 
   const [profile, setProfile] = useState({
     name: "",
-    currentlocation: "",
+    currentlocation: [],
     contactNumber: "",
     email: " ",
     experience: {
@@ -19,7 +22,8 @@ const MyProfile = (props) => {
       month: "",
     },
   });
-
+  console.log(profile.currentlocation)
+console.log(typeof(profile.currentlocation))
   const formHandling = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
   };
@@ -73,7 +77,6 @@ const MyProfile = (props) => {
   };
 
  const updateData =()=>{
-   console.log(profile)
   axios
   .put(apiList.user, profile, {
     headers: {
@@ -223,9 +226,37 @@ const MyProfile = (props) => {
                     ) : null}
                   </div>
 
-                  <div className="col-lg-12">
+                  <div className="col-lg-6 col-md-6">
                     <label> Current Location </label>
-                    <div className="form-group">
+                    <Autocomplete
+                        id="combo-box-demo"
+                        multiple
+                        value={profile.currentlocation}
+                        options={data.map((res)=>{
+                          return res.location
+                        })}
+                        getOptionLabel={(option) => option}
+                        // style={{ width: 368 }}
+                        onChange={(e, value) => {
+                          setProfile({
+                            ...profile,
+                            currentlocation:value
+                          });
+                        }}
+                        
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            name="multiple"
+                            label="Enter your current location"
+                            variant="outlined"
+                            fullWidth
+                            
+                            // inputRef={register}
+                          />
+                        )}
+                      />
+                    {/* <div className="form-group">
                       <input
                         type="text"
                         name="currentlocation"
@@ -234,7 +265,7 @@ const MyProfile = (props) => {
                         placeholder="Enter Your City"
                         onChange={(e)=>formHandling(e)}
                       />
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className=" col-lg-6 col-md-6">

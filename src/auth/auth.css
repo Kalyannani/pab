@@ -4,14 +4,6 @@
      font-size: 14px;
      color: #222;
      padding: 0px;
-     /* margin: 0px; */
-     /* box-sizing: border-box; */
-     /* background: linear-gradient(45deg, #A547B1, #6A2A69) center; */
-     /* background-size: 100vw 100vh; */
-     /* height: 100vh; */
-     /* display: flex; */
-      /* align-items: center; */
-     /* justify-content: center; */
 }
  * {
      box-sizing: border-box;
@@ -56,9 +48,9 @@
 }
  .main .form_wrapper .tile {
      text-align: center;
-     margin-bottom: 30px;
      width: 100% !important;
      overflow: hidden;
+     height:  50px!important;
 }
  .main .form_wrapper .tile h3 {
      font-size: 29px;
@@ -83,7 +75,7 @@
      user-select: none;
 }
  .main .form_wrapper .tab.login_tab {
-     border-right: none;
+     
      border-top-right-radius: 0px;
      border-bottom-right-radius: 0px;
      margin: 10px 0px;
@@ -97,36 +89,15 @@
  .main .form_wrapper .shape:hover {
      background: linear-gradient(-45deg, #A547B1, #6A2A69) no-repeat center;
 }
- /* .main .form_wrapper #login:checked ~ .shape {
-     left: 0px;
-} */
- /* .main .form_wrapper #login:checked ~ .login_tab {
-     border-color: transparent;  
-     z-index: 1;
-     color: #fff;
-     background-color: #7e1d7c;
-} */
- .main .form_wrapper #login:checked ~ .tile .signup {
-     display: none;
-}
+
+
  .main .form_wrapper #login:checked ~ .form_wrap {
      transform: translateX(0);
 }
- .main .form_wrapper #login:checked ~ .form_wrap .signup_form {
-     opacity: 0;
-}
- /* .main .form_wrapper #signup:checked ~ .shape {
-     left: 50%;
-} */
- /* .main .form_wrapper #signup:checked ~ .signup_tab {
-     border-color: transparent;
-     z-index: 1;
-     color: #fff;
-     background-color: #7e1d7c;
-} */
+
 
     .active-tab {
-        /* z-index: 1; */
+      
      color: #fff;
      background-color: #7e1d7c;
     }
@@ -135,11 +106,9 @@
      display: none;
 }
  .main .form_wrapper #signup:checked ~ .form_wrap {
-     /* transform: translateX(-100%); */
+     
 }
- .main .form_wrapper #signup:checked ~ .form_wrap .login_form {
-     /* opacity: 0; */
-}
+
  .main .form_wrapper a {
      color: #6A2A69;
      text-decoration: none;
@@ -164,15 +133,16 @@
      transition: all 0.5s ease;
 }
  .main .form_wrapper .form_wrap .form_fild .input_group {
-     width: 100%;
+     width: auto;
      margin: 22px 0px;
+    
 }
  .main .form_wrapper .form_wrap .form_fild .input_group .input {
      border: solid #F1F1F1 2px;
      border-radius: 5px;
-     width: 100%;
+     width: auto;
      height: 40px;
-     padding: 25px 10px;
+     padding: 25px 55px;
      font-size: 15px;
      font-weight: 500;
      outline: none;
@@ -181,19 +151,14 @@
  .main .form_wrapper .form_wrap .form_fild .input_group .input::placeholder {
      color: #ADADAD;
 }
- /* .main .form_wrapper .form_wrap .form_fild .input_group .input:hover {
-     border-color: rgba(248, 66, 151, 0.3);
-}
- .main .form_wrapper .form_wrap .form_fild .input_group .input:focus {
-     border-color: rgba(248, 66, 151, 0.3);
-} */
+
  .main .form_wrapper .form_wrap .form_fild .forgot {
      display: block;
      margin-bottom: 15px;
      padding: 0px 2px;
 }
  .main .form_wrapper .form_wrap .form_fild .btn {
-     /* width: 100%; */
+    
      height: 50px;
      padding: 0px 80px;
      margin: 30px 0px;
@@ -231,6 +196,9 @@
     transition: all 0.3s linear;
     font-weight: 700;
     font-family: Lato,sans-serif;
+    display: inline !important;
+    border: none !important;
+    padding-left: 5px;
 }
  .main .form_wrapper .form_wrap .form_fild .not_mem label span:hover {
      color: #A547B1;
@@ -256,6 +224,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: 600;
 }
 
+
 .verfy-special-btn{
     position: absolute;
     margin: 22px 13px !important;
@@ -266,24 +235,110 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100px !important;
 }
 
-/* .main_div
-{
-text-align:center;
-background: #00C492;
-padding:20px; width: 400px;
+@media screen and (min-width:0px) and (max-width:450px) {
+    .verfy-special-btn{
+        width: 75px !important;
+        margin: 22px 8px !important;
+    } 
 }
-.inner_div
-{
-background: #fff;
-margin-top:20px;
-height: 100px;
+
+label.login_otp{
+    color: #6A2A69 !important;
+    border-radius: 3px;
 }
-.buttons a
-{
-font-size: 16px;
+
+.signin_signup{
+    margin-top: 100px!important;
+    margin-bottom: 50px;
+    padding: 10px;
+    box-shadow: 0 0 8px rgb(0 0 0 / 25%);
 }
-.buttons a:hover
-{
-cursor:pointer;
-font-size: 16px;
-} */
+
+@media screen and (max-width:576px) {
+    .signin_signup{
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.modal_close{
+    position: fixed;
+    top: 90px;
+    right: 15px;
+    background-color: #6A2A69 !important;
+    border: 0;
+   
+    padding: 10px 15px;
+    border-radius: 50%;
+    color: #fff !important;
+    -webkit-appearance: none;
+    outline: none !important;
+    font-weight: 700;
+    line-height: 1;
+    z-index: 999;
+    font-size: 35px;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 1 !important;
+  }
+
+  .signup_image{
+    width: 100%;  
+    vertical-align: middle;
+    align-items: center;
+    margin-top: 20%;    
+  }
+
+  @media screen and (min-width:0px) and (max-width:992px) {
+    .signup_image{
+       display: none;
+    } 
+  }
+  @media screen and (min-width:992px){
+    .signup_image{
+        display: block;
+     } 
+  }
+
+
+.input_email{
+    position: absolute;
+    top: 27px;
+    left: 12px;
+    color: #6A2A69;
+    font-size: 20px;
+}
+
+.input_group{
+    position: relative !important;
+}
+
+.password_hide{
+    position: absolute;
+    top: 27px;
+    right: 12px;
+    color: #6A2A69;
+    font-size: 20px;
+}
+.password_change{
+    position: absolute;
+    top: 36px;
+    right: 26px;
+    color: #6A2A69;
+    font-size: 20px;
+}
+.main .form_wrapper .form_wrap .form_fild .input_group span.password_hide{
+    /* opacity: 0.5 ; */
+}
+
+#login_tab{
+    border-right: none;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+
+#sign_tab{
+    border-left: none;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}

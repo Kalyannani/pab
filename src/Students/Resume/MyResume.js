@@ -279,16 +279,16 @@ const MyResume = () => {
                           <span className="location_resume">{profile.currentlocation}</span>
                         </p>
 
-                        <p className="location_resume_2 d-block">
-                          <span>
-                            <i class="fas fa-shopping-bag marker_icon"></i>
-                          </span>{" "}
-                          {
-                            profile?.experience.experience ?
-                              <span className="location_resume">{profile.experience.experience}</span> :
-                              <span className="location_resume">{profile.experience}</span>
-                          }
-                        </p>
+                      <p className="location_resume_2 d-block">
+                        <span>
+                          <i class="fas fa-shopping-bag marker_icon"></i>
+                        </span>{" "}
+                        {
+                          profile?.experience.experience?
+                          <span className="location_resume">{profile.experience.experience.charAt(0).toUpperCase() + profile.experience.experience.slice(1)}</span>:
+                          <span className="location_resume">{profile.experience.charAt(0).toUpperCase() + profile.experience.slice(1)}</span>
+                        }
+                      </p>
                       </div>
                       <div className="col-md-6">
                         <p>

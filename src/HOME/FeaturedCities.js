@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
  const FeaturedCities = () => {
     return (
@@ -6,10 +7,11 @@ import React from 'react'
             
 <div id="sec3">
 <div className="container text-center">
-    <h2 className="pb-2">Featured Cities</h2>
+    <h2 className="pb-2">Jobs By Cities</h2>
     <p className="pb-3">20+ Featured Cities Added Jobs</p>
     <div className="row mt-2">
         <div className="col-lg-3 col-md-6 mb-4">
+            <Link to="/locationaljobs">
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 1.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -19,8 +21,10 @@ import React from 'react'
                     </div>
                 </div>
             </div>
+            </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
+            <Link to="/locationaljobs">
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 2.jfif" alt="" />
                 <div className="card-img-overlay">
@@ -30,8 +34,10 @@ import React from 'react'
                     </div>
                 </div>
             </div>
+            </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
+            <Link to="/locationaljobs">
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 3.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -41,8 +47,10 @@ import React from 'react'
                     </div>
                 </div>
             </div>
+            </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
+            <Link to="/locationaljobs">
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 4.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -52,8 +60,10 @@ import React from 'react'
                     </div>
                 </div>
             </div>
+            </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
+            <Link to="/locationaljobs">
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 5.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -63,8 +73,10 @@ import React from 'react'
                     </div>
                 </div>
             </div>
+            </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
+            <Link to="/locationaljobs">
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 6.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -74,8 +86,10 @@ import React from 'react'
                     </div>
                 </div>
             </div>
+            </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
+            <Link to="/locationaljobs">
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 7.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -85,8 +99,10 @@ import React from 'react'
                     </div>
                 </div>
             </div>
+            </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
+            <Link to="/locationaljobs">
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 8.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -96,6 +112,7 @@ import React from 'react'
                     </div>
                 </div>
             </div>
+            </Link>
         </div>
     </div>
 </div>

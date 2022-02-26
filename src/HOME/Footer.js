@@ -14,7 +14,7 @@ const Footer = () => {
               <div className="col-lg-3 col-md-6 foot_add">
                 <img
                   className="img-fluid logo_img"
-                  src="images/ProHireeLogo.png"
+                  src="/images/ProHireeLogo.png"
                   style={{
                     background: "transparent",
                     height: "50px",
@@ -76,7 +76,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <i className="fas fa-chevron-right"></i>{" "}
-                    <Link to="/Manage_jobs">Manage Job</Link>
+                    <Link to="/Manage_jobs">My Jobs</Link>
                   </li>
                 </ul>
               </div> 
@@ -152,6 +152,10 @@ const Footer = () => {
                     <i className="fas fa-chevron-right"></i>{" "}
                     <Link to='/Privacypolicy'> Privacy Policy</Link> 
                   </li>
+                  <li>
+                    <i className="fas fa-chevron-right"></i>{" "}
+                    <Link to='/fraudalert'> Fraud Alert</Link> 
+                  </li>
                 </ul>
               </div>
             </div>
@@ -184,7 +188,7 @@ const Footer = () => {
                   </p>
                 </div>
                 <div className="foot_web col-md-4">
-                  <a to="#">
+                  <a href="https://www.linkedin.com/in/pab-jobs-5a776b232/" target="_blank">
                     <i className="fab fa-linkedin"></i>
                   </a>
                   <a href="https://www.instagram.com/pab.jobs/" target="_blank">

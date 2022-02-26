@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import apiList from '../lib/apiList';
 import Modal from 'react-modal';
-import './auth.css'
+import './auth.css';
+
 
 const customStyles = {
     content: {
@@ -138,6 +139,7 @@ const Auth = (props) => {
                 dispatch({ type: "USER", payload: response.data })
                 toast.success("Login Successfully")
                 console.log(response);
+
                 navigate("/")
             })
             .catch((err) => {
@@ -226,10 +228,44 @@ const Auth = (props) => {
             });
     }
 
+
+    const [state,setState] = useState({
+        image: <img src='images/signin-image.jpg' className='signup_image img-fluid'/>
+     });
+
+    const imgColumn= ()=>{
+        setState((state)=>({
+         image: <img src='images/signin-image.jpg' className='signup_image img-fluid' />
+        }));
+    };
+
+    const imgColumn2= ()=>{
+        setState((state)=>({
+         image: <img src='/images/signup-image.jpg' className='signup_image img-fluid'/>
+        }));
+    };
+
+
+    const scrollToTop = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        }); 
+      };
+
+
+
+  const [isRevealPwd, setIsRevealPwd] = useState(false);
+
+  const [isSignupPwd, setIsSignupPwd] = useState(false);
+
+  const [isConfirmPwd, setIsConfirmPwd] = useState(false);
+ 
+
     return <>
-        <div className="container mt-5">
+        <div className="signin_signup container " id='main_form'>
             <div className="row">
-                <div className="col-lg-8 modal_grid">
+                <div className="col-lg-7 modal_grid">
                     <section className="main">
                         <div className="form_wrapper">
                             <input
@@ -250,17 +286,18 @@ const Auth = (props) => {
 
 
                             </div>
-                            <label
+                            <label id='login_tab'
                                 className={`tab login_tab ${mainTab === "login" && 'active-tab'}`}
                                 // active-tab
                                 htmlFor="login"
-                                onClick={() => switchMainTab('login')}
+                                onClick={() => {switchMainTab('login');imgColumn(); scrollToTop(); }}
                             >
                                 {" "}
                                 Login{" "}
                             </label>
-                            <label className={`tab login_tab ${mainTab === "signup" && 'active-tab'}`} htmlFor="signup"
-                                onClick={() => switchMainTab('signup')}>
+                            <label id='signup_tab'
+                            className={`tab login_tab ${mainTab === "signup" && 'active-tab'}`} htmlFor="signup"
+                                onClick={() => {switchMainTab('signup');imgColumn2();scrollToTop();} }>
                                 {" "}
                                 Signup{" "}
                             </label>
@@ -270,11 +307,23 @@ const Auth = (props) => {
                                         {!subTab && (
                                             <div id="Menu1">
                                                 <form onSubmit={handleLogin}>
-                                                    <div className="input_group">
+                                                    
+                                                    <div className="input_group ">
                                                         <input type="email" name="email" className="input" placeholder="Email Address" />
+                                                         <span className='input_email'> <i class="fa fa-envelope" aria-hidden="true"></i> </span>
                                                     </div>
                                                     <div className="input_group">
-                                                        <input type="password" name="password" className="input" placeholder="Password" />
+                                                        <input type={isRevealPwd ? "text" : "password"} name="password" className="input" placeholder="Password" />
+                                                        <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
+                                                       
+                                                        <span className='password_hide'
+                                                          onClick={() => setIsRevealPwd(prevState => !prevState)}
+                                                          >
+                                                     
+                                                      {isRevealPwd ? <i class="fa fa-eye-slash" aria-hidden="true"></i>: <i class="fa fa-eye" aria-hidden="true"></i>}
+                                                                                                                   
+                                                       </span>
+
                                                     </div>
                                                     <div className="forgot">
                                                         <a className="forgot_pass" onClick={() => setSubTab('forgotPassword')}>
@@ -289,7 +338,8 @@ const Auth = (props) => {
                                                         </a>
                                                     </div>
                                                     <div className="not_mem pt-3">
-                                                        <label htmlFor="signup">
+                                                        <label htmlFor="signup"
+                                                        onClick={() => {switchMainTab('signup');imgColumn2();scrollToTop();} }>
                                                             Not a member? <span className="font-weight-bold"> Signup now</span>
                                                         </label>
                                                     </div>
@@ -308,6 +358,7 @@ const Auth = (props) => {
                                                             placeholder="Enter Registered Mobile Number..."
                                                             name="phone"
                                                         />
+                                                         <span className='input_email'> <i class='fas fa-phone'></i> </span>
                                                     </div>
                                                     <input
                                                         type="submit"
@@ -334,6 +385,7 @@ const Auth = (props) => {
                                                             placeholder="Enter Mobile Number"
                                                             name="phone"
                                                         />
+                                                         <span className='input_email'> <i class='fas fa-phone'></i> </span>
                                                     </div>
                                                     <a href="#" onclick="toggleVisibility('Menu4');">
                                                         {" "}
@@ -386,8 +438,8 @@ const Auth = (props) => {
                                     <div className="form_fild signup_form">
                                         <form onSubmit={handleSignUp}>
                                             <div className="input_group">
-                                                <select class="form-control" name="type">
-                                                    <option value="applicant" selected>Applicant</option>
+                                                <select class="form-control multiple" name="type">
+                                                    <option value="applicant" selected>Job Seekers</option>
                                                     <option value="recruiter">Recruiter</option>
                                                 </select>
                                             </div>
@@ -398,6 +450,7 @@ const Auth = (props) => {
                                                     placeholder="Name"
                                                     name="name"
                                                 />
+                                                 <span className='input_email'> <i class="fa fa-user" aria-hidden="true"></i> </span>
                                             </div>
                                             <div className="input_group" style={{ position: 'relative' }}>
 
@@ -408,6 +461,7 @@ const Auth = (props) => {
                                                     name="contactNumber"
                                                     onChange={handleContactInput}
                                                 />
+                                                <span className='input_email'> <i class='fas fa-phone'></i> </span>
                                                 <button type="button" className="verfy-special-btn btn" onClick={handleContactVerify} disabled={!showVerifyBtn || isContactVerified}>{isContactVerified ? 'Verified': 'Verify'}</button>
 
 
@@ -419,28 +473,52 @@ const Auth = (props) => {
                                                     placeholder="Email Address"
                                                     name="email"
                                                 />
+                                                 <span className='input_email'> <i class="fa fa-envelope" aria-hidden="true"></i> </span>
                                             </div>
                                             <div className="input_group">
                                                 <input
-                                                    type="password"
-                                                    className="input"
+                                                    type={isSignupPwd ? "text" : "password"}
+                                                    className="input password_input"
                                                     placeholder="Password"
                                                     name="password"
                                                 />
+                                                 <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
+                                           
+                                                    <span className='password_hide'
+                                                       onClick={() => setIsSignupPwd( !isSignupPwd)}
+                                                          >
+                                                        {isSignupPwd ? <i class="fa fa-eye-slash" aria-hidden="true"></i>: <i class="fa fa-eye" aria-hidden="true"></i>}
+                                                     </span>
                                             </div>
                                             <div className="input_group">
                                                 <input
-                                                    type="password"
+                                                    type={isConfirmPwd ? "text" : "password"}
                                                     className="input"
                                                     placeholder="Confirm Password"
                                                     name="confirmPassword"
                                                 />
+                                                 <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
+                                                 <span className='password_hide'
+                                                          onClick={() => setIsConfirmPwd(prevState => !prevState)}
+                                                          >
+                                                       
+                                                      {isConfirmPwd ? <i class="fa fa-eye-slash" aria-hidden="true"></i>: <i class="fa fa-eye" aria-hidden="true"></i>}
+                                                                                                                   
+                                                       </span>  
                                             </div>
                                             <input
                                                 type="submit"
                                                 className="btn"
                                                 defaultValue="Signup"
                                             />
+
+                                       <div className="not_mem pt-3">
+                                            <label htmlFor="signup"
+                                            onClick={() => {switchMainTab('login');imgColumn(); scrollToTop(); }}>
+                                             Already have an Account? <span className="font-weight-bold"> Login here </span>
+                                            </label>
+                                       </div>
+
                                         </form>
                                     </div>
                                 )}
@@ -449,7 +527,10 @@ const Auth = (props) => {
                         </div>
                     </section>
                 </div>
-                {/* <div className="col-lg-4 d-none-sm">image</div> */}
+
+                 <div className="col-lg-5 text-center full_image ">
+                  {state.image} 
+                 </div>
             </div>
         </div>
         <Modal
@@ -460,7 +541,7 @@ const Auth = (props) => {
         >
             <div class="  text-center">
                 <h6>Please enter the one time password <br /> to verify your account</h6>
-                {/* <div> <span>A code has been sent to</span> <small>*******9897</small> </div> */}
+                {/* <div> <span>A code has been sent to</span> <small>***9897</small> </div> */}
                 <form onSubmit={handleContactOTPVerify}>
                     <div id="otp" class="inputs d-flex flex-row justify-content-center mt-4">
                         <input type="text" className="form-control w-50" id="exampleInputName" placeholder="Enter OTP" maxLength="6" name="otp" required />

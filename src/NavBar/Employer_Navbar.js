@@ -1,8 +1,11 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import { Link, useNavigate} from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
+import IdleTimer from 'react-idle-timer';
+import {MdAccountCircle} from 'react-icons/md'
 const Employer_Navbar = () => {
+  const idleTimerRef = useRef(null)
     const[state, setState] = useState({navbar_content:"white",color:"black"});
     const [collapse,setCollapse]= useState();
     const [id,setId] = useState();
@@ -30,26 +33,29 @@ const Employer_Navbar = () => {
       dispatch({type:"CLEAR"})
       navigate("/auth")
 };
+
+const onIdle = ()=>{
+  localStorage.removeItem("token");
+      localStorage.removeItem("type");
+      dispatch({type:"CLEAR"})
+      navigate("/auth")
+}
     return (
         <>
         
                 <div className="collapse navbar-collapse" id="navbarNav"   >
-                    <ul className="navbar-nav "   >
-                    <li className="nav-item dropdown position-relative d-inline-block">
-                  <a
-                    className="nav-link dropdown-toggle  font-weight-bold"
-                    href="#"
-                    id="a3"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    style={{ color: state.color }}
-                  >
-                    FOR EMPLOYERS
-                  </a>
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-item dropdown profile_dropdown position-relative d-inline-block">
+                   <li className="nav-item">
+                            <a className=" font-weight-bold dropdown-toggle" id="a5" >
+                              <button type="button"
+                                    className="btn  navbar-btn profile-btn" data-toggle="modal" data-target="#MyModal"><i
+                                        className="fas fa-user"></i> 
+                              </button></a>
+                        </li>
                   <div
-                    className="dropdown-menu dropdown-content  d-none position-absolute ml-4 bg-white rounded"
+                  id='profile-dropdown'
+                    className="dropdown-menu dropdown-content  d-none position-absolute  bg-white rounded"
                     aria-labelledby="navbarDropdown" data-toggle={collapse} data-target={id}
                   >
                     <Link className="dropdown-item" to="/company_profile">
@@ -59,24 +65,22 @@ const Employer_Navbar = () => {
                       Post A Job
                     </Link>
                     <Link className="dropdown-item" to="/Manage_jobs">
-                      Manage Jobs
+                      My Jobs
                     </Link>
                     <Link className="dropdown-item" to="/password">
                       Change Password
                     </Link>
+                    <a onClick={()=>handleClick()} className=" font-weight-bold" id="a5" data-toggle={collapse} data-target={id}>
+                      <button type="button"
+                     className="btn logout-btn" data-toggle="modal" data-target="#MyModal">
+                       Logout</button>
+                     </a>
                   </div>
                 </li>
                     </ul>
-                    <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
-                            <a onClick={()=>handleClick()} className="nav-link font-weight-bold" id="a5" data-toggle={collapse} data-target={id}><button type="button"
-                                    className="btn  navbar-btn" data-toggle="modal" data-target="#MyModal"><i
-                                        className="fas fa-user"></i> LOGOUT</button></a>
-                        </li>
-                    </ul>
                 </div>
   
-
+                <IdleTimer ref={idleTimerRef} timeout={900*1000} onIdle={onIdle}></IdleTimer>
     </>
     )
 }

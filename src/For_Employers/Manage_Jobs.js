@@ -8,7 +8,7 @@ import ReactPaginate from 'react-paginate';
 import ReactLoading from 'react-loading';
 export const Manage_Jobs = () => {
     const [jobs, setJobs] = useState([]);
-
+    const [applicants,setApplicants] = useState([])
      // Pagination code
      const [offset, setOffset] = useState(1);
      //   const [data, setData] = useState([]);
@@ -44,11 +44,12 @@ export const Manage_Jobs = () => {
             })
             .then((response) => {
                 setPageCount(Math.ceil(response.data.length)/perPage)
-                console.log(response.data)
+                console.log(response)
                 setJobs(response.data.reverse());
+                setApplicants(response.data.result)
             })
             .catch((err) => {
-                console.log(err.response.data);
+                console.log(err.response);
             });
     };
 
@@ -82,7 +83,7 @@ export const Manage_Jobs = () => {
                         <div className="wrapper">
                             <div className="content">
                                 <div className="job-bx-title clearfix">
-                                    <h5 className=" pull-left text-uppercase cp">Manage Jobs</h5>
+                                    <h5 className=" pull-left text-uppercase cp">My Jobs</h5>
                                     <a href="#" className=" float-right custom_class">
                                         <span className="sort">Sort By Freshness</span>
                                         <select name="#" id="#" className="custom_button">

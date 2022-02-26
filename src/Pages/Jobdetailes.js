@@ -7,6 +7,9 @@ import apiList from '../lib/apiList';
 import {toast} from 'react-toastify'
 import moment from "moment";
 import { useSelector } from 'react-redux';
+import { RWebShare } from "react-web-share";
+
+
 export const Jobdetailes = (props) => {
     const [jobs, setJobs] = useState([]);
     const [recruiter,setRecruiter] = useState([])
@@ -18,6 +21,7 @@ export const Jobdetailes = (props) => {
     useEffect(() => {
         getData();
     }, []);
+    
     const getData = () => {
         axios
             .get(`${apiList.jobs}/${id}`, {
@@ -62,6 +66,7 @@ export const Jobdetailes = (props) => {
       };
 
 
+
     return (
      <div>
      <div className="job_detail_wrapper">
@@ -87,7 +92,21 @@ export const Jobdetailes = (props) => {
                                     <span><img alt="" src="" /></span>
                                 </div>
                                 <div className="job-info">
-                                    <h4><a href="#">{jobs.title}</a>
+                                    <h4>
+                                        <a href="#">{jobs.title}</a>
+                                       
+                                    </h4>
+                                    <h4 className='float-right share_icon'>
+                                    <RWebShare
+                                        data={{
+                                        text: "Look at this job portal",
+                                        url: `http://localhost:3000/jobdetailes/${jobs._id}`,
+                                        title: "Pab Jobs"
+                                        }}
+                                        onClick={() => console.log("shared successfully!")}
+                                    >
+                                        <i class="fa fa-share-alt"></i>
+                                    </RWebShare>
                                     </h4>
                                     <ul>
                                         {/* <li>
@@ -134,7 +153,7 @@ export const Jobdetailes = (props) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                     </li>
                     </ul>
@@ -148,7 +167,7 @@ export const Jobdetailes = (props) => {
                     </span></span>
                 <span className="stat mr-3"><label  className="pr-2">Openings: </label><span> {jobs.maxPositions}</span></span>
                 <span className="stat mr-3"><label>Job Applicants: </label><span>Less than 10</span></span>
-                <a className="send_like_jobs"><span> Send me jobs like this </span> </a>
+                <a href='#' className="send_like_jobs"><span> Similar Jobs </span> </a>
             </div>
         </div>
         <section className="job-description">

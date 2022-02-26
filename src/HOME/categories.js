@@ -1,5 +1,8 @@
 import React from 'react'
 import CountUp from 'react-countup';
+import {RiBankLine} from 'react-icons/ri'
+import {FaHeadset,FaChartPie,FaLaptopCode} from 'react-icons/fa'
+// import {HiChartPie} from 'react-icons/hi'
 export const Categories = () => {
    
   const [loading, setLoading] = React.useState(false);
@@ -47,57 +50,60 @@ export const Categories = () => {
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
                     <span className="icon feature-box-col-one"><i className="fas fa-paint-brush"></i></span>
-                    <h6>Design, Art & MultiMedia</h6>
+                    <h6>Design & MultiMedia Jobs</h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
-                    <span className="icon feature-box-col-two"><i className="fab fa-uncharted"></i></span>
+                    <span className="icon feature-box-col-two"><span><FaLaptopCode /></span></span>
 
-                    <h6>Software Developer</h6>
+                    <h6>IT Industry Jobs</h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
-                    <span className="icon feature-box-col-three"><i className="fas fa-wallet"></i></span>
-                    <h6> Marketing</h6>
+                    <span className="icon feature-box-col-three"><span><FaChartPie /></span></span>
+                    <h6> Marketing Jobs</h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
-                    <span className="icon feature-box-col-four"><i className="fas fa-cloud-upload-alt"></i></span>
-                    <h6>Business Growth</h6>
+                    <span className="icon feature-box-col-four"><span><FaHeadset/></span></span>
+                    <h6>BPO Jobs</h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
                     <span className="icon feature-box-col-five"><i className="fas fa-chart-bar"></i></span>
-                    <h6>Business Analyst</h6>
+                    <h6>Business Analyst Jobs</h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
-                    <span className="icon feature-box-col-six"><i className="fas fa-search-location"></i></span>
-                    <h6>Civil Supervisor</h6>
+                    <span className="icon feature-box-col-six">
+                        {/* <span><MdRealEstateAgent/></span> */}
+                        <img src="/images/Construction.png" style={{height: "100px",marginTop: "-20px"}}/>
+                        </span>
+                    <h6>Counstruction Jobs  </h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
-                    <span className="icon feature-box-col-six"><i className="fas fa-camera"></i></span>
-                    <h6>Photoshopping</h6>
+                    <span className="icon feature-box-col-six"><span className='svg_icons'><RiBankLine size='lg'/></span></span>
+                    <h6>Bank Jobs</h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="main-item">
-                    <span className="icon feature-box-col-six"><i className="fas fa-arrows-alt"></i></span>
-                    <h6>Surveyor</h6>
+                    <span className="icon feature-box-col-six"><i className="fa fa-industry"></i></span>
+                    <h6>Industrial Jobs</h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
             </div>

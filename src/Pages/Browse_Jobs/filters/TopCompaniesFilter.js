@@ -7,11 +7,12 @@ import apiList from "../../../lib/apiList";
 
 const TopCompaniesFilter = (props) => {
     const [companies, setCompanies] = useState([])
-
+    const [isReadMore, setIsReadMore] = useState(true);
+console.log(companies)
     const fetchCompanies = async () => {
         await axios.get(apiList.listFiveCompanies)
           .then((response) => {
-            setCompanies(response.data.companies)
+            setCompanies(response.data.companies.reverse())
           })
           .catch((err) => {
             console.log(err.response.data);
@@ -21,9 +22,12 @@ const TopCompaniesFilter = (props) => {
 
     useEffect(async () => {
         fetchCompanies();
-    
-    
       }, [])
+
+      const toggleReadMore = () => {
+        setIsReadMore(!isReadMore);
+      };
+
 
     const handleCheckboxChange = async (e) => {
         let companiesList = props.topCompanies;
@@ -47,7 +51,7 @@ const TopCompaniesFilter = (props) => {
         <div class="card">
             <div class="card-header" id="headingOne">
                 <h5
-                    class="accordionItemHeading"
+                    className="accordionItemHeading"
                     data-toggle="collapse"
                     data-target="#collapseOne"
                     aria-expanded="true"
@@ -56,7 +60,7 @@ const TopCompaniesFilter = (props) => {
 
                     Top Companies{" "}
                     <span className="float-right">
-                        <i className="fas fa-minus"></i>
+                        {/* <i className="fas fa-minus"></i> */}
                     </span>
                 </h5>
 
@@ -73,7 +77,8 @@ const TopCompaniesFilter = (props) => {
 
                     <div className="accordionItemContent">
                         <form action="#" className="acc_form">
-                            {companies.map(company => {
+                            {
+                            isReadMore?companies.slice(0,5).map(company => {
                                 return <div className="form-check my-1">
                                 <input
                                     className="form-check-input"
@@ -90,17 +95,36 @@ const TopCompaniesFilter = (props) => {
                                     {company.companyname}
                                 </label>
                             </div>
-                            })}
+                            }): companies.map(company => {
+                                return <div className="form-check my-1">
+                                <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    name="company"
+                                    id="flexcheckboxDefault2"
+                                    value={company.userId}
+                                    onChange={handleCheckboxChange}
+                                />
+                                <label
+                                    className="form-check-label pl-2"
+                                    for="flexcheckboxDefault2"
+                                >
+                                    {company.companyname}
+                                </label>
+                            </div>
+                            })
+                            }
                             
 
                             <div className="more">
-                                <Link
+                                {/* <Link
                                     to="/companyjobs"
                                     className="more_inner float-right mr-4 py-1"
                                 >
                                     {" "}
                                     more...{" "}
-                                </Link>
+                                </Link> */}
+                                <span className="more_inner float-right mr-4 py-1" onClick={toggleReadMore}>{isReadMore ? "...more" : " show less"}</span>
                             </div>
                         </form>
                     </div>

@@ -48,6 +48,7 @@ const Navbar = () => {
     }, [width]);
 
     console.log('modalIsOpen',modalIsOpen);
+   
 
     return (
         <>
@@ -55,7 +56,7 @@ const Navbar = () => {
                 <nav className="navbar navbar-expand-lg fixed-top navbar_content mb-5" id="myScrollspy" style={{ backgroundColor: `${state.navbar_content}` }}>
                     <div className="container">
                         <Link className="navbar-brand" to="/">
-                            <img type="logo" className="img-fluid logo_img" src="images/ProHireeLogo.png"
+                            <img type="logo" className="img-fluid logo_img" src="/images/ProHireeLogo.png"
                                 style={{ background: 'transparent' }, { height: '50px' }, { width: '70px' }} alt="" />
                         </Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -98,7 +99,7 @@ const Navbar = () => {
                                         <Link className="dropdown-item" to="/alljobs">All Jobs</Link>
                                         <Link className="dropdown-item" to="/companyjobs">Company Jobs</Link>
                                         <Link className="dropdown-item" to="/categoryjobs">Category Jobs</Link>
-                                        <Link className="dropdown-item" to="/locationaljobs">Locatinal Jobs</Link>
+                                        <Link className="dropdown-item" to="/locationaljobs">Locational Jobs</Link>
                                         <Link className="dropdown-item" to="/designationjobs">Designation Jobs</Link>
                                         <Link className="dropdown-item" to="/skilljobs">Skill Jobs</Link>
                                     </div>
@@ -158,6 +159,7 @@ const Navbar = () => {
             >
                 <Auth />
             </Modal>
+           
         </>
     )
 }
