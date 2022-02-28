@@ -1,5 +1,3 @@
-// "Browse Jobs by IT Skills"
-// 1-368
 [
     {
         "id":"1",
@@ -1473,11 +1471,6 @@
         "id":"368",
         "Skill":" Sharepoint MOSS"
     },
-
-    // "Browse Jobs By Non-IT Skills"
-    // 369-489
-
-
     {
         "id":"369",
         "Skill":"Banking"

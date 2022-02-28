@@ -95,7 +95,7 @@ const ExperienceFilter = (props) => {
                                     className="form-check-label"
                                     for="experience4"
                                 >
-                                    10 - 15 years (120)
+                                    10 - 15 years
                                 </label>
                             </div>
                             <div className="form-check">
@@ -111,7 +111,7 @@ const ExperienceFilter = (props) => {
                                     className="form-check-label"
                                     for="experience5"
                                 >
-                                    15 + years (120)
+                                    15 + years
                                 </label>
                             </div>
 

@@ -1,5 +1,4 @@
-// "Browse Jobs by Functional Area / Department",
-// 1-45
+
 [
     {
         "id":"1",
@@ -180,11 +179,6 @@
         "id":"45", 
         "Category": "Business Intelligence"
       },
-
-    //   "Browse Jobs by Industry / Sector"
-
-    // 46-97
-
       {
         "id":"46", 
         "Category": "Accounting"

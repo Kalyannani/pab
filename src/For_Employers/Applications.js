@@ -76,25 +76,71 @@ export const Applications = () => {
                          <span><i className="fas fa-user"></i></span> {application.jobApplicant.name}
                         </h5>
                         <div>
-                        <p class="designer mt-4">
+                        <p class="designer ">
                           <span>UI/UX Designer</span> At Attract Solutions{" "}
                         </p>
                         </div>
+                        <div className="desigantion_content">
+                      {/* <p class="designer">
+                          <span>UI/UX Designer</span> At Attract Solutions{" "}
+                        </p> */}
+
+                        <div class="resume_content_location  d-inline">
+                          <p class="resume_content_location_sub_sub d-inline">
+                            <i class="fas fa-graduation-cap"></i>
+                            {"  "}
+                            {
+                           application?.jobApplicant?.education[0]?.highestgraduation?
+                           <div class="table-cell table_data2">{application?.jobApplicant?.education[0]?.highestgraduation}</div>
+                           :<div class="table-cell table_data2">Not Updated</div>
+                         }
+                          </p>
+                          <p class="resume_content_location_sub_sub d-inline">
+                            <i class="fas fa-briefcase"></i> {" "}
+                            {
+                          application?.jobApplicant?.experience.experience ?
+                          <span >{application?.jobApplicant?.experience?.experience.charAt(0).toUpperCase() + application?.jobApplicant?.experience?.experience.slice(1)}
+                          ({application?.jobApplicant?.experience?.year} Years - {application?.jobApplicant?.experience?.month})
+                          </span>
+                          :
+                          <span >{application?.jobApplicant?.experience.charAt(0).toUpperCase() + application?.jobApplicant?.experience.slice(1)}</span>
+                          }
+                          </p>
+                          <p class="resume_content_location_sub_sub d-inline ">
+                            <i class="fas fa-rupee-sign"></i>
+                            25000
+                          </p>
+                        </div>
+                      </div>
                       <div className="row table_row">
                         <div className="col-md-6 ">
                         <div class="table table_row_right">
                   
                        <div class="table-row">
                          <div class="table-cell table_data1">Education</div>
-                         <div class="table-cell table_data2">B.Tech</div>
+                         {
+                           application?.jobApplicant?.education[0]?.highestgraduation?
+                           <div class="table-cell table_data2">{application?.jobApplicant?.education[0]?.highestgraduation}</div>
+                           :<div class="table-cell table_data2">Not Updated</div>
+                         }
+                         
                        </div>
                        <div class="table-row">
                          <div class="table-cell table_data1">Email</div>
-                         <div class="table-cell table_data2">dinesh@gmail.com</div>
+                         <div class="table-cell table_data2">{application.jobApplicant.email}</div>
                        </div>
                        <div class="table-row">
                          <div class="table-cell table_data1">Experience</div>
-                         <div class="table-cell table_data2">2years</div>
+                         <div class="table-cell table_data2">
+                         {
+                          application?.jobApplicant?.experience.experience ?
+                          <span >{application?.jobApplicant?.experience?.experience.charAt(0).toUpperCase() + application?.jobApplicant?.experience?.experience.slice(1)}
+                          ({application?.jobApplicant?.experience?.year} Years - {application?.jobApplicant?.experience?.month})
+                          </span>
+                          :
+                          <span >{application?.jobApplicant?.experience.charAt(0).toUpperCase() + application?.jobApplicant?.experience.slice(1)}</span>
+                          }
+                         </div>
                        </div>
                        <div class="table-row">
                          <div class="table-cell table_data1">Employment</div>
@@ -109,7 +155,7 @@ export const Applications = () => {
                   
                   <div class="table-row">
                     <div class="table-cell table_data1">Location</div>
-                    <div class="table-cell table_data2">Hyderabad</div>
+                    <div class="table-cell table_data2">{application.jobApplicant.email}</div>
                   </div>
                   <div class="table-row">
                     <div class="table-cell table_data1">Gender</div>
@@ -128,25 +174,7 @@ export const Applications = () => {
                         </div>
                       </div>
 
-                      <div className="desigantion_content">
-                      {/* <p class="designer">
-                          <span>UI/UX Designer</span> At Attract Solutions{" "}
-                        </p> */}
-
-                        <div class="resume_content_location  d-inline">
-                          <p class="resume_content_location_sub_sub d-inline">
-                            <i class="fas fa-graduation-cap"></i>
-                            B-tech
-                          </p>
-                          <p class="resume_content_location_sub_1_sub d-inline">
-                            <i class="fas fa-briefcase"></i> Fresher
-                          </p>
-                          <p class="resume_content_location_sub_1_sub d-inline px-1">
-                            <i class="fas fa-rupee-sign"></i>
-                            25000
-                          </p>
-                        </div>
-                      </div>
+                      
                        
                       
                         {application?.jobApplicant?.skills.map((skill) => {

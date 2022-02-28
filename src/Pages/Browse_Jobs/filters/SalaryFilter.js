@@ -27,7 +27,7 @@ const salaryFilterList = [
         salaryMax: 60000
     },
     {
-        name: "60k - 100k+++",
+        name: "60k - 100k++",
         salaryMin: 60000,
         salaryMax: 100000
     }

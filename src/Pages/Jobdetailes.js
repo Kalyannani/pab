@@ -100,7 +100,7 @@ export const Jobdetailes = (props) => {
                                     <RWebShare
                                         data={{
                                         text: "Look at this job portal",
-                                        url: `http://localhost:3000/jobdetailes/${jobs._id}`,
+                                        url: `https://pabjobs.com/jobdetailes/${jobs._id}`,
                                         title: "Pab Jobs"
                                         }}
                                         onClick={() => console.log("shared successfully!")}
