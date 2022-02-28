@@ -51,7 +51,6 @@ class ProfileImageUpload extends React.Component {
 
   render() {
     let { loading, imageUrl } = this.state;
-    
     const uploadButton = (
       <div>
         {loading ? <LoadingOutlined /> : <PlusOutlined />}
@@ -74,7 +73,7 @@ class ProfileImageUpload extends React.Component {
                         <img
                           className="resume_img img-responsive"
                           alt=""
-                          src={imageUrl? imageUrl : `images/girl_avtar.png`}
+                          src={this.props.url? this.props.url : `images/girl_avtar.png`}
                         />
                       </p>
                       <label for="file">

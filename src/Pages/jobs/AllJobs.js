@@ -41,17 +41,20 @@ import Subfilter from './subfilter'
             <hr />
             <div className="row img_content mt-3">
                 <div className="col-lg-3 col-md-6 mb-4">
-                    <div className="card img-fluid city">
-                        <img className="card-img-top w-100 rounded " src="images/card 1.jpg" alt="" />
-                        <div className="card-img-overlay">
-                            <div className="card-body text-left text-white">
-                                <h4 className="card-title">Hyderabad</h4>
-                                {/* <p>50 Jobs</p> */}
+                    <Link to={`/browsefilterlist?locate=Hyderabad`} >
+                        <div className="card img-fluid city">
+                            <img className="card-img-top w-100 rounded " src="images/card 1.jpg" alt="" />
+                            <div className="card-img-overlay">
+                                <div className="card-body text-left text-white">
+                                    <h4 className="card-title">Hyderabad</h4>
+                                    {/* <p>50 Jobs</p> */}
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 </div>
                 <div className="col-lg-3 col-md-6 mb-4">
+                    <Link to={`/browsefilterlist?locate=Mumbai`} >
                     <div className="card img-fluid city">
                         <img className="card-img-top w-100 rounded" src="images/card 2.jfif" alt="" />
                         <div className="card-img-overlay">
@@ -61,8 +64,10 @@ import Subfilter from './subfilter'
                             </div>
                         </div>
                     </div>
+                    </Link>
                 </div>
                 <div className="col-lg-3 col-md-6 mb-4">
+                    <Link to={`/browsefilterlist?locate=Chennai`} >
                     <div className="card img-fluid city">
                         <img className="card-img-top w-100 rounded" src="images/card 3.jpg" alt="" />
                         <div className="card-img-overlay">
@@ -72,8 +77,10 @@ import Subfilter from './subfilter'
                             </div>
                         </div>
                     </div>
+                    </Link>
                 </div>
                 <div className="col-lg-3 col-md-6 mb-4">
+                    <Link to={`/browsefilterlist?locate=Pune`} >
                     <div className="card img-fluid city">
                         <img className="card-img-top w-100 rounded" src="images/card 4.jpg" alt="" />
                         <div className="card-img-overlay">
@@ -83,8 +90,10 @@ import Subfilter from './subfilter'
                             </div>
                         </div>
                     </div>
+                    </Link>
                 </div>
                 <div className="col-lg-3 col-md-6 mb-4">
+                    <Link to={`/browsefilterlist?locate=Bangalore`} >
                     <div className="card img-fluid city">
                         <img className="card-img-top w-100 rounded" src="images/card 5.jpg" alt="" />
                         <div className="card-img-overlay">
@@ -94,8 +103,10 @@ import Subfilter from './subfilter'
                             </div>
                         </div>
                     </div>
+                    </Link>
                 </div>
                 <div className="col-lg-3 col-md-6 mb-4">
+                    <Link to={`/browsefilterlist?locate=Delhi`} >
                     <div className="card img-fluid city">
                         <img className="card-img-top w-100 rounded" src="images/card 6.jpg" alt="" />
                         <div className="card-img-overlay">
@@ -105,8 +116,10 @@ import Subfilter from './subfilter'
                             </div>
                         </div>
                     </div>
+                    </Link>
                 </div>
                 <div className="col-lg-3 col-md-6 mb-4">
+                    <Link to={`/browsefilterlist?locate=Kolkata`} >
                     <div className="card img-fluid city">
                         <img className="card-img-top w-100 rounded" src="images/card 7.jpg" alt="" />
                         <div className="card-img-overlay">
@@ -116,8 +129,10 @@ import Subfilter from './subfilter'
                             </div>
                         </div>
                     </div>
+                    </Link>
                 </div>
                 <div className="col-lg-3 col-md-6 mb-4">
+                    <Link to={`/browsefilterlist?locate=Ahmedabad`} >
                     <div className="card img-fluid city">
                         <img className="card-img-top w-100 rounded" src="images/card 8.jpg" alt="" />
                         <div className="card-img-overlay">
@@ -127,6 +142,7 @@ import Subfilter from './subfilter'
                             </div>
                         </div>
                     </div>
+                    </Link>
                 </div>
             </div>
         </div>

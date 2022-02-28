@@ -300,7 +300,7 @@ const BrowseFilterList = () => {
                   </label>
                   <div className="input-group">
                     <input type="text" name="keyword" className="form-control" id="search_filter_list_input"
-                      placeholder="Job Title, Keywords, or Phrase" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
+                      placeholder="Job Title, Keywords, or Phrase" value={keyword} onChange={(e) => setKeyword(e.target.value)} required />
                     <div className="input-group-append">
                       <span className="filter_list_group_icon">
                         <i className="fas fa-search ml-2" id="filter_list_search_icon1"></i>
@@ -315,7 +315,7 @@ const BrowseFilterList = () => {
                   <label></label>
                   <div className="input-group">
                     <input type="text" className="form-control" name="qlocation" id="search_filter_list_input" value={qlocation} onChange={(e) => setQLocation(e.target.value)}
-                      placeholder="Location" />
+                      placeholder="Location" required />
                     <div className="input-group-append">
                       <span className="filter_list_group_icon">
                         <i className="fas fa-map-marker-alt" id="filter_list_search_icon2"></i></span>
