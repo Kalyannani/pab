@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -10,10 +10,11 @@ import Categories from './categories';
 import OurClients from'./OurClients';
 import FeaturedCities from './FeaturedCities'
 import RecentJobs from './RecentJobs';
+import { toast } from 'react-toastify';
 const Home = () => {
     const [keyword, setKeyword] = useState("");
     const [qlocation, setQLocation] = useState("");
-
+    const navigate = useNavigate();
 
     const options ={
         loop: true,
@@ -33,6 +34,16 @@ const Home = () => {
                  }
               } 
            }
+
+    const handleSearch = () => {
+        if (keyword == '' || qlocation == '') {
+            // toast.error('All fields are required');
+        }else{
+            navigate(`/browsefilterlist?keyword=${keyword}&qlocation=${qlocation}`)
+        }
+        
+    }
+
     return (
         <div>
         
@@ -47,20 +58,20 @@ const Home = () => {
                         <div className="row">
                             <div className="col-lg-5 col-md-5" id="input1_joblocation">
                                 <input type="text" className="form-control" id="search_box_input_joblocation"
-                                    placeholder="Job Title, Keywords, or Phrase" name='keyword' value={keyword} onChange={(e) => setKeyword(e.target.value)} />
+                                    placeholder="Job Title, Keywords, or Phrase" name='keyword' value={keyword} onChange={(e) => setKeyword(e.target.value)} required />
                             </div>
                             <div className="col-lg-5 col-md-5" id="input2_joblocation">
                                 <input type="text" className="form-control" id="search_box_input_joblocation"
-                                    placeholder="City ,Province or Region" name='qlocation' value={qlocation} onChange={(e) => setQLocation(e.target.value)} />
+                                    placeholder="City ,Province or Region" name='qlocation' value={qlocation} onChange={(e) => setQLocation(e.target.value)} required />
                             </div>
                             <div className="col-lg-2 col-md-2 col-xs-offset-3 col-xs-6 c0l-xs-offset-3"
                                 id="input_btn_joblocation">
-                                    <Link to={`/browsefilterlist?keyword=${keyword}&qlocation=${qlocation}`} >
+                                    {/* <Link to={`/browsefilterlist?keyword=${keyword}&qlocation=${qlocation}`} > */}
                                     <a>
-                                    <button id="search_box_btn_joblocation" className="btn-block">
+                                    <button id="search_box_btn_joblocation" className="btn-block" onClick={handleSearch} >
                                     Search</button>
                                     </a>
-                                    </Link>
+                                    {/* </Link> */}
                             </div>
 
                         </div>

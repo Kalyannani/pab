@@ -7,6 +7,7 @@ import ChipInput from "material-ui-chip-input";
 // import PersonalDetails from './personalDetails'
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { Line } from 'rc-progress';
 import FileUploadInput from "./FileUploadInput";
 import ResumeFileUpload from "../../common/ResumeFileUpload";
 import ProfileImageUpload from "../../common/ProfileImageUpload";
@@ -15,6 +16,7 @@ import ProfileImageUpload from "../../common/ProfileImageUpload";
 const MyResume = () => {
   const dispatch = useDispatch();
   const [project, setProject] = useState(false);
+  const [progressBar, setProgressBar] = useState(0);
   // const [currentcompany, setCurrentcompany] = useState(false);
 
   // const NoHandling = (e) => {
@@ -217,6 +219,35 @@ const MyResume = () => {
     getData();
   }, []);
 
+  const updateProgressBar = (data) => {
+    let progressPercentage = 0
+    if (data.currentlocation && data.currentlocation.length != 0) {
+      progressPercentage += 10
+    }
+    if (data.education && data.education.length != 0) {
+      progressPercentage += 10
+    }
+    if (data.employment && data.employment.length != 0) {
+      progressPercentage += 10
+    }
+    if (data.skills && data.skills.length != 0) {
+      progressPercentage += 10
+    }
+    if (data.profileImage && data.profileImage != '') {
+      progressPercentage += 20
+    }
+    if (data.profileSummary && data.profileSummary != '') {
+      progressPercentage += 10
+    }
+    if (data.resume?.url && data.resume?.url != '') {
+      progressPercentage += 20
+    }
+    if (data.resumeHeadline && data.resumeHeadline != '') {
+      progressPercentage += 10
+    }
+    setProgressBar(progressPercentage)
+  }
+
   const getData = () => {
     axios
       .get(apiList.user, {
@@ -227,6 +258,7 @@ const MyResume = () => {
       .then((response) => {
         console.log(response.data);
         setProfile(response.data);
+        updateProgressBar(response.data)
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -279,16 +311,16 @@ const MyResume = () => {
                           <span className="location_resume">{profile.currentlocation}</span>
                         </p>
 
-                      <p className="location_resume_2 d-block">
-                        <span>
-                          <i class="fas fa-shopping-bag marker_icon"></i>
-                        </span>{" "}
-                        {
-                          profile?.experience.experience?
-                          <span className="location_resume">{profile.experience.experience.charAt(0).toUpperCase() + profile.experience.experience.slice(1)}</span>:
-                          <span className="location_resume">{profile.experience.charAt(0).toUpperCase() + profile.experience.slice(1)}</span>
-                        }
-                      </p>
+                        <p className="location_resume_2 d-block">
+                          <span>
+                            <i class="fas fa-shopping-bag marker_icon"></i>
+                          </span>{" "}
+                          {
+                            profile?.experience.experience ?
+                              <span className="location_resume">{profile.experience.experience.charAt(0).toUpperCase() + profile.experience.experience.slice(1)}</span> :
+                              <span className="location_resume">{profile.experience.charAt(0).toUpperCase() + profile.experience.slice(1)}</span>
+                          }
+                        </p>
                       </div>
                       <div className="col-md-6">
                         <p>
@@ -308,6 +340,16 @@ const MyResume = () => {
                         </p>
 
                       </div>
+                    </div>
+                    <div className="progress">
+                      <div
+                        className="progress-bar"
+                        role="progressbar"
+                        style={{ width: progressBar+"%" }}
+                        aria-valuenow={progressBar}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
                     </div>
 
 

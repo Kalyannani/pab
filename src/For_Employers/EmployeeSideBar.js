@@ -48,7 +48,7 @@ export const EmployeeSideBar = () => {
 
                 <div className="main_header text-center">
                         {/* <img src="images/girl_avtar.png" alt="" className="info_img" /> */}
-                        <ProfileImageUpload />
+                        <ProfileImageUpload url={profile.profileImage} />
                         <h4 className="company">{profile.companyname}</h4>
                     
                 </div>
