@@ -309,11 +309,11 @@ const Auth = (props) => {
                                                 <form onSubmit={handleLogin}>
                                                     
                                                     <div className="input_group ">
-                                                        <input type="email" name="email" className="input" placeholder="Email Address" />
+                                                        <input type="email" name="email" className="input" placeholder="Email Address" required />
                                                          <span className='input_email'> <i class="fa fa-envelope" aria-hidden="true"></i> </span>
                                                     </div>
                                                     <div className="input_group">
-                                                        <input type={isRevealPwd ? "text" : "password"} name="password" className="input" placeholder="Password" />
+                                                        <input type={isRevealPwd ? "text" : "password"} name="password" className="input" placeholder="Password" required />
                                                         <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
                                                        
                                                         <span className='password_hide'
@@ -357,6 +357,7 @@ const Auth = (props) => {
                                                             className="input"
                                                             placeholder="Enter Registered Mobile Number..."
                                                             name="phone"
+                                                            required
                                                         />
                                                          <span className='input_email'> <i class='fas fa-phone'></i> </span>
                                                     </div>
@@ -384,6 +385,7 @@ const Auth = (props) => {
                                                             className="input"
                                                             placeholder="Enter Mobile Number"
                                                             name="phone"
+                                                            required
                                                         />
                                                          <span className='input_email'> <i class='fas fa-phone'></i> </span>
                                                     </div>
@@ -415,6 +417,7 @@ const Auth = (props) => {
                                                             className="input"
                                                             placeholder="Enter Your OTP"
                                                             name="otp"
+                                                            required
                                                         />
                                                     </div>
                                                     <input
@@ -449,6 +452,7 @@ const Auth = (props) => {
                                                     className="input"
                                                     placeholder="Name"
                                                     name="name"
+                                                    required
                                                 />
                                                  <span className='input_email'> <i class="fa fa-user" aria-hidden="true"></i> </span>
                                             </div>
@@ -460,6 +464,7 @@ const Auth = (props) => {
                                                     placeholder="Phone Number"
                                                     name="contactNumber"
                                                     onChange={handleContactInput}
+                                                    required
                                                 />
                                                 <span className='input_email'> <i class='fas fa-phone'></i> </span>
                                                 <button type="button" className="verfy-special-btn btn" onClick={handleContactVerify} disabled={!showVerifyBtn || isContactVerified}>{isContactVerified ? 'Verified': 'Verify'}</button>
@@ -472,6 +477,7 @@ const Auth = (props) => {
                                                     className="input"
                                                     placeholder="Email Address"
                                                     name="email"
+                                                    required
                                                 />
                                                  <span className='input_email'> <i class="fa fa-envelope" aria-hidden="true"></i> </span>
                                             </div>
@@ -481,6 +487,7 @@ const Auth = (props) => {
                                                     className="input password_input"
                                                     placeholder="Password"
                                                     name="password"
+                                                    required
                                                 />
                                                  <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
                                            
@@ -496,6 +503,7 @@ const Auth = (props) => {
                                                     className="input"
                                                     placeholder="Confirm Password"
                                                     name="confirmPassword"
+                                                    required
                                                 />
                                                  <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
                                                  <span className='password_hide'
