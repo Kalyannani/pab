@@ -286,7 +286,7 @@ label.login_otp{
     width: 100%;  
     vertical-align: middle;
     align-items: center;
-    margin-top: 20%;    
+    /* margin-top: 20%;     */
   }
 
   @media screen and (min-width:0px) and (max-width:992px) {
@@ -341,4 +341,8 @@ label.login_otp{
     border-left: none;
     border-top-left-radius: 0px !important;
     border-bottom-left-radius: 0px !important;
+}
+
+.full_img{
+    height: 100%;
 }

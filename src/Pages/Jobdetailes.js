@@ -99,7 +99,7 @@ export const Jobdetailes = (props) => {
                                     <h4 className='float-right share_icon'>
                                     <RWebShare
                                         data={{
-                                        text: "Look at this job portal",
+                                        text: jobs.title,
                                         url: `https://pabjobs.com/jobdetailes/${jobs._id}`,
                                         title: "Pab Jobs"
                                         }}
@@ -201,7 +201,7 @@ export const Jobdetailes = (props) => {
             </div>
             <div className="other-details">
                 <div className="details"><label>Role</label><span><a href="#" target="_blank" className="pl-1 job_role">: {jobs.title}</a><span className="role">.</span></span></div>
-                <div className="details"><label>Organization Type</label><span><a href="#" target="_blank"
+                <div className="details"><label>Industry Type</label><span><a href="#" target="_blank"
                             className="pl-1 job_role">: {recruiter.organizationType}
                              {/* &amp; */}
                             </a>

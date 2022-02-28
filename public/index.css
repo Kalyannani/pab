@@ -3351,23 +3351,8 @@ input#search_box_input:focus {
   outline: none !important;
 }
 
-.alljob_buttons {
-  margin-top: 20px;
-  margin-left: 18px;
-}
 
-.alljob_buttons_sub {
-  border: 1px solid transparent;
-  color: #fff;
-  padding: 10px 15px;
-  font-family: roboto;
-  font-size: 14px;
-  font-weight: 400;
-  background-color: rgba(25, 31, 35, 0.7);
-  transition: all 0.2s linear;
-  margin: 4px 0px;
-  cursor: pointer;
-}
+
 
 button.alljob_buttons_sub:focus {
   outline: none !important;
@@ -3451,10 +3436,19 @@ button.alljob_buttons_sub:focus {
   font-size: 15px;
   color: #6a2a69 !important;
 }
-
+.alljob_buttons{
+  margin-top: 50px;
+}
 .jobs_jobs {
   color: #fff;
   text-decoration: none;
+  padding: 15px;
+  background-color: #16171c;
+
+}
+.jobs_jobs.active{
+  background-color: #6a2a69 !important;
+  color: white !important;
 }
 
 .jobs_jobs:hover {
@@ -15985,4 +15979,11 @@ margin-left: 620px;
 }
 .testimonial_image_avatar{
   border-radius: 50%;
+}
+.full_image{
+  background-image: url('/images/login_img.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
 }

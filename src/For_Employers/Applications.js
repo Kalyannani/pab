@@ -199,7 +199,7 @@ export const Applications = () => {
                                   )
                                 }
                               >
-                                shortlist
+                                Shortlist
                               </button>
                               {"  "}
                               <button

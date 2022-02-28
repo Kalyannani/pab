@@ -230,18 +230,21 @@ const Auth = (props) => {
 
 
     const [state,setState] = useState({
-        image: <img src='images/signin-image.jpg' className='signup_image img-fluid'/>
+        image: 
+        <img src='images/login_img.jpeg' className='signup_image img-fluid'/>
      });
 
     const imgColumn= ()=>{
         setState((state)=>({
-         image: <img src='images/signin-image.jpg' className='signup_image img-fluid' />
+         image: 
+         <img src='images/login_img.jpeg' className='signup_image img-fluid' />
         }));
     };
 
     const imgColumn2= ()=>{
         setState((state)=>({
-         image: <img src='/images/signup-image.jpg' className='signup_image img-fluid'/>
+         image: 
+         <img src='/images/Signup_img.jpeg' className='signup_image img-fluid'/>
         }));
     };
 
@@ -528,8 +531,8 @@ const Auth = (props) => {
                     </section>
                 </div>
 
-                 <div className="col-lg-5 text-center full_image ">
-                  {state.image} 
+                 <div className="col-lg-5 text-center  sticky-top full_img">
+                        {state.image} 
                  </div>
             </div>
         </div>
