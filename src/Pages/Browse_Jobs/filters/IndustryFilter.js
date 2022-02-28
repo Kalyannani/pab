@@ -34,9 +34,9 @@ const IndustryFilter = (props) => {
                     aria-controls="collapseFour"
                 >
                     Industry{" "}
-                    <span className="float-right">
+                    {/* <span className="float-right">
                         <i className="fas fa-plus"></i>
-                    </span>
+                    </span> */}
                 </h5>
 
             </div>

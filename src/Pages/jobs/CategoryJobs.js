@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import data from '../../lib/industryType.json'
+import Subfilter from './subfilter'
 
 const CategoryJobs = () => {
     return (
@@ -30,24 +31,7 @@ const CategoryJobs = () => {
                             </form>
                         </div>
 
-                        <div className="alljob_buttons text-left">
-                            <button className="alljob_buttons_sub"><Link
-                                to="/alljobs" className="jobs_jobs">All Jobs</Link></button>
-                            <button className="alljob_buttons_sub "><Link
-                                to="/companyjobs" className="jobs_jobs">Jobs By
-                                Company</Link></button>
-                            <button className="alljob_buttons_sub  active_1"><Link
-                                to="/categoryjobs" className="jobs_jobs">Jobs By
-                                Category</Link></button>
-                            <button className="alljob_buttons_sub "><Link
-                                to="/locationaljobs" className="jobs_jobs">Jobs By
-                                Location</Link></button>
-                            <button className="alljob_buttons_sub "><Link
-                                to="/designationjobs" className="jobs_jobs">Jobs By
-                                Designation</Link></button>
-                            <button className="alljob_buttons_sub "><Link
-                                to="/skilljobs" className="jobs_jobs">Jobs By Skill</Link></button>
-                        </div>
+                        <Subfilter />
                     </div>
                 </div>
             </div>

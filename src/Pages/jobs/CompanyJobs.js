@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import { toast } from "react-toastify";
 import apiList from "../../lib/apiList";
+import Subfilter from './subfilter';
 
 const CompanyJobs = () => {
     const [companies, setCompanies] = useState([])
@@ -63,24 +64,7 @@ const CompanyJobs = () => {
                             </form>
                         </div>
 
-                        <div class="alljob_buttons text-left">
-                            <button class="alljob_buttons_sub"><Link
-                                to="/alljobs" class="jobs_jobs">All Jobs</Link></button>
-                            <button class="alljob_buttons_sub  active_1"><Link
-                                to="/companyjobs" class="jobs_jobs">Jobs By
-                                Company</Link></button>
-                            <button class="alljob_buttons_sub "><Link
-                                to="/categoryjobs" class="jobs_jobs">Jobs By
-                                Category</Link></button>
-                            <button class="alljob_buttons_sub "><Link
-                                to="/locationaljobs" class="jobs_jobs">Jobs By
-                                Location</Link></button>
-                            <button class="alljob_buttons_sub "><Link
-                                to="/designationjobs" class="jobs_jobs">Jobs By
-                                Designation</Link></button>
-                            <button class="alljob_buttons_sub "><Link
-                                to="/skilljobs" class="jobs_jobs">Jobs By Skill</Link></button>
-                        </div>
+                        <Subfilter />
                     </div>
                 </div>
             </div>

@@ -2222,7 +2222,7 @@ span {
 #sec7 .foot h4 {
   font-size: 18px;
   font-weight: 600;
-
+  color: white !important;
   position: relative;
   padding-bottom: 10px;
 }
@@ -3366,6 +3366,7 @@ input#search_box_input:focus {
   background-color: rgba(25, 31, 35, 0.7);
   transition: all 0.2s linear;
   margin: 4px 0px;
+  cursor: pointer;
 }
 
 button.alljob_buttons_sub:focus {
@@ -6764,13 +6765,11 @@ textarea {
     font-weight: 600;
 }
 .my_profile {
-  background:   #0000008f;
-   /* url(images/login.jpg); */
-   /* background: grey; */
+  background: url(/images/blur-3.jpg) #000000d1;
  background-repeat: no-repeat;
  height: 100%;
  width: 100%;
- /* background-size: cover; */
+ background-size: cover;
  background-position: center;
  background-blend-mode: darken;
  color: #fff;
@@ -6786,6 +6785,7 @@ textarea {
   font-family: Rubik, sans-serif !important;
   margin-bottom: 0px;
   text-transform: capitalize;
+  color: #fff;
 }
 
 .pencil_icon {
@@ -10792,23 +10792,24 @@ input[type="file"]::file-selector-button:hover {
   display: inline-block;
 }
 .table_data2{
-  float: right;
-  font-size: 17px;
+  /* float: right; */
+  font-size: 15px;
   color: #6A2A69;
   padding-top: 3px;
   font-weight: 500;
-  margin-left: 40px;
+  /* margin-left: 40px; */
 }
 .table_data1{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     color: #4b4545;
+    width: 200px;
 }
 
 .table-row{
   padding: 3px 5px 3px 10px;
   /* box-shadow: 0 0 2px rgb(0 0 0 / 10%); */
-  margin: 5px 0px;
+  /* margin: 5px 0px; */
   border: none;
 }
 
@@ -10841,7 +10842,7 @@ input[type="file"]::file-selector-button:hover {
   display: flex;
   color: #6a2a69;
   align-items: center;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .resume_content_location_sub {
@@ -13852,7 +13853,7 @@ input.home_input {
 }
 
 .resume_content_location_sub_sub {
-  padding: 0px 10px 0px 0px;
+  padding: 0px 15px 0px 0px;
   white-space: nowrap;
   font-size: 17px;
 }
@@ -13865,7 +13866,7 @@ input.home_input {
 .desigantion_content{
   display: flex;
   flex-basis: min-content;
-  margin-bottom: 25px;
+  /* margin-bottom: 10px; */
   }
   @media screen and (max-width:600px) {
     .desigantion_content{
@@ -14173,7 +14174,7 @@ input[type="number"]::-webkit-outer-spin-button {
 @media screen and (min-width: 0px) and (max-width: 767px) {
   .applications {
     box-shadow: 0 0 10px 0 rgb(0 24 128 / 10%);
-    padding: 20px 18px;
+    /* padding: 20px 18px; */
     margin-bottom: 20px;
     margin-top: 100px;
   }
@@ -15764,7 +15765,7 @@ margin-bottom: 20px !important;
 
 @media screen and (min-width:992px) {
 .testimonial_item img{
-  height: 160px !important;
+  height: 175px !important;
   width: 175px !important;
   
 }
@@ -15972,4 +15973,16 @@ margin-left: 620px;
     right: 20px;
     color: #6a2a69;
     cursor: pointer;
+}
+.card-title{
+  color: white !important;
+}
+.companies_sec_1_heading_1{
+  color: #ffff;
+}
+.filter_list_heading_1{
+  color: #ffff;
+}
+.testimonial_image_avatar{
+  border-radius: 50%;
 }
