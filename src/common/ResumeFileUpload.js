@@ -31,7 +31,7 @@ const props = {
 };
 
 const ResumeFileUpload = ({url}) => {
-    return <Upload {...props} fileList={ url ? [{name: "resume", url}] : undefined}>
+    return <Upload {...props} fileList={ url ? [{name: url.split('/').pop(), url}] : undefined}>
       
     <Button icon={<UploadOutlined />}>Click to Upload</Button>
   </Upload>

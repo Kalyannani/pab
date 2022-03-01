@@ -66,6 +66,8 @@ const BrowseFilterList = () => {
   const [listType, setListType] = useState('list')
   const [isLoading, setLoading] = useState(false)
   const [onHold, setOnHold] = useState(false)
+  const [keywordError, setKeywordError] = useState("");
+  const [locationError, setLocationError] = useState("");
 
   const list = [1, 2, 3, 4, 5, 6];
 
@@ -268,6 +270,21 @@ const BrowseFilterList = () => {
       });
   }
 
+  const handleSearch = e => {
+    let haveError = false
+    if (keyword == '') {
+      haveError = true
+      setKeywordError('Keyword is required!')
+    }
+    if (qlocation == '') {
+      haveError = true
+      setLocationError('Location is required!')
+    }
+    if (haveError) {
+      e.preventDefault()
+    }
+  }
+
   useEffect(async () => {
 
     fetchJobs();
@@ -291,7 +308,7 @@ const BrowseFilterList = () => {
 
       <div className="container">
         <div className="filter_list_search-box">
-          <form className="form-control" >
+          <form className="form-control" onSubmit={handleSearch} >
             <div className="row">
               <div className="col-lg-6 col-md-6">
                 <div className="form-group">
@@ -300,13 +317,15 @@ const BrowseFilterList = () => {
                   </label>
                   <div className="input-group">
                     <input type="text" name="keyword" className="form-control" id="search_filter_list_input"
-                      placeholder="Job Title, Keywords, or Phrase" value={keyword} onChange={(e) => setKeyword(e.target.value)} required />
+                      placeholder="Job Title, Keywords, or Phrase" value={keyword} onChange={(e) => {setKeyword(e.target.value); setKeywordError("")}}  />
+                    
                     <div className="input-group-append">
                       <span className="filter_list_group_icon">
                         <i className="fas fa-search ml-2" id="filter_list_search_icon1"></i>
                       </span>
                     </div>
                   </div>
+                  {keywordError != '' && <small style={{color: 'red'}}>{keywordError}</small>}
                 </div>
               </div>
 
@@ -314,13 +333,15 @@ const BrowseFilterList = () => {
                 <div className="form-group">
                   <label></label>
                   <div className="input-group">
-                    <input type="text" className="form-control" name="qlocation" id="search_filter_list_input" value={qlocation} onChange={(e) => setQLocation(e.target.value)}
-                      placeholder="Location" required />
+                    <input type="text" className="form-control" name="qlocation" id="search_filter_list_input" value={qlocation} onChange={(e) => {setQLocation(e.target.value); setLocationError("")}}
+                      placeholder="Location"  />
+                      
                     <div className="input-group-append">
                       <span className="filter_list_group_icon">
                         <i className="fas fa-map-marker-alt" id="filter_list_search_icon2"></i></span>
                     </div>
                   </div>
+                  {locationError != '' && <small style={{color: 'red'}}>{locationError}</small>}
                 </div>
               </div>
 

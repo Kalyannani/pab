@@ -31,6 +31,9 @@ const Auth = (props) => {
     const [contactNumber, setContactNumber] = useState("");
     const [contactSessionId, setContactSessionId] = useState();
     const [isContactVerified, setContactVerified] = useState(false);
+    const [emailError, setEmailError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const [phoneError, setPhoneError] = useState("");
 
     const navigate = useNavigate();
 
@@ -42,30 +45,60 @@ const Auth = (props) => {
     console.log('mmmm', mainTab);
 
     const handleLogin = e => {
-        e.preventDefault()
-        let loginDetails = {
-            email: e.target.email.value,
-            password: e.target.password.value
+        let haveError = false
+        if (e.target.email.value == '') {
+            haveError = true
+            setEmailError('Email is required!')
         }
-        axios
-            .post(apiList.login, loginDetails)
-            .then((response) => {
-                localStorage.setItem("token", response.data.token);
-                localStorage.setItem("type", response.data.type);
-                dispatch({ type: "USER", payload: response.data })
-                toast.success("Login Successful")
-                console.log(response);
-
-                navigate("/")
-            })
-            .catch((err) => {
-                toast.error(err.response.data.message)
-                console.log(err.response);
-            })
+        if (e.target.password.value == '') {
+            haveError = true
+            setPasswordError('Password is required!')
+        }
+        
+        e.preventDefault()
+        if (!haveError) {
+            let loginDetails = {
+                email: e.target.email.value,
+                password: e.target.password.value
+            }
+            axios
+                .post(apiList.login, loginDetails)
+                .then((response) => {
+                    localStorage.setItem("token", response.data.token);
+                    localStorage.setItem("type", response.data.type);
+                    dispatch({ type: "USER", payload: response.data })
+                    toast.success("Login Successful")
+                    console.log(response);
+    
+                    navigate("/")
+                })
+                .catch((err) => {
+                    toast.error(err.response.data.message)
+                    console.log(err.response);
+                })
+        }
+        
     }
 
     const handleSignUp = e => {
+
         e.preventDefault()
+        let haveError = false
+        if (e.target.email.value == '') {
+            haveError = true
+            setEmailError('Email is required!')
+        }
+        if (e.target.password.value == '') {
+            haveError = true
+            setPasswordError('Password is required!')
+        }
+        if (e.target.contactNumber.value == '') {
+            haveError = true
+            setPhoneError('Phone is required!')
+        }
+        if (haveError) {
+            return
+        }
         if (e.target.password.value !== e.target.confirmPassword.value) {
             toast.error("Password is not matching")
             e.target.rest()
@@ -100,6 +133,19 @@ const Auth = (props) => {
     }
 
     const handleOTPSend = e => {
+        let haveError = false
+        if (e.target.phone.value == '') {
+            haveError = true
+            setPhoneError('Phone number is required!')
+        }
+        if (e.target.phone.value.length != 10) {
+            haveError = true
+            setPhoneError('Enter valid phone number!')
+        }
+        e.preventDefault()
+        if (haveError) {
+            return
+        }
         e.preventDefault()
         let otpDetails = {
             phone: e.target.phone.value,
@@ -149,7 +195,19 @@ const Auth = (props) => {
     }
 
     const handleForgotPassword = e => {
+        let haveError = false
+        if (e.target.phone.value == '') {
+            haveError = true
+            setPhoneError('Phone number is required!')
+        }
+        if (e.target.phone.value.length != 10) {
+            haveError = true
+            setPhoneError('Enter valid phone number!')
+        }
         e.preventDefault()
+        if (haveError) {
+            return
+        }
         let otpDetails = {
             phone: e.target.phone.value,
         }
@@ -264,6 +322,11 @@ const Auth = (props) => {
 
   const [isConfirmPwd, setIsConfirmPwd] = useState(false);
  
+    const resetError = () => {
+        setEmailError("")
+        setPasswordError("")
+        setPhoneError("")
+    }
 
     return <>
         <div className="signin_signup container " id='main_form'>
@@ -309,14 +372,15 @@ const Auth = (props) => {
                                     <div className="form_fild login_form">
                                         {!subTab && (
                                             <div id="Menu1">
-                                                <form onSubmit={handleLogin}>
+                                                <form onSubmit={handleLogin} onChange={resetError}>
                                                     
                                                     <div className="input_group ">
-                                                        <input type="email" name="email" className="input" placeholder="Email Address" required />
+                                                        <input type="email" name="email" className="input" placeholder="Email Address"  />
                                                          <span className='input_email'> <i class="fa fa-envelope" aria-hidden="true"></i> </span>
                                                     </div>
+                                                    {emailError != '' && <small style={{color: 'red'}}>{emailError}</small>}
                                                     <div className="input_group">
-                                                        <input type={isRevealPwd ? "text" : "password"} name="password" className="input" placeholder="Password" required />
+                                                        <input type={isRevealPwd ? "text" : "password"} name="password" className="input" placeholder="Password"  />
                                                         <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
                                                        
                                                         <span className='password_hide'
@@ -328,6 +392,7 @@ const Auth = (props) => {
                                                        </span>
 
                                                     </div>
+                                                    {passwordError != '' && <small style={{color: 'red'}}>{passwordError}</small>}
                                                     <div className="forgot">
                                                         <a className="forgot_pass" onClick={() => setSubTab('forgotPassword')}>
                                                             {" "}
@@ -353,17 +418,18 @@ const Auth = (props) => {
 
                                         {subTab === 'forgotPassword' && (
                                             <div id="Menu2">
-                                                <form onSubmit={handleForgotPassword}>
+                                                <form onSubmit={handleForgotPassword} onChange={resetError}>
                                                     <div className="input_group">
                                                         <input
                                                             type="text"
                                                             className="input"
                                                             placeholder="Enter Registered Mobile Number..."
                                                             name="phone"
-                                                            required
+                                                            
                                                         />
                                                          <span className='input_email'> <i class='fas fa-phone'></i> </span>
                                                     </div>
+                                                    {phoneError != '' && <small style={{color: 'red'}}>{phoneError}</small>}
                                                     <input
                                                         type="submit"
                                                         className="btn"
@@ -381,17 +447,17 @@ const Auth = (props) => {
 
                                         {subTab === 'otp' && (
                                             <div id="Menu3">
-                                                <form onSubmit={handleOTPSend}>
+                                                <form onSubmit={handleOTPSend} onChange={resetError}>
                                                     <div className="input_group">
                                                         <input
                                                             type="number"
                                                             className="input"
                                                             placeholder="Enter Mobile Number"
                                                             name="phone"
-                                                            required
                                                         />
                                                          <span className='input_email'> <i class='fas fa-phone'></i> </span>
                                                     </div>
+                                                    {phoneError != '' && <small style={{color: 'red'}}>{phoneError}</small>}
                                                     <a href="#" onclick="toggleVisibility('Menu4');">
                                                         {" "}
                                                         <input
@@ -442,7 +508,7 @@ const Auth = (props) => {
                                 )}
                                 {mainTab === 'signup' && (
                                     <div className="form_fild signup_form">
-                                        <form onSubmit={handleSignUp}>
+                                        <form onSubmit={handleSignUp} onChange={resetError}>
                                             <div className="input_group">
                                                 <select class="form-control multiple" name="type">
                                                     <option value="applicant" selected>Job Seekers</option>
@@ -455,7 +521,7 @@ const Auth = (props) => {
                                                     className="input"
                                                     placeholder="Name"
                                                     name="name"
-                                                    required
+                                                    
                                                 />
                                                  <span className='input_email'> <i class="fa fa-user" aria-hidden="true"></i> </span>
                                             </div>
@@ -467,30 +533,32 @@ const Auth = (props) => {
                                                     placeholder="Phone Number"
                                                     name="contactNumber"
                                                     onChange={handleContactInput}
-                                                    required
+                                                    
                                                 />
                                                 <span className='input_email'> <i class='fas fa-phone'></i> </span>
                                                 <button type="button" className="verfy-special-btn btn" onClick={handleContactVerify} disabled={!showVerifyBtn || isContactVerified}>{isContactVerified ? 'Verified': 'Verify'}</button>
 
 
                                             </div>
+                                            {phoneError != '' && <small style={{color: 'red'}}>{phoneError}</small>}
                                             <div className="input_group">
                                                 <input
                                                     type="email"
                                                     className="input"
                                                     placeholder="Email Address"
                                                     name="email"
-                                                    required
+                                                    
                                                 />
                                                  <span className='input_email'> <i class="fa fa-envelope" aria-hidden="true"></i> </span>
                                             </div>
+                                            {emailError != '' && <small style={{color: 'red'}}>{emailError}</small>}
                                             <div className="input_group">
                                                 <input
                                                     type={isSignupPwd ? "text" : "password"}
                                                     className="input password_input"
                                                     placeholder="Password"
                                                     name="password"
-                                                    required
+                                                    
                                                 />
                                                  <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
                                            
@@ -500,13 +568,14 @@ const Auth = (props) => {
                                                         {isSignupPwd ? <i class="fa fa-eye-slash" aria-hidden="true"></i>: <i class="fa fa-eye" aria-hidden="true"></i>}
                                                      </span>
                                             </div>
+                                            {passwordError != '' && <small style={{color: 'red'}}>{passwordError}</small>}
                                             <div className="input_group">
                                                 <input
                                                     type={isConfirmPwd ? "text" : "password"}
                                                     className="input"
                                                     placeholder="Confirm Password"
                                                     name="confirmPassword"
-                                                    required
+                                                    
                                                 />
                                                  <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
                                                  <span className='password_hide'
