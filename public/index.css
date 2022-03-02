@@ -3437,16 +3437,15 @@ button.alljob_buttons_sub:focus {
   color: #6a2a69 !important;
 }
 .alljob_buttons{
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .jobs_jobs {
-  color: #fff;
+  color: #fff !important;
   text-decoration: none;
   padding: 15px;
   background-color: #16171c;
-
 }
-.jobs_jobs.active{
+.jobs_jobs:hover{
   background-color: #6a2a69 !important;
   color: white !important;
 }
@@ -3564,7 +3563,7 @@ button.alljob_buttons_sub:focus {
 /* section 2 */
 
 .company_jobs_section_2 {
-  padding: 50px 0px;
+  /* padding: 50px 0px; */
   background: #ffff;
 }
 
@@ -5211,15 +5210,15 @@ h2.job_filter_list_title {
 
 #job_filter_list .filter_list_wishlist {
   position: absolute;
-  cursor: pointer;
+  /* cursor: pointer;
   display: block;
   padding-left: 35px;
   margin-bottom: 12px;
   font-size: 22px;
   user-select: none;
-  font-family: FontAwesome;
+  font-family: FontAwesome; */
   top: 25px;
-  right: 5px;
+  right: 25px;
 }
 
 #job_filter_list .filter_list_wishlist input {
@@ -15987,3 +15986,19 @@ margin-left: 620px;
   background-repeat: no-repeat;
   height: 100%;
 }
+
+
+.Job_link{
+display: inline-block;
+
+}
+@media screen and (max-width:992px) {
+  .Job_link{
+  margin-bottom: 35px;
+  }
+  .heading_pic_alljobs{
+    padding: 25px 0px;
+  }
+}
+
+

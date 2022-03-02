@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import {  NavLink, useNavigate } from 'react-router-dom';
 // import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -11,7 +11,17 @@ import OurClients from'./OurClients';
 import FeaturedCities from './FeaturedCities'
 import RecentJobs from './RecentJobs';
 import { toast } from 'react-toastify';
+import Subfilter from '../Pages/jobs/subfilter';
+import LocationalJobs from '../Pages/jobs/LocationalJobs';
+import CompanyJobs from '../Pages/jobs/CompanyJobs';
+import CategoryJobs from '../Pages/jobs/CategoryJobs';
+import DesignationJobs from '../Pages/jobs/DesignationJobs';
+import SkillJobs from '../Pages/jobs/SkillJobs';
+import {Link} from 'react-scroll'
+
+
 const Home = () => {
+    
     const [keyword, setKeyword] = useState("");
     const [qlocation, setQLocation] = useState("");
     const [keywordError, setKeywordError] = useState("");
@@ -91,14 +101,69 @@ const Home = () => {
                         </div>
                     </form>
                 </div>
+
+                <div className="alljob_buttons text-left ">
+                     <div className='Job_link'> 
+                    <NavLink  to="/browsefilterlist"  className="jobs_jobs">
+                            All Jobs
+                           
+                    </NavLink>
+                    </div>
+                    <div className='Job_link'>    
+                    <Link 
+                            to="company" 
+                            className="jobs_jobs">
+                                Jobs By
+                            Company
+                    </Link></div>
+               
+                <div className='Job_link'>
+                    <Link
+                              to="category" className="jobs_jobs">
+                   Jobs By
+                            Category
+                            </Link></div>
+               
+          <div className='Job_link'>
+                            <Link
+                            to="location" className="jobs_jobs">
+                             Jobs By
+                            Location</Link></div>
+               
+          <div className='Job_link'>
+                            <Link
+                            to="designation" className="jobs_jobs">
+                                    Jobs By Designation
+                            </Link></div>
+               
+          <div className='Job_link'>
+                            <Link
+                            to="skill" className="jobs_jobs">
+                   Jobs By Skill
+                    </Link>
+                    </div>
+               
+                </div>
                 </div>
             </div>
         </div>
+    
     </section>
-    <RecentJobs />
+
+    {/* <RecentJobs /> */}
+     
     <Categories />
-    <OurClients />
+   
+    <CompanyJobs />
+ 
+    
+    <CategoryJobs />
+    <DesignationJobs />
+    <SkillJobs />
     <FeaturedCities />
+    {/* <LocationalJobs /> */}
+    <OurClients />
+    
     
     {/* <Testimonials /> */}
 

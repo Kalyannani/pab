@@ -88,7 +88,7 @@ const POST_A_JOB = (props) => {
                             <div className="content">
                                 <div className="job-bx-title clearfix">
                                     <h5 className=" pull-left text-uppercase cp">Post A Job</h5>
-                                    <Link to="/" className="site-button right-arrow button-sm float-right"> back </Link>
+                                    <Link to="/" className="site-button right-arrow button-sm float-right"> Back </Link>
                                 </div>
 
                                 <form >

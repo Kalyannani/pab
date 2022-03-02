@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
             
 <div id="sec3">
 <div className="container text-center">
-    <h2 className="pb-2">Jobs By Cities</h2>
+    <h2 className="pb-2">Jobs By Locations</h2>
     <p className="pb-3">20+ Featured Cities Added Jobs</p>
     <div className="row mt-2">
         <div className="col-lg-3 col-md-6 mb-4">

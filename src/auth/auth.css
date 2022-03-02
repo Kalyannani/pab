@@ -76,8 +76,8 @@
 }
  .main .form_wrapper .tab.login_tab {
      
-     border-top-right-radius: 0px;
-     border-bottom-right-radius: 0px;
+     border-top-left-radius: 0px;
+     border-bottom-left-radius: 0px;
      margin: 10px 0px;
 }
  .main .form_wrapper .tab.signup_tab {
@@ -250,7 +250,7 @@ label.login_otp{
 .signin_signup{
     margin-top: 100px!important;
     margin-bottom: 50px;
-    padding: 10px;
+    padding: 0px 0px 0px 10px !important;
     box-shadow: 0 0 8px rgb(0 0 0 / 25%);
 }
 

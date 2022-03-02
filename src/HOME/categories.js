@@ -94,16 +94,16 @@ export const Categories = () => {
                 </div>
             </div>
             <div className="col-lg-3 col-sm-6">
-                <div className="main-item">
+                <div className="main-item" >
                     <span className="icon feature-box-col-six"><span className='svg_icons'><RiBankLine size='lg'/></span></span>
                     <h6>Bank Jobs</h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
             </div>
             <div className="col-lg-3 col-sm-6">
-                <div className="main-item">
+                <div className="main-item" >
                     <span className="icon feature-box-col-six"><i className="fa fa-industry"></i></span>
-                    <h6>Industrial Jobs</h6>
+                    <h6 id='company'>Industrial Jobs</h6>
                     {/* <p>198 Open Positions</p> */}
                 </div>
             </div>

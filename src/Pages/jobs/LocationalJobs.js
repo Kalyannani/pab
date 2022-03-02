@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import data from '../../lib/locations.json'
+import data from '../../JsonData/locations.json'
 import Subfilter from './subfilter'
 
 const LocationalJobs = () => {
+    const [isReadMore, setIsReadMore] = useState(true);
+
+    const toggleReadMore = () => {
+        setIsReadMore(!isReadMore);
+      };
+
     return (
-        <div>
-            <div className="jobs_sec_1_joblocation">
+        <div >
+            {/* <div className="jobs_sec_1_joblocation">
                 <div className="heading_pic_joblocation">
                     <div className="container">
                         <div className="browse_joblocation_list-search_box">
@@ -33,7 +39,7 @@ const LocationalJobs = () => {
                         <Subfilter />
                     </div>
                 </div>
-            </div>
+            </div> */}
 
 
             {/* <!-- sec 1 -->
@@ -48,17 +54,33 @@ const LocationalJobs = () => {
                     <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY LOCATIONS</h6>
                     <hr className="bg-light" />
                     <div className="row">
-                        {data.locations.map(location => {
-                            return <div class="col-lg-4 col-md-6">
-                                <Link to={`/browsefilterlist?locate=${location.name}`}>
-                                    <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
-                                        class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{location.name}</span></a>
-                                </Link>
-                            </div>
-                        })}
+                        {
+                            isReadMore?
+                            data.slice(0,15).map(res => {
+                                return <div class="col-lg-3 col-md-6">
+                                    <Link to={`/browsefilterlist?locate=${res.location}`}>
+                                        <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
+                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{res.location}</span></a>
+                                    </Link>
+                                </div>
+                            }):
+                            data.map(res => {
+                                return <div class="col-lg-3 col-md-6">
+                                    <Link to={`/browsefilterlist?locate=${res.location}`}>
+                                        <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
+                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{res.location}</span></a>
+                                    </Link>
+                                </div>
+                            })
+                        }
+                       
                     </div>
+                    <div className='mb-3'>
+                        <span className="more_inner float-right mr-4" onClick={toggleReadMore}>{isReadMore ? "...more" : " show less"}</span>
+                        </div>
                 </div>
-                <div className="row">
+               
+                {/* <div className="row">
                     <div className="col-lg-3">
                         <div className="joblocation_sec_2_sub">
 
@@ -125,10 +147,10 @@ const LocationalJobs = () => {
 
                     </div>
 
-                </div>
+                </div> */}
             </div>
             {/* <!-- 3 --> */}
-            <div className="container">
+            {/* <div className="container">
                 <div className="row">
                     <div className="col-lg-3">
                         <div className="joblocation_sec_2_sub">
@@ -201,9 +223,9 @@ const LocationalJobs = () => {
                     </div>
 
                 </div>
-            </div>
+            </div> */}
             {/* <!-- 4 --> */}
-            <div className="container">
+            {/* <div className="container">
                 <div className="row">
                     <div className="col-lg-3">
                         <div className="joblocation_sec_2_sub">
@@ -277,7 +299,7 @@ const LocationalJobs = () => {
                     </div>
 
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

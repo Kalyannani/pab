@@ -9,7 +9,11 @@ import Subfilter from './subfilter';
 
 const CompanyJobs = () => {
     const [companies, setCompanies] = useState([])
+    const [isReadMore, setIsReadMore] = useState(true);
 
+    const toggleReadMore = () => {
+        setIsReadMore(!isReadMore);
+      };
     const fetchCompanies = async () => {
         await axios.get(apiList.listCompanies)
             .then((response) => {
@@ -39,8 +43,8 @@ const CompanyJobs = () => {
     }
 
     return (
-        <div>
-            <div class="jobs_sec_1_companyjobs">
+        <div >
+            {/* <div class="jobs_sec_1_companyjobs">
                 <div class="heading_pic_companyjobs">
                     <div class="container">
                         <div class="browse_companyjobs_list-search_box">
@@ -67,7 +71,7 @@ const CompanyJobs = () => {
                         <Subfilter />
                     </div>
                 </div>
-            </div>
+            </div> */}
 
 
             {/* <!-- sec 1 -->
@@ -79,7 +83,7 @@ const CompanyJobs = () => {
                     <div class="company_jobs_section_2_sub">
                         <h6 class="company_jobs_section_2_sub_heading">BROWSE JOBS BY COMPANIES</h6>
                         <hr class="bg-secondary " />
-                        <div class="company_jobs_section_2_buttons text-left my-4">
+                        {/* <div class="company_jobs_section_2_buttons text-left my-4">
                             <button class="company_jobs_section_2_button_sub current d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white ">Top 100</button>
                             <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('a')}>A</button>
                             <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('b')}>B</button>
@@ -110,22 +114,34 @@ const CompanyJobs = () => {
                             <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white ">0-99</button>
 
 
-                        </div>
+                        </div> */}
 
                         {/* <!-- img and text --> */}
 
                         <div class="row">
-                            {companies.map(company => {
+                            { isReadMore?
+                            companies.slice(0,15).map(company => {
                                 return <div class="col-lg-4 col-md-6">
                                     <Link to={`/browsefilterlist?company=${company.userId}`}>
                                     <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
                                         class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{company.companyname}</span></a>
                                         </Link>
                                 </div>
-                            })}
-                            
+                            }):
+                            companies.map(company => {
+                                return <div class="col-lg-4 col-md-6">
+                                    <Link to={`/browsefilterlist?company=${company.userId}`}>
+                                    <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
+                                        class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{company.companyname}</span></a>
+                                        </Link>
+                                </div>
+                            })
+                            }
+                             
                         </div>
-
+                        <div className='mb-3' id='category'>
+                        <span className="more_inner float-right mr-4" onClick={toggleReadMore}>{isReadMore ? "...more" : " show less"}</span>
+                        </div>
                     </div>
                 </div>
             </div>

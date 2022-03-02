@@ -134,7 +134,7 @@ export const COMPANY_PROFILE = () => {
                       className="site-button right-arrow button-sm float-right"
                     >
                       {" "}
-                      back{" "}
+                      Back{" "}
                     </Link>
                   </div>
                   <form action="#">
