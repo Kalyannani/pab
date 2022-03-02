@@ -4,31 +4,33 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import apiList from '../../lib/apiList'
 import Subfilter from './subfilter'
-
+import skills from "../../JsonData/Skill.json"
 const SkillJobs = () => {
+    const [isReadMore, setIsReadMore] = useState(true);
 
-    const [skills, setSkills] = useState([])
+    const toggleReadMore = () => {
+        setIsReadMore(!isReadMore);
+      };
+    // const [skills, setSkills] = useState([])
 
-    const fetchSkills = async () => {
-        await axios.get(apiList.listSkills)
-            .then((response) => {
-                setSkills(response.data.skills)
-            })
-            .catch((err) => {
-                console.log(err.response.data);
-                toast.error(err.response.data.message)
-            });
-    }
+    // const fetchSkills = async () => {
+    //     await axios.get(apiList.listSkills)
+    //         .then((response) => {
+    //             setSkills(response.data.skills)
+    //         })
+    //         .catch((err) => {
+    //             console.log(err.response.data);
+    //             toast.error(err.response.data.message)
+    //         });
+    // }
 
-    useEffect(async () => {
-        fetchSkills();
-
-
-    }, [])
+    // useEffect(async () => {
+    //     fetchSkills();
+    // }, [])
 
     return (
-        <div>
-            <div className="jobs_sec_1_skilljob">
+        <div >
+            {/* <div className="jobs_sec_1_skilljob">
                 <div className="heading_pic_skilljob">
                     <div className="container">
                         <div className="browse_skilljob_list-search_box">
@@ -55,7 +57,7 @@ const SkillJobs = () => {
                         <Subfilter />
                     </div>
                 </div>
-            </div>
+            </div> */}
 
 
             {/* <!-- sec 1 -->
@@ -69,27 +71,40 @@ const SkillJobs = () => {
             <!-- container --> */}
 
                     <div className="jobskill_sec_2_sub">
-
                         <h6 className="jobskill_sec_2_heading_1">BROWSE JOBS BY Skill</h6>
                         <hr className="bg-light" />
                         <div className="row">
-                            {skills.map(skill => {
+                            {
+                                isReadMore?
+                            skills.slice(0,15).map(res => {
                                 return <div className="col-lg-3 col-md-6">
-                                    <a href="#" className="jobskill_anchor_1"><span className="jobskill_img_1_text">
-                                        {skill}</span></a>
+                                    <Link to="#">
+                                        <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
+                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{res.Skill}</span></a>
+                                    </Link>
+                                        
                                 </div>
-                            })}
-
-
-
-
+                                
+                            }):
+                            skills.map(res => {
+                                return <div className="col-lg-3 col-md-6">
+                                     <Link to="#">
+                                        <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
+                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{res.Skill}</span></a>
+                                    </Link>
+                                </div>
+                            })
+                            }
+                        </div>
+                        <div className='mb-3' id='location'>
+                        <span className="more_inner float-right mr-4" onClick={toggleReadMore}>{isReadMore ? "...more" : " show less"}</span>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <div className="container">
+            {/* <div className="container">
                 <div className="jobskill_sec_2_sub">
 
                     <h6 className="jobskill_sec_2_heading_1">BROWSE JOBS BY NON-SKILL</h6>
@@ -227,7 +242,7 @@ const SkillJobs = () => {
 
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

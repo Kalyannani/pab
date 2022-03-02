@@ -18,10 +18,10 @@ import EducationFilter from './filters/EducationFilter';
 import SalaryFilter from './filters/SalaryFilter';
 import ReactTimeAgo from 'react-time-ago'
 import DesignationFilter from './filters/DesignationFilter';
-
+import { useSelector } from 'react-redux';
 const BrowseFilterList = () => {
 
-
+  const result = useSelector(state=>state.data)
   let { search } = useLocation();
   const query = new URLSearchParams(search);
   console.log('qqqq ', query.get('keyword'));
@@ -426,6 +426,7 @@ const BrowseFilterList = () => {
                                   </div>
                                   <div className="filter_list_job_info">
                                     <h4>{job.title}</h4>
+                                    
                                     <ul>
                                       <li><i className="fas fa-map-marker-alt"></i>
                                       {job.cities.map((job,index,arr)=>{
@@ -451,22 +452,13 @@ const BrowseFilterList = () => {
                                       </span>
                                   </div>
                                 </div>
-                                {job.wishlist ? (
-                                  <label className="filter_list_wishlist" onClick={() => handleRemoveWishlist(job._id)}>
-                                    <input type="checkbox" />
-                                    <span className="filter_grid_added" >
-
-                                      <i class="fab fa-gratipay" style={{ position: 'absolute', left: 6, top: 6 }} />
-                                    </span>
-                                  </label>
-                                ) : (
-                                  <label className="filter_list_wishlist" onClick={() => handleAddWishlist(job._id)}>
-                                    <input type="checkbox" />
-                                    <span className="filter_grid_added" >
-                                      <i className="fas fa-heart" />
-                                    </span>
-                                  </label>
-                                )}
+                                <label className="wishlist">
+                                {result?.type==="applicant" ? 
+                                <button className='btn job_details_applybtn filter_list_wishlist' > Apply </button>: 
+                                result?.type==="recruiter"? null :  
+                                <Link to="/auth" > <button className='btn job_details_applybtn filter_list_wishlist'> Login to Apply </button>  </Link>} 
+                                </label>
+                                
                               </div>
                             </li>
                           </ul>
@@ -525,7 +517,6 @@ const BrowseFilterList = () => {
                             <p>There is no jobs to list with the current filter</p>
                             <button
                               className={`btn list_view mb-2 `} onClick={resetFilter}>Reset Filter</button>
-
                           </div>
                         }
 
@@ -577,7 +568,7 @@ const BrowseFilterList = () => {
                                   </span>
                                 </div>
                               </div>
-                              {job.wishlist ? (
+                              {/* {job.wishlist ? (
                                 <label className="job_filter_grid_wishlist" onClick={() => handleRemoveWishlist(job._id)}>
                                   <input type="checkbox" />
                                   <span className="filter_grid_added" >
@@ -592,8 +583,13 @@ const BrowseFilterList = () => {
                                     <i className="fas fa-heart" />
                                   </span>
                                 </label>
-                              )}
-
+                              )} */}
+                                <label className="wishlist">
+                                {result?.type==="applicant" ? 
+                                <button className='btn job_details_applybtn filter_list_wishlist' > Apply </button>: 
+                                result?.type==="recruiter"? null :  
+                                <Link to="/auth" > <button className='btn job_details_applybtn filter_list_wishlist'> Login to Apply </button>  </Link>} 
+                                </label>
                             </div>
                             </Link>
                           </div>
