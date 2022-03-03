@@ -11,7 +11,8 @@ import { toast } from 'react-toastify';
 import apiList from '../lib/apiList';
 import { Autocomplete } from '@mui/material';
 import { TextField } from '@material-ui/core';
-import data from '../JsonData/locations.json'
+import data from '../JsonData/locations.json';
+import skillsdata from '../JsonData/Skill.json'
 const POST_A_JOB = (props) => {
     const navigate = useNavigate();
 
@@ -88,7 +89,7 @@ const POST_A_JOB = (props) => {
                             <div className="content">
                                 <div className="job-bx-title clearfix">
                                     <h5 className=" pull-left text-uppercase cp">Post A Job</h5>
-                                    <Link to="/" className="site-button right-arrow button-sm float-right"> back </Link>
+                                    <Link to="/" className="site-button right-arrow button-sm float-right"> Back </Link>
                                 </div>
 
                                 <form >
@@ -161,7 +162,7 @@ const POST_A_JOB = (props) => {
                                         <div className=" col-lg-6 col-md-6">
                                         <div className="form-group">
                                             <label>Technical Skills :</label>
-                                                <ChipInput
+                                                {/* <ChipInput
                                                     label="Skills"
                                                     variant="outlined"
                                                     // helperText="Press enter to add skills"
@@ -181,7 +182,32 @@ const POST_A_JOB = (props) => {
                                                       });
                                                     }}
                                                     fullWidth
-                                                  />
+                                                  /> */}
+                                                  <Autocomplete
+                                                    id="combo-box-demo"
+                                                    multiple
+                                                    value={post.skillsets}
+                                                    options={skillsdata.map((res)=>{
+                                                    return res.Skill
+                                                    })}
+                                                    getOptionLabel={(option) => option}
+                                                    onChange={(e, value) => {
+                                                    setPost({
+                                                        ...post,
+                                                        skillsets:value
+                                                    });
+                                                    }}
+                                                    
+                                                    renderInput={(params) => (
+                                                    <TextField
+                                                        {...params}
+                                                        name="multiple"
+                                                        label="Enter your Technical Skills"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                    />
+                                                    )}
+                                                />
                                                   <span>Press enter to add skills</span>
                                                 </div>
                                         </div>

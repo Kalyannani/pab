@@ -15,7 +15,7 @@ const Testimonials = () => {
   };
   return (
     <div>
-      <section id="clients" className="hire_clients">
+      <section className="hire_clients">
         <div className="container">
           <header className="section-header clients_header">
             <h2 className="clients_heading   ">Testimonials</h2>
@@ -41,7 +41,7 @@ const Testimonials = () => {
                   <img src='/images/rohith.jpeg' className="img-fluid testimonial_image_avatar mx-auto " alt='image'></img>
                   <p>
                     Being a fresher, I started looking for a job in the IT field
-                    from June 2018. I attended 13 interviews including Top Company's
+                    from June 2019. I attended 13 interviews including Top Company's
                     like, TCS, Accenture & Cognizant. But no luck. Finally, I
                     heard about PabJob's Train and Hire model through one of my
                     friends. I got through the interview and completed 3.5

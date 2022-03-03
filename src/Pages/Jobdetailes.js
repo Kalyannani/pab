@@ -17,7 +17,7 @@ export const Jobdetailes = (props) => {
     const result = useSelector(state=>state.data)
     const [descSplit,setDesSplit] = useState([])
     let { id } = useParams();
-
+    console.log(recruiter)
     useEffect(() => {
         getData();
     }, []);

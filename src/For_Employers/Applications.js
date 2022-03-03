@@ -98,12 +98,12 @@ export const Applications = () => {
                           <p class="resume_content_location_sub_sub d-inline">
                             <i class="fas fa-briefcase"></i> {" "}
                             {
-                          application?.jobApplicant?.experience.experience ?
+                          application?.jobApplicant?.experience?.experience ?
                           <span >{application?.jobApplicant?.experience?.experience.charAt(0).toUpperCase() + application?.jobApplicant?.experience?.experience.slice(1)}
                           ({application?.jobApplicant?.experience?.year} Years - {application?.jobApplicant?.experience?.month})
                           </span>
                           :
-                          <span >{application?.jobApplicant?.experience.charAt(0).toUpperCase() + application?.jobApplicant?.experience.slice(1)}</span>
+                          <span >{application?.jobApplicant?.experience?.charAt(0).toUpperCase() + application?.jobApplicant?.experience?.slice(1)}</span>
                           }
                           </p>
                           <p class="resume_content_location_sub_sub d-inline ">
@@ -133,12 +133,12 @@ export const Applications = () => {
                          <div class="table-cell table_data1">Experience</div>
                          <div class="table-cell table_data2">
                          {
-                          application?.jobApplicant?.experience.experience ?
+                          application?.jobApplicant?.experience?.experience ?
                           <span >{application?.jobApplicant?.experience?.experience.charAt(0).toUpperCase() + application?.jobApplicant?.experience?.experience.slice(1)}
                           ({application?.jobApplicant?.experience?.year} Years - {application?.jobApplicant?.experience?.month})
                           </span>
                           :
-                          <span >{application?.jobApplicant?.experience.charAt(0).toUpperCase() + application?.jobApplicant?.experience.slice(1)}</span>
+                          <span >{application?.jobApplicant?.experience?.charAt(0).toUpperCase() + application?.jobApplicant?.experience?.slice(1)}</span>
                           }
                          </div>
                        </div>
