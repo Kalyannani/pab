@@ -346,3 +346,7 @@ label.login_otp{
 .full_img{
     height: 100%;
 }
+
+.ant-upload-list-item-card-actions{
+    display: none !important;
+}

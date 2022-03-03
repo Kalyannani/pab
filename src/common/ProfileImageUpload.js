@@ -73,8 +73,9 @@ class ProfileImageUpload extends React.Component {
                         <img
                           className="resume_img img-responsive"
                           alt=""
-                          src={this.props.url? this.props.url : `images/girl_avtar.png`}
+                          src={imageUrl ? imageUrl : this.props.url ? this.props.url : `images/girl_avtar.png`}
                         />
+                        
                       </p>
                       <label for="file">
                         <i class="fas fa-camera img_pencil"></i>
