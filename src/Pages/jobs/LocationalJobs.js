@@ -2,44 +2,37 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import data from '../../JsonData/locations.json'
 import Subfilter from './subfilter'
-
+import { useLocation } from 'react-router-dom'
+import SearchFilter from './SearchFilter'
 const LocationalJobs = () => {
-    const [isReadMore, setIsReadMore] = useState(true);
+   
+    const location = useLocation();
+    const [locations,setLocations] = useState(data)
+    const handleSort =  (char) => {
+        setLocations(data.filter(post => {
+            if (char === "") {
+              //if query is empty
+              return post;
+            } else if (post.location.charAt(0).toLowerCase().includes(char.toLowerCase())) {
+              //returns filtered array
+              return post;
+            }
+          }) ) 
 
-    const toggleReadMore = () => {
-        setIsReadMore(!isReadMore);
-      };
+ 
+    }
 
     return (
-        <div >
-            {/* <div className="jobs_sec_1_joblocation">
+        <div >  { location.pathname === '/locationaljobs'?
+            <div className="jobs_sec_1_joblocation">
                 <div className="heading_pic_joblocation">
                     <div className="container">
-                        <div className="browse_joblocation_list-search_box">
-                            <form className="form-control">
-                                <div className="row">
-                                    <div className="col-lg-5 col-md-5" id="input1_joblocation">
-                                        <input type="text" className="form-control" id="search_box_input_joblocation"
-                                            placeholder="Job Title, Keywords, or Phrase" />
-                                    </div>
-                                    <div className="col-lg-5 col-md-5" id="input2_joblocation">
-                                        <input type="text" className="form-control" id="search_box_input_joblocation"
-                                            placeholder="City ,Province or Region" />
-                                    </div>
-                                    <div className="col-lg-2 col-md-2 col-xs-offset-3 col-xs-6 c0l-xs-offset-3"
-                                        id="input_btn_joblocation">
-                                        <a href="#"><button id="search_box_btn_joblocation" type="submit" className="btn-block">
-                                            Search</button></a>
-                                    </div>
-
-                                </div>
-                            </form>
-                        </div>
+                        <SearchFilter />
 
                         <Subfilter />
                     </div>
                 </div>
-            </div> */}
+            </div>:null}
 
 
             {/* <!-- sec 1 -->
@@ -53,10 +46,43 @@ const LocationalJobs = () => {
                 <div className="jobcategory_sec_2_sub">
                     <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY LOCATIONS</h6>
                     <hr className="bg-light" />
+                    { location.pathname === '/locationaljobs'?
+                        <div class="company_jobs_section_2_buttons text-left my-4">
+                            {/* <button class="company_jobs_section_2_button_sub current d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white ">Top 100</button> */}
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('a')}>A</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('b')}>B</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('c')}>C</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('d')}>D</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('e')}>E</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('f')}>F</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('g')}>G</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('h')}>H</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('i')}>I</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('j')}>J</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('k')}>K</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('l')}>L</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('m')}>M</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('n')}>N</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('o')}>O</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('p')}>P</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('q')}>Q</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('r')}>R</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('s')}>S</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('t')}>T</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('u')}>U</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('v')}>V</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('w')}>W</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('x')}>X</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('y')}>Y</button>
+                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('z')}>Z</button>
+                            {/* <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white ">0-99</button> */}
+
+
+                        </div>:null }
                     <div className="row">
                         {
-                            isReadMore?
-                            data.slice(0,15).map(res => {
+                             location.pathname === '/locationaljobs'?
+                             locations.map(res => {
                                 return <div class="col-lg-3 col-md-6">
                                     <Link to={`/browsefilterlist?locate=${res.location}`}>
                                         <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
@@ -64,11 +90,13 @@ const LocationalJobs = () => {
                                     </Link>
                                 </div>
                             }):
-                            data.map(res => {
+                            locations.slice(0,15).map(res => {
                                 return <div class="col-lg-3 col-md-6">
                                     <Link to={`/browsefilterlist?locate=${res.location}`}>
-                                        <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
-                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{res.location}</span></a>
+                                        <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span>
+                                            {/* <img src="images/auto_repair.png" alt=""
+                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /> */}
+                                            </span><span class="company_jobs_img_1_text align-self-center px-2">{res.location}</span></a>
                                     </Link>
                                 </div>
                             })
@@ -76,7 +104,9 @@ const LocationalJobs = () => {
                        
                     </div>
                     <div className='mb-3'>
-                        <span className="more_inner float-right mr-4" onClick={toggleReadMore}>{isReadMore ? "...more" : " show less"}</span>
+                    {
+                            location.pathname === '/locationaljobs' ? null:<Link to="/locationaljobs" className='float-right All-Links'>View All Locations</Link>
+                        }
                         </div>
                 </div>
                

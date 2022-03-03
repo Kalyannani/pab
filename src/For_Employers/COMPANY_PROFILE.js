@@ -4,10 +4,14 @@ import EmployeeSideBar from "./EmployeeSideBar";
 import { useDispatch, useSelector } from "react-redux";
 // import { getCompanyProfile } from "../action/action";
 import { useForm } from "react-hook-form";
+import { Autocomplete } from '@mui/material';
+import { TextField } from '@material-ui/core';
 import axios from "axios"
 import moment from "moment";
 import { toast } from "react-toastify";
 import apiList from "../lib/apiList";
+import industrydata from '../JsonData/Category.json'
+
 export const COMPANY_PROFILE = () => {
   // const dispatch = useDispatch();
   // const resultdata = useSelector((company) => company);
@@ -19,7 +23,7 @@ export const COMPANY_PROFILE = () => {
     companyname:"",
     websitelink:"",
     foundedDate:"",
-    organizationType:"",
+    industryType:[],
     country:"",
     description:"",
     contactNumber:"",
@@ -40,7 +44,7 @@ export const COMPANY_PROFILE = () => {
     companyname,
     websitelink,
     foundedDate,
-    organizationType,
+    industryType,
     country,
     description,
     contactNumber,
@@ -187,14 +191,39 @@ export const COMPANY_PROFILE = () => {
                       <div className=" col-lg-12 col-md-12">
                         <div className="form-group">
                           <label> Industry Type</label>
-                          <input
+                          {/* <input
                             type="text"
                             name="organizationType"
                             className="form_control"
                             placeholder="Ex : IT, Non-IT "
                             onChange={(e)=>formHandling(e)}
                             value={organizationType}
-                          />
+                          /> */}
+                          <Autocomplete
+                                                    id="combo-box-demo"
+                                                    single
+                                                    value={company.industryType}
+                                                    options={industrydata.map((res)=>{
+                                                    return res.Category
+                                                    })}
+                                                    getOptionLabel={(option) => option}
+                                                    onChange={(e, value) => {
+                                                    setCompany({
+                                                        ...company,
+                                                        industryType:value
+                                                    });
+                                                    }}
+                                                    
+                                                    renderInput={(params) => (
+                                                    <TextField
+                                                        {...params}
+                                                        name="single"
+                                                        label="Enter your Industry Type"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                    />
+                                                    )}
+                                                />
 
                         </div>
                       </div>

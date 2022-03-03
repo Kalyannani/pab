@@ -80,7 +80,7 @@ const Home = () => {
                         <div className="row">
                             <div className="col-lg-5 col-md-5" id="input1_joblocation">
                                 <input type="text" className="form-control" id="search_box_input_joblocation"
-                                    placeholder="Job Title, Keywords, or Phrase" name='keyword' value={keyword} onChange={(e) => {setKeyword(e.target.value); setKeywordError("")}}  />
+                                    placeholder="Job Title, Keywords, or Phrase" name='keyword' value={keyword} onChange={(e) => {setKeyword(e.target.value); setKeywordError("")}} />
                                 {keywordError != '' && <small style={{color: 'red'}}>{keywordError}</small>}
                             </div>
                             <div className="col-lg-5 col-md-5" id="input2_joblocation">
@@ -102,7 +102,7 @@ const Home = () => {
                     </form>
                 </div>
 
-                <div className="alljob_buttons text-left ">
+                {/* <div className="alljob_buttons text-left ">
                      <div className='Job_link'> 
                     <NavLink  to="/browsefilterlist"  className="jobs_jobs">
                             All Jobs
@@ -143,7 +143,7 @@ const Home = () => {
                     </Link>
                     </div>
                
-                </div>
+                </div> */}
                 </div>
             </div>
         </div>
@@ -160,8 +160,8 @@ const Home = () => {
     <CategoryJobs />
     <DesignationJobs />
     <SkillJobs />
-    <FeaturedCities />
-    {/* <LocationalJobs /> */}
+    {/* <FeaturedCities /> */}
+    <LocationalJobs />
     <OurClients />
     
     

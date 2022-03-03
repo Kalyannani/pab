@@ -115,8 +115,11 @@ import { Link } from 'react-router-dom'
             </Link>
         </div>
     </div>
+    <Link to="/locationaljobs" className='float-right'>View All Locations</Link>
 </div>
+
 </div>
+
         </div>
     )
 }

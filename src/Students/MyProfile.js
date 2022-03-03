@@ -230,7 +230,7 @@ console.log(typeof(profile.currentlocation))
                     <label> Current Location </label>
                     <Autocomplete
                         id="combo-box-demo"
-                        multiple
+                        single
                         value={profile.currentlocation}
                         options={data.map((res)=>{
                           return res.location
@@ -247,7 +247,7 @@ console.log(typeof(profile.currentlocation))
                         renderInput={(params) => (
                           <TextField
                             {...params}
-                            name="multiple"
+                            name="single"
                             label="Enter your current location"
                             variant="outlined"
                             fullWidth

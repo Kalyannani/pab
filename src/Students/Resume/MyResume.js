@@ -7,33 +7,41 @@ import ChipInput from "material-ui-chip-input";
 // import PersonalDetails from './personalDetails'
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { toast } from 'react-toastify';
 import { Line } from 'rc-progress';
 import FileUploadInput from "./FileUploadInput";
 import ResumeFileUpload from "../../common/ResumeFileUpload";
 import ProfileImageUpload from "../../common/ProfileImageUpload";
+
+import { Autocomplete } from '@mui/material';
+import { TextField } from '@material-ui/core';
+import Skillsdata from '../../JsonData/Skill.json';
+import Designationdata from '../../JsonData/Designation.json';
+import Categorydata from '../../JsonData/Category.json';
+import NoticePerioddata from '../../JsonData/Noticeperiod.json'
 
 
 const MyResume = () => {
   const dispatch = useDispatch();
   const [project, setProject] = useState(false);
   const [progressBar, setProgressBar] = useState(0);
-  // const [currentcompany, setCurrentcompany] = useState(false);
+  const [currentcompany, setCurrentcompany] = useState(false);
 
-  // const NoHandling = (e) => {
-  //   setReducer({ ...reducer, currentcompany: e.target.value });
-  // };
-
-
-  // const yesButton = () => {
-  //   setCurrentcompany(true);
-  //   reducer.currentcompany = {};
-  // };
+  const currentcompany_NoHandling = (e) => {
+    setProfile({ ...profile, currentcompany: e.target.value });
+  };
 
 
+  const currentcompany_yesButton = () => {
+    setCurrentcompany(true);
+    profile.currentcompany = {};
+  };
 
-  // const NoButton = () => {
-  //   setCurrentcompany(false);
-  // };
+
+
+  const currentcompany_NoButton = () => {
+    setCurrentcompany(false);
+  };
 
 
 
@@ -66,6 +74,8 @@ const MyResume = () => {
     }
   })
 
+
+
   const [education, setEducation] = useState([
     {
       highestgraduation: "",
@@ -81,7 +91,7 @@ const MyResume = () => {
     {
       years: "",
       months: "",
-      designation: "",
+      designation: [],
       organization: "",
       startYear: "",
       endYear: "",
@@ -265,6 +275,32 @@ const MyResume = () => {
       });
   };
 
+  // deleting the data
+
+  const deletedata = (id) => {
+    // e.preventDefault()
+    console.log(localStorage.getItem("token"))
+    axios
+      .delete(`${apiList.user}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data)
+        console.log("funtion working")
+        toast.success(response.data.message)
+        getData();
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message)
+        console.log(err.response);
+      });
+
+      
+
+  };
+
 
   return (
     <div>
@@ -417,8 +453,8 @@ const MyResume = () => {
                   <a href="#ProfileSummary"> Profile Summary</a>
                   <a href="#KeySkills"> Keyskills</a>
                   <a href="#Employment"> Employement</a>
-                  <a href="#Education"> Eductaion</a>
-                  <a href="#ITskills"> IT Skills</a>
+                  <a href="#Education"> Education</a>
+                  {/* <a href="#ITskills"> IT Skills</a> */}
                   <a href="#Project"> Project</a>
                   <a href="#Accomplishment"> Accomplishments</a>
                   <a href="#DesiredCareer"> Desired Career Profile</a>
@@ -650,7 +686,7 @@ const MyResume = () => {
                           <form>
                             <div className="autocomplete">
                               <label>Skills</label>
-                              <ChipInput
+                              {/* <ChipInput
                                 label="Skills"
                                 variant="outlined"
                                 helperText="Press enter to add skills"
@@ -671,7 +707,32 @@ const MyResume = () => {
                                   });
                                 }}
                                 fullWidth
-                              />
+                              /> */}
+                              <Autocomplete
+                                                    id="combo-box-demo"
+                                                    multiple
+                                                    value={profile.skills}
+                                                    options={Skillsdata.map((res)=>{
+                                                    return res.Skill
+                                                    })}
+                                                    getOptionLabel={(option) => option}
+                                                    onChange={(e, value) => {
+                                                    setProfile({
+                                                        ...profile,
+                                                        skills:value
+                                                    });
+                                                    }}
+                                                    
+                                                    renderInput={(params) => (
+                                                    <TextField
+                                                        {...params}
+                                                        name="multiple"
+                                                        label="Enter your current location"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                    />
+                                                    )}
+                                                />
 
                             </div>
                           </form>
@@ -714,7 +775,7 @@ const MyResume = () => {
                     data-target="#employ"
                   >
                     {" "}
-                    <span>
+                    <span id="Education">
                       <i className="fas fa-pencil-alt pencil_clearfix"></i>
                     </span>
                   </a>
@@ -724,11 +785,15 @@ const MyResume = () => {
                     return (<>
                       <h5 className="junior_edit">
                         {employment.designation}{" "}
-                        <a href="#" data-toggle="modal" data-target="#employ">
+                        <a href="#" data-toggle="modal" data-target="#employ" >
                           {" "}
                           <i className="fas fa-pencil-alt pencil_clearfix pencil"></i>
                         </a>
-                        <i class="far fa-trash-alt remove"></i>
+                        <a href="#" data-toggle="modal"  onClick={()=>deletedata(employment._id)}>
+                       
+                          {" "}
+                        <i class="far fa-trash-alt remove" ></i>
+                        </a>
                       </h5>
                       <p className="job_usa">{employment.organization}</p>
                       <p className="job_usa">
@@ -741,7 +806,7 @@ const MyResume = () => {
                     </>)
                   })
                 }
-                <div id="Education">
+                <div >
 
                 </div>
                 <div
@@ -806,25 +871,75 @@ const MyResume = () => {
                               <div className="col-lg-12">
                                 <div className="form-group">
                                   <label> Your Designation</label>
-                                  <input
+                                  {/* <input
                                     type="text"
                                     name="designation"
                                     className="form_control"
                                     placeholder="Your Designation"
                                     onChange={(e) => empHandling(e)}
-                                  />
+                                  /> */}
+                                     <Autocomplete
+                                                    id="combo-box-demo"
+                                                    single
+                                                    value={employment.designation}
+                                                    options={Designationdata.map((res)=>{
+                                                    return res.Designation
+                                                    })}
+                                                    getOptionLabel={(option) => option}
+                                                    onChange={(e, value) => {
+                                                    setEmployment({
+                                                        ...employment,
+                                                        designation:value
+                                                    });
+                                                    }}
+                                                    
+                                                    renderInput={(params) => (
+                                                    <TextField
+                                                        {...params}
+                                                        name="single"
+                                                        label="Present Designation"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                    />
+                                                    )}
+                                                />
                                 </div>
                               </div>
                               <div className="col-lg-12">
                                 <div className="form-group">
-                                  <label> Your Organization</label>
-                                  <input
+                                  <label> Your Organization Category</label>
+                                  {/* <input
                                     name="organization"
                                     onChange={(e) => empHandling(e)}
                                     type="text"
                                     className="form_control"
                                     placeholder="Your Organization"
-                                  />
+                                  /> */}
+                                  <Autocomplete
+                                                    id="combo-box-demo"
+                                                    single
+                                                    value={employment.organization}
+                                                    options={Categorydata.map((res)=>{
+                                                    return res.Category
+                                                    })}
+                                                    getOptionLabel={(option) => option}
+                                                    onChange={(e, value) => {
+                                                    setEmployment({
+                                                        ...employment,
+                                                        organization:value
+                                                    });
+                                                    }}
+                                                    
+                                                    renderInput={(params) => (
+                                                    <TextField
+                                                        {...params}
+                                                        name="single"
+                                                        label="Present Organization Category"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                    />
+                                                    )}
+                                                />
                                 </div>
                               </div>
                               <div className="col-lg-12">
@@ -839,8 +954,8 @@ const MyResume = () => {
                                       id="inlineRadio1"
 
                                       value="No"
-                                    // onChange={(e)=>NoHandling(e)}
-                                    //  onClick={() => NoButton()}
+                                    onChange={(e)=>currentcompany_NoHandling(e)}
+                                     onClick={() => currentcompany_NoButton()}
                                     />
                                     <label
                                       className="form-check-label"
@@ -855,8 +970,8 @@ const MyResume = () => {
                                       type="radio"
                                       name="This_Is_Your_Current_Company"
                                       id="inlineRadio2"
-                                      //onChange={(e)=>NoHandling(e)}
-                                      // onClick={() => yesButton()}
+                                      // onChange={(e)=>NoHandling(e)}
+                                      onClick={() => currentcompany_yesButton()}
                                       value="Yes"
                                     // onChange={(e) => NoHandling(e)}
 
@@ -871,7 +986,7 @@ const MyResume = () => {
                                 </div>
                               </div>
                               <div>
-                                {/* {currentcompany ? (
+                                {currentcompany ? (
 
                                 <div className="row container">
                                 <div className=" col-lg-12 col-md-12">
@@ -888,7 +1003,7 @@ const MyResume = () => {
                                   </div>
                                 </div>
                                 </div>
-                          ):( */}
+                          ):(
                                 <div className="row container">
                                   <div className=" col-lg-6 col-md-6">
                                     <div className="form-group">
@@ -917,7 +1032,7 @@ const MyResume = () => {
                                     </div>
                                   </div>
                                 </div>
-                                {/* )} */}
+                                 )} 
                               </div>
 
                               <div className="col-lg-12">
@@ -937,13 +1052,38 @@ const MyResume = () => {
                               <div className="col-lg-12">
                                 <div className="form-group">
                                   <label> Notice Period</label>
-                                  <input
+                                  {/* <input
                                     name="noticePeriod"
                                     onChange={(e) => empHandling(e)}
                                     type="text"
                                     className="form_control"
                                     placeholder="Enter Notice Period"
-                                  />
+                                  /> */}
+                                  <Autocomplete
+                                                    id="combo-box-demo"
+                                                    single
+                                                    value={employment.noticePeriod}
+                                                    options={NoticePerioddata.map((res)=>{
+                                                    return res.noticeperiod
+                                                    })}
+                                                    getOptionLabel={(option) => option}
+                                                    onChange={(e, value) => {
+                                                    setEmployment({
+                                                        ...employment,
+                                                        noticePeriod:value
+                                                    });
+                                                    }}
+                                                    
+                                                    renderInput={(params) => (
+                                                    <TextField
+                                                        {...params}
+                                                        name="single"
+                                                        label="Your Notice Period"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                    />
+                                                    )}
+                                                />
                                 </div>
                               </div>
                             </div>
@@ -979,7 +1119,7 @@ const MyResume = () => {
                   Mention your employment details including your current and
                   previous company work experience
                 </p>
-                <div className="education_content_1" id="ITskills">
+                <div className="education_content_1" id="Project">
                   {
                     profile.education.map((edu) => {
                       console.log(edu)
@@ -1200,231 +1340,8 @@ const MyResume = () => {
                 </div>
               </div>
 
-              <div className="content">
-                <div className="job-bx-title clearfix">
-                  <h5 className=" pull-left text-capitalize cp">IT Skills</h5>
-                  <a
-                    href="#"
-                    className="site_button_resume  float-right"
-                    data-toggle="modal"
-                    data-target="#itSkills"
-                  >
-                    {" "}
-                    <span>
-                      <i className="fas fa-pencil-alt pencil_clearfix"></i>
-                    </span>
-                  </a>
-                </div>
 
-                <p className="job_usa">
-                  Mention your employment details including your current and
-                  previous company work experience
-                </p>
-                <div className="table_content">
-                  <div className="table-responsive">
-                    <table className="table ">
-                      <thead>
-                        <tr>
-                          <th scope="col">Skills</th>
-                          <th scope="col">Version</th>
-                          <th scope="col">Rating</th>
-                          <th scope="col">Experience</th>
-                          <th scope="col"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr className="table_row_content">
-                          <td scope="row" className="table_content_1">
-                            Bootstrap
-                          </td>
-                          <td className="table_content_1">4</td>
-                          <td className="table_content_1 ml-3">
 
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                          </td>
-                          <td className="table_content_1">3 Year 5 Months</td>
-                          <td>
-                            <a
-                              href="#"
-                              data-toggle="modal"
-                              data-target="#itSkills"
-                            >
-                              <i className="fas fa-pencil-alt pencil"></i>
-                            </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td scope="row" className="table_content_1">
-                            Bootstrap
-                          </td>
-                          <td className="table_content_1">5</td>
-                          <td className="table_content_1 ml-3">
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                          </td>
-                          <td className="table_content_1">2 Year 5 Months</td>
-                          <td>
-                            <a href="#">
-                              <i className="fas fa-pencil-alt pencil"></i>
-                            </a>
-                          </td>
-                        </tr>
-                        <tr className="table_row_content">
-                          <td scope="row" className="table_content_1">
-                            HTML
-                          </td>
-                          <td className="table_content_1">5</td>
-                          <td className="table_content_1 ml-3">
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                          </td>
-                          <td className="table_content_1">4 Year 5 Months</td>
-                          <td>
-                            <a href="#">
-                              <i className="fas fa-pencil-alt pencil"></i>
-                            </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td
-                            scope="row"
-                            className="table_content_1"
-                            id="Project"
-                          >
-                            CSS
-                          </td>
-                          <td className="table_content_1">3</td>
-                          <td className="table_content_1 ml-3">
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-                            <i class="fas fa-star star_rating star_rating_1"></i>
-
-                          </td>
-                          <td className="table_content_1">0 Year 5 Months</td>
-                          <td>
-                            <a href="#">
-                              <i className="fas fa-pencil-alt pencil"></i>
-                            </a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                <div
-                  className="modal fade"
-                  id="itSkills"
-                  tabindex="-1"
-                  role="dialog"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-                >
-                  <div
-                    className="modal-dialog modal-dialog-centered modal-lg "
-                    role="document"
-                  >
-                    <div className="modal-content">
-                      <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">
-                          IT Skills
-                        </h5>
-                        <button
-                          type="button"
-                          className="close"
-                          data-dismiss="modal"
-                          aria-label="Close"
-                        >
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div className="modal-body ">
-                        <div className="modal_content">
-                          <form action="#">
-                            <div className="row m-b30">
-                              <div className=" col-lg-12 col-md-12">
-                                <div className="form-group">
-                                  <label>IT Skills</label>
-                                  <input type="text" className="form_control" name="IT_Skills" onChange={(e) => formHandling(e)} />
-                                </div>
-                              </div>
-
-                              <div className=" col-lg-6 col-md-6">
-                                <div className="form-group">
-                                  <label> Version</label>
-                                  <input type="text" className="form_control" name="Version" onChange={(e) => formHandling(e)} />
-                                </div>
-                              </div>
-                              <div className=" col-lg-6 col-md-6">
-                                <label>Rating</label>
-                                <div className="form-group">
-                                  <div
-                                  // onMouseOver={hoverOver}
-                                  // onMouseOut={() => hoverOver(null)}
-                                  // onClick={event => setRating(event.target.getAttribute("star-id"))} 
-
-                                  >
-                                    {/* {Array.from({ length: 5 }, (v, i) => (
-                                  <Star starId={i + 1} marked={selection ? selection > i : rating > i} />
-                                ))} */}
-                                    {/* <td className="table_content_1 ml-3"> */}
-
-                                    <i class="fas fa-star star_rating star_rating_1"></i>
-                                    <i class="fas fa-star star_rating star_rating_1"></i>
-                                    <i class="fas fa-star star_rating star_rating_1"></i>
-                                    <i class="fas fa-star star_rating star_rating_1"></i>
-                                    <i class="fas fa-star star_rating star_rating_1"></i>
-                                    {/* </td> */}
-                                  </div>
-
-                                </div>
-                              </div>
-
-                              <div className=" col-lg-6 col-md-6">
-                                <div className="form-group">
-                                  <label> Experience</label>
-                                  <input
-                                    name="IT_Experience_inYears"
-                                    onChange={(e) => formHandling(e)}
-                                    type="text"
-                                    className="form_control"
-                                    placeholder="Years"
-                                  />
-                                </div>
-                              </div>
-                              <div className=" col-lg-6 col-md-6">
-                                <div className="form-group">
-                                  <label> Months </label>
-                                  <input
-                                    onChange={(e) => formHandling(e)}
-                                    name="IT_Experience_inMonths"
-                                    type="text"
-                                    className="form_control"
-                                    placeholder="Months"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                      <div className="modal-footer">
-                        <button type="button" className="update" >
-                          Save changes
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
               {/* project        */}
               <div className="content">
                 <div className="job-bx-title clearfix">

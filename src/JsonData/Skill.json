@@ -1954,5 +1954,16 @@
     {
         "id":"489",
         "Skill":"Wine making"
+    },
+    {
+        "id":"490",
+        "Skill":"ReactJS"
+    },
+    {
+        "id":"491",
+        "Skill":"Redux"
+    },{
+        "id":"450",
+        "Skill":"Node JS"
     }
 ]
