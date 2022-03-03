@@ -71,7 +71,7 @@ export const App = (props) => {
   <Route exact path="/Manage_jobs" element={<Manage_Jobs />} />
   <Route exact path="/Applications/:id" element={<Applications />}/>
   <Route exact path="/post_jobs" element={<POST_A_JOB />} />
-  <Route exact path="/companies" element={<Companies />} />
+  {/* <Route exact path="/companies" element={<Companies />} /> */}
   <Route exact path="/browsefilterlist" element={<BrowseFilterList/>} />
   <Route exact path="/browsefiltergrid" element={<BrowseFilterGrid />} />
   <Route exact path="/alljobs" element={<AllJobs />} />
@@ -86,6 +86,8 @@ export const App = (props) => {
   <Route exact path="/termsandconditions" element={<Terms/>}/>
   <Route exact path="/Privacypolicy" element={<Privacypolicy/>}/>
   <Route exact path="/fraudalert" element={<FraudAlert/>}/>
+  {/* <Route path='*' exact={true} element={</>} /> */}
+
    </Routes>
    <Footer />
   

@@ -45,7 +45,7 @@ const LocationFilter = (props) => {
     }
 
     return <>
-        <div class="card">
+        <div class="card" >
             <div class="card-header" id="headingThree">
 
                 <h5

@@ -70,9 +70,9 @@ const Navbar = () => {
                                 <li className="nav-item">
                                     <Link className="nav-link font-weight-bold" style={{ color: state.color }} id="a1" to="/" data-toggle={collapse} data-target={id}>HOME</Link>
                                 </li>
-                                <li className="nav-item">
+                                {/* <li className="nav-item">
                                     <Link className="nav-link font-weight-bold" style={{ color: state.color }} id="a1" to="/companies" data-toggle={collapse} data-target={id}>COMPANIES</Link>
-                                </li>
+                                </li> */}
                                 <li className="nav-item dropdown position-relative d-inline-block">
                                     <a className="nav-link dropdown-toggle  font-weight-bold" href="#" id="a2" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: state.color }}>
@@ -114,7 +114,7 @@ const Navbar = () => {
                                         <div className="dropdown-menu dropdown-content  d-none position-absolute position-relative ml-4 bg-white rounded"  data-toggle={collapse} data-target={id}
                                             aria-labelledby="navbarDropdown">
                                             <Link className="dropdown-item" to="/hireandtrain">HireAndTrain <sup className='new_blink_inner'>New</sup></Link>
-                                        
+                                            <Link className="dropdown-item" to="/hireandtrain">GetYourResume <sup className='new_blink_inner'>New</sup></Link>
                                             {/* <Link className="dropdown-item"
                                                 to="/sellskill">Sell Your Skills  <sup className='new_blink_inner'>New</sup>   </Link>
                                      */}
