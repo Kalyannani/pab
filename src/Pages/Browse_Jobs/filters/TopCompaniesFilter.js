@@ -78,7 +78,8 @@ console.log(companies)
                     <div className="accordionItemContent">
                         <form action="#" className="acc_form">
                             {
-                            isReadMore?companies.slice(0,5).map(company => {
+                            isReadMore?
+                            companies.slice(0,5).map(company => {
                                 return <div className="form-check my-1">
                                 <input
                                     className="form-check-input"

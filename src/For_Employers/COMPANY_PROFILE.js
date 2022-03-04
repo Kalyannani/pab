@@ -23,7 +23,7 @@ export const COMPANY_PROFILE = () => {
     companyname:"",
     websitelink:"",
     foundedDate:"",
-    industryType:[],
+    organizationType:[],
     country:"",
     description:"",
     contactNumber:"",
@@ -44,7 +44,7 @@ export const COMPANY_PROFILE = () => {
     companyname,
     websitelink,
     foundedDate,
-    industryType,
+    organizationType,
     country,
     description,
     contactNumber,
@@ -202,7 +202,7 @@ export const COMPANY_PROFILE = () => {
                           <Autocomplete
                                                     id="combo-box-demo"
                                                     single
-                                                    value={company.industryType}
+                                                    value={organizationType}
                                                     options={industrydata.map((res)=>{
                                                     return res.Category
                                                     })}
@@ -210,7 +210,7 @@ export const COMPANY_PROFILE = () => {
                                                     onChange={(e, value) => {
                                                     setCompany({
                                                         ...company,
-                                                        industryType:value
+                                                        organizationType:value
                                                     });
                                                     }}
                                                     

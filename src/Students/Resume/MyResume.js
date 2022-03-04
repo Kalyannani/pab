@@ -26,28 +26,33 @@ const MyResume = () => {
   const [project, setProject] = useState(false);
   const [progressBar, setProgressBar] = useState(0);
   const [currentcompany, setCurrentcompany] = useState(false);
-
-  const currentcompany_NoHandling = (e) => {
-    setProfile({ ...profile, currentcompany: e.target.value });
-  };
+  const [modalData,setModalData] = useState()
 
 
   const currentcompany_yesButton = () => {
     setCurrentcompany(true);
-    profile.currentcompany = {};
+    setEmployment({
+      ...employment,
+      startYear:"",
+      endYear: new Date()
+    })
   };
 
 
 
   const currentcompany_NoButton = () => {
     setCurrentcompany(false);
+    setEmployment({
+      ...employment,
+      startYear:"",
+      endYear:""
+    })
   };
 
 
 
-
-
   const [profile, setProfile] = useState({
+    requiredItem: 0,
     name: "",
     email: "",
     profileImage: "",
@@ -92,7 +97,7 @@ const MyResume = () => {
       years: "",
       months: "",
       designation: [],
-      organization: "",
+      organization: [],
       startYear: "",
       endYear: "",
       profileDescription: "",
@@ -100,7 +105,7 @@ const MyResume = () => {
     },
   ]);
 
-  console.log(profile.resume)
+
   const formHandling = (e) => {
     setProfile({
       ...profile,
@@ -275,8 +280,19 @@ const MyResume = () => {
       });
   };
 
-  // deleting the data
+  const replaceModalItem=(id)=> {
+    console.log("working")
+    setProfile({
+      ...profile,
+      requiredItem: id
+    })
+    setModalData(profile.employment[id])
+  }
+  const setInitialData = ()=>{
+    setModalData()
+  }
 
+  // deleting the data
   const deletedata = (id) => {
     // e.preventDefault()
     console.log(localStorage.getItem("token"))
@@ -773,38 +789,47 @@ const MyResume = () => {
                     className="site_button_resume  float-right"
                     data-toggle="modal"
                     data-target="#employ"
+                    onClick={()=>setInitialData()}
                   >
                     {" "}
                     <span id="Education">
-                      <i className="fas fa-pencil-alt pencil_clearfix"></i>
+                      <i className="fas fa-pencil-alt pencil_clearfix" ></i>
                     </span>
                   </a>
                 </div>
                 {
-                  profile.employment.map((employment) => {
+                  profile.employment?
+                  profile.employment.map((employment,index) => {
                     return (<>
                       <h5 className="junior_edit">
                         {employment.designation}{" "}
                         <a href="#" data-toggle="modal" data-target="#employ" >
                           {" "}
-                          <i className="fas fa-pencil-alt pencil_clearfix pencil"></i>
+                          <i className="fas fa-pencil-alt pencil_clearfix pencil"
+                          onClick={()=>replaceModalItem(index)}
+                          ></i>
                         </a>
                         <a href="#" data-toggle="modal"  onClick={()=>deletedata(employment._id)}>
-                       
+
                           {" "}
                         <i class="far fa-trash-alt remove" ></i>
                         </a>
                       </h5>
                       <p className="job_usa">{employment.organization}</p>
                       <p className="job_usa">
-                        Oct 2015 to Present (3 years 4 months)
+                        {moment(employment.startYear).format('YYYY MMMM')} to {" "}
+                        {
+                          moment(employment.endYear).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM')?
+                          "Present" :moment(employment.endYear).format('YYYY MMMM')
+                        }
+                         (3 years 4 months)
                       </p>
                       <p className="job_usa" >
                         Available to join in {employment.months}
                       </p>
                       <p className="job_usa">{employment.designation}</p>
                     </>)
-                  })
+                  }):null
                 }
                 <div >
 
@@ -844,6 +869,7 @@ const MyResume = () => {
                                     className="form_control"
                                     placeholder="Years"
                                     name="years"
+                                    value={modalData?modalData.years:null}
                                     onChange={(e) => empHandling(e)}
 
                                   />
@@ -852,7 +878,7 @@ const MyResume = () => {
                               <div className=" col-lg-6 col-md-6">
                                 <div className="form-group">
                                   <label>Months</label>
-                                  <select className="form_control" name="months" onChange={(e) => empHandling(e)}>
+                                  <select className="form_control" value={modalData?.months} name="months" onChange={(e) => empHandling(e)}>
                                     <option hidden>Months</option>
                                     <option value="01 Months">01 Month</option>
                                     <option value="02 Months">02 Months</option>
@@ -881,7 +907,8 @@ const MyResume = () => {
                                      <Autocomplete
                                                     id="combo-box-demo"
                                                     single
-                                                    value={employment.designation}
+                                                    value={
+                                                      modalData?.designation?modalData.designation:null}
                                                     options={Designationdata.map((res)=>{
                                                     return res.Designation
                                                     })}
@@ -918,7 +945,8 @@ const MyResume = () => {
                                   <Autocomplete
                                                     id="combo-box-demo"
                                                     single
-                                                    value={employment.organization}
+                                                    value={
+                                                      modalData?.organization?modalData.organization:null}
                                                     options={Categorydata.map((res)=>{
                                                     return res.Category
                                                     })}
@@ -947,14 +975,12 @@ const MyResume = () => {
                                 <div className="form-group">
                                   <div className="form-check form-check-inline">
                                     <input
+                                      defaultChecked
                                       className="form-check-input"
                                       type="radio"
-
                                       name="This_Is_Your_Current_Company"
                                       id="inlineRadio1"
-
                                       value="No"
-                                    onChange={(e)=>currentcompany_NoHandling(e)}
                                      onClick={() => currentcompany_NoButton()}
                                     />
                                     <label
@@ -970,11 +996,8 @@ const MyResume = () => {
                                       type="radio"
                                       name="This_Is_Your_Current_Company"
                                       id="inlineRadio2"
-                                      // onChange={(e)=>NoHandling(e)}
                                       onClick={() => currentcompany_yesButton()}
                                       value="Yes"
-                                    // onChange={(e) => NoHandling(e)}
-
                                     />
                                     <label
                                       className="form-check-label"
@@ -989,16 +1012,29 @@ const MyResume = () => {
                                 {currentcompany ? (
 
                                 <div className="row container">
-                                <div className=" col-lg-12 col-md-12">
+                                <div className=" col-lg-6 col-md-6">
                                   <div className="form-group">
                                     <label> Started Working From</label>
                                     <input
                                       type="date"
                                       className="form_control"
                                       placeholder="Years"
-                                      name="Started_Working_From"
-                                      onChange={(e)=>formHandling(e)}
-                                    
+                                      name="startYear"
+                                      value={moment(modalData?.startYear).format("YYYY-MM-DD")}
+                                      onChange={(e)=>empHandling(e)}
+                                    />
+                                  </div>
+                                </div>
+                                <div className=" col-lg-6 col-md-6">
+                                  <div className="form-group">
+                                    <label> Working Till</label>
+                                    <input
+                                      type="text"
+                                      className="form_control"
+                                      placeholder="Years"
+                                      name="endYear"
+                                      value="Present"
+                                      disabled
                                     />
                                   </div>
                                 </div>
@@ -1012,8 +1048,9 @@ const MyResume = () => {
                                         type="date"
                                         className="form_control"
                                         placeholder="Years"
-                                        name=" Started_Working_From"
-                                        onChange={(e) => formHandling(e)}
+                                        name="startYear"
+                                        value={moment(modalData?.startYear).format("YYYY-MM-DD")}
+                                        onChange={(e) => empHandling(e)}
 
                                       />
                                     </div>
@@ -1022,11 +1059,12 @@ const MyResume = () => {
                                     <div className="form-group">
                                       <label> Worked Till</label>
                                       <input
-                                        name="Worked_Till"
+                                        name="endYear"
                                         type="date"
                                         className="form_control"
                                         placeholder="Years"
-                                        onChange={(e) => formHandling(e)}
+                                        value={moment(modalData?.endYear).format("YYYY-MM-DD")}
+                                        onChange={(e) => empHandling(e)}
 
                                       />
                                     </div>
@@ -1041,6 +1079,7 @@ const MyResume = () => {
                                   <textarea
                                     name="profileDescription"
                                     onChange={(e) => empHandling(e)}
+                                    value={modalData?.profileDescription}
                                     className="form_control"
                                     cols="30"
                                     rows="5"
@@ -1049,7 +1088,9 @@ const MyResume = () => {
                                   ></textarea>
                                 </div>
                               </div>
-                              <div className="col-lg-12">
+                              {
+                                currentcompany ?
+                                <div className="col-lg-12">
                                 <div className="form-group">
                                   <label> Notice Period</label>
                                   {/* <input
@@ -1060,32 +1101,34 @@ const MyResume = () => {
                                     placeholder="Enter Notice Period"
                                   /> */}
                                   <Autocomplete
-                                                    id="combo-box-demo"
-                                                    single
-                                                    value={employment.noticePeriod}
-                                                    options={NoticePerioddata.map((res)=>{
-                                                    return res.noticeperiod
-                                                    })}
-                                                    getOptionLabel={(option) => option}
-                                                    onChange={(e, value) => {
-                                                    setEmployment({
-                                                        ...employment,
-                                                        noticePeriod:value
-                                                    });
-                                                    }}
-                                                    
-                                                    renderInput={(params) => (
-                                                    <TextField
-                                                        {...params}
-                                                        name="single"
-                                                        label="Your Notice Period"
-                                                        variant="outlined"
-                                                        fullWidth
-                                                    />
-                                                    )}
-                                                />
+                                    id="combo-box-demo"
+                                    single
+                                    // value={employment.noticePeriod}
+                                    options={NoticePerioddata.map((res)=>{
+                                    return res.noticeperiod
+                                    })}
+                                    getOptionLabel={(option) => option}
+                                    onChange={(e, value) => {
+                                    setEmployment({
+                                        ...employment,
+                                        noticePeriod:value
+                                    });
+                                    }}
+                                    
+                                    renderInput={(params) => (
+                                    <TextField
+                                        {...params}
+                                        name="single"
+                                        label="Your Notice Period"
+                                        variant="outlined"
+                                        fullWidth
+                                    />
+                                    )}
+                                    />
                                 </div>
-                              </div>
+                              </div>:null
+                              }
+                              
                             </div>
                           </form>
                         </div>
@@ -1122,7 +1165,6 @@ const MyResume = () => {
                 <div className="education_content_1" id="Project">
                   {
                     profile.education.map((edu) => {
-                      console.log(edu)
                       return (<><h5 className="education_heading">
                         {edu.highestgraduation} - {edu.course}{" "}
                         <a href="#" data-toggle="modal" data-target="#study">
