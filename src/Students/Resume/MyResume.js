@@ -163,9 +163,24 @@ const MyResume = () => {
       });
   };
 
-  const handleEmployment = (e) => {
+  const handleEmployment = (e,id) => {
     e.preventDefault()
-    let updatedDetails = {
+    if(id){
+      axios.put(`${apiList.user}/${id}`, employment,{
+        headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              }
+      }).then((response) => {
+        console.log(response.data)
+        getData();
+      })
+      .catch((err) => {
+
+        console.log(err.response);
+      });
+    }
+    else{
+       let updatedDetails = {
       ...profile,
       employment: [...profile.employment, employment]
     }
@@ -183,6 +198,8 @@ const MyResume = () => {
 
         console.log(err.response);
       });
+    }
+   
   };
 
   const handleEducation = (e) => {
@@ -286,10 +303,19 @@ const MyResume = () => {
       ...profile,
       requiredItem: id
     })
-    setModalData(profile.employment[id])
+    setEmployment(profile.employment[id])
   }
   const setInitialData = ()=>{
-    setModalData()
+    setEmployment( {
+      years: "",
+      months: "",
+      designation: [],
+      organization: [],
+      startYear: "",
+      endYear: "",
+      profileDescription: "",
+      noticePeriod: "",
+    })
   }
 
   // deleting the data
@@ -725,30 +751,30 @@ const MyResume = () => {
                                 fullWidth
                               /> */}
                               <Autocomplete
-                                                    id="combo-box-demo"
-                                                    multiple
-                                                    value={profile.skills}
-                                                    options={Skillsdata.map((res)=>{
-                                                    return res.Skill
-                                                    })}
-                                                    getOptionLabel={(option) => option}
-                                                    onChange={(e, value) => {
-                                                    setProfile({
-                                                        ...profile,
-                                                        skills:value
-                                                    });
-                                                    }}
-                                                    
-                                                    renderInput={(params) => (
-                                                    <TextField
-                                                        {...params}
-                                                        name="multiple"
-                                                        label="Enter your current location"
-                                                        variant="outlined"
-                                                        fullWidth
-                                                    />
-                                                    )}
-                                                />
+                                    id="combo-box-demo"
+                                    multiple
+                                    value={profile.skills}
+                                    options={Skillsdata.map((res)=>{
+                                    return res.Skill
+                                    })}
+                                    getOptionLabel={(option) => option}
+                                    onChange={(e, value) => {
+                                    setProfile({
+                                        ...profile,
+                                        skills:value
+                                    });
+                                    }}
+                                    
+                                    renderInput={(params) => (
+                                    <TextField
+                                        {...params}
+                                        name="multiple"
+                                        label="Enter your current location"
+                                        variant="outlined"
+                                        fullWidth
+                                    />
+                                    )}
+                                />
 
                             </div>
                           </form>
@@ -822,10 +848,24 @@ const MyResume = () => {
                           moment(employment.endYear).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM')?
                           "Present" :moment(employment.endYear).format('YYYY MMMM')
                         }
-                         (3 years 4 months)
+                        ({
+                          moment(employment.endYear).diff(moment(employment.startYear), "years") 
+                        }
+                        {
+                          moment(employment.endYear).diff(moment(employment.startYear), "years")=== 1 ? " Year": " Years"
+                        }
+                         {" "}-{" "}
+                        {
+                          moment(employment.endYear).diff(moment(employment.startYear).add(moment(employment.endYear).diff(moment(employment.startYear), 'year'), 'years'), 'months')
+                        } 
+                        {
+                          moment(employment.endYear).diff(moment(employment.startYear).add(moment(employment.endYear).diff(moment(employment.startYear), 'year'), 'years'), 'months') === 1 ?
+                          " Month": " Months"
+                        }
+                        )
                       </p>
                       <p className="job_usa" >
-                        Available to join in {employment.months}
+                        Available to join in {employment.noticePeriod}
                       </p>
                       <p className="job_usa">{employment.designation}</p>
                     </>)
@@ -869,7 +909,7 @@ const MyResume = () => {
                                     className="form_control"
                                     placeholder="Years"
                                     name="years"
-                                    value={modalData?modalData.years:null}
+                                    value={employment.years}
                                     onChange={(e) => empHandling(e)}
 
                                   />
@@ -878,7 +918,7 @@ const MyResume = () => {
                               <div className=" col-lg-6 col-md-6">
                                 <div className="form-group">
                                   <label>Months</label>
-                                  <select className="form_control" value={modalData?.months} name="months" onChange={(e) => empHandling(e)}>
+                                  <select className="form_control" value={employment.months} name="months" onChange={(e) => empHandling(e)}>
                                     <option hidden>Months</option>
                                     <option value="01 Months">01 Month</option>
                                     <option value="02 Months">02 Months</option>
@@ -908,7 +948,7 @@ const MyResume = () => {
                                                     id="combo-box-demo"
                                                     single
                                                     value={
-                                                      modalData?.designation?modalData.designation:null}
+                                                      employment?.designation?employment.designation:null}
                                                     options={Designationdata.map((res)=>{
                                                     return res.Designation
                                                     })}
@@ -946,7 +986,7 @@ const MyResume = () => {
                                                     id="combo-box-demo"
                                                     single
                                                     value={
-                                                      modalData?.organization?modalData.organization:null}
+                                                      employment?.organization?employment.organization:null}
                                                     options={Categorydata.map((res)=>{
                                                     return res.Category
                                                     })}
@@ -1020,7 +1060,7 @@ const MyResume = () => {
                                       className="form_control"
                                       placeholder="Years"
                                       name="startYear"
-                                      value={moment(modalData?.startYear).format("YYYY-MM-DD")}
+                                      value={moment(employment?.startYear).format("YYYY-MM-DD")}
                                       onChange={(e)=>empHandling(e)}
                                     />
                                   </div>
@@ -1049,7 +1089,7 @@ const MyResume = () => {
                                         className="form_control"
                                         placeholder="Years"
                                         name="startYear"
-                                        value={moment(modalData?.startYear).format("YYYY-MM-DD")}
+                                        value={moment(employment?.startYear).format("YYYY-MM-DD")}
                                         onChange={(e) => empHandling(e)}
 
                                       />
@@ -1063,7 +1103,7 @@ const MyResume = () => {
                                         type="date"
                                         className="form_control"
                                         placeholder="Years"
-                                        value={moment(modalData?.endYear).format("YYYY-MM-DD")}
+                                        value={moment(employment?.endYear).format("YYYY-MM-DD")}
                                         onChange={(e) => empHandling(e)}
 
                                       />
@@ -1079,7 +1119,7 @@ const MyResume = () => {
                                   <textarea
                                     name="profileDescription"
                                     onChange={(e) => empHandling(e)}
-                                    value={modalData?.profileDescription}
+                                    value={employment?.profileDescription}
                                     className="form_control"
                                     cols="30"
                                     rows="5"
@@ -1103,7 +1143,7 @@ const MyResume = () => {
                                   <Autocomplete
                                     id="combo-box-demo"
                                     single
-                                    // value={employment.noticePeriod}
+                                    value={employment?.noticePeriod}
                                     options={NoticePerioddata.map((res)=>{
                                     return res.noticeperiod
                                     })}
@@ -1133,7 +1173,7 @@ const MyResume = () => {
                           </form>
                         </div>
                         <div className="modal-footer">
-                          <button type="button" className="update" onClick={(e) => handleEmployment(e)}>
+                          <button type="button" className="update" onClick={(e) => handleEmployment(e,employment._id)}>
                             Save changes
                           </button>
                         </div>

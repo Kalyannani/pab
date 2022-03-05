@@ -154,7 +154,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <i className="fas fa-chevron-right"></i>{" "}
-                    <Link to='/fraudalert'> Fraud Alert</Link> 
+                    <Link to='/fakejobalert'> Fraud Alert</Link> 
                   </li>
                 </ul>
               </div>
