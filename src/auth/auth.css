@@ -345,6 +345,8 @@ label.login_otp{
 
 .full_img{
     height: 100%;
+    z-index: -9999999;
+    opacity: 0.999;
 }
 
 .ant-upload-list-item-card-actions{

@@ -56,8 +56,7 @@ const Navbar = () => {
                 <nav className="navbar navbar-expand-lg fixed-top navbar_content mb-5" id="myScrollspy" style={{ backgroundColor: `${state.navbar_content}` }}>
                     <div className="container">
                         <Link className="navbar-brand" to="/">
-                            <img type="logo" className="img-fluid logo_img" src="/images/ProHireeLogo.png"
-                                style={{ background: 'transparent' }, { height: '50px' }, { width: '70px' }} alt="" />
+                            <img type="logo" className="img-fluid logo_img" src="/images/ProHireeLogo.png" alt="" />
                         </Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
@@ -114,7 +113,7 @@ const Navbar = () => {
                                         <div className="dropdown-menu dropdown-content  d-none position-absolute position-relative ml-4 bg-white rounded"  data-toggle={collapse} data-target={id}
                                             aria-labelledby="navbarDropdown">
                                             <Link className="dropdown-item" to="/hireandtrain">HireAndTrain <sup className='new_blink_inner'>New</sup></Link>
-                                            <Link className="dropdown-item" to="/hireandtrain">GetYourResume <sup className='new_blink_inner'>New</sup></Link>
+                                            <Link className="dropdown-item" to="/textresume">GetYourResume <sup className='new_blink_inner'>New</sup></Link>
                                             {/* <Link className="dropdown-item"
                                                 to="/sellskill">Sell Your Skills  <sup className='new_blink_inner'>New</sup>   </Link>
                                      */}

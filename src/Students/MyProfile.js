@@ -156,7 +156,7 @@ console.log(typeof(profile.currentlocation))
                           name="experience"
                           id="inlineRadio2"
                           value="experienced"
-                          checked={profile.experience.experience === "experienced"}
+                          checked={profile?.experience?.experience === "experienced"}
                           onChange={(e) => radiohandling(e)}
                           onClick={() => experienceButton()}
                         />

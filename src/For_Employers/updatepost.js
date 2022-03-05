@@ -43,9 +43,7 @@ const Updatepost= () => {
   };
 console.log(post.skillsets)
   const handleUpdate = () => {
-
     axios
-
       .put(`${apiList.jobs}/${id}`, post, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

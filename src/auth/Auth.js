@@ -20,9 +20,8 @@ const customStyles = {
 };
 
 const Auth = (props) => {
-
+    const [selectedClient,setSelectedClient] = useState("applicant");
     const dispatch = useDispatch();
-
     const [mainTab, setMainTab] = useState('login')
     const [subTab, setSubTab] = useState(false)
     const [phone, setPhone] = useState()
@@ -328,6 +327,10 @@ const Auth = (props) => {
         setPhoneError("")
     }
 
+    const handleSelectChange = (e)=> {
+        setSelectedClient(e.target.value);
+    }
+
     return <>
         <div className="signin_signup container " id='main_form'>
             <div className="row">
@@ -510,7 +513,7 @@ const Auth = (props) => {
                                     <div className="form_fild signup_form">
                                         <form onSubmit={handleSignUp} onChange={resetError}>
                                             <div className="input_group">
-                                                <select class="form-control multiple" name="type">
+                                                <select class="form-control multiple" name="type" value={selectedClient} onChange={handleSelectChange}>
                                                     <option value="applicant" selected>Job Seekers</option>
                                                     <option value="recruiter">Recruiter</option>
                                                 </select>
@@ -519,7 +522,7 @@ const Auth = (props) => {
                                                 <input
                                                     type="text"
                                                     className="input"
-                                                    placeholder="Name"
+                                                    placeholder={selectedClient ==="applicant"?"Enter Name":"Company Name"}
                                                     name="name"
                                                     
                                                 />
