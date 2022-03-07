@@ -72,7 +72,6 @@ export const App = () => {
     <Route exact path="/post_jobs" element={<POST_A_JOB />} />
     <Route exact path="/Manage_jobs" element={<Manage_Jobs />} />
     <Route exact path="/password" element={<Password />} />
-    <Route exact path="/jobdetailes/:id" element={<Jobdetailes />} />
     <Route exact path="/Applications/:id" element={<Applications />}/>
     <Route exact path="/updatepost/:id" element={<Updatepost />} />
     </>
@@ -88,7 +87,7 @@ export const App = () => {
     </>:
     <Route path='*' element={<Auth />} />
   }
-  
+   <Route exact path="/jobdetailes/:id" element={<Jobdetailes />} />
   {/* <Route exact path="/companies" element={<Companies />} /> */}
   <Route exact path="/browsefilterlist" element={<BrowseFilterList/>} />
   <Route exact path="/browsefiltergrid" element={<BrowseFilterGrid />} />

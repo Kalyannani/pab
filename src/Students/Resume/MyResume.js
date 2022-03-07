@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import PostAction from "../../Reducer/PostAction";
 import axios from 'axios'
-import apiList from "../../lib/apiList";
+import apiList, { server } from "../../lib/apiList";
 import ChipInput from "material-ui-chip-input";
 // import PersonalDetails from './personalDetails'
 import { Link } from "react-router-dom";
@@ -22,7 +22,9 @@ import NoticePerioddata from '../../JsonData/Noticeperiod.json'
 
 
 const MyResume = () => {
+  const [file, setFile] = useState("");
   const dispatch = useDispatch();
+  const [profileimage,setProfileimage] = useState('')
   const [project, setProject] = useState(false);
   const [progressBar, setProgressBar] = useState(0);
   const [currentcompany, setCurrentcompany] = useState(false);
@@ -338,11 +340,41 @@ const MyResume = () => {
         toast.error(err.response.data.message)
         console.log(err.response);
       });
-
-      
-
   };
 
+const imageonChangeHandling=(event)=>{
+    setProfile({
+      ...profile,
+      profileImage:event.target.files[0]
+    })
+}
+console.log(profile.profileImage)
+
+  const handleUpload=()=>{
+    const data = new FormData();
+    data.append("file", profile.profileImage);
+    axios.post(apiList.uploadProfileImage, data, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "multipart/form-data"
+      }
+    })
+      .then((response) => {
+        console.log(response.data);
+        setProfileimage(response.data.imageurl)
+        // toast.success(response.data.message)
+        // getData();
+      })
+      .catch((err) => {
+        console.log(err.response);
+        toast.error(err.response.data.message)
+      });
+  }
+
+useEffect(()=>{
+  handleUpload()
+},[profile.profileImage])
+console.log(profile.profileImage)
 
   return (
     <div>
@@ -353,20 +385,26 @@ const MyResume = () => {
               <div className="container">
                 <div className="row">
                   <div className="col-lg-2 ">
-                    <ProfileImageUpload url={profile.profileImage} />
-                    {/* <div className="canditate-des">
+                    {/* <ProfileImageUpload url={profile.profileImage} /> */}
+                    <div className="canditate-des">
                       <p href="#">
                         <img
                           className="resume_img img-responsive"
                           alt=""
-                          src="images/girl_avtar.png"
+                          // "http://localhost:4444/public/profile/1646646920789-step_4.png"
+                          src={`${server}/public/profile/${profileimage}`}
                         />
                       </p>
                       <label for="file">
                         <i class="fas fa-camera img_pencil"></i>
                       </label>
-                      <input type="file" id="file" style={{ display: "none" }} />
-                    </div> */}
+                      <input type="file" 
+                      id="file" 
+                      style={{ display: "none" }} 
+                      onChange={(event) =>imageonChangeHandling(event)}
+                      />
+                      {/* <button onClick={()=> handleUpload()}>upload</button> */}
+                    </div>
                   </div>
                   <div className="col-lg-10">
                     <h4 className="resume_title">
