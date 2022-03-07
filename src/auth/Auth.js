@@ -91,6 +91,11 @@ const Auth = (props) => {
             haveError = true
             setPasswordError('Password is required!')
         }
+       
+        if (!e.target.contactNumber.value.match(/^[6-9]\d{9}$/)) {
+            haveError = true
+            setPhoneError("Enter a valid contactNumber number.")
+        }
         if (e.target.contactNumber.value == '') {
             haveError = true
             setPhoneError('Phone is required!')
@@ -104,9 +109,9 @@ const Auth = (props) => {
             return
         }
         
-        if (!isContactVerified) {
-            toast.error("Contact needs to be verified!")
-        }
+        // if (!isContactVerified) {
+        //     toast.error("Contact needs to be verified!")
+        // }
         let signupDetails = {
             email: e.target.email.value,
             name: e.target.name.value,
@@ -535,11 +540,12 @@ const Auth = (props) => {
                                                     className="input"
                                                     placeholder="Phone Number"
                                                     name="contactNumber"
+                                                    maxLength={10}
                                                     onChange={handleContactInput}
                                                     
                                                 />
                                                 <span className='input_email'> <i class='fas fa-phone'></i> </span>
-                                                <button type="button" className="verfy-special-btn btn" onClick={handleContactVerify} disabled={!showVerifyBtn || isContactVerified}>{isContactVerified ? 'Verified': 'Verify'}</button>
+                                                {/* <button type="button" className="verfy-special-btn btn" onClick={handleContactVerify} disabled={!showVerifyBtn || isContactVerified}>{isContactVerified ? 'Verified': 'Verify'}</button> */}
 
 
                                             </div>
