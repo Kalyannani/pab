@@ -7939,11 +7939,12 @@ td {
   }
 } */
 
-.appications {
-  color: rgb(110, 110, 110);
+.appications a{
+  color: rgb(129 65 151) !important;
   font-size: 13px;
   margin: 10px 10px 10px 10px;
 }
+
 
 @media screen and (min-width: 0px) and (max-width: 576px) {
 }
@@ -16599,3 +16600,5 @@ color: #fff !important;
 
 
   /* text resume */
+
+
