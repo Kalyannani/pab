@@ -51,12 +51,11 @@ import Fakejobalert from './Services/components/FakeJobAlert/Fakejobalert';
 export const App = () => {
   const result = useSelector(state => state.data)
 
-
   return (
     <div>
    <BrowserRouter>
    <ScrollToTop />
-   <div>
+  
    <Navbar />
    <Routes>
    <Route path="/" exact element={<Home />} />
@@ -108,10 +107,10 @@ export const App = () => {
   
    </Routes>
    <Footer />
-  
-   </div>
+
    
    <ToastContainer />
+  
    </BrowserRouter>
   
 </div>

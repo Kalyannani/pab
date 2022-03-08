@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import apiList from "../lib/apiList";
-
+import apiList, { server } from "../lib/apiList";
+import FileSaver, { saveAs } from 'file-saver';
 
 export const Applications = () => {
   const [applications, setApplications] = useState([]);
@@ -51,6 +51,11 @@ export const Applications = () => {
         setApplications([]);
       });
   };
+
+const downloadReusme=(resume)=>{
+  const data = `${server}/public/resume/${resume}`
+  FileSaver.saveAs(data, "application/pdf");
+}
 
   return (
     <div class="container mb-5">
@@ -253,6 +258,7 @@ export const Applications = () => {
 
                         <a
                           href="#"
+                          onClick={()=>downloadReusme(application.jobApplicant.resume.filename)}
                           class="download_box"
                           data-tip
                           data-for="registerTip"

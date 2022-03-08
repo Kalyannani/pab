@@ -23,8 +23,8 @@ import NoticePerioddata from '../../JsonData/Noticeperiod.json'
 
 const MyResume = () => {
   const [file, setFile] = useState("");
+  const [resume,setResume] = useState("")
   const dispatch = useDispatch();
-  const [profileimage,setProfileimage] = useState('')
   const [project, setProject] = useState(false);
   const [progressBar, setProgressBar] = useState(0);
   const [currentcompany, setCurrentcompany] = useState(false);
@@ -343,16 +343,18 @@ const MyResume = () => {
   };
 
 const imageonChangeHandling=(event)=>{
-    setProfile({
-      ...profile,
-      profileImage:event.target.files[0]
-    })
+  console.log(event.target.files[0].type)
+  setFile(event.target.files[0])
 }
-console.log(profile.profileImage)
-
-  const handleUpload=()=>{
+console.log(file)
+const resumeonchangeHandling=(event)=>{
+  setResume(event.target.files[0])
+}
+console.log(resume)
+  const handleprofileUpload=()=>{
     const data = new FormData();
-    data.append("file", profile.profileImage);
+    console.log(file)
+    data.append("file", file);
     axios.post(apiList.uploadProfileImage, data, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -361,9 +363,30 @@ console.log(profile.profileImage)
     })
       .then((response) => {
         console.log(response.data);
-        setProfileimage(response.data.imageurl)
-        // toast.success(response.data.message)
-        // getData();
+        // setProfileimage(response.data.imageurl)
+        toast.success(response.data.message)
+          getData();
+      })
+      .catch((err) => {
+        console.log(err.response);
+        toast.error(err.response.data.message)
+      });
+  }
+  const handleresumeUpload=()=>{
+    const data = new FormData();
+    data.append("file", resume);
+    axios.post(apiList.uploadResume, data, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "multipart/form-data"
+      }
+    })
+      .then((response) => {
+        console.log(response.data);
+        // setProfileimage(response.data.imageurl)
+        toast.success(response.data.message)
+          getData();
+      
       })
       .catch((err) => {
         console.log(err.response);
@@ -372,9 +395,12 @@ console.log(profile.profileImage)
   }
 
 useEffect(()=>{
-  handleUpload()
-},[profile.profileImage])
-console.log(profile.profileImage)
+  handleprofileUpload();
+},[file])
+
+useEffect(()=>{
+  handleresumeUpload()
+},[resume])
 
   return (
     <div>
@@ -390,9 +416,9 @@ console.log(profile.profileImage)
                       <p href="#">
                         <img
                           className="resume_img img-responsive"
-                          alt=""
+                          alt="profile-image"
                           // "http://localhost:4444/public/profile/1646646920789-step_4.png"
-                          src={`${server}/public/profile/${profileimage}`}
+                          src={profile.profileImage? `${server}/public/profile/${profile.profileImage}` :`images/girl_avtar.png`}
                         />
                       </p>
                       <label for="file">
@@ -3119,9 +3145,21 @@ console.log(profile.profileImage)
                 profile={profile}
                 handleUpdate={handleUpdate}
                 /> */}
-                <ResumeFileUpload url={profile.resume.url} />
+                {/* <ResumeFileUpload url={profile.resume.url} /> */}
+                <form>
+                  <div className="form-group">
+                    <label for="myfile" className="file_upload">
+                      Upload File
+                    </label>
+                    <input type="file" id="myfile" name="myfile" hidden
+                    onChange={(event) =>resumeonchangeHandling(event)}
+                    />
+                  </div>
+                </form>
+                <h5>{(profile.resume.filename.split("-"))[1]}</h5>
               </div>
-
+              
+              {/* <button onClick={()=>handleresumeUpload()}>upload</button> */}
 
             </div>
           </div>
