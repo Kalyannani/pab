@@ -16609,3 +16609,121 @@ color: #fff !important;
   width: 130px;
   text-align: -webkit-center;   
 }
+
+
+/* OnlineExam home page*/
+
+.Exam_Welcome
+{
+  color: #6a2a69;
+  font-weight: 900;
+  margin-top: 120px;
+  line-height: 3;
+}
+.Exam_Instuctions
+{
+  color: #6a2a69;
+}
+.Exam_Test
+{
+  border: 1px solid #6a2a69;
+  width: fit-content;
+  padding: 10px ;
+  border-radius: 20px;
+  background-color: #6a2a69;
+  color: #fff;
+  cursor: pointer;
+}
+.Exam_Test:hover
+{
+  background-color:#fff;
+  color: #6a2a69;
+}
+.Exam_Instuction_ul li
+{
+  list-style-type:square !important;
+}
+
+/* /MainTest start/ */
+.Qnumber{
+  text-align: center;
+}
+.Qnumber h3{
+  background-color: #6A2A69;
+  color: #fff;
+  padding: 7px 50px;
+  border-radius: 30px;
+  width: fit-content;
+  margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+}
+
+.question{
+  padding: 50px 30px 20px 30px;
+  box-shadow: 0 0 8px rgb(0 0 0 / 25%);
+  text-align: center;
+  margin-top: -29px;
+}
+
+.Qcontent p{ 
+  font-size: 18px;
+  text-align: center;
+  margin: 0px 100px;
+}
+#option_main{
+  text-align: center;
+  box-shadow: 0 0 6px rgb(0 0 0 / 35%); 
+  padding: 15px 0px; 
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+#option_main #option{
+  font-size: 18px;
+}
+
+.online_main{
+  margin-top: 30px;
+}
+.Qnext_btn button{
+  box-shadow: none !important;
+  padding: 7px 42px;
+  background-color: #6A2A69;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border-radius: 25px;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.main_test_container{
+  padding: 70px 82px !important;
+    margin:120px auto 50px;
+    box-shadow: 0 0 6px rgb(0 0 0 / 35%);
+    border-radius: 25px;
+}
+
+@media screen and (max-width:767px) {
+  .question{
+    padding: 50px 5px 20px 5px;
+  }
+  .Qcontent p {
+    margin: 0px 10px;
+  }
+  .main_test_container{
+    padding: 70px 5px !important;
+  }
+}
+.selected{
+  background-color: #6a2a69;
+  color: #ffff;
+}
+.next_disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* MainTest ends */
