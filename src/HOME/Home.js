@@ -65,7 +65,7 @@ const Home = () => {
         
     }
     console.log('keywordError', keywordError);
-
+ 
     return (
         <div>
         
@@ -154,14 +154,15 @@ const Home = () => {
      
     <Categories />
    
-    <CompanyJobs />
- 
+                
+    <FeaturedCities />
     
+    <CompanyJobs />
+
     <CategoryJobs />
     <DesignationJobs />
-    <SkillJobs />
-    {/* <FeaturedCities /> */}
-    <LocationalJobs />
+    <SkillJobs /> 
+    {/* <LocationalJobs /> */}
     <OurClients />
     
     

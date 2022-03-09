@@ -111,7 +111,8 @@ const CompanyJobs = () => {
                         {/* <!-- img and text --> */}
 
                         <div class="row">
-                            { location.pathname === '/companyjobs'?
+                            {
+                             location.pathname === '/companyjobs'?
                             companies.map(company => {
                                 return <div class="col-lg-4 col-md-6">
                                     <Link to={`/browsefilterlist?company=${company.userId}`}>
@@ -119,17 +120,59 @@ const CompanyJobs = () => {
                                         class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{company.companyname}</span></a>
                                         </Link>
                                 </div>
-                            }):
-                            companies.slice(0,15).map(company => {
-                                return <div class="col-lg-3 col-md-6">
-                                    <Link to={`/browsefilterlist?company=${company.userId}`}>
-                                    <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span>
-                                        {/* <img src="images/auto_repair.png" alt=""
-                                        class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /> */}
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">{company.companyname}</span></a>
-                                        </Link>
-                                </div>
                             })
+                            :
+                            
+                            
+                              <>
+                                <div className="col-lg-2 col-md-4 col-sm-6 text-center" >
+                                    <Link to="/companyjobs">
+                                <div className='defaultcompanies '>
+                                <img src="images/Logos/logos7z-01.png" className="img-fluid" alt="" />
+                                </div>
+                                </Link>
+                                </div>
+                                <div className="col-lg-2 col-md-4 col-sm-6 text-center">
+                                <Link to="/companyjobs">
+                                <div className='defaultcompanies '>
+                                <img src="images/Logos/logos7z-04.png" className="img-fluid" alt="" />
+                                </div>
+                                </Link>
+                                    </div>
+                    
+                                    <div className="col-lg-2 col-md-4 col-sm-6 text-center">
+                                    <Link to="/companyjobs">
+                                    <div className='defaultcompanies '>
+                                <img src="images/Logos/logos7z-08.png" className="img-fluid" alt="" />
+                                </div>
+                                </Link>
+                                    </div>
+                    
+                                    <div className="col-lg-2 col-md-4 col-sm-6 text-center">
+                                    <Link to="/companyjobs">
+                                    <div className='defaultcompanies '>
+                                <img src="images/Logos/logos7z-07.png" className="img-fluid" alt="" />
+                                </div>
+                                </Link>
+                                    </div>
+                                    <div className="col-lg-2 col-md-4 col-sm-6 text-center">
+                                    <Link to="/companyjobs">
+                                    <div className='defaultcompanies '>
+                                <img src="images/Logos/logos7z-02.png" className="img-fluid" alt="" />
+                                </div>
+                                </Link>
+                                    </div>
+                    
+                                    <div className="col-lg-2 col-md-4 col-sm-6 text-center">
+                                    <Link to="/companyjobs">
+                                    <div className='defaultcompanies '>
+                                <img src="images/Logos/logos7z-11.png" className="img-fluid" alt="" />
+                                </div>
+                                </Link>
+                                    </div>
+                       
+                                    </>
+                         
                             }
                              
                         </div>
