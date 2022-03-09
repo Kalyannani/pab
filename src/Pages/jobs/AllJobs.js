@@ -20,8 +20,8 @@ import Subfilter from './subfilter'
             </div>
         </div>
     </div>
-    {/* <FeaturedCities /> */}
-    <LocationalJobs />
+    <FeaturedCities />
+    {/* <LocationalJobs /> */}
     <CompanyJobs />
  <CategoryJobs />
  <DesignationJobs />

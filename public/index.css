@@ -1133,7 +1133,7 @@ span {
 
 /* .........sec3 starts........ */
 #sec3 {
-  padding: 40px 0;
+  padding: 40px 0 50px 0;
 }
 
 #sec3 .city {
@@ -2623,6 +2623,7 @@ button:focus {
   background-color: #333;
 }
 
+
 .company_jobs_sec2{
   font-size: 18px;
   line-height: 20px;
@@ -3564,7 +3565,7 @@ button.alljob_buttons_sub:focus {
 /* section 2 */
 
 .company_jobs_section_2 {
-  padding: 50px 0px;
+  /* padding: 50px 0px; */
   background: #ffff;
 }
 
@@ -16601,4 +16602,10 @@ color: #fff !important;
 
   /* text resume */
 
-
+.defaultcompanies{
+  width: 100% !important;
+}
+.defaultcompanies img{
+  width: 130px;
+  text-align: -webkit-center;   
+}

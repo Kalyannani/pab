@@ -1,7 +1,7 @@
-html,
+/* html,
 body {
   overflow-x: hidden;
-}
+} */
 
 /* card */
 
@@ -290,10 +290,10 @@ a:hover{
   .carousel-height{
       max-height: 600px;
   }
-  .card{
+  /* .card{
       height: 400px;
       top:-50px;
-  }
+  } */
   
   a:hover{
     color:black;
