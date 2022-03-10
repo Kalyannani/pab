@@ -4668,7 +4668,6 @@ input#filter_grid_input:focus {
 
 .job_filter_grid_in_up span {
   font-family: lato, sans-serif;
-  margin: 15px 10px 10px 5px;
   color: #6a2a69;
   font-weight: 500;
 }
@@ -16674,13 +16673,14 @@ color: #fff !important;
 #option_main{
   text-align: center;
   box-shadow: 0 0 6px rgb(0 0 0 / 35%); 
-  padding: 15px 0px; 
   margin-bottom: 25px;
   cursor: pointer;
 }
 
 #option_main #option{
   font-size: 18px;
+  margin: 0px !important;
+  padding: 15px 0px;
 }
 
 .online_main{
@@ -16727,3 +16727,104 @@ color: #fff !important;
   cursor: not-allowed;
 }
 /* MainTest ends */
+
+.registerform{
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.Exam_after_submit
+{
+  background: linear-gradient(45deg, #A547B1, rgb(118 55 117)) no-repeat center;
+  text-align: center;
+  padding: 50px !important;
+  margin-top: 200px ;
+  margin-bottom: 100px;
+  border-radius: 30px ;
+  box-shadow: 0 0 8px rgb(0 0 0 / 100%);
+
+}
+.Exam_after_submit h1
+{
+color: #fff !important;
+}
+
+
+/* filter grid view */
+
+.job_filter_grid_info h5 {
+  margin-bottom: 10px !important;
+  vertical-align: middle;
+}
+@media screen and (min-width:767px) and (max-width:1200px) {
+  #job_filter_list .filter_list_job_post h4{
+    width: 200px;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  #job_filter_list .filter_list_job_post h4{
+    width: 500px;
+  }
+}
+.job_details_applybtn_grid{
+  padding: 4px 8px !important;
+  background-color: #6A2A69;
+  color: #fff;
+  font-size: 14px;
+}
+.job_details_applybtn_grid:hover{
+  background-color: #6A2A69;
+  color: #fff;
+}
+#job_filter_list .filter_list_job_post h4 {
+  margin-bottom: 10px;
+  line-height: 28px;
+  font-weight: 600;
+  font-size: 24px;
+  color: #232323;
+  margin-top: 10px;
+}
+
+.job_filter_grid_in_up span {
+  font-family: lato, sans-serif;
+ padding: 5px 10px !important;
+  color: #6a2a69;
+  font-weight: 500;
+}
+
+.job_filter_grid_in_down {
+  margin-top: 0px !important;
+}
+@media screen and (min-width:768px) and (max-width:991px) {
+  .apply_grid_box{
+    position: absolute;
+    top: 50px;
+    right: 20px;
+  }
+  
+}
+
+@media screen and (min-width:992px) and (max-width:1199px) {
+  .apply_grid_box{
+    margin-left: 160px;
+  }
+  .apply_job_grid_new{
+    margin-left:60px !important;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .apply_grid_box{
+   position: absolute;
+   top: 25px;
+   right: 25px;
+  }
+  
+  .job_filter_grid_info h5{
+    width: 220px;
+  }
+}
+
+
+

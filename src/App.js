@@ -45,7 +45,6 @@ import FraudAlert from './FraudAlert/FraudAlert';
 import Error from './404Error/Error';
 import Textresume from './Services/components/TextResume/Textresume';
 import Fakejobalert from './Services/components/FakeJobAlert/Fakejobalert';
-import ExamHomepage from './Services/components/OnlineExam/Homepage';
 import MainTest from './Services/components/OnlineExam/MainTest';
 
 
@@ -85,8 +84,7 @@ export const App = () => {
     <Route exact path="/jobalerts" element={<JobAlerts />} />
     {/* <Route exact path="/savedjobs" element={<SavedJobs />} /> */}
     <Route exact path ="/changepassword" element={<ChangePassword />} />
-    <Route exact path ="/onlinetest" element={<ExamHomepage />} />
-    <Route exact path ="/questions" element={<MainTest />} />
+    <Route exact path ="/onlinetest" element={<MainTest />} />
     </>:
     <Route path='*' element={<Auth />} />
   }
@@ -106,6 +104,7 @@ export const App = () => {
   <Route exact path="/fraudalert" element={<FraudAlert/>}/>
   <Route exact path="/textresume" element={<Textresume/>}/>
   <Route exact path="/fakejobalert" element={<Fakejobalert/>}/>
+ 
   
   <Route path='*' exact={true} element={<Error/>} />
   
