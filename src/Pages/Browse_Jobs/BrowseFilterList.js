@@ -539,13 +539,22 @@ const BrowseFilterList = () => {
                             <div className="job_filter_grid_box">
                               <div className="d-flex mb-4">
                                 <div className="job_filter_grid_info">
-                                  <h5>
+                                  <div className="job_heading ">
+                                  <h5 className=''>
                                     {/* <Link to={`/jobdetailes/${job._id}`}>{job.title}</Link> */}
                                  {job.title}
                                   </h5>
-                                  <p />
+                               </div>
+                                  <div className="apply_grid_box">
+                                  <label className="wishlist ">
+                                {result?.type==="applicant" ? 
+                                <button className='btn job_details_applybtn_grid apply_job_grid_new' > Apply </button>: 
+                                result?.type==="recruiter"? null :  
+                                <Link to="/auth" ><div className="login_apply"> <button className='btn job_details_applybtn_grid '> Login to Apply </button> </div> </Link>} 
+                                </label>
+                                    </div>
                                   <div className="job_filter_grid_in_up">
-                                    <i className="fas fa-map-marker-alt" />
+                                    <i className="fas fa-map-marker-alt"/>
                                     <span> Hyderabad</span>
                                     <i className="far fa-bookmark" />
                                     <span> {job.jobType}</span>
@@ -584,12 +593,7 @@ const BrowseFilterList = () => {
                                   </span>
                                 </label>
                               )} */}
-                                <label className="wishlist">
-                                {result?.type==="applicant" ? 
-                                <button className='btn job_details_applybtn filter_list_wishlist' > Apply </button>: 
-                                result?.type==="recruiter"? null :  
-                                <Link to="/auth" > <button className='btn job_details_applybtn filter_list_wishlist'> Login to Apply </button>  </Link>} 
-                                </label>
+                               
                             </div>
                             </Link>
                           </div>
