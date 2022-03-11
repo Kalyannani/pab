@@ -121,9 +121,9 @@ const Navbar = () => {
                                         
                                         </div>
                                     </li>
-                                    <li className="nav-item">
-                                    <Link className="nav-link font-weight-bold" style={{ color: state.color }} id="a1" to="/onlinetest" data-toggle={collapse} data-target={id}>Online Exam</Link>
-                                </li>
+                                   
+                                 
+                                    
                             </ul>
                             {result ? (
                                 result.type === "recruiter" ?

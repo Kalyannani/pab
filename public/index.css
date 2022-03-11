@@ -28,7 +28,6 @@
   border-radius: unset
 }
 
-
 .drag-area{
   border: 2px dashed #fff;
   height: 500px;
@@ -16828,3 +16827,41 @@ color: #fff !important;
 
 
 
+/* paytm payment */
+.payment_paytm{
+  margin-top: 100px;
+  margin-bottom: 50px;
+  box-shadow: 0 0 8px rgb(0 0 0 / 16%);
+  padding: 20px;
+}
+
+@media screen and (min-width:0px) and (max-width:576px) {
+  .payment_paytm{
+    box-shadow: none;
+  }
+  .payment_form{
+    box-shadow: 0 0 8px rgb(0 0 0 / 15%);
+    padding-bottom: 25px;
+  }
+}
+
+.payment_submit{
+  box-shadow: none ;
+  background-color: #6A2A69;
+  font-size: 18px !important;
+  padding: 8px 40px !important;
+  color: #fff;
+  
+}
+
+.payment_submit:hover{
+  box-shadow: none ;
+  background-color: #6A2A69;
+  font-size: 18px !important;
+  padding: 8px 40px !important;
+  color: #fff;
+}
+.payment_fail{
+  margin: 400px auto;
+  text-align: center;
+}
