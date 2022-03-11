@@ -6,7 +6,6 @@ import Autocomplete from "@mui/material/Autocomplete";
 import data from "../../../JsonData/locations.json";
 
 const RegisterForm = () => {
-  const myRef = useRef(null);
   const [hireandtraindetails, setHireandtraindetails] = useState({
     name: "",
     email: "",
@@ -99,7 +98,7 @@ const RegisterForm = () => {
       )
       .then((res) => {
         if(res){
-          myRef.current.scrollIntoView();
+          
               isSetSubmit(true)
         }
         setFullName("");
@@ -142,7 +141,7 @@ const RegisterForm = () => {
       {
           isSubmited ?
           <div>
-            <div className='container' ref={myRef}>
+            <div className='container' >
               <div className='row'>
                 <div className='col-sm-12 Exam_after_submit'>
                   <h1>Congratulations...</h1>
