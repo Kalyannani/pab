@@ -46,8 +46,9 @@ import Error from './404Error/Error';
 import Textresume from './Services/components/TextResume/Textresume';
 import Fakejobalert from './Services/components/FakeJobAlert/Fakejobalert';
 import MainTest from './Services/components/OnlineExam/MainTest';
-
-
+import Paytm from './Paytm'
+import PaymentStatusSuccess from './PaymentStatus';
+import PaymentStatusFail from './PaymentStatusFail';
 
 export const App = () => {
   const result = useSelector(state => state.data)
@@ -63,6 +64,9 @@ export const App = () => {
    <Route path="/auth" exact element={<Auth />} />
    {/* <Route exact path="/signin" element={<SignIn />} />
    <Route exact path="/signup" element={<SignUp />} /> */}
+   <Route exact path="/payment" element={<Paytm />} />
+   <Route exact path="/success/:orderId" element={<PaymentStatusSuccess/>} />
+   <Route exact path="/failed/:orderId" element={<PaymentStatusFail/>} />
    <Route exact path="/signin" element={<Login />} />
    <Route exact path="/signup" element={<Signup />} />
    
