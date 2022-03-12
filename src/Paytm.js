@@ -52,7 +52,7 @@ const Paytm = () => {
   const getData=(data)=>
   {
 
-    return fetch(`http://localhost:4444/paytm/payment`,{
+    return fetch(`https://api.pabjobs.com/paytm/payment`,{
         method:"POST",
         headers:{
             Accept:"application/json",

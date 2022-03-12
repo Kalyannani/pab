@@ -117,27 +117,27 @@
     margin-bottom: 20px;
   }
   button.signup-btn {
-    background: #743373;
+    background: #270D44;
   }
   button.signup-btn:hover {
-    background: #743373;
+    background: #270D44;
   }
   .verifyButton {
     position: absolute;
-    background: #743373;
+    background: #270D44;
     left: 451px;
     bottom: 1px;
     color: white;
   }
   .verifyButton:hover {
-  background-color:#743373 ;
+  background-color:#270D44 ;
   }
   .btn-verify{
-    background-color:#743373 ;
+    background-color:#270D44 ;
     color: white;
   }
   .btn-verify:hover{
-    background-color: #743373;
+    background-color: #270D44;
   }
 
 

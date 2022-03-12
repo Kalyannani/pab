@@ -56,7 +56,7 @@ const Navbar = () => {
                 <nav className="navbar navbar-expand-lg fixed-top navbar_content mb-5" id="myScrollspy" style={{ backgroundColor: `${state.navbar_content}` }}>
                     <div className="container">
                         <Link className="navbar-brand" to="/">
-                            <img type="logo" className="img-fluid logo_img" src="/images/ProHireeLogo.png" alt="" />
+                            <img type="logo" className="img-fluid logo_img" src="/images/Untitled-10-01.png " height="100" width="200" alt="" />
                         </Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"

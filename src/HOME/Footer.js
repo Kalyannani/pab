@@ -14,11 +14,11 @@ const Footer = () => {
               <div className="col-lg-3 col-md-6 foot_add">
                 <img
                   className="img-fluid logo_img"
-                  src="/images/ProHireeLogo.png"
+                  src="/images/Untitled-10-01.png"
                   style={{
                     background: "transparent",
-                    height: "50px",
-                    width: "70px",
+                    height: "100px",
+                    width: "140px",
                   }}
                   alt=""
                 />
