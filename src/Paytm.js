@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import apiList from './lib/apiList';
 const Paytm = () => {
     const [user,setUser] = useState({
         name:"",
@@ -51,8 +52,7 @@ const Paytm = () => {
     
   const getData=(data)=>
   {
-
-    return fetch(`https://api.pabjobs.com/paytm/payment`,{
+    return fetch(`${apiList.paytmpayment}`,{
         method:"POST",
         headers:{
             Accept:"application/json",
@@ -62,6 +62,7 @@ const Paytm = () => {
     }).then(response=>response.json()).catch(err=>console.log(err))
   }
 const {name,email,phone,amount} = user
+
     const makePayment=()=>
     {
 getData(user).then(response=>{
@@ -74,8 +75,6 @@ getData(user).then(response=>{
         }
       post(information)
     }
-   
-
 })
     }
     return (

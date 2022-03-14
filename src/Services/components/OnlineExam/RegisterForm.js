@@ -144,8 +144,8 @@ const RegisterForm = () => {
             <div className='container' >
               <div className='row'>
                 <div className='col-sm-12 Exam_after_submit'>
-                  <h1>Congratulations...</h1>
-                  <h1>We will contact you soon...</h1>
+                  <h1>Submited Successfully...</h1>
+                  <h1>We will contact you through email or Phone...</h1>
                 </div>
               </div>
             </div>

@@ -16870,3 +16870,58 @@ color: #fff !important;
   height: 100px !important;
   width: 200px !important;
 }
+
+
+/* payment Modal */
+.close_modal{
+  border: none;
+  font-size: 20px;
+  padding: 9px 12px;
+  color: #fff !important;
+  background-color: #270D44;
+  border-radius: 50%;
+}
+.payment_details_heading h5{
+  font-size: 25px;
+  font-weight: 600;
+  background-color: #E1E6EB;
+  padding: 5px 10px;
+  max-width: fit-content;
+  margin: 0px 0px  15px 0px !important;
+  color: #270D44;
+  border-radius: 3px;
+}
+.payment_modal{
+  width: 270px;
+}
+.payment_details .payment_1{
+width: 175px;
+font-size: 17px;
+}
+.payment_details .payment_2{
+padding-left: 20px;
+font-weight: bolder;
+}
+.hr_divider{
+  height: 0.5px;
+    background-color: #726d6d;
+    width: 250px;
+}
+.buynow_payment .buynow_here{
+  width: 100%;
+  padding: 8px 0px;
+  background-color: #270D44;
+  border: none !important;
+  border-radius: 5px;
+  color: #fff;
+  margin-top: 25px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.close_modal_btn{
+  margin-top: -13px;
+  margin-left: 250px;
+}
+/* Payment Modal */

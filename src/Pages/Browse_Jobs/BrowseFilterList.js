@@ -426,8 +426,11 @@ const BrowseFilterList = () => {
                                   </div>
                                   <div className="filter_list_job_info">
                                     <h4>{job.title}</h4>
-                                    
+                                    <h5 className="home_company_name">{job.recruiter?.companyname}</h5>
                                     <ul>
+                                    
+                                      
+                                    
                                       <li><i className="fas fa-map-marker-alt"></i>
                                       {job.cities.map((job,index,arr)=>{
                                         return (<>

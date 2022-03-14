@@ -22,7 +22,7 @@ const customStyles = {
 const Auth = (props) => {
     const [selectedClient,setSelectedClient] = useState("applicant");
     const dispatch = useDispatch();
-    const [mainTab, setMainTab] = useState('login')
+    const [mainTab, setMainTab] = useState('signup')
     const [subTab, setSubTab] = useState(false)
     const [phone, setPhone] = useState()
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -358,9 +358,14 @@ const Auth = (props) => {
                             />
                             <div className="tile py-2">
                                 {mainTab === 'login' ? <h3 className="login">Login Form</h3> : <h3 className="signup">Signup Form</h3>}
-
-
                             </div>
+                            
+                            <label id='signup_tab'
+                            className={`tab login_tab ${mainTab === "signup" && 'active-tab'}`} htmlFor="signup"
+                                onClick={() => {switchMainTab('signup');imgColumn2();scrollToTop();} }>
+                                {" "}
+                                Signup{" "}
+                            </label>
                             <label id='login_tab'
                                 className={`tab login_tab ${mainTab === "login" && 'active-tab'}`}
                                 // active-tab
@@ -369,12 +374,6 @@ const Auth = (props) => {
                             >
                                 {" "}
                                 Login{" "}
-                            </label>
-                            <label id='signup_tab'
-                            className={`tab login_tab ${mainTab === "signup" && 'active-tab'}`} htmlFor="signup"
-                                onClick={() => {switchMainTab('signup');imgColumn2();scrollToTop();} }>
-                                {" "}
-                                Signup{" "}
                             </label>
                             <div className="form_wrap">
                                 {mainTab === 'login' && (

@@ -8,7 +8,7 @@ const PaymentStatusSuccess = ({result}) => {
     console.log(result)
     return (
         <div className='payment_fail'>
-          <h1>Payment Succesfully</h1>
+          <h1>Payment Succesfull</h1>
         </div>
     )
 }
