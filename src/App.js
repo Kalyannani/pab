@@ -116,7 +116,7 @@ export const App = () => {
    <Footer />
 
    
-   <ToastContainer />
+   <ToastContainer autoClose={1000}/>
   
    </BrowserRouter>
   

@@ -10,8 +10,6 @@ const MainTest = () => {
 	const [showButton, setShowButton] = useState(false)
   const [getQuestions,setQuestions] = useState(false)
 	const [myanswer,setMyAnswer] = useState()
-  const [idle,setIdle] = useState('')
-
     const getstate = () => {
       questions().then(question => {
           setAllQuestions(question);

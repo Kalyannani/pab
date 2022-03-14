@@ -58,7 +58,7 @@ const Student_Navbar = () => {
             {/* toggler  changes */}
             <div className="dropdown-menu dropdown-content  d-none position-absolute position-relative ml-4 bg-white rounded" data-toggle={collapse} data-target={id}
               aria-labelledby="navbarDropdown">
-              <Link className="dropdown-item" to="/payment">HireAndTrain Payment</Link>
+              <Link className="dropdown-item" to="/payment">HireAndTrain</Link>
 
               {/* <Link className="dropdown-item"
                                                 to="/textresumepayment">Text Resume Payment</Link> */}

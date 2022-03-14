@@ -65,7 +65,7 @@ const Buy = () => {
                 <tr>
                   <th scope="row">Guaranteed Interview call from Recruiters</th>
                   <td>X</td>
-                  <td>X</td>
+                  <td>YES</td>
                 </tr>
               </tbody>
             </table>

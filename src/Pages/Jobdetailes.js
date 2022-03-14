@@ -36,7 +36,7 @@ export const Jobdetailes = (props) => {
                 setDesSplit(response.data.job.description.split('.'))
             })
             .catch((err) => {
-                console.log(err.response.data);
+                console.log(err?.response.data);
             });
     };
 
@@ -93,7 +93,7 @@ export const Jobdetailes = (props) => {
                                 </div>
                                 <div className="job-info">
                                     <h4>
-                                        <a href="#">{jobs.title}</a>
+                                        <a href="#">{jobs?.title}</a>
                                        
                                     </h4>
                                     <h4 className='float-right share_icon'>
@@ -175,7 +175,7 @@ export const Jobdetailes = (props) => {
             <div className="job_description_inner">
                 <p> </p>
                 <p>Please find below job description if interested please do share your updated resume along with
-                    contact information to <strong><u>{recruiter.email}</u></strong></p><br />
+                    contact information to <strong><u>{recruiter?.email}</u></strong></p><br />
                 <p><strong>Position: {jobs.title}</strong></p>
                 <p><strong>Location :
                 {jobs?.cities?.map((lng,index,arr)=>{
@@ -193,9 +193,9 @@ export const Jobdetailes = (props) => {
                    </ul>)
                 })}
                 <p><strong>Thanks &amp; Regards,</strong></p>
-                <p><strong> {recruiter.companyname}</strong></p>
+                <p><strong> {recruiter?.companyname}</strong></p>
                 {/* <p><strong>Role - (Manager)</strong></p> */}
-                <p><strong>Mobile No :</strong> <span className='font-weight-bold' style={{fontSize: "17px"}}>xxxxxx </span>{recruiter.contactNumber?recruiter.contactNumber.toString().slice(-4):null}</p>
+                <p><strong>Mobile No :</strong> <span className='font-weight-bold' style={{fontSize: "17px"}}>xxxxxx </span>{recruiter?.contactNumber?recruiter.contactNumber.toString().slice(-4):null}</p>
                 <p><strong>Email:</strong> {recruiter.email}</p>
                 {/* <p><strong>URL :</strong> https://perfextechnologies.com/</p> */}
             </div>

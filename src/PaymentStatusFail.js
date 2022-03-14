@@ -9,7 +9,7 @@ const PaymentStatusFail = ({result}) => {
     return (
         <div className='payment_fail'>
           <h1>Payment Failed</h1>
-          <Link to="/payment" >BACK TO HOME</Link>
+          {/* <Link to="/payment" >BACK TO HOME</Link> */}
         </div>
     )
 }
