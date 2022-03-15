@@ -5,24 +5,24 @@
   outline: none;
 }
 .pagination > .active > a{
-  background-color: rgb(118 55 117);
-  border-color: rgb(118 55 117) ;
+  background-color: #270D44;
+  border-color: #270D44 ;
   color: #fff;
 }
 .pagination > li > a{
-  border: 1px solid rgb(118 55 117) ;
+  border: 1px solid #270D44 ;
   padding: 10px 10px;
   outline: none;
   cursor: pointer;
 }
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
-  background-color: rgb(118 55 117) ;
-  border-color: rgb(118 55 117);
+  background-color: #270D44 ;
+  border-color: #270D44;
   outline: none ;
   color: white !important;
 }
 .pagination > li > a, .pagination > li > span{
-  color: rgb(118 55 117);
+  color: #270D44;
 }
 .pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span{
   border-radius: unset
@@ -184,7 +184,7 @@
 }
 .main .form_wrapper a {
   cursor: pointer;
-  color: rgb(118 55 117);
+  color: #270D44;
   text-decoration: none;
   transition: all 0.3s linear;
 }
@@ -244,7 +244,7 @@
   font-weight: 500;
   letter-spacing: 0.8px;
   color: white;
-  background: linear-gradient(45deg, #A547B1, rgb(118 55 117)) no-repeat center;
+  background: linear-gradient(45deg, #A547B1, #270D44) no-repeat center;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -252,7 +252,7 @@
   transition: all 0.3s linear;
 }
 .main .form_wrapper .form_wrap .form_fild .btn:hover {
-  background: linear-gradient(-45deg, #A547B1, rgb(118 55 117)) no-repeat center;
+  background: linear-gradient(-45deg, #A547B1, #270D44) no-repeat center;
 }
 .otp_btn {
   width: 100%;
@@ -281,7 +281,7 @@
 }
 .main .form_wrapper .form_wrap .form_fild .not_mem label span {
   pointer-events: all;
-  color: rgb(118 55 117);
+  color: #270D44;
   text-decoration: none;
   transition: all 0.3s linear;
   cursor: pointer;
@@ -303,23 +303,23 @@
   border-top-left-radius: 10px !important;
   border-bottom-left-radius: 10px;
   padding: 12px 12px;
-  background: linear-gradient(45deg, #A547B1, rgb(118 55 117)) no-repeat center;
+  background: linear-gradient(45deg, #A547B1, #270D44) no-repeat center;
   color: #fff;
   font-weight: 800;
 }
 .country_code span:hover {
-  background: linear-gradient(-45deg, #A547B1, rgb(118 55 117)) no-repeat center;
-  background: linear-gradient(-45deg, #A547B1, rgb(118 55 117)) no-repeat center;
+  background: linear-gradient(-45deg, #A547B1, #270D44) no-repeat center;
+  background: linear-gradient(-45deg, #A547B1, #270D44) no-repeat center;
 }
 .country_code1 span {
   padding: 12px 12px;
-  background: linear-gradient(45deg, #A547B1, rgb(118 55 117)) no-repeat center;
+  background: linear-gradient(45deg, #A547B1, #270D44) no-repeat center;
   color: #fff;
   font-weight: 800;
 }
 .country_code1 span:hover {
-  background: linear-gradient(-45deg, #A547B1, rgb(118 55 117)) no-repeat center;
-  background: linear-gradient(-45deg, #A547B1, rgb(118 55 117)) no-repeat center;
+  background: linear-gradient(-45deg, #A547B1, #270D44) no-repeat center;
+  background: linear-gradient(-45deg, #A547B1, #270D44) no-repeat center;
 }
 #mobile_no {
   border-top-right-radius: 0 !important;
@@ -3101,7 +3101,7 @@ input:focus {
   z-index: -9999;
 }
 .browse_active:hover{
-background-color: #842a83;
+background-color: #270D44;
 }
 .jobdetails_main {
   margin-left: 0 !important;
@@ -3118,7 +3118,7 @@ background-color: #842a83;
   font-weight: 600;
 }
 .job_details_applybtn:hover{
-  background-color: #842a83;
+  background-color: #270D44;
 }
 @media screen and (min-width: 0px) and (max-width: 576px) {
   .job_details_save {
@@ -5148,13 +5148,18 @@ h2.job_filter_list_title {
 
 #job_filter_list .filter_list_job_company span {
   display: block;
-  width: 60px;
-  height: 60px;
+  /* width: 60px;
+  height: 60px; */
   border-radius: 6px;
   background-color: #e1e7ff;
   text-align: center;
   overflow: hidden;
 }
+#job_filter_list .filter_list_job_company span img{
+  width: 60px;
+  height: 60px;
+}
+
 
 #job_filter_list .filter_list_job_post h4 {
   margin-bottom: 10px;
@@ -14546,9 +14551,9 @@ option {
 
 .edit_resume {
   color: #fff;
-  background: #842a83;
+  background: #270D44;
   color: #fff;
-  background: #842a83;
+  background: #270D44;
   padding: 8px 7px;
   border-radius: 2px;
   font-family: lato, sans-serif !important;
@@ -16734,7 +16739,7 @@ color: #fff !important;
 
 .Exam_after_submit
 {
-  background: linear-gradient(45deg, #A547B1, rgb(118 55 117)) no-repeat center;
+  background: linear-gradient(45deg, #A547B1, #270D44) no-repeat center;
   text-align: center;
   padding: 50px !important;
   margin-top: 200px ;

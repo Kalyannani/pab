@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import useState from 'react-usestateref'
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import apiList from '../../lib/apiList';
+import apiList, { server } from '../../lib/apiList';
 import ReactPaginate from 'react-paginate';
 import ReactLoading from 'react-loading';
 import { toast } from 'react-toastify';
@@ -422,7 +422,7 @@ const BrowseFilterList = () => {
                               <div className="filter_list_job_box">
                                 <div className="d-flex mb-4">
                                   <div className="filter_list_job_company">
-                                    <span><img alt="" src="" /></span>
+                                    <span><img alt="" src={job.recruiter?.profileImage? `${server}/public/profile/${job.recruiter.profileImage}`: " " }/></span>
                                   </div>
                                   <div className="filter_list_job_info">
                                     <h4>{job.title}</h4>
@@ -604,16 +604,18 @@ const BrowseFilterList = () => {
                         )
                       }) :
                       <>
-                        {isLoading ?
-                          <div style={{ textAlign: "-webkit-center" }}>
-                            <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
+                        {
+                        isLoading ?
+                          <div style={{ margin:"auto" }}>
+                            <ReactLoading type="balls" color={"#270D44"} height={150} width={150} />
                           </div>
                           :
-                          <div style={{ textAlign: "-webkit-center" }}>
+                          <div style={{ margin:"auto" }}>
                             <p>There is no jobs to list with the current filter</p>
+                            <div className='text-center'>
                             <button
                               className={`btn list_view mb-2 `} onClick={resetFilter}>Reset Filter</button>
-
+                              </div>
                           </div>
                         }
 
