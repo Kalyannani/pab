@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-import {BrowserRouter, Routes, Route,   } from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
+import ReactGA from 'react-ga';
 import "react-toastify/dist/ReactToastify.css"
 // import Categories from './HOME/categories';
 // import Foot from './HOME/footer/foot';
@@ -50,7 +51,19 @@ import Paytm from './Paytm'
 import PaymentStatusSuccess from './PaymentStatus';
 import PaymentStatusFail from './PaymentStatusFail';
 
-export const App = () => {
+export const App = (props) => {
+
+  const setGA = () => {
+    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS, {
+      // debug: true,
+    });
+    // console.log('Yeeeeeeee', process.env.REACT_APP_GOOGLE_ANALYTICS);
+  };
+
+  useEffect(() => {
+    setGA();
+  }, [])
+  
   const result = useSelector(state => state.data)
 
   return (
