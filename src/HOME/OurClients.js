@@ -7,7 +7,7 @@ import OwlCarousel from 'react-owl-carousel';
              nav: true,
              autoplay: true,
              loop: true,
-             autoplayTimeout:500,
+             autoplayTimeout:1500,
              responsive: {
                  0: {
                      items: 1,

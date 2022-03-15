@@ -40,9 +40,16 @@ import Terms from './Terms&Conditions/Terms';
 import Privacypolicy from './Terms&Conditions/Privacypolicy';
 import Auth from './auth/Auth';
 // import HireAndTrain from './NavBar/Services/HireAndTrain';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Maze from './Services/components/Maze'
 import FraudAlert from './FraudAlert/FraudAlert';
+import Error from './404Error/Error';
+import Textresume from './Services/components/TextResume/Textresume';
+import Fakejobalert from './Services/components/FakeJobAlert/Fakejobalert';
+import MainTest from './Services/components/OnlineExam/MainTest';
+import Paytm from './Paytm'
+import PaymentStatusSuccess from './PaymentStatus';
+import PaymentStatusFail from './PaymentStatusFail';
 
 export const App = (props) => {
 
@@ -57,32 +64,48 @@ export const App = (props) => {
     setGA();
   }, [])
   
+  const result = useSelector(state => state.data)
 
   return (
-    
     <div>
    <BrowserRouter>
    <ScrollToTop />
-   <div>
+  
    <Navbar />
    <Routes>
    <Route path="/" exact element={<Home />} />
    <Route path="/auth" exact element={<Auth />} />
    {/* <Route exact path="/signin" element={<SignIn />} />
    <Route exact path="/signup" element={<SignUp />} /> */}
+   <Route exact path="/payment" element={<Paytm />} />
+   <Route exact path="/success/:orderId" element={<PaymentStatusSuccess/>} />
+   <Route exact path="/failed/:orderId" element={<PaymentStatusFail/>} />
    <Route exact path="/signin" element={<Login />} />
    <Route exact path="/signup" element={<Signup />} />
+   
+  {
+    result?.type === "recruiter"? <>
+    <Route exact path="/company_profile" element={<COMPANY_PROFILE />} />
+    <Route exact path="/post_jobs" element={<POST_A_JOB />} />
+    <Route exact path="/Manage_jobs" element={<Manage_Jobs />} />
+    <Route exact path="/password" element={<Password />} />
+    <Route exact path="/Applications/:id" element={<Applications />}/>
+    <Route exact path="/updatepost/:id" element={<Updatepost />} />
+    </>
+   :
+      result?.type === "applicant"? 
+    <>
+    <Route exact path="/myprofile" element={<MyProfile/>} />
+    <Route exact path="/myresume" element={<MyResume />} />
+    <Route exact path="/appliedjobs" element={<AppliedJobs />} />
+    <Route exact path="/jobalerts" element={<JobAlerts />} />
+    {/* <Route exact path="/savedjobs" element={<SavedJobs />} /> */}
+    <Route exact path ="/changepassword" element={<ChangePassword />} />
+    <Route exact path ="/onlinetest" element={<MainTest />} />
+    </>:
+    <Route path='*' element={<Auth />} />
+  }
    <Route exact path="/jobdetailes/:id" element={<Jobdetailes />} />
-   <Route exact path="/myprofile" element={<MyProfile/>} />
-   <Route exact path="/myresume" element={<MyResume />} />
-   <Route exact path="/appliedjobs" element={<AppliedJobs />} />
-  <Route exact path="/jobalerts" element={<JobAlerts />} />
-  {/* <Route exact path="/savedjobs" element={<SavedJobs />} /> */}
-  <Route exact path ="/changepassword" element={<ChangePassword />} />
-  <Route exact path="/company_profile" element={<COMPANY_PROFILE />} />
-  <Route exact path="/Manage_jobs" element={<Manage_Jobs />} />
-  <Route exact path="/Applications/:id" element={<Applications />}/>
-  <Route exact path="/post_jobs" element={<POST_A_JOB />} />
   {/* <Route exact path="/companies" element={<Companies />} /> */}
   <Route exact path="/browsefilterlist" element={<BrowseFilterList/>} />
   <Route exact path="/browsefiltergrid" element={<BrowseFilterGrid />} />
@@ -93,18 +116,21 @@ export const App = (props) => {
   <Route exact path="/skilljobs" element={<SkillJobs />} />
   <Route exact path="/hireandtrain" element={<Maze />} />
   <Route exact path="/locationaljobs" element={<LocationalJobs />} />
-  <Route exact path="/password" element={<Password />} />
-  <Route exact path="/updatepost/:id" element={<Updatepost />} />
   <Route exact path="/termsandconditions" element={<Terms/>}/>
   <Route exact path="/Privacypolicy" element={<Privacypolicy/>}/>
   <Route exact path="/fraudalert" element={<FraudAlert/>}/>
-  {/* <Route path='*' exact={true} element={</>} /> */}
-
+  <Route exact path="/textresume" element={<Textresume/>}/>
+  <Route exact path="/fakejobalert" element={<Fakejobalert/>}/>
+ 
+  
+  <Route path='*' exact={true} element={<Error/>} />
+  
    </Routes>
    <Footer />
+
+   
+   <ToastContainer autoClose={1000}/>
   
-   </div>
-   <ToastContainer />
    </BrowserRouter>
   
 </div>

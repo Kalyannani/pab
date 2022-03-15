@@ -26,7 +26,8 @@ const apiList = {
   changepassword:`${server}/api/changepassword`,
   resumeUpload: `${server}/api/resume/upload`,
   profileUpload: `${server}/api/profile/upload`,
-  wishlist: `${server}/api/wishlist/`
+  wishlist: `${server}/api/wishlist/`,
+  paytmpayment:`${server}/paytm/payment`
 };
 
 export default apiList;

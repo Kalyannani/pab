@@ -8,7 +8,7 @@ const Benefits = () => {
             <h1>Train and Hire Benefits</h1>
         </div>
         <div className='row align-items-center'>
-            <div className=' col-lg-6 col-md-6 col-sm-12 benefits_image'  data-aos="fade-right" data-aos-offset="200" data-aos-delay="20"
+            <div className=' col-lg-6 col-md-6 col-sm-12 benefits_image text-center'  data-aos="fade-right" data-aos-offset="200" data-aos-delay="20"
                     data-aos-duration="1500" data-aos-easing="ease-in-out">
               <img src='images/train.png' className='img-fluid' />
             </div>

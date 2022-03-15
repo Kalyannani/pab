@@ -87,7 +87,7 @@
      margin: 10px 0px;
 }
  .main .form_wrapper .shape:hover {
-     background: linear-gradient(-45deg, #A547B1, #6A2A69) no-repeat center;
+     background: linear-gradient(-45deg, #311453, #270D44) no-repeat center;
 }
 
 
@@ -99,7 +99,7 @@
     .active-tab {
       
      color: #fff;
-     background-color: #7e1d7c;
+     background-color: #270D44;
     }
 
  .main .form_wrapper #signup:checked ~ .tile .login {
@@ -110,7 +110,7 @@
 }
 
  .main .form_wrapper a {
-     color: #6A2A69;
+     color: #270D44;
      text-decoration: none;
      transition: all 0.3s linear;
      border-radius: 4px;
@@ -118,7 +118,7 @@
      text-align: center;
 }
  .main .form_wrapper a:hover {
-     color: #A547B1;
+     color: #311453;
 }
  .main .form_wrapper .form_wrap {
      display: flex;
@@ -168,7 +168,7 @@
      font-weight: 600;
      letter-spacing: 0.8px;
      color: white;
-     background: linear-gradient(45deg, #A547B1, #6A2A69) no-repeat center;
+     background: linear-gradient(45deg, #311453, #270D44) no-repeat center;
      border-radius: 5px;
      display: flex;
      align-items: center;
@@ -178,7 +178,7 @@
      margin-right: auto;
 }
  .main .form_wrapper .form_wrap .form_fild .btn:hover {
-     background: linear-gradient(-45deg, #A547B1, #6A2A69) no-repeat center;
+     background: linear-gradient(-45deg, #402361, #270D44) no-repeat center;
 }
  .main .form_wrapper .form_wrap .form_fild .btn:active {
      transform: scale(0.95);
@@ -191,7 +191,7 @@
 }
  .main .form_wrapper .form_wrap .form_fild .not_mem label span {
     pointer-events: all;
-    color: #6A2A69;
+    color: #270D44;
     text-decoration: none;
     transition: all 0.3s linear;
     font-weight: 700;
@@ -201,7 +201,7 @@
     padding-left: 5px;
 }
  .main .form_wrapper .form_wrap .form_fild .not_mem label span:hover {
-     color: #A547B1;
+     color: #311453;
 }
 .btn{
     box-shadow: none !important;
@@ -243,7 +243,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 label.login_otp{
-    color: #6A2A69 !important;
+    color: #270D44 !important;
     border-radius: 3px;
 }
 
@@ -266,7 +266,7 @@ label.login_otp{
     position: fixed;
     top: 90px;
     right: 15px;
-    background-color: #6A2A69 !important;
+    background-color: #270D44 !important;
     border: 0;
    
     padding: 10px 15px;
@@ -305,7 +305,7 @@ label.login_otp{
     position: absolute;
     top: 27px;
     left: 12px;
-    color: #6A2A69;
+    color: #270D44;
     font-size: 20px;
 }
 
@@ -317,14 +317,14 @@ label.login_otp{
     position: absolute;
     top: 27px;
     right: 12px;
-    color: #6A2A69;
+    color: #270D44;
     font-size: 20px;
 }
 .password_change{
     position: absolute;
     top: 36px;
     right: 26px;
-    color: #6A2A69;
+    color: #270D44;
     font-size: 20px;
 }
 .main .form_wrapper .form_wrap .form_fild .input_group span.password_hide{
@@ -345,6 +345,8 @@ label.login_otp{
 
 .full_img{
     height: 100%;
+    z-index: -9999999;
+    opacity: 0.999;
 }
 
 .ant-upload-list-item-card-actions{

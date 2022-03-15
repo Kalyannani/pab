@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import useState from 'react-usestateref'
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import apiList from '../../lib/apiList';
+import apiList, { server } from '../../lib/apiList';
 import ReactPaginate from 'react-paginate';
 import ReactLoading from 'react-loading';
 import { toast } from 'react-toastify';
@@ -422,12 +422,15 @@ const BrowseFilterList = () => {
                               <div className="filter_list_job_box">
                                 <div className="d-flex mb-4">
                                   <div className="filter_list_job_company">
-                                    <span><img alt="" src="" /></span>
+                                    <span><img alt="" src={job.recruiter?.profileImage? `${server}/public/profile/${job.recruiter.profileImage}`: " " }/></span>
                                   </div>
                                   <div className="filter_list_job_info">
                                     <h4>{job.title}</h4>
-                                    
+                                    <h5 className="home_company_name">{job.recruiter?.companyname}</h5>
                                     <ul>
+                                    
+                                      
+                                    
                                       <li><i className="fas fa-map-marker-alt"></i>
                                       {job.cities.map((job,index,arr)=>{
                                         return (<>
@@ -540,13 +543,22 @@ const BrowseFilterList = () => {
                             <div className="job_filter_grid_box">
                               <div className="d-flex mb-4">
                                 <div className="job_filter_grid_info">
-                                  <h5>
+                                  <div className="job_heading ">
+                                  <h5 className=''>
                                     {/* <Link to={`/jobdetailes/${job._id}`}>{job.title}</Link> */}
                                  {job.title}
                                   </h5>
-                                  <p />
+                               </div>
+                                  <div className="apply_grid_box">
+                                  <label className="wishlist ">
+                                {result?.type==="applicant" ? 
+                                <button className='btn job_details_applybtn_grid apply_job_grid_new' > Apply </button>: 
+                                result?.type==="recruiter"? null :  
+                                <Link to="/auth" ><div className="login_apply"> <button className='btn job_details_applybtn_grid '> Login to Apply </button> </div> </Link>} 
+                                </label>
+                                    </div>
                                   <div className="job_filter_grid_in_up">
-                                    <i className="fas fa-map-marker-alt" />
+                                    <i className="fas fa-map-marker-alt"/>
                                     <span> Hyderabad</span>
                                     <i className="far fa-bookmark" />
                                     <span> {job.jobType}</span>
@@ -585,12 +597,7 @@ const BrowseFilterList = () => {
                                   </span>
                                 </label>
                               )} */}
-                                <label className="wishlist">
-                                {result?.type==="applicant" ? 
-                                <button className='btn job_details_applybtn filter_list_wishlist' > Apply </button>: 
-                                result?.type==="recruiter"? null :  
-                                <Link to="/auth" > <button className='btn job_details_applybtn filter_list_wishlist'> Login to Apply </button>  </Link>} 
-                                </label>
+                               
                             </div>
                             </Link>
                           </div>
@@ -598,16 +605,18 @@ const BrowseFilterList = () => {
                         )
                       }) :
                       <>
-                        {isLoading ?
-                          <div style={{ textAlign: "-webkit-center" }}>
-                            <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
+                        {
+                        isLoading ?
+                          <div style={{ margin:"auto" }}>
+                            <ReactLoading type="balls" color={"#270D44"} height={150} width={150} />
                           </div>
                           :
-                          <div style={{ textAlign: "-webkit-center" }}>
+                          <div style={{ margin:"auto" }}>
                             <p>There is no jobs to list with the current filter</p>
+                            <div className='text-center'>
                             <button
                               className={`btn list_view mb-2 `} onClick={resetFilter}>Reset Filter</button>
-
+                              </div>
                           </div>
                         }
 

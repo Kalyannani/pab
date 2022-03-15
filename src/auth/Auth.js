@@ -20,10 +20,9 @@ const customStyles = {
 };
 
 const Auth = (props) => {
-
+    const [selectedClient,setSelectedClient] = useState("applicant");
     const dispatch = useDispatch();
-
-    const [mainTab, setMainTab] = useState('login')
+    const [mainTab, setMainTab] = useState('signup')
     const [subTab, setSubTab] = useState(false)
     const [phone, setPhone] = useState()
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -41,6 +40,8 @@ const Auth = (props) => {
         setMainTab(tab)
         setSubTab(false)
     }
+
+   
 
     console.log('mmmm', mainTab);
 
@@ -66,10 +67,10 @@ const Auth = (props) => {
                 .then((response) => {
                     localStorage.setItem("token", response.data.token);
                     localStorage.setItem("type", response.data.type);
+                    localStorage.setItem('isAuth', 'true');
                     dispatch({ type: "USER", payload: response.data })
                     toast.success("Login Successful")
                     console.log(response);
-    
                     navigate("/")
                 })
                 .catch((err) => {
@@ -92,6 +93,11 @@ const Auth = (props) => {
             haveError = true
             setPasswordError('Password is required!')
         }
+       
+        if (!e.target.contactNumber.value.match(/^[6-9]\d{9}$/)) {
+            haveError = true
+            setPhoneError("Enter a valid contactNumber number.")
+        }
         if (e.target.contactNumber.value == '') {
             haveError = true
             setPhoneError('Phone is required!')
@@ -105,9 +111,9 @@ const Auth = (props) => {
             return
         }
         
-        if (!isContactVerified) {
-            toast.error("Contact needs to be verified!")
-        }
+        // if (!isContactVerified) {
+        //     toast.error("Contact needs to be verified!")
+        // }
         let signupDetails = {
             email: e.target.email.value,
             name: e.target.name.value,
@@ -289,20 +295,20 @@ const Auth = (props) => {
 
     const [state,setState] = useState({
         image: 
-        <img src='images/login_img.jpeg' className='signup_image img-fluid'/>
+        <img src='images/Login.jpg' className='signup_image img-fluid'/>
      });
 
     const imgColumn= ()=>{
         setState((state)=>({
          image: 
-         <img src='images/login_img.jpeg' className='signup_image img-fluid' />
+         <img src='images/Login.jpg' className='signup_image img-fluid' />
         }));
     };
 
     const imgColumn2= ()=>{
         setState((state)=>({
          image: 
-         <img src='/images/Signup_img.jpeg' className='signup_image img-fluid'/>
+         <img src='/images/Signup.jpg' className='signup_image img-fluid'/>
         }));
     };
 
@@ -328,6 +334,10 @@ const Auth = (props) => {
         setPhoneError("")
     }
 
+    const handleSelectChange = (e)=> {
+        setSelectedClient(e.target.value);
+    }
+
     return <>
         <div className="signin_signup container " id='main_form'>
             <div className="row">
@@ -349,9 +359,14 @@ const Auth = (props) => {
                             />
                             <div className="tile py-2">
                                 {mainTab === 'login' ? <h3 className="login">Login Form</h3> : <h3 className="signup">Signup Form</h3>}
-
-
                             </div>
+                            
+                            <label id='signup_tab'
+                            className={`tab login_tab ${mainTab === "signup" && 'active-tab'}`} htmlFor="signup"
+                                onClick={() => {switchMainTab('signup');imgColumn2();scrollToTop();} }>
+                                {" "}
+                                Signup{" "}
+                            </label>
                             <label id='login_tab'
                                 className={`tab login_tab ${mainTab === "login" && 'active-tab'}`}
                                 // active-tab
@@ -360,12 +375,6 @@ const Auth = (props) => {
                             >
                                 {" "}
                                 Login{" "}
-                            </label>
-                            <label id='signup_tab'
-                            className={`tab login_tab ${mainTab === "signup" && 'active-tab'}`} htmlFor="signup"
-                                onClick={() => {switchMainTab('signup');imgColumn2();scrollToTop();} }>
-                                {" "}
-                                Signup{" "}
                             </label>
                             <div className="form_wrap">
                                 {mainTab === 'login' && (
@@ -510,7 +519,7 @@ const Auth = (props) => {
                                     <div className="form_fild signup_form">
                                         <form onSubmit={handleSignUp} onChange={resetError}>
                                             <div className="input_group">
-                                                <select class="form-control multiple" name="type">
+                                                <select class="form-control multiple" name="type" value={selectedClient} onChange={handleSelectChange}>
                                                     <option value="applicant" selected>Job Seekers</option>
                                                     <option value="recruiter">Recruiter</option>
                                                 </select>
@@ -519,7 +528,7 @@ const Auth = (props) => {
                                                 <input
                                                     type="text"
                                                     className="input"
-                                                    placeholder="Name"
+                                                    placeholder={selectedClient ==="applicant"?"Enter Name":"Company Name"}
                                                     name="name"
                                                     
                                                 />
@@ -532,11 +541,12 @@ const Auth = (props) => {
                                                     className="input"
                                                     placeholder="Phone Number"
                                                     name="contactNumber"
+                                                    maxLength={10}
                                                     onChange={handleContactInput}
                                                     
                                                 />
                                                 <span className='input_email'> <i class='fas fa-phone'></i> </span>
-                                                <button type="button" className="verfy-special-btn btn" onClick={handleContactVerify} disabled={!showVerifyBtn || isContactVerified}>{isContactVerified ? 'Verified': 'Verify'}</button>
+                                                {/* <button type="button" className="verfy-special-btn btn" onClick={handleContactVerify} disabled={!showVerifyBtn || isContactVerified}>{isContactVerified ? 'Verified': 'Verify'}</button> */}
 
 
                                             </div>

@@ -1,17 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
  const FeaturedCities = () => {
     return (
-        <div>
-            
+        <div> 
 <div id="sec3">
 <div className="container text-center">
     <h2 className="pb-2">Jobs By Locations</h2>
     <p className="pb-3">20+ Featured Cities Added Jobs</p>
     <div className="row mt-2">
         <div className="col-lg-3 col-md-6 mb-4">
-            <Link to="/locationaljobs">
+            <Link to={`/browsefilterlist?locate=hyderabad`}>
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 1.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -24,7 +23,7 @@ import { Link } from 'react-router-dom'
             </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
-            <Link to="/locationaljobs">
+            <Link to={`/browsefilterlist?locate=mumbai`}>
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 2.jfif" alt="" />
                 <div className="card-img-overlay">
@@ -37,7 +36,7 @@ import { Link } from 'react-router-dom'
             </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
-            <Link to="/locationaljobs">
+            <Link to={`/browsefilterlist?locate=chennai`}>
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 3.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -50,7 +49,7 @@ import { Link } from 'react-router-dom'
             </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
-            <Link to="/locationaljobs">
+            <Link to={`/browsefilterlist?locate=pune`}>
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 4.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -63,7 +62,7 @@ import { Link } from 'react-router-dom'
             </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
-            <Link to="/locationaljobs">
+            <Link to={`/browsefilterlist?locate=bangalore`}>
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 5.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -76,7 +75,7 @@ import { Link } from 'react-router-dom'
             </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
-            <Link to="/locationaljobs">
+            <Link to={`/browsefilterlist?locate=delhi`}>
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 6.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -89,7 +88,7 @@ import { Link } from 'react-router-dom'
             </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
-            <Link to="/locationaljobs">
+            <Link to={`/browsefilterlist?locate=kolkata`}>
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 7.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -102,7 +101,7 @@ import { Link } from 'react-router-dom'
             </Link>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
-            <Link to="/locationaljobs">
+            <Link to={`/browsefilterlist?locate=ahmedabad`}>
             <div className="card img-fluid city">
                 <img className="card-img-top" src="images/card 8.jpg" alt="" />
                 <div className="card-img-overlay">
@@ -115,7 +114,7 @@ import { Link } from 'react-router-dom'
             </Link>
         </div>
     </div>
-    <Link to="/locationaljobs" className='float-right'>View All Locations</Link>
+    <Link to="/locationaljobs" className='float-right All-Links'>View All Locations</Link>
 </div>
 
 </div>

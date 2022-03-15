@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Link , NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import axios from 'axios';
-import apiList from '../lib/apiList';
+import apiList, { server } from '../lib/apiList';
 import ProfileImageUpload from '../common/ProfileImageUpload';
+import { toast } from 'react-toastify';
 export const EmployeeSideBar = () => {
     const [profile,setProfile] = useState({})
+    const [file, setFile] = useState("");
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const handleClick = () => {
@@ -35,6 +37,41 @@ export const EmployeeSideBar = () => {
         
       });
   };
+
+  const imageonChangeHandling=(event)=>{
+    setFile(event.target.files[0])
+  }
+  console.log(file)
+  
+    const handleUpload=()=>{
+      const data = new FormData();
+      data.append("file", file);
+      axios.post(apiList.uploadProfileImage, data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "multipart/form-data"
+        }
+      })
+        .then((response) => {
+          console.log(response.data);
+          // setProfileimage(response.data.imageurl)
+          // toast.success(response.data.message)
+     
+            getData();
+        
+         
+        })
+        .catch((err) => {
+          console.log(err.response);
+          toast.error(err.response.data.message)
+        });
+    }
+  
+  useEffect(()=>{
+    handleUpload()
+  },[file])
+
+
     return (
         <div className="sticky-top">
         <p>
@@ -48,7 +85,25 @@ export const EmployeeSideBar = () => {
 
                 <div className="main_header text-center">
                         {/* <img src="images/girl_avtar.png" alt="" className="info_img" /> */}
-                        <ProfileImageUpload url={profile.profileImage} />
+                        <div className="canditate-des">
+                      <p href="#">
+                        <img
+                          className="resume_img img-responsive"
+                          alt=""
+                          src={profile.profileImage? `${server}/public/profile/${profile.profileImage}` :`images/girl_avtar.png`}
+                        />
+                        
+                      </p>
+                      <label for="file">
+                        <i class="fas fa-camera img_pencil"></i>
+                      </label>
+                      <input type="file" 
+                      id="file" 
+                      style={{ display: "none" }} 
+                      onChange={(event) =>imageonChangeHandling(event)}
+                      />
+                    </div>
+                        {/* <ProfileImageUpload url={profile.profileImage} /> */}
                         <h4 className="company">{profile.companyname}</h4>
                     
                 </div>
