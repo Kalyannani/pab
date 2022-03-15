@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import questions from './questions';
 import RegisterForm from "./RegisterForm";
+// import moment from "moment";
+import CountdownClock from "react-countdown-clock";
+import Question from "./Question";
 const MainTest = () => {
   const [allquestions,setAllQuestions] = useState([])
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -36,6 +39,8 @@ const MainTest = () => {
 	}
 
 console.log(allquestions)
+
+
   return (
     <>
     {
@@ -46,34 +51,16 @@ console.log(allquestions)
 				</div>
 			):
       getQuestions ?
-      <div className="container main_test_container">
-      <div className="container maintest">
-        <div className="Qnumber">
-          <h3>Question {currentQuestion + 1} of {allquestions.length}</h3>
-        </div>
-        <div className="question">
-          <div className="Qcontent">
-            <p>Q). {allquestions[currentQuestion]?.questionText} </p>
-          </div>
-        </div>
-        <div className="row online_main">
-        {allquestions[currentQuestion]?.answerOptions.map((answerOption) => (
-          <div className="col-lg-6 col-md-6">
-            <div id="option_main" className={myanswer === answerOption ? 'selected':null}>
-              <p   id="option" onClick={() => handleAnswerOptionClick(answerOption.isCorrect,answerOption)}>
-              {answerOption.answerText}</p>
-            </div>
-          </div>
-          ))}
-        </div>
-        <div className="Qnext_btn text-center">
-        {
-          showButton?
-          <button onClick={()=>nextQuestion()}>Next</button>: <button className="next_disabled">Next</button>
-        }
-        </div>
-      </div>
-      </div>
+              <Question 
+              CountdownClock = {CountdownClock}
+              setQuestions={setQuestions}
+              currentQuestion={currentQuestion}
+              allquestions={allquestions}
+              myanswer={myanswer}
+              handleAnswerOptionClick={handleAnswerOptionClick}
+              showButton={showButton}
+              nextQuestion={nextQuestion}
+              />
       :
       <div className='mt-4 mb-5'>
          <div className='container'>

@@ -1,43 +1,59 @@
-const questions = [
-    {
-        questionText: 'What is the capital of France?',
-        answerOptions: [
-            { answerText: 'New York', isCorrect: false },
-            { answerText: 'London', isCorrect: false },
-            { answerText: 'Paris', isCorrect: true },
-            { answerText: 'Dublin', isCorrect: false },
-        ],
-    },
-    {
-        questionText: 'Who is CEO of Tesla?',
-        answerOptions: [
-            { answerText: 'Jeff Bezos', isCorrect: false },
-            { answerText: 'Elon Musk', isCorrect: true },
-            { answerText: 'Bill Gates', isCorrect: false },
-            { answerText: 'Tony Stark', isCorrect: false },
-        ],
-    },
-    {
-        questionText: 'The iPhone was created by which company?',
-        answerOptions: [
-            { answerText: 'Apple', isCorrect: true },
-            { answerText: 'Intel', isCorrect: false },
-            { answerText: 'Amazon', isCorrect: false },
-            { answerText: 'Microsoft', isCorrect: false },
-        ],
-    },
-    {
-        questionText: 'How many Harry Potter books are there?',
-        answerOptions: [
-            { answerText: '1', isCorrect: false },
-            { answerText: '4', isCorrect: false },
-            { answerText: '6', isCorrect: false },
-            { answerText: '7', isCorrect: true },
-        ],
-    },
-];
+const questions = {
+   English: [
+        {
+            questionText: 'What is called Job Seeker?',
+            answerOptions: [
+                { answerText: 'The Person who is doing a Job', isCorrect: false },
+                { answerText: 'The Person who is Hiring for a Job', isCorrect: false },
+                { answerText: 'The Person who is Looking for a Job', isCorrect: true },
+                { answerText: 'All the Above', isCorrect: false },
+            ],
+        },
+    
+        {
+            questionText: 'What is called Recruiter?',
+            answerOptions: [
+                { answerText: 'The Person who is doing a Job', isCorrect: false },
+                { answerText: 'The Person who is Hiring for a Job', isCorrect: false },
+                { answerText: 'The Person who is Looking for a Job', isCorrect: true },
+                { answerText: 'All the Above', isCorrect: false },
+            ],
+        },
+    
+        {
+            questionText: 'What is Resume?',
+            answerOptions: [
+                { answerText: 'The Person who is doing a Job', isCorrect: false },
+                { answerText: 'The Person who is Hiring for a Job', isCorrect: false },
+                { answerText: 'The Person who is Looking for a Job', isCorrect: true },
+                { answerText: 'All the Above', isCorrect: false },
+            ],
+        },
+    
+        {
+            questionText: 'What is ShortList?',
+            answerOptions: [
+                { answerText: 'The Person who is doing a Job', isCorrect: false },
+                { answerText: 'The Person who is Hiring for a Job', isCorrect: false },
+                { answerText: 'The Person who is Looking for a Job', isCorrect: true },
+                { answerText: 'All the Above', isCorrect: false },
+            ],
+        },
+    
+        {
+            questionText: 'What is the Head in Recruitment?',
+            answerOptions: [
+                { answerText: 'HR', isCorrect: false },
+                { answerText: 'TL', isCorrect: false },
+                { answerText: 'FM', isCorrect: true },
+                { answerText: 'CPO', isCorrect: false },
+            ],
+        },
+    
+    ]
+} 
     
     // n = 5 to export 5 question
     export default (n = 5) =>
-    Promise.resolve(questions.sort(() => 0.5 - Math.random()).slice(0, n));
+    Promise.resolve(questions.English.sort(() => 0.5 - Math.random()).slice(0, n));
     

@@ -41,6 +41,7 @@ const Auth = (props) => {
         setSubTab(false)
     }
 
+   
 
     console.log('mmmm', mainTab);
 
@@ -66,10 +67,10 @@ const Auth = (props) => {
                 .then((response) => {
                     localStorage.setItem("token", response.data.token);
                     localStorage.setItem("type", response.data.type);
+                    localStorage.setItem('isAuth', 'true');
                     dispatch({ type: "USER", payload: response.data })
                     toast.success("Login Successful")
                     console.log(response);
-    
                     navigate("/")
                 })
                 .catch((err) => {
