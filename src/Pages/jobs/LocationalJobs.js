@@ -81,7 +81,7 @@ const LocationalJobs = () => {
                         </div>:null }
                     <div className="row">
                         {
-                            //  location.pathname === '/locationaljobs'?
+                             location.pathname === '/locationaljobs'?
                              locations.map(res => {
                                 return <div class="col-lg-3 col-md-6">
                                     <Link to={`/browsefilterlist?locate=${res.location}`}>
@@ -90,17 +90,17 @@ const LocationalJobs = () => {
                                     </Link>
                                 </div>
                             })
-                            // :
-                            // locations.slice(0,15).map(res => {
-                            //     return <div class="col-lg-3 col-md-6">
-                            //         <Link to={`/browsefilterlist?locate=${res.location}`}>
-                            //             <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span>
-                            //                 {/* <img src="images/auto_repair.png" alt=""
-                            //                 class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /> */}
-                            //                 </span><span class="company_jobs_img_1_text align-self-center px-2">{res.location}</span></a>
-                            //         </Link>
-                            //     </div>
-                            // })
+                            :
+                            locations.slice(0,15).map(res => {
+                                return <div class="col-lg-3 col-md-6">
+                                    <Link to={`/browsefilterlist?locate=${res.location}`}>
+                                        <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span>
+                                            {/* <img src="images/auto_repair.png" alt=""
+                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /> */}
+                                            </span><span class="company_jobs_img_1_text align-self-center px-2">{res.location}</span></a>
+                                    </Link>
+                                </div>
+                            })
                         }
                        
                     </div>

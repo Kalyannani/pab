@@ -3,8 +3,10 @@ import Modal from 'react-modal';
 import { Button } from 'react-bootstrap';
 import apiList from "../../../lib/apiList";
 import axios from "axios";
-
+import { useSelector } from 'react-redux'
+import { toast } from "react-toastify";
 const Home = () => {
+  const result = useSelector(state => state.data)
   const [modalShow, setModalShow] = React.useState(false);
   const [totalAmount,setTotalamount] = useState()
   const [user,setUser] = useState()
@@ -51,7 +53,6 @@ const Home = () => {
       })
       .catch((err) => {
         console.log(err.response.data);
-        
       });
   };
 
@@ -108,18 +109,23 @@ return fetch(`${apiList.paytmpayment}`,{
 
 const makePayment=()=>
 {
-getData({
-  name:user.name,
-  email:user.email,
-  phone:JSON.stringify(user.contactNumber),
-  amount:JSON.stringify(totalAmount)
-}).then(response=>{
-    var information={
-        action:"https://securegw.paytm.in/theia/processTransaction",
-        params:response
-    }
-  post(information)
-})
+if(result){
+  getData({
+    name:user.name,
+    email:user.email,
+    phone:JSON.stringify(user.contactNumber),
+    amount:JSON.stringify(totalAmount)
+  }).then(response=>{
+      var information={
+          action:"https://securegw.paytm.in/theia/processTransaction",
+          params:response
+      }
+    post(information)
+  })
+}else{
+  toast.error("You Must Login First")
+}
+
 }
 
   return (<>
@@ -189,6 +195,7 @@ getData({
       shouldCloseOnOverlayClick={true}
       onRequestClose={()=>setModalShow(false)}
       style={customStyles}
+      ariaHideApp={false}
       >
         <div className="payment_modal">
 
