@@ -106,48 +106,7 @@ const Home = () => {
                                 </form>
                             </div>
 
-                            {/* <div className="alljob_buttons text-left ">
-                     <div className='Job_link'> 
-                    <NavLink  to="/browsefilterlist"  className="jobs_jobs">
-                            All Jobs
-                           
-                    </NavLink>
-                    </div>
-                    <div className='Job_link'>    
-                    <Link 
-                            to="company" 
-                            className="jobs_jobs">
-                                Jobs By
-                            Company
-                    </Link></div>
-               
-                <div className='Job_link'>
-                    <Link
-                              to="category" className="jobs_jobs">
-                   Jobs By
-                            Category
-                            </Link></div>
-               
-          <div className='Job_link'>
-                            <Link
-                            to="location" className="jobs_jobs">
-                             Jobs By
-                            Location</Link></div>
-               
-          <div className='Job_link'>
-                            <Link
-                            to="designation" className="jobs_jobs">
-                                    Jobs By Designation
-                            </Link></div>
-               
-          <div className='Job_link'>
-                            <Link
-                            to="skill" className="jobs_jobs">
-                   Jobs By Skill
-                    </Link>
-                    </div>
-               
-                </div> */}
+                            
                         </div>
                     </div>
                 </div>
@@ -156,23 +115,22 @@ const Home = () => {
 
             {/* <RecentJobs /> */}
             <ins className='adsbygoogle'
-                style={{ display: 'block' }}
-                data-ad-client='ca-pub-12121212'
-                data-ad-slot='12121212'
-                data-ad-format='auto' />
-
+            style={{ display: 'block' }}
+            data-ad-client='ca-pub-12121212'
+            data-ad-slot='12121212'
+            data-ad-format='auto' />
+                
+              
+           
             <Categories />
-
             <CompanyJobs />
-
-
             <CategoryJobs />
             <DesignationJobs />
             <SkillJobs />
-            {/* <FeaturedCities /> */}
-            <LocationalJobs />
+            <FeaturedCities />
+            {/* <LocationalJobs /> */}
             <OurClients />
-
+          
 
             {/* <Testimonials /> */}
 

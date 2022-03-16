@@ -144,6 +144,11 @@ const Footer = () => {
                     <i className="fas fa-chevron-right"></i>{" "}
                     <Link to="/alljobs">Jobs</Link>
                   </li>
+                  </ul>
+               
+                  <h4>Information</h4>
+
+                  <ul>
                   <li>
                     <i className="fas fa-chevron-right"></i>{" "}
                     <Link to='/termsandconditions'> Terms & conditions</Link> 

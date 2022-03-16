@@ -1,9 +1,12 @@
 import React from 'react'
 
-
+import { useNavigate } from 'react-router-dom';
 const Question = ({CountdownClock,setQuestions,currentQuestion,allquestions,myanswer,handleAnswerOptionClick,showButton,nextQuestion})=>{
+  const navigate = useNavigate();
+  const redirectHome = ()=>{
+    navigate("/hireandtrain")
+  }
 
-  
     return(
         <div className="container main_test_container">
       <div className="container maintest">
@@ -15,7 +18,7 @@ const Question = ({CountdownClock,setQuestions,currentQuestion,allquestions,myan
                   size={100}
                   color={"#270D44"}
                   fontSize="auto"
-                  onComplete={() => setQuestions(false)}
+                  onComplete={() =>redirectHome()}
                 />
         <div className="Qnumber">
           <h3>Question {currentQuestion + 1} of {allquestions.length}</h3>

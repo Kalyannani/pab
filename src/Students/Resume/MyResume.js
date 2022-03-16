@@ -350,7 +350,7 @@ console.log(file)
 const resumeonchangeHandling=(event)=>{
   setResume(event.target.files[0])
 }
-console.log(resume)
+
   const handleprofileUpload=()=>{
     const data = new FormData();
     console.log(file)
@@ -416,7 +416,7 @@ useEffect(()=>{
                       <p href="#">
                         <img
                           className="resume_img img-responsive"
-                          alt="profile-image"
+                          // alt="profile-image"
                           // "http://localhost:4444/public/profile/1646646920789-step_4.png"
                           src={profile.profileImage? `${server}/public/profile/${profile.profileImage}` :`images/girl_avtar.png`}
                         />
@@ -888,11 +888,11 @@ useEffect(()=>{
                   </a>
                 </div>
                 {
-                  profile.employment?
-                  profile.employment.map((employment,index) => {
+                  profile?.employment?
+                  profile?.employment?.map((employment,index) => {
                     return (<>
                       <h5 className="junior_edit">
-                        {employment.designation}{" "}
+                        {employment?.designation}{" "}
                         <a href="#" data-toggle="modal" data-target="#employ" >
                           {" "}
                           <i className="fas fa-pencil-alt pencil_clearfix pencil"
@@ -905,33 +905,33 @@ useEffect(()=>{
                         <i class="far fa-trash-alt remove" ></i>
                         </a>
                       </h5>
-                      <p className="job_usa">{employment.organization}</p>
+                      <p className="job_usa">{employment?.organization}</p>
                       <p className="job_usa">
-                        {moment(employment.startYear).format('YYYY MMMM')} to {" "}
+                        {moment(employment?.startYear).format('YYYY MMMM')} to {" "}
                         {
-                          moment(employment.endYear).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM')?
-                          "Present" :moment(employment.endYear).format('YYYY MMMM')
+                          moment(employment?.endYear).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM')?
+                          "Present" :moment(employment?.endYear).format('YYYY MMMM')
                         }
                         ({
-                          moment(employment.endYear).diff(moment(employment.startYear), "years") 
+                          moment(employment?.endYear).diff(moment(employment?.startYear), "years") 
                         }
                         {
-                          moment(employment.endYear).diff(moment(employment.startYear), "years")=== 1 ? " Year": " Years"
+                          moment(employment?.endYear).diff(moment(employment?.startYear), "years")=== 1 ? " Year": " Years"
                         }
                          {" "}-{" "}
                         {
-                          moment(employment.endYear).diff(moment(employment.startYear).add(moment(employment.endYear).diff(moment(employment.startYear), 'year'), 'years'), 'months')
+                          moment(employment?.endYear).diff(moment(employment?.startYear).add(moment(employment?.endYear).diff(moment(employment?.startYear), 'year'), 'years'), 'months')
                         } 
                         {
-                          moment(employment.endYear).diff(moment(employment.startYear).add(moment(employment.endYear).diff(moment(employment.startYear), 'year'), 'years'), 'months') === 1 ?
+                          moment(employment?.endYear).diff(moment(employment?.startYear).add(moment(employment?.endYear).diff(moment(employment?.startYear), 'year'), 'years'), 'months') === 1 ?
                           " Month": " Months"
                         }
                         )
                       </p>
                       <p className="job_usa" >
-                        Available to join in {employment.noticePeriod}
+                        Available to join in {employment?.noticePeriod}
                       </p>
-                      <p className="job_usa">{employment.designation}</p>
+                      <p className="job_usa">{employment?.designation}</p>
                     </>)
                   }):null
                 }
