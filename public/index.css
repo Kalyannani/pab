@@ -16932,3 +16932,29 @@ font-weight: bolder;
   margin-left: 250px;
 }
 /* Payment Modal */
+
+
+@media screen and (min-width:768px) and (max-width:991px) {
+  .sidebar {
+    width: 100% !important;
+  }
+}
+
+.location_resume_1 {
+  margin-right: 0px;
+}
+
+.location_resume_2 {
+  margin-right: 0px;
+}
+
+.verify_right{
+  color: #2A55FA;
+  margin-left: 15px;
+  font-size: 15px;
+}
+
+.verify_right i{
+  color: #2A55FA;
+  font-size: 17px !important; 
+}

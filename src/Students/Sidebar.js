@@ -47,7 +47,7 @@ console.log(profile)
                         <div className="sidebar" id="sidebar">
                             <div className="main_header text-center">
                                 <div className="heading ">
-                                    <img src={profile.profileImage? `${server}/public/profile/${profile.profileImage}` :`images/girl_avtar.png`} alt="" className="info_img" height="145px" />
+                                    <img src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`} alt="" className="info_img" height="145px" />
                                     <h4 className="company">{profile.name}</h4>
                                     <p className="company_text">Web developer</p>
                                 </div>
