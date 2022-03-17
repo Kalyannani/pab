@@ -343,35 +343,36 @@ const MyResume = () => {
   };
 
 const imageonChangeHandling=(event)=>{
-  console.log(event.target.files[0].type)
-  setFile(event.target.files[0])
+
+    setFile(event.target.files[0])
+  
 }
-console.log(file)
+
 const resumeonchangeHandling=(event)=>{
   setResume(event.target.files[0])
 }
 
-  const handleprofileUpload=()=>{
-    const data = new FormData();
-    console.log(file)
-    data.append("file", file);
-    axios.post(apiList.uploadProfileImage, data, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "multipart/form-data"
-      }
+const handleprofileUpload=()=>{
+  const data = new FormData();
+  console.log(file)
+  data.append("file", file);
+  axios.post(apiList.uploadProfileImage, data, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "multipart/form-data"
+    }
+  })
+    .then((response) => {
+      console.log(response.data.image);
+      setProfile({...profile,profileImage:response.data.image})
+      toast.success(response.data.message)
+        // getData();
     })
-      .then((response) => {
-        console.log(response.data);
-        // setProfileimage(response.data.imageurl)
-        toast.success(response.data.message)
-          getData();
-      })
-      .catch((err) => {
-        console.log(err.response);
-        toast.error(err.response.data.message)
-      });
-  }
+    .catch((err) => {
+      console.log(err.response);
+      toast.error(err.response.data.message)
+    });
+}
   const handleresumeUpload=()=>{
     const data = new FormData();
     data.append("file", resume);
@@ -398,9 +399,9 @@ useEffect(()=>{
   handleprofileUpload();
 },[file])
 
-useEffect(()=>{
-  handleresumeUpload()
-},[resume])
+// useEffect(()=>{
+//   handleresumeUpload()
+// },[resume])
 
   return (
     <div>
@@ -418,7 +419,7 @@ useEffect(()=>{
                           className="resume_img img-responsive"
                           // alt="profile-image"
                           // "http://localhost:4444/public/profile/1646646920789-step_4.png"
-                          src={profile.profileImage? `${server}/public/profile/${profile.profileImage}` :`images/girl_avtar.png`}
+                          src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`}
                         />
                       </p>
                       <label for="file">
@@ -2836,7 +2837,7 @@ useEffect(()=>{
                         <p className="it_employees">
                           {profile.personaldetails.languages.map((lng, index, arr) => {
                             return (<>
-                              {lng}{index != (arr.length - 1) ? "," : ""}
+                              {lng}{index !== (arr.length - 1) ? "," : ""}
                             </>)
                           })}{" "}
                         </p>
