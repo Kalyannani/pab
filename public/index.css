@@ -533,7 +533,21 @@ nav {
   border-radius: 5px !important;
 }
 
-@media screen and (min-width: 991px) {
+@@media screen and (min-width: 0px) and (max-width:991px) {
+  #a1,
+  #a2,
+  #navbarDropdown,
+  #a3,
+  #a4,
+  #a7 {
+    padding-left: 12px !important;
+  }
+  #navbarNav{
+    margin-bottom: 15px !important;
+  }
+}
+
+@media screen and (min-width: 1201px) {
   #a1,
   #a2,
   #navbarDropdown,
@@ -541,6 +555,17 @@ nav {
   #a4,
   #a7 {
     margin-left: 26px;
+  }
+}
+
+@media screen and (min-width: 991px) and (max-width:1200px) {
+  #a1,
+  #a2,
+  #navbarDropdown,
+  #a3,
+  #a4,
+  #a7 {
+    margin-left: 4px;
   }
 }
 
@@ -730,6 +755,9 @@ ul {
   background-repeat: no-repeat;
   background-blend-mode: darken;
   margin-bottom: 50px;
+  padding-top: 150px;
+  padding-bottom: 85px;
+  width: 100% !important;
 }
 
 .hm1 {
@@ -798,11 +826,9 @@ input.home_input:focus {
 @media screen and (min-width: 0px) and (max-width: 325px) {
   #sec1 {
     background-position: center;
-    height: 85vh;
-  }
-
-  .hm1 {
-    padding-top: 22vh;
+    height: auto;
+    
+    
   }
 
   .hm2 {
@@ -826,11 +852,9 @@ input.home_input:focus {
 @media screen and (min-width: 326px) and (max-width: 411px) {
   #sec1 {
     background-position: center;
-    height: 80vh;
-  }
-
-  .hm1 {
-    padding-top: 15vh;
+    height: auto;
+    
+    
   }
 
   .hm2 {
@@ -851,16 +875,14 @@ input.home_input:focus {
     padding-bottom: 15px;
   }
 }
-
 @media screen and (min-width: 411px) and (max-width: 768px) {
   #sec1 {
     background-position: center;
-    height: 70vh;
+    height: auto;
+    
+    
   }
 
-  .hm1 {
-    padding-top: 19vh;
-  }
 
   .hm2 {
     padding-top: 30px;
@@ -884,11 +906,9 @@ input.home_input:focus {
 @media screen and (min-width: 768px) and (max-width: 991px) {
   #sec1 {
     background-position: center;
-    height: 60vh;
-  }
-
-  .hm1 {
-    padding-top: 20vh;
+    height: auto;
+    
+    
   }
 
   .hm2 {
@@ -914,9 +934,7 @@ input.home_input:focus {
 }
 
 @media screen and (min-width: 992px) and (max-width: 1024px) {
-  .hm1 {
-    padding-top: 20vh;
-  }
+
 
   .hm2 {
     padding-top: 40px;
@@ -935,7 +953,9 @@ input.home_input:focus {
 
   #sec1 {
     background-position: center;
-    height: 60vh;
+    height: auto;
+    
+    
   }
 
   .am2 {
@@ -946,10 +966,6 @@ input.home_input:focus {
 }
 
 @media screen and (min-width: 1025px) {
-  .hm1 {
-    padding-top: 10vh;
-  }
-
   .hm2 {
     padding-top: 40px;
   }
@@ -968,7 +984,9 @@ input.home_input:focus {
 
   #sec1 {
     background-position: center;
-    height: 50vh;
+    height: auto;
+    
+    
   }
 }
 
@@ -6836,10 +6854,11 @@ p {
 }
 
 .resume_img {
-  width: 100px;
-  height: 100px;
-  border: 4px solid #fff;
+  width: 130px;
+  height: 130px;
+  border: 4px solid #e7e7e7;
   border-radius: 50%;
+  margin-top: 15px;
 }
 
 .progress-box .progress-info {
@@ -14580,9 +14599,9 @@ option {
 .img_pencil {
   color: #270D44;
   position: absolute;
-  top: 59px;
-  left: 96px;
-  background: #fff;
+  margin-left: 40px;
+  margin-top: -49px;
+  background: #e7e7e7;
   padding: 3px;
   border-radius: 5px;
 }
@@ -16957,4 +16976,11 @@ font-weight: bolder;
 .verify_right i{
   color: #2A55FA;
   font-size: 17px !important; 
+}
+
+
+.google_ads
+{
+  overflow-x: hidden !important;
+  width: 100% ;
 }
