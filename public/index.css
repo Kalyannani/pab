@@ -16984,3 +16984,612 @@ font-weight: bolder;
   overflow-x: hidden !important;
   width: 100% ;
 }
+
+
+
+/* Buy Services DATABASE */
+.Buyservices{
+  margin-top: 130px;
+  margin-bottom: 65px;
+}
+
+.services_IT{
+  padding: 14px;
+  background-color: #0F81E2;
+}
+.services_NON_IT{
+  background-color: #1CBBB4;
+}
+.services_Complete{
+  background-color: #3A697C;
+}
+.services_View{
+  background-color: #5EBF8E;
+}
+.services_Divine{
+  background-color: #df2938;
+}
+.services_xs{
+  background-color: #494ba0;
+}
+
+.services_add{
+  background-color: #52c41a!important;
+}
+
+.services_IT .stream{
+  color: #fff;
+  font-weight: 600;
+}
+.services_IT .price{
+float: right;
+color: #fff;
+font-weight: 600;
+font-size: 18px;
+}
+.services_IT h6{
+  color: #fff;
+}
+.buy_main{
+  border: 1px solid #E9E9E9;
+  padding: 10px;
+  margin: 20px 0px;
+}
+.buy_description ul li{
+  list-style: square !important;
+  color: #929292; 
+  padding: 3px 0px;
+}
+
+.buy_description ul{
+  margin:0px 15px ;
+}
+.buy_now{
+  display: inline-block;
+    padding: 7px 22px !important;
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: 600;
+    font-weight: bold;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    background: #270D44;
+    border: #df3838 solid 1px;
+    transition: all 0.75s ease;
+    color: #fff;
+    border-radius: 2px;
+}
+.buy_now:hover{
+  background-color: #270D44;
+  padding: 7px 22px !important;
+}
+.services_buy_now span{
+  color: #6f6f6f;
+  width: 100px;
+  float: right;
+  font-size: 12px;
+}
+/* Buy Services DATABASE */
+
+/* Combo Products */
+.combo_products{
+  padding-bottom: 15px;
+  border: 2px solid #E9E9E9;
+  margin: 15px 0px;
+  border-radius: 3px;
+}
+.combo_header{
+  border-bottom: 1px solid #E9E9E9;
+    padding: 12px 0px;
+    font-weight: bolder;
+    background: #0F81E2;
+    font-size: 18px;
+    color: #fff;
+}
+.combo_content{
+  padding: 10px 15px 0px;
+}
+.combo_inner_head h6{
+  color: #270D44;
+  font-size: 22px;
+  font-weight: 700;
+}
+.combo_inner_head p{
+  color: #270D44;
+  font-size: 16px;
+  font-weight: 700;
+}
+.combo_inner_head p span{
+  color: #1CBBB4;
+  padding-right: 5px;
+}
+.combo_payment p{
+  position: relative;
+  padding: 5px 0px;
+}
+.combo_payment .combo1{
+  color: #969696;
+  font-weight: 600;
+  width: 59%;
+}
+.combo_payment .combo2{
+  width: 30%;
+  font-weight: 600;
+  color: #270D44;
+}
+.combo_payment p sub{
+ font-weight: 600;
+  position: absolute;
+  bottom: -8px;
+  left: 58px
+}
+.buy_combo_now{
+  margin: 36px 0px 0px;
+}
+.contact_details{
+  padding: 20px;
+  border: 2px solid #E9E9E9;
+}
+.heading_details h5{
+  font-weight: 600;
+
+}
+.contact_phone span{
+  margin-right: 20px;
+  padding-right: 5px;
+  border-right: 2px solid #E7E7E7;
+   color: #969696;
+   font-weight: 600;
+}
+/* Combo Products */
+
+/* Branding */
+.branding_main{
+  padding: 15px 0px;
+  /* border: 2px solid #E9E9E9; */
+}
+.branding_heading h3{
+  font-weight: 700;
+  font-size: 22px;
+  color: #270D44;
+}
+.branding_heading p{
+  font-size: 17px;
+  text-align: justify;
+}
+.brand_media{
+  padding: 15px;
+  background: #F3F6FD;
+  border-radius: 3px;
+}
+.brand_media h5{
+  font-size: 20px;
+  font-weight: bold;
+  color:#7F7F7F;
+  padding-bottom: 15px;
+}
+.brand_media p{
+font-size: 16px;
+font-weight: 600;
+color:#7F7F7F;
+text-align: justify;
+}
+@media screen and (min-width:768px) {
+  .media_img{
+    margin-top: 50px;
+  }
+  .buy_branding{
+    margin-top: 45px !important;
+  }
+}
+.buy_now_branding{
+  background-color: #fff !important;
+  color: #270D44;
+  font-weight: bold !important;
+  border: 2px solid #270D44 !important;
+}
+.buy_now_branding:hover{
+  background-color: #270D44 !important;
+  color: #FFF;
+  animation: ease-in-out;
+  transition: all 0.75s ease-in-out;
+}
+.buy_now_branding:focus{
+  padding: 0.375rem 0.75rem !important;
+  border: 2px solid #270D44 !important;
+}
+.brand_media_right{
+  background: #FFFFFF !important;
+}
+.branding_content{
+  padding: 0px 15px 15px;
+    border: 2px solid #E9E9E9;
+    margin: 20px 0px 15px;
+    border-radius: 10px;
+}
+.branding_content_top h3{
+  font-weight: 700;
+    font-size: 18px;
+    color: #270D44; 
+}
+
+.branding_content_top p{
+  font-size: 16px;
+  color: #7F7F7F;
+}
+.buy_branding{
+  margin-top: 15px;
+}
+/* Branding */
+
+
+/* Xpress Job Type */
+
+.xpress_top
+{
+  /* margin-top: 200px !important; */
+  margin-bottom: 50px;
+}
+.xpress
+{
+  border:  1px solid #ebebeb;
+}
+.xpress_img
+{
+  width: 90% !important
+}
+.xpress_bg
+{
+  background-image: url('images/xpressbg.jpg');
+  height: 100px !important;
+}
+
+.xicon
+{
+ 
+  width: 50px;
+  height: 50px;
+  margin-top: 15px;
+  margin-left: 50px ;
+
+}
+
+.x_bg
+{
+  background-color: #f6f8fd;
+}
+.x_box{
+  border: 1px solid #ebebeb;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.x_box h3{
+  font-weight: bold;
+    font-size: 17px;
+    color: #000;
+    padding: 0 0 5px 0;
+}
+
+.x_box p{
+  color: #7f7f7f;
+  font-weight: 14px;
+}
+.xpress_enquire
+{
+  background-color: #270d44;
+  color: #fff ;
+  font-size: 30px;
+  border-radius: 3px;
+  border: none;
+  padding: 15px 40px ;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+.xpress_btn
+{
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+.xpress_mhead
+{
+  background-color: #d3d3d3;
+
+}
+.xpress_mtitle
+{
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.xpress_tag1
+{
+  color: #ed3237;
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-top: 35px;
+}
+.xpress_tag2
+{
+  /* padding-left:360px; */
+  color: #ed3237;
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+@media screen and (min-width:0px) and (max-width:768px) {
+  .xpress_img
+{
+  width: 30% !important
+}
+
+.xpress_bg
+{
+  /* background-image: url('images/xpressbg.jpg'); */
+  height: 180px !important;
+}
+  .x_c1
+  {
+    margin-top: 140px !important;
+
+  }
+  .x_bg
+  {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .xicon
+  {
+    margin-left: 170px !important;
+    margin-bottom: 15px !important;
+  }
+  
+}
+@media screen and (min-width:768px) {
+  .xpress_img
+  {
+    width: 100% !important;
+    margin-top: 25px;
+  }
+}
+/* @media screen and (min-width:769px) and (max-width:1120px)
+{
+  .xpress_img
+{
+  width: 20% !important;
+  margin-top:50px;
+}
+} */
+
+/* @media screen and (min-width:0px) and (max-width:320px) {
+
+    .xicon
+  {
+    margin-left: 100px !important;
+    margin-bottom: 15px !important;
+  }
+} */
+
+@media screen and (min-width:0px) and (max-width:768px) {
+  .xicon
+  {
+    margin-left: 25px !important;
+    margin-bottom: 15px !important;
+  }
+  .xpress_pab_img
+  {
+    text-align: center;
+  }
+}
+
+.xmodal_btn
+{
+  background-color: #270d44;
+  color: #fff;
+}
+
+.xmodal_btn:hover
+{
+  background-color: #270d44;
+  color: #fff;
+}
+
+
+/* Xpress Job Type */
+
+/* SMS */
+
+/* .sms_top
+{
+  margin-top: 200px !important;
+  margin-bottom: 50px;
+ 
+} */
+
+.sms_icon
+{
+  border: 1px solid #337ea0;
+  border-radius: 50%;
+  padding: 1px 5px;
+}
+.sms_notification
+{
+
+  padding: 5px;
+  background-color: #dcf4ff;
+  color: #337ea0;
+}
+.sms_description
+{
+  font-weight: bold;
+  font-size: 20px;
+  margin-top:10px;
+}
+
+.sms_lists li
+{
+color:#7f7f7f;
+line-height: 2;
+list-style-type: square !important;
+margin-left: 35px;
+}
+.sms_footer
+{
+  color: red;
+  margin-right: 0px !important;
+
+
+}
+.sms_img1
+{
+ background-color: #fff;
+  width: 70% !important;
+margin-left: 35px;
+margin-top: 250px ;
+}
+@media screen and (min-width:0px) and (max-width:320px) {
+
+  .sms_img1
+{
+  background-color: #fff;
+  width: 31% !important;
+  margin-left: 90px;
+  margin-top: 25px;
+  margin-bottom: 25px !important;
+}
+}
+@media screen and (min-width:321px) and (max-width:498px)
+{
+  .sms_img1
+  {
+    background-color: #fff;
+    width: 31% !important;
+    margin-left: 100px;
+    /* margin-left: auto !important;
+    margin-right: auto !important; */
+    margin-top: 25px;
+    margin-bottom: 25px !important;
+  }
+}
+@media screen and (min-width:499px) and (max-width:767px)
+{
+  .sms_img1
+  {
+    background-color: #fff;
+    width: 31% !important;
+    margin-left: 175px;
+    /* margin-left: auto !important;
+    margin-right: auto !important; */
+    margin-top: 25px;
+    margin-bottom: 25px !important;
+  }
+}
+
+/* SMS */
+
+/* jobposting */
+
+.C1_top
+{
+  /* margin-top: 200px !important; */
+  margin-bottom: 50px;
+ 
+}
+.c1_border
+{
+  /* height: 400px; */
+  border:2px solid #7f7f7f !important;
+}
+.C1_topline
+{
+  padding: 10px 0 20px 0;
+  text-align: center;
+  font-weight: normal;
+  font-size: 18px;
+  color: #7f7f7f;
+
+}
+.C1_box
+{
+  background-color: #072e50;
+  /* height:395px; */
+}
+.C1_img
+{
+ 
+  width: 70% !important;
+margin-left: 35px;
+margin-top: 140px ;
+background-color: #FFFFFF;
+}
+@media screen and (min-width:0px) and (max-width:767px) {
+  .C1_img
+{
+  width: 200px !important; 
+    
+    height: fit-content;
+    margin-top: 20px;
+    
+    margin-bottom: 20px;
+}
+}
+.c1_buynow
+{
+background-color: #270d44;
+color: #fff;
+padding: 10px 20px;
+border: none;
+margin-top: 10px;
+border-radius: 5px;
+cursor: pointer;
+}
+.c1_description
+{
+  font-weight: bold;
+  font-size: 20px;
+  margin-top:10px;
+}
+.c1_lists li {
+  /* list-style-type:circle; */
+  color:#7f7f7f;
+  line-height: 2;
+  list-style-type: square !important;
+  margin-left: 35px;
+}
+.c1_footer
+{
+  color: red;
+  margin-right: 0px !important;
+ 
+
+}
+/* b.c1_footer
+{
+  text-align: center;
+} */
+
+
+/* jobposting */
+
+.Tabs_main::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+.Tabs_main{
+  overflow-x: scroll !important;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+}

@@ -50,6 +50,7 @@ import MainTest from './Services/components/OnlineExam/MainTest';
 import Paytm from './Paytm'
 import PaymentStatusSuccess from './PaymentStatus';
 import PaymentStatusFail from './PaymentStatusFail';
+import BuyTabs from './For_Employers/Buy Employer services/BuyTabs'
 
 export const App = (props) => {
 
@@ -85,6 +86,7 @@ export const App = (props) => {
    
   {
     result?.type === "recruiter"? <>
+    <Route exact path="/Buytabs" element={<BuyTabs/>}/>
     <Route exact path="/company_profile" element={<COMPANY_PROFILE />} />
     <Route exact path="/post_jobs" element={<POST_A_JOB />} />
     <Route exact path="/Manage_jobs" element={<Manage_Jobs />} />
