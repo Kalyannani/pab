@@ -46,6 +46,11 @@ const Student_Navbar = () => {
     <>
       <div className="collapse navbar-collapse" id="navbarNav"   >
         <ul className="navbar-nav"   >
+
+          <li className="nav-item">
+            <Link className="nav-link font-weight-bold" style={{ color: state.color }} id="a1" to="/onlinetest" data-toggle={collapse} data-target={id}>ONLINE EXAM</Link>
+          </li>
+
           <li className="nav-item dropdown position-relative d-inline-block">
             <a className="nav-link dropdown-toggle  font-weight-bold" href="#" id="a3" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: state.color }}>

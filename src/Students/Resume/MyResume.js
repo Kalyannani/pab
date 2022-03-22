@@ -423,7 +423,7 @@ useEffect(()=>{
                         />
                       </p>
                       <label for="file">
-                        <i class="fas fa-camera img_pencil"></i>
+                        <i class="fas fa-camera img_pencil img_edit"></i>
                       </label>
                       <input type="file" 
                       id="file" 
@@ -3145,12 +3145,12 @@ useEffect(()=>{
                 setProfile={setProfile}
                 profile={profile}
                 handleUpdate={handleUpdate}
-                /> */}
-                {/* <ResumeFileUpload url={profile.resume.url} /> */}
+                />
+                <ResumeFileUpload url={profile.resume.url} /> */}
                 <form>
                   <div className="form-group">
                     <label for="myfile" className="file_upload">
-                      Upload File
+                      Upload RESUME
                     </label>
                     <input type="file" id="myfile" name="myfile" hidden
                     onChange={(event) =>resumeonchangeHandling(event)}

@@ -114,7 +114,7 @@ import { Link } from 'react-router-dom'
             </Link>
         </div>
     </div>
-    <Link to="/locationaljobs" className='float-right All-Links'>View All Locations</Link>
+    <Link to="/locationaljobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Locations</Link>
 </div>
 
 </div>

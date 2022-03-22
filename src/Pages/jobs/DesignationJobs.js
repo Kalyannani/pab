@@ -38,7 +38,28 @@ const DesignationJobs = () => {
             <div className="jobdesignation_sec_2">
                 <div className="container">
                     <div className="jobcategory_sec_2_sub">
-                        <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY DESIGNATION</h6>
+                        {/* <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY DESIGNATION</h6> */}
+                        <div className='row'>
+                            <div className='col-md-6'>
+                                <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY DESIGNATION</h6>
+                            </div>
+                            <div className='col-md-6'>
+                                <form>
+                                    <div ng-app="angularsearch" ng-controller="searchsuggetions">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" />
+                                                <div class="input-group-btn">
+                                                    <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
                         <hr className="bg-light" />
                         { location.pathname === '/designationjobs'?
                         <div class="company_jobs_section_2_buttons text-left my-4">
@@ -79,18 +100,17 @@ const DesignationJobs = () => {
                              designation?.map(designation => {
                                 return <div class="col-lg-4 col-md-6">
                                     <Link to={`/browsefilterlist?designate=${designation?.Designation}`}>
-                                        <a  class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
-                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{designation?.Designation}</span></a>
+                                        <a  class="company_jobs_anchor p-2">
+                                            <span class="company_jobs_img_1_text">{designation?.Designation}</span></a>
                                     </Link>
                                 </div>
                             }):
                             designation?.slice(0,15).map(designation => {
                                 return <div class="col-lg-3 col-md-6">
                                     <Link to={`/browsefilterlist?designate=${designation?.Designation}`}>
-                                        <a  class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span>
-                                            {/* <img src="images/auto_repair.png" alt=""
-                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /> */}
-                                            </span><span class="company_jobs_img_1_text align-self-center px-2">{designation?.Designation}</span></a>
+                                        <a  class="company_jobs_anchor p-2"><span>
+                                            
+                                            </span><span class="company_jobs_img_1_text">{designation?.Designation}</span></a>
                                     </Link>
                                 </div>
                             })
@@ -98,7 +118,7 @@ const DesignationJobs = () => {
                         </div>
                         <div className='mb-5 mt-4' id='skill'>
                         {
-                            location.pathname === '/designationjobs' ? null:<Link to="/designationjobs" className='float-right All-Links'>View All Designations</Link>
+                            location.pathname === '/designationjobs' ? null:<Link to="/designationjobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Designations</Link>
                         }
                         </div>
                     </div>
