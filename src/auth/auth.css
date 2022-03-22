@@ -332,7 +332,6 @@ label.login_otp{
 }
 
 #login_tab{
-    border-right: none;
     border-top-right-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
 }

@@ -72,7 +72,27 @@ const CompanyJobs = () => {
                 <div class="container">
                 
                     <div class="company_jobs_section_2_sub">
-                        <h6 class="company_jobs_section_2_sub_heading">BROWSE JOBS BY COMPANIES</h6>
+                       
+                        <div className='row'>
+                            <div className='col-md-6'>
+                                <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY COMPANIES</h6>
+                            </div>
+                            <div className='col-md-6'>
+                                <form>
+                                    <div ng-app="angularsearch" ng-controller="searchsuggetions">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" />
+                                                <div class="input-group-btn">
+                                                    <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <hr class="bg-secondary " />
                         { location.pathname === '/companyjobs'?
                         <div class="company_jobs_section_2_buttons text-left my-4">
@@ -114,10 +134,10 @@ const CompanyJobs = () => {
                             {
                              location.pathname === '/companyjobs'?
                             companies.map(company => {
-                                return <div class="col-lg-4 col-md-6">
+                                return <div class="col-lg-3 col-md-6">
                                     <Link to={`/browsefilterlist?company=${company.userId}`}>
-                                    <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
-                                        class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{company.companyname}</span></a>
+                                    <a class="company_jobs_anchor p-2">
+                                        <span class="company_jobs_img_1_text">{company.companyname}</span></a>
                                         </Link>
                                 </div>
                             })
@@ -181,7 +201,7 @@ const CompanyJobs = () => {
                         
                         {/* <span className="more_inner float-right mr-4" onClick={toggleReadMore}>{isReadMore ? "...more" : " show less"}</span> */}
                         {
-                            location.pathname === '/companyjobs' ? null:<Link to="/companyjobs" className='float-right All-Links'>View All Companies</Link>
+                            location.pathname === '/companyjobs' ? null:<Link to="/companyjobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Companies</Link>
                         }
                         </div>
                     </div>

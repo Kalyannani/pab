@@ -65,7 +65,27 @@ const SkillJobs = () => {
             <!-- container --> */}
 
                     <div className="jobskill_sec_2_sub">
-                        <h6 className="jobskill_sec_2_heading_1">BROWSE JOBS BY Skill</h6>
+                        {/* <h6 className="jobskill_sec_2_heading_1">BROWSE JOBS BY Skill</h6> */}
+                        <div className='row'>
+                            <div className='col-md-6'>
+                                <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY Skill</h6>
+                            </div>
+                            <div className='col-md-6'>
+                                <form>
+                                    <div ng-app="angularsearch" ng-controller="searchsuggetions">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" />
+                                                <div class="input-group-btn">
+                                                    <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <hr className="bg-light" />
                         { location.pathname === '/skilljobs'?
                         <div class="company_jobs_section_2_buttons text-left my-4">
@@ -106,8 +126,8 @@ const SkillJobs = () => {
                              skills.map(res => {
                                 return <div className="col-lg-3 col-md-6">
                                     <Link to="#">
-                                        <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
-                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{res.Skill}</span></a>
+                                        <a class="company_jobs_anchor p-2">
+                                            <span class="company_jobs_img_1_text">{res.Skill}</span></a>
                                     </Link>
                                         
                                 </div>
@@ -126,7 +146,7 @@ const SkillJobs = () => {
                             }
                         </div>
                         <div className='mb-3' id='location'>
-                        { location.pathname === '/skilljobs' ? null:<Link to="/skilljobs" className='float-right All-Links'>View All Skills</Link>}
+                        { location.pathname === '/skilljobs' ? null:<Link to="/skilljobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Skills</Link>}
                         </div>
                     </div>
 
