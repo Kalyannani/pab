@@ -8,6 +8,7 @@ import apiList from '../../lib/apiList'
 import SearchFilter from './SearchFilter'
 const CategoryJobs = () => {
 
+    const [searchTerm , setsearchTerm] = useState('')
     const [category, setCategory] = useState(data)
     const location = useLocation();
 
@@ -51,11 +52,12 @@ const CategoryJobs = () => {
                                 <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY FUNCTIONAL AREA / DEPARTMENT</h6>
                             </div>
                             <div className='col-md-6'>
+                            {location.pathname === '/categoryjobs' ?
                                 <form>
                                     <div ng-app="angularsearch" ng-controller="searchsuggetions">
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" />
+                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" onChange={(event)=>{setsearchTerm(event.target.value);}}/>
                                                 <div class="input-group-btn">
                                                     <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
                                                 </div>
@@ -63,7 +65,9 @@ const CategoryJobs = () => {
 
                                         </div>
                                     </div>
-                                </form>
+                                </form>:
+                                null
+                               }
                             </div>
                         </div>
                         <hr className="bg-light" />
@@ -106,7 +110,17 @@ const CategoryJobs = () => {
                         <div className="row">
                             {
                                 location.pathname === '/categoryjobs' ?
-                                    category?.map(industry => {
+                                    category?.filter((val)=>
+                                    {
+                                        if(searchTerm == "")
+                                        {
+                                            return val
+                                        }
+                                        else if(val.Category.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
+                                        {
+                                            return val
+                                        }
+                                    }).map(industry => {
                                         return <div class="col-lg-3 col-md-6 ">
                                             <Link to={`/browsefilterlist?category=${industry.Category}`}>
                                                 <a class="company_jobs_anchor p-2">
