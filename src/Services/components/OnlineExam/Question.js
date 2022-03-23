@@ -8,7 +8,11 @@ const Question = ({CountdownClock,setQuestions,currentQuestion,allquestions,myan
   }
 
     return(
+      <div className='container-fluid '>
+        <div className='ml-auto' >
+          <span><i class="fas fa-calculator"></i>YEAH</span></div>
         <div className="container main_test_container">
+         
       <div className="container maintest">
       <CountdownClock
                   seconds={30 * 60}
@@ -44,6 +48,7 @@ const Question = ({CountdownClock,setQuestions,currentQuestion,allquestions,myan
           <button onClick={()=>nextQuestion()}>Next</button>: <button className="next_disabled">Next</button>
         }
         </div>
+      </div>
       </div>
       </div>
     )

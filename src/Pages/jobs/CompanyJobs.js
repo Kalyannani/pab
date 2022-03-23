@@ -9,6 +9,7 @@ import Subfilter from './subfilter';
 import { useLocation} from 'react-router-dom'
 import SearchFilter from './SearchFilter';
 const CompanyJobs = () => {
+    const [searchTerm , setsearchTerm] = useState('')
     const location = useLocation();
     console.log(location.pathname)
     const [companies, setCompanies] = useState([])
@@ -78,11 +79,13 @@ const CompanyJobs = () => {
                                 <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY COMPANIES</h6>
                             </div>
                             <div className='col-md-6'>
+                            {
+                             location.pathname === '/companyjobs'?
                                 <form>
                                     <div ng-app="angularsearch" ng-controller="searchsuggetions">
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" />
+                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" onChange={(event)=>{setsearchTerm(event.target.value);}} />
                                                 <div class="input-group-btn">
                                                     <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
                                                 </div>
@@ -91,6 +94,7 @@ const CompanyJobs = () => {
                                         </div>
                                     </div>
                                 </form>
+                                :null}
                             </div>
                         </div>
                         <hr class="bg-secondary " />
@@ -133,7 +137,17 @@ const CompanyJobs = () => {
                         <div class="row">
                             {
                              location.pathname === '/companyjobs'?
-                            companies.map(company => {
+                            companies.filter((val)=>
+                            {
+                                if(searchTerm == "")
+                                {
+                                    return val
+                                }
+                                else if(val.companyname.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
+                                {
+                                    return val
+                                }
+                            }).map(company => {
                                 return <div class="col-lg-3 col-md-6">
                                     <Link to={`/browsefilterlist?company=${company.userId}`}>
                                     <a class="company_jobs_anchor p-2">

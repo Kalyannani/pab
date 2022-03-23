@@ -184,9 +184,33 @@
      transform: scale(0.95);
 }
  .main .form_wrapper .form_wrap .form_fild .not_mem {
-     text-align: center;
+    text-align: center;
+    /* background-color: crimson; */
+    border: 2px solid #270d44;
+    width: fit-content;
+    margin: auto;
+    padding:10px 25px;
+    align-items: center;
+    border-radius: 5px;
+}
+.main .form_wrapper .form_wrap .form_fild .not_mem:hover{
+    background-color: #270D44;
+   
+}
+.main .form_wrapper .form_wrap .form_fild .not_mem:hover a label{
+    color: #ffffff !important;
+}
+.already{
+    text-align: center;
+}
+.already span{
+    font-weight: 700;
+    cursor: pointer;
+    color: #270D44;
+    font-size: 16px;
 }
  .main .form_wrapper .form_wrap .form_fild .not_mem label {
+     margin-bottom: 0px !important;
      pointer-events: none;
 }
  .main .form_wrapper .form_wrap .form_fild .not_mem label span {
@@ -217,7 +241,12 @@ input[type=number]::-webkit-outer-spin-button {
 
 .login_otp{
     padding: 10px 25px;
-    background-color: #ADADAD;
+    /* background-color: #ADADAD; */
+    border: 2px solid #270D44;
+}
+.login_otp:hover{
+background-color: #270D44;
+color: #ffffff !important;
 }
 .forgot_pass{
     font-size: 17px;
@@ -248,7 +277,7 @@ label.login_otp{
 }
 
 .signin_signup{
-    margin-top: 100px!important;
+    margin-top: 160px!important;
     margin-bottom: 50px;
     padding: 0px 0px 0px 10px !important;
     box-shadow: 0 0 8px rgb(0 0 0 / 25%);
@@ -350,4 +379,11 @@ label.login_otp{
 
 .ant-upload-list-item-card-actions{
     display: none !important;
+}
+
+.signin_signup{
+    margin-top: 160px!important;
+    margin-bottom: 50px;
+    padding: 0px 0px 0px 10px !important;
+    box-shadow: 0 0 8px rgb(0 0 0 / 25%);
 }

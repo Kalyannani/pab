@@ -5,6 +5,7 @@ import Subfilter from './subfilter'
 import { useLocation } from 'react-router-dom'
 import SearchFilter from './SearchFilter'
 const LocationalJobs = () => {
+    const [searchTerm , setsearchTerm] = useState('')
    
     const location = useLocation();
     const [locations,setLocations] = useState(data)
@@ -54,7 +55,7 @@ const LocationalJobs = () => {
                                     <div ng-app="angularsearch" ng-controller="searchsuggetions">
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" />
+                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" onChange={(event)=>{setsearchTerm(event.target.value);}}/>
                                                 <div class="input-group-btn">
                                                     <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
                                                 </div>
@@ -102,7 +103,17 @@ const LocationalJobs = () => {
                     <div className="row">
                         {
                              location.pathname === '/locationaljobs'?
-                             locations.map(res => {
+                             locations.filter((val)=>
+                             {
+                                 if(searchTerm == "")
+                                 {
+                                     return val
+                                 }
+                                 else if(val.location.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
+                                 {
+                                     return val
+                                 }
+                             }).map(res => {
                                 return <div class="col-lg-3 col-md-6">
                                     <Link to={`/browsefilterlist?locate=${res.location}`}>
                                         <a class="company_jobs_anchor p-2">

@@ -8,6 +8,8 @@ import data from "../../JsonData/Skill.json"
 import { useLocation } from 'react-router-dom'
 import SearchFilter from './SearchFilter'
 const SkillJobs = () => {
+     const [searchTerm , setsearchTerm] = useState('')
+
     const location = useLocation();
   
     const [skills, setSkills] = useState(data)
@@ -71,11 +73,13 @@ const SkillJobs = () => {
                                 <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY Skill</h6>
                             </div>
                             <div className='col-md-6'>
+                            {
+                             location.pathname === '/skilljobs'?
                                 <form>
                                     <div ng-app="angularsearch" ng-controller="searchsuggetions">
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" />
+                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" onChange={(event)=>{setsearchTerm(event.target.value);}}/>
                                                 <div class="input-group-btn">
                                                     <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
                                                 </div>
@@ -84,6 +88,7 @@ const SkillJobs = () => {
                                         </div>
                                     </div>
                                 </form>
+                                :null}
                             </div>
                         </div>
                         <hr className="bg-light" />
@@ -123,7 +128,17 @@ const SkillJobs = () => {
                         <div className="row">
                             {
                              location.pathname === '/skilljobs'?
-                             skills.map(res => {
+                             skills.filter((val)=>
+                             {
+                                 if(searchTerm == "")
+                                 {
+                                     return val
+                                 }
+                                 else if(val.Skill.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
+                                 {
+                                     return val
+                                 }
+                             }).map(res => {
                                 return <div className="col-lg-3 col-md-6">
                                     <Link to="#">
                                         <a class="company_jobs_anchor p-2">
