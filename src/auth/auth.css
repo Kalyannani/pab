@@ -31,7 +31,7 @@
     }
     .modal_grid{
         position: relative;
-        width: 100%;
+        width: 95%;
         padding-right: 5px !important;
         padding-left: 5px !important;
     }
@@ -45,6 +45,7 @@
      align-items: center;
      position: relative;
      overflow: hidden;
+     padding: 0px 5px 0px 22px;
 }
  .main .form_wrapper .tile {
      text-align: center;
@@ -279,7 +280,7 @@ label.login_otp{
 .signin_signup{
     margin-top: 160px!important;
     margin-bottom: 50px;
-    padding: 0px 0px 0px 10px !important;
+    padding: 0px !important;
     box-shadow: 0 0 8px rgb(0 0 0 / 25%);
 }
 
@@ -288,6 +289,7 @@ label.login_otp{
         width: 95%;
         margin-left: auto;
         margin-right: auto;
+        overflow-x: hidden;
     }
 }
 
@@ -384,6 +386,6 @@ label.login_otp{
 .signin_signup{
     margin-top: 160px!important;
     margin-bottom: 50px;
-    padding: 0px 0px 0px 10px !important;
+    padding: 0px !important;
     box-shadow: 0 0 8px rgb(0 0 0 / 25%);
 }

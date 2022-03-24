@@ -1,17 +1,54 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 import { useNavigate } from 'react-router-dom';
+import Calculator from './Calculator/Calculator';
+import Modal from 'react-modal';
+
+
+
+
+const customStyles = {
+  content: {
+    position: 'absolute',
+    inset: '54% 45% auto auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    width:'fit-content',
+    height:'fit-content',
+    border: 'none',
+    background: 'none',
+  },
+  overlay:{
+    background:'none',
+  },
+};
+
+
+
 const Question = ({CountdownClock,setQuestions,currentQuestion,allquestions,myanswer,handleAnswerOptionClick,showButton,nextQuestion})=>{
+
+  const [modalIsOpen,setModalIsOpen] = useState(false)
+
   const navigate = useNavigate();
   const redirectHome = ()=>{
     navigate("/hireandtrain")
   }
 
     return(
-      <div className='container-fluid '>
-        <div className='ml-auto' >
-          <span><i class="fas fa-calculator"></i>YEAH</span></div>
+      
+
         <div className="container main_test_container">
+        <div className='text-right Q_calculator'  >
+                <span onClick={()=>setModalIsOpen(true)}><i class="fas fa-calculator"></i></span>
+                <Modal isOpen={modalIsOpen} style={customStyles}  
+                onRequestClose={()=>setModalIsOpen(false)} className="modal_calculator">
+                  <>
+                  <span className='close_caluculator' onClick={()=>setModalIsOpen(false)}>x</span>
+                  <Calculator/>
+                 
+                </>
+                </Modal>
+          </div>
          
       <div className="container maintest">
       <CountdownClock
@@ -50,7 +87,7 @@ const Question = ({CountdownClock,setQuestions,currentQuestion,allquestions,myan
         </div>
       </div>
       </div>
-      </div>
+      
     )
 }
 export default Question
