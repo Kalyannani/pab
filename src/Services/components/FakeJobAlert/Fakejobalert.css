@@ -84,9 +84,9 @@ body {
   height: 100%;
   border-radius: 30%;
 }
-img:hover {
+.imgsize:hover {
   transform: rotateY(360deg);
-  transform: scale(1.1);
+   transform: scale(1.1); 
   transition: 0.5s;
   
 }

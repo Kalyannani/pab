@@ -51,6 +51,8 @@ import Paytm from './Paytm'
 import PaymentStatusSuccess from './PaymentStatus';
 import PaymentStatusFail from './PaymentStatusFail';
 import BuyTabs from './For_Employers/Buy Employer services/BuyTabs'
+import Calculator from './Services/components/OnlineExam/Calculator/Calculator';
+
 
 export const App = (props) => {
 
@@ -75,6 +77,8 @@ export const App = (props) => {
    <Navbar />
    <Routes>
    <Route path="/" exact element={<Home />} />
+   <Route path="/calculator" element={<Calculator/>}/>
+  
    <Route path="/auth" exact element={<Auth />} />
    {/* <Route exact path="/signin" element={<SignIn />} />
    <Route exact path="/signup" element={<SignUp />} /> */}
@@ -124,7 +128,7 @@ export const App = (props) => {
   <Route exact path="/textresume" element={<Textresume/>}/>
   <Route exact path="/fakejobalert" element={<Fakejobalert/>}/>
  
-  
+
   <Route path='*' exact={true} element={<Error/>} />
   
    </Routes>
