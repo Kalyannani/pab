@@ -223,10 +223,10 @@ const questions = {
         {
             questionText: '(112 x 5^4) = ?',
             answerOptions: [
-                { answerText: '120 metres', isCorrect: false },
-                { answerText: '20 metre', isCorrect: false },
-                { answerText: ' 140 meters', isCorrect: true },
-                { answerText: '60 metres', isCorrect: false },
+                { answerText: '67000 ', isCorrect: false },
+                { answerText: '77200 ', isCorrect: false },
+                { answerText: ' 70000 ', isCorrect: true },
+                { answerText: '76500 ', isCorrect: false },
             ],
         },
         {
