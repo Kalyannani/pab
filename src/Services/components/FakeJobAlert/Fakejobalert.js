@@ -298,7 +298,7 @@ const Fakejobalert = () => {
                    <div className="col-sm-3 text-center">
                        {/* <!-- <img className="img-fluid bg-white w-50 h-100 " alt="img"
          src="https://cdn-icons-png.flaticon.com/512/1255/1255445.png" /> --> */}
-                       <i className="fa-solid fa-bell m-auto"></i>
+                       <i className="fas fa-solid fas fa-bell m-auto"></i>
                    </div>
                    <div className="col-9">
                        <h3>FAKE RECRUITMENT ALERT!</h3>
@@ -335,7 +335,7 @@ const Fakejobalert = () => {
                        {/* <!-- <img className="img-fluid bg-dark" alt="img"
          src="https://company.naukri.com/landing-page/fakejobtrend/new/svg_icon/popup_icon/No_experience.svg" /> --> */}
                        <div className="m-auto">
-                           <i className="fa-solid fa-briefcase m-auto" id="icon"></i>
+                           <i className="fas fa-briefcase m-auto" id="icon"></i>
                        </div>
                    </div>
                    <div className="col-10 mt-3">
@@ -349,7 +349,7 @@ const Fakejobalert = () => {
                        {/* <!-- <img className="img-fluid  " alt="img"
          src="https://company.naukri.com/landing-page/fakejobtrend/new/svg_icon/popup_icon/On_the_spot_hiring.svg" /> --> */}
                        <div className="m-auto text-center">
-                           <i className="fa-solid fa-file-signature m-auto" id="icon"></i>
+                           <i className="fas fa-solid fa-file-signature m-auto" id="icon"></i>
                        </div>
                    </div>
                    <div className="col-10  mt-3">
@@ -364,7 +364,8 @@ const Fakejobalert = () => {
                        {/* <!-- <img className="img-fluid  " alt="img"
          src="https://company.naukri.com/landing-page/fakejobtrend/new/svg_icon/popup_icon/Demands_you.svg" /> --> */}
                        <div className="m-auto text-center">
-                           <i className="fa-solid fa-indian-rupee-sign m-auto" id="icon"></i>
+                           {/* <i className="fas fa-solid fas fa-indian-rupee-sign m-auto" id="icon"></i> */}
+                           <i className=" fas fa-rupee-sign m-auto" id="icon"></i>
 
                        </div>
                    </div>
@@ -379,7 +380,9 @@ const Fakejobalert = () => {
                        {/* <!-- <img className="img-fluid w-100 h-100"
          src="https://company.naukri.com/landing-page/fakejobtrend/new/svg_icon/popup_icon/Salary_beyond.svg" /> --> */}
                        <div className="m-auto text-center">
-                           <i className="fa-solid fa-money-check-dollar m-auto" id="icon"></i>
+                           {/* <i className="fa-solid fa-money-check-dollar m-auto" id="icon"></i> */}
+                           {/* <i className="fas fa-solid fas fa-rupee-sign m-auto" id="icon"></i> */}
+                           <i className="fas fa-dollar-sign m-auto" id="icon"></i>
                        </div>
                    </div>
                    <div className="col-10  mt-3">
@@ -393,7 +396,7 @@ const Fakejobalert = () => {
                        {/* <!-- <img className="img-fluid w-100 h-100"
          src="https://company.naukri.com/landing-page/fakejobtrend/new/svg_icon/popup_icon/bank_details.svg" /> --> */}
                        <div className="m-auto text-center">
-                           <i className="fa-solid fa-user-lock m-auto" id="icon"></i>
+                           <i className="fas fa-solid fas fa-user-lock m-auto" id="icon"></i>
                        </div>
                    </div>
                    <div className="col-10  mt-3">
@@ -410,7 +413,7 @@ const Fakejobalert = () => {
                        {/* <!-- <img className="img-fluid w-100 h-100"
          src="https://company.naukri.com/landing-page/fakejobtrend/new/svg_icon/popup_icon/Poorly_written_job.svg" /> --> */}
                        <div className="m-auto text-center">
-                           <i className="fa-solid fa-newspaper m-auto" id="icon"></i>
+                           <i className="fas fa-solid fas fa-newspaper m-auto" id="icon"></i>
                        </div>
                    </div>
                    <div className="col-10  mt-3">
@@ -424,7 +427,7 @@ const Fakejobalert = () => {
                        {/* <!-- <img className="img-fluid w-100 h-100"
          src="https://company.naukri.com/landing-page/fakejobtrend/new/svg_icon/popup_icon/Personal_email.svg" /> --> */}
                        <div className="m-auto text-center">
-                           <i className="fa-solid fa-at m-auto" id="icon"></i>
+                           <i className="fas fa-solid fas fa-at m-auto" id="icon"></i>
                        </div>
                    </div>
                    <div className="col-10  mt-3">
@@ -439,7 +442,7 @@ const Fakejobalert = () => {
                        {/* <!-- <img className="img-fluid"
          src="https://company.naukri.com/landing-page/fakejobtrend/new/svg_icon/popup_icon/No_knowledge.svg" /> --> */}
                        <div className="m-auto text-center">
-                           <i className="fa-solid fa-graduation-cap m-auto" id="icon"></i>
+                           <i className="fas fa-solid fas fa-graduation-cap m-auto" id="icon"></i>
                        </div>
                    </div>
                    <div className="col-10 mt-3">

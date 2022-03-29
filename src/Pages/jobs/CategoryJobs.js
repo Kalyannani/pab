@@ -8,7 +8,7 @@ import apiList from '../../lib/apiList'
 import SearchFilter from './SearchFilter'
 const CategoryJobs = () => {
 
-    const [searchTerm , setsearchTerm] = useState('')
+    const [searchTerm, setsearchTerm] = useState('')
     const [category, setCategory] = useState(data)
     const location = useLocation();
 
@@ -52,22 +52,22 @@ const CategoryJobs = () => {
                                 <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY FUNCTIONAL AREA / DEPARTMENT</h6>
                             </div>
                             <div className='col-md-6'>
-                            {location.pathname === '/categoryjobs' ?
-                                <form>
-                                    <div ng-app="angularsearch" ng-controller="searchsuggetions">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" onChange={(event)=>{setsearchTerm(event.target.value);}}/>
-                                                <div class="input-group-btn">
-                                                    <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
+                                {location.pathname === '/categoryjobs' ?
+                                    <form>
+                                        <div ng-app="angularsearch" ng-controller="searchsuggetions">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" onChange={(event) => { setsearchTerm(event.target.value); }} />
+                                                    <div class="input-group-btn">
+                                                        <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
+                                                    </div>
                                                 </div>
-                                            </div>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>:
-                                null
-                               }
+                                    </form> :
+                                    null
+                                }
                             </div>
                         </div>
                         <hr className="bg-light" />
@@ -110,14 +110,11 @@ const CategoryJobs = () => {
                         <div className="row">
                             {
                                 location.pathname === '/categoryjobs' ?
-                                    category?.filter((val)=>
-                                    {
-                                        if(searchTerm == "")
-                                        {
+                                    category?.filter((val) => {
+                                        if (searchTerm == "") {
                                             return val
                                         }
-                                        else if(val.Category.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
-                                        {
+                                        else if (val.Category.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
                                             return val
                                         }
                                     }).map(industry => {
@@ -130,14 +127,249 @@ const CategoryJobs = () => {
                                             </Link>
                                         </div>
                                     }) :
-                                    category?.slice(0, 15).map(industry => {
-                                        return <div class="col-lg-3 col-md-6">
-                                            <Link to={`/browsefilterlist?category=${industry.Category}`}>
-                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                                </span><span class="company_jobs_img_1_text align-self-center px-2">{industry.Category}</span></a>
+                                    // category?.slice(0, 15).map(industry => {
+                                    // return <div class="col-lg-3 col-md-6">
+                                    //     <Link to={`/browsefilterlist?category=${industry.Category}`}>
+                                    //         <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                    //         </span><span class="company_jobs_img_1_text align-self-center px-2">{industry.Category}</span></a>
+                                    //     </Link>
+                                    // </div>
+                                    // })
+                                    <>
+                                        {/* <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?category=Accounting'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Accounting</span></a>
+                                    </Link>
+                                </div> */}
+
+                                        {/* <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?category=Interior%20Design'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Interior Design</span></a>
+                                    </Link>
+                                </div>
+
+                                
+                                 */}
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=Airline'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-plane-departure"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">Airline</span></a>
                                             </Link>
                                         </div>
-                                    })
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=Advertising'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-ad"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">Advertising</span></a>
+                                            </Link>
+                                        </div>
+
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=Analytics'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-chart-bar"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">Analytics</span></a>
+                                            </Link>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=Bank'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                                    <span className='B_icon'><i className="fas fa-university"></i></span>
+                                                    <span class="company_jobs_img_1_text align-self-center px-2">Bank</span></a>
+                                            </Link>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=BPO'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-headphones"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">BPO</span></a>
+                                            </Link>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=Business%20Analyst'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-business-time"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">Business Analyst</span></a>
+                                            </Link>
+                                        </div>
+
+                                        
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=Content%20Writing'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-pen"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">Content Writing</span></a>
+                                            </Link>
+                                        </div>
+
+                                        {/* <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?category=Consultant'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Consultant</span></a>
+                                    </Link>
+                                </div> */}
+                                        {/* 
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?category=Engineering'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Engineering</span></a>
+                                    </Link>
+                                </div> */}
+
+                                      
+                                        {/* 
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?category=Merchandiser'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Merchandiser</span></a>
+                                    </Link>
+                                </div> */}
+
+                                        {/* <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?category=Security'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Security</span></a>
+                                    </Link>
+                                </div> */}
+
+                                        {/* <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?category=HR'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">HR</span></a>
+                                    </Link>
+                                </div> */}
+
+                                        {/* <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?category=Hotel'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Hotel</span></a>
+                                    </Link>
+                                </div> */}
+
+                                        {/* <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?category=Application%20Programming'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Application Programming</span></a>
+                                    </Link>
+                                </div> */}
+
+                                      
+
+                                        {/* <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?category=DBA'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">DBA</span></a>
+                                    </Link>
+                                </div> */}
+
+
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=Ecommerce'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-shopping-cart"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">Ecommerce</span></a>
+                                            </Link>
+                                        </div>
+
+                                       
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=Client%20Server'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-industry"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">Industrial</span></a>
+                                            </Link>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=Film'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-signal"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">Internet</span></a>
+                                            </Link>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=IT'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-city"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">IT</span></a>
+                                            </Link>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=Logistics'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-shipping-fast"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">Logistics</span></a>
+                                            </Link>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=Mobile'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-mobile-alt"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">MOBILE</span></a>
+                                            </Link>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=Pharma'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-capsules"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">Pharma</span></a>
+                                            </Link>
+                                        </div>
+
+                                       
+
+                                     
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=System%20Programming'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-desktop"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">System Programming</span></a>
+                                            </Link>
+                                        </div>
+
+                                       
+
+
+                                        {/* <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?category=DBA'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-analytics"></i>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Marketing</span></a>
+                                    </Link>
+                                </div> */}
+
+                                      
+
+                                    
+
+                                        
+
+
+
+                                        {/* 
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?category=DBA'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-shipping-fast"></i>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Shipping</span></a>
+                                    </Link>
+                                </div> */}
+
+
+                                        {/* <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?category=Interior%20Design'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Interior Design</span></a>
+                                    </Link>
+                                </div> */}
+
+                                    </>
+
+
+
+
+
                             }
                         </div>
 
