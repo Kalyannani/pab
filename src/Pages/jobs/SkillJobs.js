@@ -148,17 +148,127 @@ const SkillJobs = () => {
                                 </div>
                                 
                             }):
-                            skills.slice(0,15).map(res => {
-                                return <div className="col-lg-3 col-md-6">
-                                     <Link to="#">
-                                        <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span>
-                                            {/* <img src="images/auto_repair.png" alt=""
-                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /> */}
-                                            </span><span class="company_jobs_img_1_text align-self-center px-2">{res.Skill}</span></a>
+                            // skills.slice(0,15).map(res => {
+                            //     return <div className="col-lg-3 col-md-6">
+                            //          <Link to="#">
+                            //             <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span>
+                            //                 {/* <img src="images/auto_repair.png" alt=""
+                            //                 class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /> */}
+                            //                 </span><span class="company_jobs_img_1_text align-self-center px-2">{res.Skill}</span></a>
+                            //         </Link>
+                            //     </div>
+                            // })
+                          
+
+<>
+                            
+                            <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Networking</span></a>
                                     </Link>
                                 </div>
-                            })
-                            }
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Software Testing</span></a>
+                                    </Link>
+                                </div>
+                                
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">SAP abap</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Call Center</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Mainframe</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">SAP FICO</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">SAP</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">SEO</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">.NET</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Oracle</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">PHP</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Back office</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Java</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Online Marketing</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">SAP Basis</span></a>
+                                    </Link>
+                                </div>
+                            </>
+}
+
                         </div>
                         <div className='mb-3' id='location'>
                         { location.pathname === '/skilljobs' ? null:<Link to="/skilljobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Skills</Link>}
