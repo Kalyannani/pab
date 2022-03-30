@@ -872,6 +872,9 @@ useEffect(()=>{
 
               </div>
 
+
+
+
               <div className="content">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">Employment</h5>
@@ -2348,6 +2351,11 @@ useEffect(()=>{
                 </div>
               </div>
 
+
+
+
+
+
               <div className="content">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">
@@ -2366,6 +2374,8 @@ useEffect(()=>{
                   </a>
                 </div>
                 <div className="container-fluid career_profile">
+
+
                   <a
                     href="#"
                     data-toggle="modal"
@@ -2376,12 +2386,15 @@ useEffect(()=>{
                     Edit{" "}
                     <i className="fas fa-pencil-alt pencil_clearfix pencil text-white"></i>
                   </a>
+
+
                   <div className="row mt-4">
                     <div className="col-lg-6 col-md-6 career_profile_column">
                       <div className="career_profile_content">
                         <h5 className="industry">Industry</h5>
                         <p className="it_employees">
-                          IT-Software/Software Services{" "}
+                          {/* IT-Software/Software Services{" "} */}
+                          
                         </p>
                       </div>
                       <div className="career_profile_content">
@@ -2775,6 +2788,9 @@ useEffect(()=>{
                   </div>
                 </div>
               </div>
+
+
+
 
               <div className="content">
                 <div className="job-bx-title clearfix">

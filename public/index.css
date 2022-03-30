@@ -3646,6 +3646,7 @@ button.alljob_buttons_sub:focus {
   display: -webkit-flex;
   width: 100%;
   border: 2px solid #E1E1E1;
+  border-left: 5px solid #270D44;
   border-radius: 3px;
   margin: 10px 0px;
   font-size: 17px;
@@ -3655,13 +3656,12 @@ button.alljob_buttons_sub:focus {
   background-size: 200% 100%;
   background-position:right bottom;
   /* margin-left:10px; */
-  transition:all 0.1s ease-out;
+  transition:all 0.5s ease-out;
 }
 
 .company_jobs_anchor:hover {
   /* transition: ease-in-out; */
   background-position:left bottom;
-  /* border: 2px solid #270D44; */
   color: #FFFFFF;
   border-radius: 5px;
 }
@@ -17826,6 +17826,7 @@ cursor: pointer;
   color: #270d44;
  font-size: 25px;
  margin-top: auto;
+ margin-bottom: auto;
 }
 /* .B_icon:hover{
   color: #ffffff !important;
