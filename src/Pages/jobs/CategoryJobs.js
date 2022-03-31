@@ -284,10 +284,19 @@ const CategoryJobs = () => {
                                             </Link>
                                         </div>
 
+
                                         <div class="col-lg-3 col-md-6">
-                                            <Link to='/browsefilterlist?category=Film'>
-                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-signal"></i>
-                                                </span><span class="company_jobs_img_1_text align-self-center px-2">Internet</span></a>
+                                            <Link to='/browsefilterlist?category=System%20Programming'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-server"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">System Programming</span></a>
+                                            </Link>
+                                        </div>
+
+
+                                        <div class="col-lg-3 col-md-6">
+                                            <Link to='/browsefilterlist?category=Networking'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-network-wired"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">Network Design</span></a>
                                             </Link>
                                         </div>
 
@@ -306,9 +315,9 @@ const CategoryJobs = () => {
                                         </div>
 
                                         <div class="col-lg-3 col-md-6">
-                                            <Link to='/browsefilterlist?category=Mobile'>
-                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-mobile-alt"></i>
-                                                </span><span class="company_jobs_img_1_text align-self-center px-2">MOBILE</span></a>
+                                            <Link to='/browsefilterlist?category=Hotel'>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><i class="fas fa-hospital"></i>
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">Hotel</span></a>
                                             </Link>
                                         </div>
 

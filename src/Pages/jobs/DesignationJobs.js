@@ -245,6 +245,13 @@ const DesignationJobs = () => {
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">Academic Coordinator</span></a>
                                     </Link>
                                 </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=Accounts%20Manager'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Account's Manager</span></a>
+                                    </Link>
+                                </div>
                             </>
                             }
                         </div>

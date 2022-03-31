@@ -6438,6 +6438,7 @@ div.content {
   box-shadow: 0 0 10px 0 rgb(0 24 128 / 10%);
   padding: 20px 30px;
   margin-bottom: 20px;
+  margin-top: 100px !important;
 }
 
 .job-bx-title {
@@ -8106,7 +8107,7 @@ a {
   padding: 7px 7px;
   background: #270D44;
   border-radius: 5px;
-  margin-right: 1px;
+  margin-right: 5px !important;
 }
 
 .del {
@@ -11852,13 +11853,6 @@ a {
   margin-top: 10px;
 }
 
-.eye {
-  color: #fff;
-  padding: 7px 7px;
-  background: #270D44;
-  border-radius: 5px;
-  margin-right: 1px;
-}
 
 .del {
   color: #fff;

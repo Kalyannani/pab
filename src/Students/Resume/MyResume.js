@@ -412,13 +412,10 @@ useEffect(()=>{
               <div className="container">
                 <div className="row">
                   <div className="col-lg-2 ">
-                    {/* <ProfileImageUpload url={profile.profileImage} /> */}
                     <div className="canditate-des">
                       <p href="#">
                         <img
                           className="resume_img img-responsive"
-                          // alt="profile-image"
-                          // "http://localhost:4444/public/profile/1646646920789-step_4.png"
                           src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`}
                         />
                       </p>
@@ -430,7 +427,7 @@ useEffect(()=>{
                       style={{ display: "none" }} 
                       onChange={(event) =>imageonChangeHandling(event)}
                       />
-                      {/* <button onClick={()=> handleUpload()}>upload</button> */}
+                      
                     </div>
                   </div>
                   <div className="col-lg-10">

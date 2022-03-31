@@ -266,6 +266,14 @@ const SkillJobs = () => {
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">SAP Basis</span></a>
                                     </Link>
                                 </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Oracle</span></a>
+                                    </Link>
+                                </div>
+
                             </>
 }
 
