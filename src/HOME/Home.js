@@ -124,14 +124,14 @@ const Home = () => {
                 
               
            
-            <Categories />
+            {/* <Categories /> */}
             <CompanyJobs />
             <CategoryJobs />
             <DesignationJobs />
             <SkillJobs />
             <FeaturedCities />
             {/* <LocationalJobs /> */}
-            <OurClients />
+            {/* <OurClients /> */}
           
 
             {/* <Testimonials /> */}

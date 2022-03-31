@@ -3,6 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link,NavLink, useNavigate } from "react-router-dom";
 import apiList, { server } from "../lib/apiList";
+import ProfileImageUpload from "../common/ProfileImageUpload";
+import { toast } from 'react-toastify';
+
+
+
 const Sidebar = ()=>{
     const [profile,setProfile] = useState({})
     const dispatch = useDispatch()
@@ -34,6 +39,44 @@ console.log(profile)
         
       });
   };
+
+  const [profileImg, setProfileImg] = useState({
+    profileImage: "",
+  })
+  const [file, setFile] = useState("");
+
+  const imageonChangeHandling=(event)=>{
+
+    setFile(event.target.files[0])
+  
+}
+
+
+  const handleprofileUpload=()=>{
+    const data = new FormData();
+    console.log(file)
+    data.append("file", file);
+    axios.post(apiList.uploadProfileImage, data, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "multipart/form-data"
+      }
+    })
+      .then((response) => {
+        console.log(response.data.image);
+        setProfile({...profile,profileImage:response.data.image})
+        toast.success(response.data.message)
+          // getData();
+      })
+      .catch((err) => {
+        console.log(err.response);
+        toast.error(err.response.data.message)
+      });
+  }
+  useEffect(()=>{
+    handleprofileUpload();
+  },[file])
+
     return(
         
         <div className="sticky-top">
@@ -46,11 +89,30 @@ console.log(profile)
                     <div className="collapse show" id="collapseExample">
                         <div className="sidebar" id="sidebar">
                             <div className="main_header text-center">
-                                <div className="heading ">
+                                {/* <div className="heading ">
                                     <img src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`} alt="" className="info_img" height="145px" />
                                     <h4 className="company">{profile.name}</h4>
                                     <p className="company_text">Web developer</p>
-                                </div>
+                                </div> */}
+
+                <div className="canditate-des">
+                      <p href="#">
+                        <img
+                          className="resume_img img-responsive"
+                          src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`}
+                        />
+                      </p>
+                      <label for="file">
+                        <i class="fas fa-camera img_pencil img_edit_sidebar"></i>
+                      </label>
+                      <input type="file" 
+                      id="file" 
+                      style={{ display: "none" }} 
+                      onChange={(event) =>imageonChangeHandling(event)}
+                      />
+                      
+                    </div>
+
                             </div>
                             <NavLink to="/myprofile"><i className="fa fa-user"
                                     aria-hidden="true"></i> Profile</NavLink>
@@ -60,8 +122,8 @@ console.log(profile)
                                     className="fas fa-briefcase"></i> Applied Jobs</NavLink>
                             <NavLink to="/jobalerts"><i
                                     className="far fa-address-card"></i> Job Alert</NavLink>
-                            {/* <NavLink to="/savedjobs"><i
-                                    className="fas fa-random"></i> Saved Jobs</NavLink> */}
+                            <NavLink to="/savedjobs"><i
+                                    className="fas fa-random"></i> Saved Jobs</NavLink>
                             {/* <a href="../../../Company/candidate_profile/cv manager/cv_manager.html"><i className="far fa-address-card"></i> CV Manager</a> */}
                             <NavLink to="/changepassword"><i
                                     className="fas fa-key"></i> Change Password</NavLink>

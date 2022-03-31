@@ -106,7 +106,7 @@ export const App = (props) => {
     <Route exact path="/myresume" element={<MyResume />} />
     <Route exact path="/appliedjobs" element={<AppliedJobs />} />
     <Route exact path="/jobalerts" element={<JobAlerts />} />
-    {/* <Route exact path="/savedjobs" element={<SavedJobs />} /> */}
+    <Route exact path="/savedjobs" element={<SavedJobs />} />
     <Route exact path ="/changepassword" element={<ChangePassword />} />
     <Route exact path ="/onlinetest" element={<MainTest />} />
     </>:
