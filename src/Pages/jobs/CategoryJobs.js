@@ -57,7 +57,7 @@ const CategoryJobs = () => {
                                         <div ng-app="angularsearch" ng-controller="searchsuggetions">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control serach_input_1" id="se" placeholder="search" ng-model="in" onChange={(event) => { setsearchTerm(event.target.value); }} />
+                                                    <input type="text" class="form-control serach_input_1" id="se" placeholder="Search" ng-model="in" onChange={(event) => { setsearchTerm(event.target.value); }} />
                                                     <div class="input-group-btn">
                                                         <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
                                                     </div>

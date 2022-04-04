@@ -5183,6 +5183,7 @@ h2.job_filter_list_title {
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
   display: block;
   position: relative;
+  width: 100%;
 }
 
 #job_filter_list .filter_list_job_info h4 a {
@@ -5205,12 +5206,12 @@ h2.job_filter_list_title {
 }
 
 #job_filter_list .filter_list_job_company span {
-  display: block;
+  /* display: block; */
   /* width: 60px;
   height: 60px; */
   border-radius: 6px;
   background-color: #e1e7ff;
-  text-align: center;
+  text-align: left;
   overflow: hidden;
 }
 #job_filter_list .filter_list_job_company span img{
@@ -17828,3 +17829,7 @@ cursor: pointer;
 .company_jobs_anchor:hover .B_icon{
   color: #FFFFFF;
 }
+/* .BFL
+{
+width: 40% !important;
+} */
