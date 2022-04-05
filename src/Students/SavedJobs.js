@@ -1,7 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import apiList from '../lib/apiList';
+import moment from 'moment';
+
 const SavedJobs = () => {
+
+    const [jobs, setJobs] = useState([])
+
+    useEffect(() => {
+        axios
+            .get(apiList.wishlist + 'list', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            })
+            .then((response) => {
+                console.log(response.data);
+                setJobs(response.data.data);
+            })
+            .catch((err) => {
+                console.log(err.response.data);
+
+            });
+    }, [])
+
+    console.log('jobsjobs ', jobs);
+
     return (
         <>
             {/* <div class="container main_content my-5">
@@ -322,194 +348,70 @@ const SavedJobs = () => {
                                         </a>
                                     </div>
 
+                                    {jobs.map((job, key) => {
+                                        return <Link to='#'>
+                                            <ul className="job-post">
+                                                <li>
+                                                    <div className="job-box">
+                                                        <div className="d-flex mb-2">
+                                                            <div className="job-company">
+                                                                <span>
+                                                                    <img alt="" src="" />
+                                                                </span>
+                                                            </div>
+                                                            <div className="job-info">
+                                                                <h4>
+                                                                    {job.jobId.title}
+                                                                </h4>
+                                                                <ul>
+                                                                    <li>
+                                                                        <h5 className="home_company_name">{job.recruiter?.companyname}</h5>
+                                                                    </li>
+                                                                    <li>
+                                                                        <h6 className="star_box">
 
-                                    <Link to='#'>
-                                        <ul className="job-post">
-                                            <li>
-                                                <div className="job-box">
-                                                    <div className="d-flex mb-2">
-                                                        <div className="job-company">
-                                                            <span>
-                                                                <img alt="" src="" />
-                                                            </span>
-                                                        </div>
-                                                        <div className="job-info">
-                                                            <h4>
-                                                                React JS Devoloper
-                                                            </h4>
-                                                            <ul>
-                                                                <li>
-                                                                    <h5 className="home_company_name">Perfex Technologies</h5>
-                                                                </li>
-                                                                <li>
-                                                                    <h6 className="star_box">
+                                                                        </h6>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul className="home_job_details">
+                                                                    <li>
+                                                                        <i className="fas fa-map-marker-alt"></i>
+                                                                        {job.jobId.cities[0]}
+                                                                    </li>
+                                                                    <li>
+                                                                        <i className="far fa-bookmark"></i>{job.jobId.jobType}
+                                                                    </li>
 
-                                                                    </h6>
-                                                                </li>
-                                                            </ul>
-                                                            <ul className="home_job_details">
-                                                                <li>
-                                                                    <i className="fas fa-map-marker-alt"></i>
-                                                                    Hyderabad
-                                                                </li>
-                                                                <li>
-                                                                    <i className="far fa-bookmark"></i>Full Time
-                                                                </li>
-
-                                                                <li>
-                                                                    <i className="fas fa-shopping-bag"></i>0-2yrs
-                                                                </li>
-                                                                <li>
-                                                                    <i className="fas fa-rupee-sign"></i>5LPA - 10LPA
-                                                                </li>
-                                                            </ul>
-                                                            <div className="mt-3">
-
-                                                                <button className="home_job_btn">React JS</button>
+                                                                    <li>
+                                                                        <i className="fas fa-shopping-bag"></i>{job.jobId.experience}
+                                                                    </li>
+                                                                    <li>
+                                                                        <i className="fas fa-rupee-sign"></i>{job.jobId.salary}
+                                                                    </li>
+                                                                </ul>
+                                                                <div className="mt-3">
+                                                                    {job.jobId.skillsets.map(skill => <button className="home_job_btn">{skill}</button>)}
+                                                                    
 
 
-                                                                <div className="posted_home">
-                                                                    <div className="job-type">
-                                                                        <a href="#">
-                                                                            <span>
-                                                                                <i className="fas fa-history"></i> 2 Hour ago{" "}
-                                                                            </span>
-                                                                        </a>
+                                                                    <div className="posted_home">
+                                                                        <div className="job-type">
+                                                                            <a href="#">
+                                                                                <span>
+                                                                                    <i className="fas fa-history"></i> {moment(job.jobId.postedAt? Number(job.jobId.postedAt) : job.jobId.dateOfPosting ).fromNow()}
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </Link>
+                                                </li>
+                                            </ul>
+                                        </Link>
+                                    })}
 
-
-                                    <Link to='#'>
-                                        <ul className="job-post">
-                                            <li>
-                                                <div className="job-box">
-                                                    <div className="d-flex mb-2">
-                                                        <div className="job-company">
-                                                            <span>
-                                                                <img alt="" src="" />
-                                                            </span>
-                                                        </div>
-                                                        <div className="job-info">
-                                                            <h4>
-                                                                React JS Devoloper
-                                                            </h4>
-                                                            <ul>
-                                                                <li>
-                                                                    <h5 className="home_company_name">Perfex Technologies</h5>
-                                                                </li>
-                                                                <li>
-                                                                    <h6 className="star_box">
-
-                                                                    </h6>
-                                                                </li>
-                                                            </ul>
-                                                            <ul className="home_job_details">
-                                                                <li>
-                                                                    <i className="fas fa-map-marker-alt"></i>
-                                                                    Hyderabad
-                                                                </li>
-                                                                <li>
-                                                                    <i className="far fa-bookmark"></i>Full Time
-                                                                </li>
-
-                                                                <li>
-                                                                    <i className="fas fa-shopping-bag"></i>0-2yrs
-                                                                </li>
-                                                                <li>
-                                                                    <i className="fas fa-rupee-sign"></i>5LPA - 10LPA
-                                                                </li>
-                                                            </ul>
-                                                            <div className="mt-3">
-
-                                                                <button className="home_job_btn">React JS</button>
-
-
-                                                                <div className="posted_home">
-                                                                    <div className="job-type">
-                                                                        <a href="#">
-                                                                            <span>
-                                                                                <i className="fas fa-history"></i> 2 Hour ago{" "}
-                                                                            </span>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </Link>
-
-
-                                    <Link to='#'>
-                                        <ul className="job-post">
-                                            <li>
-                                                <div className="job-box">
-                                                    <div className="d-flex mb-2">
-                                                        <div className="job-company">
-                                                            <span>
-                                                                <img alt="" src="" />
-                                                            </span>
-                                                        </div>
-                                                        <div className="job-info">
-                                                            <h4>
-                                                                React JS Devoloper
-                                                            </h4>
-                                                            <ul>
-                                                                <li>
-                                                                    <h5 className="home_company_name">Perfex Technologies</h5>
-                                                                </li>
-                                                                <li>
-                                                                    <h6 className="star_box">
-
-                                                                    </h6>
-                                                                </li>
-                                                            </ul>
-                                                            <ul className="home_job_details">
-                                                                <li>
-                                                                    <i className="fas fa-map-marker-alt"></i>
-                                                                    Hyderabad
-                                                                </li>
-                                                                <li>
-                                                                    <i className="far fa-bookmark"></i>Full Time
-                                                                </li>
-
-                                                                <li>
-                                                                    <i className="fas fa-shopping-bag"></i>0-2yrs
-                                                                </li>
-                                                                <li>
-                                                                    <i className="fas fa-rupee-sign"></i>5LPA - 10LPA
-                                                                </li>
-                                                            </ul>
-                                                            <div className="mt-3">
-
-                                                                <button className="home_job_btn">React JS</button>
-
-
-                                                                <div className="posted_home">
-                                                                    <div className="job-type">
-                                                                        <a href="#">
-                                                                            <span>
-                                                                                <i className="fas fa-history"></i> 2 Hour ago{" "}
-                                                                            </span>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </Link>
 
 
 
