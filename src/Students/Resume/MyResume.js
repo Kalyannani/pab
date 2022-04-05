@@ -343,35 +343,36 @@ const MyResume = () => {
   };
 
 const imageonChangeHandling=(event)=>{
-  console.log(event.target.files[0].type)
-  setFile(event.target.files[0])
+
+    setFile(event.target.files[0])
+  
 }
-console.log(file)
+
 const resumeonchangeHandling=(event)=>{
   setResume(event.target.files[0])
 }
-console.log(resume)
-  const handleprofileUpload=()=>{
-    const data = new FormData();
-    console.log(file)
-    data.append("file", file);
-    axios.post(apiList.uploadProfileImage, data, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "multipart/form-data"
-      }
+
+const handleprofileUpload=()=>{
+  const data = new FormData();
+  console.log(file)
+  data.append("file", file);
+  axios.post(apiList.uploadProfileImage, data, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "multipart/form-data"
+    }
+  })
+    .then((response) => {
+      console.log(response.data.image);
+      setProfile({...profile,profileImage:response.data.image})
+      toast.success(response.data.message)
+        // getData();
     })
-      .then((response) => {
-        console.log(response.data);
-        // setProfileimage(response.data.imageurl)
-        toast.success(response.data.message)
-          getData();
-      })
-      .catch((err) => {
-        console.log(err.response);
-        toast.error(err.response.data.message)
-      });
-  }
+    .catch((err) => {
+      console.log(err.response);
+      toast.error(err.response.data.message)
+    });
+}
   const handleresumeUpload=()=>{
     const data = new FormData();
     data.append("file", resume);
@@ -398,9 +399,9 @@ useEffect(()=>{
   handleprofileUpload();
 },[file])
 
-useEffect(()=>{
-  handleresumeUpload()
-},[resume])
+// useEffect(()=>{
+//   handleresumeUpload()
+// },[resume])
 
   return (
     <div>
@@ -411,25 +412,22 @@ useEffect(()=>{
               <div className="container">
                 <div className="row">
                   <div className="col-lg-2 ">
-                    {/* <ProfileImageUpload url={profile.profileImage} /> */}
                     <div className="canditate-des">
                       <p href="#">
                         <img
                           className="resume_img img-responsive"
-                          alt="profile-image"
-                          // "http://localhost:4444/public/profile/1646646920789-step_4.png"
-                          src={profile.profileImage? `${server}/public/profile/${profile.profileImage}` :`images/girl_avtar.png`}
+                          src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`}
                         />
                       </p>
                       <label for="file">
-                        <i class="fas fa-camera img_pencil"></i>
+                        <i class="fas fa-camera img_pencil img_edit"></i>
                       </label>
                       <input type="file" 
                       id="file" 
                       style={{ display: "none" }} 
                       onChange={(event) =>imageonChangeHandling(event)}
                       />
-                      {/* <button onClick={()=> handleUpload()}>upload</button> */}
+                      
                     </div>
                   </div>
                   <div className="col-lg-10">
@@ -871,6 +869,9 @@ useEffect(()=>{
 
               </div>
 
+
+
+
               <div className="content">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">Employment</h5>
@@ -888,11 +889,11 @@ useEffect(()=>{
                   </a>
                 </div>
                 {
-                  profile.employment?
-                  profile.employment.map((employment,index) => {
+                  profile?.employment?
+                  profile?.employment?.map((employment,index) => {
                     return (<>
                       <h5 className="junior_edit">
-                        {employment.designation}{" "}
+                        {employment?.designation}{" "}
                         <a href="#" data-toggle="modal" data-target="#employ" >
                           {" "}
                           <i className="fas fa-pencil-alt pencil_clearfix pencil"
@@ -905,33 +906,33 @@ useEffect(()=>{
                         <i class="far fa-trash-alt remove" ></i>
                         </a>
                       </h5>
-                      <p className="job_usa">{employment.organization}</p>
+                      <p className="job_usa">{employment?.organization}</p>
                       <p className="job_usa">
-                        {moment(employment.startYear).format('YYYY MMMM')} to {" "}
+                        {moment(employment?.startYear).format('YYYY MMMM')} to {" "}
                         {
-                          moment(employment.endYear).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM')?
-                          "Present" :moment(employment.endYear).format('YYYY MMMM')
+                          moment(employment?.endYear).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM')?
+                          "Present" :moment(employment?.endYear).format('YYYY MMMM')
                         }
                         ({
-                          moment(employment.endYear).diff(moment(employment.startYear), "years") 
+                          moment(employment?.endYear).diff(moment(employment?.startYear), "years") 
                         }
                         {
-                          moment(employment.endYear).diff(moment(employment.startYear), "years")=== 1 ? " Year": " Years"
+                          moment(employment?.endYear).diff(moment(employment?.startYear), "years")=== 1 ? " Year": " Years"
                         }
                          {" "}-{" "}
                         {
-                          moment(employment.endYear).diff(moment(employment.startYear).add(moment(employment.endYear).diff(moment(employment.startYear), 'year'), 'years'), 'months')
+                          moment(employment?.endYear).diff(moment(employment?.startYear).add(moment(employment?.endYear).diff(moment(employment?.startYear), 'year'), 'years'), 'months')
                         } 
                         {
-                          moment(employment.endYear).diff(moment(employment.startYear).add(moment(employment.endYear).diff(moment(employment.startYear), 'year'), 'years'), 'months') === 1 ?
+                          moment(employment?.endYear).diff(moment(employment?.startYear).add(moment(employment?.endYear).diff(moment(employment?.startYear), 'year'), 'years'), 'months') === 1 ?
                           " Month": " Months"
                         }
                         )
                       </p>
                       <p className="job_usa" >
-                        Available to join in {employment.noticePeriod}
+                        Available to join in {employment?.noticePeriod}
                       </p>
-                      <p className="job_usa">{employment.designation}</p>
+                      <p className="job_usa">{employment?.designation}</p>
                     </>)
                   }):null
                 }
@@ -2347,6 +2348,11 @@ useEffect(()=>{
                 </div>
               </div>
 
+
+
+
+
+
               <div className="content">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">
@@ -2365,6 +2371,8 @@ useEffect(()=>{
                   </a>
                 </div>
                 <div className="container-fluid career_profile">
+
+
                   <a
                     href="#"
                     data-toggle="modal"
@@ -2375,12 +2383,15 @@ useEffect(()=>{
                     Edit{" "}
                     <i className="fas fa-pencil-alt pencil_clearfix pencil text-white"></i>
                   </a>
+
+
                   <div className="row mt-4">
                     <div className="col-lg-6 col-md-6 career_profile_column">
                       <div className="career_profile_content">
                         <h5 className="industry">Industry</h5>
                         <p className="it_employees">
-                          IT-Software/Software Services{" "}
+                          {/* IT-Software/Software Services{" "} */}
+                          
                         </p>
                       </div>
                       <div className="career_profile_content">
@@ -2775,6 +2786,9 @@ useEffect(()=>{
                 </div>
               </div>
 
+
+
+
               <div className="content">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">
@@ -2836,7 +2850,7 @@ useEffect(()=>{
                         <p className="it_employees">
                           {profile.personaldetails.languages.map((lng, index, arr) => {
                             return (<>
-                              {lng}{index != (arr.length - 1) ? "," : ""}
+                              {lng}{index !== (arr.length - 1) ? "," : ""}
                             </>)
                           })}{" "}
                         </p>
@@ -3144,12 +3158,12 @@ useEffect(()=>{
                 setProfile={setProfile}
                 profile={profile}
                 handleUpdate={handleUpdate}
-                /> */}
-                {/* <ResumeFileUpload url={profile.resume.url} /> */}
+                />
+                <ResumeFileUpload url={profile.resume.url} /> */}
                 <form>
                   <div className="form-group">
                     <label for="myfile" className="file_upload">
-                      Upload File
+                      Upload RESUME
                     </label>
                     <input type="file" id="myfile" name="myfile" hidden
                     onChange={(event) =>resumeonchangeHandling(event)}

@@ -414,7 +414,7 @@ const Auth = (props) => {
                                                             Login With OTP{" "}
                                                         </a>
                                                     </div>
-                                                    <div className="not_mem pt-3">
+                                                    <div className="already pt-3">
                                                         <label htmlFor="signup"
                                                         onClick={() => {switchMainTab('signup');imgColumn2();scrollToTop();} }>
                                                             Not a member? <span className="font-weight-bold"> Signup now</span>
@@ -497,6 +497,7 @@ const Auth = (props) => {
                                                             name="otp"
                                                             required
                                                         />
+                                                          <span className='input_email'> <i class="fas fa-key" aria-hidden="true"></i> </span>
                                                     </div>
                                                     <input
                                                         type="submit"
@@ -602,7 +603,7 @@ const Auth = (props) => {
                                                 defaultValue="Signup"
                                             />
 
-                                       <div className="not_mem pt-3">
+                                       <div className="already pt-3">
                                             <label htmlFor="signup"
                                             onClick={() => {switchMainTab('login');imgColumn(); scrollToTop(); }}>
                                              Already have an Account? <span className="font-weight-bold"> Login here </span>

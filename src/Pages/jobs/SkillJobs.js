@@ -8,6 +8,8 @@ import data from "../../JsonData/Skill.json"
 import { useLocation } from 'react-router-dom'
 import SearchFilter from './SearchFilter'
 const SkillJobs = () => {
+     const [searchTerm , setsearchTerm] = useState('')
+
     const location = useLocation();
   
     const [skills, setSkills] = useState(data)
@@ -65,7 +67,30 @@ const SkillJobs = () => {
             <!-- container --> */}
 
                     <div className="jobskill_sec_2_sub">
-                        <h6 className="jobskill_sec_2_heading_1">BROWSE JOBS BY Skill</h6>
+                        {/* <h6 className="jobskill_sec_2_heading_1">BROWSE JOBS BY Skill</h6> */}
+                        <div className='row'>
+                            <div className='col-md-6'>
+                                <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY Skill</h6>
+                            </div>
+                            <div className='col-md-6'>
+                            {
+                             location.pathname === '/skilljobs'?
+                                <form>
+                                    <div ng-app="angularsearch" ng-controller="searchsuggetions">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="Search" ng-model="in" onChange={(event)=>{setsearchTerm(event.target.value);}}/>
+                                                <div class="input-group-btn">
+                                                    <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+                                :null}
+                            </div>
+                        </div>
                         <hr className="bg-light" />
                         { location.pathname === '/skilljobs'?
                         <div class="company_jobs_section_2_buttons text-left my-4">
@@ -103,30 +128,158 @@ const SkillJobs = () => {
                         <div className="row">
                             {
                              location.pathname === '/skilljobs'?
-                             skills.map(res => {
+                             skills.filter((val)=>
+                             {
+                                 if(searchTerm == "")
+                                 {
+                                     return val
+                                 }
+                                 else if(val.Skill.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
+                                 {
+                                     return val
+                                 }
+                             }).map(res => {
                                 return <div className="col-lg-3 col-md-6">
                                     <Link to="#">
-                                        <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
-                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{res.Skill}</span></a>
+                                        <a class="company_jobs_anchor p-2">
+                                            <span class="company_jobs_img_1_text">{res.Skill}</span></a>
                                     </Link>
                                         
                                 </div>
                                 
                             }):
-                            skills.slice(0,15).map(res => {
-                                return <div className="col-lg-3 col-md-6">
-                                     <Link to="#">
-                                        <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span>
-                                            {/* <img src="images/auto_repair.png" alt=""
-                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /> */}
-                                            </span><span class="company_jobs_img_1_text align-self-center px-2">{res.Skill}</span></a>
+                            // skills.slice(0,15).map(res => {
+                            //     return <div className="col-lg-3 col-md-6">
+                            //          <Link to="#">
+                            //             <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span>
+                            //                 {/* <img src="images/auto_repair.png" alt=""
+                            //                 class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /> */}
+                            //                 </span><span class="company_jobs_img_1_text align-self-center px-2">{res.Skill}</span></a>
+                            //         </Link>
+                            //     </div>
+                            // })
+                          
+
+<>
+                            
+                            <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Networking</span></a>
                                     </Link>
                                 </div>
-                            })
-                            }
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Software Testing</span></a>
+                                    </Link>
+                                </div>
+                                
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">SAP abap</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Call Center</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Mainframe</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">SAP FICO</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">SAP</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">SEO</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">.NET</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Oracle</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">PHP</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Back office</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Java</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Online Marketing</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">SAP Basis</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Oracle</span></a>
+                                    </Link>
+                                </div>
+
+                            </>
+}
+
                         </div>
                         <div className='mb-3' id='location'>
-                        { location.pathname === '/skilljobs' ? null:<Link to="/skilljobs" className='float-right All-Links'>View All Skills</Link>}
+                        { location.pathname === '/skilljobs' ? null:<Link to="/skilljobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Skills</Link>}
                         </div>
                     </div>
 

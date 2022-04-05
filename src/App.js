@@ -50,6 +50,10 @@ import MainTest from './Services/components/OnlineExam/MainTest';
 import Paytm from './Paytm'
 import PaymentStatusSuccess from './PaymentStatus';
 import PaymentStatusFail from './PaymentStatusFail';
+import BuyTabs from './For_Employers/Buy Employer services/BuyTabs'
+import Calculator from './Services/components/OnlineExam/Calculator/Calculator';
+import GettingStuList from './GettingList/GettingStuList';
+
 
 
 
@@ -75,6 +79,8 @@ export const App = (props) => {
    <Navbar />
    <Routes>
    <Route path="/" exact element={<Home />} />
+   <Route path="/calculator" element={<Calculator/>}/>
+   <Route exact path="/stulist" element={<GettingStuList/>}/>
    <Route path="/auth" exact element={<Auth />} />
    {/* <Route exact path="/signin" element={<SignIn />} />
    <Route exact path="/signup" element={<SignUp />} /> */}
@@ -86,6 +92,7 @@ export const App = (props) => {
    
   {
     result?.type === "recruiter"? <>
+    <Route exact path="/Buytabs" element={<BuyTabs/>}/>
     <Route exact path="/company_profile" element={<COMPANY_PROFILE />} />
     <Route exact path="/post_jobs" element={<POST_A_JOB />} />
     <Route exact path="/Manage_jobs" element={<Manage_Jobs />} />
@@ -100,7 +107,7 @@ export const App = (props) => {
     <Route exact path="/myresume" element={<MyResume />} />
     <Route exact path="/appliedjobs" element={<AppliedJobs />} />
     <Route exact path="/jobalerts" element={<JobAlerts />} />
-    {/* <Route exact path="/savedjobs" element={<SavedJobs />} /> */}
+    <Route exact path="/savedjobs" element={<SavedJobs />} />
     <Route exact path ="/changepassword" element={<ChangePassword />} />
     <Route exact path ="/onlinetest" element={<MainTest />} />
     </>:
@@ -123,7 +130,7 @@ export const App = (props) => {
   <Route exact path="/textresume" element={<Textresume/>}/>
   <Route exact path="/fakejobalert" element={<Fakejobalert/>}/>
  
-  
+
   <Route path='*' exact={true} element={<Error/>} />
   
    </Routes>

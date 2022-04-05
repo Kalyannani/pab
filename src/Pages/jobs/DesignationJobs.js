@@ -5,6 +5,8 @@ import Subfilter from './subfilter'
 import { useLocation } from 'react-router-dom'
 import SearchFilter from './SearchFilter'
 const DesignationJobs = () => {
+    const [searchTerm , setsearchTerm] = useState('')
+
     const location = useLocation();
     const [designation,setDesignation] = useState(data)
     const handleSort =  (char) => {
@@ -38,7 +40,31 @@ const DesignationJobs = () => {
             <div className="jobdesignation_sec_2">
                 <div className="container">
                     <div className="jobcategory_sec_2_sub">
-                        <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY DESIGNATION</h6>
+                        {/* <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY DESIGNATION</h6> */}
+                        <div className='row'>
+                            <div className='col-md-6'>
+                                <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY DESIGNATION</h6>
+                            </div>
+                            <div className='col-md-6'>
+                            {
+                             location.pathname === '/designationjobs'?
+                                <form>
+                                    <div ng-app="angularsearch" ng-controller="searchsuggetions">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="Search" ng-model="in"  onChange={(event)=>{setsearchTerm(event.target.value);}}/>
+                                                <div class="input-group-btn">
+                                                    <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+                                :null}
+                            </div>
+                        </div>
+                        
                         <hr className="bg-light" />
                         { location.pathname === '/designationjobs'?
                         <div class="company_jobs_section_2_buttons text-left my-4">
@@ -76,29 +102,162 @@ const DesignationJobs = () => {
                         <div className="row">
                             {
                              location.pathname === '/designationjobs'?
-                             designation?.map(designation => {
+                             designation?.filter((val)=>
+                             {
+                                 if(searchTerm == "")
+                                 {
+                                     return val
+                                 }
+                                 else if(val.Designation.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
+                                 {
+                                     return val
+                                 }
+                             }).map(designation => {
                                 return <div class="col-lg-4 col-md-6">
                                     <Link to={`/browsefilterlist?designate=${designation?.Designation}`}>
-                                        <a  class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span><img src="images/auto_repair.png" alt=""
-                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /></span><span class="company_jobs_img_1_text align-self-center px-2">{designation?.Designation}</span></a>
+                                        <a  class="company_jobs_anchor p-2">
+                                            <span class="company_jobs_img_1_text">{designation?.Designation}</span></a>
                                     </Link>
                                 </div>
                             }):
-                            designation?.slice(0,15).map(designation => {
-                                return <div class="col-lg-3 col-md-6">
-                                    <Link to={`/browsefilterlist?designate=${designation?.Designation}`}>
-                                        <a  class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span>
-                                            {/* <img src="images/auto_repair.png" alt=""
-                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /> */}
-                                            </span><span class="company_jobs_img_1_text align-self-center px-2">{designation?.Designation}</span></a>
+                            // designation?.slice(0,15).map(designation => {
+                            //     return <div class="col-lg-3 col-md-6">
+                            //         <Link to={`/browsefilterlist?designate=${designation?.Designation}`}>
+                            //             <a  class="company_jobs_anchor p-2"><span>
+                                            
+                            //                 </span><span class="company_jobs_img_1_text">{designation?.Designation}</span></a>
+                            //         </Link>
+                            //     </div>
+                            // })
+                            <>
+                            
+                            <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=ABAP%20Consultant'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                            {/* <span className='B_icon'><img src='images/sap.ico'/>
+                                        </span> */}
+                                        <span class="company_jobs_img_1_text align-self-center px-2">ABAP Consultant</span></a>
                                     </Link>
                                 </div>
-                            })
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=ABAP%20Developer'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">ABAP Developer</span></a>
+                                    </Link>
+                                </div>
+                                
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=ABAP%20Programmer'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">ABAP Programmer</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=AC%20Operator'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                            {/* <span className='B_icon'><img src='images/ac.ico'/>
+                                        </span> */}
+                                        <span class="company_jobs_img_1_text align-self-center px-2">AC Operator</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=AC%20Technician'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">AC Technician</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=AME%20Trainee'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                            {/* <span  className='B_icon'><img src='images/a5jw1-5eaqs-001.ico'/>
+                                        </span> */}
+                                        <span class="company_jobs_img_1_text align-self-center px-2">AME Trainee</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=ASC%20Head'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">ASC Head</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=ASE'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">ASC</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=ASE%20Trainee'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">ASC Trainee</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=AV%20Editor'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                            {/* <span><img src='images/vedio.ico'/>
+                                        </span> */}
+                                        <span class="company_jobs_img_1_text align-self-center px-2">AV Editor</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=Abap%20Human%20Resources%20Consultant'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Abap Human Resources Consultant</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=Abstractor'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Abstractor</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=Academic%20Associate'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                            {/* <span><img src='images/academicc.ico'/>
+                                        </span> */}
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Academic Associate</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=Academic%20Consultant'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Academic Consultant</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=Academic%20Coordinator'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Academic Coordinator</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=Accounts%20Manager'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Account's Manager</span></a>
+                                    </Link>
+                                </div>
+                            </>
                             }
                         </div>
                         <div className='mb-5 mt-4' id='skill'>
                         {
-                            location.pathname === '/designationjobs' ? null:<Link to="/designationjobs" className='float-right All-Links'>View All Designations</Link>
+                            location.pathname === '/designationjobs' ? null:<Link to="/designationjobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Designations</Link>
                         }
                         </div>
                     </div>

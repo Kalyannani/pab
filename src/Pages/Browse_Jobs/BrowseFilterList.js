@@ -294,7 +294,7 @@ const BrowseFilterList = () => {
   console.log('kkkkkkkk', keyword, qlocation);
 
   return (
-    <div>
+    <div >
       <div className="job_detail_wrapper">
         <div className="heading_pic_filter_list">
           <h1 className="filter_list_heading_1">Browse Job List</h1>
@@ -306,7 +306,7 @@ const BrowseFilterList = () => {
       </div>
 
 
-      <div className="container">
+      <div className="container" >
         <div className="filter_list_search-box">
           <form className="form-control" onSubmit={handleSearch} >
             <div className="row">
@@ -361,7 +361,7 @@ const BrowseFilterList = () => {
 
 
       <div id="job_filter_list">
-        <div className="container">
+        <div className="container BFL">
           <div className="d-flex mb-4">
             {/* <div className="mr-auto">
               <h2 className="job_filter_list_title">2269 Jobs Found</h2>
