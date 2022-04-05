@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Link, Route, Routes, Switch } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes, Switch, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,6 +9,7 @@ import axios from 'axios';
 import Employer_Navbar from './Employer_Navbar';
 import Student_Navbar from './Student_Navbar';
 import Auth from '../auth/Auth';
+import ReactGA from 'react-ga';
 
 const customStyles = {
     content: {
@@ -21,6 +22,8 @@ const customStyles = {
     },
 };
 
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
+
 const Navbar = () => {
     const [state, setState] = useState({ navbar_content: "white", color: "black" });
     const [collapse, setCollapse] = useState();
@@ -29,6 +32,7 @@ const Navbar = () => {
     console.log(result)
     const [width, setWidth] = useState(window.innerWidth)
     const [modalIsOpen, setIsOpen] = React.useState(false);
+    const location = useLocation();
     const Resize = () => {
         setWidth(window.innerWidth)
     }
@@ -46,6 +50,11 @@ const Navbar = () => {
             setId("")
         }
     }, [width]);
+
+    useEffect(() => {
+        // console.log("window.location.pathname + window.location.search", location.pathname);
+        ReactGA.pageview(location.pathname);
+      }, [location])
 
     console.log('modalIsOpen',modalIsOpen);
    

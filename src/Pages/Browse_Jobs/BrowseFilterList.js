@@ -441,7 +441,7 @@ const BrowseFilterList = () => {
                                       <li><i className="far fa-bookmark"></i>{job.jobType}</li>
                                       <li><i className="far fa-clock"></i>Published {" "}
                                         {/* <ReactTimeAgo date={job.dateOfPosting} locale="en-US" /> */}
-                                        {moment(Number(job.postedAt)).fromNow()}
+                                        {moment(job.postedAt).fromNow()}
                                       </li>
 {/* 1646973039978 */}
                                     </ul>
