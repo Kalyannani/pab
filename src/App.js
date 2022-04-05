@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import {BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import ReactGA from 'react-ga';
 import "react-toastify/dist/ReactToastify.css"
@@ -55,18 +55,19 @@ import Calculator from './Services/components/OnlineExam/Calculator/Calculator';
 import GettingStuList from './GettingList/GettingStuList';
 
 
+
+
 export const App = (props) => {
+  
 
-  const setGA = () => {
-    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS, {
-      // debug: true,
-    });
-    // console.log('Yeeeeeeee', process.env.REACT_APP_GOOGLE_ANALYTICS);
-  };
+  // const setGA = () => {
+    // ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS, {
+    //   // debug: true,
+    // });
+  //   // console.log('Yeeeeeeee', process.env.REACT_APP_GOOGLE_ANALYTICS);
+  // };
 
-  useEffect(() => {
-    setGA();
-  }, [])
+  
   
   const result = useSelector(state => state.data)
 

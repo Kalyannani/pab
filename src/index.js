@@ -10,10 +10,12 @@ import {persistStore} from 'redux-persist'
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en.json'
 import ru from 'javascript-time-ago/locale/ru.json'
+import ReactGA from 'react-ga';
 
 TimeAgo.addDefaultLocale(en)
 TimeAgo.addLocale(ru)
 let persistor = persistStore(store)
+
 
 ReactDOM.render(
   <Provider store={store}>
