@@ -6,9 +6,9 @@ const ComboProducts = () => {
       <div
         className="container ">
         <div className="row">
-          <div className="col-lg-6 col-md-6 ">
+          <div className="col-lg-4 col-md-6 ">
             <div className="combo_products">
-              <div className="combo_header">
+              <div className="combo_header" style={{backgroundColor:'#494BA0'}}>
                 <div className=" d-inline-block pl-3">
                   <span>STATE</span>
                 </div>
@@ -59,9 +59,9 @@ const ComboProducts = () => {
             </div>
           </div>
 
-          <div className="col-lg-6 col-md-6 ">
+          <div className="col-lg-4 col-md-6" >
             <div className="combo_products">
-              <div className="combo_header">
+              <div className="combo_header" style={{backgroundColor:'#52C41A'}}>
                 <div className=" d-inline-block pl-3">
                   <span>STATE</span>
                 </div>
@@ -112,7 +112,7 @@ const ComboProducts = () => {
             </div>
           </div>
 
-          <div className="col-lg-6 col-md-6 ">
+          <div className="col-lg-4 col-md-6 ">
             <div className="combo_products">
               <div className="combo_header">
                 <div className=" d-inline-block pl-3">
@@ -165,7 +165,7 @@ const ComboProducts = () => {
             </div>
           </div>
 
-          <div className="col-lg-6 col-md-6 ">
+          <div className="col-lg-4 col-md-6 ">
             <div className="combo_products">
               <div className="combo_header">
                 <div className=" d-inline-block pl-3">

@@ -49,6 +49,12 @@ const Employer_Navbar = () => {
             <Link className="nav-link font-weight-bold" style={{ color: state.color }} id="a1"
              to="/Buytabs" data-toggle={collapse} data-target={id}>BUY SERVICES<sup className='new_blink_inner'>New</sup></Link>
           </li>
+
+          <li className="nav-item">
+            <Link className="nav-link font-weight-bold" style={{ color: state.color }} id="a1"
+             to="#" data-toggle={collapse} data-target={id}>SEARCH CANDIDATES</Link>
+          </li>
+
         </ul>
 
         <ul className="navbar-nav ml-auto">

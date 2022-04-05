@@ -87,6 +87,11 @@ const Navbar = () => {
                                   Browse Filter Grid</Link> */}
                                     </div>
                                 </li>
+
+                                 { 
+                                    result?.type === "recruiter" ?
+                                        null
+                                    :
                                 <li className="nav-item dropdown position-relative d-inline-block">
                                     <a className="nav-link dropdown-toggle  font-weight-bold" href="#" id="a3" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: state.color }}>
@@ -104,6 +109,7 @@ const Navbar = () => {
                                         
                                     </div>
                                 </li>
+                                }
                                    
                                 
                                     {/* { 
