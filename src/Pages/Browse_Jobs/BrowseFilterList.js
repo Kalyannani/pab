@@ -362,22 +362,20 @@ const BrowseFilterList = () => {
 
       <div id="job_filter_list">
         <div className="container BFL">
-          <div className="d-flex mb-4">
-            {/* <div className="mr-auto">
-              <h2 className="job_filter_list_title">2269 Jobs Found</h2>
-            </div> */}
-            <div className="view_list_grid ml-auto">
+
+          {/* <div className="d-flex mb-4" style={{width:'74.5%'}}>  
+            <div className="view_list_grid ml-auto" >
               <button
                 className={`btn list_view mb-2 ${listType === 'list' && 'browse_active'}`} onClick={() => setListType('list')}>List View</button>
               <button
                 className={`btn list_view mb-2 ${listType === 'grid' && 'browse_active'}`} onClick={() => setListType('grid')}>Grid View</button>
-              {/* <Link to="/browsefiltergrid" className="filter_grid_view "> <button
-                            className="btn grid_view mb-2">Grid View</button></Link> */}
+              
             </div>
-          </div>
-          <div className="row">
+          </div> */}
 
-            <div className="col-lg-3 ">
+          <div className="row ">
+
+            <div className="col-lg-3">
               <div className="sticky-top">
                 <div id="accordion">
                   <TopCompaniesFilter topCompanies={topCompanies} handleTopCompaniesAdd={handleTopCompaniesAdd} handleTopCompaniesRemove={handleTopCompaniesRemove} />
@@ -409,7 +407,7 @@ const BrowseFilterList = () => {
 
 
 
-            <div className="col-lg-9">
+            <div className="list_view_width col-lg-9">
               {listType === 'list' ?
                 <>
                   {

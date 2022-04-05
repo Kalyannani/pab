@@ -2213,7 +2213,7 @@ span {
 
 #sec7 .foot {
   padding: 59px 0 25px 0;
-  background: #dbd9d9;
+  background: #c0c0c0;
 }
 
 #sec7 .foot .foot_add {
@@ -2317,7 +2317,9 @@ span {
   font-size: 14px;
   color: #270D44;
   float: left;
-  line-height: 24px;
+  line-height: 55px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .copyright-option .co-widget {
@@ -5104,6 +5106,20 @@ input#search_filter_list_input:focus {
 }
 
 /* .........job_filter_list starts........ */
+
+
+
+@media (min-width: 992px){
+.col-lg-9.list_view_width {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 50% !important;
+}
+}
+
+
+
 #job_filter_list {
   margin: 40px 0;
 }
@@ -10864,7 +10880,7 @@ input[type="file"]::file-selector-button:hover {
     font-size: 16px;
     font-weight: 700;
     color: #4b4545;
-    width: 200px;
+    width: 115px;
 }
 
 .table-row{
@@ -13910,6 +13926,12 @@ input.home_input {
   padding: 0px 15px 0px 0px;
   white-space: nowrap;
   font-size: 17px;
+}
+
+@media screen and (max-width:375px) {
+  .resume_content_location_sub_sub {
+    font-size: 14px;
+  }
 }
 
 .resume_content_location_sub_1_sub {
@@ -17823,13 +17845,15 @@ cursor: pointer;
  margin-top: auto;
  margin-bottom: auto;
 }
-/* .B_icon:hover{
+.B_icon:hover{
   color: #ffffff !important;
-} */
+}
 .company_jobs_anchor:hover .B_icon{
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 /* .BFL
 {
 width: 40% !important;
 } */
+
+
