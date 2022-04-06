@@ -134,100 +134,111 @@ const DesignationJobs = () => {
                             <div class="col-lg-3 col-md-6">
                                     <Link to='/browsefilterlist?designate=ABAP%20Consultant'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                            {/* <span className='B_icon'><img src='images/sap.ico'/>
-                                        </span> */}
+                                            <span className='B_icon'><img src='images/sap.ico'/>
+                                        </span>
                                         <span class="company_jobs_img_1_text align-self-center px-2">ABAP Consultant</span></a>
                                     </Link>
                                 </div>
 
                                 <div class="col-lg-3 col-md-6">
-                                    <Link to='/browsefilterlist?designate=ABAP%20Developer'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">ABAP Developer</span></a>
+                                    <Link to='/browsefilterlist?designate=BPO%20Executive'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">    <span className='B_icon'><img src='images/call_center_9dy_icon.ico'/>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">BPO Executive</span></a>
                                     </Link>
                                 </div>
                                 
                                 <div class="col-lg-3 col-md-6">
-                                    <Link to='/browsefilterlist?designate=ABAP%20Programmer'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">ABAP Programmer</span></a>
+                                    <Link to='/browsefilterlist?designate=Chef'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><img src='images/chef_MWB_icon.ico'/>
+                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Chef</span></a>
                                     </Link>
                                 </div>
 
                                 <div class="col-lg-3 col-md-6">
-                                    <Link to='/browsefilterlist?designate=AC%20Operator'>
+                                    <Link to='/browsefilterlist?designate=Database%20Developer'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                            {/* <span className='B_icon'><img src='images/ac.ico'/>
-                                        </span> */}
-                                        <span class="company_jobs_img_1_text align-self-center px-2">AC Operator</span></a>
+                                            <span className='B_icon'><img src='images/data_science_v68_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Database Developer</span></a>
                                     </Link>
                                 </div>
 
                                 <div class="col-lg-3 col-md-6">
-                                    <Link to='/browsefilterlist?designate=AC%20Technician'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">AC Technician</span></a>
-                                    </Link>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6">
-                                    <Link to='/browsefilterlist?designate=AME%20Trainee'>
+                                    <Link to='/browsefilterlist?designate=Editor'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                            {/* <span  className='B_icon'><img src='images/a5jw1-5eaqs-001.ico'/>
-                                        </span> */}
-                                        <span class="company_jobs_img_1_text align-self-center px-2">AME Trainee</span></a>
+                                        <span className='B_icon'><img src='images/film_editor_BIB_icon.ico'/>
+                                        </span> 
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Editor</span></a>
                                     </Link>
                                 </div>
 
                                 <div class="col-lg-3 col-md-6">
-                                    <Link to='/browsefilterlist?designate=ASC%20Head'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">ASC Head</span></a>
-                                    </Link>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6">
-                                    <Link to='/browsefilterlist?designate=ASE'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">ASC</span></a>
-                                    </Link>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6">
-                                    <Link to='/browsefilterlist?designate=ASE%20Trainee'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">ASC Trainee</span></a>
-                                    </Link>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6">
-                                    <Link to='/browsefilterlist?designate=AV%20Editor'>
+                                    <Link to='/browsefilterlist?designate=Finance%20Manager'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                            {/* <span><img src='images/vedio.ico'/>
-                                        </span> */}
-                                        <span class="company_jobs_img_1_text align-self-center px-2">AV Editor</span></a>
+                                            <span  className='B_icon'><img src='images/assets_zmH_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Finance Manager</span></a>
                                     </Link>
                                 </div>
 
                                 <div class="col-lg-3 col-md-6">
-                                    <Link to='/browsefilterlist?designate=Abap%20Human%20Resources%20Consultant'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Abap Human Resources Consultant</span></a>
+                                    <Link to='/browsefilterlist?designate=Game%20Designer'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">  
+                                         <span  className='B_icon'><img src='images/game_developer_x67_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Game Desiner</span></a>
                                     </Link>
                                 </div>
 
                                 <div class="col-lg-3 col-md-6">
-                                    <Link to='/browsefilterlist?designate=Abstractor'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Abstractor</span></a>
+                                    <Link to='/browsefilterlist?designate=HR%20Assistant'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span  className='B_icon'><img src='images/hr_SWp_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">HR Assistant</span></a>
                                     </Link>
                                 </div>
 
                                 <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=Industrial%20Engineer'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span  className='B_icon'><img src='images/engineer_22H_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Industrial Engineer</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=Java%20Developer'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                            <span><img src='images/java_8TV_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Java Developer</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=Law%20Officer'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span><img src='images/lawyer_9Tk_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Law Officer</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='/browsefilterlist?designate=Network%20Engineer'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span><img src='images/software_engineer_QTn_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Network Engineer</span></a>
+                                    </Link>
+                                </div>
+
+                                {/* <div class="col-lg-3 col-md-6">
                                     <Link to='/browsefilterlist?designate=Academic%20Associate'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                            {/* <span><img src='images/academicc.ico'/>
-                                        </span> */}
+                                   
                                         <span class="company_jobs_img_1_text align-self-center px-2">Academic Associate</span></a>
                                     </Link>
                                 </div>
@@ -251,7 +262,7 @@ const DesignationJobs = () => {
                                         <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">Account's Manager</span></a>
                                     </Link>
-                                </div>
+                                </div> */}
                             </>
                             }
                         </div>

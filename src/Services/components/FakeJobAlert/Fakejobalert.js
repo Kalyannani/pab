@@ -654,10 +654,10 @@ const Fakejobalert = () => {
                {/* <!-- ----end---- --> */}
 
                <div className="row">
-                   <div className="col-sm-12">
+                   <div className="col-sm-12 ">
                    <div className="sticky-top">
                     <div id="accordion">
-                       <div className="content lastBg">
+                       <div className="fake_acc lastBg">
                            <div className="card-header collapsed " id="headingTwo" data-toggle="collapse"
                                        data-target="#collapseTwo" aria-expanded="false"
                                        aria-controls="collapseTwo">
@@ -669,7 +669,7 @@ const Fakejobalert = () => {
                            </div>
                            <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo"
                                data-parent="#accordion">
-                               <div className="content bg-white text-dark fakejob_acc-list">
+                               <div className="fakejob_content bg-white text-dark fakejob_acc-list">
                                    <ul className='fakejob_lists'>
                                        <li>
                                            Job with a lucrative salary requiring minimum experience
@@ -692,7 +692,7 @@ const Fakejobalert = () => {
                    </div>
                </div>
 
-               <div className="content lastBg text-white">
+               <div className="fake_acc lastBg text-white">
                    <div className="card-header collapsed" id="headingThree"  data-toggle="collapse"
                                data-target="#collapseThree" aria-expanded="false"
                                aria-controls="collapseThree">
@@ -704,7 +704,7 @@ const Fakejobalert = () => {
                    </div>
                    <div id="collapseThree" className="collapse" aria-labelledby="headingThree"
                        data-parent="#accordion">
-                       <div className="content bg-white text-dark fakejob_acc-list">
+                       <div className="fakejob_content bg-white text-dark fakejob_acc-list">
                            <ul  className='fakejob_lists'>
                                <li>Pay money to get the job</li>
                                <li>Ask for credit Card/ debit card details/ CVV/ OTP</li>
@@ -722,7 +722,7 @@ const Fakejobalert = () => {
                    </div>
                </div>
 
-               <div className="content lastBg text-white fake_accodian_3">
+               <div className="fake_acc lastBg text-white fake_accodian_3">
                    <div className="card-header collapsed" id="headingThree" data-toggle="collapse"
                                data-target="#collapsefour" aria-expanded="false" aria-controls="collapseThree">
                        <h5 className="mb-0">
@@ -733,7 +733,7 @@ const Fakejobalert = () => {
                    </div>
                    <div id="collapsefour" className="collapse" aria-labelledby="headingThree"
                        data-parent="#accordion">
-                       <div className="content bg-white text-dark fakejob_acc-list">
+                       <div className="fakejob_content bg-white text-dark fakejob_acc-list">
                            <ul  className='fakejob_lists'>
                                <li>Do not share personal information</li>
                                <li>
@@ -746,7 +746,7 @@ const Fakejobalert = () => {
                        </div>
                    </div>
                </div>
-               <div className="content lastBg text-white fake_accodian_4">
+               <div className="fake_acc lastBg text-white fake_accodian_4">
                    <div className="card-header collapsed" id="headingThree"  data-toggle="collapse"
                                data-target="#collapsefive" aria-expanded="false" aria-controls="collapseThree">
                        <h5 className="mb-0">
@@ -757,7 +757,7 @@ const Fakejobalert = () => {
                    </div>
                    <div id="collapsefive" className="collapse" aria-labelledby="headingThree"
                        data-parent="#accordion">
-                       <div className="content bg-white text-dark fakejob_acc-list">
+                       <div className="fakejob_content bg-white text-dark fakejob_acc-list">
                            <ul className='fakejob_lists'>
                                <li>
                                    Please do not provide your credit card or debit card

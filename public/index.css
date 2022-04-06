@@ -2213,7 +2213,7 @@ span {
 
 #sec7 .foot {
   padding: 59px 0 25px 0;
-  background: #c0c0c0;
+  background: #e7e7e7;
 }
 
 #sec7 .foot .foot_add {
@@ -2354,7 +2354,7 @@ span {
   justify-content: center;
 }
 .terms_conditions{
-  margin-top: 100px;
+  margin-top: 150px;
   padding: 40px;
   box-shadow: 0 0 7px #a0a0a0;
 }
@@ -2375,7 +2375,7 @@ span {
 }
 
 .priacy_policy_data{
-  margin-top: 100px;
+  margin-top: 150px;
   padding: 40px;
   box-shadow: 0 0 7px #a0a0a0;
 }
@@ -2460,7 +2460,7 @@ padding: 3px 15px !important;
   background-blend-mode: darken;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .about_us_sub_heading_1 {
@@ -2602,7 +2602,7 @@ button:focus {
   background-blend-mode: darken;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .companies_sec_1_sub_heading_1 {
@@ -2805,7 +2805,7 @@ button:focus {
   background-blend-mode: darken;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .contact_us_sub_heading_1 {
@@ -3116,7 +3116,7 @@ input:focus {
   background-size: cover;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 .job_detail_wrapper {
   z-index: -9999;
@@ -3229,7 +3229,7 @@ a.job_role {
   background-blend-mode: darken;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .job_alert_sub_heading_1 {
@@ -3328,7 +3328,7 @@ input:focus {
   background-blend-mode: darken;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 #search_box_btn {
@@ -3494,7 +3494,7 @@ button.alljob_buttons_sub:focus {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .browse_companyjobs_list-search_box {
@@ -4143,7 +4143,7 @@ button.alljob_buttons_sub:focus {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .browse_jobscategory_list-search_box {
@@ -4331,7 +4331,7 @@ button.alljob_buttons_sub:focus {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .browse_joblocation_list-search_box {
@@ -4564,7 +4564,7 @@ button:focus {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .filter_grid_heading_1 {
@@ -5035,7 +5035,7 @@ label {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .filter_list_heading_1 {
@@ -5625,7 +5625,7 @@ label {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .browse_grid_heading_1 {
@@ -5993,7 +5993,7 @@ span.input-grid-icon {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .browse_list_heading_1 {
@@ -6849,7 +6849,7 @@ textarea {
  color: #fff;
  padding-top: 100px;
  padding-bottom: 60px;
- margin-top: 70px;
+ margin-top: 110px;
 }
 
 .resume_title {
@@ -12361,7 +12361,7 @@ input[type="file"]::file-selector-button:hover {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .classic_sec_1_heading_1 {
@@ -12489,7 +12489,7 @@ input[type="file"]::file-selector-button:hover {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .classic_sidenav_sec_1_heading_1 {
@@ -12807,7 +12807,7 @@ button:focus {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .left_image_sidenav_sec_1_heading_1 {
@@ -13104,7 +13104,7 @@ button:focus {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .blog_details_grid_heading_1 {
@@ -13488,7 +13488,7 @@ button:focus {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .detailed_grid_heading_1 {
@@ -13601,7 +13601,7 @@ a:hover {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  margin-top: 70px;
+  margin-top: 110px;
 }
 
 .detailed_grid_heading_1 {
@@ -14835,7 +14835,7 @@ border-radius: 5px ;
 /* Process Services */
 
 .process_services{
-  margin-top: 70px;
+  margin-top: 110px;
   background-color: #EAF4FC !important;
    padding-top: 30px;
   margin-bottom: 50px;
@@ -16548,7 +16548,7 @@ strong {
 
   width: 100%;
   background-size: cover;
-  margin-top: 70px !important;
+  margin-top: 110px !important;
   
   
   } 
@@ -16667,7 +16667,7 @@ strong {
   {
 text-align: justify;
 /* background-color: red; */
-padding-left: 70px !important;
+padding-left: 35px !important;
 font-size: 12px !important;
   }
   

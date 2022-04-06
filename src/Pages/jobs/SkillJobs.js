@@ -164,115 +164,177 @@ const SkillJobs = () => {
                             
                             <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Networking</span></a>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span><img src='images/atom_2MC_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">ReactJs</span></a>
+                                    </Link>
+                                </div>
+
+            
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span><img src='images/bank_9WD_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Banking</span></a>
                                     </Link>
                                 </div>
 
                                 <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span><img src='images/cooking_DJS_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Cooking</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span><img src='images/hired_Wi6_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Hiring</span></a>
+                                    </Link>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span><img src='images/presentation_Quv_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Teaching</span></a>
+                                    </Link>
+                                </div>
+
+
+                                {/* <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">Software Testing</span></a>
                                     </Link>
-                                </div>
+                                </div> */}
                                 
-                                <div class="col-lg-3 col-md-6">
+                                {/* <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">SAP abap</span></a>
                                     </Link>
-                                </div>
+                                </div> */}
 
                                 <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Call Center</span></a>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span><img src='images/pencil_Rcw_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Writing</span></a>
                                     </Link>
                                 </div>
-
+{/* 
                                 <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">Mainframe</span></a>
                                     </Link>
-                                </div>
+                                </div> */}
 
-                                <div class="col-lg-3 col-md-6">
+                                {/* <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">SAP FICO</span></a>
                                     </Link>
-                                </div>
+                                </div> */}
 
                                 <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">SAP</span></a>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span className='B_icon'><img src='images/sap.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">SAP</span></a>
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                {/* <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">SEO</span></a>
                                     </Link>
-                                </div>
+                                </div> */}
 
-                                <div class="col-lg-3 col-md-6">
+                                {/* <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">.NET</span></a>
                                     </Link>
-                                </div>
+                                </div> */}
 
                                 <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Oracle</span></a>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span className='B_icon'><img src='images/oracle__1__PhD_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Oracle</span></a>
                                     </Link>
                                 </div>
 
                                 <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">PHP</span></a>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span className='B_icon'><img src='images/php_lyw_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">PHP</span></a>
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                {/* <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">Back office</span></a>
                                     </Link>
-                                </div>
+                                </div> */}
 
                                 <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Java</span></a>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span className='B_icon'><img src='images/java__1__WBx_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Java</span></a>
                                     </Link>
                                 </div>
 
                                 <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Online Marketing</span></a>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span className='B_icon'><img src='images/nodejs_amJ_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Node Js</span></a>
                                     </Link>
                                 </div>
 
+                                <div class="col-lg-3 col-md-6">
+                                    <Link to='#'>
+                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                        <span className='B_icon'><img src='images/meditation_rYu_icon.ico'/>
+                                        </span>
+                                        <span class="company_jobs_img_1_text align-self-center px-2">Yoga</span></a>
+                                    </Link>
+                                </div>
+
+{/* 
                                 <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">SAP Basis</span></a>
                                     </Link>
-                                </div>
+                                </div> */}
 
-                                <div class="col-lg-3 col-md-6">
+                                {/* <div class="col-lg-3 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded"><span>
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">Oracle</span></a>
                                     </Link>
-                                </div>
+                                </div> */}
 
                             </>
 }

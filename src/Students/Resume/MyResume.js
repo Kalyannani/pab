@@ -491,7 +491,7 @@ useEffect(()=>{
                         aria-valuemax={100}
                       />
                     </div>
-
+                    {progressBar}%
 
                     {/* <div className="progress-box m-t10">
                       <div className="progress-info">

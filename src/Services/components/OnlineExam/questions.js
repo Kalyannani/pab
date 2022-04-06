@@ -152,8 +152,8 @@ const questions = {
             questionText: 'Indias first medical city Indrayani Medicity to be set up in which state?',
             answerOptions: [
                 { answerText: 'Tamil Nadu', isCorrect: false },
-                { answerText: 'Kerala', isCorrect: true },
-                { answerText: 'B2C3D', isCorrect: false },
+                { answerText: 'Maharashtra', isCorrect: true },
+                { answerText: 'Kerala', isCorrect: false },
                 { answerText: 'Gujarat', isCorrect: false },
             ],
         },
@@ -161,7 +161,7 @@ const questions = {
             questionText: '0.0169 x ? = (1.3)^2',
             answerOptions: [
                 { answerText: '10', isCorrect: false },
-                { answerText: 'Kerala', isCorrect: true },
+                { answerText: '100', isCorrect: true },
                 { answerText: '1000', isCorrect: false },
                 { answerText: 'None of these', isCorrect: false },
             ],
@@ -169,7 +169,7 @@ const questions = {
         {
             questionText: 'What is the average of first five multiples of 12?',
             answerOptions: [
-                { answerText: 'Kerala', isCorrect: true },
+                { answerText: '36', isCorrect: true },
                 { answerText: '38', isCorrect: false },
                 { answerText: '40', isCorrect: false },
                 { answerText: '42', isCorrect: false },
