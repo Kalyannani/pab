@@ -493,6 +493,7 @@ useEffect(()=>{
                     </div>
                     {progressBar}%
 
+
                     {/* <div className="progress-box m-t10">
                       <div className="progress-info">
                         Profile Strength (Average)<span>70%</span>
