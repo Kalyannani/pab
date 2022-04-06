@@ -54,12 +54,8 @@ export const EmployeeSideBar = () => {
       })
         .then((response) => {
           console.log(response.data);
-          // setProfileimage(response.data.imageurl)
-          // toast.success(response.data.message)
-     
-            getData();
-        
-         
+          setProfile({...profile,profileImage:response.data.image})
+          toast.success(response.data.message)
         })
         .catch((err) => {
           console.log(err.response);
@@ -90,7 +86,7 @@ export const EmployeeSideBar = () => {
                         <img
                           className="resume_img img-responsive"
                           alt=""
-                          src={profile.profileImage? `${server}/public/profile/${profile.profileImage}` :`images/girl_avtar.png`}
+                          src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`}
                         />
                         
                       </p>
