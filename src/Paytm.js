@@ -90,7 +90,7 @@ getData(user).then(response=>{
           </div>
            </div>
           
-          <div className="col-lg-8 payment_form" order-lg-1 order-sm-2>
+          <div className="col-lg-7 payment_form" order-lg-1 order-sm-2>
             <form >
               <div className="form-group hire_group my-3">
                 <label>Name :</label>
@@ -158,7 +158,7 @@ getData(user).then(response=>{
             </form>
           </div>
 
-          <div className="col-lg-4 sticky-top" order-lg-2 order-sm-1></div>
+          <div className="col-lg-5 sticky-top" order-lg-2 order-sm-1></div>
         </div>
       </div>
     )

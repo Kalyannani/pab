@@ -19,7 +19,7 @@ const Footer = () => {
             <h5>Jobs on Mail and SMS</h5>
             <ul className="ul">
               Know about job openings in real time and be an early applicant Let
-              our experts send the best jobs for you on mail and sms. Be an
+              our experts send the best jobs for you on <b>info@pabjobs.com</b> and sms. Be an
               early applicant and never miss out on any relevant job opening
             </ul>
           </div>

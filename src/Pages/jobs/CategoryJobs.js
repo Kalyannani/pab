@@ -170,7 +170,7 @@ const CategoryJobs = () => {
 
                                         <div class="col-lg-3 col-md-6">
                                             <Link to='/browsefilterlist?category=Analytics'>
-                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'  style={{color:"#F900BF"}}><i class="fas fa-chart-bar"></i>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'  style={{color:"#FF85B3"}}><i class="fas fa-chart-bar"></i>
                                                 </span><span class="company_jobs_img_1_text align-self-center px-2"  >Analytics</span></a>
                                             </Link>
                                         </div>
@@ -178,14 +178,14 @@ const CategoryJobs = () => {
                                         <div class="col-lg-3 col-md-6">
                                             <Link to='/browsefilterlist?category=Bank'>
                                                 <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                                    <span className='B_icon' style={{color:"#5463FF "}}><i className="fas fa-university"></i></span>
+                                                    <span className='B_icon' style={{color:"#8D8DAA "}}><i className="fas fa-university"></i></span>
                                                     <span class="company_jobs_img_1_text align-self-center px-2">Bank</span></a>
                                             </Link>
                                         </div>
 
                                         <div class="col-lg-3 col-md-6">
                                             <Link to='/browsefilterlist?category=BPO'>
-                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon' style={{color:"#FFC300 "}}><i class="fas fa-headset"></i>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon' style={{color:"#FFD93D "}}><i class="fas fa-headset"></i>
                                                 </span><span class="company_jobs_img_1_text align-self-center px-2">BPO</span></a>
                                             </Link>
                                         </div>
@@ -287,7 +287,7 @@ const CategoryJobs = () => {
 
                                         <div class="col-lg-3 col-md-6">
                                             <Link to='/browsefilterlist?category=System%20Programming'>
-                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'  style={{color:"#00ff88 "}}><i class="fas fa-server"></i>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'  style={{color:"#203239 "}}><i class="fas fa-server"></i>
                                                 </span><span class="company_jobs_img_1_text align-self-center px-2">System Programming</span></a>
                                             </Link>
                                         </div>
@@ -295,14 +295,14 @@ const CategoryJobs = () => {
 
                                         <div class="col-lg-3 col-md-6">
                                             <Link to='/browsefilterlist?category=Networking'>
-                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'  style={{color:"#00ffea "}}><i class="fas fa-network-wired"></i>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'  style={{color:"#86C6F4 "}}><i class="fas fa-network-wired"></i>
                                                 </span><span class="company_jobs_img_1_text align-self-center px-2" >Network Design</span></a>
                                             </Link>
                                         </div>
 
                                         <div class="col-lg-3 col-md-6">
                                             <Link to='/browsefilterlist?category=IT'>
-                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon' style={{color:"#4D96FF "}}><i class="fas fa-city"></i>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon' style={{color:"#395B64 "}}><i class="fas fa-city"></i>
                                                 </span><span class="company_jobs_img_1_text align-self-center px-2">IT</span></a>
                                             </Link>
                                         </div>
@@ -316,7 +316,7 @@ const CategoryJobs = () => {
 
                                         <div class="col-lg-3 col-md-6">
                                             <Link to='/browsefilterlist?category=Hotel'>
-                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon' style={{color:"#F900BF "}}><i class="fas fa-hospital"></i>
+                                                <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon' style={{color:"#395B64 "}}><i class="fas fa-hospital"></i>
                                                 </span><span class="company_jobs_img_1_text align-self-center px-2">Hotel</span></a>
                                             </Link>
                                         </div>

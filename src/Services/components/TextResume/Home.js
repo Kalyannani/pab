@@ -14,7 +14,7 @@ const Home = () => {
     value:"",
     gst:""
   })
-  // const onHide = () => setModalShow(false)
+  const onHide = () => setModalShow(false)
 
   const customStyles = {
     content: {
