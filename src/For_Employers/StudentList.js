@@ -2,24 +2,32 @@ import React, { useEffect } from 'react'
 import useState from 'react-usestateref'
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import apiList, { server } from '../../lib/apiList';
+// import apiList, { server } from '../../lib/apiList';
+import apiList from '../lib/apiList';
 import ReactPaginate from 'react-paginate';
 import ReactLoading from 'react-loading';
 import { toast } from 'react-toastify';
 import moment from 'moment';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import TopCompaniesFilter from './filters/TopCompaniesFilter';
-import ExperienceFilter from './filters/ExperienceFilter';
-import LocationFilter from './filters/LocationFilter';
-import IndustryFilter from './filters/IndustryFilter';
-import JobCategoryFilter from './filters/DesignationFilter';
-import EducationFilter from './filters/EducationFilter';
-import SalaryFilter from './filters/SalaryFilter';
+// import TopCompaniesFilter from './filters/TopCompaniesFilter';  
+import TopCompaniesFilter from '../Pages/Browse_Jobs//filters/TopCompaniesFilter'
+// import ExperienceFilter from './filters/ExperienceFilter';
+import ExperienceFilter  from '../Pages/Browse_Jobs/filters/ExperienceFilter';
+// import LocationFilter from './filters/LocationFilter';
+import LocationFilter from '../Pages/Browse_Jobs/filters/LocationFilter';
+// import IndustryFilter from './filters/IndustryFilter';
+import IndustryFilter from '../Pages/Browse_Jobs/filters/IndustryFilter';
+// import JobCategoryFilter from './filters/DesignationFilter';
+// import EducationFilter from './filters/EducationFilter';
+import EducationFilter from '../Pages/Browse_Jobs/filters/EducationFilter';
+// import SalaryFilter from './filters/SalaryFilter';
+import SalaryFilter from '../Pages/Browse_Jobs/filters/SalaryFilter';
 import ReactTimeAgo from 'react-time-ago'
-import DesignationFilter from './filters/DesignationFilter';
+// import DesignationFilter from './filters/DesignationFilter';
+import DesignationFilter from '../Pages/Browse_Jobs/filters/DesignationFilter';
 import { useSelector } from 'react-redux';
-const BrowseFilterList = () => {
+const StudentList = () => {
 
   const result = useSelector(state=>state.data)
   let { search } = useLocation();
@@ -681,4 +689,4 @@ const BrowseFilterList = () => {
     </div>
   )
 }
-export default BrowseFilterList;
+export default StudentList;

@@ -412,25 +412,26 @@ useEffect(()=>{
               <div className="container">
                 <div className="row">
                   <div className="col-lg-2 ">
-                    <div className="canditate-des">
-                      <p href="#">
+                    <div className="canditate-des" >
+                    <label for="file">
+                      <p>
                         <img
                           className="resume_img img-responsive"
                           src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`}
                         />
                       </p>
-                      <label for="file">
+                      
                         <i class="fas fa-camera img_pencil img_edit"></i>
-                      </label>
+                        </label>
                       <input type="file" 
                       id="file" 
-                      style={{ display: "none" }} 
+                      style={{ display: "hidden", padding:"100px"}} 
                       onChange={(event) =>imageonChangeHandling(event)}
                       />
-                      
+                    
                     </div>
                   </div>
-                  <div className="col-lg-10">
+                  <div className="col-lg-9 m-auto">
                     <h4 className="resume_title">
                       {profile.name}{" "}
                       <Link to="/myprofile">
@@ -491,7 +492,10 @@ useEffect(()=>{
                         aria-valuemax={100}
                       />
                     </div>
+                    <div className="text-right mt-1">
                     {progressBar}%
+                    </div>
+                    
 
 
                     {/* <div className="progress-box m-t10">

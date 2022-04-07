@@ -82,6 +82,7 @@ export const EmployeeSideBar = () => {
                 <div className="main_header text-center">
                         {/* <img src="images/girl_avtar.png" alt="" className="info_img" /> */}
                         <div className="canditate-des">
+                        <label for="file">
                       <p href="#">
                         <img
                           className="resume_img img-responsive"
@@ -90,7 +91,7 @@ export const EmployeeSideBar = () => {
                         />
                         
                       </p>
-                      <label for="file">
+                      
                         <i class="fas fa-camera img_pencil"></i>
                       </label>
                       <input type="file" 
