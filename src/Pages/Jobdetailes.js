@@ -89,7 +89,7 @@ export const Jobdetailes = (props) => {
                                 <div className="job_details_box job-box">
                                     <div className="d-flex mb-2">
                                         <div className="job-company">
-                                            <span><img alt="" src="" /></span>
+                                        <img src={recruiter?.profileImage? recruiter.profileImage:" " } alt="" className='employer_details_img'/>
                                         </div>
                                         <div className="job-info">
                                             <h4>
