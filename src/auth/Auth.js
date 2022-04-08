@@ -299,7 +299,7 @@ const Auth = (props) => {
 
     const [state,setState] = useState({
         image: 
-        <img src='images/Login.jpg' className='signup_image img-fluid'/>
+        <img src='/images/Signup.jpg' className='signup_image img-fluid'/>
      });
 
     const imgColumn= ()=>{
