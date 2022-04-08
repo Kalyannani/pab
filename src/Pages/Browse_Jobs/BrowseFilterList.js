@@ -376,7 +376,7 @@ const BrowseFilterList = () => {
           <div className="row ">
 
             <div className="col-lg-3">
-              <div className="sticky-top">
+              <div className="#">
                 <div id="accordion">
                   <TopCompaniesFilter topCompanies={topCompanies} handleTopCompaniesAdd={handleTopCompaniesAdd} handleTopCompaniesRemove={handleTopCompaniesRemove} />
 

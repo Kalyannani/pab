@@ -3484,7 +3484,7 @@ button.alljob_buttons_sub:focus {
 /* heading-pic */
 
 .heading_pic_companyjobs {
-  background: url(/images/blur-4.jpg) #00000094;
+  background: url(/images/blur-4.jpg) rgba(0,0,0,0.1);
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;

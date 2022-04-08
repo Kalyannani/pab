@@ -30,276 +30,53 @@ import { useSelector } from 'react-redux';
 const StudentList = () => {
 
   const result = useSelector(state=>state.data)
-  let { search } = useLocation();
-  const query = new URLSearchParams(search);
-  console.log('qqqq ', query.get('keyword'));
-  let paramKeyword = ''
-  let paramQLocation = ''
-  let paramTopCompanies = []
-  let paramIndustryType = []
-  let paramLocation = []
-  let paramDesignation = []
 
-  paramKeyword = query.get('keyword');
-  paramQLocation = query.get('qlocation');
+  const [allapplicants,setallApplicants] = useState([]);
 
-  if (query.get('company')) {
-    paramTopCompanies.push(query.get('company'))
-  }
+  const getData=()=>{
+axios.get(apiList.allapplicants, {
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  },
+})
 
-  if (query.get('category')) {
-    paramIndustryType.push(query.get('category'))
-  }
-
-  if (query.get('locate')) {
-    paramLocation.push(query.get('locate'))
-  }
-
-  if (query.get('designate')) {
-    paramDesignation.push(query.get('designate'))
-  }
+.then((response) => {
+  console.log(response.data);
+  setallApplicants(response.data.reverse());
+})
+.catch((err) => {
+  console.log(err.response.data);
+  
+});
+}
 
 
-  const [keyword, setKeyword] = useState(paramKeyword)
-  const [qlocation, setQLocation] = useState(paramQLocation)
+  useEffect(() => {
+    getData();
+  },[]);
 
-  const [jobs, setJobs] = useState([])
-  const [topCompanies, setTopCompanies] = useState(paramTopCompanies)
-  const [experience, setExperience] = useState([])
-  const [location, setLocation] = useState(paramLocation)
-  const [industryType, setIndustryType] = useState(paramIndustryType)
-  const [education, setEducation] = useState([])
-  const [designation, setDesignation] = useState(paramDesignation)
-  const [salary, setSalary] = useState()
-  const [listType, setListType] = useState('list')
-  const [isLoading, setLoading] = useState(false)
-  const [onHold, setOnHold] = useState(false)
-  const [keywordError, setKeywordError] = useState("");
-  const [locationError, setLocationError] = useState("");
-
-  const list = [1, 2, 3, 4, 5, 6];
+ 
 
 
 
 
   // Pagination code
-  const [offset, setOffset] = useState(1);
-  //   const [data, setData] = useState([]);
-  const [perPage, setPerPage] = useState(30);
-  const [pageCount, setPageCount] = useState(0);
-  // const indexOfLastPost = offset * perPage;
-  // const indexOfFirstPost = indexOfLastPost - perPage;
-  // const currentPosts = jobs.slice(indexOfFirstPost, indexOfLastPost);
-  const handlePageClick = (e) => {
-    const selectedPage = e.selected;
-    setOffset(selectedPage + 1);
-    console.log('selectedPage', selectedPage);
-    fetchJobs(selectedPage)
-    window.scrollTo({
-      top: 450,
-      behavior: 'smooth',
-    })
-  };
+  // const [offset, setOffset] = useState(1);
+ 
+  // const [perPage, setPerPage] = useState(30);
+  // const [pageCount, setPageCount] = useState(0);
 
-  const handleTopCompaniesAdd = async (companies) => {
-    setTopCompanies(companies)
-    fetchJobs();
+  // const handlePageClick = (e) => {
+  //   const selectedPage = e.selected;
+  //   setOffset(selectedPage + 1);
+  //   console.log('selectedPage', selectedPage);
+  //   fetchJobs(selectedPage)
+  //   window.scrollTo({
+  //     top: 450,
+  //     behavior: 'smooth',
+  //   })
+  // };
 
-  }
-
-  const handleTopCompaniesRemove = async (companies) => {
-    setTopCompanies(companies)
-    // fetchJobs();
-
-  }
-
-  const handleLocationAdd = async (locations) => {
-    setLocation(locations)
-    fetchJobs();
-
-  }
-
-  const handleLocationRemove = async (locations) => {
-    setLocation(locations)
-    // fetchJobs();
-
-  }
-
-  const handleIndustryTypeAdd = async (industry) => {
-    setIndustryType(industry)
-    fetchJobs();
-
-  }
-
-  const handleIndustryTypeRemove = async (industry) => {
-    setIndustryType(industry)
-    // fetchJobs();
-
-  }
-
-  const handleDesignationAdd = async (designate) => {
-    setDesignation(designate)
-    fetchJobs();
-
-  }
-
-  const handleDesignationRemove = async (designate) => {
-    setDesignation(designate)
-    // fetchJobs();
-
-  }
-
-  const handleEducationAdd = async (educations) => {
-    setEducation(educations)
-    fetchJobs();
-
-  }
-
-  const handleEducationRemove = async (educations) => {
-    setEducation(educations)
-    // fetchJobs();
-
-  }
-
-  const resetFilter = () => {
-    setTopCompanies([])
-    setExperience([])
-    setLocation([])
-    setEducation([])
-    setSalary()
-    setKeyword("")
-    setQLocation("")
-  }
-
-  const handleAddWishlist = async (id) => {
-    
-    let headers = {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    }
-    console.log('hhhh', headers);
-    if (onHold) {
-      return
-    }
-    setOnHold(true)
-    await axios.get(apiList.wishlist + 'add/' + id, {
-      headers
-    })
-      .then((response) => {
-        let jobList = jobs;
-        jobList = jobList.map(jobItem => {
-          if (jobItem._id == id) {
-            jobItem.wishlist = true
-          }
-          return jobItem;
-        })
-        setJobs(jobList);
-        toast.success("Added to Wishlist!")
-        setOnHold(false)
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        toast.error(err.response.data.message)
-      });
-  }
-
-  const handleRemoveWishlist = async (id) => {
-    let headers = {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    }
-    console.log('hhhh', headers);
-    if (onHold) {
-      return
-    }
-    setOnHold(true)
-    await axios.get(apiList.wishlist + 'remove/' + id, {
-      headers,
-    })
-      .then((response) => {
-        let jobList = jobs;
-        jobList = jobList.map(jobItem => {
-          if (jobItem._id == id) {
-            jobItem.wishlist = false
-          }
-          return jobItem;
-        })
-        setJobs(jobList);
-        toast.success("Removed from Wishlist!")
-        setOnHold(false)
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        toast.error(err.response.data.message)
-      });
-  }
-
-  const fetchJobs = async (page = 0) => {
-    setJobs([])
-    setLoading(true)
-    console.log('topCompaniesssss', topCompanies);
-    let token = localStorage.getItem("token");
-    let headers = {}
-    if (token) {
-      headers = {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      }
-    }
-    let data = {
-      location,
-      experience,
-      companies: topCompanies,
-      educations: education,
-      category: designation,
-      industryType
-      // salaryMin: 0,
-      // salaryMax: 18000
-    }
-    if (salary) {
-      data.salaryMin = salary.salaryMin
-      data.salaryMax = salary.salaryMax
-    }
-    if (keyword !== '') {
-      data.q = keyword
-    }
-    if (qlocation !== '') {
-      data.qlocation = qlocation
-    }
-    await axios.post(apiList.jobSearch + '?page=' + page, data, {
-      headers,
-    })
-      .then((response) => {
-        setPageCount(Math.ceil(response.data.counts) / 20)
-        console.log('posts', response.data.posts);
-        setJobs(response.data.posts)
-        setLoading(false)
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        toast.error(err.response.data.message)
-      });
-  }
-
-  const handleSearch = e => {
-    let haveError = false
-    if (keyword == '') {
-      haveError = true
-      setKeywordError('Keyword is required!')
-    }
-    if (qlocation == '') {
-      haveError = true
-      setLocationError('Location is required!')
-    }
-    if (haveError) {
-      e.preventDefault()
-    }
-  }
-
-  useEffect(async () => {
-
-    fetchJobs();
-
-  }, [topCompanies, experience, location, education, salary, industryType, designation])
-
-  console.log('kkkkkkkk', keyword, qlocation);
 
   return (
     <div >
@@ -316,7 +93,7 @@ const StudentList = () => {
 
       <div className="container" >
         <div className="filter_list_search-box">
-          <form className="form-control" onSubmit={handleSearch} >
+          {/* <form className="form-control" onSubmit={handleSearch} >
             <div className="row">
               <div className="col-lg-6 col-md-6">
                 <div className="form-group">
@@ -337,7 +114,7 @@ const StudentList = () => {
                 </div>
               </div>
 
-              <div className="col-lg-4 col-md-6">
+               <div className="col-lg-4 col-md-6">
                 <div className="form-group">
                   <label></label>
                   <div className="input-group">
@@ -357,10 +134,10 @@ const StudentList = () => {
                 <label for=""></label>
                 <a href="#"></a><button id="filter_list_search_btn" className=" btn-block">Find
                   Job</button>
-              </div>
+              </div> 
 
             </div>
-          </form>
+          </form> */}
         </div>
 
       </div>
@@ -371,86 +148,55 @@ const StudentList = () => {
       <div id="job_filter_list">
         <div className="container BFL">
 
-          {/* <div className="d-flex mb-4" style={{width:'74.5%'}}>  
-            <div className="view_list_grid ml-auto" >
-              <button
-                className={`btn list_view mb-2 ${listType === 'list' && 'browse_active'}`} onClick={() => setListType('list')}>List View</button>
-              <button
-                className={`btn list_view mb-2 ${listType === 'grid' && 'browse_active'}`} onClick={() => setListType('grid')}>Grid View</button>
-              
-            </div>
-          </div> */}
 
           <div className="row ">
 
             <div className="col-lg-3">
               <div className="sticky-top">
-                <div id="accordion">
-                  <TopCompaniesFilter topCompanies={topCompanies} handleTopCompaniesAdd={handleTopCompaniesAdd} handleTopCompaniesRemove={handleTopCompaniesRemove} />
-
-                  {/* 2 */}
-
-                  <ExperienceFilter experience={experience} setExperience={setExperience} />
-
-                  <LocationFilter location={location} handleLocationAdd={handleLocationAdd} handleLocationRemove={handleLocationRemove} />
-
-                  {/* 4 */}
-
-                  <IndustryFilter industryType={industryType} handleIndustryTypeAdd={handleIndustryTypeAdd} handleIndustryTypeRemove={handleIndustryTypeRemove} />
-
-                  {/* 5 */}
-
-                  <DesignationFilter designation={designation} handleDesignationAdd={handleDesignationAdd} handleDesignationRemove={handleDesignationRemove} />
-
-                  {/* 6 */}
-
-                  <EducationFilter education={education} handleEducationAdd={handleEducationAdd} handleEducationRemove={handleEducationRemove} />
-
-                  {/* 7 */}
-
-                  <SalaryFilter salary={salary} setSalary={setSalary} />
-                </div>
+               
               </div>
             </div>
 
 
 
             <div className="list_view_width col-lg-9">
-              {listType === 'list' ?
-                <>
+              
                   {
-                    jobs.length > 0 ?
-                      jobs?.map((job) => {
-                        return (
-                         
+                    allapplicants.length > 0 ?
+                      allapplicants?.map((applicant) => {
+                        return ( 
+                                                 
                           <ul className="filter_list_job_post ">
                             <li>
-                            <Link to={`/jobdetailes/${job._id}`}>
+                            <Link to='#'>
                               <div className="filter_list_job_box">
                                 <div className="d-flex mb-4">
                                   <div className="filter_list_job_company">
                                     {/* <span><img alt="" src={job.recruiter?.profileImage? `${server}/public/profile/${job.recruiter.profileImage}`: " " }/></span> */}
-                                    <img src={job.recruiter?.profileImage? job.recruiter.profileImage:" " } alt=""/>
+                                    {/* <img src={job.recruiter?.profileImage? job.recruiter.profileImage:" " } alt=""/> */}
                                   </div>
                                   <div className="filter_list_job_info">
-                                    <h4>{job.title}</h4>
-                                    <h5 className="home_company_name">{job.recruiter?.companyname}</h5>
+                                    <h4></h4>
+                                    <h5 className="home_company_name"> {applicant?.name} </h5>
                                     <ul>
                                     
                                       
                                     
-                                      <li><i className="fas fa-map-marker-alt"></i>
-                                      {job.cities.map((job,index,arr)=>{
+                                      <li><i className="fas fa-map-marker-alt">
+
+                                      </i>
+                                      {applicant.currentlocation.map((applicant,index,arr)=>{
                                         return (<>
-                                          {job}{index!=(arr.length-1)?"/":""}
+                                          {applicant}{index!=(arr.length-1)?"/":""}
                                           </>)
                                       })}
+                                     
                                       </li>
-                                      <li><i className="far fa-bookmark"></i>{job.jobType}</li>
-                                      <li><i className="far fa-clock"></i>Published {" "}
-                                        {/* <ReactTimeAgo date={job.dateOfPosting} locale="en-US" /> */}
-                                        {/* {moment(job.postedAt).fromNow()} */}
-                                        {moment(job.postedAt? Number(job.postedAt) : job.dateOfPosting ).fromNow()}
+                                      <li><i className="far fa-bookmark"></i>
+                                      {applicant?.contactNumber} 
+                                      </li>
+                                      <li><i className="far fa-clock"></i>
+                                      {applicant?.email} 
                                       </li>
 {/* 1646973039978 */}
                                     </ul>
@@ -461,7 +207,7 @@ const StudentList = () => {
                                     <a href="#"><span>Full Time</span></a>
                                   </div>
                                   <div className="filter_list_salary">
-                                    <span><i className="fas fa-rupee-sign"></i> {job.salary} 
+                                    <span><i className="fas fa-rupee-sign"></i>  
                                       </span>
                                   </div>
                                 </div>
@@ -475,194 +221,21 @@ const StudentList = () => {
                               </div>
                               </Link>
 
-                                {/* saved jobs icon */}
-
-                                {result?.type==="applicant" ? 
-                                <>
-                                {job.wishlist ? (
-                                <label className="job_filter_grid_wishlist" onClick={() => handleRemoveWishlist(job._id)}  style={{ position: 'absolute', right: 105, top: 31 }}>
-                                  {/* <input type="checkbox" /> */}
-                                  <span className="filter_grid_added" >
-
-                                    <i class="fab fa-gratipay" style={{fontSize:'28px'}}/>
-                                  </span>
-                                </label>
-                              ) : (
-                                <label className="job_filter_grid_wishlist" onClick={() => handleAddWishlist(job._id)}  style={{ position: 'absolute', right: 105, top: 35}}>
-                                  {/* <input type="checkbox" /> */}
-                                  <span className="filter_grid_added" >
-                                    <i className="fas fa-heart" />
-                                  </span>
-                                </label>
-                              )}
-                              </>
-                              :null}
 
                             </li>
                           </ul>
                          
-                        )
-                      }) :
-                      <>
-                        {isLoading ?
-                          <div className="skeleton">
-                          {list.map((item)=>{
-                            return(
-                          <div className="contact__item mb-5" key={item}>
-                            <ul className="job-post">
-                          <li >
-                            <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
-                              <div style={{ display: "flex", width: "100%" }}>
-                                <Skeleton circle={false} height={50} width={50} />
-                                <div
-                                  style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    width: "100%"
-                                  }}
-                                >
-                                  <Skeleton
-                                    height={12}
-                                    width="30%"
-                                    style={{ marginLeft: "1rem", marginBottom: "0.5rem" }}
-                                  />
-                                  <Skeleton
-                                    height={8}
-                                    width="40%"
-                                    style={{ marginLeft: "1rem" }}
-                                  />
-                                  <Skeleton
-                                    height={8}
-                                    width="50%"
-                                    style={{ marginLeft: "1rem", marginTop: 0 }}
-                                  />
-                                  <Skeleton
-                                    height={12}
-                                    width="80%"
-                                    style={{ marginLeft: "1rem", marginTop: "0.6rem" }}
-                                  />
-                                </div>
-                              </div>
-                            </SkeletonTheme>
-                            </li>
-                          </ul>
-                          </div>
-                            )
-                          })}
-                          </div>
-                          :
-                          <div style={{ textAlign: "-webkit-center" }}>
-                            <p>There is no jobs to list with the current filter</p>
-                            <button
-                              className={`btn list_view mb-2 `} onClick={resetFilter}>Reset Filter</button>
-                          </div>
-                        }
-
-                      </>
-
+                       )
+                       }) :
+                      null
                       
-                      // <div style={{ textAlign: "-webkit-center" }}>
-                      //   <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
-                      // </div>
+                   
                   }
-                </>
-                :
-                <div class="row" id='job_filter_grid'>
-                  {
-                    jobs.length > 0 ?
-                      jobs?.map((job) => {
-                        return (<>
-                          <div className="col-lg-6 col-sm-12">
-                             <Link to={`/jobdetailes/${job._id}`}>
-                            <div className="job_filter_grid_box position-relative">
-                              <div className="d-flex mb-4">
-                                <div className="job_filter_grid_info">
-                                  <div className="job_heading ">
-                                  <h5>
-                                    {/* <Link to={`/jobdetailes/${job._id}`}>{job.title}</Link> */}
-                                 {job.title}
-                                  </h5>
-                               </div>
-                                  <div className="apply_grid_box">
-                                  <label className="wishlist ">
-                                {result?.type==="applicant" ? 
-                                <button className='btn job_details_applybtn_grid apply_job_grid_new' > Apply</button>: 
-                                result?.type==="recruiter"? null :  
-                                <Link to="/auth" ><div className="login_apply"> <button className='btn job_details_applybtn_grid '> Login to Apply </button> </div> </Link>} 
-                                </label>
-                                    </div>
-                                  <div className="job_filter_grid_in_up">
-                                    <i className="fas fa-map-marker-alt"/>
-                                    <span> Hyderabad</span>
-                                    <i className="far fa-bookmark" />
-                                    <span> {job.jobType}</span>
-                                    <div className="job_filter_grid_in_down">
-                                      <i className="far fa-clock" /> <span> Published <ReactTimeAgo date={job.dateOfPosting} locale="en-US" /></span>
-                                    </div>
-                                  </div>
-                                  <p />
-                                </div>
-                              </div>
-                              <div className="d-flex">
-                                <div className="job_filter_grid_type mr-auto mb-3">
-                                  <span>Full Time</span>
-                                </div>
-                                <div className="job_filter_grid_salary">
-                                  <span>
-                                    <i className="fas fa-rupee-sign" /> {job.salary} 
-                                    {/* -
-                                    <i className="fas fa-rupee-sign" /> 25000 */}
-                                  </span>
-                                </div>
-                              </div>
-                              
-                              
-                              {/* {job.wishlist ? (
-                                <label className="job_filter_grid_wishlist" onClick={() => handleRemoveWishlist(job._id)}>
-                                  <input type="checkbox" />
-                                  <span className="filter_grid_added" >
-
-                                    <i class="fab fa-gratipay" style={{ position: 'absolute', left: 6, top: 6 }} />
-                                  </span>
-                                </label>
-                              ) : (
-                                <label className="job_filter_grid_wishlist" onClick={() => handleAddWishlist(job._id)}>
-                                  <input type="checkbox" />
-                                  <span className="filter_grid_added" >
-                                    <i className="fas fa-heart" />
-                                  </span>
-                                </label>
-                              )} */}
-                               
-                            </div>
-                            </Link>
-                          </div>
-  </>
-                        )
-                      }) :
-                      <>
-                        {
-                        isLoading ?
-                          <div style={{ margin:"auto" }}>
-                            <ReactLoading type="balls" color={"#270D44"} height={150} width={150} />
-                          </div>
-                          :
-                          <div style={{ margin:"auto" }}>
-                            <p>There is no jobs to list with the current filter</p>
-                            <div className='text-center'>
-                            <button
-                              className={`btn list_view mb-2 `} onClick={resetFilter}>Reset Filter</button>
-                              </div>
-                          </div>
-                        }
-
-                      </>
-                  }
-                </div>
-              }
+              
 
 
-              <div class="d-flex justify-content-center">
+
+               {/* <div class="d-flex justify-content-center">
                 <ReactPaginate
                   previousLabel="Prev"
                   nextLabel="Next"
@@ -676,7 +249,7 @@ const StudentList = () => {
                   subContainerClassName={"pages pagination"}
                   activeClassName={"active"}
                 />
-              </div>
+              </div>  */}
               
              
             </div>
