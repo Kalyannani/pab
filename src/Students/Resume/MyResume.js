@@ -416,16 +416,17 @@ useEffect(()=>{
             <div className="col-lg-9">
               <div className="container">
                 <div className="row">
-                  <div className="col-lg-2 ">
-                    <div className="canditate-des">
+                  <div className="col-lg-3 ">
+                  <div className="canditate-des">
+                <label for="file">
                       <p href="#">
                         <img
                           className="resume_img img-responsive"
                           src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`}
                         />
                       </p>
-                      <label for="file">
-                        <i class="fas fa-camera img_pencil img_edit"></i>
+                      
+                        <i class="fas fa-camera img_pencil "></i>
                       </label>
                       <input type="file" 
                       id="file" 
@@ -435,7 +436,7 @@ useEffect(()=>{
                       
                     </div>
                   </div>
-                  <div className="col-lg-10">
+                  <div className="col-lg-9">
                     <h4 className="resume_title">
                       {profile.name}{" "}
                       <Link to="/myprofile">
@@ -496,7 +497,9 @@ useEffect(()=>{
                         aria-valuemax={100}
                       />
                     </div>
-
+                     <div className="text-right">
+                        {progressBar}%
+                     </div>
 
                     {/* <div className="progress-box m-t10">
                       <div className="progress-info">
