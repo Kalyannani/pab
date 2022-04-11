@@ -65,20 +65,24 @@ console.log(allquestions)
       <div className='mt-4 mb-5'>
          <div className='container'>
              <div className='row'>
-                 <div className='col-md-12'>
+                 <div className='col-md-6'>
                  <h1 className='Exam_Welcome'>Welcome To PabJobs Test</h1>
 
                  <h5 className='Exam_Instuctions'>General Instructions : </h5>
                  <ul className='Exam_Instuction_ul'>
                      <li>All questions are compulsory.</li>
-                     <li>You can bookmark any question</li>
-                     <li>Before Update the answer firstly UnCheck the previous answer and then updated it</li>
-                     <li> This test is time bound,there's a timer on the right panel</li>
+                     <li>Total 30 questions in Exam.</li>
+                     <li>Each Question one Minutue</li>
                      <li>You may leave the hall after the first 30 minutes of the exam</li>
+                     <li>After complete Exam Enter to Hire and Train Form and Fill The form Data</li>
                      <li>Keep your Admit Card on the table. Get permission from the HOD, if not in possession</li>
                      <li><b>NOTE :</b>To save answers,click on the Next button.</li>
                  </ul>
                  <div className='Exam_Test' onClick={()=>getstate()}>Proceed To Test</div>
+                 </div>
+                 <div className='col-md-6 text-center ' style={{marginTop:"160px"}}>
+                   
+                    <img src="images/onlineexam.png" alt="image" style={{transform:"rotateY(550deg)"}}/>
                  </div>
              </div>
          </div>

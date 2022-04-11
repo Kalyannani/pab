@@ -27,10 +27,11 @@ const Footer = () => {
                   We provide a direct access to the walk-in opportunities
                   available on the site. Results can be filtered on work
                   experience, venue, from location, employer type, and date
-                  range.We provide a direct access to the walk-in opportunities
+                  range.
+                  {/* We provide a direct access to the walk-in opportunities
                   available on the site. Results can be filtered on work
                   experience, venue, from location, employer type, and date
-                  range.
+                  range. */}
                 </p>
               </div>
               {
@@ -87,7 +88,7 @@ const Footer = () => {
                 <ul>
                   <li>
                     <i className="fas fa-chevron-right"></i>
-                    <Link to="/companies">Companies</Link>
+                    <Link to="/companies">LogIn</Link>
                   </li>
                   <li>
                     <i className="fas fa-chevron-right"></i>

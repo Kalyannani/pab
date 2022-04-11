@@ -94,10 +94,10 @@ const BuyTabs = () => {
               <TabsList>
                 <Tab>DATA BASE</Tab>
                 <Tab>JOB POSTING</Tab>
-                <Tab>SMS</Tab>
+                {/* <Tab>SMS</Tab> */}
                 <Tab>BRANDING</Tab>
                 <Tab>COMBO PRODUCTS</Tab>
-                <Tab>XPRESS WEBSITE</Tab>
+                {/* <Tab>XPRESS WEBSITE</Tab> */}
               </TabsList>
             </div>
             </div>
@@ -107,18 +107,18 @@ const BuyTabs = () => {
             <TabPanel value={1}>
               <Jobposting/>
             </TabPanel>
-            <TabPanel value={2}>
+            {/* <TabPanel value={2}>
               <SMS/>
-            </TabPanel>
-            <TabPanel value={3}>
+            </TabPanel> */}
+            <TabPanel value={2}>
               <Branding />
             </TabPanel>
-            <TabPanel value={4}>
+            <TabPanel value={3}>
               <ComboProducts />
             </TabPanel>
-            <TabPanel value={5}>
+            {/* <TabPanel value={5}>
               <Xpressjobsite />
-            </TabPanel>
+            </TabPanel> */}
           </TabsUnstyled>
         </div>
       </div>

@@ -96,14 +96,15 @@ console.log(profile)
                                 </div> */}
 
                 <div className="canditate-des">
+                <label for="file">
                       <p href="#">
                         <img
                           className="resume_img img-responsive"
                           src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`}
                         />
                       </p>
-                      <label for="file">
-                        <i class="fas fa-camera img_pencil img_edit_sidebar"></i>
+                      
+                        <i class="fas fa-camera img_edit_sidebar"></i>
                       </label>
                       <input type="file" 
                       id="file" 

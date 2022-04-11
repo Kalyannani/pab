@@ -54,12 +54,8 @@ export const EmployeeSideBar = () => {
       })
         .then((response) => {
           console.log(response.data);
-          // setProfileimage(response.data.imageurl)
-          // toast.success(response.data.message)
-     
-            getData();
-        
-         
+          setProfile({...profile,profileImage:response.data.image})
+          toast.success(response.data.message)
         })
         .catch((err) => {
           console.log(err.response);
@@ -86,16 +82,17 @@ export const EmployeeSideBar = () => {
                 <div className="main_header text-center">
                         {/* <img src="images/girl_avtar.png" alt="" className="info_img" /> */}
                         <div className="canditate-des">
+                        <label for="file">
                       <p href="#">
                         <img
                           className="resume_img img-responsive"
                           alt=""
-                          src={profile.profileImage? `${server}/public/profile/${profile.profileImage}` :`images/girl_avtar.png`}
+                          src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`}
                         />
                         
                       </p>
-                      <label for="file">
-                        <i class="fas fa-camera img_pencil"></i>
+                      
+                        <i class="fas fa-camera img_edit_sidebar"></i>
                       </label>
                       <input type="file" 
                       id="file" 

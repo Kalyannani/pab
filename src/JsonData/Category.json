@@ -22,7 +22,7 @@
     },
     {
       "id":"6",
-       "Category": "Engineering"
+       "Category": "Engineer"
     },
     {
       "id":"7",
@@ -38,7 +38,7 @@
     },
     {
       "id":"10", 
-      "Category": "HR"
+      "Category": "HR/Admin"
     },
     {
       "id":"11", 
@@ -86,7 +86,7 @@
     },
     {
       "id":"22", 
-      "Category": "IT"
+      "Category": "IT Industry"
     },
     {
       "id":"23", 
@@ -110,7 +110,7 @@
     },
     {
       "id":"28", 
-      "Category": "BPO"
+      "Category": "BPO/ Telecaller"
     },
     {
       "id":"29", 
@@ -179,9 +179,12 @@
       "id":"45", 
       "Category": "Business Intelligence"
     },
+
+ 
+
     {
       "id":"46", 
-      "Category": "Accounting"
+      "Category": "Accountant"
     },
     {
       "id":"47", 
@@ -197,7 +200,7 @@
     },
     {
       "id":"50", 
-      "Category": "Architecture"
+      "Category": "Architect"
     },
     {
       "id":"51", 
@@ -209,11 +212,11 @@
     },
     {
       "id":"53", 
-      "Category": "BPO"
+      "Category": "Bouncer"
     },
     {
       "id":"54", 
-      "Category": "Bank"
+      "Category": "Beautician"
     },
     {
       "id":"55", 
@@ -229,7 +232,7 @@
     },
     {
       "id":"58", 
-      "Category": "Engineering"
+      "Category": "Cameraman"
     },
     {
       "id":"59", 
@@ -245,11 +248,11 @@
     },
     {
       "id":"62", 
-      "Category": "Teacher"
+      "Category": "Content Writer"
     },
     {
       "id":"63", 
-      "Category": "Electrical"
+      "Category": "Electrician"
     },
     {
       "id":"64", 
@@ -292,7 +295,7 @@
     
     {
       "id":"73", 
-      "Category": "Airline"
+      "Category": "Bartender"
     },
     {
       "id":"74", 
@@ -300,7 +303,7 @@
     },
     {
       "id":"75", 
-      "Category": "IT"
+      "Category": "Caretaker/Nanny"
     },
     {
       "id":"76", 
@@ -316,7 +319,7 @@
     },
     {
       "id":"79", 
-      "Category": "Legal"
+      "Category": "Carpenter"
     },
     {
       "id":"80", 
@@ -356,7 +359,7 @@
     },
     {
       "id":"89", 
-      "Category": "Pharma"
+      "Category": "Cashier"
     },
     {
       "id":"90", 
@@ -380,7 +383,7 @@
     },
     {
       "id":"95", 
-      "Category": "Security"
+      "Category": "Cleaner/Washer"
     },
     {
       "id":"96", 
@@ -388,7 +391,7 @@
     },
     {
       "id":"97", 
-      "Category": "Shipping"
+      "Category": "Construction/Laborer"
     },
     {
       "id":"98", 
@@ -396,7 +399,7 @@
     },
     {
       "id":"99", 
-      "Category": "Consultant"
+      "Category": "Business Analyst"
     },
     {
       "id":"100", 
@@ -428,35 +431,338 @@
     },
     {
       "id":"98", 
-      "Category": "Design & MultiMedia"
+      "Category": "Control Room Operator"
     },
     {
       "id":"99", 
-      "Category": "IT Industry"
+      "Category": "Cook/Chef"
     },
     {
       "id":"100", 
-      "Category": "Marketing"
+      "Category": "Counsellor"
     },
     {
       "id":"101", 
-      "Category": "BPO"
+      "Category": "Data Collection/Survey"
     },
     {
       "id":"102", 
-      "Category": "Business Analyst"
+      "Category": "Data Entry /Back Office"
     },
     {
       "id":"103", 
-      "Category": "Counstruction"
+      "Category": "Data Scientist"
     },
     {
       "id":"104", 
-      "Category": "Bank"
+      "Category": "Database/System/Linux Administrator"
     },
     {
       "id":"105", 
-      "Category": "Industrial"
+      "Category": "Delivery/Collections"
+    },
+    {
+      "id":"106", 
+      "Category": "Doctor"
+    },
+    {
+      "id":"107", 
+      "Category": "Draftsman"
+    },
+    {
+      "id":"108", 
+      "Category": "Driver"
+    },
+    {
+      "id":"109", 
+      "Category": "DTP Operator/Print Consultant"
+    },
+    {
+      "id":"110", 
+      "Category": "Dubbing Artist"
+    },
+    {
+      "id":"111", 
+      "Category": "Editor"
+    },
+    {
+      "id":"112", 
+      "Category": "Electroplater"
+    },
+    {
+      "id":"113", 
+      "Category": "Event Planner"
+    },
+    {
+      "id":"114", 
+      "Category": "Financial Advisor"
+    },
+    {
+      "id":"115", 
+      "Category": "Fire Fighter"
+    },
+    {
+      "id":"116", 
+      "Category": "Fitter"
+    },
+    {
+      "id":"117", 
+      "Category": "Floor Manager"
+    },
+    {
+      "id":"118", 
+      "Category": "Foundryman"
+    },
+    {
+      "id":"119", 
+      "Category": "Gardener"
+    },
+    {
+      "id":"120", 
+      "Category": "Handryman"
+    },
+    {
+      "id":"121", 
+      "Category": "Help Desk Executive"
+    },
+    {
+      "id":"122", 
+      "Category": "Hospitality Executive"
+    },
+    {
+      "id":"123", 
+      "Category": "Host/Hostess"
+    },
+    {
+      "id":"124", 
+      "Category": "Housekeeping"
+    },
+    {
+      "id":"125", 
+      "Category": "Insurance Consultant"
+    },
+    {
+        "id":"126",
+        "Category":"IT Hardware & Network Engineer"
+    },
+    {
+        "id":"127",
+        "Category":"IT Software - Developer"
+    },
+    {
+        "id":"128",
+        "Category":"IT Software - QA/Test Engineer"
+    },
+    {
+        "id":"129",
+        "Category":"IT Software - Web Designer"
+    },
+    {
+        "id":"130",
+        "Category":"Lab Assistant"
+    },
+    {
+        "id":"131",
+        "Category":"Language Translator"
+    },
+    {
+        "id":"132",
+        "Category":"Librarian"
+    },
+    {
+        "id":"133",
+        "Category":"Life Guard"
+    },
+    {
+        "id":"134",
+        "Category":"Lighting Technician"
+    },
+    {
+        "id":"135",
+        "Category":"Maid"
+    },
+    {
+        "id":"136",
+        "Category":"Market Research Analyst"
+    },
+    {
+        "id":"137",
+        "Category":"Mechanic"
+    },
+    {
+        "id":"138",
+        "Category":"Medical Assistant"
+    },
+    {
+        "id":"139",
+        "Category":"Medical Representative"
+    },
+    {
+        "id":"140",
+        "Category":"Microbiologist"
+    },
+    {
+        "id":"141",
+        "Category":"MIS Executive"
+    },
+    {
+        "id":"142",
+        "Category":"Moulder"
+    },
+    {
+        "id":"143",
+        "Category":"Nurse"
+    },
+    {
+        "id":"144",
+        "Category":"Nutritionist/Dietician"
+    },
+    {
+        "id":"145",
+        "Category":"Office Assistant/Helper"
+    },
+    {
+        "id":"146",
+        "Category":"Operator/Machinist"
+    },
+    {
+        "id":"147",
+        "Category":"Optometrist"
+    },
+    {
+        "id":"148",
+        "Category":"Packager"
+    },
+    {
+        "id":"149",
+        "Category":"Painter"
+    },
+    {
+        "id":"150",
+        "Category":"Pest Control Executive"
+    },
+    {
+        "id":"151",
+        "Category":"Pharmacist"
+    },
+    {
+        "id":"152",
+        "Category":"Photographer"
+    },
+    {
+        "id":"153",
+        "Category":"Plumber"
+    },
+    {
+        "id":"154",
+        "Category":"Product Manager"
+    },
+    {
+        "id":"155",
+        "Category":"Program/Project Manager"
+    },
+    {
+        "id":"156",
+        "Category":"Projectionist"
+    },
+    {
+        "id":"157",
+        "Category":"Public Relations"
+    },
+    {
+        "id":"158",
+        "Category":"Purchase Executive"
+    },
+    {
+        "id":"159",
+        "Category":"Quality and Inspection"
+    },
+    {
+        "id":"160",
+        "Category":"Receptionist/Front Office"
+    },
+    {
+        "id":"161",
+        "Category":"Reporter"
+    },
+    {
+        "id":"162",
+        "Category":"Rigger"
+    },
+    {
+        "id":"163",
+        "Category":"Safety Officer"
+    },
+    {
+        "id":"164",
+        "Category":"SAP Consultant"
+    },
+    {
+        "id":"165",
+        "Category":"Scientist/Research"
+    },
+    {
+        "id":"166",
+        "Category":"Security/Guard"
+    },
+    {
+        "id":"167",
+        "Category":"Sheet Metal Worker"
+    },
+    {
+        "id":"168",
+        "Category":"Software Architect"
+    },
+    {
+        "id":"169",
+        "Category":"Soldering Operator"
+    },
+    {
+        "id":"170",
+        "Category":"Sound Engineer"
+    },
+    {
+        "id":"171",
+        "Category":"Sports Trainer"
+    },
+    {
+        "id":"172",
+        "Category":"Tailor"
+    },
+    {
+        "id":"173",
+        "Category":"Ticketing Executive"
+    },
+    {
+        "id":"174",
+        "Category":"Trainer"
+    },
+    {
+        "id":"175",
+        "Category":"Transport Supervisor"
+    },
+    {
+        "id":"176",
+        "Category":"Videographer"
+    },
+    {
+        "id":"177",
+        "Category":"Waiter/Steward"
+    },
+    {
+        "id":"178",
+        "Category":"Ward Boy"
+    },
+    {
+        "id":"179",
+        "Category":"Warehouse Executive"
+    },
+    {
+        "id":"180",
+        "Category":"Welder"
+    },
+    {
+        "id":"181",
+        "Category":"Wireman"
     }
-
 ]

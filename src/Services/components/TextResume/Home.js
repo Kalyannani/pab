@@ -131,8 +131,8 @@ if(result){
   return (<>
     <div className="bg">
       <div className=" row">
-        <div className="col-2 md-2 sm-12"></div>
-        <div className="col-8 md-8 sm-12">
+        
+        <div className="col-md-12 text-center">
           <div className="data">
             Enhance your Resume to <b>Impress Recruiters</b>
           </div>
@@ -140,12 +140,12 @@ if(result){
             Showcase your job readiness with a professionally written resume
           </div>
         </div>
-        <div className="col-2 md-2 sm-2"></div>
+    
       </div>
-      <div className="container mr-2 ml-2 ">
-        <div className="row mt-3 ">
-          <div className="col-lg-2 col-md-2  col-sm-2"></div>
-          <div className="textresume_box  col-lg-2 col-md-2 col-sm-2 experince" 
+      <div className="container">
+        <div className="row mt-3 mx-auto">
+          
+          <div className="textresume_box  col-lg-3 col-md-3 col-sm-6 experince" 
           onClick={() => modalDynamic({
             value:"199",
             gst:"35"
@@ -154,7 +154,7 @@ if(result){
             <ul classname="exp">(Exp:0 to 3 years)</ul>
             *Applicable taxes may apply
           </div>
-          <div className="textresume_box  col-lg-2 col-md-2 col-sm-2 experince" onClick={() => modalDynamic({
+          <div className="textresume_box  col-lg-3 col-md-3 col-sm-6 experince" onClick={() => modalDynamic({
             value:"499",
             gst:"89"
           })}>
@@ -162,7 +162,7 @@ if(result){
             <ul classname="exp">(exp:3 to 8 years)</ul>
             *Applicable taxes may apply
           </div>
-          <div className="textresume_box  col-lg-2 col-md-2 col-sm-2 experince" onClick={() => modalDynamic({
+          <div className="textresume_box  col-lg-3 col-md-3 col-sm-6 experince" onClick={() => modalDynamic({
             value:"799",
             gst:"143"
           })}>
@@ -170,7 +170,7 @@ if(result){
             <ul classname="exp">(exp:8 to 15 years</ul>
             *Applicable taxes may apply
           </div>
-          <div className="textresume_box  col-lg-2 col-md-2 col-sm-2 experince" onClick={() => modalDynamic({
+          <div className="textresume_box  col-lg-3 col-md-3 col-sm-6 experince" onClick={() => modalDynamic({
             value:"1999",
             gst:"359"
           })}>
@@ -178,9 +178,7 @@ if(result){
             <ul classname="exp">(exp:15years to above</ul>
             *Applicable taxes may apply
           </div>
-          <div className="  col-lg-2 col-md-2 col-sm-2">
-
-          </div>
+          
         </div>
       </div>
       <div className="code">
