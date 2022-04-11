@@ -104,7 +104,7 @@ console.log(profile)
                         />
                       </p>
                       
-                        <i class="fas fa-camera img_pencil img_edit_sidebar"></i>
+                        <i class="fas fa-camera img_edit_sidebar"></i>
                       </label>
                       <input type="file" 
                       id="file" 
