@@ -17482,18 +17482,23 @@ strong {
 
 
 .google_ads {
+/* <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
+======= */
   /* overflow-x: hidden !important; */
->>>>>>> 23f76c1226d875a5ac4ac6a855ce7982dc81d966
-=======
+/* >>>>>>> 23f76c1226d875a5ac4ac6a855ce7982dc81d966
+======= */
 
   /* overflow-x: hidden !important; */
 
->>>>>>> fb00e91015041e22d08e268288dba2ce256a048d
+/* >>>>>>> fb00e91015041e22d08e268288dba2ce256a048d */
   width: 100%;
   margin-bottom: 20px;
+  height: 120px !important;
+}
+.vgad
+{
+  z-index: -9999 !important;
 }
 
 
