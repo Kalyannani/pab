@@ -52,8 +52,13 @@ export const Applications = () => {
       });
   };
 
+// const downloadReusme=(resume)=>{
+//   const data = `${server}/public/resume/${resume}`
+//   FileSaver.saveAs(data, "application/pdf");
+// }
+
 const downloadReusme=(resume)=>{
-  const data = `${server}/public/resume/${resume}`
+  const data = resume;
   FileSaver.saveAs(data, "application/pdf");
 }
 
@@ -257,8 +262,8 @@ const downloadReusme=(resume)=>{
                         ) : null}
 
                         <a
-                          href="#"
-                          onClick={()=>downloadReusme(application.jobApplicant.resume.filename)}
+                          // href="#"
+                          onClick={()=>downloadReusme(application.jobApplicant.resume.url)}
                           class="download_box"
                           data-tip
                           data-for="registerTip"

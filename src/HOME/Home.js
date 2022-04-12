@@ -115,12 +115,16 @@ const Home = () => {
             </section>
 
             {/* <RecentJobs /> */}
-            <div className='container google_ads'>
+{/* <<<<<<< HEAD */}
+            {/* <div className='container google_ads'>
             <ins className='adsbygoogle'
             style={{ display: 'block' }}
             data-ad-client='ca-pub-12121212'
             data-ad-slot='12121212'
             data-ad-format='auto' />
+            </div> */}
+{/* =======
+>>>>>>> fb00e91015041e22d08e268288dba2ce256a048d */}
             <div className='container google_ads '>
                 <ins
                     className="adsbygoogle"
@@ -133,12 +137,24 @@ const Home = () => {
             </div>
 
 
+            <div className='container google_ads' style={{height:"120px"}}>
+            <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+            </div>
+
+            
+
+
+
+
 
             {/* <Categories /> */}
             <CompanyJobs />
+            <div className='container google_ads' style={{height:"120px"}}>
+            <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+            </div>
             <CategoryJobs />
             <DesignationJobs />
-            <SkillJobs />
+            <SkillJobs />           
             <FeaturedCities />
             {/* <LocationalJobs /> */}
             {/* <OurClients /> */}
@@ -146,9 +162,12 @@ const Home = () => {
 
             {/* <Testimonials /> */}
 
-
+            <div className='container google_ads' style={{height:"120px"}}>
+            <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+            </div>
 
         </div>
+    
 
     )
 }
