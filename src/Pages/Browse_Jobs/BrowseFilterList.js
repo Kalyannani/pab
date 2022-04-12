@@ -418,7 +418,7 @@ const BrowseFilterList = () => {
                           <ul className="filter_list_job_post ">
                             <li>
                             <Link to={`/jobdetailes/${job._id}`}>
-                              <div className="filter_list_job_box">
+                              <div className="filter_list_job_box filter_list_main">
                                 <div className="d-flex mb-4">
                                   <div className="filter_list_job_company">
                                     {/* <span><img alt="" src={job.recruiter?.profileImage? `${server}/public/profile/${job.recruiter.profileImage}`: " " }/></span> */}

@@ -18,6 +18,8 @@ import CategoryJobs from '../Pages/jobs/CategoryJobs';
 import DesignationJobs from '../Pages/jobs/DesignationJobs';
 import SkillJobs from '../Pages/jobs/SkillJobs';
 import { Link } from 'react-scroll'
+import HomeBanners from './HomeBanners';
+import HomeBanner2 from './HomeBanner2';
 
 
 const Home = () => {
@@ -153,8 +155,15 @@ const Home = () => {
             <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
             </div>
             <CategoryJobs />
+
+            <HomeBanners/>
+
             <DesignationJobs />
-            <SkillJobs />           
+
+            <SkillJobs /> 
+
+            <HomeBanner2/> 
+                   
             <FeaturedCities />
             {/* <LocationalJobs /> */}
             {/* <OurClients /> */}
