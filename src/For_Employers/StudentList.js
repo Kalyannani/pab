@@ -1203,7 +1203,7 @@ const StudentList = () => {
                                       {
                                         applicant?.education[0]?.highestgraduation ?
                                           <div class="table-cell table_data2">{applicant?.education[0]?.highestgraduation} </div>
-                                          : <div class="table-cell table_data2">Not Updated</div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
                                       }
 
                                     </div>
@@ -1213,7 +1213,7 @@ const StudentList = () => {
                                       {
                                         applicant?.contactNumber ?
                                           <div class="table-cell table_data2"><span className='font-weight-bold' style={{ fontSize: "17px" }}>xxxxxx </span>{applicant?.contactNumber ? applicant.contactNumber.toString().slice(-4) : null}</div>
-                                          : <div class="table-cell table_data2">Not Updated</div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
                                       }
 
                                     </div>
@@ -1223,7 +1223,7 @@ const StudentList = () => {
                                       {
                                         applicant?.email ?
                                           <div class="table-cell table_data2"><span className='font-weight-bold' style={{ fontSize: "17px" }}>xxxxxx </span>{applicant?.email ? applicant.email.toString().slice(-12) : null}</div>
-                                          : <div class="table-cell table_data2">Not Updated</div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
                                       }
 
                                     </div>
@@ -1256,7 +1256,7 @@ const StudentList = () => {
                                       {
                                         applicant?.currentlocation[0] ?
                                           <div class="table-cell table_data2">{applicant?.currentlocation}</div>
-                                          : <div class="table-cell table_data2">Not Updated</div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
                                       }
 
                                     </div>
@@ -1266,7 +1266,7 @@ const StudentList = () => {
                                       {
                                         applicant?.personaldetails?.gender?
                                           <div class="table-cell table_data2">{applicant?.personaldetails?.gender}</div>
-                                          : <div class="table-cell table_data2">Not Updated</div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
                                       }
 
                                     </div>
@@ -1277,7 +1277,7 @@ const StudentList = () => {
                                       {
                                         applicant?.personaldetails?.pincode?
                                           <div class="table-cell table_data2">{applicant?.personaldetails?.pincode}</div>
-                                          : <div class="table-cell table_data2">Not Updated</div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
                                       }
 
                                     </div>
@@ -1288,7 +1288,7 @@ const StudentList = () => {
                                       {
                                         applicant?.personaldetails?.maritalStatus?
                                           <div class="table-cell table_data2">{applicant?.personaldetails?.maritalStatus}</div>
-                                          : <div class="table-cell table_data2">Not Updated</div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
                                       }
 
                                     </div>

@@ -127,6 +127,22 @@ const Home = () => {
             </div>
 
 
+            <div className='container google_ads '>
+                <ins
+                    className="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-client="ca-pub-3502028008615885"
+                    data-ad-slot={5378452591}
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                />
+            </div>
+
+            
+
+
+
+
 
             {/* <Categories /> */}
             <CompanyJobs />

@@ -3861,7 +3861,6 @@ button.alljob_buttons_sub:focus {
 @media screen and (min-width: 0px) and (max-width: 768px) {
   .company_jobs_anchor {
     width: 100%;
-    white-space: nowrap;
   }
 }
 
@@ -10967,9 +10966,9 @@ input[type="file"]::file-selector-button:hover {
 
 .table_data2 {
   font-size: 13px;
-  color: #270D44;
+  color: #746e7e;
   padding-top: 3px;
-  font-weight: 500;
+  font-weight: 700;
   margin-left: 8px;
 }
 
@@ -17483,7 +17482,9 @@ strong {
 
 
 .google_ads {
+
   /* overflow-x: hidden !important; */
+
   width: 100%;
   margin-bottom: 20px;
 }
@@ -18470,3 +18471,6 @@ max-width: 24% !important;
 
 /* Bell Hover */
 
+/* iframe#aswift_1 {
+  height: 140px !important;
+} */
