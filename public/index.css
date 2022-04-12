@@ -17481,11 +17481,16 @@ strong {
 }
 
 
-.google_ads {
+.google_ads{
   width: 100%;
   margin-bottom: 20px;
-  height: 140px !important;
+  
+ 
 }
+/* div .container.gads
+{
+
+} */
 
 
 
@@ -18471,4 +18476,8 @@ max-width: 24% !important;
 
 /* iframe#aswift_1 {
   height: 140px !important;
+}
+
+.ns-v453n-l-banner-large-eta-vanilla {
+  height: 140px;
 } */
