@@ -114,7 +114,7 @@ const Home = () => {
             </section>
 
             {/* <RecentJobs /> */}
-            <div className='google_ads'>
+            <div className='container google_ads'>
             <ins className='adsbygoogle'
             style={{ display: 'block' }}
             data-ad-client='ca-pub-12121212'
