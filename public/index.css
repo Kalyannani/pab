@@ -17482,6 +17482,10 @@ strong {
 
 
 .google_ads {
+<<<<<<< HEAD
+=======
+  /* overflow-x: hidden !important; */
+>>>>>>> 23f76c1226d875a5ac4ac6a855ce7982dc81d966
   width: 100%;
   margin-bottom: 20px;
 }

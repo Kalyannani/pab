@@ -103,10 +103,11 @@ const Home = () => {
                                         </div>
 
                                     </div>
+
                                 </form>
                             </div>
 
-                            
+
                         </div>
                     </div>
                 </div>
@@ -120,10 +121,19 @@ const Home = () => {
             data-ad-client='ca-pub-12121212'
             data-ad-slot='12121212'
             data-ad-format='auto' />
+            <div className='container google_ads '>
+                <ins
+                    className="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-client="ca-pub-3502028008615885"
+                    data-ad-slot={5378452591}
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                />
             </div>
-                
-              
-           
+
+
+
             {/* <Categories /> */}
             <CompanyJobs />
             <CategoryJobs />
@@ -132,7 +142,7 @@ const Home = () => {
             <FeaturedCities />
             {/* <LocationalJobs /> */}
             {/* <OurClients /> */}
-          
+
 
             {/* <Testimonials /> */}
 
