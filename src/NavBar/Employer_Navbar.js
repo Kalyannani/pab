@@ -47,17 +47,46 @@ const Employer_Navbar = () => {
         <ul className="navbar-nav"   >
           <li className="nav-item">
             <Link className="nav-link font-weight-bold" style={{ color: state.color }} id="a1"
-             to="/Buytabs" data-toggle={collapse} data-target={id}>BUY SERVICES<sup className='new_blink_inner'>New</sup></Link>
+              to="/Buytabs" data-toggle={collapse} data-target={id}>BUY SERVICES<sup className='new_blink_inner'>New</sup></Link>
           </li>
 
           <li className="nav-item">
             <Link className="nav-link font-weight-bold" style={{ color: state.color }} id="a1"
-             to="#" data-toggle={collapse} data-target={id}>SEARCH CANDIDATES</Link>
+              to="/studentlist" data-toggle={collapse} data-target={id}>SEARCH CANDIDATES</Link>
           </li>
 
         </ul>
 
         <ul className="navbar-nav ml-auto">
+          <li>
+
+            <div className="notBtn position-relative">
+              <div class="number">20</div>
+              <i class="fas fa-bell nav_bell"></i>
+              <div class=" bell_box">
+                <div class="display">
+                  {/* <div class="nothing">
+                    <i class="fas fa-child stick"></i>
+                    <div class="cent">Looks Like your all caught up!</div>
+                  </div> */}
+                  <div class="conts">
+                    <div class="secs ">
+
+                      <h1>Recomended Jobs(55)</h1>
+
+                    </div>
+                    <div class="secs">
+                      <h1>Applied Jobs (99)</h1>
+                    </div>
+                    <div class="secs">
+                      <h1>Pending Actions (6)</h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </li>
           <li className="nav-item dropdown profile_dropdown position-relative d-inline-block">
             <li className="nav-item">
               <a className=" font-weight-bold dropdown-toggle" id="a5" >

@@ -47,9 +47,9 @@ const Student_Navbar = () => {
       <div className="collapse navbar-collapse" id="navbarNav"   >
         <ul className="navbar-nav"   >
 
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link className="nav-link font-weight-bold" style={{ color: state.color }} id="a1" to="/onlinetest" data-toggle={collapse} data-target={id}>ONLINE EXAM</Link>
-          </li>
+          </li> */}
 
           <li className="nav-item dropdown position-relative d-inline-block">
             <a className="nav-link dropdown-toggle  font-weight-bold" href="#" id="a3" role="button"
@@ -60,7 +60,9 @@ const Student_Navbar = () => {
             {/* toggler  changes */}
             <div className="dropdown-menu dropdown-content  d-none position-absolute position-relative ml-4 bg-white rounded" data-toggle={collapse} data-target={id}
               aria-labelledby="navbarDropdown">
+                
               <Link className="dropdown-item" to="/hireandtrain">HireAndTrain <sup className='new_blink_inner'>New</sup></Link>
+              <Link className="dropdown-item"  to="/onlinetest">ONLINE EXAM<sup className='new_blink_inner'>New</sup></Link>
               <Link className="dropdown-item" to="/textresume">GetYourResume <sup className='new_blink_inner'>New</sup></Link>
               {/* <Link className="dropdown-item"
                                                 to="/sellskill">Sell Your Skills  <sup className='new_blink_inner'>New</sup>   </Link>
@@ -86,6 +88,36 @@ const Student_Navbar = () => {
           </li>
         </ul>
         <ul className="navbar-nav ml-auto"   >
+
+        <li>
+
+<div className="notBtn position-relative">
+  <div class="number">20</div>
+  <i class="fas fa-bell nav_bell"></i>
+  <div class=" bell_box">
+    <div class="display">
+      {/* <div class="nothing">
+        <i class="fas fa-child stick"></i>
+        <div class="cent">Looks Like your all caught up!</div>
+      </div> */}
+      <div class="conts">
+        <div class="secs ">
+
+          <h1>Recomended Jobs(55)</h1>
+
+        </div>
+        <div class="secs">
+          <h1>Applied Jobs (99)</h1>
+        </div>
+        <div class="secs">
+          <h1>Pending Actions (6)</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</li>
 
           <li className="nav-item dropdown profile_dropdown position-relative d-inline-block">
             <li className="nav-item">

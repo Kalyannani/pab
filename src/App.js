@@ -53,6 +53,7 @@ import PaymentStatusFail from './PaymentStatusFail';
 import BuyTabs from './For_Employers/Buy Employer services/BuyTabs'
 import Calculator from './Services/components/OnlineExam/Calculator/Calculator';
 import GettingStuList from './GettingList/GettingStuList';
+import StudentList from './For_Employers/StudentList'
 
 
 
@@ -89,6 +90,7 @@ export const App = (props) => {
    <Route exact path="/failed/:orderId" element={<PaymentStatusFail/>} />
    <Route exact path="/signin" element={<Login />} />
    <Route exact path="/signup" element={<Signup />} />
+   <Route exact path='/studentlist' element={<StudentList/>}/>
    
   {
     result?.type === "recruiter"? <>
@@ -99,6 +101,7 @@ export const App = (props) => {
     <Route exact path="/password" element={<Password />} />
     <Route exact path="/Applications/:id" element={<Applications />}/>
     <Route exact path="/updatepost/:id" element={<Updatepost />} />
+
     </>
    :
       result?.type === "applicant"? 

@@ -376,7 +376,7 @@ const BrowseFilterList = () => {
           <div className="row ">
 
             <div className="col-lg-3">
-              <div className="sticky-top">
+              <div className="#">
                 <div id="accordion">
                   <TopCompaniesFilter topCompanies={topCompanies} handleTopCompaniesAdd={handleTopCompaniesAdd} handleTopCompaniesRemove={handleTopCompaniesRemove} />
 
@@ -414,13 +414,15 @@ const BrowseFilterList = () => {
                     jobs.length > 0 ?
                       jobs?.map((job) => {
                         return (
-                          <Link to={`/jobdetailes/${job._id}`}>
-                          <ul className="filter_list_job_post">
+                         
+                          <ul className="filter_list_job_post ">
                             <li>
+                            <Link to={`/jobdetailes/${job._id}`}>
                               <div className="filter_list_job_box">
                                 <div className="d-flex mb-4">
                                   <div className="filter_list_job_company">
-                                    <span><img alt="" src={job.recruiter?.profileImage? `${server}/public/profile/${job.recruiter.profileImage}`: " " }/></span>
+                                    {/* <span><img alt="" src={job.recruiter?.profileImage? `${server}/public/profile/${job.recruiter.profileImage}`: " " }/></span> */}
+                                    <img src={job.recruiter?.profileImage? job.recruiter.profileImage:" " } alt=""/>
                                   </div>
                                   <div className="filter_list_job_info">
                                     <h4>{job.title}</h4>
@@ -463,9 +465,34 @@ const BrowseFilterList = () => {
                                 </label>
                                 
                               </div>
+                              </Link>
+
+                                {/* saved jobs icon */}
+
+                                {result?.type==="applicant" ? 
+                                <>
+                                {job.wishlist ? (
+                                <label className="job_filter_grid_wishlist" onClick={() => handleRemoveWishlist(job._id)}  style={{ position: 'absolute', right: 105, top: 31 }}>
+                                  {/* <input type="checkbox" /> */}
+                                  <span className="filter_grid_added" >
+
+                                    <i class="fab fa-gratipay" style={{fontSize:'28px'}}/>
+                                  </span>
+                                </label>
+                              ) : (
+                                <label className="job_filter_grid_wishlist" onClick={() => handleAddWishlist(job._id)}  style={{ position: 'absolute', right: 105, top: 35}}>
+                                  {/* <input type="checkbox" /> */}
+                                  <span className="filter_grid_added" >
+                                    <i className="fas fa-heart" />
+                                  </span>
+                                </label>
+                              )}
+                              </>
+                              :null}
+
                             </li>
                           </ul>
-                          </Link>
+                         
                         )
                       }) :
                       <>
@@ -539,11 +566,11 @@ const BrowseFilterList = () => {
                         return (<>
                           <div className="col-lg-6 col-sm-12">
                              <Link to={`/jobdetailes/${job._id}`}>
-                            <div className="job_filter_grid_box">
+                            <div className="job_filter_grid_box position-relative">
                               <div className="d-flex mb-4">
                                 <div className="job_filter_grid_info">
                                   <div className="job_heading ">
-                                  <h5 className=''>
+                                  <h5>
                                     {/* <Link to={`/jobdetailes/${job._id}`}>{job.title}</Link> */}
                                  {job.title}
                                   </h5>
@@ -551,7 +578,7 @@ const BrowseFilterList = () => {
                                   <div className="apply_grid_box">
                                   <label className="wishlist ">
                                 {result?.type==="applicant" ? 
-                                <button className='btn job_details_applybtn_grid apply_job_grid_new' > Apply </button>: 
+                                <button className='btn job_details_applybtn_grid apply_job_grid_new' > Apply</button>: 
                                 result?.type==="recruiter"? null :  
                                 <Link to="/auth" ><div className="login_apply"> <button className='btn job_details_applybtn_grid '> Login to Apply </button> </div> </Link>} 
                                 </label>
@@ -580,6 +607,8 @@ const BrowseFilterList = () => {
                                   </span>
                                 </div>
                               </div>
+                              
+                              
                               {/* {job.wishlist ? (
                                 <label className="job_filter_grid_wishlist" onClick={() => handleRemoveWishlist(job._id)}>
                                   <input type="checkbox" />

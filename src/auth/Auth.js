@@ -71,7 +71,11 @@ const Auth = (props) => {
                     dispatch({ type: "USER", payload: response.data })
                     toast.success("Login Successful")
                     console.log(response);
-                    navigate("/")
+                    if(response.data.type === "applicant"){
+                        navigate("/appliedjobs")
+                    }else{
+                        navigate("/Manage_jobs")
+                    }
                 })
                 .catch((err) => {
                     toast.error(err.response.data.message)
@@ -295,7 +299,7 @@ const Auth = (props) => {
 
     const [state,setState] = useState({
         image: 
-        <img src='images/Login.jpg' className='signup_image img-fluid'/>
+        <img src='/images/Signup.jpg' className='signup_image img-fluid'/>
      });
 
     const imgColumn= ()=>{

@@ -375,6 +375,7 @@ const handleprofileUpload=()=>{
 }
   const handleresumeUpload=()=>{
     const data = new FormData();
+    console.log(resume)
     data.append("file", resume);
     axios.post(apiList.uploadResume, data, {
       headers: {
@@ -384,10 +385,14 @@ const handleprofileUpload=()=>{
     })
       .then((response) => {
         console.log(response.data);
-        // setProfileimage(response.data.imageurl)
-        toast.success(response.data.message)
-          getData();
-      
+        setProfile({...profile,
+           resume:{
+          ...resume,
+          filename:response.data.image.filename,
+          url:response.data.image.url
+        }})
+          // getData();
+          toast.success(response.data.message);
       })
       .catch((err) => {
         console.log(err.response);
@@ -399,9 +404,9 @@ useEffect(()=>{
   handleprofileUpload();
 },[file])
 
-// useEffect(()=>{
-//   handleresumeUpload()
-// },[resume])
+useEffect(()=>{
+  handleresumeUpload()
+},[resume])
 
   return (
     <div>
@@ -411,16 +416,17 @@ useEffect(()=>{
             <div className="col-lg-9">
               <div className="container">
                 <div className="row">
-                  <div className="col-lg-2 ">
-                    <div className="canditate-des">
+                  <div className="col-lg-3 ">
+                  <div className="canditate-des">
+                <label for="file">
                       <p href="#">
                         <img
                           className="resume_img img-responsive"
                           src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`}
                         />
                       </p>
-                      <label for="file">
-                        <i class="fas fa-camera img_pencil img_edit"></i>
+                      
+                        <i class="fas fa-camera img_pencil "></i>
                       </label>
                       <input type="file" 
                       id="file" 
@@ -430,7 +436,7 @@ useEffect(()=>{
                       
                     </div>
                   </div>
-                  <div className="col-lg-10">
+                  <div className="col-lg-9">
                     <h4 className="resume_title">
                       {profile.name}{" "}
                       <Link to="/myprofile">
@@ -491,8 +497,9 @@ useEffect(()=>{
                         aria-valuemax={100}
                       />
                     </div>
-                    {progressBar}%
-
+                     <div className="text-right">
+                        {progressBar}%
+                     </div>
 
                     {/* <div className="progress-box m-t10">
                       <div className="progress-info">
@@ -1587,7 +1594,7 @@ useEffect(()=>{
                                       className="form-check-input"
                                       type="radio"
                                       // onChange={(e) => radiohandling(e)}
-                                      name="inlineRadioOptions"
+                                      // name="inlineRadioOptions"
                                       name='Project_Type'
                                       id="inlineRadio2"
                                       value="Finished"
@@ -3171,7 +3178,7 @@ useEffect(()=>{
                     />
                   </div>
                 </form>
-                <h5>{(profile.resume.filename.split("-"))[1]}</h5>
+                <h5>{profile.resume.filename}</h5>
               </div>
               
               {/* <button onClick={()=>handleresumeUpload()}>upload</button> */}
