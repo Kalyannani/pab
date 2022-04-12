@@ -126,6 +126,7 @@ const Home = () => {
                 />
             </div>
 
+
             <div className='container google_ads '>
                 <ins
                     className="adsbygoogle"
@@ -138,6 +139,7 @@ const Home = () => {
             </div>
 
             
+
 
 
 
