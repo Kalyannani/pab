@@ -17483,8 +17483,9 @@ strong {
 
 
 .google_ads {
-  overflow-x: hidden !important;
+  /* overflow-x: hidden !important; */
   width: 100%;
+  margin-bottom: 20px;
 }
 
 
