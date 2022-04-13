@@ -62,6 +62,8 @@ const SkillJobs = () => {
 
             <div className="jobskill_sec_2">
                 <div className="container">
+                    <div className='row'>
+                        <div className='col-md-10'>
 
                     {/* 
             <!-- container --> */}
@@ -162,7 +164,7 @@ const SkillJobs = () => {
 
 <>
                             
-                            <div class="col-lg-3 col-md-6">
+                            <div class="col-lg-4 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/atom_2MC_icon.ico'/>
@@ -172,7 +174,7 @@ const SkillJobs = () => {
                                 </div>
 
             
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/bank_9WD_icon.ico'/>
@@ -181,7 +183,7 @@ const SkillJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/cooking_DJS_icon.ico'/>
@@ -190,7 +192,7 @@ const SkillJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/hired_Wi6_icon.ico'/>
@@ -199,7 +201,7 @@ const SkillJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/presentation_Quv_icon.ico'/>
@@ -223,7 +225,7 @@ const SkillJobs = () => {
                                     </Link>
                                 </div> */}
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/pencil_Rcw_icon.ico'/>
@@ -246,7 +248,7 @@ const SkillJobs = () => {
                                     </Link>
                                 </div> */}
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span className='B_icon'><img src='images/sap.ico'/>
@@ -269,7 +271,7 @@ const SkillJobs = () => {
                                     </Link>
                                 </div> */}
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span className='B_icon'><img src='images/oracle__1__PhD_icon.ico'/>
@@ -278,7 +280,7 @@ const SkillJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span className='B_icon'><img src='images/php_lyw_icon.ico'/>
@@ -294,7 +296,7 @@ const SkillJobs = () => {
                                     </Link>
                                 </div> */}
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span className='B_icon'><img src='images/java__1__WBx_icon.ico'/>
@@ -303,7 +305,7 @@ const SkillJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span className='B_icon'><img src='images/nodejs_amJ_icon.ico'/>
@@ -312,7 +314,7 @@ const SkillJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='#'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span className='B_icon'><img src='images/meditation_rYu_icon.ico'/>
@@ -343,6 +345,23 @@ const SkillJobs = () => {
                         <div className='mb-3' id='location'>
                         { location.pathname === '/skilljobs' ? null:<Link to="/skilljobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Skills</Link>}
                         </div>
+                    </div>
+
+                    </div>
+
+                    
+
+
+
+                                {/* ad */}
+                <div className='col-md-2 vgad'>
+                <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" />
+                </div>
+
+
+
+
+
                     </div>
 
                 </div>

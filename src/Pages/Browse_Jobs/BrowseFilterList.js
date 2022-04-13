@@ -19,7 +19,22 @@ import SalaryFilter from './filters/SalaryFilter';
 import ReactTimeAgo from 'react-time-ago'
 import DesignationFilter from './filters/DesignationFilter';
 import { useSelector } from 'react-redux';
+import { Autocomplete } from '@mui/material';
+import { TextField } from '@material-ui/core';
+// import skillsdata from '../JsonData/Skill.json';
+import skillsdata from '../../JsonData/Skill.json'
+import data from '../../JsonData/locations.json'
+
+// import data from '../JsonData/locations.json'
+
 const BrowseFilterList = () => {
+
+  const [post, setPost] = useState({
+      
+    skillsets:[],
+    cities:[],
+   
+})
 
   const result = useSelector(state=>state.data)
   let { search } = useLocation();
@@ -307,46 +322,105 @@ const BrowseFilterList = () => {
 
 
       <div className="container" >
-        <div className="filter_list_search-box">
-          <form className="form-control" onSubmit={handleSearch} >
+        <div className="filter_list_search-box ">
+          <form className="form-control py-4" onSubmit={handleSearch} style={{boxShadow:"0 0 8px rgb(0 0 0 / 25%);"}}>
             <div className="row">
               <div className="col-lg-6 col-md-6">
-                <div className="form-group">
-                  <label>
+                <div className="">
+                  
+                  <div className="">
+                    {/* <input type="text" name="keyword" className="form-control" id="search_filter_list_input"
+                      placeholder="Job Title, Keywords, or Phrase" value={keyword} onChange={(e) => {setKeyword(e.target.value); setKeywordError("")}}  /> */}
 
-                  </label>
-                  <div className="input-group">
-                    <input type="text" name="keyword" className="form-control" id="search_filter_list_input"
-                      placeholder="Job Title, Keywords, or Phrase" value={keyword} onChange={(e) => {setKeyword(e.target.value); setKeywordError("")}}  />
+<div>
+                                            {/* <label>Technical Skills :</label> */}
+                                                  <Autocomplete
+                                                    id="combo-box-demo"
+                                                    multiple
+                                                    value={post.skillsets}
+                                                    options={skillsdata.map((res)=>{
+                                                    return res.Skill
+                                                    })}
+                                                    getOptionLabel={(option) => option}
+                                                    onChange={(e, value) => {
+                                                    setPost({
+                                                        ...post,
+                                                        skillsets:value
+                                                    });
+                                                    }}
+                                                    
+                                                    renderInput={(params) => (
+                                                    <TextField
+                                                        {...params}
+                                                        name="multiple"
+                                                        label="Job Title, Keywords, or Phrase"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                        name='keyword' value={keyword} onChange={(e) => { setKeyword(e.target.value)}}
+                                                    />
+                                                    )}
+                                                />
+                                                  {/* <span>Press enter to add skills</span> */}
+                                                </div>
                     
-                    <div className="input-group-append">
+                    {/* <div className="input-group-append">
                       <span className="filter_list_group_icon">
                         <i className="fas fa-search ml-2" id="filter_list_search_icon1"></i>
                       </span>
-                    </div>
+                    </div> */}
                   </div>
-                  {keywordError != '' && <small style={{color: 'red'}}>{keywordError}</small>}
+                  {/* {keywordError != '' && <small style={{color: 'red'}}>{keywordError}</small>} */}
                 </div>
               </div>
 
               <div className="col-lg-4 col-md-6">
-                <div className="form-group">
-                  <label></label>
-                  <div className="input-group">
-                    <input type="text" className="form-control" name="qlocation" id="search_filter_list_input" value={qlocation} onChange={(e) => {setQLocation(e.target.value); setLocationError("")}}
-                      placeholder="Location"  />
+                <div className="">
+                 
+                  <div className="">
+                    {/* <input type="text" className="form-control" name="qlocation" id="search_filter_list_input" value={qlocation} onChange={(e) => {setQLocation(e.target.value); setLocationError("")}}
+                      placeholder="Location"  /> */}
                       
-                    <div className="input-group-append">
+
+                      <Autocomplete
+                                                    id="combo-box-demo"
+                                                    multiple
+                                                    value={post.cities}
+                                                    options={data.map((res)=>{
+                                                    return res.location
+                                                
+                                                    })}
+                                                    getOptionLabel={(option) => option}
+                                                    onChange={(e, value) => {
+                                                    setPost({
+                                                        ...post,
+                                                        cities:value
+                                                    });
+                                                    }}
+                                                    
+                                                    renderInput={(params) => (
+                                                    <TextField
+                                                        {...params}
+                                                        name="multiple"
+                                                        label="City ,Province or Region"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                        name='qlocation' value={qlocation} onChange={(e) => {setQLocation(e.target.value)}}
+                                                    />
+                                                    )}
+                                                />
+                                             
+
+                    {/* <div className="input-group-append">
                       <span className="filter_list_group_icon">
                         <i className="fas fa-map-marker-alt" id="filter_list_search_icon2"></i></span>
-                    </div>
+                    </div> */}
                   </div>
-                  {locationError != '' && <small style={{color: 'red'}}>{locationError}</small>}
+                  {/* {locationError != '' && <small style={{color: 'red'}}>{locationError}</small>} */}
                 </div>
               </div>
 
-              <div className="col-lg-2 col-md-6 ">
-                <label for=""></label>
+              <div className="col-lg-2 col-md-6 my-auto">
+               
                 <a href="#"></a><button id="filter_list_search_btn" className=" btn-block">Find
                   Job</button>
               </div>
@@ -407,7 +481,7 @@ const BrowseFilterList = () => {
 
 
 
-            <div className="list_view_width col-lg-9">
+            <div className="list_view_width col-lg-6">
               {listType === 'list' ?
                 <>
                   {
@@ -420,10 +494,12 @@ const BrowseFilterList = () => {
                             <Link to={`/jobdetailes/${job._id}`}>
                               <div className="filter_list_job_box filter_list_main">
                                 <div className="d-flex mb-4">
+
                                   <div className="filter_list_job_company">
                                     {/* <span><img alt="" src={job.recruiter?.profileImage? `${server}/public/profile/${job.recruiter.profileImage}`: " " }/></span> */}
                                     <img src={job.recruiter?.profileImage? job.recruiter.profileImage:" " } alt=""/>
                                   </div>
+
                                   <div className="filter_list_job_info">
                                     <h4>{job.title}</h4>
                                     <h5 className="home_company_name">{job.recruiter?.companyname}</h5>
@@ -672,6 +748,16 @@ const BrowseFilterList = () => {
               
              
             </div>
+               
+
+
+                            {/* ad */}
+                            <div className='col-md-3 vgad'>
+                <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" />
+                </div>
+
+
+
           </div>
         </div>
       </div>

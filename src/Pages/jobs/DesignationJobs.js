@@ -39,6 +39,9 @@ const DesignationJobs = () => {
 
             <div className="jobdesignation_sec_2">
                 <div className="container">
+
+                    <div className='row'>
+                        <div className='col-md-10'>
                     <div className="jobcategory_sec_2_sub">
                         {/* <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY DESIGNATION</h6> */}
                         <div className='row'>
@@ -131,7 +134,7 @@ const DesignationJobs = () => {
                             // })
                             <>
                             
-                            <div class="col-lg-3 col-md-6">
+                            <div class="col-lg-4 col-md-6">
                                     <Link to='/browsefilterlist?designate=ABAP%20Consultant'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                             <span className='B_icon'><img src='images/sap.ico'/>
@@ -140,21 +143,21 @@ const DesignationJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='/browsefilterlist?designate=BPO%20Executive'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">    <span className='B_icon'><img src='images/call_center_9dy_icon.ico'/>
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">BPO Executive</span></a>
                                     </Link>
                                 </div>
                                 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='/browsefilterlist?designate=Chef'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><img src='images/chef_MWB_icon.ico'/>
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">Chef</span></a>
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='/browsefilterlist?designate=Database%20Developer'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                             <span className='B_icon'><img src='images/data_science_v68_icon.ico'/>
@@ -163,7 +166,7 @@ const DesignationJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='/browsefilterlist?designate=Editor'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span className='B_icon'><img src='images/film_editor_BIB_icon.ico'/>
@@ -172,7 +175,7 @@ const DesignationJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='/browsefilterlist?designate=Finance%20Manager'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                             <span  className='B_icon'><img src='images/assets_zmH_icon.ico'/>
@@ -181,7 +184,7 @@ const DesignationJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='/browsefilterlist?designate=Game%20Designer'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">  
                                          <span  className='B_icon'><img src='images/game_developer_x67_icon.ico'/>
@@ -190,7 +193,7 @@ const DesignationJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='/browsefilterlist?designate=HR%20Assistant'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span  className='B_icon'><img src='images/hr_SWp_icon.ico'/>
@@ -199,7 +202,7 @@ const DesignationJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='/browsefilterlist?designate=Industrial%20Engineer'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span  className='B_icon'><img src='images/engineer_22H_icon.ico'/>
@@ -208,7 +211,7 @@ const DesignationJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='/browsefilterlist?designate=Java%20Developer'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                             <span><img src='images/java_8TV_icon.ico'/>
@@ -217,7 +220,7 @@ const DesignationJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='/browsefilterlist?designate=Law%20Officer'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/lawyer_9Tk_icon.ico'/>
@@ -226,7 +229,7 @@ const DesignationJobs = () => {
                                     </Link>
                                 </div>
 
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <Link to='/browsefilterlist?designate=Network%20Engineer'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/software_engineer_QTn_icon.ico'/>
@@ -574,6 +577,23 @@ const DesignationJobs = () => {
                         </div>
                     </div> */}
 
+
+                        </div>
+
+                        
+
+
+
+                                {/* ad */}
+                <div className='col-md-2 vgad'>
+                <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" />
+                </div>
+
+
+
+
+
+                        </div>
                 </div>
             </div>
 

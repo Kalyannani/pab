@@ -13,13 +13,8 @@ const Footer = () => {
             <div className="row">
               <div className="col-lg-3 col-md-6 foot_add">
                 <img
-                  className="img-fluid logo_img"
+                  className="img-fluid logo_img_footer"
                   src="/images/Untitled-10-01.png"
-                  style={{
-                    background: "transparent",
-                    height: "100px",
-                    width: "140px",
-                  }}
                   alt=""
                 />
 

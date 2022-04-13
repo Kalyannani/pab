@@ -23,7 +23,7 @@ const HomeBanners = () => {
           </div>
           <button
             className="bg-primary text-white btn-lg"
-            style={{position: "absolute", right:" 15px", bottom: "0px", borderTopLeftRadius:"50px"}}
+            style={{position: "absolute", right:" 15px", bottom: "0px", borderTopLeftRadius:"50px",border:'none'}}
           >
             Submit
           </button>

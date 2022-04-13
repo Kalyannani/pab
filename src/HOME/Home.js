@@ -18,8 +18,14 @@ import CategoryJobs from '../Pages/jobs/CategoryJobs';
 import DesignationJobs from '../Pages/jobs/DesignationJobs';
 import SkillJobs from '../Pages/jobs/SkillJobs';
 import { Link } from 'react-scroll'
-import HomeBanners from './HomeBanners';
-import HomeBanner2 from './HomeBanner2';
+import HomeBanners from './HomeBanners/HomeBanners';
+import HomeBanner2 from './HomeBanners/HomeBanner2';
+import HomeBanner3 from './HomeBanners/HomeBanner3';
+import HomeBanner4 from './HomeBanners/HomeBanner4';
+import { Autocomplete } from '@mui/material';
+import { TextField } from '@material-ui/core';
+import skillsdata from '../JsonData/Skill.json';
+import data from '../JsonData/locations.json'
 
 
 const Home = () => {
@@ -29,6 +35,13 @@ const Home = () => {
     const [keywordError, setKeywordError] = useState("");
     const [locationError, setLocationError] = useState("");
     const navigate = useNavigate();
+
+    const [post, setPost] = useState({
+      
+        skillsets:[],
+        cities:[],
+       
+    })
 
     const options = {
         loop: true,
@@ -85,14 +98,85 @@ const Home = () => {
                                 <form className="form-control">
                                     <div className="row">
                                         <div className="col-lg-5 col-md-5" id="input1_joblocation">
-                                            <input type="text" className="form-control" id="search_box_input_joblocation"
-                                                placeholder="Job Title, Keywords, or Phrase" name='keyword' value={keyword} onChange={(e) => { setKeyword(e.target.value); setKeywordError("") }} />
-                                            {keywordError != '' && <small style={{ color: 'red' }}>{keywordError}</small>}
+
+
+                                            {/* <input type="text" className="form-control" id="search_box_input_joblocation"
+                                                placeholder="Job Title, Keywords, or Phrase" name='keyword' value={keyword} />onChange={(e) => { setKeyword(e.target.value); setKeywordError("") }} />
+                                            {keywordError != '' && <small style={{ color: 'red' }}>{keywordError}</small>} */}
+
+                                        <div>
+                                            {/* <label>Technical Skills :</label> */}
+                                                  <Autocomplete
+                                                    id="combo-box-demo"
+                                                    multiple
+                                                    value={post.skillsets}
+                                                    options={skillsdata.map((res)=>{
+                                                    return res.Skill
+                                                    })}
+                                                    getOptionLabel={(option) => option}
+                                                    onChange={(e, value) => {
+                                                    setPost({
+                                                        ...post,
+                                                        skillsets:value
+                                                    });
+                                                    }}
+                                                    
+                                                    renderInput={(params) => (
+                                                    <TextField
+                                                        {...params}
+                                                        name="multiple"
+                                                        label="Job Title, Keywords, or Phrase"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                        name='keyword' value={keyword} onChange={(e) => { setKeyword(e.target.value)}}
+                                                    />
+                                                    )}
+                                                />
+                                                  {/* <span>Press enter to add skills</span> */}
+                                                </div>
+
+
                                         </div>
                                         <div className="col-lg-5 col-md-5" id="input2_joblocation">
-                                            <input type="text" className="form-control" id="search_box_input_joblocation"
+                                            {/* <input type="text" className="form-control" id="search_box_input_joblocation"
                                                 placeholder="City ,Province or Region" name='qlocation' value={qlocation} onChange={(e) => { setQLocation(e.target.value); setLocationError("") }} />
-                                            {locationError != '' && <small style={{ color: 'red' }}>{locationError}</small>}
+                                            {locationError != '' && <small style={{ color: 'red' }}>{locationError}</small>} */}
+
+
+                                            {/* <div className="form-group"> */}
+                                                {/* <label>Locations</label> */}
+                                                <Autocomplete
+                                                    id="combo-box-demo"
+                                                    multiple
+                                                    value={post.cities}
+                                                    options={data.map((res)=>{
+                                                    return res.location
+                                                
+                                                    })}
+                                                    getOptionLabel={(option) => option}
+                                                    onChange={(e, value) => {
+                                                    setPost({
+                                                        ...post,
+                                                        cities:value
+                                                    });
+                                                    }}
+                                                    
+                                                    renderInput={(params) => (
+                                                    <TextField
+                                                        {...params}
+                                                        name="multiple"
+                                                        label="City ,Province or Region"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                        name='qlocation' value={qlocation} onChange={(e) => { setQLocation(e.target.value)}}
+                                                    />
+                                                    )}
+                                                />
+                                             
+                                                  {/* <span>Press enter to add cities</span> */}
+                                                {/* </div> */}
+
+
                                         </div>
                                         <div className="col-lg-2 col-md-2 col-xs-offset-3 col-xs-6 c0l-xs-offset-3"
                                             id="input_btn_joblocation">
@@ -151,20 +235,46 @@ const Home = () => {
 
             {/* <Categories /> */}
             <CompanyJobs />
+
+            {/* ad */}
             <div className='container google_ads'>
             <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
             </div>
+
+
             <CategoryJobs />
 
+                      {/* ad */}
+            <div className='container google_ads'>
+            <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+            </div>
+
             <HomeBanners/>
+            
 
             <DesignationJobs />
 
+              {/* ad */}
+              <div className='container google_ads'>
+            <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+            </div>
+
+
+
+            <HomeBanner3/>
+
             <SkillJobs /> 
+
+              {/* ad */}
+              <div className='container google_ads'>
+            <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+            </div>
 
             <HomeBanner2/> 
                    
             <FeaturedCities />
+
+            <HomeBanner4/>
             {/* <LocationalJobs /> */}
             {/* <OurClients /> */}
 

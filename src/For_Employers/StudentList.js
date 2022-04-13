@@ -26,6 +26,8 @@ import SalaryFilter from '../Pages/Browse_Jobs/filters/SalaryFilter';
 import ReactTimeAgo from 'react-time-ago'
 // import DesignationFilter from './filters/DesignationFilter';
 import DesignationFilter from '../Pages/Browse_Jobs/filters/DesignationFilter';
+import FileSaver, { saveAs } from 'file-saver';
+
 import { useSelector } from 'react-redux';
 const StudentList = () => {
 
@@ -56,7 +58,10 @@ const StudentList = () => {
   }, []);
 
 
-
+  const downloadReusme=(resume)=>{
+    const data = resume;
+    FileSaver.saveAs(data, "application/pdf");
+  }
 
 
 
@@ -1179,7 +1184,7 @@ const StudentList = () => {
                   allapplicants?.map((applicant) => {
                     return (
 
-                      <ul className="filter_list_job_post ">
+                      <ul className="filter_list_job_post position-relative">
                         <li>
                           <Link to='#'>
                             <div className="filter_list_job_box">
@@ -1318,7 +1323,15 @@ const StudentList = () => {
 
                             </div>
                           </Link>
-
+                          <a
+                          onClick={()=>downloadReusme(applicant?.resume.url)}
+                          class="download_box"
+                          data-tip
+                          data-for="registerTip"
+                        >
+                          <i class="fa fa-download student_icon_app"></i>
+                        
+                        </a>
 
                         </li>
                       </ul>

@@ -8,6 +8,7 @@ import moment from 'moment';
 const SavedJobs = () => {
 
     const [jobs, setJobs] = useState([])
+    const [recruiter, setRecruiter] = useState([])
 
     useEffect(() => {
         axios
@@ -19,6 +20,7 @@ const SavedJobs = () => {
             .then((response) => {
                 console.log(response.data);
                 setJobs(response.data.data);
+                setRecruiter(response.data.postedby);
             })
             .catch((err) => {
                 console.log(err.response.data);
@@ -349,16 +351,17 @@ const SavedJobs = () => {
                                     </div>
 
                                     {jobs.map((job, key) => {
-                                        return <Link to='#'>
+                                        return <Link to={`/jobdetailes/${job._id}`}>
                                             <ul className="job-post">
                                                 <li>
                                                     <div className="job-box">
                                                         <div className="d-flex mb-2">
-                                                            <div className="job-company">
-                                                                <span>
-                                                                    <img alt="" src="" />
-                                                                </span>
-                                                            </div>
+
+                                                        <div className="saved_jobs_img">
+                                    {/* <span><img alt="" src={job.recruiter?.profileImage? `${server}/public/profile/${job.recruiter.profileImage}`: " " }/></span> */}
+                                    <img src={job.recruiter?.profileImage? job.recruiter.profileImage:" " } alt=""/>
+                                  </div>
+
                                                             <div className="job-info">
                                                                 <h4>
                                                                     {job.jobId.title}

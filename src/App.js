@@ -54,8 +54,11 @@ import BuyTabs from './For_Employers/Buy Employer services/BuyTabs'
 import Calculator from './Services/components/OnlineExam/Calculator/Calculator';
 import GettingStuList from './GettingList/GettingStuList';
 import StudentList from './For_Employers/StudentList'
-import HomeBanners from './HOME/HomeBanners';
-import HomeBanner2 from './HOME/HomeBanner2';
+import HomeBanners from './HOME/HomeBanners/HomeBanners';
+import HomeBanner2 from './HOME/HomeBanners/HomeBanner2';
+import HomeBanner3 from './HOME/HomeBanners/HomeBanner3';
+import HomeBanner4 from './HOME/HomeBanners/HomeBanner4';
+
 
 
 
@@ -93,9 +96,13 @@ export const App = (props) => {
    <Route exact path="/signin" element={<Login />} />
    <Route exact path="/signup" element={<Signup />} />
    <Route exact path='/studentlist' element={<StudentList/>}/>
-   <Route exact path="/homebanners" element={<HomeBanners/>}/>
-   <Route exact path='/homebanner1' element={<HomeBanner2/>}/>
-   
+
+   <Route exact path='/homebanners' element={<HomeBanners/>}/>
+   <Route exact path="/homebanner1" element={<HomeBanner2/>}/>
+   <Route exact path='/homebanner3' element={<HomeBanner3/>}/>
+   <Route exact path="/homebanners4" element={<HomeBanner4/>}/>
+
+    
   {
     result?.type === "recruiter"? <>
     <Route exact path="/Buytabs" element={<BuyTabs/>}/>
