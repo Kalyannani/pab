@@ -18854,3 +18854,19 @@ width: 40% !important;
 {
   height:80px !important;
 } */
+
+@media screen and (max-width:1200px) {
+  .google_ads
+  {
+    display: none !important;
+  }
+  
+}
+
+@media screen and (min-width:1200px) {
+  .mobile_ads
+  {
+    display: none !important;
+  }
+}
+

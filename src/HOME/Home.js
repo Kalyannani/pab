@@ -27,6 +27,7 @@ import { TextField } from '@material-ui/core';
 import skillsdata from '../JsonData/Skill.json';
 import data from '../JsonData/locations.json'
 import BannerAds from '../ads/BannerAds';
+import MobileAds from '../ads/MobileAds'
 
 
 const Home = () => {
@@ -201,18 +202,19 @@ const Home = () => {
 
             </section>
 
-            <div className='container'>
+            <div className='container google_ads'>
 
                 <BannerAds />
 
             </div>
 
+            <div className='container mobile_ads'>
 
-            <div className='container'>
-
-                <BannerAds />
+                <MobileAds />
 
             </div>
+
+
 
 
 
@@ -226,16 +228,65 @@ const Home = () => {
 
             </div>
 
+            <div className='container mobile_ads'>
+
+                <MobileAds />
+
+            </div>
+
+
 
             <CategoryJobs />
+
+            <div className='container google_ads'>
+
+                <BannerAds />
+
+            </div>
+
+            <div className='container mobile_ads'>
+
+                <MobileAds />
+
+            </div>
+
+
 
             <HomeBanners />
 
             <DesignationJobs />
 
+            <div className='container google_ads'>
+
+                <BannerAds />
+
+            </div>
+
+            <div className='container mobile_ads'>
+
+                <MobileAds />
+
+            </div>
+
+
+
             <HomeBanner3 />
 
             <SkillJobs />
+
+            <div className='container google_ads'>
+
+                <BannerAds />
+
+            </div>
+
+            <div className='container mobile_ads'>
+
+                <MobileAds />
+
+            </div>
+
+
 
             <HomeBanner2 />
 
@@ -248,6 +299,13 @@ const Home = () => {
                 <BannerAds />
 
             </div>
+
+            <div className='container mobile_ads'>
+
+                <MobileAds />
+
+            </div>
+
 
 
             {/* <LocationalJobs /> */}
