@@ -262,29 +262,13 @@ const downloadReusme=(resume)=>{
                         ) : null}
 
                         <a
-                          // href="#"
                           onClick={()=>downloadReusme(application.jobApplicant.resume.url)}
                           class="download_box"
                           data-tip
                           data-for="registerTip"
                         >
                           <i class="fa fa-download download_icon_app"></i>
-                          {/* <ReactTooltip
-                            id="registerTip"
-                            place="top"
-                            effect="solid"
-                            style={
-                              {
-                                content:{
-                                  position:'absolute',
-                                  top:'12px',
-                                  right:'20px'
-                                }
-                              }
-                            }
-                          >
-                            Download Resume
-                          </ReactTooltip> */}
+                        
                         </a>
                         {/* <a href="#" class="download_box"><i class="fas fa-list view_icon_app"></i></a>
                             <a href="#" class="download_box"><i class="fas fa-user-minus min_icon_app"></i></a> */}

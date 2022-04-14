@@ -62,7 +62,7 @@ const Student_Navbar = () => {
               aria-labelledby="navbarDropdown">
                 
               <Link className="dropdown-item" to="/hireandtrain">HireAndTrain <sup className='new_blink_inner'>New</sup></Link>
-              <Link className="dropdown-item"  to="/onlinetest">ONLINE EXAM<sup className='new_blink_inner'>New</sup></Link>
+              <Link className="dropdown-item"  to="/onlinetest">OnlineExam<sup className='new_blink_inner'>New</sup></Link>
               <Link className="dropdown-item" to="/textresume">GetYourResume <sup className='new_blink_inner'>New</sup></Link>
               {/* <Link className="dropdown-item"
                                                 to="/sellskill">Sell Your Skills  <sup className='new_blink_inner'>New</sup>   </Link>

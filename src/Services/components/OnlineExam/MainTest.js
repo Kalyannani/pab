@@ -72,10 +72,10 @@ console.log(allquestions)
                  <ul className='Exam_Instuction_ul'>
                      <li>All questions are compulsory.</li>
                      <li>Total 30 questions in Exam.</li>
-                     <li>Each Question one Minutue</li>
-                     <li>You may leave the hall after the first 30 minutes of the exam</li>
+                     <li>Each Question one Minute</li>
+                     {/* <li>You may leave the hall after the first 30 minutes of the exam</li>
                      <li>After complete Exam Enter to Hire and Train Form and Fill The form Data</li>
-                     <li>Keep your Admit Card on the table. Get permission from the HOD, if not in possession</li>
+                     <li>Keep your Admit Card on the table. Get permission from the HOD, if not in possession</li> */}
                      <li><b>NOTE :</b>To save answers,click on the Next button.</li>
                  </ul>
                  <div className='Exam_Test' onClick={()=>getstate()}>Proceed To Test</div>
