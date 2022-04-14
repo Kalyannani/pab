@@ -1,18 +1,11 @@
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 
 export default function BannerAds() {
     useEffect(() => {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [])
 
-    return <>
-        <ins
-            className="adsbygoogle"
-            style={{ display: "block" }}
-            data-ad-client="ca-pub-3502028008615885"
-            data-ad-slot={5378452591}
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-        />
-    </>
+    return < div>
+        <ins className="adsbygoogle" style={{ display: 'inline-block', width: '992px', height: '90px' }} data-ad-client="ca-pub-3502028008615885" data-ad-slot={7654128118} />
+    </div>
 }

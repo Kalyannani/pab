@@ -226,12 +226,12 @@ const CompanyJobs = () => {
                 </div>
 
                 
+{/* 
 
-
-                            {/* ad */}
+                            {/* ad *
                 <div className='col-md-2 vgad'>
                 <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" />
-                </div>
+                </div> */}
 
 
 

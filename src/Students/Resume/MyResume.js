@@ -25,7 +25,7 @@ const MyResume = () => {
   const [file, setFile] = useState("");
   const [resume,setResume] = useState("")
   const dispatch = useDispatch();
-  const [project, setProject] = useState(false);
+  const [projectType, setProjectType] = useState(true);
   const [progressBar, setProgressBar] = useState(0);
   const [currentcompany, setCurrentcompany] = useState(false);
   const [modalData,setModalData] = useState()
@@ -40,8 +40,6 @@ const MyResume = () => {
     })
   };
 
-
-
   const currentcompany_NoButton = () => {
     setCurrentcompany(false);
     setEmployment({
@@ -50,9 +48,23 @@ const MyResume = () => {
       endYear:""
     })
   };
+  const InprogressHandle =()=>{
+    setProjectType(!projectType)
+    setProject({
+      ...project,
+      ProjectStartDate:"",
+      ProjectWorkTill: new Date()
+    })
+  }
 
-
-
+const FinishedProjectHandle=()=>{
+  setProjectType(!projectType)
+    setProject({
+      ...project,
+      ProjectStartDate:"",
+      ProjectWorkTill: ""
+    })
+}
   const [profile, setProfile] = useState({
     requiredItem: 0,
     name: "",
@@ -66,6 +78,7 @@ const MyResume = () => {
     skills: [],
     employment: [],
     education: [],
+    project:[],
     personaldetails: {
       dateofbirth: "",
       address: "",
@@ -80,8 +93,6 @@ const MyResume = () => {
       url: ""
     }
   })
-
-
 
   const [education, setEducation] = useState([
     {
@@ -107,7 +118,16 @@ const MyResume = () => {
     },
   ]);
 
-
+  const [project, setProject] = useState([
+    {
+      ProjectTitle:"",
+      ProjectClient:"",
+      ProjectDescription:"",
+      ProjectStartDate:"",
+      ProjectWorkTill:"Present"
+    }
+  ])
+  
   const formHandling = (e) => {
     setProfile({
       ...profile,
@@ -147,6 +167,13 @@ const MyResume = () => {
     })
   }
 
+  console.log(project)
+   const projectHandling = (e)=>{
+    setProject({
+      ...project,
+      [e.target.name]: e.target.value,
+    })
+   } 
   const handlePersonalDetails = (e) => {
     e.preventDefault()
     axios
@@ -226,6 +253,28 @@ const MyResume = () => {
       });
   }
 
+  const handleProject = (e) => {
+    e.preventDefault()
+    console.log(project)
+    let updatedDetails = {
+      ...profile,
+      project: [...profile.project, project]
+    }
+    axios
+      .put(apiList.user, updatedDetails, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data)
+        getData();
+      })
+      .catch((err) => {
+
+        console.log(err.response);
+      });
+  }
 
   const handleUpdate = (e) => {
     e.preventDefault()
@@ -392,7 +441,7 @@ const handleprofileUpload=()=>{
           url:response.data.image.url
         }})
           // getData();
-          toast.success(response.data.message);
+      
       })
       .catch((err) => {
         console.log(err.response);
@@ -416,17 +465,16 @@ useEffect(()=>{
             <div className="col-lg-9">
               <div className="container">
                 <div className="row">
-                  <div className="col-lg-3 ">
-                  <div className="canditate-des">
-                <label for="file">
+                  <div className="col-lg-2 ">
+                    <div className="canditate-des">
                       <p href="#">
                         <img
                           className="resume_img img-responsive"
                           src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`}
                         />
                       </p>
-                      
-                        <i class="fas fa-camera img_pencil "></i>
+                      <label for="file">
+                        <i class="fas fa-camera img_pencil img_edit"></i>
                       </label>
                       <input type="file" 
                       id="file" 
@@ -436,7 +484,7 @@ useEffect(()=>{
                       
                     </div>
                   </div>
-                  <div className="col-lg-9">
+                  <div className="col-lg-10">
                     <h4 className="resume_title">
                       {profile.name}{" "}
                       <Link to="/myprofile">
@@ -497,9 +545,7 @@ useEffect(()=>{
                         aria-valuemax={100}
                       />
                     </div>
-                     <div className="text-right">
-                        {progressBar}%
-                     </div>
+
 
                     {/* <div className="progress-box m-t10">
                       <div className="progress-info">
@@ -1557,14 +1603,14 @@ useEffect(()=>{
                               <div className=" col-lg-12 col-md-12">
                                 <div className="form-group">
                                   <label>Project Title</label>
-                                  <input type="text" className="form_control" name="Project_Title" onChange={(e) => formHandling(e)} />
+                                  <input type="text" className="form_control" name="ProjectTitle" onChange={(e) => projectHandling(e)} />
                                 </div>
                               </div>
 
                               <div className=" col-lg-12 col-md-12">
                                 <div className="form-group">
                                   <label>Client</label>
-                                  <input type="text" className="form_control" name="Project_Client" onChange={(e) => formHandling(e)} />
+                                  <input type="text" className="form_control" name="ProjectClient" onChange={(e) => projectHandling(e)} />
                                 </div>
                               </div>
 
@@ -1575,12 +1621,12 @@ useEffect(()=>{
                                     <input
                                       className="form-check-input"
                                       type="radio"
-
                                       name="Project_Type"
                                       id="inlineRadio1"
                                       value="In Progress"
+                                      
                                     // onClick={() => InprogressButton()}
-                                    // onChange={(e) => radiohandling(e)}
+                                    onChange={() => InprogressHandle()}
                                     />
                                     <label
                                       className="form-check-label"
@@ -1595,11 +1641,12 @@ useEffect(()=>{
                                       type="radio"
                                       // onChange={(e) => radiohandling(e)}
                                       // name="inlineRadioOptions"
+                                      checked={projectType}
                                       name='Project_Type'
                                       id="inlineRadio2"
                                       value="Finished"
                                     // onClick={() => PendingButton()}
-                                    // onChange={(e) => PendingHandling(e)}
+                                    onChange={() => FinishedProjectHandle()}
                                     />
                                     <label
                                       className="form-check-label"
@@ -1611,33 +1658,51 @@ useEffect(()=>{
                                 </div>
                               </div>
                               <div>
+                                
                                 <div className="row container">
                                   <div className=" col-lg-6 col-md-6">
                                     <div className="form-group">
                                       <label>Started Working From</label>
                                       <input
-                                        name="Project_Started_Working_From"
+                                        name="ProjectStartDate"
                                         // onChange={(e)=>formHandling(e)}
-                                        // onChange={(e) =>radiohandling(e)}
+                                        onChange={(e) => projectHandling(e)}
                                         type="date"
                                         className="form_control"
                                         placeholder="Years"
                                       />
                                     </div>
                                   </div>
+                                  {!projectType?
                                   <div className=" col-lg-6 col-md-6">
                                     <div className="form-group">
                                       <label>Worked Till</label>
                                       <input
-                                        name="Project_Worked_Till"
+                                        name="ProjectWorkTill"
+                                        value="Present"
                                         // onChange={(e)=>formHandling(e)}
-                                        // onChange={(e) => radiohandling(e)}
+                                        onChange={(e) => projectHandling(e)}
+                                        type="text"
+                                        className="form_control"
+                                        placeholder="Years"
+                                        disabled
+                                      />
+                                    </div>
+                                  </div>:
+                                  <div className=" col-lg-6 col-md-6">
+                                    <div className="form-group">
+                                      <label>Worked Till</label>
+                                      <input
+                                        name="ProjectWorkTill"
+                                        // onChange={(e)=>formHandling(e)}
+                                        onChange={(e) => projectHandling(e)}
                                         type="date"
                                         className="form_control"
                                         placeholder="Years"
                                       />
                                     </div>
-                                  </div>
+                                  </div>}
+                                  
                                 </div>
                               </div>
 
@@ -1645,8 +1710,8 @@ useEffect(()=>{
                                 <div className="form-group">
                                   <label> Details of Project </label>
                                   <textarea
-                                    name="Details_Of_Project"
-                                    onChange={(e) => formHandling(e)}
+                                    name="ProjectDescription"
+                                    onChange={(e) => projectHandling(e)}
                                     className="form_control"
                                     cols="30"
                                     rows="5"
@@ -1659,7 +1724,8 @@ useEffect(()=>{
                         </div>
                       </div>
                       <div className="modal-footer">
-                        <button type="button" className="update" >
+                        <button type="button" className="update" 
+                        onClick={(e)=>handleProject(e)}>
                           Save changes
                         </button>
                       </div>

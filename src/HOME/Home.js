@@ -201,45 +201,18 @@ const Home = () => {
 
             </section>
 
-            {/* <RecentJobs /> */}
-            {/* <<<<<<< HEAD */}
-            {/* <div className='container google_ads'>
-            <ins className='adsbygoogle'
-            style={{ display: 'block' }}
-            data-ad-client='ca-pub-12121212'
-            data-ad-slot='12121212'
-            data-ad-format='auto' />
-            </div> */}
-            {/* =======
->>>>>>> fb00e91015041e22d08e268288dba2ce256a048d */}
-            <div className='container google_ads'>
-                {/* <ins
-                    className="adsbygoogle"
-                    style={{ display: "block" }}
-                    data-ad-client="ca-pub-3502028008615885"
-                    data-ad-slot={5378452591}
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                /> */}
+            <div className='container'>
+
                 <BannerAds />
+
             </div>
 
 
-            <div className='container google_ads'>
-                {/* <ins 
-                    className="adsbygoogle" 
-                    style={{display: 'block'}} 
-                    data-ad-client="ca-pub-3502028008615885" 
-                    data-ad-slot={8906542176} 
-                    data-ad-format="auto" 
-                    data-full-width-responsive="true" 
-                /> */}
+            <div className='container'>
+
                 <BannerAds />
+
             </div>
-
-
-
-
 
 
 
@@ -248,54 +221,40 @@ const Home = () => {
 
             {/* ad */}
             <div className='container google_ads'>
-                {/* <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" /> */}
+
                 <BannerAds />
+
             </div>
 
 
             <CategoryJobs />
 
-            {/* ad */}
-            <div className='container google_ads'>
-                {/* <ins className="adsbygoogle" style={{ display: 'block' }} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" /> */}
-                <BannerAds />
-            </div>
-
             <HomeBanners />
 
-
             <DesignationJobs />
-
-            {/* ad */}
-            <div className='container google_ads'>
-                <ins className="adsbygoogle" style={{ display: 'block' }} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
-            </div>
-
-
 
             <HomeBanner3 />
 
             <SkillJobs />
-
-            {/* ad */}
-            <div className='container google_ads'>
-                <ins className="adsbygoogle" style={{ display: 'block' }} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
-            </div>
 
             <HomeBanner2 />
 
             <FeaturedCities />
 
             <HomeBanner4 />
-            {/* <LocationalJobs /> */}
-            {/* <OurClients /> */}
-
-
-            {/* <Testimonials /> */}
 
             <div className='container google_ads'>
-                <ins className="adsbygoogle" style={{ display: 'block' }} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+
+                <BannerAds />
+
             </div>
+
+
+            {/* <LocationalJobs /> */}
+            {/* <OurClients /> */}
+            {/* <Testimonials /> */}
+
+
 
         </div>
 

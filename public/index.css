@@ -17488,7 +17488,7 @@ strong {
   /* >>>>>>> fb00e91015041e22d08e268288dba2ce256a048d */
   width: 100%;
   margin-bottom: 20px;
-  height: 100px !important;
+  /* height: 100px !important; */
 }
 
 .vgad {
@@ -18848,3 +18848,9 @@ width: 40% !important;
 }
 
 /* New Buy Services */
+
+/* 
+.google_ads .adsbygoogle
+{
+  height:80px !important;
+} */
