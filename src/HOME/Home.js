@@ -37,10 +37,10 @@ const Home = () => {
     const navigate = useNavigate();
 
     const [post, setPost] = useState({
-      
-        skillsets:[],
-        cities:[],
-       
+
+        skillsets: [],
+        cities: [],
+
     })
 
     const options = {
@@ -104,36 +104,36 @@ const Home = () => {
                                                 placeholder="Job Title, Keywords, or Phrase" name='keyword' value={keyword} />onChange={(e) => { setKeyword(e.target.value); setKeywordError("") }} />
                                             {keywordError != '' && <small style={{ color: 'red' }}>{keywordError}</small>} */}
 
-                                        <div>
-                                            {/* <label>Technical Skills :</label> */}
-                                                  <Autocomplete
+                                            <div>
+                                                {/* <label>Technical Skills :</label> */}
+                                                <Autocomplete
                                                     id="combo-box-demo"
                                                     multiple
                                                     value={post.skillsets}
-                                                    options={skillsdata.map((res)=>{
-                                                    return res.Skill
+                                                    options={skillsdata.map((res) => {
+                                                        return res.Skill
                                                     })}
                                                     getOptionLabel={(option) => option}
                                                     onChange={(e, value) => {
-                                                    setPost({
-                                                        ...post,
-                                                        skillsets:value
-                                                    });
+                                                        setPost({
+                                                            ...post,
+                                                            skillsets: value
+                                                        });
                                                     }}
-                                                    
+
                                                     renderInput={(params) => (
-                                                    <TextField
-                                                        {...params}
-                                                        name="multiple"
-                                                        label="Job Title, Keywords, or Phrase"
-                                                        variant="outlined"
-                                                        fullWidth
-                                                        name='keyword' value={keyword} onChange={(e) => { setKeyword(e.target.value)}}
-                                                    />
+                                                        <TextField
+                                                            {...params}
+                                                            name="multiple"
+                                                            label="Job Title, Keywords, or Phrase"
+                                                            variant="outlined"
+                                                            fullWidth
+                                                            name='keyword' value={keyword} onChange={(e) => { setKeyword(e.target.value) }}
+                                                        />
                                                     )}
                                                 />
-                                                  {/* <span>Press enter to add skills</span> */}
-                                                </div>
+                                                {/* <span>Press enter to add skills</span> */}
+                                            </div>
 
 
                                         </div>
@@ -144,37 +144,37 @@ const Home = () => {
 
 
                                             {/* <div className="form-group"> */}
-                                                {/* <label>Locations</label> */}
-                                                <Autocomplete
-                                                    id="combo-box-demo"
-                                                    multiple
-                                                    value={post.cities}
-                                                    options={data.map((res)=>{
+                                            {/* <label>Locations</label> */}
+                                            <Autocomplete
+                                                id="combo-box-demo"
+                                                multiple
+                                                value={post.cities}
+                                                options={data.map((res) => {
                                                     return res.location
-                                                
-                                                    })}
-                                                    getOptionLabel={(option) => option}
-                                                    onChange={(e, value) => {
+
+                                                })}
+                                                getOptionLabel={(option) => option}
+                                                onChange={(e, value) => {
                                                     setPost({
                                                         ...post,
-                                                        cities:value
+                                                        cities: value
                                                     });
-                                                    }}
-                                                    
-                                                    renderInput={(params) => (
+                                                }}
+
+                                                renderInput={(params) => (
                                                     <TextField
                                                         {...params}
                                                         name="multiple"
                                                         label="City ,Province or Region"
                                                         variant="outlined"
                                                         fullWidth
-                                                        name='qlocation' value={qlocation} onChange={(e) => { setQLocation(e.target.value)}}
+                                                        name='qlocation' value={qlocation} onChange={(e) => { setQLocation(e.target.value) }}
                                                     />
-                                                    )}
-                                                />
-                                             
-                                                  {/* <span>Press enter to add cities</span> */}
-                                                {/* </div> */}
+                                                )}
+                                            />
+
+                                            {/* <span>Press enter to add cities</span> */}
+                                            {/* </div> */}
 
 
                                         </div>
@@ -201,7 +201,7 @@ const Home = () => {
             </section>
 
             {/* <RecentJobs /> */}
-{/* <<<<<<< HEAD */}
+            {/* <<<<<<< HEAD */}
             {/* <div className='container google_ads'>
             <ins className='adsbygoogle'
             style={{ display: 'block' }}
@@ -209,7 +209,7 @@ const Home = () => {
             data-ad-slot='12121212'
             data-ad-format='auto' />
             </div> */}
-{/* =======
+            {/* =======
 >>>>>>> fb00e91015041e22d08e268288dba2ce256a048d */}
             <div className='container google_ads'>
                 <ins
@@ -224,10 +224,25 @@ const Home = () => {
 
 
             <div className='container google_ads'>
-            <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+                {/* <ins 
+                    className="adsbygoogle" 
+                    style={{display: 'block'}} 
+                    data-ad-client="ca-pub-3502028008615885" 
+                    data-ad-slot={8906542176} 
+                    data-ad-format="auto" 
+                    data-full-width-responsive="true" 
+                /> */}
+                <ins
+                    className="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-client="ca-pub-3502028008615885"
+                    data-ad-slot={5378452591}
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                />
             </div>
 
-            
+
 
 
 
@@ -238,43 +253,51 @@ const Home = () => {
 
             {/* ad */}
             <div className='container google_ads'>
-            <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+                {/* <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" /> */}
+                <ins
+                    className="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-client="ca-pub-3502028008615885"
+                    data-ad-slot={5378452591}
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                />
             </div>
 
 
             <CategoryJobs />
 
-                      {/* ad */}
+            {/* ad */}
             <div className='container google_ads'>
-            <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+                <ins className="adsbygoogle" style={{ display: 'block' }} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
             </div>
 
-            <HomeBanners/>
-            
+            <HomeBanners />
+
 
             <DesignationJobs />
 
-              {/* ad */}
-              <div className='container google_ads'>
-            <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+            {/* ad */}
+            <div className='container google_ads'>
+                <ins className="adsbygoogle" style={{ display: 'block' }} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
             </div>
 
 
 
-            <HomeBanner3/>
+            <HomeBanner3 />
 
-            <SkillJobs /> 
+            <SkillJobs />
 
-              {/* ad */}
-              <div className='container google_ads'>
-            <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+            {/* ad */}
+            <div className='container google_ads'>
+                <ins className="adsbygoogle" style={{ display: 'block' }} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
             </div>
 
-            <HomeBanner2/> 
-                   
+            <HomeBanner2 />
+
             <FeaturedCities />
 
-            <HomeBanner4/>
+            <HomeBanner4 />
             {/* <LocationalJobs /> */}
             {/* <OurClients /> */}
 
@@ -282,11 +305,11 @@ const Home = () => {
             {/* <Testimonials /> */}
 
             <div className='container google_ads'>
-            <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+                <ins className="adsbygoogle" style={{ display: 'block' }} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
             </div>
 
         </div>
-    
+
 
     )
 }
