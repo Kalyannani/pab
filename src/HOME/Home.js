@@ -26,6 +26,7 @@ import { Autocomplete } from '@mui/material';
 import { TextField } from '@material-ui/core';
 import skillsdata from '../JsonData/Skill.json';
 import data from '../JsonData/locations.json'
+import BannerAds from '../ads/BannerAds';
 
 
 const Home = () => {
@@ -212,14 +213,15 @@ const Home = () => {
             {/* =======
 >>>>>>> fb00e91015041e22d08e268288dba2ce256a048d */}
             <div className='container google_ads'>
-                <ins
+                {/* <ins
                     className="adsbygoogle"
                     style={{ display: "block" }}
                     data-ad-client="ca-pub-3502028008615885"
                     data-ad-slot={5378452591}
                     data-ad-format="auto"
                     data-full-width-responsive="true"
-                />
+                /> */}
+                <BannerAds />
             </div>
 
 
@@ -232,14 +234,7 @@ const Home = () => {
                     data-ad-format="auto" 
                     data-full-width-responsive="true" 
                 /> */}
-                <ins
-                    className="adsbygoogle"
-                    style={{ display: "block" }}
-                    data-ad-client="ca-pub-3502028008615885"
-                    data-ad-slot={5378452591}
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                />
+                <BannerAds />
             </div>
 
 
@@ -254,14 +249,7 @@ const Home = () => {
             {/* ad */}
             <div className='container google_ads'>
                 {/* <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" /> */}
-                <ins
-                    className="adsbygoogle"
-                    style={{ display: "block" }}
-                    data-ad-client="ca-pub-3502028008615885"
-                    data-ad-slot={5378452591}
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                />
+                <BannerAds />
             </div>
 
 
@@ -269,7 +257,8 @@ const Home = () => {
 
             {/* ad */}
             <div className='container google_ads'>
-                <ins className="adsbygoogle" style={{ display: 'block' }} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" />
+                {/* <ins className="adsbygoogle" style={{ display: 'block' }} data-ad-client="ca-pub-3502028008615885" data-ad-slot={8906542176} data-ad-format="auto" data-full-width-responsive="true" /> */}
+                <BannerAds />
             </div>
 
             <HomeBanners />
