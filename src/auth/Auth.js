@@ -6,6 +6,9 @@ import { toast } from 'react-toastify';
 import apiList from '../lib/apiList';
 import Modal from 'react-modal';
 import './auth.css';
+import { GoogleLogin, GoogleLogout, useGoogleLogout } from 'react-google-login';
+
+const clientId = process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID
 
 
 const customStyles = {
@@ -20,7 +23,7 @@ const customStyles = {
 };
 
 const Auth = (props) => {
-    const [selectedClient,setSelectedClient] = useState("applicant");
+    const [selectedClient, setSelectedClient] = useState("applicant");
     const dispatch = useDispatch();
     const [mainTab, setMainTab] = useState('signup')
     const [subTab, setSubTab] = useState(false)
@@ -41,7 +44,7 @@ const Auth = (props) => {
         setSubTab(false)
     }
 
-   
+
 
     console.log('mmmm', mainTab);
 
@@ -55,7 +58,7 @@ const Auth = (props) => {
             haveError = true
             setPasswordError('Password is required!')
         }
-        
+
         e.preventDefault()
         if (!haveError) {
             let loginDetails = {
@@ -71,9 +74,9 @@ const Auth = (props) => {
                     dispatch({ type: "USER", payload: response.data })
                     toast.success("Login Successful")
                     console.log(response);
-                    if(response.data.type === "applicant"){
+                    if (response.data.type === "applicant") {
                         navigate("/appliedjobs")
-                    }else{
+                    } else {
                         navigate("/Manage_jobs")
                     }
                 })
@@ -82,7 +85,7 @@ const Auth = (props) => {
                     console.log(err.response);
                 })
         }
-        
+
     }
 
     const handleSignUp = e => {
@@ -97,7 +100,7 @@ const Auth = (props) => {
             haveError = true
             setPasswordError('Password is required!')
         }
-       
+
         if (!e.target.contactNumber.value.match(/^[6-9]\d{9}$/)) {
             haveError = true
             setPhoneError("Enter a valid contactNumber number.")
@@ -114,7 +117,7 @@ const Auth = (props) => {
             e.target.rest()
             return
         }
-        
+
         // if (!isContactVerified) {
         //     toast.error("Contact needs to be verified!")
         // }
@@ -273,7 +276,7 @@ const Auth = (props) => {
     }
 
     const handleContactOTPVerify = (e) => {
-        console.log('contactSessionId',contactSessionId);
+        console.log('contactSessionId', contactSessionId);
         e.preventDefault()
         let otpDetails = {
             sessionId: contactSessionId,
@@ -297,50 +300,141 @@ const Auth = (props) => {
     }
 
 
-    const [state,setState] = useState({
-        image: 
-        <img src='/images/Signup.jpg' className='signup_image img-fluid'/>
-     });
+    const [state, setState] = useState({
+        image:
+            <img src='/images/Signup.jpg' className='signup_image img-fluid' />
+    });
 
-    const imgColumn= ()=>{
-        setState((state)=>({
-         image: 
-         <img src='images/Login.jpg' className='signup_image img-fluid' />
+    const imgColumn = () => {
+        setState((state) => ({
+            image:
+                <img src='images/Login.jpg' className='signup_image img-fluid' />
         }));
     };
 
-    const imgColumn2= ()=>{
-        setState((state)=>({
-         image: 
-         <img src='/images/Signup.jpg' className='signup_image img-fluid'/>
+    const imgColumn2 = () => {
+        setState((state) => ({
+            image:
+                <img src='/images/Signup.jpg' className='signup_image img-fluid' />
         }));
     };
 
 
     const scrollToTop = () => {
         window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        }); 
-      };
+            top: 0,
+            behavior: "smooth"
+        });
+    };
 
 
 
-  const [isRevealPwd, setIsRevealPwd] = useState(false);
+    const [isRevealPwd, setIsRevealPwd] = useState(false);
 
-  const [isSignupPwd, setIsSignupPwd] = useState(false);
+    const [isSignupPwd, setIsSignupPwd] = useState(false);
 
-  const [isConfirmPwd, setIsConfirmPwd] = useState(false);
- 
+    const [isConfirmPwd, setIsConfirmPwd] = useState(false);
+
     const resetError = () => {
         setEmailError("")
         setPasswordError("")
         setPhoneError("")
     }
 
-    const handleSelectChange = (e)=> {
+    const handleSelectChange = (e) => {
         setSelectedClient(e.target.value);
     }
+
+    const onGoogleSignUpSuccess = (res) => {
+        console.log('Login Success: currentUser:', res.profileObj);
+        console.log('Token - ', res.tokenObj);
+        let signupDetails = {
+            email: res.profileObj.email,
+            name: res.profileObj.name,
+            // password: e.target.password.value,
+            type: selectedClient,
+            // contactNumber: e.target.contactNumber.value,
+        }
+        axios
+            .post(apiList.signup + "/google", signupDetails, {
+                headers: {
+                    Authorization: res.tokenObj.id_token
+                }
+            })
+            .then((response) => {
+                localStorage.setItem("token", response.data.token);
+                localStorage.setItem("type", response.data.type);
+                dispatch({ type: "USER", payload: response.data })
+                toast.success("Registered Successful")
+                console.log(response);
+                signOut();
+                navigate("/")
+            })
+            .catch((err) => {
+                toast.error(err.response.data.message)
+                console.log(err.response);
+                signOut();
+            });
+        // refreshTokenSetup(res);
+    };
+
+    const onGoogleLoginSuccess = (res) => {
+        console.log('Login Success: currentUser:', res.profileObj);
+        console.log('Token - ', res.tokenObj);
+        let loginDetails = {
+            email: res.profileObj.email,
+            // password: e.target.password.value,
+            // contactNumber: e.target.contactNumber.value,
+        }
+        axios
+            .post(apiList.login + "/google", loginDetails, {
+                headers: {
+                    Authorization: res.tokenObj.id_token
+                }
+            })
+            .then((response) => {
+                localStorage.setItem("token", response.data.token);
+                localStorage.setItem("type", response.data.type);
+                localStorage.setItem('isAuth', 'true');
+                dispatch({ type: "USER", payload: response.data })
+                toast.success("Login Successful")
+                console.log(response);
+                signOut();
+                if (response.data.type === "applicant") {
+                    navigate("/appliedjobs")
+                } else {
+                    navigate("/Manage_jobs")
+                }
+            })
+            .catch((err) => {
+                toast.error(err.response.data.message)
+                console.log(err.response);
+                signOut();
+            });
+        // refreshTokenSetup(res);
+    };
+
+    const onFailure = (res) => {
+        console.log('Login failed: res:', res);
+        toast.error("Failed to login")
+    };
+
+
+    const onLogoutSuccess = (res) => {
+        console.log('Logged out Success');
+        // alert('Logged out Successfully ✌');
+    };
+
+    const onLogoutFailure = () => {
+        console.log('Handle failure cases');
+    };
+
+    const { signOut } = useGoogleLogout({
+        clientId,
+        onLogoutSuccess,
+        onLogoutFailure,
+    });
+
 
     return <>
         <div className="signin_signup container " id='main_form'>
@@ -364,10 +458,10 @@ const Auth = (props) => {
                             <div className="tile py-2">
                                 {mainTab === 'login' ? <h3 className="login">Login Form</h3> : <h3 className="signup">Signup Form</h3>}
                             </div>
-                            
+
                             <label id='signup_tab'
-                            className={`tab login_tab ${mainTab === "signup" && 'active-tab'}`} htmlFor="signup"
-                                onClick={() => {switchMainTab('signup');imgColumn2();scrollToTop();} }>
+                                className={`tab login_tab ${mainTab === "signup" && 'active-tab'}`} htmlFor="signup"
+                                onClick={() => { switchMainTab('signup'); imgColumn2(); scrollToTop(); }}>
                                 {" "}
                                 Signup{" "}
                             </label>
@@ -375,7 +469,7 @@ const Auth = (props) => {
                                 className={`tab login_tab ${mainTab === "login" && 'active-tab'}`}
                                 // active-tab
                                 htmlFor="login"
-                                onClick={() => {switchMainTab('login');imgColumn(); scrollToTop(); }}
+                                onClick={() => { switchMainTab('login'); imgColumn(); scrollToTop(); }}
                             >
                                 {" "}
                                 Login{" "}
@@ -386,26 +480,36 @@ const Auth = (props) => {
                                         {!subTab && (
                                             <div id="Menu1">
                                                 <form onSubmit={handleLogin} onChange={resetError}>
-                                                    
-                                                    <div className="input_group ">
-                                                        <input type="email" name="email" className="input" placeholder="Email Address"  />
-                                                         <span className='input_email'> <i class="fa fa-envelope" aria-hidden="true"></i> </span>
+                                                    <div style={{ display: "flex", justifyContent: "center" }}>
+                                                        <GoogleLogin
+                                                            clientId={clientId}
+                                                            buttonText="Log In with Google"
+                                                            onSuccess={onGoogleLoginSuccess}
+                                                            onFailure={onFailure}
+                                                            cookiePolicy={'single_host_origin'}
+                                                            style={{ marginTop: '100px' }}
+                                                            isSignedIn={true}
+                                                        />
                                                     </div>
-                                                    {emailError != '' && <small style={{color: 'red'}}>{emailError}</small>}
+                                                    <div className="input_group ">
+                                                        <input type="email" name="email" className="input" placeholder="Email Address" />
+                                                        <span className='input_email'> <i class="fa fa-envelope" aria-hidden="true"></i> </span>
+                                                    </div>
+                                                    {emailError != '' && <small style={{ color: 'red' }}>{emailError}</small>}
                                                     <div className="input_group">
-                                                        <input type={isRevealPwd ? "text" : "password"} name="password" className="input" placeholder="Password"  />
+                                                        <input type={isRevealPwd ? "text" : "password"} name="password" className="input" placeholder="Password" />
                                                         <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
-                                                       
+
                                                         <span className='password_hide'
-                                                          onClick={() => setIsRevealPwd(prevState => !prevState)}
-                                                          >
-                                                     
-                                                      {isRevealPwd ? <i class="fa fa-eye-slash" aria-hidden="true"></i>: <i class="fa fa-eye" aria-hidden="true"></i>}
-                                                                                                                   
-                                                       </span>
+                                                            onClick={() => setIsRevealPwd(prevState => !prevState)}
+                                                        >
+
+                                                            {isRevealPwd ? <i class="fa fa-eye-slash" aria-hidden="true"></i> : <i class="fa fa-eye" aria-hidden="true"></i>}
+
+                                                        </span>
 
                                                     </div>
-                                                    {passwordError != '' && <small style={{color: 'red'}}>{passwordError}</small>}
+                                                    {passwordError != '' && <small style={{ color: 'red' }}>{passwordError}</small>}
                                                     <div className="forgot">
                                                         <a className="forgot_pass" onClick={() => setSubTab('forgotPassword')}>
                                                             {" "}
@@ -420,7 +524,7 @@ const Auth = (props) => {
                                                     </div>
                                                     <div className="already pt-3">
                                                         <label htmlFor="signup"
-                                                        onClick={() => {switchMainTab('signup');imgColumn2();scrollToTop();} }>
+                                                            onClick={() => { switchMainTab('signup'); imgColumn2(); scrollToTop(); }}>
                                                             Not a member? <span className="font-weight-bold"> Signup now</span>
                                                         </label>
                                                     </div>
@@ -438,11 +542,11 @@ const Auth = (props) => {
                                                             className="input"
                                                             placeholder="Enter Registered Mobile Number..."
                                                             name="phone"
-                                                            
+
                                                         />
-                                                         <span className='input_email'> <i class='fas fa-phone'></i> </span>
+                                                        <span className='input_email'> <i class='fas fa-phone'></i> </span>
                                                     </div>
-                                                    {phoneError != '' && <small style={{color: 'red'}}>{phoneError}</small>}
+                                                    {phoneError != '' && <small style={{ color: 'red' }}>{phoneError}</small>}
                                                     <input
                                                         type="submit"
                                                         className="btn"
@@ -468,9 +572,9 @@ const Auth = (props) => {
                                                             placeholder="Enter Mobile Number"
                                                             name="phone"
                                                         />
-                                                         <span className='input_email'> <i class='fas fa-phone'></i> </span>
+                                                        <span className='input_email'> <i class='fas fa-phone'></i> </span>
                                                     </div>
-                                                    {phoneError != '' && <small style={{color: 'red'}}>{phoneError}</small>}
+                                                    {phoneError != '' && <small style={{ color: 'red' }}>{phoneError}</small>}
                                                     <a href="#" onclick="toggleVisibility('Menu4');">
                                                         {" "}
                                                         <input
@@ -501,7 +605,7 @@ const Auth = (props) => {
                                                             name="otp"
                                                             required
                                                         />
-                                                          <span className='input_email'> <i class="fas fa-key" aria-hidden="true"></i> </span>
+                                                        <span className='input_email'> <i class="fas fa-key" aria-hidden="true"></i> </span>
                                                     </div>
                                                     <input
                                                         type="submit"
@@ -529,15 +633,33 @@ const Auth = (props) => {
                                                     <option value="recruiter">Recruiter</option>
                                                 </select>
                                             </div>
+
+                                            <div style={{ display: "flex", justifyContent: "center" }}>
+                                                <GoogleLogin
+                                                    clientId={clientId}
+                                                    buttonText="Sign Up with Google"
+                                                    onSuccess={onGoogleSignUpSuccess}
+                                                    onFailure={onFailure}
+                                                    cookiePolicy={'single_host_origin'}
+                                                    style={{ marginTop: '100px' }}
+                                                    isSignedIn={true}
+                                                />
+                                                {/* <GoogleLogout
+                                                    clientId={clientId}
+                                                    buttonText="Logout"
+                                                // onLogoutSuccess={onSuccess}
+                                                ></GoogleLogout> */}
+                                            </div>
+
                                             <div className="input_group">
                                                 <input
                                                     type="text"
                                                     className="input"
-                                                    placeholder={selectedClient ==="applicant"?"Enter Name":"Company Name"}
+                                                    placeholder={selectedClient === "applicant" ? "Enter Name" : "Company Name"}
                                                     name="name"
-                                                    
+
                                                 />
-                                                 <span className='input_email'> <i class="fa fa-user" aria-hidden="true"></i> </span>
+                                                <span className='input_email'> <i class="fa fa-user" aria-hidden="true"></i> </span>
                                             </div>
                                             <div className="input_group" style={{ position: 'relative' }}>
 
@@ -548,58 +670,58 @@ const Auth = (props) => {
                                                     name="contactNumber"
                                                     maxLength={10}
                                                     onChange={handleContactInput}
-                                                    
+
                                                 />
                                                 <span className='input_email'> <i class='fas fa-phone'></i> </span>
                                                 {/* <button type="button" className="verfy-special-btn btn" onClick={handleContactVerify} disabled={!showVerifyBtn || isContactVerified}>{isContactVerified ? 'Verified': 'Verify'}</button> */}
 
 
                                             </div>
-                                            {phoneError != '' && <small style={{color: 'red'}}>{phoneError}</small>}
+                                            {phoneError != '' && <small style={{ color: 'red' }}>{phoneError}</small>}
                                             <div className="input_group">
                                                 <input
                                                     type="email"
                                                     className="input"
                                                     placeholder="Email Address"
                                                     name="email"
-                                                    
+
                                                 />
-                                                 <span className='input_email'> <i class="fa fa-envelope" aria-hidden="true"></i> </span>
+                                                <span className='input_email'> <i class="fa fa-envelope" aria-hidden="true"></i> </span>
                                             </div>
-                                            {emailError != '' && <small style={{color: 'red'}}>{emailError}</small>}
+                                            {emailError != '' && <small style={{ color: 'red' }}>{emailError}</small>}
                                             <div className="input_group">
                                                 <input
                                                     type={isSignupPwd ? "text" : "password"}
                                                     className="input password_input"
                                                     placeholder="Password"
                                                     name="password"
-                                                    
+
                                                 />
-                                                 <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
-                                           
-                                                    <span className='password_hide'
-                                                       onClick={() => setIsSignupPwd( !isSignupPwd)}
-                                                          >
-                                                        {isSignupPwd ? <i class="fa fa-eye-slash" aria-hidden="true"></i>: <i class="fa fa-eye" aria-hidden="true"></i>}
-                                                     </span>
+                                                <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
+
+                                                <span className='password_hide'
+                                                    onClick={() => setIsSignupPwd(!isSignupPwd)}
+                                                >
+                                                    {isSignupPwd ? <i class="fa fa-eye-slash" aria-hidden="true"></i> : <i class="fa fa-eye" aria-hidden="true"></i>}
+                                                </span>
                                             </div>
-                                            {passwordError != '' && <small style={{color: 'red'}}>{passwordError}</small>}
+                                            {passwordError != '' && <small style={{ color: 'red' }}>{passwordError}</small>}
                                             <div className="input_group">
                                                 <input
                                                     type={isConfirmPwd ? "text" : "password"}
                                                     className="input"
                                                     placeholder="Confirm Password"
                                                     name="confirmPassword"
-                                                    
+
                                                 />
-                                                 <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
-                                                 <span className='password_hide'
-                                                          onClick={() => setIsConfirmPwd(prevState => !prevState)}
-                                                          >
-                                                       
-                                                      {isConfirmPwd ? <i class="fa fa-eye-slash" aria-hidden="true"></i>: <i class="fa fa-eye" aria-hidden="true"></i>}
-                                                                                                                   
-                                                       </span>  
+                                                <span className='input_email'> <i class="fa fa-lock" aria-hidden="true"></i> </span>
+                                                <span className='password_hide'
+                                                    onClick={() => setIsConfirmPwd(prevState => !prevState)}
+                                                >
+
+                                                    {isConfirmPwd ? <i class="fa fa-eye-slash" aria-hidden="true"></i> : <i class="fa fa-eye" aria-hidden="true"></i>}
+
+                                                </span>
                                             </div>
                                             <input
                                                 type="submit"
@@ -607,12 +729,12 @@ const Auth = (props) => {
                                                 defaultValue="Signup"
                                             />
 
-                                       <div className="already pt-3">
-                                            <label htmlFor="signup"
-                                            onClick={() => {switchMainTab('login');imgColumn(); scrollToTop(); }}>
-                                             Already have an Account? <span className="font-weight-bold"> Login here </span>
-                                            </label>
-                                       </div>
+                                            <div className="already pt-3">
+                                                <label htmlFor="signup"
+                                                    onClick={() => { switchMainTab('login'); imgColumn(); scrollToTop(); }}>
+                                                    Already have an Account? <span className="font-weight-bold"> Login here </span>
+                                                </label>
+                                            </div>
 
                                         </form>
                                     </div>
@@ -623,9 +745,9 @@ const Auth = (props) => {
                     </section>
                 </div>
 
-                 <div className="col-lg-5 text-center  sticky-top full_img">
-                        {state.image} 
-                 </div>
+                <div className="col-lg-5 text-center  sticky-top full_img">
+                    {state.image}
+                </div>
             </div>
         </div>
         <Modal
