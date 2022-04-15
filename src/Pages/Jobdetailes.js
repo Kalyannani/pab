@@ -38,6 +38,16 @@ export const Jobdetailes = (props) => {
             .catch((err) => {
                 console.log(err?.response.data);
             });
+        const token = localStorage.getItem("token");
+        if(token) {
+            axios
+                .get(`${apiList.jobAlerts}${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+                
+        }
     };
 
     const handleApply = (e) => {
