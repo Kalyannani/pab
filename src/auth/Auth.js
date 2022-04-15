@@ -407,9 +407,10 @@ const Auth = (props) => {
                 }
             })
             .catch((err) => {
+                signOut();
                 toast.error(err.response.data.message)
                 console.log(err.response);
-                signOut();
+                
             });
         // refreshTokenSetup(res);
     };
