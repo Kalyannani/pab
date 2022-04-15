@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import Logout from './Logout';
 import { useDispatch } from 'react-redux';
 import IdleTimer from 'react-idle-timer';
+import axios from 'axios';
+import apiList from '../lib/apiList';
 const Student_Navbar = () => {
   const idleTimerRef = useRef(null)
   const [state, setState] = useState({ navbar_content: "white", color: "black" });
@@ -15,8 +17,11 @@ const Student_Navbar = () => {
   const Resize = () => {
     setWidth(window.innerWidth)
   }
+  const [notificationCounts, setNotificationCounts] = useState();
+
   useEffect(() => {
     window.addEventListener("resize", Resize)
+    fetchNotifications();
   }, [])
   useEffect(() => {
     if (width < 1440) {
@@ -41,6 +46,27 @@ const Student_Navbar = () => {
     navigate("/auth")
   }
 
+  const fetchNotifications = () => {
+    axios
+          .get(apiList.notification, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          })
+          .then((response) => {
+            // setPageCount(Math.ceil(response.data.length)/perPage)
+            console.log('ddd ',response.data);
+            setNotificationCounts(response.data)
+          })
+          .catch((err) => {
+            console.log(err.response.data);
+          });
+  }
+
+  let bellCount = 0
+
+  bellCount = notificationCounts && notificationCounts?.jobAlerts + notificationCounts?.appliedJobs
+  bellCount = bellCount > 99 ? "99+" : bellCount
 
   return (
     <>
@@ -92,7 +118,7 @@ const Student_Navbar = () => {
         <li>
 
 <div className="notBtn position-relative">
-  <div class="number">20</div>
+  <div class="number">{bellCount}</div>
   <i class="fas fa-bell nav_bell"></i>
   <div class=" bell_box">
     <div class="display">
@@ -103,11 +129,11 @@ const Student_Navbar = () => {
       <div class="conts">
         <div class="secs ">
 
-          <h1>Recomended Jobs(55)</h1>
+          <h1>Recomended Jobs({notificationCounts?.jobAlerts})</h1>
 
         </div>
         <div class="secs">
-          <h1>Applied Jobs (99)</h1>
+          <h1>Applied Jobs ({notificationCounts?.appliedJobs})</h1>
         </div>
         <div class="secs">
           <h1>Pending Actions (6)</h1>

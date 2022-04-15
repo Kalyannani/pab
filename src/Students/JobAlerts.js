@@ -29,11 +29,22 @@ import ReactPaginate from 'react-paginate'
     
       const getData = () => {
         axios
-          .get(apiList.alljobs)
+          .get(apiList.jobAlerts + 'list', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          })
           .then((response) => {
             setPageCount(Math.ceil(response.data.length)/perPage)
-            console.log(response.data);
-            setJobs(response.data.reverse());
+            console.log('ddd ',response.data);
+            let jobs = response.data.data.map(job => {
+              
+              let output = job.jobId
+              output.recruiter = job.recruiter
+              return output;
+            })
+            console.log('jjjjssss ',jobs);
+            setJobs(jobs);
           })
           .catch((err) => {
             console.log(err.response.data);
@@ -62,6 +73,7 @@ import ReactPaginate from 'react-paginate'
                                 </select>
                             </a>
                         </div>
+                        {console.log(jobs, 'jobs')}
                     {
                       jobs.length>0?
         currentPosts.map((job)=>{
@@ -84,7 +96,7 @@ import ReactPaginate from 'react-paginate'
                 </h4>
                 <ul>
                   <li>
-                    <h5 className="home_company_name">{job.recruiter.companyname}</h5>
+                    <h5 className="home_company_name">{ job.recruiter.companyname }</h5>
                   </li>
                   <li>
                     <h6 className="star_box">
