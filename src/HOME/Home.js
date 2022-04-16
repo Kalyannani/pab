@@ -208,11 +208,11 @@ const Home = () => {
 
             </div>
 
-            <div className='container mobile_ads'>
+            {/* <div className='container mobile_ads'>
 
                 <MobileAds />
 
-            </div>
+            </div> */}
 
 
 
@@ -228,11 +228,11 @@ const Home = () => {
 
             </div>
 
-            <div className='container mobile_ads'>
+            {/* <div className='container mobile_ads'>
 
                 <MobileAds />
 
-            </div>
+            </div> */}
 
 
 
@@ -244,11 +244,11 @@ const Home = () => {
 
             </div>
 
-            <div className='container mobile_ads'>
+            {/* <div className='container mobile_ads'>
 
                 <MobileAds />
 
-            </div>
+            </div> */}
 
 
 
@@ -262,11 +262,11 @@ const Home = () => {
 
             </div>
 
-            <div className='container mobile_ads'>
+            {/* <div className='container mobile_ads'>
 
                 <MobileAds />
 
-            </div>
+            </div> */}
 
 
 
@@ -280,11 +280,11 @@ const Home = () => {
 
             </div>
 
-            <div className='container mobile_ads'>
+            {/* <div className='container mobile_ads'>
 
                 <MobileAds />
 
-            </div>
+            </div> */}
 
 
 
@@ -300,11 +300,11 @@ const Home = () => {
 
             </div>
 
-            <div className='container mobile_ads'>
+            {/* <div className='container mobile_ads'>
 
                 <MobileAds />
 
-            </div>
+            </div> */}
 
 
 

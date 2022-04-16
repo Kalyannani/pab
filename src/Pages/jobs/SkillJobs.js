@@ -7,6 +7,7 @@ import Subfilter from './subfilter'
 import data from "../../JsonData/Skill.json"
 import { useLocation } from 'react-router-dom'
 import SearchFilter from './SearchFilter'
+import SkilljobAds from '../../ads/SkilljobAds'
 const SkillJobs = () => {
      const [searchTerm , setsearchTerm] = useState('')
 
@@ -354,8 +355,10 @@ const SkillJobs = () => {
 
 
                                 {/* ad */}
-                <div className='col-md-2 vgad'>
-                <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" />
+                <div className='col-md-2 text-center'>
+                {/* <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" /> */}
+                {/* <img src='images/ashok.jpeg' style={{width:"160px",height:"418px"}}/> */}
+                <SkilljobAds />
                 </div>
 
 

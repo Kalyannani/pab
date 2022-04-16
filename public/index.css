@@ -872,7 +872,7 @@ ul {
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: darken;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   padding-top: 150px;
   padding-bottom: 85px;
   width: 100% !important;
@@ -1270,6 +1270,7 @@ span {
 /* .........sec3 starts........ */
 #sec3 {
   padding: 40px 0 50px 0;
+  margin-bottom: 30px;
 }
 
 #sec3 .city {
@@ -3773,7 +3774,7 @@ button.alljob_buttons_sub:focus {
 /* section 2 */
 
 .company_jobs_section_2 {
-  /* padding: 50px 0px; */
+  padding: 0px 0px 30px;
   background: #ffff;
 }
 
@@ -4423,7 +4424,7 @@ button.alljob_buttons_sub:focus {
 /* sec 2 */
 
 .jobcategory_sec_2 {
-  margin: 40px 0px;
+  margin: 30px 0px;
   background: #ffff;
 }
 
@@ -18559,7 +18560,8 @@ width: 40% !important;
 }
 
 .B_input-group {
-  margin-top: 50px;
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 
 /* .name{
@@ -18577,6 +18579,11 @@ width: 40% !important;
   height: 80px;
   border: 2px solid #c5bebe;
   border-radius: 10px;
+}
+
+.home_banner4
+{
+  margin-bottom: 30px;
 }
 
 
@@ -18863,10 +18870,10 @@ width: 40% !important;
   
 }
 
-@media screen and (min-width:1200px) {
+/* @media screen and (min-width:1200px) {
   .mobile_ads
   {
     display: none !important;
   }
-}
+} */
 

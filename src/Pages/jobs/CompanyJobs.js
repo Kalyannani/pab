@@ -8,6 +8,7 @@ import apiList from "../../lib/apiList";
 import Subfilter from './subfilter';
 import { useLocation} from 'react-router-dom'
 import SearchFilter from './SearchFilter';
+import CjobsAds from '../../ads/CjobsAds';
 const CompanyJobs = () => {
     const [searchTerm , setsearchTerm] = useState('')
     const location = useLocation();
@@ -232,6 +233,11 @@ const CompanyJobs = () => {
                 <div className='col-md-2 vgad'>
                 <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" />
                 </div> */}
+
+                <div className='col-md-2 text-center'>
+                    {/* <img src='images/ashok.jpeg' style={{width:"160px",height:"240px"}}/> */}
+                    <CjobsAds/>
+                </div>
 
 
 

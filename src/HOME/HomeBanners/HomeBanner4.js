@@ -3,7 +3,7 @@ import React from 'react'
 const HomeBanner4 = () => {
   return (
     <div>
-      <div className='container'>
+      <div className='container home_banner4'>
       <div className="row ">
         
       
@@ -13,7 +13,7 @@ const HomeBanner4 = () => {
                     <h6 className="B_ftext">Find Better & Faster with Monster Career Services
                       Call 1-800-4196666 now! (Toll-free)</h6>    
                    </div>
-                <div className="col-sm-6">
+                <div className="col-sm-6 m-auto">
                     <div className="B_input-group input-group">
                         <input type="tel" className="form-control" placeholder="Enter your Mobile no" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
                         <div className="input-group-append">

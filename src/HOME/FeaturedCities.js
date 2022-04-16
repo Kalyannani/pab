@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import FeaturedcityAds from '../ads/FeaturedcityAds'
 
  const FeaturedCities = () => {
     return (
@@ -9,6 +10,8 @@ import { Link } from 'react-router-dom'
     <h2 className="pb-2">Jobs By Locations</h2>
     <p className="pb-3">20+ Featured Cities Added Jobs</p>
     <div className="row mt-2">
+        <div className='col-lg-10'>
+            <div className='row'>
         <div className="col-lg-3 col-md-6 mb-4">
             <Link to={`/browsefilterlist?locate=hyderabad`}>
             <div className="card img-fluid city">
@@ -113,8 +116,16 @@ import { Link } from 'react-router-dom'
             </div>
             </Link>
         </div>
+        </div>
+        <Link to="/locationaljobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Locations</Link>
     </div>
-    <Link to="/locationaljobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Locations</Link>
+    
+    <div className='col-lg-2 text-center'>
+{/* <img src='images/ashok.jpeg' style={{width:"160px",height:"439px"}}/> */}
+<FeaturedcityAds/>
+</div>
+
+</div>
 </div>
 
 </div>

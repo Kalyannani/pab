@@ -6,6 +6,10 @@ import { useLocation } from 'react-router-dom'
 import axios from 'axios'
 import apiList from '../../lib/apiList'
 import SearchFilter from './SearchFilter'
+import CategoryJobAds from '../../ads/CategoryjobAds'
+
+
+
 const CategoryJobs = () => {
 
     const [searchTerm, setsearchTerm] = useState('')
@@ -539,6 +543,11 @@ const CategoryJobs = () => {
                 <div className='col-md-2 vgad'>
                 <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" />
                 </div> */}
+
+                <div className='col-md-2 text-center'>
+                    {/* <img src='images/ashok.jpeg' style={{width:"160px",height:"475px"}}/> */}
+                   <CategoryJobAds/>
+                </div>
 
 
 
