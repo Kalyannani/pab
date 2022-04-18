@@ -122,7 +122,7 @@ import FeaturedcityAds from '../ads/FeaturedcityAds'
     
     <div className='col-lg-2 text-center'>
 {/* <img src='images/ashok.jpeg' style={{width:"160px",height:"439px"}}/> */}
-{/* <FeaturedcityAds/> */}
+<FeaturedcityAds/>
 </div>
 
 </div>
