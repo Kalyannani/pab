@@ -791,7 +791,6 @@ const BrowseFilterList = () => {
 
 
 
-    </div>
   )
 }
 export default BrowseFilterList;
