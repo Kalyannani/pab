@@ -1326,8 +1326,6 @@ const StudentList = () => {
                           <a
                           onClick={()=>downloadReusme(applicant?.resume.url)}
                           class="download_box"
-                          data-tip
-                          data-for="registerTip"
                         >
                           <i class="fa fa-download student_icon_app"></i>
                         

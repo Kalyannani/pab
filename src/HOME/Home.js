@@ -278,6 +278,7 @@ const Home = () => {
 
                 <BannerAds />
 
+
             </div>
 
             {/* <div className='container mobile_ads'>
