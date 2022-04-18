@@ -24,6 +24,7 @@ import { TextField } from '@material-ui/core';
 // import skillsdata from '../JsonData/Skill.json';
 import skillsdata from '../../JsonData/Skill.json'
 import data from '../../JsonData/locations.json'
+import Browsead from '../../ads/Browsead'
 
 // import data from '../JsonData/locations.json'
 
@@ -477,7 +478,20 @@ const BrowseFilterList = () => {
                   <SalaryFilter salary={salary} setSalary={setSalary} />
                 </div>
               </div>
+
+
+              <Browsead />
+
+              <Browsead />
+
+              <Browsead />
+
+              <Browsead />
+
+              <Browsead />
             </div>
+
+
 
 
 
@@ -753,8 +767,21 @@ const BrowseFilterList = () => {
 
                             {/* ad */}
                             <div className='col-md-3 vgad'>
+
+                            <Browsead />
+
+                            <Browsead />
+
+                            <Browsead />
+
+                            <Browsead />
+
+                            <Browsead />
+                            </div>
+
                 {/* <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" /> */}
                 </div>
+
 
 
 

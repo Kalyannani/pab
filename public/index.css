@@ -18504,7 +18504,8 @@ width: 40% !important;
 
 
 .B_color1 {
-  background-color: rgb(166, 156, 235);
+  background-color: #270d44;
+  color: #fff;
 }
 
 /* .color1{
@@ -18532,6 +18533,7 @@ width: 40% !important;
   font-family: 'Times New Roman', Times, serif;
   font-size: 20px;
   margin-top: 20px;
+  color: #ffffff !important;
 }
 
 .B_text {
@@ -18549,7 +18551,7 @@ width: 40% !important;
 }
 
 .B_serach {
-  background-color: darkslateblue;
+  background-color: #270d44;
 }
 
 .B_ftext {
