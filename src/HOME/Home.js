@@ -83,9 +83,9 @@ const Home = () => {
     }
     console.log('keywordError', keywordError);
 
-    useEffect(() => {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }, [])
+    // useEffect(() => {
+    //     (window.adsbygoogle = window.adsbygoogle || []).push({});
+    // }, [])
 
     return (
         <div>
