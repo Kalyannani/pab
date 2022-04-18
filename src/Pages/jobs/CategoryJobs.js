@@ -546,7 +546,7 @@ const CategoryJobs = () => {
 
                 <div className='col-md-2 text-center'>
                     {/* <img src='images/ashok.jpeg' style={{width:"160px",height:"475px"}}/> */}
-                   {/* <CategoryJobAds/> */}
+                   <CategoryJobAds/>
                 </div>
 
 
