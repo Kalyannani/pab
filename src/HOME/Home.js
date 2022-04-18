@@ -28,10 +28,10 @@ import skillsdata from '../JsonData/Skill.json';
 import data from '../JsonData/locations.json'
 import BannerAds from '../ads/BannerAds';
 import MobileAds from '../ads/MobileAds'
-
+import { useMediaQuery } from 'react-responsive'
 
 const Home = () => {
-
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1200px)' })
     const [keyword, setKeyword] = useState("");
     const [qlocation, setQLocation] = useState("");
     const [keywordError, setKeywordError] = useState("");
@@ -210,7 +210,7 @@ const Home = () => {
 
             <div className='container mobile_ads'>
 
-                <MobileAds />
+                {isTabletOrMobile&& <MobileAds />}
 
             </div>
 
@@ -230,7 +230,7 @@ const Home = () => {
 
             <div className='container mobile_ads'>
 
-                <MobileAds />
+               {isTabletOrMobile&& <MobileAds />}
 
             </div>
 
@@ -246,7 +246,7 @@ const Home = () => {
 
             <div className='container mobile_ads'>
 
-                <MobileAds />
+               {isTabletOrMobile&& <MobileAds />}
 
             </div>
 
@@ -264,7 +264,7 @@ const Home = () => {
 
             <div className='container mobile_ads'>
 
-                <MobileAds />
+               {isTabletOrMobile&& <MobileAds />}
 
             </div>
 
@@ -283,7 +283,7 @@ const Home = () => {
 
             <div className='container mobile_ads'>
 
-                <MobileAds />
+               {isTabletOrMobile&& <MobileAds />}
 
             </div>
 
@@ -303,7 +303,7 @@ const Home = () => {
 
             <div className='container mobile_ads'>
 
-                <MobileAds />
+               {isTabletOrMobile&& <MobileAds />}
 
             </div>
 
