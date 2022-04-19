@@ -58,7 +58,7 @@ const Employer_Navbar = () => {
         </ul>
 
         <ul className="navbar-nav ml-auto">
-          <li>
+          {/* <li>
 
             <div className="notBtn position-relative">
               <div class="number">20</div>
@@ -68,7 +68,7 @@ const Employer_Navbar = () => {
                   {/* <div class="nothing">
                     <i class="fas fa-child stick"></i>
                     <div class="cent">Looks Like your all caught up!</div>
-                  </div> */}
+                  </div> *
                   <div class="conts">
                     <div class="secs ">
 
@@ -86,7 +86,7 @@ const Employer_Navbar = () => {
               </div>
             </div>
 
-          </li>
+          </li> */}
           <li className="nav-item dropdown profile_dropdown position-relative d-inline-block">
             <li className="nav-item">
               <a className=" font-weight-bold dropdown-toggle" id="a5" >

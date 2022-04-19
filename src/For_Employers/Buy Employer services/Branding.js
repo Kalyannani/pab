@@ -1,6 +1,38 @@
 import React from "react";
+import { useState, useCallback } from "react";
+import Modal from "react-modal";
 
 const Branding = () => {
+
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = useCallback(() => setIsOpen(true), []);
+  const closeModal = useCallback(() => setIsOpen(false), []);
+
+  // second moadl
+
+  const [isOpenSecond, setIsOpenSecond] = useState(false);
+  const openSecondModal = useCallback(() => setIsOpenSecond(true), []);
+  const closeSecondModal = useCallback(() => setIsOpenSecond(false), []);
+
+  // third modal
+  const [isOpenThird, setIsOpenThird] = useState(false);
+  const openThirdModal = useCallback(() => setIsOpenThird(true), []);
+  const closeThirdModal = useCallback(() => setIsOpenThird(false), []);
+
+  // Fourth-modal
+  const [isOpenFourth, setIsOpenFourth] = useState(false);
+  const openFourthModal = useCallback(() => setIsOpenFourth(true), []);
+  const closeFourthModal = useCallback(() => setIsOpenFourth(false), []);
+
+  // Fifth modal
+  const [isOpenFifth, setIsOpenFifth] = useState(false);
+  const openFifthModal = useCallback(() => setIsOpenFifth(true), []);
+  const closeFifthModal = useCallback(() => setIsOpenFifth(false), []);
+
+  // Sixth modal
+  const [isOpenSixth, setIsOpenSixth] = useState(false);
+  const openSixthModal = useCallback(() => setIsOpenSixth(true), []);
+  const closeSixthModal = useCallback(() => setIsOpenSixth(false), []);
   return (
     <>
       <div
@@ -9,7 +41,7 @@ const Branding = () => {
           <div className="branding_heading">
             <h3>BRANDING SOLUTIONS</h3>
             <p>
-              TimesJobs brings you the top in the industry branding solutions
+              PABJobs brings you the top in the industry branding solutions
               for your specialized hiring needs. Pull the most desired audience
               to attention with our carefully devised Visibility Services based
               on Candidates and Enterprise branding.
@@ -68,9 +100,20 @@ const Branding = () => {
                     </p>
                   </div>
                   <div className="text-left ml-3">
-                    <button className="buy_now_branding btn">
+                    <button className="buy_now_branding btn" onClick={openModal} >
                       View Sample
                     </button>
+                    <Modal
+                      contentLabel="My dialog"
+                      className="Brand-modal Brand-modal-color"
+                      overlayClassName="Brand-modal-overlay"
+                      closeTimeoutMS={500}
+                      isOpen={isOpen}
+                      onRequestClose={closeModal}
+                    >
+                      <i className="fas fa-times Brand-modal-Button Button_color" onClick={closeModal}></i>
+                      <img className="Brand-modal-img" src="Images/BrandAd.1.1.png" />
+                    </Modal>
                   </div>
                 </div>
               </div>
@@ -87,9 +130,20 @@ const Branding = () => {
                     </p>
                   </div>
                   <div className="text-center ml-3">
-                    <button className="buy_now_branding btn">
+                    <button className="buy_now_branding btn" onClick={openSecondModal}>
                       View Sample
                     </button>
+                    <Modal
+                      contentLabel="My dialog"
+                      className="Brand-modal"
+                      overlayClassName="Brand-modal-overlay"
+                      closeTimeoutMS={500}
+                      isOpen={isOpenSecond}
+                      onRequestClose={closeSecondModal}
+                    >
+                      <i className="fas fa-times Brand-modal-Button" onClick={closeSecondModal}></i>
+                      <img className="Brand-modal-img" src="Images/NewAds.1.png" />
+                    </Modal>
                   </div>
                 </div>
 
@@ -125,9 +179,20 @@ const Branding = () => {
                     </p>
                   </div>
                   <div className="text-left ml-3">
-                    <button className="buy_now_branding btn">
+                    <button className="buy_now_branding btn" onClick={openThirdModal}>
                       View Sample
                     </button>
+                    <Modal
+                      contentLabel="My dialog"
+                      className="Brand-modal Brand-modal-color3"
+                      overlayClassName="Brand-modal-overlay"
+                      closeTimeoutMS={500}
+                      isOpen={isOpenThird}
+                      onRequestClose={closeThirdModal}
+                    >
+                      <i className="fas fa-times Brand-modal-Button Button_color" onClick={closeThirdModal}></i>
+                      <img className="Brand-modal-img" src="Images/BrandAd.3.1.png" />
+                    </Modal>
                   </div>
                 </div>
               </div>
@@ -189,9 +254,20 @@ const Branding = () => {
                     </p>
                   </div>
                   <div className="text-left ml-3">
-                    <button className="buy_now_branding btn">
+                    <button className="buy_now_branding btn" onClick={openFourthModal} >
                       View Sample
                     </button>
+                    <Modal
+                      contentLabel="My dialog"
+                      className="Brand-modal Brand-modal-color1"
+                      overlayClassName="Brand-modal-overlay"
+                      closeTimeoutMS={500}
+                      isOpen={isOpenFourth}
+                      onRequestClose={closeFourthModal}
+                    >
+                      <i className="fas fa-times Brand-modal-Button Button_color" onClick={closeFourthModal}></i>
+                      <img className="Brand-modal-img" src="Images/BrandAd.2.png" />
+                    </Modal>
                   </div>
                 </div>
               </div>
@@ -208,9 +284,20 @@ const Branding = () => {
                     </p>
                   </div>
                   <div className="text-center ml-3">
-                    <button className="buy_now_branding btn">
+                    <button className="buy_now_branding btn" onClick={openFifthModal} >
                       View Sample
                     </button>
+                    <Modal
+                      contentLabel="My dialog"
+                      className="Brand-modal  Brand-modal-color2"
+                      overlayClassName="Brand-modal-overlay"
+                      closeTimeoutMS={500}
+                      isOpen={isOpenFifth}
+                      onRequestClose={closeFifthModal}
+                    >
+                      <i className="fas fa-times Brand-modal-Button Button_color" onClick={closeFifthModal}></i>
+                      <img className="Brand-modal-img" src="Images/BrandAd.5.png" />
+                    </Modal>
                   </div>
                 </div>
 
@@ -247,9 +334,20 @@ const Branding = () => {
                     </p>
                   </div>
                   <div className="text-left ml-3">
-                    <button className="buy_now_branding btn">
+                    <button className="buy_now_branding btn" onClick={openSixthModal} >
                       View Sample
                     </button>
+                    <Modal
+                      contentLabel="My dialog"
+                      className="Brand-modal"
+                      overlayClassName="Brand-modal-overlay"
+                      closeTimeoutMS={500}
+                      isOpen={isOpenSixth}
+                      onRequestClose={closeSixthModal}
+                    >
+                      <i className="fas fa-times Brand-modal-Button" onClick={closeSixthModal}></i>
+                      <img className="Brand-modal-img" src="Images/BrandAd.3.png" />
+                    </Modal>
                   </div>
                 </div>
               </div>
@@ -260,8 +358,8 @@ const Branding = () => {
               <h5>FOR ENQUIRIES CALL</h5>
             </div>
             <div className="contact_phone">
-              <span>CONTACT NO :9876543210</span>
-              <span>EMAIL : pabsolutions@gmail.com</span>
+              <span>TOLL FREE NUMBER : 1800 833 9448</span>
+              <span>EMAIL : pabsolutions09@gmail.com</span>
             </div>
           </div>
         </div>

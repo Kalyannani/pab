@@ -479,6 +479,16 @@ const BrowseFilterList = () => {
                 </div>
               </div>
 
+<div className='google_ads'>
+              <Browsead />
+
+              <Browsead />
+
+              <Browsead />
+
+              <Browsead />
+
+              <Browsead />
 
               <Browsead />
 
@@ -489,6 +499,8 @@ const BrowseFilterList = () => {
               <Browsead />
 
               <Browsead />
+
+              </div>
             </div>
 
 
@@ -500,9 +512,12 @@ const BrowseFilterList = () => {
                 <>
                   {
                     jobs.length > 0 ?
-                      jobs?.map((job) => {
+                      jobs?.map((job,index) => {
+
                         return (
-                         
+                            // index%3 === 0 ? '<Bannerads/> ' : ' ' 
+
+                  
                           <ul className="filter_list_job_post ">
                             <li>
                             <Link to={`/jobdetailes/${job._id}`}>
@@ -766,7 +781,7 @@ const BrowseFilterList = () => {
 
 
                             {/* ad */}
-                            <div className='col-md-3 vgad'>
+                            <div className='col-md-2 google_ads'>
 
                             <Browsead />
 
@@ -777,6 +792,17 @@ const BrowseFilterList = () => {
                             <Browsead />
 
                             <Browsead />
+
+                            <Browsead />
+
+                            <Browsead />
+
+                            <Browsead />
+
+                            <Browsead />
+
+                            <Browsead />
+                            
                             </div>
 
                 {/* <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" /> */}

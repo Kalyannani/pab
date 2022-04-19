@@ -27,7 +27,8 @@ const Footer = () => {
                   available on the site. Results can be filtered on work
                   experience, venue, from location, employer type, and date
                   range. */}
-                </p>
+                </p> 
+                <div className="mt-5" style={{fontSize:'15px'}}>Toll Free Number: <p  style={{fontSize:'20px'}}><b><i className="fas fa-phone pr-2"></i> 1800 833 9448 </b></p></div>
               </div>
               {
                 result?(
@@ -158,8 +159,13 @@ const Footer = () => {
                     <Link to='/fakejobalert'> Fraud Alert</Link> 
                   </li>
                 </ul>
+                
               </div>
+             
             </div>
+
+    
+            
             <div className="row crt"></div>
             <div className="copyright-option">
               <div className="row">

@@ -10,8 +10,8 @@ const HomeBanner4 = () => {
         <div className="col-sm-12">
             <div className="row B_serach">
                 <div className="col-sm-6">
-                    <h6 className="B_ftext">Find Better & Faster with Monster Career Services
-                      Call 1-800-4196666 now! (Toll-free)</h6>    
+                    <h6 className="B_ftext">Find Better & Faster with PAB jobs Career Services
+                      Call : 1800 833 9448 now! (Toll-free)</h6>    
                    </div>
                 <div className="col-sm-6 m-auto">
                     <div className="B_input-group input-group">
