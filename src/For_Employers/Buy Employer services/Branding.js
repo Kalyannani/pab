@@ -112,7 +112,7 @@ const Branding = () => {
                       onRequestClose={closeModal}
                     >
                       <i className="fas fa-times Brand-modal-Button Button_color" onClick={closeModal}></i>
-                      <img className="Brand-modal-img" src="Images/BrandAd.1.1.png" />
+                      <img className="Brand-modal-img" src="images/BrandAd.1.1.jpeg" />
                     </Modal>
                   </div>
                 </div>
@@ -142,7 +142,7 @@ const Branding = () => {
                       onRequestClose={closeSecondModal}
                     >
                       <i className="fas fa-times Brand-modal-Button" onClick={closeSecondModal}></i>
-                      <img className="Brand-modal-img" src="Images/NewAds.1.png" />
+                      <img className="Brand-modal-img" src="images/NewAds.1.png" />
                     </Modal>
                   </div>
                 </div>
@@ -191,7 +191,7 @@ const Branding = () => {
                       onRequestClose={closeThirdModal}
                     >
                       <i className="fas fa-times Brand-modal-Button Button_color" onClick={closeThirdModal}></i>
-                      <img className="Brand-modal-img" src="Images/BrandAd.3.1.png" />
+                      <img className="Brand-modal-img" src="images/BrandAd.3.1.png" />
                     </Modal>
                   </div>
                 </div>
@@ -266,7 +266,7 @@ const Branding = () => {
                       onRequestClose={closeFourthModal}
                     >
                       <i className="fas fa-times Brand-modal-Button Button_color" onClick={closeFourthModal}></i>
-                      <img className="Brand-modal-img" src="Images/BrandAd.2.png" />
+                      <img className="Brand-modal-img" src="images/BrandAd.2.png" />
                     </Modal>
                   </div>
                 </div>
@@ -296,7 +296,7 @@ const Branding = () => {
                       onRequestClose={closeFifthModal}
                     >
                       <i className="fas fa-times Brand-modal-Button Button_color" onClick={closeFifthModal}></i>
-                      <img className="Brand-modal-img" src="Images/BrandAd.5.png" />
+                      <img className="Brand-modal-img" src="images/BrandAd.5.png" />
                     </Modal>
                   </div>
                 </div>
@@ -346,7 +346,7 @@ const Branding = () => {
                       onRequestClose={closeSixthModal}
                     >
                       <i className="fas fa-times Brand-modal-Button" onClick={closeSixthModal}></i>
-                      <img className="Brand-modal-img" src="Images/BrandAd.3.png" />
+                      <img className="Brand-modal-img" src="images/BrandAd.3.png" />
                     </Modal>
                   </div>
                 </div>

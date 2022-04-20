@@ -23,19 +23,19 @@ import NoticePerioddata from '../../JsonData/Noticeperiod.json'
 
 const MyResume = () => {
   const [file, setFile] = useState("");
-  const [resume,setResume] = useState("")
+  const [resume, setResume] = useState("")
   const dispatch = useDispatch();
-  const [projectType, setProjectType] = useState(true);
+  const [projectType, setProjectType] = useState(false);
   const [progressBar, setProgressBar] = useState(0);
   const [currentcompany, setCurrentcompany] = useState(false);
-  const [modalData,setModalData] = useState()
+  const [modalData, setModalData] = useState()
 
 
   const currentcompany_yesButton = () => {
     setCurrentcompany(true);
     setEmployment({
       ...employment,
-      startYear:"",
+      startYear: "",
       endYear: new Date()
     })
   };
@@ -44,27 +44,45 @@ const MyResume = () => {
     setCurrentcompany(false);
     setEmployment({
       ...employment,
-      startYear:"",
-      endYear:""
+      startYear: "",
+      endYear: ""
     })
   };
-  const InprogressHandle =()=>{
+
+  const projectType_inprogress = () => {
+    setProject({
+      ...project,
+      ProjectStartDate: "",
+      ProjectWorkTill: new Date()
+    })
+  };
+
+  const projectType_finished = () => {
+    setProjectType(false);
+    setProject({
+      ...project,
+      ProjectStartDate: "",
+      ProjectWorkTill: ""
+    })
+  };
+
+  const InprogressHandle = () => {
     setProjectType(!projectType)
     setProject({
       ...project,
-      ProjectStartDate:"",
+      ProjectStartDate: "",
       ProjectWorkTill: new Date()
     })
   }
 
-const FinishedProjectHandle=()=>{
-  setProjectType(!projectType)
+  const FinishedProjectHandle = () => {
+    setProjectType(!projectType)
     setProject({
       ...project,
-      ProjectStartDate:"",
+      ProjectStartDate: "",
       ProjectWorkTill: ""
     })
-}
+  }
   const [profile, setProfile] = useState({
     requiredItem: 0,
     name: "",
@@ -78,7 +96,9 @@ const FinishedProjectHandle=()=>{
     skills: [],
     employment: [],
     education: [],
-    project:[],
+    project: [],
+    workSample:[],
+    presentation:[],
     personaldetails: {
       dateofbirth: "",
       address: "",
@@ -120,14 +140,32 @@ const FinishedProjectHandle=()=>{
 
   const [project, setProject] = useState([
     {
-      ProjectTitle:"",
-      ProjectClient:"",
-      ProjectDescription:"",
-      ProjectStartDate:"",
-      ProjectWorkTill:"Present"
+      ProjectTitle: "",
+      ProjectClient: "",
+      ProjectDescription: "",
+      ProjectStartDate: "",
+      ProjectWorkTill: "Present"
     }
   ])
-  
+
+  const [workSample,setWorkSample] = useState([
+    {
+      Work_Title:"",
+      Work_URL:"",
+      Work_Duration_From:"",
+      Work_Duration_To:"",
+      Work_Description:""
+    }
+  ])
+
+  const [presentation,setPresentation] = useState ([
+    {
+      Presentation_Title:'',
+      Presentation_URL:'',
+      Presentation_Description:''
+    }
+  ])
+
   const formHandling = (e) => {
     setProfile({
       ...profile,
@@ -153,6 +191,7 @@ const FinishedProjectHandle=()=>{
     })
   }
 
+  //onChange employment
   const empHandling = (e) => {
     setEmployment({
       ...employment,
@@ -160,6 +199,7 @@ const FinishedProjectHandle=()=>{
     })
   }
 
+  //onChange education
   const eduHandling = (e) => {
     setEducation({
       ...education,
@@ -167,13 +207,31 @@ const FinishedProjectHandle=()=>{
     })
   }
 
-  console.log(project)
-   const projectHandling = (e)=>{
+
+  //onChange Project
+  const projectHandling = (e) => {
     setProject({
       ...project,
       [e.target.name]: e.target.value,
     })
-   } 
+  }
+
+    //onChange workSample
+    const workSampleHandling = (e) => {
+      setWorkSample({
+        ...workSample,
+        [e.target.name]: e.target.value,
+      })
+    }
+
+      //onChange Presentation
+  const presentationHandling = (e) => {
+    setPresentation({
+      ...presentation,
+      [e.target.name]: e.target.value,
+    })
+  }
+
   const handlePersonalDetails = (e) => {
     e.preventDefault()
     axios
@@ -192,89 +250,210 @@ const FinishedProjectHandle=()=>{
       });
   };
 
-  const handleEmployment = (e,id) => {
+
+  //employement submit
+  const handleEmployment = (e, id) => {
     e.preventDefault()
-    if(id){
-      axios.put(`${apiList.user}/${id}`, employment,{
+    if (id) {
+      axios.put(`${apiList.user}/${id}/employment`, employment, {
         headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              }
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
       }).then((response) => {
         console.log(response.data)
         getData();
       })
-      .catch((err) => {
+        .catch((err) => {
 
-        console.log(err.response);
-      });
+          console.log(err.response);
+        });
     }
-    else{
-       let updatedDetails = {
-      ...profile,
-      employment: [...profile.employment, employment]
-    }
-    axios
-      .put(apiList.user, updatedDetails, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((response) => {
-        console.log(response.data)
-        getData();
-      })
-      .catch((err) => {
+    else {
+      let updatedDetails = {
+        ...profile,
+        employment: [...profile.employment, employment]
+      }
+      axios
+        .put(apiList.user, updatedDetails, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data)
+          getData();
+        })
+        .catch((err) => {
 
-        console.log(err.response);
-      });
+          console.log(err.response);
+        });
     }
-   
+
   };
 
-  const handleEducation = (e) => {
+
+  //education submit
+
+  const handleEducation = (e, id) => {
     e.preventDefault()
-    let updatedDetails = {
-      ...profile,
-      education: [...profile.education, education]
-    }
-    axios
-      .put(apiList.user, updatedDetails, {
+    if (id) {
+      axios.put(`${apiList.user}/${id}/education`, education, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((response) => {
+        }
+      }).then((response) => {
         console.log(response.data)
         getData();
       })
-      .catch((err) => {
+        .catch((err) => {
 
-        console.log(err.response);
-      });
-  }
-
-  const handleProject = (e) => {
-    e.preventDefault()
-    console.log(project)
-    let updatedDetails = {
-      ...profile,
-      project: [...profile.project, project]
+          console.log(err.response);
+        });
     }
-    axios
-      .put(apiList.user, updatedDetails, {
+    else {
+      let updatedDetails = {
+        ...profile,
+        education: [...profile.education, education]
+      }
+      axios
+        .put(apiList.user, updatedDetails, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data)
+          getData();
+        })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    }
+
+  };
+
+
+  //Projects submit
+  const handleProject = (e, id) => {
+    e.preventDefault()
+    if (id) {
+      axios.put(`${apiList.user}/${id}/project`, project, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((response) => {
+        }
+      }).then((response) => {
         console.log(response.data)
         getData();
       })
-      .catch((err) => {
+        .catch((err) => {
 
-        console.log(err.response);
-      });
-  }
+          console.log(err.response);
+        });
+    }
+    else {
+      let updatedDetails = {
+        ...profile,
+        project: [...profile.project, project]
+      }
+      axios
+        .put(apiList.user, updatedDetails, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data)
+          getData();
+        })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    }
+
+  };
+
+  //workSample submit
+  const handleworkSample = (e, id) => {
+    e.preventDefault()
+    if (id) {
+      axios.put(`${apiList.user}/${id}/workSample`, workSample, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        getData();
+      })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    } 
+    else {
+      let updatedDetails = {
+        ...profile,
+        workSample: [...profile.workSample, workSample]
+      }
+      axios
+        .put(apiList.user, updatedDetails, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data)
+          getData();
+        })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    }
+
+  };
+
+    //Presentation submit
+    const handlePresentation = (e, id) => {
+      e.preventDefault()
+      if (id) {
+        axios.put(`${apiList.user}/${id}/presentation`, presentation, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
+        }).then((response) => {
+          console.log(response.data)
+          getData();
+        })
+          .catch((err) => {
+  
+            console.log(err.response);
+          });
+      }
+      else {
+        let updatedDetails = {
+          ...profile,
+          presentation: [...profile.presentation, presentation]
+        }
+        axios
+          .put(apiList.user, updatedDetails, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          })
+          .then((response) => {
+            console.log(response.data)
+            getData();
+          })
+          .catch((err) => {
+  
+            console.log(err.response);
+          });
+      }
+  
+    };
+
 
   const handleUpdate = (e) => {
     e.preventDefault()
@@ -348,7 +527,8 @@ const FinishedProjectHandle=()=>{
       });
   };
 
-  const replaceModalItem=(id)=> {
+  // employe replace modal
+  const replaceModalItem = (id) => {
     console.log("working")
     setProfile({
       ...profile,
@@ -356,8 +536,58 @@ const FinishedProjectHandle=()=>{
     })
     setEmployment(profile.employment[id])
   }
-  const setInitialData = ()=>{
-    setEmployment( {
+
+
+
+  // education replace modal
+
+  const replaceEduModalItem = (id) => {
+    console.log("working")
+    setProfile({
+      ...profile,
+      requiredItem: id
+    })
+    setEducation(profile.education[id])
+  }
+
+  // Project replace modal
+
+  const replaceProjectModalItem = (id) => {
+    console.log("working")
+    setProfile({
+      ...profile,
+      requiredItem: id
+    })
+    setProject(profile.project[id])
+  }
+
+    // workSample replace modal
+
+    const replaceworkSampleModalItem = (id) => {
+      console.log("working")
+      setProfile({
+        ...profile,
+        requiredItem: id
+      })
+      setWorkSample(profile.workSample[id])
+    }
+
+      // presentation replace modal
+
+  const replacepresentationModalItem = (id) => {
+    console.log("working")
+    setProfile({
+      ...profile,
+      requiredItem: id
+    })
+    setPresentation(profile.presentation[id])
+  }
+
+
+
+  // employment Initial Data
+  const setInitialData = () => {
+    setEmployment({
       years: "",
       months: "",
       designation: [],
@@ -369,12 +599,59 @@ const FinishedProjectHandle=()=>{
     })
   }
 
-  // deleting the data
+
+  // education Initial Data
+  const setEducationInitialData = () => {
+    setEducation({
+      highestgraduation: "",
+      course: "",
+      specialization: "",
+      institute: "",
+      passedoutyear: "",
+      courseType: "",
+      marks: "",
+    })
+  }
+
+  // Project Initial Data
+  const setProjectInitialData = () => {
+    setProject({
+      ProjectTitle: "",
+      ProjectClient: "",
+      ProjectDescription: "",
+      ProjectStartDate: "",
+      ProjectWorkTill: ""
+    })
+  }
+
+    // work sample Initial Data
+    const setWorkSampleInitialData = () => {
+      setWorkSample({
+      Work_Title:'',
+      Work_URL:'',
+      Work_Duration_From:'',
+      Work_Duration_To:'',
+      Work_Description:''
+      })
+    }
+
+      // presentation Initial Data
+  const setpresentationInitialData = () => {
+    setPresentation({
+      Presentation_Title:'',
+      Presentation_URL:'',
+      Presentation_Description:''
+
+    })
+  }
+
+
+  // deleting employee  data
   const deletedata = (id) => {
     // e.preventDefault()
     console.log(localStorage.getItem("token"))
     axios
-      .delete(`${apiList.user}/${id}`, {
+      .delete(`${apiList.user}/${id}/employment`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -391,38 +668,131 @@ const FinishedProjectHandle=()=>{
       });
   };
 
-const imageonChangeHandling=(event)=>{
+  // deleting Education  data
+
+  const deleteEdudata = (id) => {
+    // e.preventDefault()
+    console.log(localStorage.getItem("token"))
+    axios
+      .delete(`${apiList.user}/${id}/education`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data)
+        console.log("funtion working")
+        toast.success(response.data.message)
+        getData();
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message)
+        console.log(err.response);
+      });
+  };
+
+
+  // deleting project data
+
+  const deleteProjectdata = (id) => {
+    // e.preventDefault()
+    console.log(localStorage.getItem("token"))
+    axios
+      .delete(`${apiList.user}/${id}/project`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data)
+        console.log("funtion working")
+        toast.success(response.data.message)
+        getData();
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message)
+        console.log(err.response);
+      });
+  };
+
+    // deleting workSample  data
+    const deleteworkSampledata = (id) => {
+      // e.preventDefault()
+      console.log(localStorage.getItem("token"))
+      axios
+        .delete(`${apiList.user}/${id}/workSample`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data)
+          console.log("funtion working")
+          toast.success(response.data.message)
+          getData();
+        })
+        .catch((err) => {
+          toast.error(err.response.data.message)
+          console.log(err.response);
+        });
+    };
+
+      // deleting presentation  data
+  const deletepresentationdata = (id) => {
+    // e.preventDefault()
+    console.log(localStorage.getItem("token"))
+    axios
+      .delete(`${apiList.user}/${id}/presentation`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data)
+        console.log("funtion working")
+        toast.success(response.data.message)
+        getData();
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message)
+        console.log(err.response);
+      });
+  };
+
+
+
+  const imageonChangeHandling = (event) => {
 
     setFile(event.target.files[0])
-  
-}
 
-const resumeonchangeHandling=(event)=>{
-  setResume(event.target.files[0])
-}
+  }
 
-const handleprofileUpload=()=>{
-  const data = new FormData();
-  console.log(file)
-  data.append("file", file);
-  axios.post(apiList.uploadProfileImage, data, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "multipart/form-data"
-    }
-  })
-    .then((response) => {
-      console.log(response.data.image);
-      setProfile({...profile,profileImage:response.data.image})
-      toast.success(response.data.message)
-        // getData();
+  const resumeonchangeHandling = (event) => {
+    setResume(event.target.files[0])
+  }
+
+  const handleprofileUpload = () => {
+    const data = new FormData();
+    console.log(file)
+    data.append("file", file);
+    axios.post(apiList.uploadProfileImage, data, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "multipart/form-data"
+      }
     })
-    .catch((err) => {
-      console.log(err.response);
-      toast.error(err.response.data.message)
-    });
-}
-  const handleresumeUpload=()=>{
+      .then((response) => {
+        console.log(response.data.image);
+        setProfile({ ...profile, profileImage: response.data.image })
+        toast.success(response.data.message)
+        // getData();
+      })
+      .catch((err) => {
+        console.log(err.response);
+        toast.error(err.response.data.message)
+      });
+  }
+  const handleresumeUpload = () => {
     const data = new FormData();
     console.log(resume)
     data.append("file", resume);
@@ -434,14 +804,16 @@ const handleprofileUpload=()=>{
     })
       .then((response) => {
         console.log(response.data);
-        setProfile({...profile,
-           resume:{
-          ...resume,
-          filename:response.data.image.filename,
-          url:response.data.image.url
-        }})
-          // getData();
-      
+        setProfile({
+          ...profile,
+          resume: {
+            ...resume,
+            filename: response.data.image.filename,
+            url: response.data.image.url
+          }
+        })
+        // getData();
+
       })
       .catch((err) => {
         console.log(err.response);
@@ -449,13 +821,13 @@ const handleprofileUpload=()=>{
       });
   }
 
-useEffect(()=>{
-  handleprofileUpload();
-},[file])
+  useEffect(() => {
+    handleprofileUpload();
+  }, [file])
 
-useEffect(()=>{
-  handleresumeUpload()
-},[resume])
+  useEffect(() => {
+    handleresumeUpload()
+  }, [resume])
 
   return (
     <div>
@@ -465,26 +837,28 @@ useEffect(()=>{
             <div className="col-lg-9">
               <div className="container">
                 <div className="row">
-                  <div className="col-lg-2 ">
+                  <div className="col-lg-3">
                     <div className="canditate-des">
+                    <label for="file">
                       <p href="#">
+                      
                         <img
                           className="resume_img img-responsive"
-                          src={profile.profileImage? profile.profileImage :`images/girl_avtar.png`}
+                          src={profile.profileImage ? profile.profileImage : `images/girl_avtar.png`}
                         />
                       </p>
-                      <label for="file">
+                      
                         <i class="fas fa-camera img_pencil img_edit"></i>
                       </label>
-                      <input type="file" 
-                      id="file" 
-                      style={{ display: "none" }} 
-                      onChange={(event) =>imageonChangeHandling(event)}
+                      <input type="file"
+                        id="file"
+                        style={{ display: "none" }}
+                        onChange={(event) => imageonChangeHandling(event)}
                       />
-                      
+
                     </div>
                   </div>
-                  <div className="col-lg-10">
+                  <div className="col-lg-8">
                     <h4 className="resume_title">
                       {profile.name}{" "}
                       <Link to="/myprofile">
@@ -535,16 +909,19 @@ useEffect(()=>{
 
                       </div>
                     </div>
-                    <div className="progress">
+
+
+                  <div className="progress resume_progress">
                       <div
-                        className="progress-bar"
+                        className="progress-bar progress-bar-striped progress-bar-animated"
                         role="progressbar"
-                        style={{ width: progressBar+"%" }}
+                        style={{ width: progressBar + "%" }}
                         aria-valuenow={progressBar}
                         aria-valuemin={0}
                         aria-valuemax={100}
                       />
                     </div>
+                    <div className="text-right">{progressBar}%</div>
 
 
                     {/* <div className="progress-box m-t10">
@@ -867,30 +1244,30 @@ useEffect(()=>{
                                 fullWidth
                               /> */}
                               <Autocomplete
-                                    id="combo-box-demo"
-                                    multiple
-                                    value={profile.skills}
-                                    options={Skillsdata.map((res)=>{
-                                    return res.Skill
-                                    })}
-                                    getOptionLabel={(option) => option}
-                                    onChange={(e, value) => {
-                                    setProfile({
-                                        ...profile,
-                                        skills:value
-                                    });
-                                    }}
-                                    
-                                    renderInput={(params) => (
-                                    <TextField
-                                        {...params}
-                                        name="multiple"
-                                        label="Enter your current location"
-                                        variant="outlined"
-                                        fullWidth
-                                    />
-                                    )}
-                                />
+                                id="combo-box-demo"
+                                multiple
+                                value={profile.skills}
+                                options={Skillsdata.map((res) => {
+                                  return res.Skill
+                                })}
+                                getOptionLabel={(option) => option}
+                                onChange={(e, value) => {
+                                  setProfile({
+                                    ...profile,
+                                    skills: value
+                                  });
+                                }}
+
+                                renderInput={(params) => (
+                                  <TextField
+                                    {...params}
+                                    name="multiple"
+                                    label="Enter your current location"
+                                    variant="outlined"
+                                    fullWidth
+                                  />
+                                )}
+                              />
 
                             </div>
                           </form>
@@ -926,6 +1303,8 @@ useEffect(()=>{
 
 
 
+              {/* employement */}
+
               <div className="content">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">Employment</h5>
@@ -934,7 +1313,7 @@ useEffect(()=>{
                     className="site_button_resume  float-right"
                     data-toggle="modal"
                     data-target="#employ"
-                    onClick={()=>setInitialData()}
+                    onClick={() => setInitialData()}
                   >
                     {" "}
                     <span id="Education">
@@ -942,57 +1321,64 @@ useEffect(()=>{
                     </span>
                   </a>
                 </div>
-                {
-                  profile?.employment?
-                  profile?.employment?.map((employment,index) => {
-                    return (<>
-                      <h5 className="junior_edit">
-                        {employment?.designation}{" "}
-                        <a href="#" data-toggle="modal" data-target="#employ" >
-                          {" "}
-                          <i className="fas fa-pencil-alt pencil_clearfix pencil"
-                          onClick={()=>replaceModalItem(index)}
-                          ></i>
-                        </a>
-                        <a href="#" data-toggle="modal"  onClick={()=>deletedata(employment._id)}>
 
-                          {" "}
-                        <i class="far fa-trash-alt remove" ></i>
-                        </a>
-                      </h5>
-                      <p className="job_usa">{employment?.organization}</p>
-                      <p className="job_usa">
-                        {moment(employment?.startYear).format('YYYY MMMM')} to {" "}
-                        {
-                          moment(employment?.endYear).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM')?
-                          "Present" :moment(employment?.endYear).format('YYYY MMMM')
-                        }
-                        ({
-                          moment(employment?.endYear).diff(moment(employment?.startYear), "years") 
-                        }
-                        {
-                          moment(employment?.endYear).diff(moment(employment?.startYear), "years")=== 1 ? " Year": " Years"
-                        }
-                         {" "}-{" "}
-                        {
-                          moment(employment?.endYear).diff(moment(employment?.startYear).add(moment(employment?.endYear).diff(moment(employment?.startYear), 'year'), 'years'), 'months')
-                        } 
-                        {
-                          moment(employment?.endYear).diff(moment(employment?.startYear).add(moment(employment?.endYear).diff(moment(employment?.startYear), 'year'), 'years'), 'months') === 1 ?
-                          " Month": " Months"
-                        }
-                        )
-                      </p>
-                      <p className="job_usa" >
-                        Available to join in {employment?.noticePeriod}
-                      </p>
-                      <p className="job_usa">{employment?.designation}</p>
-                    </>)
-                  }):null
+
+                {
+                  profile?.employment ?
+                    profile?.employment?.map((employment, index) => {
+                      return (<>
+                        <h5 className="junior_edit">
+                          {employment?.designation}{" "}
+                          <a href="#" data-toggle="modal" data-target="#employ" >
+                            {" "}
+                            <i className="fas fa-pencil-alt pencil_clearfix pencil"
+                              onClick={() => replaceModalItem(index)}
+                            ></i>
+                          </a>
+                          <a href="#" data-toggle="modal" onClick={() => deletedata(employment._id)}>
+
+                            {" "}
+                            <i class="far fa-trash-alt remove" ></i>
+                          </a>
+                        </h5>
+                        <p className="job_usa">{employment?.organization}</p>
+                        <p className="job_usa">
+                          {moment(employment?.startYear).format('YYYY MMMM')} to {" "}
+                          {
+                            moment(employment?.endYear).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM') ?
+                              "Present" : moment(employment?.endYear).format('YYYY MMMM')
+                          }
+                          ({
+                            moment(employment?.endYear).diff(moment(employment?.startYear), "years")
+                          }
+                          {
+                            moment(employment?.endYear).diff(moment(employment?.startYear), "years") === 1 ? " Year" : " Years"
+                          }
+                          {" "}-{" "}
+                          {
+                            moment(employment?.endYear).diff(moment(employment?.startYear).add(moment(employment?.endYear).diff(moment(employment?.startYear), 'year'), 'years'), 'months')
+                          }
+                          {
+                            moment(employment?.endYear).diff(moment(employment?.startYear).add(moment(employment?.endYear).diff(moment(employment?.startYear), 'year'), 'years'), 'months') === 1 ?
+                              " Month" : " Months"
+                          }
+                          )
+                        </p>
+                        <p className="job_usa" >
+                          Available to join in {employment?.noticePeriod}
+                        </p>
+                        <p className="job_usa">{employment?.designation}</p>
+                      </>)
+                    }) : null
                 }
+
+
+
                 <div >
 
                 </div>
+
+
                 <div
                   className="modal fade"
                   id="employ"
@@ -1063,32 +1449,32 @@ useEffect(()=>{
                                     placeholder="Your Designation"
                                     onChange={(e) => empHandling(e)}
                                   /> */}
-                                     <Autocomplete
-                                                    id="combo-box-demo"
-                                                    single
-                                                    value={
-                                                      employment?.designation?employment.designation:null}
-                                                    options={Designationdata.map((res)=>{
-                                                    return res.Designation
-                                                    })}
-                                                    getOptionLabel={(option) => option}
-                                                    onChange={(e, value) => {
-                                                    setEmployment({
-                                                        ...employment,
-                                                        designation:value
-                                                    });
-                                                    }}
-                                                    
-                                                    renderInput={(params) => (
-                                                    <TextField
-                                                        {...params}
-                                                        name="single"
-                                                        label="Present Designation"
-                                                        variant="outlined"
-                                                        fullWidth
-                                                    />
-                                                    )}
-                                                />
+                                  <Autocomplete
+                                    id="combo-box-demo"
+                                    single
+                                    value={
+                                      employment?.designation ? employment.designation : null}
+                                    options={Designationdata.map((res) => {
+                                      return res.Designation
+                                    })}
+                                    getOptionLabel={(option) => option}
+                                    onChange={(e, value) => {
+                                      setEmployment({
+                                        ...employment,
+                                        designation: value
+                                      });
+                                    }}
+
+                                    renderInput={(params) => (
+                                      <TextField
+                                        {...params}
+                                        name="single"
+                                        label="Present Designation"
+                                        variant="outlined"
+                                        fullWidth
+                                      />
+                                    )}
+                                  />
                                 </div>
                               </div>
                               <div className="col-lg-12">
@@ -1102,31 +1488,31 @@ useEffect(()=>{
                                     placeholder="Your Organization"
                                   /> */}
                                   <Autocomplete
-                                                    id="combo-box-demo"
-                                                    single
-                                                    value={
-                                                      employment?.organization?employment.organization:null}
-                                                    options={Categorydata.map((res)=>{
-                                                    return res.Category
-                                                    })}
-                                                    getOptionLabel={(option) => option}
-                                                    onChange={(e, value) => {
-                                                    setEmployment({
-                                                        ...employment,
-                                                        organization:value
-                                                    });
-                                                    }}
-                                                    
-                                                    renderInput={(params) => (
-                                                    <TextField
-                                                        {...params}
-                                                        name="single"
-                                                        label="Present Organization Category"
-                                                        variant="outlined"
-                                                        fullWidth
-                                                    />
-                                                    )}
-                                                />
+                                    id="combo-box-demo"
+                                    single
+                                    value={
+                                      employment?.organization ? employment.organization : null}
+                                    options={Categorydata.map((res) => {
+                                      return res.Category
+                                    })}
+                                    getOptionLabel={(option) => option}
+                                    onChange={(e, value) => {
+                                      setEmployment({
+                                        ...employment,
+                                        organization: value
+                                      });
+                                    }}
+
+                                    renderInput={(params) => (
+                                      <TextField
+                                        {...params}
+                                        name="single"
+                                        label="Present Organization Category"
+                                        variant="outlined"
+                                        fullWidth
+                                      />
+                                    )}
+                                  />
                                 </div>
                               </div>
                               <div className="col-lg-12">
@@ -1140,7 +1526,7 @@ useEffect(()=>{
                                       name="This_Is_Your_Current_Company"
                                       id="inlineRadio1"
                                       value="No"
-                                     onClick={() => currentcompany_NoButton()}
+                                      onClick={() => currentcompany_NoButton()}
                                     />
                                     <label
                                       className="form-check-label"
@@ -1167,69 +1553,71 @@ useEffect(()=>{
                                   </div>
                                 </div>
                               </div>
+
+
                               <div>
                                 {currentcompany ? (
 
-                                <div className="row container">
-                                <div className=" col-lg-6 col-md-6">
-                                  <div className="form-group">
-                                    <label> Started Working From</label>
-                                    <input
-                                      type="date"
-                                      className="form_control"
-                                      placeholder="Years"
-                                      name="startYear"
-                                      value={moment(employment?.startYear).format("YYYY-MM-DD")}
-                                      onChange={(e)=>empHandling(e)}
-                                    />
-                                  </div>
-                                </div>
-                                <div className=" col-lg-6 col-md-6">
-                                  <div className="form-group">
-                                    <label> Working Till</label>
-                                    <input
-                                      type="text"
-                                      className="form_control"
-                                      placeholder="Years"
-                                      name="endYear"
-                                      value="Present"
-                                      disabled
-                                    />
-                                  </div>
-                                </div>
-                                </div>
-                          ):(
-                                <div className="row container">
-                                  <div className=" col-lg-6 col-md-6">
-                                    <div className="form-group">
-                                      <label> Started Working From</label>
-                                      <input
-                                        type="date"
-                                        className="form_control"
-                                        placeholder="Years"
-                                        name="startYear"
-                                        value={moment(employment?.startYear).format("YYYY-MM-DD")}
-                                        onChange={(e) => empHandling(e)}
-
-                                      />
+                                  <div className="row container">
+                                    <div className=" col-lg-6 col-md-6">
+                                      <div className="form-group">
+                                        <label> Started Working From</label>
+                                        <input
+                                          type="date"
+                                          className="form_control"
+                                          placeholder="Years"
+                                          name="startYear"
+                                          value={moment(employment?.startYear).format("YYYY-MM-DD")}
+                                          onChange={(e) => empHandling(e)}
+                                        />
+                                      </div>
+                                    </div>
+                                    <div className=" col-lg-6 col-md-6">
+                                      <div className="form-group">
+                                        <label> Working Till</label>
+                                        <input
+                                          type="text"
+                                          className="form_control"
+                                          placeholder="Years"
+                                          name="endYear"
+                                          value="Present"
+                                          disabled
+                                        />
+                                      </div>
                                     </div>
                                   </div>
-                                  <div className=" col-lg-6 col-md-6">
-                                    <div className="form-group">
-                                      <label> Worked Till</label>
-                                      <input
-                                        name="endYear"
-                                        type="date"
-                                        className="form_control"
-                                        placeholder="Years"
-                                        value={moment(employment?.endYear).format("YYYY-MM-DD")}
-                                        onChange={(e) => empHandling(e)}
+                                ) : (
+                                  <div className="row container">
+                                    <div className=" col-lg-6 col-md-6">
+                                      <div className="form-group">
+                                        <label> Started Working From</label>
+                                        <input
+                                          type="date"
+                                          className="form_control"
+                                          placeholder="Years"
+                                          name="startYear"
+                                          value={moment(employment?.startYear).format("YYYY-MM-DD")}
+                                          onChange={(e) => empHandling(e)}
 
-                                      />
+                                        />
+                                      </div>
+                                    </div>
+                                    <div className=" col-lg-6 col-md-6">
+                                      <div className="form-group">
+                                        <label> Worked Till</label>
+                                        <input
+                                          name="endYear"
+                                          type="date"
+                                          className="form_control"
+                                          placeholder="Years"
+                                          value={moment(employment?.endYear).format("YYYY-MM-DD")}
+                                          onChange={(e) => empHandling(e)}
+
+                                        />
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
-                                 )} 
+                                )}
                               </div>
 
                               <div className="col-lg-12">
@@ -1249,50 +1637,50 @@ useEffect(()=>{
                               </div>
                               {
                                 currentcompany ?
-                                <div className="col-lg-12">
-                                <div className="form-group">
-                                  <label> Notice Period</label>
-                                  {/* <input
+                                  <div className="col-lg-12">
+                                    <div className="form-group">
+                                      <label> Notice Period</label>
+                                      {/* <input
                                     name="noticePeriod"
                                     onChange={(e) => empHandling(e)}
                                     type="text"
                                     className="form_control"
                                     placeholder="Enter Notice Period"
                                   /> */}
-                                  <Autocomplete
-                                    id="combo-box-demo"
-                                    single
-                                    value={employment?.noticePeriod}
-                                    options={NoticePerioddata.map((res)=>{
-                                    return res.noticeperiod
-                                    })}
-                                    getOptionLabel={(option) => option}
-                                    onChange={(e, value) => {
-                                    setEmployment({
-                                        ...employment,
-                                        noticePeriod:value
-                                    });
-                                    }}
-                                    
-                                    renderInput={(params) => (
-                                    <TextField
-                                        {...params}
-                                        name="single"
-                                        label="Your Notice Period"
-                                        variant="outlined"
-                                        fullWidth
-                                    />
-                                    )}
-                                    />
-                                </div>
-                              </div>:null
+                                      <Autocomplete
+                                        id="combo-box-demo"
+                                        single
+                                        value={employment?.noticePeriod}
+                                        options={NoticePerioddata.map((res) => {
+                                          return res.noticeperiod
+                                        })}
+                                        getOptionLabel={(option) => option}
+                                        onChange={(e, value) => {
+                                          setEmployment({
+                                            ...employment,
+                                            noticePeriod: value
+                                          });
+                                        }}
+
+                                        renderInput={(params) => (
+                                          <TextField
+                                            {...params}
+                                            name="single"
+                                            label="Your Notice Period"
+                                            variant="outlined"
+                                            fullWidth
+                                          />
+                                        )}
+                                      />
+                                    </div>
+                                  </div> : null
                               }
-                              
+
                             </div>
                           </form>
                         </div>
                         <div className="modal-footer">
-                          <button type="button" className="update" onClick={(e) => handleEmployment(e,employment._id)}>
+                          <button type="button" className="update" onClick={(e) => handleEmployment(e, employment._id)}>
                             Save changes
                           </button>
                         </div>
@@ -1302,6 +1690,11 @@ useEffect(()=>{
                 </div>
               </div>
 
+              {/* employment */}
+
+
+              {/* education */}
+
               <div className="content">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">Education</h5>
@@ -1310,18 +1703,24 @@ useEffect(()=>{
                     className="site_button_resume  float-right"
                     data-toggle="modal"
                     data-target="#study"
+                    onClick={() => setEducationInitialData()}
                   >
                     {" "}
                     <span>
                       <i className="fas fa-pencil-alt pencil_clearfix"></i>
                     </span>
                   </a>
+
                 </div>
+
+
                 <p className="job_usa">
                   Mention your employment details including your current and
                   previous company work experience
                 </p>
-                <div className="education_content_1" id="Project">
+
+
+                {/* <div className="education_content_1" id="Project">
                   {
                     profile.education.map((edu) => {
                       return (<><h5 className="education_heading">
@@ -1337,7 +1736,34 @@ useEffect(()=>{
 
                     })
                   }
-                </div>
+                </div> */}
+
+                {
+                  profile?.education ?
+                    profile?.education?.map((education, inde) => {
+                      return (<>
+                        <h5 className="junior_edit">
+                          {education?.highestgraduation} - {education?.course}{" "}
+                          <a href="#" data-toggle="modal" data-target="#study" >
+                            {" "}
+                            <i className="fas fa-pencil-alt pencil_clearfix pencil"
+                              onClick={() => replaceEduModalItem(inde)}
+                            ></i>
+                          </a>
+                          <a href="#" data-toggle="modal" onClick={() => deleteEdudata(education._id)}>
+
+                            {" "}
+                            <i class="far fa-trash-alt remove" ></i>
+                          </a>
+                        </h5>
+
+                        <p className="eductaion_year">{education?.institute}</p>
+                        <p className="eductaion_year">{education?.passedoutyear}({education?.courseType})</p>
+
+
+                      </>)
+                    }) : null
+                }
 
 
 
@@ -1378,6 +1804,7 @@ useEffect(()=>{
                                       className="form_control"
                                       name="highestgraduation"
                                       onChange={(e) => eduHandling(e)}
+                                      value={education.highestgraduation}
                                     >
                                       <option hidden>
                                         {" "}
@@ -1410,6 +1837,7 @@ useEffect(()=>{
                                           placeholder="Enter Your postgraduation Course"
                                           id="phdcourse"
                                           className="form_control"
+                                          value={education.course}
                                         />
                                       </div>
                                     </div>
@@ -1424,6 +1852,7 @@ useEffect(()=>{
                                           id="university"
                                           aria-Describedby="emailHelp"
                                           placeholder="Enter Your Specialization"
+                                          value={education.specialization}
                                         />
                                       </div>
                                     </div>
@@ -1438,6 +1867,7 @@ useEffect(()=>{
                                           id="university"
                                           aria-Describedby="emailHelp"
                                           placeholder="Select University Name"
+                                          value={education.institute}
                                         />
                                       </div>
                                     </div>
@@ -1451,7 +1881,8 @@ useEffect(()=>{
                                             className="form-check-input"
                                             type="radio"
                                             id="inlineRadio1"
-                                            value="Full time"
+                                            // value="Full time"
+                                            value={education.courseType}
                                           />
                                           <label
                                             className="form-check-label"
@@ -1467,7 +1898,8 @@ useEffect(()=>{
                                             className="form-check-input"
                                             type="radio"
                                             id="inlineRadio2"
-                                            value="Part Time"
+                                            // value="Part Time"
+                                            value={education.courseType}
                                           />
                                           <label
                                             className="form-check-label"
@@ -1483,7 +1915,8 @@ useEffect(()=>{
                                             className="form-check-input"
                                             type="radio"
                                             id="inlineRadio3"
-                                            value=" Correspondence/Distance Learning"
+                                            // value=" Correspondence/Distance Learning"
+                                            value={education.courseType}
                                           />
                                           <label
                                             className="form-check-label"
@@ -1505,6 +1938,7 @@ useEffect(()=>{
                                           id="university"
                                           aria-Describedby="emailHelp"
                                           placeholder="Enter Passed Out Year"
+                                          value={education.passedoutyear}
                                         />
                                       </div>
                                     </div>
@@ -1521,6 +1955,7 @@ useEffect(()=>{
                                           placeholder="Enter your Marks in Percentage or CGPA"
                                           id="grading"
                                           className="form_control"
+                                          value={education.marks}
                                         />
                                       </div>
                                     </div>
@@ -1531,7 +1966,7 @@ useEffect(()=>{
                           </form>
                         </div>
                         <div className="modal-footer">
-                          <button type="button" className="update" onClick={(e) => handleEducation(e)}>
+                          <button type="button" className="update" onClick={(e) => handleEducation(e, education._id)}>
                             Save changes
                           </button>
                         </div>
@@ -1541,9 +1976,11 @@ useEffect(()=>{
                 </div>
               </div>
 
+              {/* Education */}
 
 
-              {/* project        */}
+
+              {/* project */}
               <div className="content">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">Projects</h5>
@@ -1552,6 +1989,7 @@ useEffect(()=>{
                     className="site_button_resume  float-right"
                     data-toggle="modal"
                     data-target="#projectsResume"
+                    onClick={() => setProjectInitialData()}
                   >
                     {" "}
                     <span>
@@ -1559,7 +1997,9 @@ useEffect(()=>{
                     </span>{" "}
                   </a>
                 </div>
-                <h5 className="junior_edit">
+
+
+                {/* <h5 className="junior_edit">
                   Job Board{" "}
                   <a href="#" data-toggle="modal" data-target="#projectsResume">
                     {" "}
@@ -1571,7 +2011,56 @@ useEffect(()=>{
                 <p className="job_usa" id="ProfileSummary">
                   Dec 2018 to Present (Full Time)
                 </p>
-                <p className="job_usa" id="Accomplishment">Job Board Template</p>
+                <p className="job_usa" id="Accomplishment">Job Board Template</p> */}
+
+
+                {
+                  profile?.project ?
+                    profile?.project?.map((project, ind) => {
+                      return (<>
+                        <h5 className="junior_edit">
+                          {project?.ProjectTitle}{" "}
+                          <a href="#" data-toggle="modal" data-target="#projectsResume" >
+                            {" "}
+                            <i className="fas fa-pencil-alt pencil_clearfix pencil"
+                              onClick={() => replaceProjectModalItem(ind)}
+                            ></i>
+                          </a>
+                          <a href="#" data-toggle="modal" onClick={() => deleteProjectdata(project._id)}>
+
+                            {" "}
+                            <i class="far fa-trash-alt remove" ></i>
+                          </a>
+                        </h5>
+                        <p className="job_usa">{project?.ProjectClient}</p>
+                        <p className="job_usa">
+                          {moment(project?.ProjectStartDate).format('YYYY MMMM')} to {" "}
+                          {
+                            moment(project?.ProjectWorkTill).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM') ?
+                              "Present" : moment(project?.ProjectWorkTill).format('YYYY MMMM')
+                          }
+                          ({
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), "years")
+                          }
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), "years") === 1 ? " Year" : " Years"
+                          }
+                          {" "}-{" "}
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate).add(moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), 'year'), 'years'), 'months')
+                          }
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate).add(moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), 'year'), 'years'), 'months') === 1 ?
+                              " Month" : " Months"
+                          }
+                          )
+                        </p>
+                      
+                        <p className="job_usa">{project?.ProjectDescription}</p>
+                      </>)
+                    }) : null
+                }
+
 
                 <div
                   className="modal fade"
@@ -1603,14 +2092,21 @@ useEffect(()=>{
                               <div className=" col-lg-12 col-md-12">
                                 <div className="form-group">
                                   <label>Project Title</label>
-                                  <input type="text" className="form_control" name="ProjectTitle" onChange={(e) => projectHandling(e)} />
+                                  <input type="text" className="form_control" name="ProjectTitle"
+                                    onChange={(e) => projectHandling(e)}
+                                    value={project.ProjectTitle}
+                                  />
                                 </div>
                               </div>
 
                               <div className=" col-lg-12 col-md-12">
                                 <div className="form-group">
                                   <label>Client</label>
-                                  <input type="text" className="form_control" name="ProjectClient" onChange={(e) => projectHandling(e)} />
+                                  <input type="text" className="form_control" name="ProjectClient"
+                                    // onChange={(e) => projectHandling(e)}
+                                    onChange={(e) => projectHandling(e)}
+                                    value={project.ProjectClient}
+                                  />
                                 </div>
                               </div>
 
@@ -1619,14 +2115,16 @@ useEffect(()=>{
                                 <div className="form-group">
                                   <div className="form-check form-check-inline">
                                     <input
+                                      defaultChecked
                                       className="form-check-input"
                                       type="radio"
                                       name="Project_Type"
                                       id="inlineRadio1"
                                       value="In Progress"
-                                      
+                                      onClick={() => projectType_inprogress()}
+
                                     // onClick={() => InprogressButton()}
-                                    onChange={() => InprogressHandle()}
+                                    // onChange={() => InprogressHandle()}
                                     />
                                     <label
                                       className="form-check-label"
@@ -1641,12 +2139,12 @@ useEffect(()=>{
                                       type="radio"
                                       // onChange={(e) => radiohandling(e)}
                                       // name="inlineRadioOptions"
-                                      checked={projectType}
+                                      // checked={projectType}
                                       name='Project_Type'
                                       id="inlineRadio2"
                                       value="Finished"
-                                    // onClick={() => PendingButton()}
-                                    onChange={() => FinishedProjectHandle()}
+                                      onClick={() => projectType_finished()}
+                                    // onChange={() => FinishedProjectHandle()}
                                     />
                                     <label
                                       className="form-check-label"
@@ -1657,8 +2155,8 @@ useEffect(()=>{
                                   </div>
                                 </div>
                               </div>
-                              <div>
-                                
+                              {/* <div>
+                              {projectType ?(
                                 <div className="row container">
                                   <div className=" col-lg-6 col-md-6">
                                     <div className="form-group">
@@ -1666,55 +2164,147 @@ useEffect(()=>{
                                       <input
                                         name="ProjectStartDate"
                                         // onChange={(e)=>formHandling(e)}
-                                        onChange={(e) => projectHandling(e)}
+                                        // onChange={(e) => projectHandling(e)}
                                         type="date"
                                         className="form_control"
                                         placeholder="Years"
+                                        value={moment(project?.ProjectStartDate).format("YYYY-MM-DD")}
+                                        onChange={(e) => projectHandling(e)}
                                       />
                                     </div>
                                   </div>
-                                  {!projectType?
-                                  <div className=" col-lg-6 col-md-6">
-                                    <div className="form-group">
-                                      <label>Worked Till</label>
-                                      <input
-                                        name="ProjectWorkTill"
-                                        value="Present"
-                                        // onChange={(e)=>formHandling(e)}
-                                        onChange={(e) => projectHandling(e)}
-                                        type="text"
-                                        className="form_control"
-                                        placeholder="Years"
-                                        disabled
-                                      />
+                                  {/* {projectType ? *
+                                    <div className=" col-lg-6 col-md-6">
+                                      <div className="form-group">
+                                        <label>Worked Till</label>
+                                        <input
+                                          name="ProjectWorkTill"
+                                          value="Present"
+                                          // onChange={(e)=>formHandling(e)}
+                                          // onChange={(e) => projectHandling(e)}
+                                          type="text"
+                                          className="form_control"
+                                          placeholder="Years"
+                                          // onChange={(e) => projectHandling(e)} 
+                                          // value={project.ProjectWorkTill}
+                                          disabled
+                                        />
+                                      </div>
                                     </div>
-                                  </div>:
-                                  <div className=" col-lg-6 col-md-6">
-                                    <div className="form-group">
-                                      <label>Worked Till</label>
-                                      <input
-                                        name="ProjectWorkTill"
-                                        // onChange={(e)=>formHandling(e)}
-                                        onChange={(e) => projectHandling(e)}
-                                        type="date"
-                                        className="form_control"
-                                        placeholder="Years"
-                                      />
+                                    </div>) :
+                                    (
+                                      
+                                    <div className=" col-lg-6 col-md-6">
+                                      <div className="form-group">
+                                        <label>Worked Till</label>
+                                        <input
+                                          name="ProjectWorkTill"
+                                          // onChange={(e)=>formHandling(e)}
+                                          // onChange={(e) => projectHandling(e)}
+                                          type="date"
+                                          className="form_control"
+                                          placeholder="Years"
+                                          onChange={(e) => projectHandling(e)} 
+                                          value={moment(project?.ProjectWorkTill).format("YYYY-MM-DD")}
+                                        />
+                                      </div>
+                                    </div>}
+
+                                </div> */}
+
+
+                              <div>
+                                {projectType ? (
+
+                                  <div className="row container">
+                                    <div className=" col-lg-6 col-md-6">
+                                      <div className="form-group">
+                                        <label> Started Working From</label>
+                                        <input
+                                         type="date"
+                                          name="ProjectStartDate"
+                                          className="form_control"
+                                          placeholder="Years"
+                                          value={moment(project?.ProjectStartDate).format("YYYY-MM-DD")}
+                                          onChange={(e) => projectHandling(e)}
+                                        />
+                                      </div>
                                     </div>
-                                  </div>}
-                                  
-                                </div>
+                                    <div className=" col-lg-6 col-md-6">
+                                      <div className="form-group">
+                                        <label> Working Till</label>
+                                        {/* <input
+                                          type="text"
+                                          name="ProjectWorkTill"
+                                          value="Present"
+                                          className="form_control"
+                                          placeholder="Years"
+                                          disabled
+                                        /> */}
+
+                                        <input
+                                          type="text"
+                                          className="form_control"
+                                          placeholder="Years"
+                                          name="ProjectWorkTill"
+                                          value="Present"
+                                          disabled
+                                        />
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <div className="row container">
+                                    <div className=" col-lg-6 col-md-6">
+                                      <div className="form-group">
+                                        <label> Started Working From</label>
+                                        <input
+                                          name="ProjectStartDate"
+                                          // onChange={(e)=>formHandling(e)}
+                                          // onChange={(e) => projectHandling(e)}
+                                          type="date"
+                                          className="form_control"
+                                          placeholder="Years"
+                                          value={moment(project?.ProjectStartDate).format("YYYY-MM-DD")}
+                                          onChange={(e) => projectHandling(e)}
+                                        />
+                                      </div>
+                                    </div>
+                                    <div className=" col-lg-6 col-md-6">
+                                      <div className="form-group">
+                                        <label> Worked Till</label>
+                                        <input
+                                          name="ProjectWorkTill"
+                                          value={moment(project?.ProjectWorkTill).format("YYYY-MM-DD")}
+                                          // onChange={(e)=>formHandling(e)}
+                                          onChange={(e) => projectHandling(e)}
+                                          type="date"
+                                          className="form_control"
+                                          placeholder="Years"
+                                        // onChange={(e) => projectHandling(e)} 
+                                        // value={project.ProjectWorkTill}
+
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
                               </div>
+
+
 
                               <div className=" col-lg-12 col-md-12">
                                 <div className="form-group">
                                   <label> Details of Project </label>
                                   <textarea
                                     name="ProjectDescription"
-                                    onChange={(e) => projectHandling(e)}
+                                    // onChange={(e) => projectHandling(e)}
                                     className="form_control"
                                     cols="30"
                                     rows="5"
+                                    onChange={(e) => projectHandling(e)}
+                                    value={project.ProjectDescription}
                                     placeholder="Describe here.."
                                   ></textarea>
                                 </div>
@@ -1724,8 +2314,8 @@ useEffect(()=>{
                         </div>
                       </div>
                       <div className="modal-footer">
-                        <button type="button" className="update" 
-                        onClick={(e)=>handleProject(e)}>
+                        <button type="button" className="update"
+                          onClick={(e) => handleProject(e, project._id)}>
                           Save changes
                         </button>
                       </div>
@@ -1733,6 +2323,10 @@ useEffect(()=>{
                   </div>
                 </div>
               </div>
+
+              {/* Project */}
+
+              {/* Accomplishment */}
 
               <div className="content">
                 <div className="job-bx-title clearfix">
@@ -1752,6 +2346,7 @@ useEffect(()=>{
                         className="site_button_resume  float-right"
                         data-toggle="modal"
                         data-target="#workSample"
+                        onClick={() => setWorkSampleInitialData()}
                       >
                         {" "}
                         <span>
@@ -1759,9 +2354,62 @@ useEffect(()=>{
                         </span>{" "}
                       </a>
                     </div>
-                    <p className="job_usa">
+
+                    {/* <p className="job_usa">
                       Add link to your Projects (e.g. Github links etc.).
-                    </p>
+                    </p> */}
+
+{
+                  profile?.workSample ?
+                  profile?.workSample?.map((workSample, win) => {
+                      return (<>
+                        <h5 className="junior_edit">
+                          {workSample?.Work_Title}{" "}
+                          <a href="#" data-toggle="modal" data-target="#employ" >
+                            {" "}
+                            <i className="fas fa-pencil-alt pencil_clearfix pencil"
+                              onClick={() => replaceworkSampleModalItem(win)}
+                            ></i>
+                          </a>
+                          <a href="#" data-toggle="modal" onClick={() => deleteworkSampledata(workSample._id)}>
+
+                            {" "}
+                            <i class="far fa-trash-alt remove" ></i>
+                          </a>
+                        </h5>
+
+                        <p className="job_usa">{workSample?.Work_URL}</p>
+                        <p className="job_usa">
+                          {moment(workSample?.Work_Duration_From).format('YYYY MMMM')} to {" "}
+                          {
+                            moment(workSample?.Work_Duration_To).format('YYYY MMMM') 
+                            === moment(new Date()).format('YYYY MMMM') ?
+                              "Present" : moment(workSample?.Work_Duration_To).format('YYYY MMMM')
+                          }
+                          ({
+                            moment(workSample?.Work_Duration_To).diff(moment(workSample?.Work_Duration_From), "years")
+                          }
+                          {
+                            moment(workSample?.Work_Duration_To).diff(moment(workSample?.Work_Duration_From), "years") === 1 ? " Year" : " Years"
+                          }
+                          {" "}-{" "}
+                          {
+                            moment(workSample?.Work_Duration_To).diff(moment(workSample?.Work_Duration_From).add(moment(workSample?.Work_Duration_To).diff(moment(workSample?.Work_Duration_From), 'year'), 'years'), 'months')
+                          }
+                          {
+                            moment(workSample?.Work_Duration_To).diff(moment(workSample?.Work_Duration_From).add(moment(workSample?.Work_Duration_To).diff(moment(workSample?.Work_Duration_From), 'year'), 'years'), 'months') === 1 ?
+                              " Month" : " Months"
+                          }
+                          )
+                        </p>
+                        <p className="job_usa" >
+                         {workSample?.Work_Description}
+                        </p>
+                      
+                      </>)
+                    }) : null
+                }
+
 
                     <div
                       className="modal fade"
@@ -1798,9 +2446,10 @@ useEffect(()=>{
                                     <label>Work Title</label>
                                     <input
                                       name="Work_Title"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => workSampleHandling(e)}
                                       type="text"
                                       className="form_control"
+                                      value={workSample.Work_Title}
                                     />
                                   </div>
                                 </div>
@@ -1810,9 +2459,10 @@ useEffect(()=>{
                                     <label>URL</label>
                                     <input
                                       name="Work_URL"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => workSampleHandling(e)}
                                       type="text"
                                       className="form_control"
+                                      value={workSample.Work_URL}
                                     />
                                   </div>
                                 </div>
@@ -1822,10 +2472,11 @@ useEffect(()=>{
                                     <label>Duration From</label>
                                     <input
                                       name="Work_Duration_From"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => workSampleHandling(e)}
                                       type="date"
                                       className="form_control"
                                       placeholder="Year"
+                                      value={workSample.Work_Duration_From}
                                     />
                                   </div>
                                 </div>
@@ -1834,10 +2485,11 @@ useEffect(()=>{
                                     <label>Duration To</label>
                                     <input
                                       name="Work_Duration_To"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => workSampleHandling(e)}
                                       type="date"
                                       className="form_control"
                                       placeholder="Year"
+                                      value={workSample.Work_Duration_To}
                                     />
                                   </div>
                                 </div>
@@ -1847,12 +2499,13 @@ useEffect(()=>{
                                     <label> Description </label>
                                     <textarea
                                       name="Work_Description"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => workSampleHandling(e)}
                                       className="form_control"
                                       cols="30"
                                       rows="5"
                                       placeholder="Describe here.."
                                       maxlength="250"
+                                      value={workSample.Work_Description}
                                     ></textarea>
                                   </div>
                                 </div>
@@ -1860,7 +2513,7 @@ useEffect(()=>{
                             </form>
                           </div>
                           <div className="modal-footer">
-                            <button type="button" className="update">
+                            <button type="button" className="update" onClick={(e) => handleworkSample(e, workSample._id)}>
                               Save changes
                             </button>
                           </div>
@@ -2010,6 +2663,7 @@ useEffect(()=>{
                       className="site_button_resume  float-right"
                       data-toggle="modal"
                       data-target="#presentation"
+                      onClick={() => setpresentationInitialData()}
                     >
                       {" "}
                       <span>
@@ -2017,10 +2671,60 @@ useEffect(()=>{
                       </span>{" "}
                     </a>
                   </div>
-                  <p className="job_usa">
+
+                  {/* <p className="job_usa">
                     Add links to your Online presentations (e.g. Slideshare
                     presentation links etc.).
-                  </p>
+                  </p> */}
+
+{
+                  profile?.presentation ?
+                    profile?.presentation?.map((presentation, pind) => {
+                      return (<>
+                        <h5 className="junior_edit">
+                          {presentation?.Presentation_Title}{" "}
+                          <a href="#" data-toggle="modal" data-target="#projectsResume" >
+                            {" "}
+                            <i className="fas fa-pencil-alt pencil_clearfix pencil"
+                              onClick={() => replacepresentationModalItem(pind)}
+                            ></i>
+                          </a>
+                          <a href="#" data-toggle="modal" onClick={() => deletepresentationdata(project._id)}>
+
+                            {" "}
+                            <i class="far fa-trash-alt remove" ></i>
+                          </a>
+                        </h5>
+                        {/* <p className="job_usa">{project?.ProjectClient}</p>
+                        <p className="job_usa">
+                          {moment(project?.ProjectStartDate).format('YYYY MMMM')} to {" "}
+                          {
+                            moment(project?.ProjectWorkTill).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM') ?
+                              "Present" : moment(project?.ProjectWorkTill).format('YYYY MMMM')
+                          }
+                          ({
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), "years")
+                          }
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), "years") === 1 ? " Year" : " Years"
+                          }
+                          {" "}-{" "}
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate).add(moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), 'year'), 'years'), 'months')
+                          }
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate).add(moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), 'year'), 'years'), 'months') === 1 ?
+                              " Month" : " Months"
+                          }
+                          )
+                        </p> */}
+                      
+                        <p className="job_usa">{presentation?.Presentation_URL}</p>
+                        <p className="job_usa">{presentation?.Presentation_Description}</p>
+                      </>)
+                    }) : null
+                }
+
 
                   <div
                     className="modal fade"
@@ -2053,7 +2757,7 @@ useEffect(()=>{
                                   <label>Title</label>
                                   <input
                                     name="Presentation_Title"
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => presentationHandling(e)}
                                     type="text"
                                     className="form_control"
                                     placeholder="Enter Title"
@@ -2066,7 +2770,7 @@ useEffect(()=>{
                                   <label>URL</label>
                                   <input
                                     name='Presentation_URL'
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => presentationHandling(e)}
                                     type="text"
                                     className="form_control"
                                     placeholder="wwww.google.com"
@@ -2079,7 +2783,7 @@ useEffect(()=>{
                                   <label> Description </label>
                                   <textarea
                                     name="Presentation_Description"
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => presentationHandling(e)}
                                     className="form_control"
                                     cols="30"
                                     rows="5"
@@ -2092,7 +2796,7 @@ useEffect(()=>{
                           </form>
                         </div>
                         <div className="modal-footer">
-                          <button type="button" className="update" >
+                          <button type="button" className="update" onClick={(e) => handlePresentation(e, presentation._id)}>
                             Save changes
                           </button>
                         </div>
@@ -2465,7 +3169,7 @@ useEffect(()=>{
                         <h5 className="industry">Industry</h5>
                         <p className="it_employees">
                           {/* IT-Software/Software Services{" "} */}
-                          
+
                         </p>
                       </div>
                       <div className="career_profile_content">
@@ -3240,13 +3944,13 @@ useEffect(()=>{
                       Upload RESUME
                     </label>
                     <input type="file" id="myfile" name="myfile" hidden
-                    onChange={(event) =>resumeonchangeHandling(event)}
+                      onChange={(event) => resumeonchangeHandling(event)}
                     />
                   </div>
                 </form>
                 <h5>{profile.resume.filename}</h5>
               </div>
-              
+
               {/* <button onClick={()=>handleresumeUpload()}>upload</button> */}
 
             </div>

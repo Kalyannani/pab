@@ -7098,7 +7098,9 @@ p {
 }
 
 .progress {
-  height: 3px !important;
+  height: 10px !important;
+  margin-top: 15px;
+  border-radius: 20px !important;
 }
 
 .progress-box .progress-info span {
@@ -7112,7 +7114,7 @@ p {
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  background-color: #270D44;
+  background-color: #5e0fb7 !important;
   -webkit-transition: width 0.6s ease;
   transition: width 0.6s ease;
   width: 80%;
@@ -17825,7 +17827,7 @@ code {
 }
 .Brand-modal-color{
   /* background: rgb(126 120 120 / 65%); */
-  background: rgb(167 144 144 / 43%);
+  background: rgb(181 167 167 / 78%)
 }
 .Brand-modal-color1{
   /* background: rgb(102 86 86); */
