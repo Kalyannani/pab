@@ -1240,7 +1240,8 @@ const StudentList = () => {
                 allapplicants.length > 0 ?
                   allapplicants?.map((applicant,indexx) => {
                     return (
-                      (indexx % 4 === 0 ? <Browsehomead/> :(
+                      (indexx % 4 === 0 ?   <div className='google_ads'>
+                      <Browsehomead/> </div> :(
                         
                       <ul className="filter_list_job_post position-relative">
                         <li>

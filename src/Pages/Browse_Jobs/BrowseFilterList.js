@@ -518,7 +518,10 @@ const BrowseFilterList = () => {
                       jobs?.map((job, index) => {
 
                         return (
-                          (index % 4 === 0 ? <Browsehomead/> :
+                          (index % 4 === 0 ? 
+                          
+                            <div className='google_ads'>
+                          <Browsehomead/> </div>:
                            
                             
 
