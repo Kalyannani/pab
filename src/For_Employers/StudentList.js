@@ -28,9 +28,11 @@ import ReactTimeAgo from 'react-time-ago'
 import DesignationFilter from '../Pages/Browse_Jobs/filters/DesignationFilter';
 import FileSaver, { saveAs } from 'file-saver';
 import Browsead from '../ads/Browsead'
-
+import Browsehomead from '../ads/Browsehomead';
 
 import { useSelector } from 'react-redux';
+import Browsehrads from '../ads/Browsehrads';
+import Browseverads from '../ads/Browseverads';
 const StudentList = () => {
 
   const result = useSelector(state => state.data)
@@ -984,17 +986,46 @@ const StudentList = () => {
 
                     <Browsead />
 
-                    <Browsead />
+                    <Browsehrads />
 
                     <Browsead />
 
+                    <Browseverads />
                     <Browsead />
+
+                    <Browsehrads />
 
                     <Browsead />
 
+                    <Browseverads />
                     <Browsead />
 
+                    <Browsehrads />
+
                     <Browsead />
+
+                    <Browseverads />
+                    <Browsead />
+
+                    <Browsehrads />
+
+                    <Browsead />
+
+                    <Browseverads />
+                    <Browsead />
+
+                    <Browsehrads />
+
+                    <Browsead />
+
+                    <Browseverads />
+                    <Browsead />
+
+                    <Browsehrads />
+
+                    <Browsead />
+
+                    <Browseverads />
                   </div>
                 </div>
                 {/* 
@@ -1207,9 +1238,11 @@ const StudentList = () => {
               <div className='text-right list_student_count' > <p>Total Number of Candidates :<b>{allapplicants.length}</b> </p></div>
               {
                 allapplicants.length > 0 ?
-                  allapplicants?.map((applicant) => {
+                  allapplicants?.map((applicant,indexx) => {
                     return (
-
+                      (indexx % 4 === 0 ?   <div className='google_ads'>
+                      <Browsehomead/> </div> :(
+                        
                       <ul className="filter_list_job_post position-relative">
                         <li>
                           <Link to='#'>
@@ -1340,12 +1373,12 @@ const StudentList = () => {
 
                               </div>
 
-                              <label className="wishlist">
+                              {/* <label className="wishlist">
                                 {result?.type === "applicant" ?
                                   <button className='btn job_details_applybtn filter_list_wishlist' > Apply </button> :
                                   result?.type === "recruiter" ? null :
                                     <Link to="/auth" > <button className='btn job_details_applybtn filter_list_wishlist'> Login to Apply </button>  </Link>}
-                              </label>
+                              </label> */}
 
                             </div>
                           </Link>
@@ -1360,7 +1393,7 @@ const StudentList = () => {
                           </a>
 
                         </li>
-                      </ul>
+                      </ul>))
 
                     )
                   }) :
@@ -1397,183 +1430,196 @@ const StudentList = () => {
 
               <Browsead />
 
+              <Browsehrads />
+
+              <Browsead />
+
+              <Browseverads />
+
+              <Browsead />
+
+              <Browsehrads />
+
+              <Browsead />
+
+              <Browseverads />
+
+              <Browsead />
+
+              <Browsehrads />
+
+              <Browsead />
+
+              <Browseverads />
+
               <Browsead />
 
               <Browsead />
 
-              <Browsead />
+              <Browsehrads />
 
               <Browsead />
 
-              <Browsead />
+              <Browseverads />
 
               <Browsead />
 
-              <Browsead />
+              <Browsehrads />
 
               <Browsead />
 
-              <Browsead />
+              <Browseverads />
 
               <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browseverads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
+              <Browsehrads />
 
-<Browsead />
+              <Browsead />
 
-<Browsead />
-
-<Browsead />
-
-<Browsead />
-
-<Browsead />
-
-<Browsead />
-
-<Browsead />
+              <Browseverads />
 
             </div>
 

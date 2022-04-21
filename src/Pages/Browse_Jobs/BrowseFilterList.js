@@ -25,19 +25,23 @@ import { TextField } from '@material-ui/core';
 import skillsdata from '../../JsonData/Skill.json'
 import data from '../../JsonData/locations.json'
 import Browsead from '../../ads/Browsead'
+import Browsehrads from '../../ads/Browsehrads';
+import Browseverads from '../../ads/Browseverads';
+import Browsehomead from '../../ads/Browsehomead';
+
 
 // import data from '../JsonData/locations.json'
 
 const BrowseFilterList = () => {
 
   const [post, setPost] = useState({
-      
-    skillsets:[],
-    cities:[],
-   
-})
 
-  const result = useSelector(state=>state.data)
+    skillsets: [],
+    cities: [],
+
+  })
+
+  const result = useSelector(state => state.data)
   let { search } = useLocation();
   const query = new URLSearchParams(search);
   console.log('qqqq ', query.get('keyword'));
@@ -180,7 +184,7 @@ const BrowseFilterList = () => {
   }
 
   const handleAddWishlist = async (id) => {
-    
+
     let headers = {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     }
@@ -324,46 +328,46 @@ const BrowseFilterList = () => {
 
       <div className="container" >
         <div className="filter_list_search-box ">
-          <form className="form-control py-4" onSubmit={handleSearch} style={{boxShadow:"0 0 8px rgb(0 0 0 / 25%);"}}>
+          <form className="form-control py-4" onSubmit={handleSearch} style={{ boxShadow: "0 0 8px rgb(0 0 0 / 25%);" }}>
             <div className="row">
               <div className="col-lg-6 col-md-6">
                 <div className="">
-                  
+
                   <div className="">
                     {/* <input type="text" name="keyword" className="form-control" id="search_filter_list_input"
                       placeholder="Job Title, Keywords, or Phrase" value={keyword} onChange={(e) => {setKeyword(e.target.value); setKeywordError("")}}  /> */}
 
-<div>
-                                            {/* <label>Technical Skills :</label> */}
-                                                  <Autocomplete
-                                                    id="combo-box-demo"
-                                                    multiple
-                                                    value={post.skillsets}
-                                                    options={skillsdata.map((res)=>{
-                                                    return res.Skill
-                                                    })}
-                                                    getOptionLabel={(option) => option}
-                                                    onChange={(e, value) => {
-                                                    setPost({
-                                                        ...post,
-                                                        skillsets:value
-                                                    });
-                                                    }}
-                                                    
-                                                    renderInput={(params) => (
-                                                    <TextField
-                                                        {...params}
-                                                        name="multiple"
-                                                        label="Job Title, Keywords, or Phrase"
-                                                        variant="outlined"
-                                                        fullWidth
-                                                        name='keyword' value={keyword} onChange={(e) => { setKeyword(e.target.value)}}
-                                                    />
-                                                    )}
-                                                />
-                                                  {/* <span>Press enter to add skills</span> */}
-                                                </div>
-                    
+                    <div>
+                      {/* <label>Technical Skills :</label> */}
+                      <Autocomplete
+                        id="combo-box-demo"
+                        multiple
+                        value={post.skillsets}
+                        options={skillsdata.map((res) => {
+                          return res.Skill
+                        })}
+                        getOptionLabel={(option) => option}
+                        onChange={(e, value) => {
+                          setPost({
+                            ...post,
+                            skillsets: value
+                          });
+                        }}
+
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            name="multiple"
+                            label="Job Title, Keywords, or Phrase"
+                            variant="outlined"
+                            fullWidth
+                            name='keyword' value={keyword} onChange={(e) => { setKeyword(e.target.value) }}
+                          />
+                        )}
+                      />
+                      {/* <span>Press enter to add skills</span> */}
+                    </div>
+
                     {/* <div className="input-group-append">
                       <span className="filter_list_group_icon">
                         <i className="fas fa-search ml-2" id="filter_list_search_icon1"></i>
@@ -376,40 +380,40 @@ const BrowseFilterList = () => {
 
               <div className="col-lg-4 col-md-6">
                 <div className="">
-                 
+
                   <div className="">
                     {/* <input type="text" className="form-control" name="qlocation" id="search_filter_list_input" value={qlocation} onChange={(e) => {setQLocation(e.target.value); setLocationError("")}}
                       placeholder="Location"  /> */}
-                      
 
-                      <Autocomplete
-                                                    id="combo-box-demo"
-                                                    multiple
-                                                    value={post.cities}
-                                                    options={data.map((res)=>{
-                                                    return res.location
-                                                
-                                                    })}
-                                                    getOptionLabel={(option) => option}
-                                                    onChange={(e, value) => {
-                                                    setPost({
-                                                        ...post,
-                                                        cities:value
-                                                    });
-                                                    }}
-                                                    
-                                                    renderInput={(params) => (
-                                                    <TextField
-                                                        {...params}
-                                                        name="multiple"
-                                                        label="City ,Province or Region"
-                                                        variant="outlined"
-                                                        fullWidth
-                                                        name='qlocation' value={qlocation} onChange={(e) => {setQLocation(e.target.value)}}
-                                                    />
-                                                    )}
-                                                />
-                                             
+
+                    <Autocomplete
+                      id="combo-box-demo"
+                      multiple
+                      value={post.cities}
+                      options={data.map((res) => {
+                        return res.location
+
+                      })}
+                      getOptionLabel={(option) => option}
+                      onChange={(e, value) => {
+                        setPost({
+                          ...post,
+                          cities: value
+                        });
+                      }}
+
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          name="multiple"
+                          label="City ,Province or Region"
+                          variant="outlined"
+                          fullWidth
+                          name='qlocation' value={qlocation} onChange={(e) => { setQLocation(e.target.value) }}
+                        />
+                      )}
+                    />
+
 
                     {/* <div className="input-group-append">
                       <span className="filter_list_group_icon">
@@ -421,7 +425,7 @@ const BrowseFilterList = () => {
               </div>
 
               <div className="col-lg-2 col-md-6 my-auto">
-               
+
                 <a href="#"></a><button id="filter_list_search_btn" className=" btn-block">Find
                   Job</button>
               </div>
@@ -479,26 +483,25 @@ const BrowseFilterList = () => {
                 </div>
               </div>
 
-<div className='google_ads'>
-              <Browsead />
+              <div className='google_ads'>
+                <Browsead />
 
-              <Browsead />
+                <Browseverads />
 
-              <Browsead />
+                <Browsead />
 
-              <Browsead />
+                <Browsehrads />
 
-              <Browsead />
+                <Browsead />
 
-              <Browsead />
+                <Browseverads />
 
-              <Browsead />
+                <Browsead />
 
-              <Browsead />
+                <Browsehrads />
+                <Browsead />
 
-              <Browsead />
-
-              <Browsead />
+                <Browseverads />
 
               </div>
             </div>
@@ -512,140 +515,144 @@ const BrowseFilterList = () => {
                 <>
                   {
                     jobs.length > 0 ?
-                      jobs?.map((job,index) => {
+                      jobs?.map((job, index) => {
 
                         return (
-                            // index%3 === 0 ? '<Bannerads/> ' : ' ' 
+                          (index % 4 === 0 ? 
+                          
+                            <div className='google_ads'>
+                          <Browsehomead/> </div>:
+                           
+                            
 
-                  
-                          <ul className="filter_list_job_post ">
+                         ( <ul className="filter_list_job_post ">
                             <li>
-                            <Link to={`/jobdetailes/${job._id}`}>
-                              <div className="filter_list_job_box filter_list_main">
-                                <div className="d-flex mb-4">
+                              <Link to={`/jobdetailes/${job._id}`}>
+                                <div className="filter_list_job_box filter_list_main">
+                                  <div className="d-flex mb-4">
 
-                                  <div className="filter_list_job_company">
-                                    {/* <span><img alt="" src={job.recruiter?.profileImage? `${server}/public/profile/${job.recruiter.profileImage}`: " " }/></span> */}
-                                    <img src={job.recruiter?.profileImage? job.recruiter.profileImage:" " } alt=""/>
-                                  </div>
+                                    <div className="filter_list_job_company">
+                                      {/* <span><img alt="" src={job.recruiter?.profileImage? `${server}/public/profile/${job.recruiter.profileImage}`: " " }/></span> */}
+                                      <img src={job.recruiter?.profileImage ? job.recruiter.profileImage : " "} alt="" />
+                                    </div>
 
-                                  <div className="filter_list_job_info">
-                                    <h4>{job.title}</h4>
-                                    <h5 className="home_company_name">{job.recruiter?.companyname}</h5>
-                                    <ul>
-                                    
-                                      
-                                    
-                                      <li><i className="fas fa-map-marker-alt"></i>
-                                      {job.cities.map((job,index,arr)=>{
-                                        return (<>
-                                          {job}{index!=(arr.length-1)?"/":""}
-                                          </>)
-                                      })}
-                                      </li>
-                                      <li><i className="far fa-bookmark"></i>{job.jobType}</li>
-                                      <li><i className="far fa-clock"></i>Published {" "}
-                                        {/* <ReactTimeAgo date={job.dateOfPosting} locale="en-US" /> */}
-                                        {/* {moment(job.postedAt).fromNow()} */}
-                                        {moment(job.postedAt? Number(job.postedAt) : job.dateOfPosting ).fromNow()}
-                                      </li>
-{/* 1646973039978 */}
-                                    </ul>
+                                    <div className="filter_list_job_info">
+                                      <h4>{job.title}</h4>
+                                      <h5 className="home_company_name">{job.recruiter?.companyname}</h5>
+                                      <ul>
+
+
+
+                                        <li><i className="fas fa-map-marker-alt"></i>
+                                          {job.cities.map((job, index, arr) => {
+                                            return (<>
+                                              {job}{index != (arr.length - 1) ? "/" : ""}
+                                            </>)
+                                          })}
+                                        </li>
+                                        <li><i className="far fa-bookmark"></i>{job.jobType}</li>
+                                        <li><i className="far fa-clock"></i>Published {" "}
+                                          {/* <ReactTimeAgo date={job.dateOfPosting} locale="en-US" /> */}
+                                          {/* {moment(job.postedAt).fromNow()} */}
+                                          {moment(job.postedAt ? Number(job.postedAt) : job.dateOfPosting).fromNow()}
+                                        </li>
+                                        {/* 1646973039978 */}
+                                      </ul>
+                                    </div>
                                   </div>
-                                </div>
-                                <div className="d-flex">
-                                  <div className="filter_list_job_type mr-auto">
-                                    <a href="#"><span>Full Time</span></a>
-                                  </div>
-                                  <div className="filter_list_salary">
-                                    <span><i className="fas fa-rupee-sign"></i> {job.salary} 
+                                  <div className="d-flex">
+                                    <div className="filter_list_job_type mr-auto">
+                                      <a href="#"><span>Full Time</span></a>
+                                    </div>
+                                    <div className="filter_list_salary">
+                                      <span><i className="fas fa-rupee-sign"></i> {job.salary}
                                       </span>
+                                    </div>
                                   </div>
+                                  <label className="wishlist">
+                                    {result?.type === "applicant" ?
+                                      <button className='btn job_details_applybtn filter_list_wishlist' > Apply </button> :
+                                      result?.type === "recruiter" ? null :
+                                        <Link to="/auth" > <button className='btn job_details_applybtn filter_list_wishlist'> Login to Apply </button>  </Link>}
+                                  </label>
+
                                 </div>
-                                <label className="wishlist">
-                                {result?.type==="applicant" ? 
-                                <button className='btn job_details_applybtn filter_list_wishlist' > Apply </button>: 
-                                result?.type==="recruiter"? null :  
-                                <Link to="/auth" > <button className='btn job_details_applybtn filter_list_wishlist'> Login to Apply </button>  </Link>} 
-                                </label>
-                                
-                              </div>
                               </Link>
 
-                                {/* saved jobs icon */}
+                              {/* saved jobs icon */}
 
-                                {result?.type==="applicant" ? 
+                              {result?.type === "applicant" ?
                                 <>
-                                {job.wishlist ? (
-                                <label className="job_filter_grid_wishlist" onClick={() => handleRemoveWishlist(job._id)}  style={{ position: 'absolute', right: 105, top: 31 }}>
-                                  {/* <input type="checkbox" /> */}
-                                  <span className="filter_grid_added" >
+                                  {job.wishlist ? (
+                                    <label className="job_filter_grid_wishlist" onClick={() => handleRemoveWishlist(job._id)} style={{ position: 'absolute', right: 105, top: 31 }}>
+                                      {/* <input type="checkbox" /> */}
+                                      <span className="filter_grid_added" >
 
-                                    <i class="fab fa-gratipay" style={{fontSize:'28px'}}/>
-                                  </span>
-                                </label>
-                              ) : (
-                                <label className="job_filter_grid_wishlist" onClick={() => handleAddWishlist(job._id)}  style={{ position: 'absolute', right: 105, top: 35}}>
-                                  {/* <input type="checkbox" /> */}
-                                  <span className="filter_grid_added" >
-                                    <i className="fas fa-heart" />
-                                  </span>
-                                </label>
-                              )}
-                              </>
-                              :null}
+                                        <i class="fab fa-gratipay" style={{ fontSize: '28px' }} />
+                                      </span>
+                                    </label>
+                                  ) : (
+                                    <label className="job_filter_grid_wishlist" onClick={() => handleAddWishlist(job._id)} style={{ position: 'absolute', right: 105, top: 35 }}>
+                                      {/* <input type="checkbox" /> */}
+                                      <span className="filter_grid_added" >
+                                        <i className="fas fa-heart" />
+                                      </span>
+                                    </label>
+                                  )}
+                                </>
+                                : null}
 
                             </li>
-                          </ul>
-                         
+                          </ul>))
+
                         )
                       }) :
                       <>
                         {isLoading ?
                           <div className="skeleton">
-                          {list.map((item)=>{
-                            return(
-                          <div className="contact__item mb-5" key={item}>
-                            <ul className="job-post">
-                          <li >
-                            <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
-                              <div style={{ display: "flex", width: "100%" }}>
-                                <Skeleton circle={false} height={50} width={50} />
-                                <div
-                                  style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    width: "100%"
-                                  }}
-                                >
-                                  <Skeleton
-                                    height={12}
-                                    width="30%"
-                                    style={{ marginLeft: "1rem", marginBottom: "0.5rem" }}
-                                  />
-                                  <Skeleton
-                                    height={8}
-                                    width="40%"
-                                    style={{ marginLeft: "1rem" }}
-                                  />
-                                  <Skeleton
-                                    height={8}
-                                    width="50%"
-                                    style={{ marginLeft: "1rem", marginTop: 0 }}
-                                  />
-                                  <Skeleton
-                                    height={12}
-                                    width="80%"
-                                    style={{ marginLeft: "1rem", marginTop: "0.6rem" }}
-                                  />
+                            {list.map((item) => {
+                              return (
+                                <div className="contact__item mb-5" key={item}>
+                                  <ul className="job-post">
+                                    <li >
+                                      <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
+                                        <div style={{ display: "flex", width: "100%" }}>
+                                          <Skeleton circle={false} height={50} width={50} />
+                                          <div
+                                            style={{
+                                              display: "flex",
+                                              flexDirection: "column",
+                                              width: "100%"
+                                            }}
+                                          >
+                                            <Skeleton
+                                              height={12}
+                                              width="30%"
+                                              style={{ marginLeft: "1rem", marginBottom: "0.5rem" }}
+                                            />
+                                            <Skeleton
+                                              height={8}
+                                              width="40%"
+                                              style={{ marginLeft: "1rem" }}
+                                            />
+                                            <Skeleton
+                                              height={8}
+                                              width="50%"
+                                              style={{ marginLeft: "1rem", marginTop: 0 }}
+                                            />
+                                            <Skeleton
+                                              height={12}
+                                              width="80%"
+                                              style={{ marginLeft: "1rem", marginTop: "0.6rem" }}
+                                            />
+                                          </div>
+                                        </div>
+                                      </SkeletonTheme>
+                                    </li>
+                                  </ul>
                                 </div>
-                              </div>
-                            </SkeletonTheme>
-                            </li>
-                          </ul>
-                          </div>
-                            )
-                          })}
+                              )
+                            })}
                           </div>
                           :
                           <div style={{ textAlign: "-webkit-center" }}>
@@ -657,10 +664,10 @@ const BrowseFilterList = () => {
 
                       </>
 
-                      
-                      // <div style={{ textAlign: "-webkit-center" }}>
-                      //   <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
-                      // </div>
+
+                    // <div style={{ textAlign: "-webkit-center" }}>
+                    //   <ReactLoading type="balls" color={"rgb(118 55 117)"} height={500} width={150} />
+                    // </div>
                   }
                 </>
                 :
@@ -670,51 +677,51 @@ const BrowseFilterList = () => {
                       jobs?.map((job) => {
                         return (<>
                           <div className="col-lg-6 col-sm-12">
-                             <Link to={`/jobdetailes/${job._id}`}>
-                            <div className="job_filter_grid_box position-relative">
-                              <div className="d-flex mb-4">
-                                <div className="job_filter_grid_info">
-                                  <div className="job_heading ">
-                                  <h5>
-                                    {/* <Link to={`/jobdetailes/${job._id}`}>{job.title}</Link> */}
-                                 {job.title}
-                                  </h5>
-                               </div>
-                                  <div className="apply_grid_box">
-                                  <label className="wishlist ">
-                                {result?.type==="applicant" ? 
-                                <button className='btn job_details_applybtn_grid apply_job_grid_new' > Apply</button>: 
-                                result?.type==="recruiter"? null :  
-                                <Link to="/auth" ><div className="login_apply"> <button className='btn job_details_applybtn_grid '> Login to Apply </button> </div> </Link>} 
-                                </label>
+                            <Link to={`/jobdetailes/${job._id}`}>
+                              <div className="job_filter_grid_box position-relative">
+                                <div className="d-flex mb-4">
+                                  <div className="job_filter_grid_info">
+                                    <div className="job_heading ">
+                                      <h5>
+                                        {/* <Link to={`/jobdetailes/${job._id}`}>{job.title}</Link> */}
+                                        {job.title}
+                                      </h5>
                                     </div>
-                                  <div className="job_filter_grid_in_up">
-                                    <i className="fas fa-map-marker-alt"/>
-                                    <span> Hyderabad</span>
-                                    <i className="far fa-bookmark" />
-                                    <span> {job.jobType}</span>
-                                    <div className="job_filter_grid_in_down">
-                                      <i className="far fa-clock" /> <span> Published <ReactTimeAgo date={job.dateOfPosting} locale="en-US" /></span>
+                                    <div className="apply_grid_box">
+                                      <label className="wishlist ">
+                                        {result?.type === "applicant" ?
+                                          <button className='btn job_details_applybtn_grid apply_job_grid_new' > Apply</button> :
+                                          result?.type === "recruiter" ? null :
+                                            <Link to="/auth" ><div className="login_apply"> <button className='btn job_details_applybtn_grid '> Login to Apply </button> </div> </Link>}
+                                      </label>
                                     </div>
+                                    <div className="job_filter_grid_in_up">
+                                      <i className="fas fa-map-marker-alt" />
+                                      <span> Hyderabad</span>
+                                      <i className="far fa-bookmark" />
+                                      <span> {job.jobType}</span>
+                                      <div className="job_filter_grid_in_down">
+                                        <i className="far fa-clock" /> <span> Published <ReactTimeAgo date={job.dateOfPosting} locale="en-US" /></span>
+                                      </div>
+                                    </div>
+                                    <p />
                                   </div>
-                                  <p />
                                 </div>
-                              </div>
-                              <div className="d-flex">
-                                <div className="job_filter_grid_type mr-auto mb-3">
-                                  <span>Full Time</span>
-                                </div>
-                                <div className="job_filter_grid_salary">
-                                  <span>
-                                    <i className="fas fa-rupee-sign" /> {job.salary} 
-                                    {/* -
+                                <div className="d-flex">
+                                  <div className="job_filter_grid_type mr-auto mb-3">
+                                    <span>Full Time</span>
+                                  </div>
+                                  <div className="job_filter_grid_salary">
+                                    <span>
+                                      <i className="fas fa-rupee-sign" /> {job.salary}
+                                      {/* -
                                     <i className="fas fa-rupee-sign" /> 25000 */}
-                                  </span>
+                                    </span>
+                                  </div>
                                 </div>
-                              </div>
-                              
-                              
-                              {/* {job.wishlist ? (
+
+
+                                {/* {job.wishlist ? (
                                 <label className="job_filter_grid_wishlist" onClick={() => handleRemoveWishlist(job._id)}>
                                   <input type="checkbox" />
                                   <span className="filter_grid_added" >
@@ -730,27 +737,27 @@ const BrowseFilterList = () => {
                                   </span>
                                 </label>
                               )} */}
-                               
-                            </div>
+
+                              </div>
                             </Link>
                           </div>
-  </>
+                        </>
                         )
                       }) :
                       <>
                         {
-                        isLoading ?
-                          <div style={{ margin:"auto" }}>
-                            <ReactLoading type="balls" color={"#270D44"} height={150} width={150} />
-                          </div>
-                          :
-                          <div style={{ margin:"auto" }}>
-                            <p>There is no jobs to list with the current filter</p>
-                            <div className='text-center'>
-                            <button
-                              className={`btn list_view mb-2 `} onClick={resetFilter}>Reset Filter</button>
+                          isLoading ?
+                            <div style={{ margin: "auto" }}>
+                              <ReactLoading type="balls" color={"#270D44"} height={150} width={150} />
+                            </div>
+                            :
+                            <div style={{ margin: "auto" }}>
+                              <p>There is no jobs to list with the current filter</p>
+                              <div className='text-center'>
+                                <button
+                                  className={`btn list_view mb-2 `} onClick={resetFilter}>Reset Filter</button>
                               </div>
-                          </div>
+                            </div>
                         }
 
                       </>
@@ -774,48 +781,52 @@ const BrowseFilterList = () => {
                   activeClassName={"active"}
                 />
               </div>
-              
-             
+
+
             </div>
-               
-
-
-                            {/* ad */}
-                            <div className='col-md-2 google_ads'>
-
-                            <Browsead />
-
-                            <Browsead />
-
-                            <Browsead />
-
-                            <Browsead />
-
-                            <Browsead />
-
-                            <Browsead />
-
-                            <Browsead />
-
-                            <Browsead />
-
-                            <Browsead />
-
-                            <Browsead />
-
-                            <Browsead />
-                            
-                            </div>
-
-                {/* <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" /> */}
-                </div>
 
 
 
+            {/* ad */}
+            <div className='col-md-2 google_ads'>
 
+              <Browsead />
+
+              <Browseverads />
+
+              <Browsead />
+
+              <Browsehrads />
+
+              <Browsead />
+
+              <Browseverads />
+
+              <Browsead />
+
+              <Browsehrads />
+
+              <Browsead />
+
+              <Browseverads />
+
+              <Browsead />
+
+              <Browsehrads />
+
+              <Browsead />
+
+            </div>
+
+            {/* <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" /> */}
           </div>
+
+
+
+
         </div>
       </div>
+    </div>
 
 
 

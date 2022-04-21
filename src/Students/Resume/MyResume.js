@@ -99,6 +99,7 @@ const MyResume = () => {
     project: [],
     workSample:[],
     presentation:[],
+    careerprofile:[],
     personaldetails: {
       dateofbirth: "",
       address: "",
@@ -166,6 +167,24 @@ const MyResume = () => {
     }
   ])
 
+  const [careerprofile, setcareerprofile] = useState([
+    {
+      career_Industry: "",
+      Desired_Functional_Area_Department: "",
+      Desired_Role_URL: "",
+      Desired_Job_Type: "",
+      Desired_Employement_Type: "",
+      Desired_PrefferedShift: "",
+      Desired_AvailableJoinYears: "",
+      Desired_AvailableJoinMonths:"",
+      Desired_Expected_SalaryinLakhs:"",
+      Desired_Expected_SalaryinThousands:"",
+      Desired_Location:"",
+      Desired_Industry:""
+
+    },
+  ]);
+
   const formHandling = (e) => {
     setProfile({
       ...profile,
@@ -228,6 +247,14 @@ const MyResume = () => {
   const presentationHandling = (e) => {
     setPresentation({
       ...presentation,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+   //onChange careerprofile
+   const careerprofileHandling = (e) => {
+    setcareerprofile({
+      ...careerprofile,
       [e.target.name]: e.target.value,
     })
   }
@@ -453,6 +480,46 @@ const MyResume = () => {
       }
   
     };
+
+      //careerprofile submit
+  const handlecareerprofile = (e, id) => {
+    e.preventDefault()
+    if (id) {
+      axios.put(`${apiList.user}/${id}/careerprofile`, careerprofile, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        getData();
+      })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    }
+    else {
+      let updatedDetails = {
+        ...profile,
+        careerprofile: [...profile.careerprofile, careerprofile]
+      }
+      axios
+        .put(apiList.user, updatedDetails, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data)
+          getData();
+        })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    }
+
+  };
 
 
   const handleUpdate = (e) => {
@@ -3151,7 +3218,7 @@ const MyResume = () => {
                 <div className="container-fluid career_profile">
 
 
-                  <a
+                  {/* <a
                     href="#"
                     data-toggle="modal"
                     data-target="#careerProfile"
@@ -3160,7 +3227,7 @@ const MyResume = () => {
                     {" "}
                     Edit{" "}
                     <i className="fas fa-pencil-alt pencil_clearfix pencil text-white"></i>
-                  </a>
+                  </a> */}
 
 
                   <div className="row mt-4">
@@ -3168,35 +3235,36 @@ const MyResume = () => {
                       <div className="career_profile_content">
                         <h5 className="industry">Industry</h5>
                         <p className="it_employees">
-                          {/* IT-Software/Software Services{" "} */}
+                         {careerprofile.career_Industry}
 
                         </p>
                       </div>
                       <div className="career_profile_content">
                         <h5 className="industry">Role</h5>
                         <p className="it_employees">
-                          Web Developer{" "}
+                        
+                        {careerprofile.Desired_Role_URL}
 
                         </p>
                       </div>
                       <div className="career_profile_content">
                         <h5 className="industry">Employement Type</h5>
                         <p className="it_employees">
-                          Full Time{" "}
+                        {careerprofile.Desired_Employement_Type}
 
                         </p>
                       </div>
                       <div className="career_profile_content">
                         <h5 className="industry">Available to Join </h5>
                         <p className="it_employees">
-                          12th october{" "}
+                        {careerprofile.Desired_AvailableJoinYears}/{careerprofile.Desired_AvailableJoinMonths}
 
                         </p>
                       </div>
                       <div className="career_profile_content">
                         <h5 className="industry">Desired Location</h5>
                         <p className="it_employees">
-                          Hyderabad{" "}
+                        {careerprofile.Desired_Location}
 
                         </p>
                       </div>
@@ -3205,28 +3273,30 @@ const MyResume = () => {
                       <div className="career_profile_content">
                         <h5 className="industry">Functional Area</h5>
                         <p className="it_employees">
-                          Design / Creative / User Experience{" "}
+                         
+                          {careerprofile.Desired_Functional_Area_Department}
 
                         </p>
                       </div>
                       <div className="career_profile_content">
                         <h5 className="industry">Job Type</h5>
                         <p className="it_employees">
-                          Permanent{" "}
+                      
+                       {careerprofile.Desired_Job_Type}
 
                         </p>
                       </div>
                       <div className="career_profile_content">
                         <h5 className="industry">Desired Shift</h5>
                         <p className="it_employees">
-                          Day{" "}
+                        {careerprofile.Desired_PrefferedShift}
 
                         </p>
                       </div>
                       <div className="career_profile_content">
                         <h5 className="industry">Expected Salary</h5>
                         <p className="it_employees">
-                          ₹2 lakhs{" "}
+                        {careerprofile.Desired_Expected_SalaryinLakhs}.{careerprofile.Desired_Expected_SalaryinThousands}
 
                         </p>
                       </div>
@@ -3236,7 +3306,7 @@ const MyResume = () => {
                       >
                         <h5 className="industry">Desired Industry</h5>
                         <p className="it_employees">
-                          TCS{" "}
+                        {careerprofile.Desired_Industry}
 
                         </p>
                       </div>
@@ -3274,11 +3344,12 @@ const MyResume = () => {
                               <div className="form-group">
                                 <label>Industry</label>
                                 <input
-                                  name="Desired_Industry"
-                                  onChange={(e) => formHandling(e)}
+                                  name="career_Industry"
+                                  onChange={(e) => careerprofileHandling(e)}
                                   type="text"
                                   className="form_control"
                                   placeholder="Please Enter Industry"
+                                  value={careerprofile.career_Industry}
                                 />
                               </div>
                             </div>
@@ -3288,10 +3359,11 @@ const MyResume = () => {
                                 <label>Functional Area Department</label>
                                 <input
                                   name="Desired_Functional_Area_Department"
-                                  onChange={(e) => formHandling(e)}
+                                  onChange={(e) => careerprofileHandling(e)}
                                   type="text"
                                   className="form_control"
                                   placeholder="Please Enter Your Course Completion ID"
+                                  value={careerprofile.Desired_Functional_Area_Department}
                                 />
                               </div>
                             </div>
@@ -3301,10 +3373,11 @@ const MyResume = () => {
                                 <label>Role</label>
                                 <input
                                   name="Desired_Role_URL"
-                                  onChange={(e) => formHandling(e)}
+                                  onChange={(e) => careerprofileHandling(e)}
                                   type="text"
                                   className="form_control"
                                   placeholder="Please Mention Completion URl"
+                                  value={careerprofile.Desired_Role_URL}
                                 />
                               </div>
                             </div>
@@ -3320,7 +3393,8 @@ const MyResume = () => {
                                     name="Desired_Job_Type"
                                     id="inlineRadio1"
                                     value="Permanent"
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => careerprofileHandling(e)}
+                                    // value={careerprofile.Desired_Job_Type}  
                                   />
                                   <label
                                     className="form-check-label"
@@ -3337,7 +3411,8 @@ const MyResume = () => {
                                     // name="inlineRadioOptions"
                                     id="inlineRadio2"
                                     value="Contractual"
-                                    onChange={(e) => formHandling(e)}
+                                    //  value={careerprofile.Desired_Job_Type}  
+                                    onChange={(e) => careerprofileHandling(e)}
                                   />
                                   <label
                                     className="form-check-label"
@@ -3356,12 +3431,13 @@ const MyResume = () => {
                                 <div className="form-check form-check-inline">
                                   <input
                                     name="Desired_Employement_Type"
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => careerprofileHandling(e)}
                                     className="form-check-input"
                                     type="radio"
                                     // name="inlineRadioOptions"
                                     id="inlineRadio1"
                                     value="Full Time"
+                                   
                                   />
                                   <label
                                     className="form-check-label"
@@ -3373,12 +3449,13 @@ const MyResume = () => {
                                 <div className="form-check form-check-inline">
                                   <input
                                     name="Desired_Employement_Type"
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => careerprofileHandling(e)}
                                     className="form-check-input"
                                     type="radio"
                                     // name="inlineRadioOptions"
                                     id="inlineRadio2"
                                     value="Part Time"
+                                    
                                   />
                                   <label
                                     className="form-check-label"
@@ -3390,12 +3467,13 @@ const MyResume = () => {
                                 <div className="form-check form-check-inline">
                                   <input
                                     name="Desired_Employement_Type"
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => careerprofileHandling(e)}
                                     className="form-check-input"
                                     type="radio"
                                     // name="inlineRadioOptions"
                                     id="inlineRadio2"
                                     value="Freelancer"
+                                    
                                   />
                                   <label
                                     className="form-check-label"
@@ -3413,12 +3491,13 @@ const MyResume = () => {
                                 <div className="form-check form-check-inline">
                                   <input
                                     name="Desired_PrefferedShift"
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => careerprofileHandling(e)}
                                     className="form-check-input"
                                     type="radio"
                                     // name="inlineRadioOptions"
                                     id="inlineRadio1"
                                     value="Day"
+                                    // value={careerprofile.Desired_Employement_Type}
                                   />
                                   <label
                                     className="form-check-label"
@@ -3430,7 +3509,7 @@ const MyResume = () => {
                                 <div className="form-check form-check-inline">
                                   <input
                                     name="Desired_PrefferedShift"
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => careerprofileHandling(e)}
                                     className="form-check-input"
                                     type="radio"
                                     // name="inlineRadioOptions"
@@ -3447,7 +3526,7 @@ const MyResume = () => {
                                 <div className="form-check form-check-inline">
                                   <input
                                     name="Desired_PrefferedShift"
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => careerprofileHandling(e)}
                                     className="form-check-input"
                                     type="radio"
                                     // name="inlineRadioOptions"
@@ -3469,10 +3548,11 @@ const MyResume = () => {
                                 <label> Available To Join</label>
                                 <input
                                   name="Desired_AvailableJoinYears"
-                                  onChange={(e) => formHandling(e)}
+                                  onChange={(e) => careerprofileHandling(e)}
                                   type="text"
                                   className="form_control"
                                   placeholder="Year"
+                                  value={careerprofile.Desired_AvailableJoinYears}
                                 />
                               </div>
                             </div>
@@ -3480,7 +3560,8 @@ const MyResume = () => {
                               <div className="form-group">
                                 <label> Month</label>
                                 <select className="form_control" name="Desired_AvailableJoinMonths"
-                                  onChange={(e) => formHandling(e)}>
+                                value={careerprofile.Desired_AvailableJoinMonths}
+                                  onChange={(e) => careerprofileHandling(e)}>
                                   <option hidden>Months</option>
                                   <option>Jan</option>
                                   <option>Feb</option>
@@ -3504,10 +3585,11 @@ const MyResume = () => {
                                 <label className="my-2">Expected Salary</label>
                                 <input
                                   name="Desired_Expected_SalaryinLakhs"
-                                  onChange={(e) => formHandling(e)}
+                                  onChange={(e) => careerprofileHandling(e)}
                                   type="text"
                                   className="form_control"
                                   placeholder="₹0 Lakh"
+                                  value={careerprofile.Desired_Expected_SalaryinLakhs}
                                 />
                               </div>
                             </div>
@@ -3516,10 +3598,11 @@ const MyResume = () => {
                               <div className="form-group">
                                 <input
                                   name="Desired_Expected_SalaryinThousands"
-                                  onChange={(e) => formHandling(e)}
+                                  onChange={(e) => careerprofileHandling(e)}
                                   type="text"
                                   className="form_control"
                                   placeholder="₹5 Thousand"
+                                  value={careerprofile.Desired_Expected_SalaryinThousands}
                                 />
                               </div>
                             </div>
@@ -3530,10 +3613,12 @@ const MyResume = () => {
                                 <input
 
                                   name="Desired_Location"
-                                  onChange={(e) => formHandling(e)}
+                                  onChange={(e) => careerprofileHandling(e)}
                                   type="text"
                                   className="form_control"
                                   placeholder="Please Enter Desired Location"
+                                  value={careerprofile.Desired_Location}
+
                                 />
                               </div>
                             </div>
@@ -3544,10 +3629,12 @@ const MyResume = () => {
                                 <input
 
                                   name="Desired_Industry"
-                                  onChange={(e) => formHandling(e)}
+                                  onChange={(e) => careerprofileHandling(e)}
                                   type="text"
                                   className="form_control"
                                   placeholder="Please Enter Desired Industry"
+                                  value={careerprofile.Desired_Industry}
+
                                 />
                               </div>
                             </div>
@@ -3555,7 +3642,7 @@ const MyResume = () => {
                         </form>
                       </div>
                       <div className="modal-footer">
-                        <button type="button" className="update" >
+                        <button type="button" className="update"  onClick={(e)=>handlecareerprofile(e)}>
                           Save changes
                         </button>
                       </div>
