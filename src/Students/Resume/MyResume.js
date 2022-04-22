@@ -97,7 +97,7 @@ const MyResume = () => {
     employment: [],
     education: [],
     project: [],
-    workSample:[],
+    worksample:[],
     presentation:[],
     careerprofile:[],
     personaldetails: {
@@ -149,15 +149,114 @@ const MyResume = () => {
     }
   ])
 
-  const [workSample,setWorkSample] = useState([
+
+  //worksample state
+  const [worksample, setworksample] = useState([
     {
-      Work_Title:"",
-      Work_URL:"",
-      Work_Duration_From:"",
-      Work_Duration_To:"",
-      Work_Description:""
+      Work_Title:'',
+      Work_URL:'',
+      Work_Duration_From:'',
+      Work_Duration_To:'',
+      Work_Description:''
     }
   ])
+
+    // worksample Initial Data
+    const worksampleInitialData = () => {
+      setworksample({
+        Work_Title:'',
+        Work_URL:'',
+        Work_Duration_From:'',
+        Work_Duration_To:'',
+        Work_Description:''
+      })
+    }
+
+      // deleting worksample  data
+  const deleteworksample = (id) => {
+    // e.preventDefault()
+    console.log(localStorage.getItem("token"))
+    axios
+      .delete(`${apiList.user}/${id}/worksample`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data)
+        console.log("funtion working")
+        toast.success(response.data.message)
+        getData();
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message)
+        console.log(err.response);
+      });
+  };
+
+
+    // worksample replace modal
+
+    const replaceworksampleItem = (id) => {
+      console.log("working")
+      setProfile({
+        ...profile,
+        requiredItem: id
+      })
+      setworksample(profile.worksample[id])
+    }
+  
+
+  //onChange worksample
+  const worksampleHandling = (e) => {
+    setworksample({
+      ...worksample,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+
+    //worksample submit
+    const handleworksample = (e, id) => {
+      e.preventDefault()
+      if (id) {
+        axios.put(`${apiList.user}/${id}/worksample`, worksample, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
+        }).then((response) => {
+          console.log(response.data)
+          getData();
+        })
+          .catch((err) => {
+  
+            console.log(err.response);
+          });
+      }
+      else {
+        let updatedDetails = {
+          ...profile,
+          worksample: [...profile.worksample, worksample]
+        }
+        axios
+          .put(apiList.user, updatedDetails, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          })
+          .then((response) => {
+            console.log(response.data)
+            getData();
+          })
+          .catch((err) => {
+  
+            console.log(err.response);
+          });
+      }
+  
+    };
+
+
 
   const [presentation,setPresentation] = useState ([
     {
@@ -235,13 +334,6 @@ const MyResume = () => {
     })
   }
 
-    //onChange workSample
-    const workSampleHandling = (e) => {
-      setWorkSample({
-        ...workSample,
-        [e.target.name]: e.target.value,
-      })
-    }
 
       //onChange Presentation
   const presentationHandling = (e) => {
@@ -401,45 +493,7 @@ const MyResume = () => {
 
   };
 
-  //workSample submit
-  const handleworkSample = (e, id) => {
-    e.preventDefault()
-    if (id) {
-      axios.put(`${apiList.user}/${id}/workSample`, workSample, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        }
-      }).then((response) => {
-        console.log(response.data)
-        getData();
-      })
-        .catch((err) => {
 
-          console.log(err.response);
-        });
-    } 
-    else {
-      let updatedDetails = {
-        ...profile,
-        workSample: [...profile.workSample, workSample]
-      }
-      axios
-        .put(apiList.user, updatedDetails, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        })
-        .then((response) => {
-          console.log(response.data)
-          getData();
-        })
-        .catch((err) => {
-
-          console.log(err.response);
-        });
-    }
-
-  };
 
     //Presentation submit
     const handlePresentation = (e, id) => {
@@ -628,16 +682,7 @@ const MyResume = () => {
     setProject(profile.project[id])
   }
 
-    // workSample replace modal
 
-    const replaceworkSampleModalItem = (id) => {
-      console.log("working")
-      setProfile({
-        ...profile,
-        requiredItem: id
-      })
-      setWorkSample(profile.workSample[id])
-    }
 
       // presentation replace modal
 
@@ -691,16 +736,7 @@ const MyResume = () => {
     })
   }
 
-    // work sample Initial Data
-    const setWorkSampleInitialData = () => {
-      setWorkSample({
-      Work_Title:'',
-      Work_URL:'',
-      Work_Duration_From:'',
-      Work_Duration_To:'',
-      Work_Description:''
-      })
-    }
+
 
       // presentation Initial Data
   const setpresentationInitialData = () => {
@@ -782,27 +818,7 @@ const MyResume = () => {
       });
   };
 
-    // deleting workSample  data
-    const deleteworkSampledata = (id) => {
-      // e.preventDefault()
-      console.log(localStorage.getItem("token"))
-      axios
-        .delete(`${apiList.user}/${id}/workSample`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        })
-        .then((response) => {
-          console.log(response.data)
-          console.log("funtion working")
-          toast.success(response.data.message)
-          getData();
-        })
-        .catch((err) => {
-          toast.error(err.response.data.message)
-          console.log(err.response);
-        });
-    };
+
 
       // deleting presentation  data
   const deletepresentationdata = (id) => {
@@ -2395,6 +2411,7 @@ const MyResume = () => {
 
               {/* Accomplishment */}
 
+
               <div className="content">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">
@@ -2403,8 +2420,6 @@ const MyResume = () => {
                 </div>
 
                 <div className="content_sub">
-
-
                   <div className="content_sub_1">
                     <div className="job-bx-title clearfix">
                       <h5 className=" pull-left  cp_1">Work Sample</h5>
@@ -2413,7 +2428,7 @@ const MyResume = () => {
                         className="site_button_resume  float-right"
                         data-toggle="modal"
                         data-target="#workSample"
-                        onClick={() => setWorkSampleInitialData()}
+                        onClick={() => worksampleInitialData()}
                       >
                         {" "}
                         <span>
@@ -2422,60 +2437,53 @@ const MyResume = () => {
                       </a>
                     </div>
 
-                    {/* <p className="job_usa">
-                      Add link to your Projects (e.g. Github links etc.).
-                    </p> */}
-
-{
-                  profile?.workSample ?
-                  profile?.workSample?.map((workSample, win) => {
+                    {
+                  profile?.worksample ?
+                    profile?.worksample?.map((worksample, ws) => {
                       return (<>
                         <h5 className="junior_edit">
-                          {workSample?.Work_Title}{" "}
-                          <a href="#" data-toggle="modal" data-target="#employ" >
+                          {worksample?.Work_Title}{" "}
+                          <a href="#" data-toggle="modal" data-target="#projectsResume">
                             {" "}
                             <i className="fas fa-pencil-alt pencil_clearfix pencil"
-                              onClick={() => replaceworkSampleModalItem(win)}
+                              onClick={() => replaceworksampleItem(ws)}
                             ></i>
                           </a>
-                          <a href="#" data-toggle="modal" onClick={() => deleteworkSampledata(workSample._id)}>
+                          <a href="#" data-toggle="modal" onClick={() => deleteworksample(project._id)}>
 
                             {" "}
                             <i class="far fa-trash-alt remove" ></i>
                           </a>
                         </h5>
-
-                        <p className="job_usa">{workSample?.Work_URL}</p>
+                        {/* <p className="job_usa">{project?.ProjectClient}</p>
                         <p className="job_usa">
-                          {moment(workSample?.Work_Duration_From).format('YYYY MMMM')} to {" "}
+                          {moment(project?.ProjectStartDate).format('YYYY MMMM')} to {" "}
                           {
-                            moment(workSample?.Work_Duration_To).format('YYYY MMMM') 
-                            === moment(new Date()).format('YYYY MMMM') ?
-                              "Present" : moment(workSample?.Work_Duration_To).format('YYYY MMMM')
+                            moment(project?.ProjectWorkTill).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM') ?
+                              "Present" : moment(project?.ProjectWorkTill).format('YYYY MMMM')
                           }
                           ({
-                            moment(workSample?.Work_Duration_To).diff(moment(workSample?.Work_Duration_From), "years")
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), "years")
                           }
                           {
-                            moment(workSample?.Work_Duration_To).diff(moment(workSample?.Work_Duration_From), "years") === 1 ? " Year" : " Years"
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), "years") === 1 ? " Year" : " Years"
                           }
                           {" "}-{" "}
                           {
-                            moment(workSample?.Work_Duration_To).diff(moment(workSample?.Work_Duration_From).add(moment(workSample?.Work_Duration_To).diff(moment(workSample?.Work_Duration_From), 'year'), 'years'), 'months')
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate).add(moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), 'year'), 'years'), 'months')
                           }
                           {
-                            moment(workSample?.Work_Duration_To).diff(moment(workSample?.Work_Duration_From).add(moment(workSample?.Work_Duration_To).diff(moment(workSample?.Work_Duration_From), 'year'), 'years'), 'months') === 1 ?
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate).add(moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), 'year'), 'years'), 'months') === 1 ?
                               " Month" : " Months"
                           }
                           )
                         </p>
-                        <p className="job_usa" >
-                         {workSample?.Work_Description}
-                        </p>
                       
+                        <p className="job_usa">{project?.ProjectDescription}</p> */}
                       </>)
                     }) : null
                 }
+
 
 
                     <div
@@ -2513,10 +2521,10 @@ const MyResume = () => {
                                     <label>Work Title</label>
                                     <input
                                       name="Work_Title"
-                                      onChange={(e) => workSampleHandling(e)}
+                                      onChange={(e) =>worksampleHandling(e)}
                                       type="text"
                                       className="form_control"
-                                      value={workSample.Work_Title}
+                                      value={worksample.Work_Title}
                                     />
                                   </div>
                                 </div>
@@ -2526,10 +2534,9 @@ const MyResume = () => {
                                     <label>URL</label>
                                     <input
                                       name="Work_URL"
-                                      onChange={(e) => workSampleHandling(e)}
                                       type="text"
                                       className="form_control"
-                                      value={workSample.Work_URL}
+                                     
                                     />
                                   </div>
                                 </div>
@@ -2539,11 +2546,11 @@ const MyResume = () => {
                                     <label>Duration From</label>
                                     <input
                                       name="Work_Duration_From"
-                                      onChange={(e) => workSampleHandling(e)}
+                                      
                                       type="date"
                                       className="form_control"
                                       placeholder="Year"
-                                      value={workSample.Work_Duration_From}
+                                  
                                     />
                                   </div>
                                 </div>
@@ -2552,11 +2559,11 @@ const MyResume = () => {
                                     <label>Duration To</label>
                                     <input
                                       name="Work_Duration_To"
-                                      onChange={(e) => workSampleHandling(e)}
+                                     
                                       type="date"
                                       className="form_control"
                                       placeholder="Year"
-                                      value={workSample.Work_Duration_To}
+                                     
                                     />
                                   </div>
                                 </div>
@@ -2566,13 +2573,13 @@ const MyResume = () => {
                                     <label> Description </label>
                                     <textarea
                                       name="Work_Description"
-                                      onChange={(e) => workSampleHandling(e)}
+                                   
                                       className="form_control"
                                       cols="30"
                                       rows="5"
                                       placeholder="Describe here.."
                                       maxlength="250"
-                                      value={workSample.Work_Description}
+                                     
                                     ></textarea>
                                   </div>
                                 </div>
@@ -2580,7 +2587,7 @@ const MyResume = () => {
                             </form>
                           </div>
                           <div className="modal-footer">
-                            <button type="button" className="update" onClick={(e) => handleworkSample(e, workSample._id)}>
+                            <button type="button" className="update"  onClick={(e) => handleworksample(e,worksample._id)}>
                               Save changes
                             </button>
                           </div>
