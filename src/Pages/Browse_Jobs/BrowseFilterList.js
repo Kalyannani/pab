@@ -262,19 +262,19 @@ const BrowseFilterList = () => {
       educations: education,
       category: designation,
       industryType
-      // salaryMin: 0,
+      // salaryMin: 0,  
       // salaryMax: 18000
     }
-    if (salary) {
-      data.salaryMin = salary.salaryMin
-      data.salaryMax = salary.salaryMax
-    }
-    if (keyword !== '') {
-      data.q = keyword
-    }
-    if (qlocation !== '') {
-      data.qlocation = qlocation
-    }
+    // if (salary) {
+    //   data.salaryMin = salary.salaryMin
+    //   data.salaryMax = salary.salaryMax
+    // }
+    // if (keyword !== '') {
+    //   data.q = keyword
+    // }
+    // if (qlocation !== '') {
+    //   data.qlocation = qlocation
+    // }
     await axios.post(apiList.jobSearch + '?page=' + page, data, {
       headers,
     })
@@ -288,7 +288,7 @@ const BrowseFilterList = () => {
         console.log(err.response.data);
         toast.error(err.response.data.message)
       });
-  }
+}
 
   const handleSearch = e => {
     let haveError = false
@@ -499,7 +499,7 @@ const BrowseFilterList = () => {
                 <Browsead />
 
                 <Browsehrads />
-                <Browsead />
+             
 
                 <Browseverads />
 
@@ -802,8 +802,7 @@ const BrowseFilterList = () => {
 
               <Browseverads />
 
-              <Browsead />
-
+        
               <Browsehrads />
 
               <Browsead />
@@ -814,7 +813,7 @@ const BrowseFilterList = () => {
 
               <Browsehrads />
 
-              <Browsead />
+             
 
             </div>
 

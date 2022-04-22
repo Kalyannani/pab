@@ -559,11 +559,11 @@ body {
 body {
   font-size: 16px;
   font-weight: 400;
-  font-family: Arial, sans-serif !important;
+  font-family: Lato, sans-serif !important;
 }
 
 label {
-  font-family: Arial, sans-serif !important;
+  font-family: Lato, sans-serif !important;
 }
 
 /* .........navbar starts........... */
@@ -2660,7 +2660,7 @@ span {
 }
 
 .about_us_text {
-  font-family: Arial, sans-serif;
+  font-family: Lato, sans-serif;
 }
 
 .about_us_card {
@@ -2678,7 +2678,7 @@ span {
 }
 
 .about_us_card_text {
-  font-family: Arial, sans-serif;
+  font-family: Lato, sans-serif;
 }
 
 /* section 3 */
@@ -2733,7 +2733,7 @@ span {
 }
 
 .about_us_section_4_text {
-  font-family: Arial, sans-serif;
+  font-family: Lato, sans-serif;
 }
 
 .about_us_section_4_card_text {
@@ -3601,8 +3601,15 @@ button.alljob_buttons_sub:focus {
 }
 
 #sec3 .card-img-top {
-  height: 180px;
+  height: 130px;
+  width: 130px;
+    /* height: 180px; */
+    border: 2px solid #9d9eaff7;
+    border-radius: 50%;
+
 }
+
+
 
 /* .........sec3 ends........ */
 
@@ -4916,7 +4923,7 @@ input#filter_grid_input:focus {
 }
 
 .job_filter_grid_in_up span {
-  font-family: Arial, sans-serif;
+  font-family: Lato, sans-serif;
   color: #270D44;
   font-weight: 500;
 }
@@ -5072,7 +5079,7 @@ input#filter_grid_input:focus {
   display: block;
   width: 100%;
   box-sizing: border-box;
-  font-family: "Open-sans", Arial, sans-serif;
+  font-family: "Open-sans", Lato, sans-serif;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
@@ -5646,7 +5653,7 @@ h2.job_filter_list_title {
   display: block;
   width: 100%;
   box-sizing: border-box;
-  font-family: "Open-sans", Arial, sans-serif;
+  font-family: "Open-sans", Lato, sans-serif;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
@@ -5964,7 +5971,7 @@ span.input-grid-icon {
 }
 
 .job_grid_in_up span {
-  font-family: Arial, sans-serif;
+  font-family: Lato, sans-serif;
   margin: 15px 10px 10px 5px;
   color: #270D44;
   font-weight: 500;
@@ -12490,7 +12497,7 @@ input[type="file"]::file-selector-button:hover {
 
 .classic_sec_2_text {
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: Lato, sans-serif;
   margin-bottom: 30px;
 }
 
@@ -12616,7 +12623,7 @@ input[type="file"]::file-selector-button:hover {
 
 .classic_sidenav_sec_2_text {
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: Lato, sans-serif;
   margin-bottom: 30px;
 }
 
@@ -12925,7 +12932,7 @@ button:focus {
 
 .left_image_sidenav_sec_2_text {
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: Lato, sans-serif;
   margin-bottom: 30px;
 }
 
@@ -14384,7 +14391,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 90%;
   margin: 2em auto;
   border-radius: 5px;
-  font-family: Arial, sans-serif;
+  font-family: Lato, sans-serif;
 }
 
 .forgot h1 {
@@ -14779,7 +14786,7 @@ option {
   background: #270D44;
   padding: 8px 7px;
   border-radius: 2px;
-  font-family: Arial, sans-serif !important;
+  font-family: Lato, sans-serif !important;
   margin: 10px -15px;
 }
 
@@ -15240,7 +15247,7 @@ text-align: left;
   color: #270D44;
   text-align: center;
   font-weight: 700 !important;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Lato, Helvetica, sans-serif;
   /* padding-top: 50px !important; */
   margin-top: -10px;
   padding-bottom: 15px;
@@ -15737,7 +15744,7 @@ text-align: left;
   /* margin-top: -20px; */
   padding: 18px;
   color: #270D44;
-  font-family: Arial, Helvetica, sans-serif
+  font-family: Lato, Helvetica, sans-serif
 }
 
 .selection_one p {
@@ -17301,7 +17308,7 @@ strong {
 }
 
 .job_filter_grid_in_up span {
-  font-family: Arial, sans-serif;
+  font-family: Lato, sans-serif;
   padding: 5px 10px !important;
   color: #270D44;
   font-weight: 500;
@@ -18651,7 +18658,7 @@ width: 40% !important;
 .B_ftext {
   margin-top: 50px;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Lato, Helvetica, sans-serif;
   margin-bottom: 50px;
 }
 
