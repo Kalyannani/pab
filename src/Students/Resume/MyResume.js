@@ -97,9 +97,12 @@ const MyResume = () => {
     employment: [],
     education: [],
     project: [],
-    worksample:[],
-    presentation:[],
-    careerprofile:[],
+    worksample: [],
+    presentation: [],
+    careerprofile: [],
+    presentation: [],
+    publication: [],
+    patent:[],
     personaldetails: {
       dateofbirth: "",
       address: "",
@@ -153,26 +156,26 @@ const MyResume = () => {
   //worksample state
   const [worksample, setworksample] = useState([
     {
-      Work_Title:'',
-      Work_URL:'',
-      Work_Duration_From:'',
-      Work_Duration_To:'',
-      Work_Description:''
+      Work_Title: '',
+      Work_URL: '',
+      Work_Duration_From: '',
+      Work_Duration_To: '',
+      Work_Description: ''
     }
   ])
 
-    // worksample Initial Data
-    const worksampleInitialData = () => {
-      setworksample({
-        Work_Title:'',
-        Work_URL:'',
-        Work_Duration_From:'',
-        Work_Duration_To:'',
-        Work_Description:''
-      })
-    }
+  // worksample Initial Data
+  const worksampleInitialData = () => {
+    setworksample({
+      Work_Title: '',
+      Work_URL: '',
+      Work_Duration_From: '',
+      Work_Duration_To: '',
+      Work_Description: ''
+    })
+  }
 
-      // deleting worksample  data
+  // deleting worksample  data
   const deleteworksample = (id) => {
     // e.preventDefault()
     console.log(localStorage.getItem("token"))
@@ -195,17 +198,17 @@ const MyResume = () => {
   };
 
 
-    // worksample replace modal
+  // worksample replace modal
 
-    const replaceworksampleItem = (id) => {
-      console.log("working")
-      setProfile({
-        ...profile,
-        requiredItem: id
-      })
-      setworksample(profile.worksample[id])
-    }
-  
+  const replaceworksampleItem = (id) => {
+    console.log("working")
+    setProfile({
+      ...profile,
+      requiredItem: id
+    })
+    setworksample(profile.worksample[id])
+  }
+
 
   //onChange worksample
   const worksampleHandling = (e) => {
@@ -216,11 +219,344 @@ const MyResume = () => {
   }
 
 
-    //worksample submit
-    const handleworksample = (e, id) => {
+  //worksample submit
+  const handleworksample = (e, id) => {
+    e.preventDefault()
+    if (id) {
+      axios.put(`${apiList.user}/${id}/worksample`, worksample, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        getData();
+      })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    }
+    else {
+      let updatedDetails = {
+        ...profile,
+        worksample: [...profile.worksample, worksample]
+      }
+      axios
+        .put(apiList.user, updatedDetails, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+
+
+
+        })
+        .then((response) => {
+          console.log(response.data)
+          getData();
+        })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    }
+
+  };
+
+
+
+
+
+
+  //presentation state
+  const [presentation, setPresentation] = useState([
+    {
+      Presentation_Title: '',
+      Presentation_URL: '',
+      Presentation_Description: ''
+    }
+  ])
+
+  // presentation Initial Data
+  const presentationInitialData = () => {
+    setPresentation({
+      Presentation_Title: '',
+      Presentation_URL: '',
+      Presentation_Description: ''
+    })
+  }
+
+  // deleting presentation  data
+  const deletepresentation = (id) => {
+    // e.preventDefault()
+    console.log(localStorage.getItem("token"))
+    axios
+      .delete(`${apiList.user}/${id}/presentation`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data)
+        console.log("funtion working")
+        toast.success(response.data.message)
+        getData();
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message)
+        console.log(err.response);
+      });
+  };
+
+
+  // presentation replace modal
+
+  const replacepresentationItem = (id) => {
+    console.log("working")
+    setProfile({
+      ...profile,
+      requiredItem: id
+    })
+    setPresentation(profile.presentation[id])
+  }
+
+
+  //onChange presentation
+  const presentationHandling = (e) => {
+    setPresentation({
+      ...presentation,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+
+  //presentation submit
+  const handlePresentation = (e, id) => {
+    e.preventDefault()
+    if (id) {
+      axios.put(`${apiList.user}/${id}/presentation`, presentation, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        getData();
+      })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    }
+    else {
+      let updatedDetails = {
+        ...profile,
+        presentation: [...profile.presentation, presentation]
+      }
+      axios
+        .put(apiList.user, updatedDetails, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+
+
+
+        })
+        .then((response) => {
+          console.log(response.data)
+          getData();
+        })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    }
+
+  };
+
+
+
+  //publication state
+  const [publication, setpublication] = useState([
+    {
+      Publication_Title: '',
+      Publication_URL: '',
+      Publication_Year: '',
+      Publication_Months: '',
+      Publication_Description: '',
+    }
+  ])
+
+  // publication Initial Data
+  const publicationInitialData = () => {
+    setpublication({
+      Publication_Title: '',
+      Publication_URL: '',
+      Publication_Year: '',
+      Publication_Months: '',
+      Publication_Description: '',
+    })
+  }
+
+  // deleting publication  data
+  const deletepublication = (id) => {
+    // e.preventDefault()
+    console.log(localStorage.getItem("token"))
+    axios
+      .delete(`${apiList.user}/${id}/publication`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data)
+        console.log("funtion working")
+        toast.success(response.data.message)
+        getData();
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message)
+        console.log(err.response);
+      });
+  };
+  
+
+  // publication replace modal
+
+  const replacepublicationItem = (id) => {
+    console.log("working")
+    setProfile({
+      ...profile,
+      requiredItem: id
+    })
+    setpublication(profile.publication[id])
+  }
+
+
+  //onChange publication
+  const publicationHandling = (e) => {
+    setpublication({
+      ...publication,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+
+  //publication submit
+  const handlepublication = (e, id) => {
+    e.preventDefault()
+    if (id) {
+      axios.put(`${apiList.user}/${id}/publication`, publication, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        getData();
+      })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    }
+    else {
+      let updatedDetails = {
+        ...profile,
+        publication: [...profile.publication, publication]
+      }
+      axios
+        .put(apiList.user, updatedDetails, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+
+
+
+        })
+        .then((response) => {
+          console.log(response.data)
+          getData();
+        })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    }
+
+  };
+  
+
+    //patent state
+    const [patent, setpatent] = useState([
+      {
+        Patent_Title: '',
+        Patent_URL: '',
+        Patent_Office: '',
+        Patent_Status: '',
+        Patent_Application_Number: '',
+        Patent_Description:''
+      }
+    ])
+  
+    // patent Initial Data
+    const patentInitialData = () => {
+      setpatent({
+        Patent_Title: '',
+        Patent_URL: '',
+        Patent_Office: '',
+        Patent_Status: '',
+        Patent_Application_Number: '',
+        Patent_Description:''
+      })
+    }
+  
+    // deleting patent  data
+    const deletepatent = (id) => {
+      // e.preventDefault()
+      console.log(localStorage.getItem("token"))
+      axios
+        .delete(`${apiList.user}/${id}/patent`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data)
+          console.log("funtion working")
+          toast.success(response.data.message)
+          getData();
+        })
+        .catch((err) => {
+          toast.error(err.response.data.message)
+          console.log(err.response);
+        });
+    };
+  
+  
+    // patent replace modal
+  
+    const replacepatentItem = (id) => {
+      console.log("working")
+      setProfile({
+        ...profile,
+        requiredItem: id
+      })
+      setpatent(profile.patent[id])
+    }
+  
+  
+    //onChange patent
+    const patentHandling = (e) => {
+      setpatent({
+        ...patent,
+        [e.target.name]: e.target.value,
+      })
+    }
+  
+  
+    //patent submit
+    const handlepatent = (e, id) => {
       e.preventDefault()
       if (id) {
-        axios.put(`${apiList.user}/${id}/worksample`, worksample, {
+        axios.put(`${apiList.user}/${id}/patent`, patent, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           }
@@ -236,13 +572,16 @@ const MyResume = () => {
       else {
         let updatedDetails = {
           ...profile,
-          worksample: [...profile.worksample, worksample]
+          patent: [...profile.patent, patent]
         }
         axios
           .put(apiList.user, updatedDetails, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
+  
+  
+  
           })
           .then((response) => {
             console.log(response.data)
@@ -258,13 +597,117 @@ const MyResume = () => {
 
 
 
-  const [presentation,setPresentation] = useState ([
-    {
-      Presentation_Title:'',
-      Presentation_URL:'',
-      Presentation_Description:''
-    }
-  ])
+        //certification state
+        const [certification, setcertification] = useState([
+          {
+            Certification_Name: '',
+            Certification_ID: '',
+            Certification_URL: '',
+            Certification_Validity_From: '',
+            Certification_Validity_To: ''
+           
+          }
+        ])
+      
+        // certification Initial Data
+        const certificationInitialData = () => {
+          setcertification({
+            Certification_Name: '',
+            Certification_ID: '',
+            Certification_URL: '',
+            Certification_Validity_From: '',
+            Certification_Validity_To: ''
+          })
+        }
+      
+        // deleting certification  data
+        const deletecertification = (id) => {
+          // e.preventDefault()
+          console.log(localStorage.getItem("token"))
+          axios
+            .delete(`${apiList.user}/${id}/certification`, {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            })
+            .then((response) => {
+              console.log(response.data)
+              console.log("funtion working")
+              toast.success(response.data.message)
+              getData();
+            })
+            .catch((err) => {
+              toast.error(err.response.data.message)
+              console.log(err.response);
+            });
+        };
+      
+      
+        // certification replace modal
+      
+        const replacecertificationItem = (id) => {
+          console.log("working")
+          setProfile({
+            ...profile,
+            requiredItem: id
+          })
+          setcertification(profile.certification[id])
+        }
+      
+      
+        //onChange certification
+        const certificationHandling = (e) => {
+          setcertification({
+            ...certification,
+            [e.target.name]: e.target.value,
+          })
+        }
+      
+      
+        //certification submit
+        const handlecertification = (e, id) => {
+          e.preventDefault()
+          if (id) {
+            axios.put(`${apiList.user}/${id}/certification`, patent, {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              }
+            }).then((response) => {
+              console.log(response.data)
+              getData();
+            })
+              .catch((err) => {
+      
+                console.log(err.response);
+              });
+          }
+          else {
+            let updatedDetails = {
+              ...profile,
+              certification: [...profile.certification, certification]
+            }
+            axios
+              .put(apiList.user, updatedDetails, {
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+      
+      
+      
+              })
+              .then((response) => {
+                console.log(response.data)
+                getData();
+              })
+              .catch((err) => {
+      
+                console.log(err.response);
+              });
+          }
+      
+        };
+
+
 
   const [careerprofile, setcareerprofile] = useState([
     {
@@ -275,11 +718,11 @@ const MyResume = () => {
       Desired_Employement_Type: "",
       Desired_PrefferedShift: "",
       Desired_AvailableJoinYears: "",
-      Desired_AvailableJoinMonths:"",
-      Desired_Expected_SalaryinLakhs:"",
-      Desired_Expected_SalaryinThousands:"",
-      Desired_Location:"",
-      Desired_Industry:""
+      Desired_AvailableJoinMonths: "",
+      Desired_Expected_SalaryinLakhs: "",
+      Desired_Expected_SalaryinThousands: "",
+      Desired_Location: "",
+      Desired_Industry: ""
 
     },
   ]);
@@ -335,16 +778,10 @@ const MyResume = () => {
   }
 
 
-      //onChange Presentation
-  const presentationHandling = (e) => {
-    setPresentation({
-      ...presentation,
-      [e.target.name]: e.target.value,
-    })
-  }
 
-   //onChange careerprofile
-   const careerprofileHandling = (e) => {
+
+  //onChange careerprofile
+  const careerprofileHandling = (e) => {
     setcareerprofile({
       ...careerprofile,
       [e.target.name]: e.target.value,
@@ -495,47 +932,9 @@ const MyResume = () => {
 
 
 
-    //Presentation submit
-    const handlePresentation = (e, id) => {
-      e.preventDefault()
-      if (id) {
-        axios.put(`${apiList.user}/${id}/presentation`, presentation, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          }
-        }).then((response) => {
-          console.log(response.data)
-          getData();
-        })
-          .catch((err) => {
-  
-            console.log(err.response);
-          });
-      }
-      else {
-        let updatedDetails = {
-          ...profile,
-          presentation: [...profile.presentation, presentation]
-        }
-        axios
-          .put(apiList.user, updatedDetails, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          })
-          .then((response) => {
-            console.log(response.data)
-            getData();
-          })
-          .catch((err) => {
-  
-            console.log(err.response);
-          });
-      }
-  
-    };
 
-      //careerprofile submit
+
+  //careerprofile submit
   const handlecareerprofile = (e, id) => {
     e.preventDefault()
     if (id) {
@@ -628,6 +1027,7 @@ const MyResume = () => {
     if (data.resumeHeadline && data.resumeHeadline != '') {
       progressPercentage += 10
     }
+    
     setProgressBar(progressPercentage)
   }
 
@@ -684,16 +1084,16 @@ const MyResume = () => {
 
 
 
-      // presentation replace modal
+  //     // presentation replace modal
 
-  const replacepresentationModalItem = (id) => {
-    console.log("working")
-    setProfile({
-      ...profile,
-      requiredItem: id
-    })
-    setPresentation(profile.presentation[id])
-  }
+  // const replacepresentationModalItem = (id) => {
+  //   console.log("working")
+  //   setProfile({
+  //     ...profile,
+  //     requiredItem: id
+  //   })
+  //   setPresentation(profile.presentation[id])
+  // }
 
 
 
@@ -738,15 +1138,15 @@ const MyResume = () => {
 
 
 
-      // presentation Initial Data
-  const setpresentationInitialData = () => {
-    setPresentation({
-      Presentation_Title:'',
-      Presentation_URL:'',
-      Presentation_Description:''
+  //     // presentation Initial Data
+  // const setpresentationInitialData = () => {
+  //   setPresentation({
+  //     Presentation_Title:'',
+  //     Presentation_URL:'',
+  //     Presentation_Description:''
 
-    })
-  }
+  //   })
+  // }
 
 
   // deleting employee  data
@@ -820,27 +1220,27 @@ const MyResume = () => {
 
 
 
-      // deleting presentation  data
-  const deletepresentationdata = (id) => {
-    // e.preventDefault()
-    console.log(localStorage.getItem("token"))
-    axios
-      .delete(`${apiList.user}/${id}/presentation`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((response) => {
-        console.log(response.data)
-        console.log("funtion working")
-        toast.success(response.data.message)
-        getData();
-      })
-      .catch((err) => {
-        toast.error(err.response.data.message)
-        console.log(err.response);
-      });
-  };
+  //     // deleting presentation  data
+  // const deletepresentationdata = (id) => {
+  //   // e.preventDefault()
+  //   console.log(localStorage.getItem("token"))
+  //   axios
+  //     .delete(`${apiList.user}/${id}/presentation`, {
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       console.log(response.data)
+  //       console.log("funtion working")
+  //       toast.success(response.data.message)
+  //       getData();
+  //     })
+  //     .catch((err) => {
+  //       toast.error(err.response.data.message)
+  //       console.log(err.response);
+  //     });
+  // };
 
 
 
@@ -922,15 +1322,15 @@ const MyResume = () => {
                 <div className="row">
                   <div className="col-lg-3">
                     <div className="canditate-des">
-                    <label for="file">
-                      <p href="#">
-                      
-                        <img
-                          className="resume_img img-responsive"
-                          src={profile.profileImage ? profile.profileImage : `images/girl_avtar.png`}
-                        />
-                      </p>
-                      
+                      <label for="file">
+                        <p href="#">
+
+                          <img
+                            className="resume_img img-responsive"
+                            src={profile.profileImage ? profile.profileImage : `images/girl_avtar.png`}
+                          />
+                        </p>
+
                         <i class="fas fa-camera img_pencil img_edit"></i>
                       </label>
                       <input type="file"
@@ -994,7 +1394,7 @@ const MyResume = () => {
                     </div>
 
 
-                  <div className="progress resume_progress">
+                    <div className="progress resume_progress">
                       <div
                         className="progress-bar progress-bar-striped progress-bar-animated"
                         role="progressbar"
@@ -2138,7 +2538,7 @@ const MyResume = () => {
                           }
                           )
                         </p>
-                      
+
                         <p className="job_usa">{project?.ProjectDescription}</p>
                       </>)
                     }) : null
@@ -2304,7 +2704,7 @@ const MyResume = () => {
                                       <div className="form-group">
                                         <label> Started Working From</label>
                                         <input
-                                         type="date"
+                                          type="date"
                                           name="ProjectStartDate"
                                           className="form_control"
                                           placeholder="Years"
@@ -2333,7 +2733,7 @@ const MyResume = () => {
                                           value="Present"
                                           disabled
                                         />
-                                        
+
                                       </div>
                                     </div>
                                   </div>
@@ -2438,24 +2838,34 @@ const MyResume = () => {
                     </div>
 
                     {
-                  profile?.worksample ?
-                    profile?.worksample?.map((worksample, ws) => {
-                      return (<>
-                        <h5 className="junior_edit">
-                          {worksample?.Work_Title}{" "}
-                          <a href="#" data-toggle="modal" data-target="#projectsResume">
-                            {" "}
-                            <i className="fas fa-pencil-alt pencil_clearfix pencil"
-                              onClick={() => replaceworksampleItem(ws)}
-                            ></i>
-                          </a>
-                          <a href="#" data-toggle="modal" onClick={() => deleteworksample(project._id)}>
+                      profile?.worksample ?
+                        profile?.worksample?.map((worksample, aws) => {
+                          return (<>
+                            <h5 className="junior_edit">
+                              {worksample?.Work_Title}{" "}
+                              <a href="#" data-toggle="modal" data-target="#workSample">
+                                {" "}
+                                <i className="fas fa-pencil-alt pencil_clearfix pencil"
+                                  onClick={() => replaceworksampleItem(aws)}
+                                ></i>
+                              </a>
+                              <a href="#" data-toggle="modal" onClick={() => deleteworksample(worksample._id)}>
 
-                            {" "}
-                            <i class="far fa-trash-alt remove" ></i>
-                          </a>
-                        </h5>
-                        {/* <p className="job_usa">{project?.ProjectClient}</p>
+                                {" "}
+                                <i class="far fa-trash-alt remove" ></i>
+                              </a>
+                            </h5>
+
+                            <p>{worksample?.Work_URL}{" "}</p>
+                            <p className="job_usa">
+                              {moment(worksample?.Work_Duration_From).format('YYYY MMMM')} to {" "}
+                              {
+                                moment(worksample?.Work_Duration_To).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM') ?
+                                  moment(worksample?.Work_Duration_To).format('YYYY MMMM') : moment(worksample?.Work_Duration_To).format('YYYY MMMM')
+                              }
+                            </p>
+                            {worksample?.Work_Description}{" "}
+                            {/* <p className="job_usa">{project?.ProjectClient}</p>
                         <p className="job_usa">
                           {moment(project?.ProjectStartDate).format('YYYY MMMM')} to {" "}
                           {
@@ -2480,9 +2890,9 @@ const MyResume = () => {
                         </p>
                       
                         <p className="job_usa">{project?.ProjectDescription}</p> */}
-                      </>)
-                    }) : null
-                }
+                          </>)
+                        }) : null
+                    }
 
 
 
@@ -2521,7 +2931,7 @@ const MyResume = () => {
                                     <label>Work Title</label>
                                     <input
                                       name="Work_Title"
-                                      onChange={(e) =>worksampleHandling(e)}
+                                      onChange={(e) => worksampleHandling(e)}
                                       type="text"
                                       className="form_control"
                                       value={worksample.Work_Title}
@@ -2536,7 +2946,8 @@ const MyResume = () => {
                                       name="Work_URL"
                                       type="text"
                                       className="form_control"
-                                     
+                                      onChange={(e) => worksampleHandling(e)}
+                                      value={worksample.Work_URL}
                                     />
                                   </div>
                                 </div>
@@ -2546,11 +2957,13 @@ const MyResume = () => {
                                     <label>Duration From</label>
                                     <input
                                       name="Work_Duration_From"
-                                      
+
                                       type="date"
                                       className="form_control"
                                       placeholder="Year"
-                                  
+                                      onChange={(e) => worksampleHandling(e)}
+                                      value={worksample.Work_Duration_From}
+
                                     />
                                   </div>
                                 </div>
@@ -2559,11 +2972,13 @@ const MyResume = () => {
                                     <label>Duration To</label>
                                     <input
                                       name="Work_Duration_To"
-                                     
+
                                       type="date"
                                       className="form_control"
                                       placeholder="Year"
-                                     
+                                      onChange={(e) => worksampleHandling(e)}
+                                      value={worksample.Work_Duration_To}
+
                                     />
                                   </div>
                                 </div>
@@ -2573,13 +2988,14 @@ const MyResume = () => {
                                     <label> Description </label>
                                     <textarea
                                       name="Work_Description"
-                                   
+
                                       className="form_control"
                                       cols="30"
                                       rows="5"
                                       placeholder="Describe here.."
                                       maxlength="250"
-                                     
+                                      onChange={(e) => worksampleHandling(e)}
+                                      value={worksample.Work_Description}
                                     ></textarea>
                                   </div>
                                 </div>
@@ -2587,7 +3003,7 @@ const MyResume = () => {
                             </form>
                           </div>
                           <div className="modal-footer">
-                            <button type="button" className="update"  onClick={(e) => handleworksample(e,worksample._id)}>
+                            <button type="button" className="update" onClick={(e) => handleworksample(e, worksample._id)}>
                               Save changes
                             </button>
                           </div>
@@ -2607,12 +3023,67 @@ const MyResume = () => {
                       className="site_button_resume  float-right"
                       data-toggle="modal"
                       data-target="#whitePaper"
+                      onClick={() => publicationInitialData()}
                     >
                       {" "}
                       <span>
                         <i className="fas fa-pencil-alt pencil_clearfix"></i>
                       </span>{" "}
                     </a>
+
+                    {
+                      profile?.publication ?
+                        profile?.publication?.map((publication, pind) => {
+                          return (<>
+                            <h5 className="junior_edit">
+                              {publication?.Publication_Title}{" "}
+                              <a href="#" data-toggle="modal" data-target="#whitePaper" >
+                                {" "}
+                                <i className="fas fa-pencil-alt pencil_clearfix pencil"
+                                  onClick={() => replacepublicationItem(pind)}
+                                ></i>
+                              </a>
+                              <a href="#" data-toggle="modal" onClick={() => deletepublication(publication._id)}>
+
+                                {" "}
+                                <i class="far fa-trash-alt remove" ></i>
+                              </a>
+                            </h5>
+                            {/* <p className="job_usa">{project?.ProjectClient}</p>
+                        <p className="job_usa">
+                          {moment(project?.ProjectStartDate).format('YYYY MMMM')} to {" "}
+                          {
+                            moment(project?.ProjectWorkTill).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM') ?
+                              "Present" : moment(project?.ProjectWorkTill).format('YYYY MMMM')
+                          }
+                          ({
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), "years")
+                          }
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), "years") === 1 ? " Year" : " Years"
+                          }
+                          {" "}-{" "}
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate).add(moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), 'year'), 'years'), 'months')
+                          }
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate).add(moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), 'year'), 'years'), 'months') === 1 ?
+                              " Month" : " Months"
+                          }
+                          )
+                        </p> */}
+                            <p className="job_usa">{publication?.Publication_URL}</p>
+                            <p className="job_usa">
+                              {moment(publication?.Publication_Year).format('YYYY MMMM')} years  {" "}
+                              {
+                                moment(publication?.Publication_Months).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM') ?
+                                  moment(publication?.Publication_Months).format('YYYY MMMM') : moment(publication?.Publication_Months).format('YYYY MMMM')
+                              }</p>
+                            <p className="job_usa">{publication?.Publication_Description}</p>
+                          </>)
+                        }) : null
+                    }
+
 
                     <div
                       className="modal fade"
@@ -2645,10 +3116,11 @@ const MyResume = () => {
                                     <label>Title</label>
                                     <input
                                       name="Publication_Title"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => publicationHandling(e)}
                                       type="text"
                                       className="form_control"
                                       placeholder="Enter Title"
+                                      value={publication.Publication_Title}
                                     />
                                   </div>
                                 </div>
@@ -2658,10 +3130,11 @@ const MyResume = () => {
                                     <label>URL</label>
                                     <input
                                       name="Publication_URL"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => publicationHandling(e)}
                                       type="text"
                                       className="form_control"
                                       placeholder="wwww.google.com"
+                                      value={publication.Publication_URL}
                                     />
                                   </div>
                                 </div>
@@ -2671,17 +3144,18 @@ const MyResume = () => {
                                     <label>Published On</label>
                                     <input
                                       name="Publication_Year"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => publicationHandling(e)}
                                       type="text"
                                       className="form_control"
-                                      placeholder="Year"
+                                      placeholder="Enter no.of Year"
+                                      value={publication.Publication_Year}
                                     />
                                   </div>
                                 </div>
                                 <div className=" col-lg-6 col-md-6">
                                   <div className="form-group">
                                     <label> Month</label>
-                                    <select className="form_control" name="Publication_Months" onChange={(e) => formHandling(e)}>
+                                    <select className="form_control" name="Publication_Months" onChange={(e) => publicationHandling(e)} value={publication.Publication_Months}>
                                       <option hidden>Months</option>
                                       <option>01 Month</option>
                                       <option>02 Months</option>
@@ -2703,12 +3177,13 @@ const MyResume = () => {
                                     <label> Description </label>
                                     <textarea
                                       name="Publication_Description"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => publicationHandling(e)}
                                       className="form_control"
                                       cols="30"
                                       rows="5"
                                       placeholder="Describe here.."
                                       maxlength="250"
+                                      value={publication.Publication_Description}
                                     ></textarea>
                                   </div>
                                 </div>
@@ -2716,7 +3191,7 @@ const MyResume = () => {
                             </form>
                           </div>
                           <div className="modal-footer">
-                            <button type="button" className="update" >
+                            <button type="button" className="update" onClick={(e) => handlepublication(e, publication._id)}>
                               Save changes
                             </button>
                           </div>
@@ -2724,9 +3199,9 @@ const MyResume = () => {
                       </div>
                     </div>
                   </div>
-                  <p className="job_usa">
+                  {/* <p className="job_usa">
                     Add links to your Online publications.
-                  </p>
+                  </p> */}
                 </div>
 
                 <div className="content_sub">
@@ -2737,7 +3212,7 @@ const MyResume = () => {
                       className="site_button_resume  float-right"
                       data-toggle="modal"
                       data-target="#presentation"
-                      onClick={() => setpresentationInitialData()}
+                      onClick={() => presentationInitialData()}
                     >
                       {" "}
                       <span>
@@ -2751,25 +3226,25 @@ const MyResume = () => {
                     presentation links etc.).
                   </p> */}
 
-{
-                  profile?.presentation ?
-                    profile?.presentation?.map((presentation, pind) => {
-                      return (<>
-                        <h5 className="junior_edit">
-                          {presentation?.Presentation_Title}{" "}
-                          <a href="#" data-toggle="modal" data-target="#projectsResume" >
-                            {" "}
-                            <i className="fas fa-pencil-alt pencil_clearfix pencil"
-                              onClick={() => replacepresentationModalItem(pind)}
-                            ></i>
-                          </a>
-                          <a href="#" data-toggle="modal" onClick={() => deletepresentationdata(project._id)}>
+                  {
+                    profile?.presentation ?
+                      profile?.presentation?.map((presentation, pind) => {
+                        return (<>
+                          <h5 className="junior_edit">
+                            {presentation?.Presentation_Title}{" "}
+                            <a href="#" data-toggle="modal" data-target="#presentation" >
+                              {" "}
+                              <i className="fas fa-pencil-alt pencil_clearfix pencil"
+                                onClick={() => replacepresentationItem(pind)}
+                              ></i>
+                            </a>
+                            <a href="#" data-toggle="modal" onClick={() => deletepresentation(presentation._id)}>
 
-                            {" "}
-                            <i class="far fa-trash-alt remove" ></i>
-                          </a>
-                        </h5>
-                        {/* <p className="job_usa">{project?.ProjectClient}</p>
+                              {" "}
+                              <i class="far fa-trash-alt remove" ></i>
+                            </a>
+                          </h5>
+                          {/* <p className="job_usa">{project?.ProjectClient}</p>
                         <p className="job_usa">
                           {moment(project?.ProjectStartDate).format('YYYY MMMM')} to {" "}
                           {
@@ -2792,12 +3267,12 @@ const MyResume = () => {
                           }
                           )
                         </p> */}
-                      
-                        <p className="job_usa">{presentation?.Presentation_URL}</p>
-                        <p className="job_usa">{presentation?.Presentation_Description}</p>
-                      </>)
-                    }) : null
-                }
+
+                          <p className="job_usa">{presentation?.Presentation_URL}</p>
+                          <p className="job_usa">{presentation?.Presentation_Description}</p>
+                        </>)
+                      }) : null
+                  }
 
 
                   <div
@@ -2835,6 +3310,7 @@ const MyResume = () => {
                                     type="text"
                                     className="form_control"
                                     placeholder="Enter Title"
+                                    value={presentation.Presentation_Title}
                                   />
                                 </div>
                               </div>
@@ -2887,6 +3363,7 @@ const MyResume = () => {
                       className="site_button_resume  float-right"
                       data-toggle="modal"
                       data-target="#Patent"
+                      onClick={() => patentInitialData()}
                     >
                       {" "}
                       <span>
@@ -2894,9 +3371,59 @@ const MyResume = () => {
                       </span>{" "}
                     </a>
                   </div>
-                  <p className="job_usa">
-                    Add details of Patents you have filed.
-                  </p>
+            
+            
+                  {
+                    profile?.patent ?
+                      profile?.patent?.map((patent, pini) => {
+                        return (<>
+                          <h5 className="junior_edit">
+                            {patent?.Patent_Title}{" "}
+                            <a href="#" data-toggle="modal" data-target="#Patent" >
+                              {" "}
+                              <i className="fas fa-pencil-alt pencil_clearfix pencil"
+                                onClick={() => replacepatentItem(pini)}
+                              ></i>
+                            </a>
+                            <a href="#" data-toggle="modal" onClick={() => deletepatent(patent._id)}>
+
+                              {" "}
+                              <i class="far fa-trash-alt remove" ></i>
+                            </a>
+                          </h5>
+                          {/* <p className="job_usa">{project?.ProjectClient}</p>
+                        <p className="job_usa">
+                          {moment(project?.ProjectStartDate).format('YYYY MMMM')} to {" "}
+                          {
+                            moment(project?.ProjectWorkTill).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM') ?
+                              "Present" : moment(project?.ProjectWorkTill).format('YYYY MMMM')
+                          }
+                          ({
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), "years")
+                          }
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), "years") === 1 ? " Year" : " Years"
+                          }
+                          {" "}-{" "}
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate).add(moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), 'year'), 'years'), 'months')
+                          }
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate).add(moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), 'year'), 'years'), 'months') === 1 ?
+                              " Month" : " Months"
+                          }
+                          )
+                        </p> */}
+
+                          <p className="job_usa">{patent?.Patent_URL}</p>
+                          <p className="job_usa">{patent?.Patent_Office}</p>
+                          <p className="job_usa">{patent?.Patent_Status}</p>
+                          <p className="job_usa">{patent?.Patent_Application_Number}</p>
+                          <p className="job_usa">{patent?.Patent_Description}</p>
+                        </>)
+                      }) : null
+                  }
+
 
                   <div
                     className="modal fade"
@@ -2929,10 +3456,11 @@ const MyResume = () => {
                                   <label>Patent Title</label>
                                   <input
                                     name="Patent_Title"
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => patentHandling(e)}
                                     type="text"
                                     className="form_control"
                                     placeholder="Enter Title"
+                                    value={patent.Patent_Title}
                                   />
                                 </div>
                               </div>
@@ -2942,10 +3470,11 @@ const MyResume = () => {
                                   <label>URL</label>
                                   <input
                                     name="Patent_URL"
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => patentHandling(e)}
                                     type="text"
                                     className="form_control"
                                     placeholder="wwww.google.com"
+                                    value={patent.Patent_URL}
                                   />
                                 </div>
                               </div>
@@ -2955,10 +3484,11 @@ const MyResume = () => {
                                   <label>Patent Office</label>
                                   <input
                                     name="Patent_Office"
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => patentHandling(e)}
                                     type="text"
                                     className="form_control"
                                     placeholder="Enter Patent Office"
+                                    value={patent.Patent_Office}
                                   />
                                 </div>
                               </div>
@@ -2969,7 +3499,7 @@ const MyResume = () => {
                                   <div className="form-check form-check-inline">
                                     <input
                                       name='Patent_Status'
-                                      //  onChange={(e)=>patentpendingHandling(e)}
+                                       onChange={(e)=>patentHandling(e)}
                                       className="form-check-input"
                                       type="radio"
                                       // name="inlineRadioOptions"
@@ -2989,12 +3519,12 @@ const MyResume = () => {
                                       className="form-check-input"
                                       type="radio"
                                       name='Patent_Status'
-                                      onChange={(e) => formHandling(e)}
+                                      // onChange={(e) => formHandling(e)}
                                       // name="inlineRadioOptions"
                                       id="inlineRadio2"
                                       value="Patent Pending"
                                     // onClick={() => patentpendingButton()}
-                                    // onChange={(e) => patentpendingHandling(e)}
+                                    onChange={(e) => patentHandling(e)}
                                     />
                                     <label
                                       className="form-check-label"
@@ -3013,10 +3543,11 @@ const MyResume = () => {
                                       <label>Application Number</label>
                                       <input
                                         name="Patent_Application_Number"
-                                        //  onChange={(e) => radiohandling(e)}
+                                         onChange={(e) => patentHandling(e)}
                                         type="text"
                                         className="form_control"
                                         placeholder="Enter Application Number"
+                                        value={patent.Patent_Application_Number}
                                       />
                                     </div>
                                   </div>
@@ -3031,12 +3562,13 @@ const MyResume = () => {
                                   <label> Description </label>
                                   <textarea
                                     name="Patent_Description"
-                                    onChange={(e) => formHandling(e)}
+                                    onChange={(e) => patentHandling(e)}
                                     className="form_control"
                                     cols="30"
                                     rows="5"
                                     placeholder="Describe here.."
                                     maxlength="250"
+                                    value={patent.Patent_Description}
                                   ></textarea>
                                 </div>
                               </div>
@@ -3044,7 +3576,7 @@ const MyResume = () => {
                           </form>
                         </div>
                         <div className="modal-footer">
-                          <button type="button" className="update" >
+                          <button type="button" className="update" onClick={(e) => handlepatent(e, patent._id)}>
                             Save changes
                           </button>
                         </div>
@@ -3061,12 +3593,64 @@ const MyResume = () => {
                       className="site_button_resume  float-right"
                       data-toggle="modal"
                       data-target="#Certification"
+                      onClick={() => certificationInitialData()}
                     >
                       {" "}
                       <span>
                         <i className="fas fa-pencil-alt pencil_clearfix"></i>
                       </span>{" "}
                     </a>
+
+                    {
+                    profile?.certification ?
+                      profile?.certification?.map((certification,cert) => {
+                        return (<>
+                          <h5 className="junior_edit">
+                            {certification?.Certification_Name}{" "}
+                            <a href="#" data-toggle="modal" data-target="#Certification" >
+                              {" "}
+                              <i className="fas fa-pencil-alt pencil_clearfix pencil"
+                                onClick={() => replacecertificationItem(cert)}
+                              ></i>
+                            </a>
+                            <a href="#" data-toggle="modal" onClick={() => deletecertification(certification._id)}>
+
+                              {" "}
+                              <i class="far fa-trash-alt remove" ></i>
+                            </a>
+                          </h5>
+                          {/* <p className="job_usa">{project?.ProjectClient}</p>
+                        <p className="job_usa">
+                          {moment(project?.ProjectStartDate).format('YYYY MMMM')} to {" "}
+                          {
+                            moment(project?.ProjectWorkTill).format('YYYY MMMM') === moment(new Date()).format('YYYY MMMM') ?
+                              "Present" : moment(project?.ProjectWorkTill).format('YYYY MMMM')
+                          }
+                          ({
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), "years")
+                          }
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), "years") === 1 ? " Year" : " Years"
+                          }
+                          {" "}-{" "}
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate).add(moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), 'year'), 'years'), 'months')
+                          }
+                          {
+                            moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate).add(moment(project?.ProjectWorkTill).diff(moment(project?.ProjectStartDate), 'year'), 'years'), 'months') === 1 ?
+                              " Month" : " Months"
+                          }
+                          )
+                        </p> */}
+
+                          <p className="job_usa">{certification?.Certification_ID}</p>
+                          <p className="job_usa">{certification?.Certification_URL}</p>
+                          <p className="job_usa">{certification?.Certification_Validity_From}  to   {certification?.Certification_Validity_To}</p>
+                          
+                          
+                        </>)
+                      }) : null
+                  }
 
                     <div
                       className="modal fade"
@@ -3103,7 +3687,7 @@ const MyResume = () => {
                                     <label>Certification Name</label>
                                     <input
                                       name="Certification_Name"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => certificationHandling(e)}
                                       type="text"
                                       className="form_control"
                                       placeholder="Please Enter Certification Name"
@@ -3116,7 +3700,7 @@ const MyResume = () => {
                                     <label>Certification Completion ID</label>
                                     <input
                                       name="Certification_ID"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => certificationHandling(e)}
                                       type="text"
                                       className="form_control"
                                       placeholder="Please Enter Your Course Completion ID"
@@ -3129,7 +3713,7 @@ const MyResume = () => {
                                     <label>Certification URL</label>
                                     <input
                                       name="Certification_URL"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => certificationHandling(e)}
                                       type="text"
                                       className="form_control"
                                       placeholder="Please Mention Completion URl"
@@ -3142,7 +3726,7 @@ const MyResume = () => {
                                     <label> Certificate Validity From</label>
                                     <input
                                       name="Certification_Validity_From"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => certificationHandling(e)}
                                       type="date"
                                       className="form_control"
                                       placeholder="Year"
@@ -3155,7 +3739,7 @@ const MyResume = () => {
                                     <input
 
                                       name="Certification_Validity_To"
-                                      onChange={(e) => formHandling(e)}
+                                      onChange={(e) => certificationHandling(e)}
 
                                       type="date"
                                       className="form_control"
@@ -3164,7 +3748,7 @@ const MyResume = () => {
                                   </div>
                                 </div>
 
-                                <div className=" col-lg-6 col-md-6">
+                                {/* <div className=" col-lg-6 col-md-6">
                                   <div className="form-group">
                                     <div className="form-check">
                                       <input
@@ -3181,12 +3765,12 @@ const MyResume = () => {
                                       </label>
                                     </div>
                                   </div>
-                                </div>
+                                </div> */}
                               </div>
                             </form>
                           </div>
                           <div className="modal-footer">
-                            <button type="button" className="update" >
+                            <button type="button" className="update" onClick={(e) => handlecertification(e, certification._id)}>
                               Save changes
                             </button>
                           </div>
@@ -3194,9 +3778,9 @@ const MyResume = () => {
                       </div>
                     </div>
                   </div>
-                  <p className="job_usa" id="DesiredCareer">
+                  {/* <p className="job_usa" id="DesiredCareer">
                     Add details of Certification you have filed.
-                  </p>
+                  </p> */}
                 </div>
               </div>
 
@@ -3242,36 +3826,36 @@ const MyResume = () => {
                       <div className="career_profile_content">
                         <h5 className="industry">Industry</h5>
                         <p className="it_employees">
-                         {careerprofile.career_Industry}
+                          {careerprofile.career_Industry}
 
                         </p>
                       </div>
                       <div className="career_profile_content">
                         <h5 className="industry">Role</h5>
                         <p className="it_employees">
-                        
-                        {careerprofile.Desired_Role_URL}
+
+                          {careerprofile.Desired_Role_URL}
 
                         </p>
                       </div>
                       <div className="career_profile_content">
                         <h5 className="industry">Employement Type</h5>
                         <p className="it_employees">
-                        {careerprofile.Desired_Employement_Type}
+                          {careerprofile.Desired_Employement_Type}
 
                         </p>
                       </div>
                       <div className="career_profile_content">
                         <h5 className="industry">Available to Join </h5>
                         <p className="it_employees">
-                        {careerprofile.Desired_AvailableJoinYears}/{careerprofile.Desired_AvailableJoinMonths}
+                          {careerprofile.Desired_AvailableJoinYears}/{careerprofile.Desired_AvailableJoinMonths}
 
                         </p>
                       </div>
                       <div className="career_profile_content">
                         <h5 className="industry">Desired Location</h5>
                         <p className="it_employees">
-                        {careerprofile.Desired_Location}
+                          {careerprofile.Desired_Location}
 
                         </p>
                       </div>
@@ -3280,7 +3864,7 @@ const MyResume = () => {
                       <div className="career_profile_content">
                         <h5 className="industry">Functional Area</h5>
                         <p className="it_employees">
-                         
+
                           {careerprofile.Desired_Functional_Area_Department}
 
                         </p>
@@ -3288,22 +3872,22 @@ const MyResume = () => {
                       <div className="career_profile_content">
                         <h5 className="industry">Job Type</h5>
                         <p className="it_employees">
-                      
-                       {careerprofile.Desired_Job_Type}
+
+                          {careerprofile.Desired_Job_Type}
 
                         </p>
                       </div>
                       <div className="career_profile_content">
                         <h5 className="industry">Desired Shift</h5>
                         <p className="it_employees">
-                        {careerprofile.Desired_PrefferedShift}
+                          {careerprofile.Desired_PrefferedShift}
 
                         </p>
                       </div>
                       <div className="career_profile_content">
                         <h5 className="industry">Expected Salary</h5>
                         <p className="it_employees">
-                        {careerprofile.Desired_Expected_SalaryinLakhs}.{careerprofile.Desired_Expected_SalaryinThousands}
+                          {careerprofile.Desired_Expected_SalaryinLakhs}.{careerprofile.Desired_Expected_SalaryinThousands}
 
                         </p>
                       </div>
@@ -3313,7 +3897,7 @@ const MyResume = () => {
                       >
                         <h5 className="industry">Desired Industry</h5>
                         <p className="it_employees">
-                        {careerprofile.Desired_Industry}
+                          {careerprofile.Desired_Industry}
 
                         </p>
                       </div>
@@ -3401,7 +3985,7 @@ const MyResume = () => {
                                     id="inlineRadio1"
                                     value="Permanent"
                                     onChange={(e) => careerprofileHandling(e)}
-                                    // value={careerprofile.Desired_Job_Type}  
+                                  // value={careerprofile.Desired_Job_Type}  
                                   />
                                   <label
                                     className="form-check-label"
@@ -3444,7 +4028,7 @@ const MyResume = () => {
                                     // name="inlineRadioOptions"
                                     id="inlineRadio1"
                                     value="Full Time"
-                                   
+
                                   />
                                   <label
                                     className="form-check-label"
@@ -3462,7 +4046,7 @@ const MyResume = () => {
                                     // name="inlineRadioOptions"
                                     id="inlineRadio2"
                                     value="Part Time"
-                                    
+
                                   />
                                   <label
                                     className="form-check-label"
@@ -3480,7 +4064,7 @@ const MyResume = () => {
                                     // name="inlineRadioOptions"
                                     id="inlineRadio2"
                                     value="Freelancer"
-                                    
+
                                   />
                                   <label
                                     className="form-check-label"
@@ -3504,7 +4088,7 @@ const MyResume = () => {
                                     // name="inlineRadioOptions"
                                     id="inlineRadio1"
                                     value="Day"
-                                    // value={careerprofile.Desired_Employement_Type}
+                                  // value={careerprofile.Desired_Employement_Type}
                                   />
                                   <label
                                     className="form-check-label"
@@ -3567,7 +4151,7 @@ const MyResume = () => {
                               <div className="form-group">
                                 <label> Month</label>
                                 <select className="form_control" name="Desired_AvailableJoinMonths"
-                                value={careerprofile.Desired_AvailableJoinMonths}
+                                  value={careerprofile.Desired_AvailableJoinMonths}
                                   onChange={(e) => careerprofileHandling(e)}>
                                   <option hidden>Months</option>
                                   <option>Jan</option>
@@ -3649,7 +4233,7 @@ const MyResume = () => {
                         </form>
                       </div>
                       <div className="modal-footer">
-                        <button type="button" className="update"  onClick={(e)=>handlecareerprofile(e)}>
+                        <button type="button" className="update" onClick={(e) => handlecareerprofile(e)}>
                           Save changes
                         </button>
                       </div>
