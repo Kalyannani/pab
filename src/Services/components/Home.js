@@ -93,6 +93,8 @@ const Home = () => {
   console.log(location)
   const sendEmail = (e) => {
     e.preventDefault();
+
+
     let validationErrors = {};
     Object.keys(hireandtraindetails).forEach((name) => {
       const error = validate(name, hireandtraindetails[name]);
@@ -105,6 +107,7 @@ const Home = () => {
       return;
     }
 
+    
     // emailjs
     //   .sendForm(
     //     "service_uylk7sp",
