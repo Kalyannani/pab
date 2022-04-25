@@ -128,12 +128,15 @@ const Student_Navbar = () => {
       </div> */}
       <div class="conts">
         <div class="secs ">
-
-          <h1>Recomended Jobs({notificationCounts?.jobAlerts})</h1>
-
+        <Link to="/jobalerts">
+        <h1>Recomended Jobs({notificationCounts?.jobAlerts})</h1>
+        </Link>
         </div>
         <div class="secs">
+          <Link to="/appliedjobs">
           <h1>Applied Jobs ({notificationCounts?.appliedJobs})</h1>
+          </Link>
+          
         </div>
         <div class="secs">
           <h1>Pending Actions (6)</h1>
