@@ -168,26 +168,19 @@ const StudentList = () => {
 
           <div className="row ">
 
-            <div className="col-xl-3 col-lg-3 col-md-6">
+<div className="col-xl-3 col-lg-3 col-md-6">
               <div className="sticky-top">
                 <div id="accordion">
                   <div class="card">
                     <div class="card-header" id="headingOne">
-                      <h5 class="mb-0">
-                        <h5
-                          class="accordionItemHeading"
-                          data-toggle="collapse"
-                          data-target="#collapseOne"
-                          aria-expanded="true"
-                          aria-controls="collapseOne"
-                        >
-
-                          Top Companies{" "}
-                          <span className="float-right">
-                            {/* <i className="fas fa-minus"></i> */}
-                          </span>
-                        </h5>
-
+                      <h5
+                        className="accordionItemHeading"
+                        data-toggle="collapse"
+                        data-target="#collapseOne"
+                        aria-expanded="true"
+                        aria-controls="collapseOne"
+                      >
+                        Applicant
                       </h5>
                     </div>
 
@@ -198,12 +191,80 @@ const StudentList = () => {
                       data-parent="#accordion"
                     >
                       <div class="card-body">
-
                         <div className="accordionItemContent">
                           <form action="#" className="acc_form">
                             <div className="form-check my-1">
                               <input
                                 className="form-check-input"
+                                type="radio"
+                                name="flexcheckboxDefault"
+                                id="flexcheckboxDefault2"
+                              />
+                              <label
+                                className="form-check-label pl-2"
+                                for="flexcheckboxDefault2"
+                              >
+                                Profiles
+                              </label>
+                            </div>
+                            <div className="form-check my-1">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="flexcheckboxDefault"
+                                id="flexcheckboxDefault1"
+                              />
+                              <label
+                                className="form-check-label pl-2"
+                                for="flexcheckboxDefault1"
+                              >
+                                Profiles + Resume
+                              </label>
+                            </div>
+
+                            <div className=" my-1 ml-4 mr-3">
+                              <span
+                                style={{ color: "green", fontSize: "12px" }}
+                              >
+                                Now search in candidate's resume to get more
+                                results
+                              </span>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                   {/* 5 */}
+
+                   <div class="card">
+                    <div class="card-header" id="headingFive">
+                      <h5
+                        class=" collapsed accordionItemHeading"
+                        data-toggle="collapse"
+                        data-target="#collapseFive"
+                        aria-expanded="false"
+                        aria-controls="collapseFive"
+                      >
+                        Designation{" "}
+                        {/* <span className="float-right">
+        <i className="fas fa-plus"></i>
+    </span> */}
+                      </h5>
+                    </div>
+                    <div
+                      id="collapseFive"
+                      class="collapse"
+                      aria-labelledby="headingFive"
+                      data-parent="#accordion"
+                    >
+                      <div class="card-body">
+                        <div className="accordionItemContent">
+                          <form action="#" className="acc_form">
+                            <div className="form-check my-1">
+                              <input
+                                className="form-check-input "
                                 type="checkbox"
                                 name="flexcheckboxDefault"
                                 id="flexcheckboxDefault2"
@@ -212,7 +273,7 @@ const StudentList = () => {
                                 className="form-check-label pl-2"
                                 for="flexcheckboxDefault2"
                               >
-                                Accenture(750)
+                                Production Management(120)
                               </label>
                             </div>
                             <div className="form-check my-1">
@@ -226,7 +287,7 @@ const StudentList = () => {
                                 className="form-check-label pl-2"
                                 for="flexcheckboxDefault1"
                               >
-                                Reliance Industries(680)
+                                Design Engineering(300)
                               </label>
                             </div>
                             <div className="form-check my-1">
@@ -240,7 +301,7 @@ const StudentList = () => {
                                 className="form-check-label pl-2"
                                 for="flexcheckboxDefault1"
                               >
-                                Adani Group(248)
+                                Saftey/health(235)
                               </label>
                             </div>
                             <div className="form-check my-1">
@@ -254,7 +315,7 @@ const StudentList = () => {
                                 className="form-check-label pl-2"
                                 for="flexcheckboxDefault1"
                               >
-                                IBM(576)
+                                Engineering (568)
                               </label>
                             </div>
                             <div className="form-check my-1">
@@ -268,13 +329,13 @@ const StudentList = () => {
                                 className="form-check-label pl-2"
                                 for="flexcheckboxDefault1"
                               >
-                                Cognizent Technologies(768)
+                                Product Development (798)
                               </label>
                             </div>
 
                             <div className="more">
                               <Link
-                                to="/companyjobs"
+                                to="/categoryjobs"
                                 className="more_inner float-right mr-4 py-1"
                               >
                                 {" "}
@@ -291,21 +352,17 @@ const StudentList = () => {
 
                   <div class="card">
                     <div class="card-header" id="headingTwo">
-                      <h5 class="mb-0">
-                        <h5
-                          class="accordionItemHeading"
-                          data-toggle="collapse"
-                          data-target="#collapseTwo"
-                          aria-expanded="true"
-                          aria-controls="collapseOne"
-                        >
-
-                          Experience{" "}
-                          <span className="float-right">
-                            {/* <i className="fas fa-minus"></i> */}
-                          </span>
-                        </h5>
-
+                      <h5
+                        class="collapsed accordionItemHeading"
+                        data-toggle="collapse"
+                        data-target="#collapseTwo"
+                        aria-expanded="false"
+                        aria-controls="collapseTwo"
+                      >
+                        Experience{" "}
+                        <span className="float-right">
+                          {/* <i className="fas fa-plus"></i> */}
+                        </span>
                       </h5>
                     </div>
                     <div
@@ -315,64 +372,86 @@ const StudentList = () => {
                       data-parent="#accordion"
                     >
                       <div class="card-body">
-
                         <div className="accordionItemContent">
                           <form action="#" className="acc_form">
                             <div className="form-check">
                               <input
                                 className="form-check-input"
                                 type="radio"
-                                name="flexRadioDefault"
-                                id="flexRadioDefault2"
-                                checked
+                                name="experience"
+                                id="experience1"
+                                // onChange={handleChange}
+                                value="0-2 years"
                               />
                               <label
                                 className="form-check-label"
-                                for="flexRadioDefault2"
+                                for="experience1"
                               >
-                                0 - 1 years (120)
+                                00 - 02 years
                               </label>
                             </div>
                             <div className="form-check">
                               <input
                                 className="form-check-input"
                                 type="radio"
-                                name="flexRadioDefault"
-                                id="flexRadioDefault1"
+                                name="experience"
+                                id="experience2"
+                                // onChange={handleChange}
+                                value="2-5 years"
                               />
                               <label
                                 className="form-check-label"
-                                for="flexRadioDefault1"
+                                for="experience2"
                               >
-                                - 1 years (120)
+                                02 - 05 years
                               </label>
                             </div>
                             <div className="form-check">
                               <input
                                 className="form-check-input"
                                 type="radio"
-                                name="flexRadioDefault"
-                                id="flexRadioDefault1"
+                                name="experience"
+                                // onChange={handleChange}
+                                id="experience3"
+                                value="5-10 years"
                               />
                               <label
                                 className="form-check-label"
-                                for="flexRadioDefault1"
+                                for="experience3"
                               >
-                                0 - 1 years (120)
+                                05 - 10 years
                               </label>
                             </div>
                             <div className="form-check">
                               <input
                                 className="form-check-input"
                                 type="radio"
-                                name="flexRadioDefault"
-                                id="flexRadioDefault1"
+                                name="experience"
+                                // onChange={handleChange}
+                                id="experience4"
+                                value="10-15 years"
                               />
                               <label
                                 className="form-check-label"
-                                for="flexRadioDefault1"
+                                for="experience4"
                               >
-                                0 - 1 years (120)
+                                10 - 15 years
+                              </label>
+                            </div>
+                            <div className="form-check">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="experience"
+                                // onChange={handleChange}
+                                id="experience5"
+                                value="15+ years"
+                              />
+                              <label
+                                className="form-check-label"
+                                for="experience5"
+                              >
+                                15 + years
                               </label>
                             </div>
                           </form>
@@ -382,21 +461,17 @@ const StudentList = () => {
                   </div>
                   <div class="card">
                     <div class="card-header" id="headingThree">
-                      <h5 class="mb-0">
-                        <h5
-                          class="accordionItemHeading"
-                          data-toggle="collapse"
-                          data-target="#collapseThree"
-                          aria-expanded="true"
-                          aria-controls="collapseOne"
-                        >
-
-                          Location{" "}
-                          <span className="float-right">
-                            {/* <i className="fas fa-minus"></i> */}
-                          </span>
-                        </h5>
-
+                      <h5
+                        class=" collapsed accordionItemHeading"
+                        data-toggle="collapse"
+                        data-target="#collapseThree"
+                        aria-expanded="false"
+                        aria-controls="collapseThree"
+                      >
+                        Location{" "}
+                        <span className="float-right">
+                          {/* <i className="fas fa-plus"></i> */}
+                        </span>
                       </h5>
                     </div>
                     <div
@@ -406,7 +481,6 @@ const StudentList = () => {
                       data-parent="#accordion"
                     >
                       <div class="card-body">
-
                         <div className="accordionItemContent">
                           <form action="#" className="acc_form">
                             <div className="form-check my-1">
@@ -527,21 +601,17 @@ const StudentList = () => {
 
                   <div class="card">
                     <div class="card-header" id="headingThree">
-                      <h5 class="mb-0">
-                        <h5
-                          class="accordionItemHeading"
-                          data-toggle="collapse"
-                          data-target="#collapseFour"
-                          aria-expanded="true"
-                          aria-controls="collapseOne"
-                        >
-
-                          Industry{" "}
-                          <span className="float-right">
-                            {/* <i className="fas fa-minus"></i> */}
-                          </span>
-                        </h5>
-
+                      <h5
+                        class=" collapsed accordionItemHeading"
+                        data-toggle="collapse"
+                        data-target="#collapseFour"
+                        aria-expanded="false"
+                        aria-controls="collapseFour"
+                      >
+                        Industry{" "}
+                        {/* <span className="float-right">
+                        <i className="fas fa-plus"></i>
+                    </span> */}
                       </h5>
                     </div>
                     <div
@@ -551,7 +621,6 @@ const StudentList = () => {
                       data-parent="#accordion"
                     >
                       <div class="card-body">
-
                         <div className="accordionItemContent">
                           <form action="#" className="acc_form">
                             <div className="form-check my-1">
@@ -630,140 +699,23 @@ const StudentList = () => {
                     </div>
                   </div>
 
-                  {/* 5 */}
-
-                  <div class="card">
-                    <div class="card-header" id="headingFive">
-                      <h5 class="mb-0">
-                        <h5
-                          class="accordionItemHeading"
-                          data-toggle="collapse"
-                          data-target="#collapseFive"
-                          aria-expanded="true"
-                          aria-controls="collapseOne"
-                        >
-
-                          Job Function / Category{" "}
-
-                        </h5>
-
-                      </h5>
-                    </div>
-                    <div
-                      id="collapseFive"
-                      class="collapse"
-                      aria-labelledby="headingFive"
-                      data-parent="#accordion"
-                    >
-                      <div class="card-body">
-
-                        <div className="accordionItemContent">
-                          <form action="#" className="acc_form">
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input "
-                                type="checkbox"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault2"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault2"
-                              >
-                                Production Management(120)
-                              </label>
-                            </div>
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault1"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault1"
-                              >
-                                Design Engineering(300)
-                              </label>
-                            </div>
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault1"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault1"
-                              >
-                                Saftey/health(235)
-                              </label>
-                            </div>
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault1"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault1"
-                              >
-                                Engineering (568)
-                              </label>
-                            </div>
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault1"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault1"
-                              >
-                                Product Development (798)
-                              </label>
-                            </div>
-
-                            <div className="more">
-                              <Link
-                                to="/categoryjobs"
-                                className="more_inner float-right mr-4 py-1"
-                              >
-                                {" "}
-                                more...{" "}
-                              </Link>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                 
 
                   {/* 6 */}
 
                   <div class="card">
                     <div class="card-header" id="headingSix">
-                      <h5 class="mb-0">
-                        <h5
-                          class="accordionItemHeading"
-                          data-toggle="collapse"
-                          data-target="#collapseSix"
-                          aria-expanded="true"
-                          aria-controls="collapseSix"
-                        >
-
-                          Education
-                          <span className="float-right">
-                            {/* <i className="fas fa-minus"></i> */}
-                          </span>
-                        </h5>
-
+                      <h5
+                        class="accordionItemHeading collapsed"
+                        data-toggle="collapse"
+                        data-target="#collapseSix"
+                        aria-expanded="false"
+                        aria-controls="collapseSix"
+                      >
+                        Education
+                        <span className="float-right">
+                          {/* <i className="fas fa-plus"></i> */}
+                        </span>
                       </h5>
                     </div>
                     <div
@@ -773,7 +725,6 @@ const StudentList = () => {
                       data-parent="#accordion"
                     >
                       <div class="card-body">
-
                         <div className="accordionItemContent">
                           <form action="#" className="acc_form">
                             <div className="form-check my-1">
@@ -866,21 +817,17 @@ const StudentList = () => {
 
                   <div class="card">
                     <div class="card-header" id="headingSeven">
-                      <h5 class="mb-0">
-                        <h5
-                          class="accordionItemHeading"
-                          data-toggle="collapse"
-                          data-target="#collapseSeven"
-                          aria-expanded="true"
-                          aria-controls="collapseSeven"
-                        >
-
-                          Salary
-                          <span className="float-right">
-                            {/* <i className="fas fa-minus"></i> */}
-                          </span>
-                        </h5>
-
+                      <h5
+                        class="accordionItemHeading collapsed"
+                        data-toggle="collapse"
+                        data-target="#collapseSeven"
+                        aria-expanded="false"
+                        aria-controls="collapseSeven"
+                      >
+                        Salary{" "}
+                        <span className="float-right">
+                          {/* <i className="fas fa-plus"></i> */}
+                        </span>
                       </h5>
                     </div>
                     <div
@@ -890,7 +837,6 @@ const StudentList = () => {
                       data-parent="#accordion"
                     >
                       <div class="card-body">
-
                         <div className="accordionItemContent">
                           <form action="#" className="acc_form">
                             <div className="form-check  my-1">
@@ -982,253 +928,22 @@ const StudentList = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='google_ads'>
+                  <div className="google_ads">
+                    <Browsead />
 
                     <Browsead />
 
-                    <Browsehrads />
+                    <Browsead />
 
                     <Browsead />
 
-                    <Browseverads />
                     <Browsead />
-
-                    <Browsehrads />
 
                     <Browsead />
 
-                    <Browseverads />
                     <Browsead />
-
-                    <Browsehrads />
-
-                    <Browsead />
-
-                    <Browseverads />
-                    <Browsead />
-
-                    <Browsehrads />
-
-                    <Browsead />
-
-                    <Browseverads />
-                    <Browsead />
-
-                    <Browsehrads />
-
-                    <Browsead />
-
-                    <Browseverads />
-                    <Browsead />
-
-                    <Browsehrads />
-
-                    <Browsead />
-
-                    <Browseverads />
                   </div>
                 </div>
-                {/* 
-
-                            
-
-
-                            <div className="accordionWrapper">
-                                 <div className="head_acc">
-                                     <h5 className="acc_sidebar_filter float-left"><span className="acc_icon"><i className="fas fa-sliders-h sliders"></i></span><span className="refined">Refined By</span></h5>
-                                     <Link to="/" className="acc_sidebar_filter_para float-right">Reset All</Link>
-                                 </div>
-                                <div className="accordionItem open">
-                                    <h2 className="accordionItemHeading">Companies <span className="float-right"><i className="fas fa-minus"></i></span></h2>
-                                    <div className="accordionItemContent">
-                                     
-
-                                     <form action="#" className="acc_form">
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
-                                            <label className="form-check-label" for="flexRadioDefault2">
-                                              Job Mirror Consultancy(50)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                            Engineering Group(80) 
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                              Electric Co.(248)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                             Telcom Industry(576)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                            Safety/Health(768)
-                                            </label>
-                                          </div>
-                                     </form>
-                                       
-
-                                    </div>
-                                </div>
-    
-                                <div className="accordionItem close">
-                                    <h2 className="accordionItemHeading">Experience <span className="float-right"><i className="fas fa-plus"></i></span></h2>
-                                    <div className="accordionItemContent">
-                                       
-
-                                     <form action="#" className="acc_form">
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
-                                            <label className="form-check-label" for="flexRadioDefault2">
-                                              0 - 1 years (120)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                                 - 1 years (120)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                                0 - 1 years (120)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                                0 - 1 years (120)
-                                            </label>
-                                          </div>
-                                     </form>
-                                      
-                                    </div>
-                                </div>
-    
-                                <div className="accordionItem close">
-                                    <h2 className="accordionItemHeading">Job Function <span className="float-right"><i className="fas fa-plus"></i></span></h2>
-                                    <div className="accordionItemContent">
-                                       
-                                     <form action="#" className="acc_form">
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
-                                            <label className="form-check-label" for="flexRadioDefault2">
-                                              Production Management(120)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                              Design Engineering(300)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                             Saftey/health(235)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                                Engineering (568)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                                Product Development (798)
-                                            </label>
-                                          </div>
-                                     </form>
-                                       
-                                    </div>
-                                </div>
-    
-                                <div className="accordionItem close">
-                                    <h2 className="accordionItemHeading">Salary <span className="float-right"><i className="fas fa-plus"></i></span></h2>
-                                    <div className="accordionItemContent">
-                                    
-                                     <form action="#" className="acc_form">
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
-                                            <label className="form-check-label" for="flexRadioDefault2">
-                                                Job Mirror Consultancy (50)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                                Engineering Group (80)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                                Electric Co. (235)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                              Telecom industry (568)
-                                            </label>
-                                          </div>
-                                     </form>
-                                      
-                                    </div>
-                                </div>
-    
-                                <div className="accordionItem close">
-                                    <h2 className="accordionItemHeading">Industry <span className="float-right"><i className="fas fa-plus"></i></span></h2>
-                                    <div className="accordionItemContent">
-                                       
-                                     <form action="#" className="acc_form">
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
-                                            <label className="form-check-label" for="flexRadioDefault2">
-                                              Telcom(5)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                              Consulting Services(10)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                            Engineering/Projects(15)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                              Manfacturing/Industries(12)
-                                            </label>
-                                          </div>
-                                          <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                            <label className="form-check-label" for="flexRadioDefault1">
-                                              Architecture/Interior Design(8)
-                                            </label>
-                                          </div>
-                                     </form>
-                                       
-                                    </div>
-                                </div>
-                            </div> */}
               </div>
             </div>
 

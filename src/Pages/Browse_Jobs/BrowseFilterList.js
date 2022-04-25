@@ -588,7 +588,7 @@ const BrowseFilterList = () => {
                                       {/* <input type="checkbox" /> */}
                                       <span className="filter_grid_added" >
 
-                                        <i class="fab fa-gratipay" style={{ fontSize: '28px' }} />
+                                        <i class="fab fa-gratipay" style={{ fontSize: '28px',color:'green' }} />
                                       </span>
                                     </label>
                                   ) : (

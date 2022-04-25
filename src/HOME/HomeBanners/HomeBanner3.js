@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const HomeBanner3 = () => {
   return (
@@ -55,12 +56,12 @@ const HomeBanner3 = () => {
         <p className="B_text">80% of the resumes are rejected in 11 seconds.Don't want to be the 80%?</p>
       </div>
     
-    <button
-      className="bg-primary text-white btn-lg"
-      style={{marginLeft:'auto', marginTop:"-46px", borderTopLeftRadius:"50px",border:'none'}}
-    >
-      Submit
-    </button>
+      <Link to="/careers" style={{ marginLeft: 'auto', marginTop: "-46px"}}> <button
+          className="bg-primary text-white btn-lg"
+          style={{  borderTopLeftRadius: "50px", border: 'none',cursor:"pointer"  }}
+        >
+          Submit
+        </button></Link>
     
 
 

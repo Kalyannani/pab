@@ -58,6 +58,7 @@ import HomeBanners from './HOME/HomeBanners/HomeBanners';
 import HomeBanner2 from './HOME/HomeBanners/HomeBanner2';
 import HomeBanner3 from './HOME/HomeBanners/HomeBanner3';
 import HomeBanner4 from './HOME/HomeBanners/HomeBanner4';
+import CareerServices from '../src/HOME/career/CareerServices';
 
 
 
@@ -101,6 +102,7 @@ export const App = (props) => {
    <Route exact path="/homebanner1" element={<HomeBanner2/>}/>
    <Route exact path='/homebanner3' element={<HomeBanner3/>}/>
    <Route exact path="/homebanners4" element={<HomeBanner4/>}/>
+   <Route exact path="/careers" element={<CareerServices/>}/>
 
     
   {

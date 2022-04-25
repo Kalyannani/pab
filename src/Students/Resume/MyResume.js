@@ -2163,7 +2163,7 @@ const MyResume = () => {
                           </form>
                         </div>
                         <div className="modal-footer">
-                          <button type="button" className="update" onClick={(e) => handleEmployment(e, employment._id)}>
+                          <button type="button" className="update" onClick={(e) => handleEmployment(e, employment._id)} data-dismiss="modal">
                             Save changes
                           </button>
                         </div>
@@ -2449,7 +2449,7 @@ const MyResume = () => {
                           </form>
                         </div>
                         <div className="modal-footer">
-                          <button type="button" className="update" onClick={(e) => handleEducation(e, education._id)}>
+                          <button type="button" className="update" onClick={(e) => handleEducation(e, education._id)} data-dismiss="modal">
                             Save changes
                           </button>
                         </div>
@@ -2798,7 +2798,7 @@ const MyResume = () => {
                       </div>
                       <div className="modal-footer">
                         <button type="button" className="update"
-                          onClick={(e) => handleProject(e, project._id)}>
+                          onClick={(e) => handleProject(e, project._id)} data-dismiss="modal">
                           Save changes
                         </button>
                       </div>
@@ -3003,7 +3003,7 @@ const MyResume = () => {
                             </form>
                           </div>
                           <div className="modal-footer">
-                            <button type="button" className="update" onClick={(e) => handleworksample(e, worksample._id)}>
+                            <button type="button" className="update" onClick={(e) => handleworksample(e, worksample._id)} data-dismiss="modal">
                               Save changes
                             </button>
                           </div>
@@ -3191,7 +3191,7 @@ const MyResume = () => {
                             </form>
                           </div>
                           <div className="modal-footer">
-                            <button type="button" className="update" onClick={(e) => handlepublication(e, publication._id)}>
+                            <button type="button" className="update" onClick={(e) => handlepublication(e, publication._id)} data-dismiss="modal">
                               Save changes
                             </button>
                           </div>
@@ -3346,7 +3346,7 @@ const MyResume = () => {
                           </form>
                         </div>
                         <div className="modal-footer">
-                          <button type="button" className="update" onClick={(e) => handlePresentation(e, presentation._id)}>
+                          <button type="button" className="update" onClick={(e) => handlePresentation(e, presentation._id)} data-dismiss="modal">
                             Save changes
                           </button>
                         </div>
@@ -3576,7 +3576,7 @@ const MyResume = () => {
                           </form>
                         </div>
                         <div className="modal-footer">
-                          <button type="button" className="update" onClick={(e) => handlepatent(e, patent._id)}>
+                          <button type="button" className="update" onClick={(e) => handlepatent(e, patent._id)} data-dismiss="modal">
                             Save changes
                           </button>
                         </div>
@@ -3770,7 +3770,7 @@ const MyResume = () => {
                             </form>
                           </div>
                           <div className="modal-footer">
-                            <button type="button" className="update" onClick={(e) => handlecertification(e, certification._id)}>
+                            <button type="button" className="update" onClick={(e) => handlecertification(e, certification._id)} data-dismiss="modal">
                               Save changes
                             </button>
                           </div>
@@ -4233,7 +4233,7 @@ const MyResume = () => {
                         </form>
                       </div>
                       <div className="modal-footer">
-                        <button type="button" className="update" onClick={(e) => handlecareerprofile(e)}>
+                        <button type="button" className="update" onClick={(e) => handlecareerprofile(e)} data-dismiss="modal">
                           Save changes
                         </button>
                       </div>
@@ -4589,7 +4589,7 @@ const MyResume = () => {
                         </form>
                       </div>
                       <div className="modal-footer">
-                        <button type="button" className="update" onClick={(e) => handlePersonalDetails(e)}>
+                        <button type="button" className="update" data-dismiss="modal" onClick={(e) => handlePersonalDetails(e)}>
                           Save changes
                         </button>
                       </div>
