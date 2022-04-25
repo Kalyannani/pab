@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const HomeBanner2 = () => {
     return (
@@ -22,12 +23,12 @@ const HomeBanner2 = () => {
             <p className="B_text">Unleash your profile's true capability to 10X your chance</p>
           </div>
         
-        <button
+          <Link to="/careers" style={{ marginLeft: 'auto', marginTop: "-46px"}}> <button
           className="bg-primary text-white btn-lg"
-          style={{marginLeft:'auto', marginTop:"-46px", borderTopLeftRadius:"50px",border:'none'}}
+          style={{  borderTopLeftRadius: "50px", border: 'none',cursor:"pointer"  }}
         >
           Submit
-        </button>
+        </button></Link>
         
   
     
