@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import apiList from '../lib/apiList';
 import Sidebar from './Sidebar'
 import ReactPaginate from "react-paginate"
+
  const AppliedJobs = () => {
     const [applications, setApplications] = useState([]);
 
@@ -20,6 +21,7 @@ import ReactPaginate from "react-paginate"
              const selectedPage = e.selected;
              setOffset(selectedPage + 1);
            };
+
 
   useEffect(() => {
     getData();

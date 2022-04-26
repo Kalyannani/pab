@@ -33,6 +33,12 @@ const Branding = () => {
   const [isOpenSixth, setIsOpenSixth] = useState(false);
   const openSixthModal = useCallback(() => setIsOpenSixth(true), []);
   const closeSixthModal = useCallback(() => setIsOpenSixth(false), []);
+
+    // Enquire modal
+    const [isEnquire, setEnquire] = useState(false);
+    const openEnquire = useCallback(() => setEnquire(true), []);
+    const closeEnquire = useCallback(() => setEnquire(false), []);
+
   return (
     <>
       <div
@@ -72,7 +78,22 @@ const Branding = () => {
                   </p>
                 </div>
                 <div className="col-md-4 text-center buy_branding">
-                  <button className="buy_now btn">Enquire Now</button>
+                  <button className="buy_now btn" onClick={openEnquire}>Enquire Now</button>
+      
+                    <Modal
+                      contentLabel="My dialog"
+                      className="Brand-modal"
+                      overlayClassName="Brand-modal-overlay"
+                      closeTimeoutMS={500}
+                      isOpen={isEnquire}
+                      onRequestClose={closeEnquire}
+                    >
+                      <i className="fas fa-times Brand-modal-Button" onClick={closeEnquire}></i>
+                      {/* <img className="Brand-modal-img" src="images/NewAds.1.png" /> */}
+                      <div className="Enquiry_modal">
+                        Toll-Free Number : 1800 833 9448
+                      </div>
+                    </Modal>
                 </div>
               </div>
             </div>
@@ -225,7 +246,7 @@ const Branding = () => {
                   </p>
                 </div>
                 <div className="col-md-4 text-center buy_branding">
-                  <button className="buy_now btn">Enquire Now</button>
+                  <button className="buy_now btn" onClick={openEnquire}>Enquire Now</button>
                 </div>
               </div>
             </div>

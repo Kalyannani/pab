@@ -47,6 +47,7 @@ const StudentList = () => {
     })
 
       .then((response) => {
+        setPageCount(Math.ceil(response.data.length) / perPage)
         console.log(response.data);
         setallApplicants(response.data.reverse());
       })
@@ -78,22 +79,24 @@ const StudentList = () => {
 
 
   // Pagination code
-  // const [offset, setOffset] = useState(1);
+  const [offset, setOffset] = useState(1);
+  //   const [data, setData] = useState([]);
+  const [perPage, setPerPage] = useState(20);
+  const [pageCount, setPageCount] = useState(0);
+  const indexOfLastPost = offset * perPage;
+  const indexOfFirstPost = indexOfLastPost - perPage;
+  const currentPost = allapplicants.slice(indexOfFirstPost, indexOfLastPost);
+  const handlePageClick = (e) => {
+    const selectedPage = e.selected;
+    setOffset(selectedPage + 1);
+  };
 
-  // const [perPage, setPerPage] = useState(30);
-  // const [pageCount, setPageCount] = useState(0);
-
-  // const handlePageClick = (e) => {
-  //   const selectedPage = e.selected;
-  //   setOffset(selectedPage + 1);
-  //   console.log('selectedPage', selectedPage);
-  //   fetchJobs(selectedPage)
-  //   window.scrollTo({
-  //     top: 450,
-  //     behavior: 'smooth',
-  //   })
-  // };
-
+  const scrollToTop = () => {
+    window.scrollTo({
+        top:320,
+        behavior: "smooth"
+    });
+};
 
   return (
     <div >
@@ -168,7 +171,7 @@ const StudentList = () => {
 
           <div className="row ">
 
-<div className="col-xl-3 col-lg-3 col-md-6">
+            <div className="col-xl-3 col-lg-3 col-md-6">
               <div className="sticky-top">
                 <div id="accordion">
                   <div class="card">
@@ -236,9 +239,9 @@ const StudentList = () => {
                     </div>
                   </div>
 
-                   {/* 5 */}
+                  {/* 5 */}
 
-                   <div class="card">
+                  <div class="card">
                     <div class="card-header" id="headingFive">
                       <h5
                         class=" collapsed accordionItemHeading"
@@ -699,7 +702,7 @@ const StudentList = () => {
                     </div>
                   </div>
 
-                 
+
 
                   {/* 6 */}
 
@@ -929,19 +932,56 @@ const StudentList = () => {
                     </div>
                   </div>
                   <div className="google_ads">
-                    <Browsead />
+                    <Browseverads />
 
                     <Browsead />
 
-                    <Browsead />
+                    <Browsehrads />
+
+                    <Browsehrads />
+
+
 
                     <Browsead />
 
-                    <Browsead />
+                    <Browsehrads />
+
+
+
+                    <Browsehrads />
+
+                    <Browseverads />
 
                     <Browsead />
 
+                    <Browsehrads />
+
+                    <Browseverads />
+
+
                     <Browsead />
+
+                    <Browsehrads />
+
+                    <Browseverads />
+
+                    <Browsehrads />
+
+                    <Browseverads />
+
+                    <Browsead />
+
+                    {/* <Browsehrads /> */}
+
+                    <Browseverads />
+
+
+                    {/* <Browsead /> */}
+
+                    <Browsehrads />
+
+                    <Browseverads />
+
                   </div>
                 </div>
               </div>
@@ -953,162 +993,162 @@ const StudentList = () => {
               <div className='text-right list_student_count' > <p>Total Number of Candidates :<b>{allapplicants.length}</b> </p></div>
               {
                 allapplicants.length > 0 ?
-                  allapplicants?.map((applicant,indexx) => {
+                  currentPost?.map((applicant, indexx) => {
                     return (
-                      (indexx % 4 === 0 ?   <div className='google_ads'>
-                      <Browsehomead/> </div> :(
-                        
-                      <ul className="filter_list_job_post position-relative">
-                        <li>
-                          <Link to='#'>
-                            <div className="filter_list_job_box">
-                              <div className="d-flex mb-4">
-                                <div className="filter_list_job_company">
-                                  <img src={applicant.profileImage ? applicant.profileImage : `images/girl_avtar.png`} alt="" />
+                      (indexx % 4 === 0 ? <div className='google_ads'>
+                        <Browsehomead /> </div> : (
+
+                        <ul className="filter_list_job_post position-relative">
+                          <li>
+                            <Link to='#'>
+                              <div className="filter_list_job_box">
+                                <div className="d-flex mb-4">
+                                  <div className="filter_list_job_company">
+                                    <img src={applicant.profileImage ? applicant.profileImage : `images/girl_avtar.png`} alt="" />
+                                  </div>
+                                  <div className="filter_list_job_info my-auto">
+                                    <h5 className="home_company_name"> {applicant?.name} </h5>
+                                    <ul>
+
+                                    </ul>
+                                  </div>
                                 </div>
-                                <div className="filter_list_job_info my-auto">
-                                  <h5 className="home_company_name"> {applicant?.name} </h5>
-                                  <ul>
+                                <div className="row table_row">
+                                  <div className="col-md-6 ">
+                                    <div class="table table_row_right">
 
-                                  </ul>
-                                </div>
-                              </div>
-                              <div className="row table_row">
-                                <div className="col-md-6 ">
-                                  <div class="table table_row_right">
-
-                                    <div class="table-row">
-                                      <div class="table-cell table_data1">Education <span className='indicator_list'>:</span></div>
-                                      {
-                                        applicant?.education[0]?.highestgraduation ?
-                                          <div class="table-cell table_data2">{applicant?.education[0]?.highestgraduation} </div>
-                                          : <div class="table-cell table_data2">[Not Updated]</div>
-                                      }
-
-                                    </div>
-
-                                    <div class="table-row">
-                                      <div class="table-cell table_data1">ContactNumber<span className='indicator_list'>:</span></div>
-                                      {
-                                        applicant?.contactNumber ?
-                                          <div class="table-cell table_data2"><span className='font-weight-bold' style={{ fontSize: "17px" }}>xxxxxx </span>{applicant?.contactNumber ? applicant.contactNumber.toString().slice(-4) : null}</div>
-                                          : <div class="table-cell table_data2">[Not Updated]</div>
-                                      }
-
-                                    </div>
-
-                                    <div class="table-row">
-                                      <div class="table-cell table_data1">Email<span className='indicator_list'>:</span></div>
-                                      {
-                                        applicant?.email ?
-                                          <div class="table-cell table_data2"><span className='font-weight-bold' style={{ fontSize: "17px" }}>xxxxxx </span>{applicant?.email ? applicant.email.toString().slice(-12) : null}</div>
-                                          : <div class="table-cell table_data2">[Not Updated]</div>
-                                      }
-
-                                    </div>
-
-                                    <div class="table-row">
-                                      <div class="table-cell table_data1">Experience<span className='indicator_list'>:</span></div>
-                                      <div class="table-cell table_data2">
+                                      <div class="table-row">
+                                        <div class="table-cell table_data1">Education <span className='indicator_list'>:</span></div>
                                         {
-                                          applicant?.experience?.experience ?
-                                            <span >{applicant?.experience?.experience.charAt(0).toUpperCase() + applicant?.experience?.experience.slice(1)}
-                                              ({applicant?.experience?.year} Years - {applicant?.experience?.month})
-                                            </span>
-                                            :
-                                            <span >{applicant?.experience?.charAt(0).toUpperCase() + applicant?.experience?.slice(1)}</span>
-
-
+                                          applicant?.education[0]?.highestgraduation ?
+                                            <div class="table-cell table_data2">{applicant?.education[0]?.highestgraduation} </div>
+                                            : <div class="table-cell table_data2">[Not Updated]</div>
                                         }
 
+                                      </div>
 
+                                      <div class="table-row">
+                                        <div class="table-cell table_data1">ContactNumber<span className='indicator_list'>:</span></div>
+                                        {
+                                          applicant?.contactNumber ?
+                                            <div class="table-cell table_data2"><span className='font-weight-bold' style={{ fontSize: "17px" }}>xxxxxx </span>{applicant?.contactNumber ? applicant.contactNumber.toString().slice(-4) : null}</div>
+                                            : <div class="table-cell table_data2">[Not Updated]</div>
+                                        }
+
+                                      </div>
+
+                                      <div class="table-row">
+                                        <div class="table-cell table_data1">Email<span className='indicator_list'>:</span></div>
+                                        {
+                                          applicant?.email ?
+                                            <div class="table-cell table_data2"><span className='font-weight-bold' style={{ fontSize: "17px" }}>xxxxxx </span>{applicant?.email ? applicant.email.toString().slice(-12) : null}</div>
+                                            : <div class="table-cell table_data2">[Not Updated]</div>
+                                        }
+
+                                      </div>
+
+                                      <div class="table-row">
+                                        <div class="table-cell table_data1">Experience<span className='indicator_list'>:</span></div>
+                                        <div class="table-cell table_data2">
+                                          {
+                                            applicant?.experience?.experience ?
+                                              <span >{applicant?.experience?.experience.charAt(0).toUpperCase() + applicant?.experience?.experience.slice(1)}
+                                                ({applicant?.experience?.year} Years - {applicant?.experience?.month})
+                                              </span>
+                                              :
+                                              <span >{applicant?.experience?.charAt(0).toUpperCase() + applicant?.experience?.slice(1)}</span>
+
+
+                                          }
+
+
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
-                                </div>
 
-                                <div className="col-md-6 ">
-                                  <div class="table table_row_right">
+                                  <div className="col-md-6 ">
+                                    <div class="table table_row_right">
 
-                                    <div class="table-row">
-                                      <div class="table-cell table_data1">Location<span className='indicator_list'>:</span></div>
-                                      {
-                                        applicant?.currentlocation[0] ?
-                                          <div class="table-cell table_data2">{applicant?.currentlocation}</div>
-                                          : <div class="table-cell table_data2">[Not Updated]</div>
-                                      }
+                                      <div class="table-row">
+                                        <div class="table-cell table_data1">Location<span className='indicator_list'>:</span></div>
+                                        {
+                                          applicant?.currentlocation[0] ?
+                                            <div class="table-cell table_data2">{applicant?.currentlocation}</div>
+                                            : <div class="table-cell table_data2">[Not Updated]</div>
+                                        }
+
+                                      </div>
+
+                                      <div class="table-row">
+                                        <div class="table-cell table_data1">Gender<span className='indicator_list'>:</span></div>
+                                        {
+                                          applicant?.personaldetails?.gender ?
+                                            <div class="table-cell table_data2">{applicant?.personaldetails?.gender}</div>
+                                            : <div class="table-cell table_data2">[Not Updated]</div>
+                                        }
+
+                                      </div>
+
+
+                                      <div class="table-row">
+                                        <div class="table-cell table_data1">Pincode<span className='indicator_list'>:</span></div>
+                                        {
+                                          applicant?.personaldetails?.pincode ?
+                                            <div class="table-cell table_data2">{applicant?.personaldetails?.pincode}</div>
+                                            : <div class="table-cell table_data2">[Not Updated]</div>
+                                        }
+
+                                      </div>
+
+
+                                      <div class="table-row">
+                                        <div class="table-cell table_data1">Maritl Status<span className='indicator_list'>:</span></div>
+                                        {
+                                          applicant?.personaldetails?.maritalStatus ?
+                                            <div class="table-cell table_data2">{applicant?.personaldetails?.maritalStatus}</div>
+                                            : <div class="table-cell table_data2">[Not Updated]</div>
+                                        }
+
+                                      </div>
 
                                     </div>
-
-                                    <div class="table-row">
-                                      <div class="table-cell table_data1">Gender<span className='indicator_list'>:</span></div>
-                                      {
-                                        applicant?.personaldetails?.gender ?
-                                          <div class="table-cell table_data2">{applicant?.personaldetails?.gender}</div>
-                                          : <div class="table-cell table_data2">[Not Updated]</div>
-                                      }
-
-                                    </div>
-
-
-                                    <div class="table-row">
-                                      <div class="table-cell table_data1">Pincode<span className='indicator_list'>:</span></div>
-                                      {
-                                        applicant?.personaldetails?.pincode ?
-                                          <div class="table-cell table_data2">{applicant?.personaldetails?.pincode}</div>
-                                          : <div class="table-cell table_data2">[Not Updated]</div>
-                                      }
-
-                                    </div>
-
-
-                                    <div class="table-row">
-                                      <div class="table-cell table_data1">Maritl Status<span className='indicator_list'>:</span></div>
-                                      {
-                                        applicant?.personaldetails?.maritalStatus ?
-                                          <div class="table-cell table_data2">{applicant?.personaldetails?.maritalStatus}</div>
-                                          : <div class="table-cell table_data2">[Not Updated]</div>
-                                      }
-
-                                    </div>
-
                                   </div>
-                                </div>
-                                <div className='col-lg-12'>
-                                  {applicant?.skills.map((skill) => {
-                                    return (
-                                      <>
-                                        <div className="application_skills d-inline-block">
-                                          <button class="php">{skill}</button>
-                                        </div>
-                                      </>
-                                    );
-                                  })}
+                                  <div className='col-lg-12'>
+                                    {applicant?.skills.map((skill) => {
+                                      return (
+                                        <>
+                                          <div className="application_skills d-inline-block">
+                                            <button class="php">{skill}</button>
+                                          </div>
+                                        </>
+                                      );
+                                    })}
+                                  </div>
+
                                 </div>
 
-                              </div>
-
-                              {/* <label className="wishlist">
+                                {/* <label className="wishlist">
                                 {result?.type === "applicant" ?
                                   <button className='btn job_details_applybtn filter_list_wishlist' > Apply </button> :
                                   result?.type === "recruiter" ? null :
                                     <Link to="/auth" > <button className='btn job_details_applybtn filter_list_wishlist'> Login to Apply </button>  </Link>}
                               </label> */}
 
-                            </div>
-                          </Link>
+                              </div>
+                            </Link>
 
 
-                          <a
-                            onClick={() => downloadReusme(applicant?.resume.url)}
-                            class="download_box"
-                          >
-                            <i class="fa fa-download student_icon_app"></i>
+                            <a
+                              onClick={() => downloadReusme(applicant?.resume.url)}
+                              class="download_box"
+                            >
+                              <i class="fa fa-download student_icon_app"></i>
 
-                          </a>
+                            </a>
 
-                        </li>
-                      </ul>))
+                          </li>
+                        </ul>))
 
                     )
                   }) :
@@ -1119,8 +1159,7 @@ const StudentList = () => {
 
 
 
-
-              {/* <div class="d-flex justify-content-center">
+              <div class="d-flex justify-content-center">
                 <ReactPaginate
                   previousLabel="Prev"
                   nextLabel="Next"
@@ -1133,8 +1172,9 @@ const StudentList = () => {
                   containerClassName={"pagination"}
                   subContainerClassName={"pages pagination"}
                   activeClassName={"active"}
+                  onClick={()=>scrollToTop()}
                 />
-              </div>  */}
+              </div>
 
 
             </div>
@@ -1147,7 +1187,7 @@ const StudentList = () => {
 
               <Browsehrads />
 
-              <Browsead />
+              <Browsehrads />
 
               <Browseverads />
 
@@ -1159,39 +1199,15 @@ const StudentList = () => {
 
               <Browseverads />
 
-              <Browsead />
-
               <Browsehrads />
-
-              <Browsead />
 
               <Browseverads />
 
               <Browsead />
 
-              <Browsead />
-
-              <Browsehrads />
+              {/* <Browseverads />
 
               <Browsead />
-
-              <Browseverads />
-
-              <Browsead />
-
-              <Browsehrads />
-
-              <Browsead />
-
-              <Browseverads />
-
-              <Browsead />
-
-              <Browsehrads />
-
-              <Browsead />
-
-              <Browseverads />
 
               <Browsead />
 
@@ -1312,6 +1328,30 @@ const StudentList = () => {
               <Browsead />
 
               <Browseverads />
+
+              <Browsead />
+
+              <Browsehrads />
+
+              <Browsead />
+
+              <Browseverads />
+
+              <Browsead />
+
+              <Browsehrads />
+
+              <Browsead />
+
+              <Browseverads />
+
+              <Browsead />
+
+              <Browsehrads />
+
+              <Browsead />
+
+              <Browseverads />
               <Browsead />
 
               <Browsehrads />
@@ -1334,7 +1374,7 @@ const StudentList = () => {
 
               <Browsead />
 
-              <Browseverads />
+              <Browseverads /> */}
 
             </div>
 

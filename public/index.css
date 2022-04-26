@@ -17664,6 +17664,8 @@ strong {
   width: 59%;
 }
 
+
+
 .combo_payment .combo2 {
   width: 30%;
   font-weight: 600;
@@ -18477,7 +18479,7 @@ width: 40% !important;
 
 
 .number {
-  padding: 2px 5px 2px 5px;
+  padding: 2px 4px 2px 4px;
   width: fit-content;
   height: auto;
   background-color: #d63031;
@@ -18485,11 +18487,12 @@ width: 40% !important;
   color: white;
   text-align: center;
   position: absolute;
-  top: -11px;
-  left: 58px;
+  top: -10px;
+  left: 50px;
   /* padding: 3px; */
   border-style: solid;
   border-width: 2px;
+  font-size: 9px;
 }
 
 .number:empty {
@@ -18498,13 +18501,14 @@ width: 40% !important;
 
 .notBtn {
   transition: 0.5s;
-  cursor: pointer
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .nav_bell {
-  font-size: 25pt !important;
+  font-size: 17pt !important;
   padding-bottom: 10px;
-  color: black;
+  color: #270d44;
   margin-right: 40px;
   margin-left: 40px;
 }
@@ -18708,7 +18712,13 @@ width: 40% !important;
   align-items: center;
   transition: all 0.4s ease;
   margin: 0px;
-  height: 500px !important;
+  height: auto !important;
+}
+
+.card:hover .desc label,
+.card:hover .desc .combo_payment p span
+{
+color: #ffffff !important;
 }
 .cards .card:before {
   height: 160px;
@@ -18770,6 +18780,8 @@ width: 40% !important;
   text-align: left;
   color: #666;
   transition: all 0.4s ease-out;
+  width: 300px;
+ 
 }
 /* .cards .card article .descs {
   margin: 45px 15px;
@@ -18957,6 +18969,8 @@ width: 40% !important;
   color: #000 !important;
 }
 
+
+
 /* New Buy Services */
 
 /* 
@@ -19127,3 +19141,23 @@ width: 40% !important;
 
 
 /* Home_banners_carrer */ 
+
+
+.Enquiry_modal
+{
+ padding: 100px 100px;
+ font-size: 30px;
+ font-weight: bold;
+ animation-name: gradient;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+
+}
+@keyframes gradient {
+  0%   {background-color: #D78DDB;}
+  20%   {background-color: #7AF2C3;}
+  40%  {background-color: #759CEC;}
+  60%   {background-color: #23F2EB;}
+  80%  {background-color: #F27723;}       
+  100% {background-color: #AD3BD7;}
+}
