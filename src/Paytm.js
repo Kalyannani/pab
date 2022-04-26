@@ -158,7 +158,9 @@ getData(user).then(response=>{
             </form>
           </div>
 
-          <div className="col-lg-5 sticky-top" order-lg-2 order-sm-1></div>
+          <div className="col-lg-5 sticky-top" order-lg-2 order-sm-1 >
+            <img src='images/payment.png' alt='dinesh' className='img-fluid' style={{height:"100%"}}/>
+          </div>
         </div>
       </div>
     )

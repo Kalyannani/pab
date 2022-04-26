@@ -234,7 +234,7 @@ const CompanyJobs = () => {
                 <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" />
                 </div> */}
 
-                <div className='col-md-2 text-center'>
+                <div className='col-md-2 text-center google_ads'>
                     {/* <img src='images/ashok.jpeg' style={{width:"160px",height:"240px"}}/> */}
                     <CjobsAds/>
                 </div>

@@ -23,6 +23,7 @@ import ReactPaginate from 'react-paginate'
             behavior: 'smooth',
           })
         };
+        
     useEffect(() => {
         getData();
       },[]);

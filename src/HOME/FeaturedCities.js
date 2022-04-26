@@ -132,7 +132,7 @@ import FeaturedcityAds from '../ads/FeaturedcityAds'
         <Link to="/locationaljobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Locations</Link>
     </div>
     
-    <div className='col-lg-2 text-center'>
+    <div className='col-lg-2 text-center google_ads'>
 {/* <img src='images/ashok.jpeg' style={{width:"160px",height:"439px"}}/> */}
 <FeaturedcityAds/>
 </div>
