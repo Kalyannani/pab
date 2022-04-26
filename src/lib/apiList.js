@@ -31,6 +31,10 @@ const apiList = {
   paytmpayment:`${server}/paytm/payment`,
   allapplicants:`${server}/api/allapplicants`,
   notification:`${server}/api/notification`,
+  sendEmailOtp:`${server}/auth/email/send-otp`,
+  verifyEmailOtp:`${server}/auth/email/verify-otp`,
+  sendPhoneOtp:`${server}/auth/mobile/contact/send-otp`,
+  verifyPhoneOtp:`${server}/auth/mobile/contact/verify-otp`,
 };
 
 export default apiList;

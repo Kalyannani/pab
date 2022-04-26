@@ -12,7 +12,7 @@ import { Line } from 'rc-progress';
 import FileUploadInput from "./FileUploadInput";
 import ResumeFileUpload from "../../common/ResumeFileUpload";
 import ProfileImageUpload from "../../common/ProfileImageUpload";
-
+import Modal from 'react-modal';
 import { Autocomplete } from '@mui/material';
 import { TextField } from '@material-ui/core';
 import Skillsdata from '../../JsonData/Skill.json';
@@ -20,6 +20,16 @@ import Designationdata from '../../JsonData/Designation.json';
 import Categorydata from '../../JsonData/Category.json';
 import NoticePerioddata from '../../JsonData/Noticeperiod.json'
 
+const customStyles = {
+  content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+  },
+};
 
 const MyResume = () => {
   const [file, setFile] = useState("");
@@ -29,6 +39,8 @@ const MyResume = () => {
   const [progressBar, setProgressBar] = useState(0);
   const [currentcompany, setCurrentcompany] = useState(false);
   const [modalData, setModalData] = useState()
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [verifyType, setVerifyType] = useState();
 
 
   const currentcompany_yesButton = () => {
@@ -1254,6 +1266,48 @@ const MyResume = () => {
     setResume(event.target.files[0])
   }
 
+  const verifyEmail = () => {
+
+    axios.post(apiList.sendEmailOtp, {},{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "multipart/form-data"
+      }
+    })
+      .then((response) => {
+        setVerifyType("email")
+        setIsOpen(true)
+       
+      })
+      .catch((err) => {
+        console.log(err.response);
+        toast.error(err.response.data.message)
+      });
+
+  }
+
+  const sendPhoneOtp = () => {
+
+    axios.post(apiList.sendPhoneOtp, {
+      phone: profile.contactNumber
+    },{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "multipart/form-data"
+      }
+    })
+      .then((response) => {
+        setVerifyType("phone")
+        setIsOpen(true)
+       
+      })
+      .catch((err) => {
+        console.log(err.response);
+        toast.error(err.response.data.message)
+      });
+
+  }
+
   const handleprofileUpload = () => {
     const data = new FormData();
     console.log(file)
@@ -1312,8 +1366,75 @@ const MyResume = () => {
     handleresumeUpload()
   }, [resume])
 
+  const handleContactOTPVerify = (e) => {
+    e.preventDefault();
+    console.log('oooo',e.target.otp.value);
+    if(verifyType === "email") {
+      axios.post(apiList.verifyEmailOtp, {
+        otp:e.target.otp.value
+      },{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "multipart/form-data"
+        }
+      })
+        .then((response) => {
+          setVerifyType("")
+          setIsOpen(false)
+          toast.success("Email Verified")
+          getData()
+        })
+        .catch((err) => {
+          console.log(err.response);
+          toast.error(err.response.data.message)
+        });
+    } else if (verifyType === "phone") {
+      console.log("Tesinggg")
+      axios.post(apiList.verifyPhoneOtp, {
+        otp:e.target.otp.value
+      },{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "multipart/form-data"
+        }
+      })
+        .then((response) => {
+          setVerifyType("")
+          setIsOpen(false)
+          toast.success("Phone Verified")
+          getData()
+        })
+        .catch((err) => {
+          console.log(err.response);
+          toast.error(err.response.data.message)
+        });
+    }
+    
+
+  }
+
   return (
     <div>
+      <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={() => setIsOpen(false)}
+            style={customStyles}
+            contentLabel="Example Modal"
+        >
+            <div class="  text-center">
+                <h6>Please enter the one time password <br /> to verify your account</h6>
+                {/* <div> <span>A code has been sent to</span> <small>***9897</small> </div> */}
+                <form onSubmit={handleContactOTPVerify}>
+                    <div id="otp" class="inputs d-flex flex-row justify-content-center mt-4">
+                        <input type="text" className="form-control w-50" id="exampleInputName" placeholder="Enter OTP" maxLength="6" name="otp" required />
+                    </div>
+                    <div> <button type="submit" class="btn btn-verify px-4 validate mt-4" aria-label="Close" data-dismiss="modal" >Validate</button> </div>
+                </form>
+            </div>
+            <div class="card-2 mt-3">
+                <div class="content d-flex justify-content-center align-items-center"> <span>Didn't get the code</span> <a href="#" class="text-decoration-none ms-3"> Resend</a> </div>
+            </div>
+        </Modal>
       <div className="container-fluid my_profile">
         <div className="container">
           <div className="row">
@@ -1379,6 +1500,17 @@ const MyResume = () => {
                             <i className="fas fa-mobile-alt mobile_icon ml-1"></i>
                           </span>{" "}
                           <span className="mobile_resume">{profile.contactNumber}</span>
+                          {profile.isPhoneVerified ?  
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{height: "13px"}} >
+                              <path fill="#388e3c" d="M0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM371.8 211.8C382.7 200.9 382.7 183.1 371.8 172.2C360.9 161.3 343.1 161.3 332.2 172.2L224 280.4L179.8 236.2C168.9 225.3 151.1 225.3 140.2 236.2C129.3 247.1 129.3 264.9 140.2 275.8L204.2 339.8C215.1 350.7 232.9 350.7 243.8 339.8L371.8 211.8z" />
+                            </svg> 
+                          : 
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{height: "13px"}} onClick={sendPhoneOtp}  >
+                              <path fill="#ffa000" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM232 152C232 138.8 242.8 128 256 128s24 10.75 24 24v128c0 13.25-10.75 24-24 24S232 293.3 232 280V152zM256 400c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 385.9 273.4 400 256 400z" />
+                            </svg>
+                          }
+
+
                         </p>
 
                         <p>
@@ -1387,7 +1519,20 @@ const MyResume = () => {
                           </span>{" "}
                           <span className="mobile_resume">
                             {profile.email}
+                            
                           </span>
+                          {profile.isEmailVerified ?  
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{height: "13px"}} >
+                              <path fill="#388e3c" d="M0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM371.8 211.8C382.7 200.9 382.7 183.1 371.8 172.2C360.9 161.3 343.1 161.3 332.2 172.2L224 280.4L179.8 236.2C168.9 225.3 151.1 225.3 140.2 236.2C129.3 247.1 129.3 264.9 140.2 275.8L204.2 339.8C215.1 350.7 232.9 350.7 243.8 339.8L371.8 211.8z" />
+                            </svg> 
+                          : 
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{height: "13px"}} onClick={verifyEmail} >
+                              <path fill="#ffa000" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM232 152C232 138.8 242.8 128 256 128s24 10.75 24 24v128c0 13.25-10.75 24-24 24S232 293.3 232 280V152zM256 400c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 385.9 273.4 400 256 400z" />
+                            </svg>
+                          }
+            
+
+
                         </p>
 
                       </div>
