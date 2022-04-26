@@ -115,11 +115,11 @@ const Student_Navbar = () => {
         </ul>
         <ul className="navbar-nav ml-auto"   >
 
-        <li>
+        <li>  
 
 <div className="notBtn position-relative">
   <div class="number">{bellCount}</div>
-  <i class="fas fa-bell nav_bell"></i>
+  <i class="far fa-bell nav_bell"></i>
   <div class=" bell_box">
     <div class="display">
       {/* <div class="nothing">
