@@ -541,14 +541,15 @@ const BrowseFilterList = () => {
                       jobs?.map((job, index) => {
 
                         return (
-                          (index % 4 === 0 ? 
+                          <>
+                          {index % 4 === 0 &&
                           
                             <div className='google_ads'>
-                          <Browsehomead/> </div>:
+                          <Browsehomead/> </div>}
                            
                             
 
-                         ( <ul className="filter_list_job_post ">
+                          <ul className="filter_list_job_post ">
                             <li>
                               <Link to={`/jobdetailes/${job._id}`}>
                                 <div className="filter_list_job_box filter_list_main">
@@ -626,7 +627,8 @@ const BrowseFilterList = () => {
                                 : null}
 
                             </li>
-                          </ul>))
+                          </ul>
+                          </>
 
                         )
                       }) :

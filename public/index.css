@@ -19145,19 +19145,19 @@ color: #ffffff !important;
 
 .Enquiry_modal
 {
- padding: 100px 100px;
+ padding: 150px 150px;
  font-size: 30px;
  font-weight: bold;
- animation-name: gradient;
+ /* animation-name: gradient;
   animation-duration: 3s;
-  animation-iteration-count: infinite;
+  animation-iteration-count: infinite; */
 
 }
-@keyframes gradient {
+/* @keyframes gradient {
   0%   {background-color: #D78DDB;}
   20%   {background-color: #7AF2C3;}
   40%  {background-color: #759CEC;}
   60%   {background-color: #23F2EB;}
   80%  {background-color: #F27723;}       
   100% {background-color: #AD3BD7;}
-}
+} */
