@@ -28,6 +28,7 @@ import Browsead from '../../ads/Browsead'
 import Browsehrads from '../../ads/Browsehrads';
 import Browseverads from '../../ads/Browseverads';
 import Browsehomead from '../../ads/Browsehomead';
+import SkillFilter from './filters/SkillFilter';
 
 
 // import data from '../JsonData/locations.json'
@@ -51,6 +52,7 @@ const BrowseFilterList = () => {
   let paramIndustryType = []
   let paramLocation = []
   let paramDesignation = []
+  let paramSkill = []
 
   paramKeyword = query.get('keyword');
   paramQLocation = query.get('qlocation');
@@ -67,6 +69,10 @@ const BrowseFilterList = () => {
     paramLocation.push(query.get('locate'))
   }
 
+  if (query.get('skill')) {
+    paramSkill.push(query.get('skill'))
+  }
+
   if (query.get('designate')) {
     paramDesignation.push(query.get('designate'))
   }
@@ -81,6 +87,7 @@ const BrowseFilterList = () => {
   const [location, setLocation] = useState(paramLocation)
   const [industryType, setIndustryType] = useState(paramIndustryType)
   const [education, setEducation] = useState([])
+  const [skill, setSkill] = useState(paramSkill)
   const [designation, setDesignation] = useState(paramDesignation)
   const [salary, setSalary] = useState()
   const [listType, setListType] = useState('list')
@@ -173,11 +180,24 @@ const BrowseFilterList = () => {
 
   }
 
+  const handleSkillAdd = async (educations) => {
+    setSkill(educations)
+    fetchJobs();
+
+  }
+
+  const handleSkillRemove = async (educations) => {
+    setSkill(educations)
+    // fetchJobs();
+
+  }
+
   const resetFilter = () => {
     setTopCompanies([])
     setExperience([])
     setLocation([])
     setEducation([])
+    setSkill([])
     setSalary()
     setKeyword("")
     setQLocation("")
@@ -261,7 +281,8 @@ const BrowseFilterList = () => {
       companies: topCompanies,
       educations: education,
       category: designation,
-      industryType
+      industryType,
+      skills: skill
       // salaryMin: 0,  
       // salaryMax: 18000
     }
@@ -480,6 +501,8 @@ const BrowseFilterList = () => {
                   {/* 7 */}
 
                   <SalaryFilter salary={salary} setSalary={setSalary} />
+
+                  <SkillFilter skill={skill} handleSkillAdd={handleSkillAdd} handleSkillRemove={handleSkillRemove} />
                 </div>
               </div>
 

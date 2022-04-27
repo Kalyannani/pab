@@ -1,1475 +1,1475 @@
 [
     {
         "id":"1",
-        "Skill":" Networking"
+        "Skill":"Networking"
     },
     {
         "id":"2",
-        "Skill":" Software Testing"
+        "Skill":"Software Testing"
     },
     {
         "id":"3",
-        "Skill":" SAP abap"
+        "Skill":"SAP abap"
     },
     {
         "id":"4",
-        "Skill":" Call Center"
+        "Skill":"Call Center"
     },
     {
         "id":"5",
-        "Skill":" Mainframe"
+        "Skill":"Mainframe"
     },
     {
         "id":"6",
-        "Skill":" SAP FICO"
+        "Skill":"SAP FICO"
     },
     {
         "id":"7",
-        "Skill":" SAP"
+        "Skill":"SAP"
     },
     {
         "id":"8",
-        "Skill":" SEO"
+        "Skill":"SEO"
     },
     {
         "id":"9",
-        "Skill":" .NET"
+        "Skill":".NET"
     },
     {
         "id":"10",
-        "Skill":" Oracle"
+        "Skill":"Oracle"
     },
     {
         "id":"11",
-        "Skill":" PHP"
+        "Skill":"PHP"
     },
     {
         "id":"12",
-        "Skill":" Back office"
+        "Skill":"Back office"
     },
     {
         "id":"13",
-        "Skill":" Java"
+        "Skill":"Java"
     },
     {
         "id":"14",
-        "Skill":" Online Marketing"
+        "Skill":"Online Marketing"
     },
     {
         "id":"15",
-        "Skill":" SAP Basis"
+        "Skill":"SAP Basis"
     },
     {
         "id":"16",
-        "Skill":" SAS"
+        "Skill":"SAS"
     },
     {
         "id":"17",
-        "Skill":" CISCO"
+        "Skill":"CISCO"
     },
     {
         "id":"18",
-        "Skill":" Manual Testing"
+        "Skill":"Manual Testing"
     },
     {
         "id":"19",
-        "Skill":" SAP HR"
+        "Skill":"SAP HR"
     },
     {
         "id":"20",
-        "Skill":" SAP MM"
+        "Skill":"SAP MM"
     },
     {
         "id":"21",
-        "Skill":" SAP SD"
+        "Skill":"SAP SD"
     },
     {
         "id":"22",
-        "Skill":" SAP Security"
+        "Skill":"SAP Security"
     },
     {
         "id":"23",
-        "Skill":" VLSI"
+        "Skill":"VLSI"
     },
     {
         "id":"24",
-        "Skill":" Web Designing"
+        "Skill":"Web Designing"
     },
     {
         "id":"25",
-        "Skill":" CCIE"
+        "Skill":"CCIE"
     },
     {
         "id":"26",
-        "Skill":" Informatica"
+        "Skill":"Informatica"
     },
     {
         "id":"27",
-        "Skill":" Linux"
+        "Skill":"Linux"
     },
     {
         "id":"28",
-        "Skill":" PeopleSoft"
+        "Skill":"PeopleSoft"
     },
     {
         "id":"29",
-        "Skill":" Plc"
+        "Skill":"Plc"
     },
     {
         "id":"30",
-        "Skill":" SQL"
+        "Skill":"SQL"
     },
     {
         "id":"31",
-        "Skill":" ASP.NET"
+        "Skill":"ASP.NET"
     },
     {
         "id":"32",
-        "Skill":" Datastage"
+        "Skill":"Datastage"
     },
     {
         "id":"33",
-        "Skill":" Finacle"
+        "Skill":"Finacle"
     },
     {
         "id":"34",
-        "Skill":" SAP CRM"
+        "Skill":"SAP CRM"
     },
     {
         "id":"35",
-        "Skill":" Tally"
+        "Skill":"Tally"
     },
     {
         "id":"36",
-        "Skill":" Tibco"
+        "Skill":"Tibco"
     },
     {
         "id":"37",
-        "Skill":" CATIA"
+        "Skill":"CATIA"
     },
     {
         "id":"38",
-        "Skill":" Cognos"
+        "Skill":"Cognos"
     },
     {
         "id":"39",
-        "Skill":" ITIL"
+        "Skill":"ITIL"
     },
     {
         "id":"40",
-        "Skill":" Multimedia"
+        "Skill":"Multimedia"
     },
     {
         "id":"41",
-        "Skill":" Photoshop"
+        "Skill":"Photoshop"
     },
     {
         "id":"42",
-        "Skill":" PRO E"
+        "Skill":"PRO E"
     },
     {
         "id":"43",
-        "Skill":" ABAP"
+        "Skill":"ABAP"
     },
     {
         "id":"44",
-        "Skill":" Backend"
+        "Skill":"Backend"
     },
     {
         "id":"45",
-        "Skill":" C"
+        "Skill":"C"
     },
     {
         "id":"46",
-        "Skill":" DTP"
+        "Skill":"DTP"
     },
     {
         "id":"47",
-        "Skill":" ERP"
+        "Skill":"ERP"
     },
     {
         "id":"48",
-        "Skill":" Internet Marketing"
+        "Skill":"Internet Marketing"
     },
     {
         "id":"49",
-        "Skill":" Siebel"
+        "Skill":"Siebel"
     },
     {
         "id":"50",
-        "Skill":" Video Editing"
+        "Skill":"Video Editing"
     },
     {
         "id":"51",
-        "Skill":" AbInitio"
+        "Skill":"AbInitio"
     },
     {
         "id":"52",
-        "Skill":" CAD/CAM"
+        "Skill":"CAD/CAM"
     },
     {
         "id":"53",
-        "Skill":" Digital Marketing"
+        "Skill":"Digital Marketing"
     },
     {
         "id":"54",
-        "Skill":" Editing"
+        "Skill":"Editing"
     },
     {
         "id":"55",
-        "Skill":" HTML"
+        "Skill":"HTML"
     },
     {
         "id":"56",
-        "Skill":" Oracle Apps"
+        "Skill":"Oracle Apps"
     },
     {
         "id":"57",
-        "Skill":" Perl"
+        "Skill":"Perl"
     },
     {
         "id":"58",
-        "Skill":" Python"
+        "Skill":"Python"
     },
     {
         "id":"59",
-        "Skill":" SAP PP"
+        "Skill":"SAP PP"
     },
     {
         "id":"60",
-        "Skill":" SAP PS"
+        "Skill":"SAP PS"
     },
     {
         "id":"61",
-        "Skill":" SQL Server"
+        "Skill":"SQL Server"
     },
     {
         "id":"62",
-        "Skill":" Database"
+        "Skill":"Database"
     },
     {
         "id":"63",
-        "Skill":" MCSE"
+        "Skill":"MCSE"
     },
     {
         "id":"64",
-        "Skill":" PPC"
+        "Skill":"PPC"
     },
     {
         "id":"65",
-        "Skill":" QTP"
+        "Skill":"QTP"
     },
     {
         "id":"66",
-        "Skill":" SAP PM"
+        "Skill":"SAP PM"
     },
     {
         "id":"67",
-        "Skill":" Teradata"
+        "Skill":"Teradata"
     },
     {
         "id":"68",
-        "Skill":" CRM"
+        "Skill":"CRM"
     },
     {
         "id":"69",
-        "Skill":" data warehousing"
+        "Skill":"data warehousing"
     },
     {
         "id":"70",
-        "Skill":" Excel"
+        "Skill":"Excel"
     },
     {
         "id":"71",
-        "Skill":" Flexcube"
+        "Skill":"Flexcube"
     },
     {
         "id":"72",
-        "Skill":" MATLAB"
+        "Skill":"MATLAB"
     },
     {
         "id":"73",
-        "Skill":" PowerBuilder"
+        "Skill":"PowerBuilder"
     },
     {
         "id":"74",
-        "Skill":" SAP BW"
+        "Skill":"SAP BW"
     },
     {
         "id":"75",
-        "Skill":" Solaris"
+        "Skill":"Solaris"
     },
     {
         "id":"76",
-        "Skill":" AIX"
+        "Skill":"AIX"
     },
     {
         "id":"77",
-        "Skill":" ArchiCAD"
+        "Skill":"ArchiCAD"
     },
     {
         "id":"78",
-        "Skill":" Business Objects"
+        "Skill":"Business Objects"
     },
     {
         "id":"79",
-        "Skill":" Documentum"
+        "Skill":"Documentum"
     },
     {
         "id":"80",
-        "Skill":" FACT"
+        "Skill":"FACT"
     },
     {
         "id":"81",
-        "Skill":" Flex"
+        "Skill":"Flex"
     },
     {
         "id":"82",
-        "Skill":" Hyperion"
+        "Skill":"Hyperion"
     },
     {
         "id":"83",
-        "Skill":" SCADA"
+        "Skill":"SCADA"
     },
     {
         "id":"84",
-        "Skill":" UniGraphics"
+        "Skill":"UniGraphics"
     },
     {
         "id":"85",
-        "Skill":" Unix"
+        "Skill":"Unix"
     },
     {
         "id":"86",
-        "Skill":" Vision Plus"
+        "Skill":"Vision Plus"
     },
     {
         "id":"87",
-        "Skill":" VSAT"
+        "Skill":"VSAT"
     },
     {
         "id":"88",
-        "Skill":" WebMethods"
+        "Skill":"WebMethods"
     },
     {
         "id":"89",
-        "Skill":" Auto CAD"
+        "Skill":"Auto CAD"
     },
     {
         "id":"90",
-        "Skill":" Datawarehousing"
+        "Skill":"Datawarehousing"
     },
     {
         "id":"91",
-        "Skill":" Flash"
+        "Skill":"Flash"
     },
     {
         "id":"92",
-        "Skill":" Lotus Notes"
+        "Skill":"Lotus Notes"
     },
     {
         "id":"93",
-        "Skill":" Maximo"
+        "Skill":"Maximo"
     },
     {
         "id":"94",
-        "Skill":" Primavera"
+        "Skill":"Primavera"
     },
     {
         "id":"95",
-        "Skill":" SAP IS-Retail"
+        "Skill":"SAP IS-Retail"
     },
     {
         "id":"96",
-        "Skill":" Autosys"
+        "Skill":"Autosys"
     },
     {
         "id":"97",
-        "Skill":" COBOL"
+        "Skill":"COBOL"
     },
     {
         "id":"98",
-        "Skill":" ColdFusion"
+        "Skill":"ColdFusion"
     },
     {
         "id":"99",
-        "Skill":" Maya"
+        "Skill":"Maya"
     },
     {
         "id":"100",
-        "Skill":" Programming"
+        "Skill":"Programming"
     },
     {
         "id":"101",
-        "Skill":" RIM"
+        "Skill":"RIM"
     },
     {
         "id":"102",
-        "Skill":" SAP MDM"
+        "Skill":"SAP MDM"
     },
     {
         "id":"103",
-        "Skill":" XML"
+        "Skill":"XML"
     },
     {
         "id":"104",
-        "Skill":" 3D Max"
+        "Skill":"3D Max"
     },
     {
         "id":"105",
-        "Skill":" Automation Testing"
+        "Skill":"Automation Testing"
     },
     {
         "id":"106",
-        "Skill":" BAAN"
+        "Skill":"BAAN"
     },
     {
         "id":"107",
-        "Skill":" C#"
+        "Skill":"C#"
     },
     {
         "id":"108",
-        "Skill":" Delphi"
+        "Skill":"Delphi"
     },
     {
         "id":"109",
-        "Skill":" J2EE"
+        "Skill":"J2EE"
     },
     {
         "id":"110",
-        "Skill":" MySQL"
+        "Skill":"MySQL"
     },
     {
         "id":"111",
-        "Skill":" RedHat"
+        "Skill":"RedHat"
     },
     {
         "id":"112",
-        "Skill":" SAP EP"
+        "Skill":"SAP EP"
     },
     {
         "id":"113",
-        "Skill":" SAP SRM"
+        "Skill":"SAP SRM"
     },
     {
         "id":"114",
-        "Skill":" TPF"
+        "Skill":"TPF"
     },
     {
         "id":"115",
-        "Skill":" VB.NET"
+        "Skill":"VB.NET"
     },
     {
         "id":"116",
-        "Skill":" VOIP"
+        "Skill":"VOIP"
     },
     {
         "id":"117",
-        "Skill":" WebLogic"
+        "Skill":"WebLogic"
     },
     {
         "id":"118",
-        "Skill":" WebSphere"
+        "Skill":"WebSphere"
     },
     {
         "id":"119",
-        "Skill":" Active Directory"
+        "Skill":"Active Directory"
     },
     {
         "id":"120",
-        "Skill":" Ansys"
+        "Skill":"Ansys"
     },
     {
         "id":"121",
-        "Skill":" Data Analysis"
+        "Skill":"Data Analysis"
     },
     {
         "id":"122",
-        "Skill":" Documentation"
+        "Skill":"Documentation"
     },
     {
         "id":"123",
-        "Skill":" DSP"
+        "Skill":"DSP"
     },
     {
         "id":"124",
-        "Skill":" IMS"
+        "Skill":"IMS"
     },
     {
         "id":"125",
-        "Skill":" Remedy"
+        "Skill":"Remedy"
     },
     {
         "id":"126",
-        "Skill":" SAP QM"
+        "Skill":"SAP QM"
     },
     {
         "id":"127",
-        "Skill":" SPSS"
+        "Skill":"SPSS"
     },
     {
         "id":"128",
-        "Skill":" Sybase"
+        "Skill":"Sybase"
     },
     {
         "id":"129",
-        "Skill":" TLM"
+        "Skill":"TLM"
     },
     {
         "id":"130",
-        "Skill":" ASIC"
+        "Skill":"ASIC"
     },
     {
         "id":"131",
-        "Skill":" Blackberry"
+        "Skill":"Blackberry"
     },
     {
         "id":"132",
-        "Skill":" Corel Draw"
+        "Skill":"Corel Draw"
     },
     {
         "id":"133",
-        "Skill":" CSS"
+        "Skill":"CSS"
     },
     {
         "id":"134",
-        "Skill":" DB2"
+        "Skill":"DB2"
     },
     {
         "id":"135",
-        "Skill":" Embedded C"
+        "Skill":"Embedded C"
     },
     {
         "id":"136",
-        "Skill":" FileNet"
+        "Skill":"FileNet"
     },
     {
         "id":"137",
-        "Skill":" FoxPro"
+        "Skill":"FoxPro"
     },
     {
         "id":"138",
-        "Skill":" FPGA"
+        "Skill":"FPGA"
     },
     {
         "id":"139",
-        "Skill":" J2ME"
+        "Skill":"J2ME"
     },
     {
         "id":"140",
-        "Skill":" JavaScript"
+        "Skill":"JavaScript"
     },
     {
         "id":"141",
-        "Skill":" MCSA"
+        "Skill":"MCSA"
     },
     {
         "id":"142",
-        "Skill":" Murex"
+        "Skill":"Murex"
     },
     {
         "id":"143",
-        "Skill":" SAP XI"
+        "Skill":"SAP XI"
     },
     {
         "id":"144",
-        "Skill":" WPF"
+        "Skill":"WPF"
     },
     {
         "id":"145",
-        "Skill":" Adobe Photoshop"
+        "Skill":"Adobe Photoshop"
     },
     {
         "id":"146",
-        "Skill":" DCA"
+        "Skill":"DCA"
     },
     {
         "id":"147",
-        "Skill":" Distribution"
+        "Skill":"Distribution"
     },
     {
         "id":"148",
-        "Skill":" Jquery"
+        "Skill":"Jquery"
     },
     {
         "id":"149",
-        "Skill":" Natural Adabas"
+        "Skill":"Natural Adabas"
     },
     {
         "id":"150",
-        "Skill":" ORCAD"
+        "Skill":"ORCAD"
     },
     {
         "id":"151",
-        "Skill":" Progress 4GL"
+        "Skill":"Progress 4GL"
     },
     {
         "id":"152",
-        "Skill":" SAP SCM"
+        "Skill":"SAP SCM"
     },
     {
         "id":"153",
-        "Skill":" Silverlight"
+        "Skill":"Silverlight"
     },
     {
         "id":"154",
-        "Skill":" Switching"
+        "Skill":"Switching"
     },
     {
         "id":"155",
-        "Skill":" Android Development"
+        "Skill":"Android Development"
     },
     {
         "id":"156",
-        "Skill":" ASP"
+        "Skill":"ASP"
     },
     {
         "id":"157",
-        "Skill":" Calypso"
+        "Skill":"Calypso"
     },
     {
         "id":"158",
-        "Skill":" GSM"
+        "Skill":"GSM"
     },
     {
         "id":"159",
-        "Skill":" Load Runner"
+        "Skill":"Load Runner"
     },
     {
         "id":"160",
-        "Skill":" MCP"
+        "Skill":"MCP"
     },
     {
         "id":"161",
-        "Skill":" MicroStation"
+        "Skill":"MicroStation"
     },
     {
         "id":"162",
-        "Skill":" MSCIT"
+        "Skill":"MSCIT"
     },
     {
         "id":"163",
-        "Skill":" Savvion"
+        "Skill":"Savvion"
     },
     {
         "id":"164",
-        "Skill":" Shell Scripting"
+        "Skill":"Shell Scripting"
     },
     {
         "id":"165",
-        "Skill":" Spring"
+        "Skill":"Spring"
     },
     {
         "id":"166",
-        "Skill":" Visual Basic"
+        "Skill":"Visual Basic"
     },
     {
         "id":"167",
-        "Skill":" Affiliate Marketing"
+        "Skill":"Affiliate Marketing"
     },
     {
         "id":"168",
-        "Skill":" Eclipse"
+        "Skill":"Eclipse"
     },
     {
         "id":"169",
-        "Skill":" Focus"
+        "Skill":"Focus"
     },
     {
         "id":"170",
-        "Skill":" ForTran"
+        "Skill":"ForTran"
     },
     {
         "id":"171",
-        "Skill":" HP UNIX"
+        "Skill":"HP UNIX"
     },
     {
         "id":"172",
-        "Skill":" JSF"
+        "Skill":"JSF"
     },
     {
         "id":"173",
-        "Skill":" MFC"
+        "Skill":"MFC"
     },
     {
         "id":"174",
-        "Skill":" SAP IS-Utilities"
+        "Skill":"SAP IS-Utilities"
     },
     {
         "id":"175",
-        "Skill":" Verilog"
+        "Skill":"Verilog"
     },
     {
         "id":"176",
-        "Skill":" Visual Foxpro"
+        "Skill":"Visual Foxpro"
     },
     {
         "id":"177",
-        "Skill":" WCF"
+        "Skill":"WCF"
     },
     {
         "id":"178",
-        "Skill":" Website Development"
+        "Skill":"Website Development"
     },
     {
         "id":"179",
-        "Skill":" Dreamweaver"
+        "Skill":"Dreamweaver"
     },
     {
         "id":"180",
-        "Skill":" IIS"
+        "Skill":"IIS"
     },
     {
         "id":"181",
-        "Skill":" JSP"
+        "Skill":"JSP"
     },
     {
         "id":"182",
-        "Skill":" Microsoft Excel"
+        "Skill":"Microsoft Excel"
     },
     {
         "id":"183",
-        "Skill":" Nortel"
+        "Skill":"Nortel"
     },
     {
         "id":"184",
-        "Skill":" RDO"
+        "Skill":"RDO"
     },
     {
         "id":"185",
-        "Skill":" ActiveX"
+        "Skill":"ActiveX"
     },
     {
         "id":"186",
-        "Skill":" ADO"
+        "Skill":"ADO"
     },
     {
         "id":"187",
-        "Skill":" Adobe Illustrator"
+        "Skill":"Adobe Illustrator"
     },
     {
         "id":"188",
-        "Skill":" Adobe Pagemaker"
+        "Skill":"Adobe Pagemaker"
     },
     {
         "id":"189",
-        "Skill":" AJAX"
+        "Skill":"AJAX"
     },
     {
         "id":"190",
-        "Skill":" ALE"
+        "Skill":"ALE"
     },
     {
         "id":"191",
-        "Skill":" Ant"
+        "Skill":"Ant"
     },
     {
         "id":"192",
-        "Skill":" Apache Commons"
+        "Skill":"Apache Commons"
     },
     {
         "id":"193",
-        "Skill":" Apache Tomcat"
+        "Skill":"Apache Tomcat"
     },
     {
         "id":"194",
-        "Skill":" Apache Web Server"
+        "Skill":"Apache Web Server"
     },
     {
         "id":"195",
-        "Skill":" AS 400"
+        "Skill":"AS 400"
     },
     {
         "id":"196",
-        "Skill":" Assembly Language"
+        "Skill":"Assembly Language"
     },
     {
         "id":"197",
-        "Skill":" ATL"
+        "Skill":"ATL"
     },
     {
         "id":"198",
-        "Skill":" AutoLISP"
+        "Skill":"AutoLISP"
     },
     {
         "id":"199",
-        "Skill":" AWT"
+        "Skill":"AWT"
     },
     {
         "id":"200",
-        "Skill":" BASIC"
+        "Skill":"BASIC"
     },
     {
         "id":"201",
-        "Skill":" Bluetooth"
+        "Skill":"Bluetooth"
     },
     {
         "id":"202",
-        "Skill":" BPCS"
+        "Skill":"BPCS"
     },
     {
         "id":"203",
-        "Skill":" BPEL"
+        "Skill":"BPEL"
     },
     {
         "id":"204",
-        "Skill":" BREW"
+        "Skill":"BREW"
     },
     {
         "id":"205",
-        "Skill":" C++"
+        "Skill":"C++"
     },
     {
         "id":"206",
-        "Skill":" CDMA"
+        "Skill":"CDMA"
     },
     {
         "id":"207",
-        "Skill":" Chordiant"
+        "Skill":"Chordiant"
     },
     {
         "id":"208",
-        "Skill":" CICS"
+        "Skill":"CICS"
     },
     {
         "id":"209",
-        "Skill":" CLDC"
+        "Skill":"CLDC"
     },
     {
         "id":"210",
-        "Skill":" Clipper"
+        "Skill":"Clipper"
     },
     {
         "id":"211",
-        "Skill":" COM/COM+/DCOM"
+        "Skill":"COM/COM+/DCOM"
     },
     {
         "id":"212",
-        "Skill":" CORBA"
+        "Skill":"CORBA"
     },
     {
         "id":"213",
-        "Skill":" CoreJava"
+        "Skill":"CoreJava"
     },
     {
         "id":"214",
-        "Skill":" Crystal Report"
+        "Skill":"Crystal Report"
     },
     {
         "id":"215",
-        "Skill":" Csharp"
+        "Skill":"Csharp"
     },
     {
         "id":"216",
-        "Skill":" Data Structures"
+        "Skill":"Data Structures"
     },
     {
         "id":"217",
-        "Skill":" Database Administration"
+        "Skill":"Database Administration"
     },
     {
         "id":"218",
-        "Skill":" Db4o"
+        "Skill":"Db4o"
     },
     {
         "id":"219",
-        "Skill":" dBase"
+        "Skill":"dBase"
     },
     {
         "id":"220",
-        "Skill":" DCOM"
+        "Skill":"DCOM"
     },
     {
         "id":"221",
-        "Skill":" Derby"
+        "Skill":"Derby"
     },
     {
         "id":"222",
-        "Skill":" Developer/D2K"
+        "Skill":"Developer/D2K"
     },
     {
         "id":"223",
-        "Skill":" DHCP"
+        "Skill":"DHCP"
     },
     {
         "id":"224",
-        "Skill":" DHTML"
+        "Skill":"DHTML"
     },
     {
         "id":"225",
-        "Skill":" DNS"
+        "Skill":"DNS"
     },
     {
         "id":"226",
-        "Skill":" DOS"
+        "Skill":"DOS"
     },
     {
         "id":"227",
-        "Skill":" Downstream"
+        "Skill":"Downstream"
     },
     {
         "id":"228",
-        "Skill":" EJB"
+        "Skill":"EJB"
     },
     {
         "id":"229",
-        "Skill":" Ethernet"
+        "Skill":"Ethernet"
     },
     {
         "id":"230",
-        "Skill":" Expeditor"
+        "Skill":"Expeditor"
     },
     {
         "id":"231",
-        "Skill":" Finone"
+        "Skill":"Finone"
     },
     {
         "id":"232",
-        "Skill":" Firewall"
+        "Skill":"Firewall"
     },
     {
         "id":"233",
-        "Skill":" Fireworks"
+        "Skill":"Fireworks"
     },
     {
         "id":"234",
-        "Skill":" FlashLite"
+        "Skill":"FlashLite"
     },
     {
         "id":"235",
-        "Skill":" FreeBSD"
+        "Skill":"FreeBSD"
     },
     {
         "id":"236",
-        "Skill":" FTP"
+        "Skill":"FTP"
     },
     {
         "id":"237",
-        "Skill":" GLOSS"
+        "Skill":"GLOSS"
     },
     {
         "id":"238",
-        "Skill":" Hibernate"
+        "Skill":"Hibernate"
     },
     {
         "id":"239",
-        "Skill":" Humming Bird"
+        "Skill":"Humming Bird"
     },
     {
         "id":"240",
-        "Skill":" iBatis"
+        "Skill":"iBatis"
     },
     {
         "id":"241",
-        "Skill":" Ideas"
+        "Skill":"Ideas"
     },
     {
         "id":"242",
-        "Skill":" ImageReady"
+        "Skill":"ImageReady"
     },
     {
         "id":"243",
-        "Skill":" Impromptu"
+        "Skill":"Impromptu"
     },
     {
         "id":"244",
-        "Skill":" Informix"
+        "Skill":"Informix"
     },
     {
         "id":"245",
-        "Skill":" Ingres"
+        "Skill":"Ingres"
     },
     {
         "id":"246",
-        "Skill":" Installshield"
+        "Skill":"Installshield"
     },
     {
         "id":"247",
-        "Skill":" ISDN"
+        "Skill":"ISDN"
     },
     {
         "id":"248",
-        "Skill":" J++"
+        "Skill":"J++"
     },
     {
         "id":"249",
-        "Skill":" J2SE"
+        "Skill":"J2SE"
     },
     {
         "id":"250",
-        "Skill":" Java2D"
+        "Skill":"Java2D"
     },
     {
         "id":"251",
-        "Skill":" JavaCard"
+        "Skill":"JavaCard"
     },
     {
         "id":"252",
-        "Skill":" JavaFX"
+        "Skill":"JavaFX"
     },
     {
         "id":"253",
-        "Skill":" JavaSE"
+        "Skill":"JavaSE"
     },
     {
         "id":"254",
-        "Skill":" JBoss"
+        "Skill":"JBoss"
     },
     {
         "id":"255",
-        "Skill":" JBoss Seam"
+        "Skill":"JBoss Seam"
     },
     {
         "id":"256",
-        "Skill":" JCL"
+        "Skill":"JCL"
     },
     {
         "id":"257",
-        "Skill":" JDBC"
+        "Skill":"JDBC"
     },
     {
         "id":"258",
-        "Skill":" JDOM"
+        "Skill":"JDOM"
     },
     {
         "id":"259",
-        "Skill":" JFace"
+        "Skill":"JFace"
     },
     {
         "id":"260",
-        "Skill":" Jini"
+        "Skill":"Jini"
     },
     {
         "id":"261",
-        "Skill":" JIRA"
+        "Skill":"JIRA"
     },
     {
         "id":"262",
-        "Skill":" JMock"
+        "Skill":"JMock"
     },
     {
         "id":"263",
-        "Skill":" JMS"
+        "Skill":"JMS"
     },
     {
         "id":"264",
-        "Skill":" JNI"
+        "Skill":"JNI"
     },
     {
         "id":"265",
-        "Skill":" JPA"
+        "Skill":"JPA"
     },
     {
         "id":"266",
-        "Skill":" JSE"
+        "Skill":"JSE"
     },
     {
         "id":"267",
-        "Skill":" JUnit"
+        "Skill":"JUnit"
     },
     {
         "id":"268",
-        "Skill":" Kickboxing"
+        "Skill":"Kickboxing"
     },
     {
         "id":"269",
-        "Skill":" KSH"
+        "Skill":"KSH"
     },
     {
         "id":"270",
-        "Skill":" LAN"
+        "Skill":"LAN"
     },
     {
         "id":"271",
-        "Skill":" LINQ"
+        "Skill":"LINQ"
     },
     {
         "id":"272",
-        "Skill":" Log4j"
+        "Skill":"Log4j"
     },
     {
         "id":"273",
-        "Skill":" Mac OS"
+        "Skill":"Mac OS"
     },
     {
         "id":"274",
-        "Skill":" Maven"
+        "Skill":"Maven"
     },
     {
         "id":"275",
-        "Skill":" Microcontrollers"
+        "Skill":"Microcontrollers"
     },
     {
         "id":"276",
-        "Skill":" Microprocessors"
+        "Skill":"Microprocessors"
     },
     {
         "id":"277",
-        "Skill":" Microsoft Access"
+        "Skill":"Microsoft Access"
     },
     {
         "id":"278",
-        "Skill":" Microsoft Exchange"
+        "Skill":"Microsoft Exchange"
     },
     {
         "id":"279",
-        "Skill":" Microsoft Office"
+        "Skill":"Microsoft Office"
     },
     {
         "id":"280",
-        "Skill":" MIDP"
+        "Skill":"MIDP"
     },
     {
         "id":"281",
-        "Skill":" MIS Reports"
+        "Skill":"MIS Reports"
     },
     {
         "id":"282",
-        "Skill":" MOSS"
+        "Skill":"MOSS"
     },
     {
         "id":"283",
-        "Skill":" Motif"
+        "Skill":"Motif"
     },
     {
         "id":"284",
-        "Skill":" MS DOS"
+        "Skill":"MS DOS"
     },
     {
         "id":"285",
-        "Skill":" MS Project"
+        "Skill":"MS Project"
     },
     {
         "id":"286",
-        "Skill":" MS SQL Server"
+        "Skill":"MS SQL Server"
     },
     {
         "id":"287",
-        "Skill":" MS Visio"
+        "Skill":"MS Visio"
     },
     {
         "id":"288",
-        "Skill":" Multithreading"
+        "Skill":"Multithreading"
     },
     {
         "id":"289",
-        "Skill":" MVS"
+        "Skill":"MVS"
     },
     {
         "id":"290",
-        "Skill":" NetWeaver"
+        "Skill":"NetWeaver"
     },
     {
         "id":"291",
-        "Skill":" Novell"
+        "Skill":"Novell"
     },
     {
         "id":"292",
-        "Skill":" ODBC"
+        "Skill":"ODBC"
     },
     {
         "id":"293",
-        "Skill":" Office Operations"
+        "Skill":"Office Operations"
     },
     {
         "id":"294",
-        "Skill":" OOPS"
+        "Skill":"OOPS"
     },
     {
         "id":"295",
-        "Skill":" OpenGL ES"
+        "Skill":"OpenGL ES"
     },
     {
         "id":"296",
-        "Skill":" Operating Systems"
+        "Skill":"Operating Systems"
     },
     {
         "id":"297",
-        "Skill":" Oracle WareHouse Builder"
+        "Skill":"Oracle WareHouse Builder"
     },
     {
         "id":"298",
-        "Skill":" PASCAL"
+        "Skill":"PASCAL"
     },
     {
         "id":"299",
-        "Skill":" PL/SQL"
+        "Skill":"PL/SQL"
     },
     {
         "id":"300",
-        "Skill":" PL/1"
+        "Skill":"PL/1"
     },
     {
         "id":"301",
-        "Skill":" PostgreSQL"
+        "Skill":"PostgreSQL"
     },
     {
         "id":"302",
-        "Skill":" PowerPlay"
+        "Skill":"PowerPlay"
     },
     {
         "id":"303",
-        "Skill":" Pro*C"
+        "Skill":"Pro*C"
     },
     {
         "id":"304",
-        "Skill":" PVCS"
+        "Skill":"PVCS"
     },
     {
         "id":"305",
-        "Skill":" QBasic"
+        "Skill":"QBasic"
     },
     {
         "id":"306",
-        "Skill":" Quality Assurance/QA"
+        "Skill":"Quality Assurance/QA"
     },
     {
         "id":"307",
-        "Skill":" Remoting"
+        "Skill":"Remoting"
     },
     {
         "id":"308",
-        "Skill":" REXX"
+        "Skill":"REXX"
     },
     {
         "id":"309",
-        "Skill":" RichFaces"
+        "Skill":"RichFaces"
     },
     {
         "id":"310",
-        "Skill":" RMI"
+        "Skill":"RMI"
     },
     {
         "id":"311",
-        "Skill":" Routing"
+        "Skill":"Routing"
     },
     {
         "id":"312",
-        "Skill":" RTOS"
+        "Skill":"RTOS"
     },
     {
         "id":"313",
-        "Skill":" S60"
+        "Skill":"S60"
     },
     {
         "id":"314",
-        "Skill":" SAP Bl"
+        "Skill":"SAP Bl"
     },
     {
         "id":"315",
-        "Skill":" SAP COPA"
+        "Skill":"SAP COPA"
     },
     {
         "id":"316",
-        "Skill":" SAP idocs"
+        "Skill":"SAP idocs"
     },
     {
         "id":"317",
-        "Skill":" SAP IS-GAS/OIL"
+        "Skill":"SAP IS-GAS/OIL"
     },
     {
         "id":"318",
-        "Skill":" SAP Practice"
+        "Skill":"SAP Practice"
     },
     {
         "id":"319",
-        "Skill":" SAP SEM"
+        "Skill":"SAP SEM"
     },
     {
         "id":"320",
-        "Skill":" SAP WMS"
+        "Skill":"SAP WMS"
     },
     {
         "id":"321",
-        "Skill":" Seam"
+        "Skill":"Seam"
     },
     {
         "id":"322",
-        "Skill":" Sharepoint Server"
+        "Skill":"Sharepoint Server"
     },
     {
         "id":"323",
-        "Skill":" SMARTY"
+        "Skill":"SMARTY"
     },
     {
         "id":"324",
-        "Skill":" SMTP"
+        "Skill":"SMTP"
     },
     {
         "id":"325",
-        "Skill":" SoundForge"
+        "Skill":"SoundForge"
     },
     {
         "id":"326",
-        "Skill":" STAAD"
+        "Skill":"STAAD"
     },
     {
         "id":"327",
-        "Skill":" Struts"
+        "Skill":"Struts"
     },
     {
         "id":"328",
-        "Skill":" SunOS"
+        "Skill":"SunOS"
     },
     {
         "id":"329",
-        "Skill":" SWT"
+        "Skill":"SWT"
     },
     {
         "id":"330",
-        "Skill":" Symbian C++"
+        "Skill":"Symbian C++"
     },
     {
         "id":"331",
-        "Skill":" Symbian"
+        "Skill":"Symbian"
     },
     {
         "id":"332",
-        "Skill":" SyncML"
+        "Skill":"SyncML"
     },
     {
         "id":"333",
-        "Skill":" T SQL"
+        "Skill":"T SQL"
     },
     {
         "id":"334",
-        "Skill":" TCP/IP"
+        "Skill":"TCP/IP"
     },
     {
         "id":"335",
-        "Skill":" TELNET"
+        "Skill":"TELNET"
     },
     {
         "id":"336",
-        "Skill":" TOAD"
+        "Skill":"TOAD"
     },
     {
         "id":"337",
-        "Skill":" Turbo Pascal"
+        "Skill":"Turbo Pascal"
     },
     {
         "id":"338",
-        "Skill":" Tuxedo"
+        "Skill":"Tuxedo"
     },
     {
         "id":"339",
-        "Skill":" UIQ"
+        "Skill":"UIQ"
     },
     {
         "id":"340",
-        "Skill":" UML"
+        "Skill":"UML"
     },
     {
         "id":"341",
-        "Skill":" Upstream"
+        "Skill":"Upstream"
     },
     {
         "id":"342",
-        "Skill":" VBScript"
+        "Skill":"VBScript"
     },
     {
         "id":"343",
-        "Skill":" Vi"
+        "Skill":"Vi"
     },
     {
         "id":"344",
-        "Skill":" Vignette"
+        "Skill":"Vignette"
     },
     {
         "id":"345",
-        "Skill":" Visual C++"
+        "Skill":"Visual C++"
     },
     {
         "id":"346",
-        "Skill":" Visual Interdev"
+        "Skill":"Visual Interdev"
     },
     {
         "id":"347",
-        "Skill":" VMS"
+        "Skill":"VMS"
     },
     {
         "id":"348",
-        "Skill":" VPN"
+        "Skill":"VPN"
     },
     {
         "id":"349",
-        "Skill":" VSS/Clearcase"
+        "Skill":"VSS/Clearcase"
     },
     {
         "id":"350",
-        "Skill":" VxWorks"
+        "Skill":"VxWorks"
     },
     {
         "id":"351",
-        "Skill":" WAN"
+        "Skill":"WAN"
     },
     {
         "id":"352",
-        "Skill":" WAP"
+        "Skill":"WAP"
     },
     {
         "id":"353",
-        "Skill":" Winform"
+        "Skill":"Winform"
     },
     {
         "id":"354",
-        "Skill":" Winrunner"
+        "Skill":"Winrunner"
     },
     {
         "id":"355",
-        "Skill":" WML"
+        "Skill":"WML"
     },
     {
         "id":"356",
-        "Skill":" XDoclet"
+        "Skill":"XDoclet"
     },
     {
         "id":"357",
-        "Skill":" Xenix"
+        "Skill":"Xenix"
     },
     {
         "id":"358",
-        "Skill":" XHTML"
+        "Skill":"XHTML"
     },
     {
         "id":"359",
-        "Skill":" XStream"
+        "Skill":"XStream"
     },
     {
         "id":"360",
-        "Skill":" Yantra"
+        "Skill":"Yantra"
     },
     {
         "id":"361",
-        "Skill":" Designing"
+        "Skill":"Designing"
     },
     {
         "id":"362",
-        "Skill":" SMO"
+        "Skill":"SMO"
     },
     {
         "id":"363",
-        "Skill":" VAX/VMS"
+        "Skill":"VAX/VMS"
     },
     {
         "id":"364",
-        "Skill":" TCL/TK"
+        "Skill":"TCL/TK"
     },
     {
         "id":"365",
-        "Skill":" Back office Operations"
+        "Skill":"Back office Operations"
     },
     {
         "id":"366",
-        "Skill":" OS/2"
+        "Skill":"OS/2"
     },
     {
         "id":"367",
-        "Skill":" SAP BI"
+        "Skill":"SAP BI"
     },
     {
         "id":"368",
-        "Skill":" Sharepoint MOSS"
+        "Skill":"Sharepoint MOSS"
     },
     {
         "id":"369",
