@@ -153,7 +153,7 @@ export const App = (props) => {
    <Footer />
 
    
-   <ToastContainer autoClose={1000}/>
+   <ToastContainer autoClose={1500}/>
   
    </BrowserRouter>
   

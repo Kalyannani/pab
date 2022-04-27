@@ -19,7 +19,7 @@ const SavedJobs = () => {
             })
             .then((response) => {
                 console.log(response.data);
-                setJobs(response.data.data);
+                setJobs(response.data.data.reverse());
                 setRecruiter(response.data.postedby);
             })
             .catch((err) => {

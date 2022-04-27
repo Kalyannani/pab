@@ -995,12 +995,13 @@ const StudentList = () => {
                 allapplicants.length > 0 ?
                   currentPost?.map((applicant, indexx) => {
                     return (
-                      (indexx % 4 === 0 ? <div className='google_ads'>
-                        <Browsehomead /> </div> : (
+                      <>
+                      {indexx % 3 == 0 && <div className='google_ads'>
+                        <Browsehomead /> </div>}
 
-                        <ul className="filter_list_job_post position-relative">
-                          <li>
-                            <Link to='#'>
+                        <ul className="filter_list_job_post position-relative" style={{cursor:"pointer"}}>
+                          <li >
+                            {/* <Link to=''> */}
                               <div className="filter_list_job_box">
                                 <div className="d-flex mb-4">
                                   <div className="filter_list_job_company">
@@ -1136,7 +1137,7 @@ const StudentList = () => {
                               </label> */}
 
                               </div>
-                            </Link>
+                            {/* </Link> */}
 
 
                             <a
@@ -1148,9 +1149,10 @@ const StudentList = () => {
                             </a>
 
                           </li>
-                        </ul>))
-
+                        </ul>
+                        </>
                     )
+                    
                   }) :
                   null
 

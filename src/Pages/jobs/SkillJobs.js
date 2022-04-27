@@ -143,7 +143,7 @@ const SkillJobs = () => {
                                  }
                              }).map(res => {
                                 return <div className="col-lg-3 col-md-6">
-                                    <Link to="#">
+                                    <Link to={"/browsefilterlist?skill="+res.Skill}>
                                         <a class="company_jobs_anchor p-2">
                                             <span class="company_jobs_img_1_text">{res.Skill}</span></a>
                                     </Link>
