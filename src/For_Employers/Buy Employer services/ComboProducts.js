@@ -1,231 +1,136 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import Modal from 'react-modal';
+import { Button } from 'react-bootstrap';
+// import apiList from "../../../lib/apiList";
+import apiList from "../../lib/apiList";
+import axios from "axios";
+import { useSelector } from 'react-redux'
+import { toast } from "react-toastify";
 const ComboProducts = () => {
+
+  const result = useSelector(state => state.data)
+  const [modalShow, setModalShow] = React.useState(false);
+  const [totalAmount,setTotalamount] = useState()
+  const [user,setUser] = useState()
+  const [priceDetails,setPriceDetails] = useState({
+    value:"",
+    gst:""
+  })
+  const onHide = () => setModalShow(false)
+
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+  const modalDynamic = (e)=>{
+    setPriceDetails({
+      ...priceDetails,
+      value:e.value,
+      gst:e.gst
+    })
+    setTotalamount(Number(e.value)+Number(e.gst))
+    setModalShow(true)
+  }
+  
+  useEffect(() => {
+    getUser();
+  },[]);
+
+  const getUser = () => {
+    axios
+      .get(apiList.user, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setUser(response.data);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  };
+
+
+  function isDate(val) {
+    // Cross realm comptatible
+    return Object.prototype.toString.call(val) === '[object Date]'
+  }
+  function isObj(val) {
+    return typeof val === 'object'
+  }
+   function stringifyValue(val) {
+    if (isObj(val) && !isDate(val)) {
+      return JSON.stringify(val)
+    } else {
+      return val
+    }
+  }
+  
+  function buildForm({ action, params }) {
+    const form = document.createElement('form')
+    form.setAttribute('method', 'post')
+    form.setAttribute('action', action)
+  
+    Object.keys(params).forEach(key => {
+      const input = document.createElement('input')
+      input.setAttribute('type', 'hidden')
+      input.setAttribute('name', key)
+      input.setAttribute('value', stringifyValue(params[key]))
+      form.appendChild(input)
+    })
+  
+    return form
+  }
+  
+   function post(details) {
+    const form = buildForm(details)
+    document.body.appendChild(form)
+    form.submit()
+    form.remove()
+  }
+
+const getData=(data)=>
+{
+return fetch(`${apiList.paytmpayment}`,{
+    method:"POST",
+    headers:{
+        Accept:"application/json",
+        "Content-Type":"application/json"
+    },
+    body:JSON.stringify(data)
+}).then(response=>response.json()).catch(err=>console.log(err))
+}
+
+const makePayment=()=>
+{
+if(result){
+  getData({
+    name:user.name,
+    email:user.email,
+    phone:JSON.stringify(user.contactNumber),
+    amount:JSON.stringify(totalAmount)
+  }).then(response=>{
+      var information={
+          action:"https://securegw.paytm.in/theia/processTransaction",
+          params:response
+      }
+    post(information)
+  })
+}else{
+  toast.error("You Must Login First")
+}
+
+}
   return (
     <>
-      {/* <div
-        className="container ">
-        <div className="row">
-          <div className="col-lg-4 col-md-6 ">
-            <div className="combo_products">
-              <div className="combo_header" style={{backgroundColor:'#494BA0'}}>
-                <div className=" d-inline-block pl-3">
-                  <span>STATE</span>
-                </div>
-                <div className=" float-right d-inline-block pr-3">
-                  <span>RS.20860.0</span>
-                </div>
-              </div>
-              <div className="combo_content">
-                <div className="combo_inner_head text-center">
-                  <h6>50 Job Postings</h6>
-                  <p>
-                    <span>+ NON-IT DB</span>3 months
-                  </p>
-                </div>
-                <form>
-                  <div class="form-group pt-3">
-                    <label for="location">Select Location :</label>
-                    <select class="form-control" id="location">
-                      <option>Hyderabad</option>
-                      <option>Vijayawada</option>
-                      <option>Ongole</option>
-                      <option>Warangal</option>
-                      <option>Vizag</option>
-                    </select>
-                  </div>
-                </form>
-                <div className="combo_payment">
-                  <p>
-                    <span className="combo1 text-left">Resume Views</span>{" "}
-                    <span className="combo2 ">RS.12000.0</span>
-                  </p>
-                  <p>
-                    <span className="combo1 text-left">Resume Downloads</span>{" "}
-                    <span className="combo2 ">RS.12000.0</span>
-                  </p>
-                  <p>
-                    <span className="combo1 text-left">
-                      Emails (50% EXTRA){" "}
-                    </span>{" "}
-                    <span className="combo2 ">RS.112000.0</span>
-                    <sub>(for limited Period)</sub>
-                  </p>
-                </div>
-              </div>
-              <div className="text-center buy_combo_now">
-                <button className="buy_now btn">BuyNow</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-4 col-md-6" >
-            <div className="combo_products">
-              <div className="combo_header" style={{backgroundColor:'#52C41A'}}>
-                <div className=" d-inline-block pl-3">
-                  <span>STATE</span>
-                </div>
-                <div className=" float-right d-inline-block pr-3">
-                  <span>RS.20860.0</span>
-                </div>
-              </div>
-              <div className="combo_content">
-                <div className="combo_inner_head text-center">
-                  <h6>50 Job Postings</h6>
-                  <p>
-                    <span>+IT DB</span>3 months
-                  </p>
-                </div>
-                <form>
-                  <div class="form-group pt-3">
-                    <label for="location">Select Location :</label>
-                    <select class="form-control" id="location">
-                      <option>Hyderabad</option>
-                      <option>Vijayawada</option>
-                      <option>Ongole</option>
-                      <option>Warangal</option>
-                      <option>Vizag</option>
-                    </select>
-                  </div>
-                </form>
-                <div className="combo_payment">
-                  <p>
-                    <span className="combo1 text-left">Resume Views</span>{" "}
-                    <span className="combo2 ">RS.12000.0</span>
-                  </p>
-                  <p>
-                    <span className="combo1 text-left">Resume Downloads</span>{" "}
-                    <span className="combo2 ">RS.12000.0</span>
-                  </p>
-                  <p>
-                    <span className="combo1 text-left">
-                      Emails (50% EXTRA){" "}
-                    </span>{" "}
-                    <span className="combo2 ">RS.112000.0</span>
-                    <sub>(for limited Period)</sub>
-                  </p>
-                </div>
-              </div>
-              <div className="text-center buy_combo_now">
-                <button className="buy_now btn">BuyNow</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-4 col-md-6 ">
-            <div className="combo_products">
-              <div className="combo_header">
-                <div className=" d-inline-block pl-3">
-                  <span>STATE</span>
-                </div>
-                <div className=" float-right d-inline-block pr-3">
-                  <span>RS.20860.0</span>
-                </div>
-              </div>
-              <div className="combo_content">
-                <div className="combo_inner_head text-center">
-                  <h6>50 Job Postings</h6>
-                  <p>
-                    <span>+ COMPLETE (IT+NONIT)DB</span>3 months
-                  </p>
-                </div>
-                <form>
-                  <div class="form-group pt-3">
-                    <label for="location">Select Location :</label>
-                    <select class="form-control" id="location">
-                      <option>Hyderabad</option>
-                      <option>Vijayawada</option>
-                      <option>Ongole</option>
-                      <option>Warangal</option>
-                      <option>Vizag</option>
-                    </select>
-                  </div>
-                </form>
-                <div className="combo_payment">
-                  <p>
-                    <span className="combo1 text-left">Resume Views</span>{" "}
-                    <span className="combo2 ">RS.12000.0</span>
-                  </p>
-                  <p>
-                    <span className="combo1 text-left">Resume Downloads</span>{" "}
-                    <span className="combo2 ">RS.12000.0</span>
-                  </p>
-                  <p>
-                    <span className="combo1 text-left">
-                      Emails (50% EXTRA){" "}
-                    </span>{" "}
-                    <span className="combo2 ">RS.112000.0</span>
-                    <sub>(for limited Period)</sub>
-                  </p>
-                </div>
-              </div>
-              <div className="text-center buy_combo_now">
-                <button className="buy_now btn">BuyNow</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-4 col-md-6 ">
-            <div className="combo_products">
-              <div className="combo_header">
-                <div className=" d-inline-block pl-3">
-                  <span>PAN INDIA</span>
-                </div>
-                <div className=" float-right d-ixnline-block pr-3">
-                  <span>RS.18720.0</span>
-                </div>
-              </div>
-              <div className="combo_content">
-                <div className="combo_inner_head text-center">
-                  <h6>50 Job Postings</h6>
-                  <p>
-                    <span>+ All INDIA DB</span>1 month
-                  </p>
-                </div>
-                <form>
-                  <div class="form-group pt-3">
-                    <label for="location">Select Department :</label>
-                    <select class="form-control" id="location">
-                      <option>IT</option>
-                      <option>NON-IT</option>
-                      <option>COmplete IT+NON-IT</option>
-                    </select>
-                  </div>
-                </form>
-                <div className="combo_payment">
-                  <p>
-                    <span className="combo1 text-left">Resume Views</span>{" "}
-                    <span className="combo2 ">RS.12000.0</span>
-                  </p>
-                  <p>
-                    <span className="combo1 text-left">Resume Downloads</span>{" "}
-                    <span className="combo2 ">RS.12000.0</span>
-                  </p>
-                  <p>
-                    <span className="combo1 text-left">
-                      Emails (50% EXTRA){" "}
-                    </span>{" "}
-                    <span className="combo2 ">RS.112000.0</span>
-                    <sub>(for limited Period)</sub>
-                  </p>
-                </div>
-              </div>
-              <div className="text-center buy_combo_now">
-                <button className="buy_now btn">BuyNow</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="contact_details">
-            <div className="heading_details">
-                <h5>FOR ENQUIRIES CALL</h5>
-            </div>
-            <div className="contact_phone">
-                <span>CONTACT NO :9876543210</span>
-                <span>EMAIL : pabsolutions@gmail.com</span>
-            </div>
-        </div>
-      </div> */}
 
 
 <div className="container">
@@ -262,7 +167,10 @@ const ComboProducts = () => {
                 </div>
                   </div>
                 </article>
-                <div className="actions">
+                <div className="actions" onClick={() => modalDynamic({
+            value:"199",
+            gst:"35"
+          })}>
                   <button className="btn">
                     <span>Buy Now</span>
                   </button>
@@ -348,6 +256,37 @@ const ComboProducts = () => {
           </div>
         </div>
       </div>
+
+      <Modal 
+      isOpen={modalShow}
+      shouldCloseOnOverlayClick={true}
+      onRequestClose={()=>setModalShow(false)}
+      style={customStyles}
+      ariaHideApp={false}
+      >
+        <div className="payment_modal">
+
+        
+        <div className="close_modal_btn" >
+        <a className="close_modal" onClick={()=>setModalShow(false)}><i className="fas fa-times"></i></a>
+        </div>
+        <div className="payment_details_heading ">
+          <h5>Payment Details</h5>
+        </div>
+
+        <div className="payment_details">
+          <p><span className="payment_1">Total </span> :<span className="payment_2"> &#8377; {priceDetails.value}</span> </p>
+          <p><span className="payment_1">Estimated GST </span> :<span className="payment_2"> &#8377; {priceDetails.gst}</span> </p>
+        </div>
+        <hr className="hr_divider"/>
+        </div>
+      <div className="payment_details">
+        <p> <span className="payment_1">Total Payable Amount</span> : <span className="payment_2"> &#8377; {totalAmount}</span></p>
+      </div>
+      <div className="buynow_payment">
+        <button className="buynow_here" onClick={makePayment}>Proceed</button>
+      </div>
+      </Modal>    
     </>
   );
 };

@@ -166,7 +166,7 @@ const SkillJobs = () => {
 <>
                             
                             <div class="col-lg-4 col-md-6">
-                                    <Link to='#'>
+                                    <Link to='/browsefilterlist?skill=ReactJS'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/atom_2MC_icon.ico'/>
                                         </span>
@@ -176,7 +176,7 @@ const SkillJobs = () => {
 
             
                                 <div class="col-lg-4 col-md-6">
-                                    <Link to='#'>
+                                    <Link to='/browsefilterlist?skill=Banking'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/bank_9WD_icon.ico'/>
                                         </span>
@@ -185,7 +185,7 @@ const SkillJobs = () => {
                                 </div>
 
                                 <div class="col-lg-4 col-md-6">
-                                    <Link to='#'>
+                                    <Link to='/browsefilterlist?skill=Cooking'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/cooking_DJS_icon.ico'/>
                                         </span>
@@ -194,7 +194,7 @@ const SkillJobs = () => {
                                 </div>
 
                                 <div class="col-lg-4 col-md-6">
-                                    <Link to='#'>
+                                    <Link to='/browsefilterlist?skill=Hiring'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/hired_Wi6_icon.ico'/>
                                         </span>
@@ -203,7 +203,7 @@ const SkillJobs = () => {
                                 </div>
 
                                 <div class="col-lg-4 col-md-6">
-                                    <Link to='#'>
+                                    <Link to='/browsefilterlist?skill=Teaching'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/presentation_Quv_icon.ico'/>
                                         </span>
@@ -227,7 +227,7 @@ const SkillJobs = () => {
                                 </div> */}
 
                                 <div class="col-lg-4 col-md-6">
-                                    <Link to='#'>
+                                    <Link to='/browsefilterlist?skill=Writing'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span><img src='images/pencil_Rcw_icon.ico'/>
                                         </span>
@@ -250,7 +250,7 @@ const SkillJobs = () => {
                                 </div> */}
 
                                 <div class="col-lg-4 col-md-6">
-                                    <Link to='#'>
+                                    <Link to='/browsefilterlist?skill=%20SAP'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span className='B_icon'><img src='images/sap.ico'/>
                                         </span>
@@ -273,7 +273,7 @@ const SkillJobs = () => {
                                 </div> */}
 
                                 <div class="col-lg-4 col-md-6">
-                                    <Link to='#'>
+                                    <Link to='/browsefilterlist?skill=%20Oracle'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span className='B_icon'><img src='images/oracle__1__PhD_icon.ico'/>
                                         </span>
@@ -282,7 +282,7 @@ const SkillJobs = () => {
                                 </div>
 
                                 <div class="col-lg-4 col-md-6">
-                                    <Link to='#'>
+                                    <Link to='/browsefilterlist?skill=%20PHP'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span className='B_icon'><img src='images/php_lyw_icon.ico'/>
                                         </span>
@@ -298,7 +298,7 @@ const SkillJobs = () => {
                                 </div> */}
 
                                 <div class="col-lg-4 col-md-6">
-                                    <Link to='#'>
+                                    <Link to='/browsefilterlist?skill=%20Java'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span className='B_icon'><img src='images/java__1__WBx_icon.ico'/>
                                         </span>
@@ -307,7 +307,7 @@ const SkillJobs = () => {
                                 </div>
 
                                 <div class="col-lg-4 col-md-6">
-                                    <Link to='#'>
+                                    <Link to='/browsefilterlist?skill=Node%20JS'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span className='B_icon'><img src='images/nodejs_amJ_icon.ico'/>
                                         </span>
@@ -316,7 +316,7 @@ const SkillJobs = () => {
                                 </div>
 
                                 <div class="col-lg-4 col-md-6">
-                                    <Link to='#'>
+                                    <Link to='/browsefilterlist?skill=Yoga'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                         <span className='B_icon'><img src='images/meditation_rYu_icon.ico'/>
                                         </span>
