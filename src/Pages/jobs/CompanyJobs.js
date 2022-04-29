@@ -165,14 +165,14 @@ const CompanyJobs = () => {
                             
                               <>
                                 <div className="col-lg-2 col-md-4 col-sm-6 text-center" >
-                                    <Link to="/companyjobs">
+                                    <Link to="/browsefilterlist?company=620deb0ad8e816d778afc7e0">
                                 <div className='defaultcompanies '>
                                 <img src="images/Logos/logos7z-01.png" className="img-fluid" alt="" />
                                 </div>
                                 </Link>
                                 </div>
                                 <div className="col-lg-2 col-md-4 col-sm-6 text-center">
-                                <Link to="/companyjobs">
+                                <Link to="/browsefilterlist?company=620ddd52d8e816d778afc577">
                                 <div className='defaultcompanies '>
                                 <img src="images/Logos/logos7z-04.png" className="img-fluid" alt="" />
                                 </div>
@@ -180,7 +180,7 @@ const CompanyJobs = () => {
                                     </div>
                     
                                     <div className="col-lg-2 col-md-4 col-sm-6 text-center">
-                                    <Link to="/companyjobs">
+                                    <Link to="/browsefilterlist?company=620de44cd8e816d778afc5fc">
                                     <div className='defaultcompanies '>
                                 <img src="images/Logos/logos7z-08.png" className="img-fluid" alt="" />
                                 </div>
@@ -203,7 +203,7 @@ const CompanyJobs = () => {
                                     </div>
                     
                                     <div className="col-lg-2 col-md-4 col-sm-6 text-center">
-                                    <Link to="/companyjobs">
+                                    <Link to="/browsefilterlist?company=6231b51178332cae7b0efc5c">
                                     <div className='defaultcompanies '>
                                 <img src="images/Logos/logos7z-11.png" className="img-fluid" alt="" />
                                 </div>

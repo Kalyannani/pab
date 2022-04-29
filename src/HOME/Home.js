@@ -110,6 +110,7 @@ const Home = () => {
 
     return (
         <div>
+
         <Modal
             isOpen={modalIsOpen}
             // onAfterOpen={afterOpenModal}
@@ -119,8 +120,9 @@ const Home = () => {
         >
             <button onClick={() => setModalIsOpen(false)}>close</button>
             <div>I am a modal</div>
-
+        0
         </Modal>
+
             <section>
                 <div id="sec1" className="container-fluid">
                     <div className="container hm1">

@@ -18,6 +18,8 @@ const CareerServices = () => {
           </div>
 
           <div className="col-lg-4 col-sm-6 career_main_div p-4">
+
+
             <Career
               imgsrc="images/pic2.png"
               heading="Resume Writing"
@@ -25,6 +27,8 @@ const CareerServices = () => {
               price="1499"
               className="career_Resume d-flex flex-row justify-content-center"
             />
+
+            
           </div>
           <div className="col-lg-4 col-sm-6 career_main_div p-4">
             <Career

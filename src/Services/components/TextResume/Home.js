@@ -145,6 +145,10 @@ if(result){
       <div className="container">
         <div className="row mt-3 mx-auto">
           
+
+
+
+          
           <div className="textresume_box  col-lg-3 col-md-3 col-sm-6 experince" 
           onClick={() => modalDynamic({
             value:"199",
@@ -154,6 +158,10 @@ if(result){
             <ul classname="exp">(Exp:0 to 3 years)</ul>
             *Applicable taxes may apply
           </div>
+
+
+
+          
           <div className="textresume_box  col-lg-3 col-md-3 col-sm-6 experince" onClick={() => modalDynamic({
             value:"499",
             gst:"89"
