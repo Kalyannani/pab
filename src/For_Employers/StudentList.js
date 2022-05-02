@@ -14,8 +14,14 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import TopCompaniesFilter from '../Pages/Browse_Jobs//filters/TopCompaniesFilter'
 // import ExperienceFilter from './filters/ExperienceFilter';
 import ExperienceFilter from '../Pages/Browse_Jobs/filters/ExperienceFilter';
+
+
+
 // import LocationFilter from './filters/LocationFilter';
 import LocationFilter from '../Pages/Browse_Jobs/filters/LocationFilter';
+
+
+
 // import IndustryFilter from './filters/IndustryFilter';
 import IndustryFilter from '../Pages/Browse_Jobs/filters/IndustryFilter';
 // import JobCategoryFilter from './filters/DesignationFilter';
@@ -35,7 +41,108 @@ import Browsehrads from '../ads/Browsehrads';
 import Browseverads from '../ads/Browseverads';
 const StudentList = () => {
 
+  const [post, setPost] = useState({
+
+    skillsets: [],
+    cities: [],
+
+  })
+
   const result = useSelector(state => state.data)
+  let { search } = useLocation();
+  const query = new URLSearchParams(search);
+  console.log('qqqq ', query.get('keyword'));
+  let paramKeyword = ''
+  let paramQLocation = ''
+
+  let paramLocation = []
+
+  paramKeyword = query.get('keyword');
+  paramQLocation = query.get('qlocation');
+
+
+  if (query.get('locate')) {
+    paramLocation.push(query.get('locate'))
+  }
+
+  const [qlocation, setQLocation] = useState(paramQLocation)
+  const [location, setLocation] = useState(paramLocation)
+
+
+  const handleLocationAdd = async (locations) => {
+    setLocation(locations)
+    fetchJobs();
+
+  }
+  const handleLocationRemove = async (locations) => {
+    setLocation(locations)
+    // fetchJobs();
+
+  }
+
+  const resetFilter = () => {
+
+    setLocation([])
+ 
+
+    setQLocation("")
+  }
+
+  const fetchJobs = async (page = 0) => {
+
+    let token = localStorage.getItem("token");
+    let headers = {}
+    if (token) {
+      headers = {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }
+    }
+    let data = {
+      location,
+      // experience,
+      // companies: topCompanies,
+      // educations: education,
+      // category: designation,
+      // industryType,
+      // skills: skill
+      // salaryMin: 0,  
+      // salaryMax: 18000
+    }
+    // if (salary) {
+    //   data.salaryMin = salary.salaryMin
+    //   data.salaryMax = salary.salaryMax
+    // }
+    // if (keyword !== '') {
+    //   data.q = keyword
+    // }
+    // if (qlocation !== '') {
+    //   data.qlocation = qlocation
+    // }
+    await axios.post(apiList.jobSearch + '?page=' + page, data, {
+      headers,
+    })
+      .then((response) => {
+        setPageCount(Math.ceil(response.data.counts) / 20)
+        console.log('posts', response.data.posts);
+
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        toast.error(err.response.data.message)
+      });
+
+
+}
+
+useEffect(async () => {
+
+  fetchJobs();
+
+}, [location])
+
+console.log('kkkkkkkk');
+
+
 
   const [allapplicants, setallApplicants] = useState([]);
 
@@ -462,143 +569,9 @@ const StudentList = () => {
                       </div>
                     </div>
                   </div>
-                  <div class="card">
-                    <div class="card-header" id="headingThree">
-                      <h5
-                        class=" collapsed accordionItemHeading"
-                        data-toggle="collapse"
-                        data-target="#collapseThree"
-                        aria-expanded="false"
-                        aria-controls="collapseThree"
-                      >
-                        Location{" "}
-                        <span className="float-right">
-                          {/* <i className="fas fa-plus"></i> */}
-                        </span>
-                      </h5>
-                    </div>
-                    <div
-                      id="collapseThree"
-                      class="collapse"
-                      aria-labelledby="headingThree"
-                      data-parent="#accordion"
-                    >
-                      <div class="card-body">
-                        <div className="accordionItemContent">
-                          <form action="#" className="acc_form">
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault2"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault2"
-                              >
-                                Bangolore / Benguluru (18954)
-                              </label>
-                            </div>
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault1"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault1"
-                              >
-                                Delhi (7586)
-                              </label>
-                            </div>
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault1"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault1"
-                              >
-                                Mumbai (9756)
-                              </label>
-                            </div>
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault1"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault1"
-                              >
-                                Hyderabad / Secunderabad (8765)
-                              </label>
-                            </div>
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault1"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault1"
-                              >
-                                Chennai (8845)
-                              </label>
-                            </div>
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault1"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault1"
-                              >
-                                Ahmedabad (9456)
-                              </label>
-                            </div>
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault1"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault1"
-                              >
-                                Kolkata (6578)
-                              </label>
-                            </div>
+ 
 
-                            <div className="more">
-                              <Link
-                                to="/locationaljobs"
-                                className="more_inner float-right mr-4 py-1"
-                              >
-                                {" "}
-                                more...{" "}
-                              </Link>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <LocationFilter location={location} handleLocationAdd={handleLocationAdd} handleLocationRemove={handleLocationRemove} />
 
                   {/* 4 */}
 
@@ -1032,7 +1005,11 @@ const StudentList = () => {
                                         <div class="table-cell table_data1">ContactNumber<span className='indicator_list'>:</span></div>
                                         {
                                           applicant?.contactNumber ?
-                                            <div class="table-cell table_data2"><span className='font-weight-bold' style={{ fontSize: "17px" }}>xxxxxx </span>{applicant?.contactNumber ? applicant.contactNumber.toString().slice(-4) : null}</div>
+                                            <div class="table-cell table_data2">
+                                             {/*  <span className='font-weight-bold' style={{ fontSize: "17px" }}>
+                                              xxxxxx </span>{applicant?.contactNumber ? applicant.contactNumber.toString().slice(-4) : null} */}
+                                                {applicant?.contactNumber}
+                                              </div>
                                             : <div class="table-cell table_data2">[Not Updated]</div>
                                         }
 
@@ -1042,7 +1019,9 @@ const StudentList = () => {
                                         <div class="table-cell table_data1">Email<span className='indicator_list'>:</span></div>
                                         {
                                           applicant?.email ?
-                                            <div class="table-cell table_data2"><span className='font-weight-bold' style={{ fontSize: "17px" }}>xxxxxx </span>{applicant?.email ? applicant.email.toString().slice(-12) : null}</div>
+                                            <div class="table-cell table_data2"><span className='font-weight-bold' style={{ fontSize: "17px" }}>
+                                              xxxxxx </span>{applicant?.email ? applicant.email.toString().slice(-12) : null}
+                                              </div>
                                             : <div class="table-cell table_data2">[Not Updated]</div>
                                         }
 

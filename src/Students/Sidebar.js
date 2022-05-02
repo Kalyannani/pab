@@ -115,16 +115,16 @@ console.log(profile)
                     </div>
 
                             </div>
-                            <NavLink to="/myprofile"><i className="fa fa-user"
-                                    aria-hidden="true"></i> Profile</NavLink>
+                            <NavLink to="/myprofile"><i className="fa fa-user pr-2"
+                                    aria-hidden="true"></i>Career Profile</NavLink>
                             <NavLink to="/myresume"><i
-                                    className="far fa-file-alt"></i> My Resume</NavLink>
+                                    className="far fa-file-alt pr-2"></i> My Resume</NavLink>
                             <NavLink  to="/appliedjobs"><i
-                                    className="fas fa-briefcase"></i> Applied Jobs</NavLink>
+                                    className="fas fa-briefcase pr-2"></i> Applied Jobs</NavLink>
                             <NavLink to="/jobalerts"><i
-                                    className="far fa-address-card"></i> Job Alert</NavLink>
+                                    className="far fa-address-card pr-2"></i> Job Alert</NavLink>
                             <NavLink to="/savedjobs"><i
-                                    className="fas fa-random"></i> Saved Jobs</NavLink>
+                                    className="fas fa-random pr-2"></i> Saved Jobs</NavLink>
                             {/* <a href="../../../Company/candidate_profile/cv manager/cv_manager.html"><i className="far fa-address-card"></i> CV Manager</a> */}
                             <NavLink to="/changepassword"><i
                                     className="fas fa-key"></i> Change Password</NavLink>

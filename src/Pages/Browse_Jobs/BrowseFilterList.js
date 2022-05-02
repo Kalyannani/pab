@@ -9,15 +9,23 @@ import { toast } from 'react-toastify';
 import moment from 'moment';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+
+
 import TopCompaniesFilter from './filters/TopCompaniesFilter';
 import ExperienceFilter from './filters/ExperienceFilter';
+
+
 import LocationFilter from './filters/LocationFilter';
+
+
 import IndustryFilter from './filters/IndustryFilter';
 import JobCategoryFilter from './filters/DesignationFilter';
 import EducationFilter from './filters/EducationFilter';
 import SalaryFilter from './filters/SalaryFilter';
 import ReactTimeAgo from 'react-time-ago'
 import DesignationFilter from './filters/DesignationFilter';
+
+
 import { useSelector } from 'react-redux';
 import { Autocomplete } from '@mui/material';
 import { TextField } from '@material-ui/core';
@@ -44,18 +52,33 @@ const BrowseFilterList = () => {
 
   const result = useSelector(state => state.data)
   let { search } = useLocation();
+
+
+
+
   const query = new URLSearchParams(search);
   console.log('qqqq ', query.get('keyword'));
   let paramKeyword = ''
   let paramQLocation = ''
   let paramTopCompanies = []
   let paramIndustryType = []
+
+
+
   let paramLocation = []
+
+
+
+
   let paramDesignation = []
   let paramSkill = []
 
+
   paramKeyword = query.get('keyword');
   paramQLocation = query.get('qlocation');
+
+
+
 
   if (query.get('company')) {
     paramTopCompanies.push(query.get('company'))
@@ -65,9 +88,17 @@ const BrowseFilterList = () => {
     paramIndustryType.push(query.get('category'))
   }
 
+
+
+
+
   if (query.get('locate')) {
     paramLocation.push(query.get('locate'))
   }
+
+
+
+
 
   if (query.get('skill')) {
     paramSkill.push(query.get('skill'))
@@ -80,11 +111,15 @@ const BrowseFilterList = () => {
 
   const [keyword, setKeyword] = useState(paramKeyword)
   const [qlocation, setQLocation] = useState(paramQLocation)
-
   const [jobs, setJobs] = useState([])
   const [topCompanies, setTopCompanies] = useState(paramTopCompanies)
   const [experience, setExperience] = useState([])
+
+
   const [location, setLocation] = useState(paramLocation)
+
+
+
   const [industryType, setIndustryType] = useState(paramIndustryType)
   const [education, setEducation] = useState([])
   const [skill, setSkill] = useState(paramSkill)
@@ -109,6 +144,8 @@ const BrowseFilterList = () => {
   // const indexOfLastPost = offset * perPage;
   // const indexOfFirstPost = indexOfLastPost - perPage;
   // const currentPosts = jobs.slice(indexOfFirstPost, indexOfLastPost);
+
+
   const handlePageClick = (e) => {
     const selectedPage = e.selected;
     setOffset(selectedPage + 1);
@@ -119,6 +156,9 @@ const BrowseFilterList = () => {
       behavior: 'smooth',
     })
   };
+
+
+
 
   const handleTopCompaniesAdd = async (companies) => {
     setTopCompanies(companies)
@@ -132,17 +172,24 @@ const BrowseFilterList = () => {
 
   }
 
+
+
+
+
   const handleLocationAdd = async (locations) => {
     setLocation(locations)
     fetchJobs();
 
   }
-
   const handleLocationRemove = async (locations) => {
     setLocation(locations)
     // fetchJobs();
 
   }
+
+
+
+
 
   const handleIndustryTypeAdd = async (industry) => {
     setIndustryType(industry)
@@ -192,16 +239,25 @@ const BrowseFilterList = () => {
 
   }
 
+
+
   const resetFilter = () => {
     setTopCompanies([])
     setExperience([])
     setLocation([])
     setEducation([])
+
+
     setSkill([])
+
+
     setSalary()
     setKeyword("")
     setQLocation("")
   }
+
+
+
 
   const handleAddWishlist = async (id) => {
 
@@ -264,6 +320,9 @@ const BrowseFilterList = () => {
       });
   }
 
+
+
+
   const fetchJobs = async (page = 0) => {
     setJobs([])
     setLoading(true)
@@ -311,6 +370,7 @@ const BrowseFilterList = () => {
       });
 }
 
+
   const handleSearch = e => {
     let haveError = false
     if (keyword == '') {
@@ -325,6 +385,7 @@ const BrowseFilterList = () => {
       e.preventDefault()
     }
   }
+
 
   useEffect(async () => {
 
@@ -351,7 +412,7 @@ const BrowseFilterList = () => {
         <div className="filter_list_search-box ">
           <form className="form-control py-4" onSubmit={handleSearch} style={{ boxShadow: "0 0 8px rgb(0 0 0 / 25%);" }}>
             <div className="row">
-              <div className="col-lg-6 col-md-6">
+              <div className="col-lg-6 col-md-6 my-2">
                 <div className="">
 
                   <div className="">
@@ -382,8 +443,8 @@ const BrowseFilterList = () => {
                             label="Job Title, Keywords, or Phrase"
                             variant="outlined"
                             fullWidth
-                            name='keyword' value={keyword} onChange={(e) => { setKeyword(e.target.value) }}
-                          />
+                           name='keyword' value={keyword} onChange={(e) => { setKeyword(e.target.value) }}
+                           />
                         )}
                       />
                       {/* <span>Press enter to add skills</span> */}
@@ -399,7 +460,7 @@ const BrowseFilterList = () => {
                 </div>
               </div>
 
-              <div className="col-lg-4 col-md-6">
+              <div className="col-lg-4 col-md-6 my-2">
                 <div className="">
 
                   <div className="">
@@ -447,7 +508,7 @@ const BrowseFilterList = () => {
 
               <div className="col-lg-2 col-md-6 my-auto">
 
-                <a href="#"></a><button id="filter_list_search_btn" className=" btn-block">Find
+                <a href="#"></a><button id="filter_list_search_btn" className=" btn-block ">Find
                   Job</button>
               </div>
 
