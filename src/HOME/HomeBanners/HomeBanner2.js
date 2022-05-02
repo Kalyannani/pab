@@ -27,7 +27,7 @@ const HomeBanner2 = () => {
           className="bg-primary text-white btn-lg"
           style={{  borderTopLeftRadius: "50px", border: 'none',cursor:"pointer"  }}
         >
-          Submit
+          Click Here
         </button></Link>
         
   

@@ -5397,6 +5397,12 @@ h2.job_filter_list_title {
   margin-top: 15px;
 }
 
+@media screen and (max-width:767px) {
+  #filter_list_search_btn{
+    margin-top: 15px !important;
+  }
+}
+
 #job_filter_list .filter_list_job_info h4 a {
   color: #232323;
   font-weight: 650;
@@ -17661,13 +17667,13 @@ strong {
 .combo_payment .combo1 {
   color: #969696;
   font-weight: 600;
-  width: 59%;
+  width: 160px;
 }
 
 
 
 .combo_payment .combo2 {
-  width: 30%;
+  width: 85px;
   font-weight: 600;
   color: #270D44;
 }
@@ -18780,7 +18786,7 @@ color: #ffffff !important;
   text-align: left;
   color: #666;
   transition: all 0.4s ease-out;
-  width: 300px;
+  width: auto;
  
 }
 /* .cards .card article .descs {
@@ -19161,3 +19167,11 @@ color: #ffffff !important;
   80%  {background-color: #F27723;}       
   100% {background-color: #AD3BD7;}
 } */
+
+
+@media screen and (max-width:380px) {
+  .css-i4bv87-MuiSvgIcon-root{
+    position: absolute;
+    right: -8px !important;
+  }
+}

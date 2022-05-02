@@ -94,7 +94,7 @@ const Jobposting = () => {
     <div className="container">
         <div className="cards">
           <div className="row">
-            <div className="col-sm-4 mt-3">
+            <div className="col-lg-4 col-sm-6 mt-3">
               <div className="card">
                 <span className="close"></span>
                 <span className="arrow"></span>
@@ -118,7 +118,7 @@ const Jobposting = () => {
                 </div>
               </div>
             </div>
-            <div className="col-sm-4 mt-3">
+            <div className="col-lg-4 col-sm-6 mt-3">
               <div className="card">
                 <span className="close"></span>
                 <span className="arrow"></span>
@@ -142,7 +142,7 @@ const Jobposting = () => {
                 </div>
               </div>
             </div>
-            <div className="col-sm-4 mt-3">
+            <div className="col-lg-4 col-sm-6 mt-3">
               <div className="card">
                 <span className="close"></span>
                 <span className="arrow"></span>

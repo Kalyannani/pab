@@ -1,8 +1,14 @@
 import axios from "axios";
 import { useEffect } from "react";
+
+
 import { Link } from "react-router-dom";
+
+
 import { toast } from "react-toastify";
 import apiList from "../../../lib/apiList";
+
+
 import locations from '../../../lib/locations.json'
 
 const LocationFilter = (props) => {
@@ -44,6 +50,7 @@ const LocationFilter = (props) => {
         
     }
 
+    
     return <>
         <div class="card" >
             <div class="card-header" id="headingThree">
