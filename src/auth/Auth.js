@@ -351,9 +351,9 @@ const Auth = (props) => {
         let signupDetails = {
             email: res.profileObj.email,
             name: res.profileObj.name,
-            password: res.target.password.value,
+            // password: e.target.password.value,
             type: selectedClient,
-            contactNumber: res.target.contactNumber.value,
+            // contactNumber: e.target.contactNumber.value,
         }
         axios
             .post(apiList.signup + "/google", signupDetails, {
@@ -383,8 +383,8 @@ const Auth = (props) => {
         console.log('Token - ', res.tokenObj);
         let loginDetails = {
             email: res.profileObj.email,
-            password: res.target.password.value,
-            contactNumber: res.target.contactNumber.value,
+            // password: e.target.password.value,
+            // contactNumber: e.target.contactNumber.value,
         }
         axios
             .post(apiList.login + "/google", loginDetails, {
@@ -481,7 +481,7 @@ const Auth = (props) => {
                                         {!subTab && (
                                             <div id="Menu1">
                                                 <form onSubmit={handleLogin} onChange={resetError}>
-                                                    {/* <div style={{ display: "flex", justifyContent: "center" }}>
+                                                    <div style={{ display: "flex", justifyContent: "center" }}>
                                                         <GoogleLogin
                                                             clientId={clientId}
                                                             buttonText="Log In with Google"
@@ -491,7 +491,7 @@ const Auth = (props) => {
                                                             style={{ marginTop: '100px' }}
                                                             isSignedIn={true}
                                                         />
-                                                    </div> */}
+                                                    </div>
                                                     <div className="input_group ">
                                                         <input type="email" name="email" className="input" placeholder="Email Address" />
                                                         <span className='input_email'> <i class="fa fa-envelope" aria-hidden="true"></i> </span>
@@ -524,7 +524,7 @@ const Auth = (props) => {
                                                         </a>
                                                     </div>
 
-                                                    <div style={{ display: "flex", justifyContent: "center" }}>
+                                                    {/* <div style={{ display: "flex", justifyContent: "center" }}>
                                                         <GoogleLogin
                                                             clientId={clientId}
                                                             buttonText="Log In with Google"
@@ -533,9 +533,9 @@ const Auth = (props) => {
                                                             cookiePolicy={'single_host_origin'}
                                                             style={{ marginTop: '100px' }}
                                                             isSignedIn={true}
-                                                            // className="login_google" 
+                                                            className="login_google" 
                                                         />
-                                                    </div>
+                                                    </div> */}
 
                                                     <div className="already pt-3">
                                                         <label htmlFor="signup"
@@ -649,7 +649,7 @@ const Auth = (props) => {
                                                 </select>
                                             </div>
 
-                                            {/* <div style={{ display: "flex", justifyContent: "center" }}>
+                                             <div style={{ display: "flex", justifyContent: "center" }}>
                                                 <GoogleLogin
                                                     clientId={clientId}
                                                     buttonText="Sign Up with Google"
@@ -663,8 +663,8 @@ const Auth = (props) => {
                                                     clientId={clientId}
                                                     buttonText="Logout"
                                                 // onLogoutSuccess={onSuccess}
-                                                ></GoogleLogout> *
-                                            </div> */}
+                                                ></GoogleLogout> */}
+                                            </div> 
 
                                             <div className="input_group">
                                                 <input
@@ -745,25 +745,24 @@ const Auth = (props) => {
                                             />
 
                                             
-                                                <div style={{ display: "flex", justifyContent: "center"}}>
+                                                {/* <div style={{ display: "flex", justifyContent: "center"}}>
                                                 <GoogleLogin
                                                     clientId={clientId}
-                                                    // buttonText={selectedClient === "applicant" ? "Signup as Applicant" : "Signup as Recruiter"}
-                                                    buttonText = "signup with google"
+                                                    buttonText={selectedClient === "applicant" ? "Signup as Applicant" : "Signup as Recruiter"}
                                                     onSuccess={onGoogleSignUpSuccess}
                                                     onFailure={onFailure}
                                                     cookiePolicy={'single_host_origin'}
                                                     style={{ marginTop: '100px' }}
                                                     isSignedIn={true}
-                                                    // className="SignUp_google" 
+                                                    className="SignUp_google" 
                                                 />
                                                 
                                                 {/* <GoogleLogout
                                                     clientId={clientId}
                                                     buttonText="Logout"
                                                 // onLogoutSuccess={onSuccess}
-                                                ></GoogleLogout> */}
-                                            </div>
+                                                ></GoogleLogout> *
+                                            </div> */}
 
 
                                             <div className="already pt-3">
