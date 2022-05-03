@@ -351,9 +351,9 @@ const Auth = (props) => {
         let signupDetails = {
             email: res.profileObj.email,
             name: res.profileObj.name,
-            // password: e.target.password.value,
+            password: res.target.password.value,
             type: selectedClient,
-            // contactNumber: e.target.contactNumber.value,
+            contactNumber: res.target.contactNumber.value,
         }
         axios
             .post(apiList.signup + "/google", signupDetails, {
@@ -383,8 +383,8 @@ const Auth = (props) => {
         console.log('Token - ', res.tokenObj);
         let loginDetails = {
             email: res.profileObj.email,
-            // password: e.target.password.value,
-            // contactNumber: e.target.contactNumber.value,
+            password: res.target.password.value,
+            contactNumber: res.target.contactNumber.value,
         }
         axios
             .post(apiList.login + "/google", loginDetails, {
@@ -533,7 +533,7 @@ const Auth = (props) => {
                                                             cookiePolicy={'single_host_origin'}
                                                             style={{ marginTop: '100px' }}
                                                             isSignedIn={true}
-                                                            className="login_google" 
+                                                            // className="login_google" 
                                                         />
                                                     </div>
 
@@ -748,13 +748,14 @@ const Auth = (props) => {
                                                 <div style={{ display: "flex", justifyContent: "center"}}>
                                                 <GoogleLogin
                                                     clientId={clientId}
-                                                    buttonText={selectedClient === "applicant" ? "Signup as Applicant" : "Signup as Recruiter"}
+                                                    // buttonText={selectedClient === "applicant" ? "Signup as Applicant" : "Signup as Recruiter"}
+                                                    buttonText = "signup with google"
                                                     onSuccess={onGoogleSignUpSuccess}
                                                     onFailure={onFailure}
                                                     cookiePolicy={'single_host_origin'}
                                                     style={{ marginTop: '100px' }}
                                                     isSignedIn={true}
-                                                    className="SignUp_google" 
+                                                    // className="SignUp_google" 
                                                 />
                                                 
                                                 {/* <GoogleLogout
