@@ -90,9 +90,9 @@ const Student_Navbar = () => {
               <Link className="dropdown-item" to="/hireandtrain">HireAndTrain <sup className='new_blink_inner'>New</sup></Link>
               <Link className="dropdown-item"  to="/onlinetest">OnlineExam<sup className='new_blink_inner'>New</sup></Link>
               <Link className="dropdown-item" to="/textresume">GetYourResume <sup className='new_blink_inner'>New</sup></Link>
-              {/* <Link className="dropdown-item"
+              <Link className="dropdown-item"
                                                 to="/sellskill">Sell Your Skills  <sup className='new_blink_inner'>New</sup>   </Link>
-                                     */}
+                                    
 
             </div>
           </li>

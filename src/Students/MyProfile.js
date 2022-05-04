@@ -101,7 +101,7 @@ console.log(typeof(profile.currentlocation))
         <div className="col-lg-3">
           <Sidebar />
         </div>
-        <div className="col-lg-9">
+        <div className="col-lg-9 mt-4">
           <div className="wrapper">
             <div className="content">
               <div className="job-bx-title clearfix">

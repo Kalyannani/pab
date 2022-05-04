@@ -59,6 +59,7 @@ import HomeBanner2 from './HOME/HomeBanners/HomeBanner2';
 import HomeBanner3 from './HOME/HomeBanners/HomeBanner3';
 import HomeBanner4 from './HOME/HomeBanners/HomeBanner4';
 import CareerServices from '../src/HOME/career/CareerServices';
+import SellSkill from './Services/SellYourSkill/SellSkill';
 
 
 
@@ -145,7 +146,7 @@ export const App = (props) => {
   <Route exact path="/fraudalert" element={<FraudAlert/>}/>
   <Route exact path="/textresume" element={<Textresume/>}/>
   <Route exact path="/fakejobalert" element={<Fakejobalert/>}/>
- 
+  <Route exact path="/sellskill" element={<SellSkill/>}/>
 
   <Route path='*' exact={true} element={<Error/>} />
   
