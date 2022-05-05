@@ -1006,9 +1006,9 @@ console.log('kkkkkkkk');
                                         {
                                           applicant?.contactNumber ?
                                             <div class="table-cell table_data2">
-                                             {/*  <span className='font-weight-bold' style={{ fontSize: "17px" }}>
-                                              xxxxxx </span>{applicant?.contactNumber ? applicant.contactNumber.toString().slice(-4) : null} */}
-                                                {applicant?.contactNumber}
+                                              <span className='font-weight-bold' style={{ fontSize: "17px" }}>
+                                              xxxxxx </span>{applicant?.contactNumber ? applicant.contactNumber.toString().slice(-4) : null}
+                                                {/* {applicant?.contactNumber} */}
                                               </div>
                                             : <div class="table-cell table_data2">[Not Updated]</div>
                                         }
