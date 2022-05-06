@@ -410,7 +410,7 @@ const Auth = (props) => {
                 signOut();
                 toast.error(err.response.data.message)
                 console.log(err.response);
-
+                
             });
         // refreshTokenSetup(res);
     };
@@ -533,7 +533,7 @@ const Auth = (props) => {
                                                             cookiePolicy={'single_host_origin'}
                                                             style={{ marginTop: '100px' }}
                                                             isSignedIn={true}
-                                                            className="login_google"
+                                                            className="login_google" 
                                                         />
                                                     </div>
 
@@ -744,8 +744,8 @@ const Auth = (props) => {
                                                 defaultValue="Signup"
                                             />
 
-
-                                            <div style={{ display: "flex", justifyContent: "center" }}>
+                                            
+                                                <div style={{ display: "flex", justifyContent: "center"}}>
                                                 <GoogleLogin
                                                     clientId={clientId}
                                                     buttonText={selectedClient === "applicant" ? "Signup as Applicant" : "Signup as Recruiter"}
@@ -754,9 +754,9 @@ const Auth = (props) => {
                                                     cookiePolicy={'single_host_origin'}
                                                     style={{ marginTop: '100px' }}
                                                     isSignedIn={true}
-                                                    className="SignUp_google"
+                                                    className="SignUp_google" 
                                                 />
-
+                                                
                                                 {/* <GoogleLogout
                                                     clientId={clientId}
                                                     buttonText="Logout"

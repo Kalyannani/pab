@@ -122,11 +122,14 @@ if(result){
       }
     post(information)
   })
+  
 }else{
   toast.error("You Must Login First")
 }
 
 }
+
+
 
   return (<>
     <div className="bg">
