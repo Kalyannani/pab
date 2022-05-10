@@ -228,9 +228,9 @@ const StudentList = () => {
     })
 
       .then((response) => {
-        // setPageCount(Math.ceil(response.data.length) / perPage)
-        // console.log(response.data);
-        // setallApplicants(response.data.reverse());
+        setPageCount(Math.ceil(response.data.length) / perPage)
+        console.log(response.data);
+        setallApplicants(response.data.reverse());
         setapplicationsCounat(response.data.length)
       })
       .catch((err) => {
