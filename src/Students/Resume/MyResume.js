@@ -1680,7 +1680,7 @@ const MyResume = () => {
                         <div className="modal-body ">
                           <div className="modal_content">
                             <p className="resume_modal_text">
-                              It is the first thing recruiters notice in your
+                              It's the first thing recruiters notice in your
                               profile. Write concisely what makes you unique and
                               right person for the job you are looking for.
                             </p>
