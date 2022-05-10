@@ -418,7 +418,7 @@ const BrowseFilterList = () => {
 
       <div className="container" >
         <div className="filter_list_search-box ">
-          <form className="form-control py-4" onSubmit={handleSearch} style={{ boxShadow: "0 0 8px rgb(0 0 0 / 25%);" }}>
+          <form className="form-control py-3" onSubmit={handleSearch} style={{ boxShadow: "0 0 8px rgb(0 0 0 / 25%);" }}>
             <div className="row">
               <div className="col-lg-6 col-md-6 my-2">
                 <div className="">
@@ -435,12 +435,14 @@ const BrowseFilterList = () => {
                         value={post.skillsets}
                         options={skillsdata.map((res) => {
                           return res.Skill
+                      
                         })}
                         getOptionLabel={(option) => option}
                         onChange={(e, value) => {
                           setPost({
                             ...post,
                             skillsets: value
+                            
                           });
                         }}
 
@@ -451,7 +453,10 @@ const BrowseFilterList = () => {
                             label="Job Title, Keywords, or Phrase"
                             variant="outlined"
                             fullWidth
-                            name='keyword' value={keyword} onChange={(e) => { setKeyword(e.target.value) }}
+                            name='keyword' 
+                            value={keyword} 
+                            onChange={(e) => {setKeyword(e.target.value)
+                              setKeywordError("")}}
                           />
                         )}
                       />

@@ -1849,6 +1849,8 @@ const MyResume = () => {
                           <form>
                             <div className="autocomplete">
                               <label>Skills</label>
+
+
                               {/* <ChipInput
                                 label="Skills"
                                 variant="outlined"
@@ -1871,6 +1873,8 @@ const MyResume = () => {
                                 }}
                                 fullWidth
                               /> */}
+
+
                               <Autocomplete
                                 id="combo-box-demo"
                                 multiple
@@ -1890,7 +1894,7 @@ const MyResume = () => {
                                   <TextField
                                     {...params}
                                     name="multiple"
-                                    label="Enter your current location"
+                                    label="Enter your Skills"
                                     variant="outlined"
                                     fullWidth
                                   />
