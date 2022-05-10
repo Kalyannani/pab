@@ -5,26 +5,29 @@ import Subfilter from './subfilter'
 import { useLocation } from 'react-router-dom'
 import SearchFilter from './SearchFilter'
 const LocationalJobs = () => {
-    const [searchTerm , setsearchTerm] = useState('')
-   
+    let { search } = useLocation();
+
+    const query = new URLSearchParams(search);
+    const [searchTerm, setsearchTerm] = useState('')
+
     const location = useLocation();
-    const [locations,setLocations] = useState(data)
-    const handleSort =  (char) => {
+    const [locations, setLocations] = useState(data)
+    const handleSort = (char) => {
         setLocations(data.filter(post => {
             if (char === "") {
-              //if query is empty
-              return post;
+                //if query is empty
+                return post;
             } else if (post.location.charAt(0).toLowerCase().includes(char.toLowerCase())) {
-              //returns filtered array
-              return post;
+                //returns filtered array
+                return post;
             }
-          }) ) 
+        }))
 
- 
+
     }
 
     return (
-        <div >  { location.pathname === '/locationaljobs'?
+        <div >  {location.pathname === '/locationaljobs' ?
             <div className="jobs_sec_1_joblocation">
                 <div className="heading_pic_joblocation">
                     <div className="container">
@@ -33,7 +36,7 @@ const LocationalJobs = () => {
                         <Subfilter />
                     </div>
                 </div>
-            </div>:null}
+            </div> : null}
 
 
             {/* <!-- sec 1 -->
@@ -47,27 +50,27 @@ const LocationalJobs = () => {
                 <div className="jobcategory_sec_2_sub">
                     {/* <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY LOCATIONS</h6> */}
                     <div className='row'>
-                            <div className='col-md-6'>
-                                <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY LOCATIONS</h6>
-                            </div>
-                            <div className='col-md-6'>
-                                <form>
-                                    <div ng-app="angularsearch" ng-controller="searchsuggetions">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="Search" ng-model="in" onChange={(event)=>{setsearchTerm(event.target.value);}}/>
-                                                <div class="input-group-btn">
-                                                    <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                        <div className='col-md-6'>
+                            <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY LOCATIONS</h6>
                         </div>
+                        <div className='col-md-6'>
+                            <form>
+                                <div ng-app="angularsearch" ng-controller="searchsuggetions">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control serach_input_1" id="se" placeholder="Search" ng-model="in" onChange={(event) => { setsearchTerm(event.target.value); }} />
+                                            <div class="input-group-btn">
+                                                <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     <hr className="bg-light" />
-                    { location.pathname === '/locationaljobs'?
+                    {location.pathname === '/locationaljobs' ?
                         <div class="company_jobs_section_2_buttons text-left my-4">
                             {/* <button class="company_jobs_section_2_button_sub current d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white ">Top 100</button> */}
                             <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('a')}>A</button>
@@ -99,49 +102,65 @@ const LocationalJobs = () => {
                             {/* <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white ">0-99</button> */}
 
 
-                        </div>:null }
+                        </div> : null}
                     <div className="row">
                         {
-                             location.pathname === '/locationaljobs'?
-                             locations.filter((val)=>
-                             {
-                                 if(searchTerm == "")
-                                 {
-                                     return val
-                                 }
-                                 else if(val.location.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
-                                 {
-                                     return val
-                                 }
-                             }).map(res => {
-                                return <div class="col-lg-3 col-md-6">
-                                    <Link to={`/browsefilterlist?locate=${res.location}`}>
-                                        <a class="company_jobs_anchor p-2">
-                                            <span class="company_jobs_img_1_text">{res.location}</span></a>
-                                    </Link>
-                                </div>
-                            })
-                            :
-                            locations.slice(0,15).map(res => {
-                                return <div class="col-lg-3 col-md-6">
-                                    <Link to={`/browsefilterlist?locate=${res.location}`}>
-                                        <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span>
-                                            {/* <img src="images/auto_repair.png" alt=""
+                            location.pathname === '/locationaljobs' ?
+                                locations.filter((val) => {
+                                    if (searchTerm == "") {
+                                        return val
+                                    }
+                                    else if (val.location.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
+                                        return val
+                                    }
+                                }).map(res => {
+                                    return <div class="col-lg-3 col-md-6">
+                                        {
+                                            query.get('from') ?
+                                                <Link to={`/studentlist?locate=${res.location}`}>
+                                                    <a class="company_jobs_anchor p-2">
+                                                        <span class="company_jobs_img_1_text">{res.location}</span></a>
+                                                </Link>
+                                                :
+
+                                                <Link to={`/browsefilterlist?locate=${res.location}`}>
+                                                    <a class="company_jobs_anchor p-2">
+                                                        <span class="company_jobs_img_1_text">{res.location}</span></a>
+                                                </Link>
+                                        }
+                                    </div>
+                                })
+                                :
+                                locations.slice(0, 15).map(res => {
+                                    return <div class="col-lg-3 col-md-6">
+                                        {query.get('from') ?
+                                            <Link to={`/studentlist?locate=${res.location}`}>
+                                                <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span>
+                                                    {/* <img src="images/auto_repair.png" alt=""
                                             class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /> */}
-                                            </span><span class="company_jobs_img_1_text align-self-center px-2">{res.location}</span></a>
-                                    </Link>
-                                </div>
-                            })
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">{res.location}</span></a>
+                                            </Link>
+                                            :
+                                            <Link to={`/browsefilterlist?locate=${res.location}`}>
+                                                <a class="company_jobs_anchor py-1 pr-2 my-1 rounded"><span>
+                                                    {/* <img src="images/auto_repair.png" alt=""
+                                            class="company_jobs_img_1 mr-2 py-1 px-2 d-flex" /> */}
+                                                </span><span class="company_jobs_img_1_text align-self-center px-2">{res.location}</span></a>
+                                            </Link>
+                                        }
+
+                                    </div>
+                                })
                         }
-                       
+
                     </div>
                     <div className='mb-3'>
-                    {
-                            location.pathname === '/locationaljobs' ? null:<Link to="/locationaljobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Locations</Link>
+                        {
+                            location.pathname === '/locationaljobs' ? null : <Link to="/locationaljobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Locations</Link>
                         }
-                        </div>
+                    </div>
                 </div>
-               
+
                 {/* <div className="row">
                     <div className="col-lg-3">
                         <div className="joblocation_sec_2_sub">

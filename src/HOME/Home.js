@@ -38,7 +38,7 @@ const Home = () => {
     const [qlocation, setQLocation] = useState("");
     const [keywordError, setKeywordError] = useState("");
     const [locationError, setLocationError] = useState("");
-    const [modalIsOpen,setModalIsOpen] = useState(false);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     const navigate = useNavigate();
 
     const [post, setPost] = useState({
@@ -68,20 +68,12 @@ const Home = () => {
     }
 
     const handleSearch = () => {
-        let haveError = false
-        if (keyword == '') {
-            console.log('eee');
-            haveError = true
-            setKeywordError('Keyword is required!')
+
+        if (post.cities.length > 0 || post.skillsets.length > 0) {
+
+            navigate(`/browsefilterlist?keyword=${post.skillsets}&qlocation=${post.cities}`)
         }
-        if (qlocation == '') {
-            haveError = true
-            setLocationError('Location is required!')
-        }
-        if (!haveError) {
-            navigate(`/browsefilterlist?keyword=${keyword}&qlocation=${qlocation}`)
-            // toast.error('All fields are required');
-        }
+
 
     }
     console.log('keywordError', keywordError);
@@ -92,36 +84,36 @@ const Home = () => {
 
     const showPopUp = () => {
         let shownPopup = localStorage.getItem("shownPopup")
-        if(!shownPopup) {
+        if (!shownPopup) {
             setModalIsOpen(true)
-            localStorage.setItem("shownPopup",true)
-        } 
-        
+            localStorage.setItem("shownPopup", true)
+        }
+
     }
 
     useEffect(() => {
         timer.current = setTimeout(() => {
-          showPopUp();
+            showPopUp();
         }, 15000);
-      return () => {
-        if (timer.current) clearTimeout(timer.current);
-      };
+        return () => {
+            if (timer.current) clearTimeout(timer.current);
+        };
     }, []);
 
     return (
         <div>
 
-        <Modal
-            isOpen={modalIsOpen}
-            // onAfterOpen={afterOpenModal}
-            onRequestClose={() => setModalIsOpen(false)}
-            style={{content: {height: "200px", marginTop: "200px"}}}
-            contentLabel="Example Modal"
-        >
-            <button onClick={() => setModalIsOpen(false)}>close</button>
-            <div>I am a modal</div>
-        0
-        </Modal>
+            <Modal
+                isOpen={modalIsOpen}
+                // onAfterOpen={afterOpenModal}
+                onRequestClose={() => setModalIsOpen(false)}
+                style={{ content: { height: "200px", marginTop: "200px" } }}
+                contentLabel="Example Modal"
+            >
+                <button onClick={() => setModalIsOpen(false)}>close</button>
+                <div>I am a modal</div>
+                0
+            </Modal>
 
             <section>
                 <div id="sec1" className="container-fluid">
@@ -243,7 +235,7 @@ const Home = () => {
 
             <div className='container mobile_ads'>
 
-                {isTabletOrMobile&& <MobileAds />}
+                {isTabletOrMobile && <MobileAds />}
 
             </div>
 
@@ -263,7 +255,7 @@ const Home = () => {
 
             <div className='container mobile_ads'>
 
-               {isTabletOrMobile&& <MobileAds />}
+                {isTabletOrMobile && <MobileAds />}
 
             </div>
 
@@ -279,7 +271,7 @@ const Home = () => {
 
             <div className='container mobile_ads'>
 
-               {isTabletOrMobile&& <MobileAds />}
+                {isTabletOrMobile && <MobileAds />}
 
             </div>
 
@@ -297,7 +289,7 @@ const Home = () => {
 
             <div className='container mobile_ads'>
 
-               {isTabletOrMobile&& <MobileAds />}
+                {isTabletOrMobile && <MobileAds />}
 
             </div>
 
@@ -316,7 +308,7 @@ const Home = () => {
 
             <div className='container mobile_ads'>
 
-               {isTabletOrMobile&& <MobileAds />}
+                {isTabletOrMobile && <MobileAds />}
 
             </div>
 
@@ -336,7 +328,7 @@ const Home = () => {
 
             <div className='container mobile_ads'>
 
-               {isTabletOrMobile&& <MobileAds />}
+                {isTabletOrMobile && <MobileAds />}
 
             </div>
 

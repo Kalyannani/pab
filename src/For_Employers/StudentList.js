@@ -29,6 +29,8 @@ import IndustryFilter from '../Pages/Browse_Jobs/filters/IndustryFilter';
 import EducationFilter from '../Pages/Browse_Jobs/filters/EducationFilter';
 // import SalaryFilter from './filters/SalaryFilter';
 import SalaryFilter from '../Pages/Browse_Jobs/filters/SalaryFilter';
+import SkillFilter from '../Pages/Browse_Jobs/filters/SkillFilter';
+
 import ReactTimeAgo from 'react-time-ago'
 // import DesignationFilter from './filters/DesignationFilter';
 import DesignationFilter from '../Pages/Browse_Jobs/filters/DesignationFilter';
@@ -39,6 +41,7 @@ import Browsehomead from '../ads/Browsehomead';
 import { useSelector } from 'react-redux';
 import Browsehrads from '../ads/Browsehrads';
 import Browseverads from '../ads/Browseverads';
+import ApplicationFilter from './filters/ApplicationFilter';
 const StudentList = () => {
 
   const [post, setPost] = useState({
@@ -47,11 +50,20 @@ const StudentList = () => {
     cities: [],
 
   })
+  let paramSkill = [];
 
+
+
+  const [industryType, setIndustryType] = useState([])
+  const [education, setEducation] = useState([])
   const result = useSelector(state => state.data)
+  const [applicationFilter, setapplicationFilter] = useState([])
+  const [salary, setSalary] = useState()
+  const [skill, setSkill] = useState(paramSkill)
   let { search } = useLocation();
   const query = new URLSearchParams(search);
   console.log('qqqq ', query.get('keyword'));
+  const [isLoading, setLoading] = useState(false)
   let paramKeyword = ''
   let paramQLocation = ''
 
@@ -59,15 +71,25 @@ const StudentList = () => {
 
   paramKeyword = query.get('keyword');
   paramQLocation = query.get('qlocation');
-
+  let paramDesignation = []
 
   if (query.get('locate')) {
     paramLocation.push(query.get('locate'))
   }
 
+  if (query.get('designate')) {
+    paramDesignation.push(query.get('designate'))
+  }
+
+  if (query.get('skill')) {
+    paramSkill.push(query.get('skill'))
+  }
+
+
   const [qlocation, setQLocation] = useState(paramQLocation)
   const [location, setLocation] = useState(paramLocation)
-
+  const [experience, setExperience] = useState([])
+  const [designation, setDesignation] = useState(paramDesignation)
 
   const handleLocationAdd = async (locations) => {
     setLocation(locations)
@@ -77,19 +99,22 @@ const StudentList = () => {
   const handleLocationRemove = async (locations) => {
     setLocation(locations)
     // fetchJobs();
-
   }
 
   const resetFilter = () => {
 
-    setLocation([])
- 
-
+    setLocation([]);
+    setExperience([]);
+    setapplicationFilter([]);
+    setEducation([]);
+    setDesignation([]);
+    setIndustryType([]);
+    setSkill([]);
     setQLocation("")
   }
 
   const fetchJobs = async (page = 0) => {
-
+    setLoading(true)
     let token = localStorage.getItem("token");
     let headers = {}
     if (token) {
@@ -98,13 +123,14 @@ const StudentList = () => {
       }
     }
     let data = {
+      applicationFilter,
       location,
-      // experience,
+      experience,
       // companies: topCompanies,
-      // educations: education,
-      // category: designation,
-      // industryType,
-      // skills: skill
+      educations: education,
+      category: designation,
+      industryType,
+      skills: skill
       // salaryMin: 0,  
       // salaryMax: 18000
     }
@@ -118,13 +144,14 @@ const StudentList = () => {
     // if (qlocation !== '') {
     //   data.qlocation = qlocation
     // }
-    await axios.post(apiList.jobSearch + '?page=' + page, data, {
+    await axios.post(apiList.searchApplicats + '?page=' + page, data, {
       headers,
     })
       .then((response) => {
+        setLoading(false)
         setPageCount(Math.ceil(response.data.counts) / 20)
         console.log('posts', response.data.posts);
-
+        setallApplicants(response.data.posts)
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -132,15 +159,62 @@ const StudentList = () => {
       });
 
 
-}
+  }
 
-useEffect(async () => {
+  useEffect(async () => {
+    fetchJobs();
+  }, [location, experience, industryType, designation, education, salary, skill, applicationFilter])
 
-  fetchJobs();
+  useEffect(() => {
+    getData()
+  }, [])
+  const handleIndustryTypeAdd = async (industry) => {
+    setIndustryType(industry)
+    fetchJobs();
 
-}, [location])
+  }
 
-console.log('kkkkkkkk');
+  const handleIndustryTypeRemove = async (industry) => {
+    setIndustryType(industry)
+    // fetchJobs();
+
+  }
+
+  const handleDesignationAdd = async (designate) => {
+    setDesignation(designate)
+    fetchJobs();
+
+  }
+
+  const handleDesignationRemove = async (designate) => {
+    setDesignation(designate)
+    // fetchJobs();
+
+  }
+
+  const handleEducationAdd = async (educations) => {
+    setEducation(educations)
+    fetchJobs();
+
+  }
+
+  const handleEducationRemove = async (educations) => {
+    setEducation(educations)
+    // fetchJobs();
+
+  }
+
+  const handleSkillAdd = async (educations) => {
+    setSkill(educations)
+    fetchJobs();
+
+  }
+
+  const handleSkillRemove = async (educations) => {
+    setSkill(educations)
+    // fetchJobs();
+
+  }
 
 
 
@@ -154,21 +228,15 @@ console.log('kkkkkkkk');
     })
 
       .then((response) => {
-        setPageCount(Math.ceil(response.data.length) / perPage)
-        console.log(response.data);
-        setallApplicants(response.data.reverse());
+        // setPageCount(Math.ceil(response.data.length) / perPage)
+        // console.log(response.data);
+        // setallApplicants(response.data.reverse());
+        setapplicationsCounat(response.data.length)
       })
       .catch((err) => {
         console.log(err.response.data);
-
       });
   }
-
-
-  useEffect(() => {
-    getData();
-  }, []);
-
 
   const downloadReusme = (resume) => {
     if (resume === "" || resume == null) {
@@ -190,20 +258,23 @@ console.log('kkkkkkkk');
   //   const [data, setData] = useState([]);
   const [perPage, setPerPage] = useState(20);
   const [pageCount, setPageCount] = useState(0);
+  const [applicationsCounat, setapplicationsCounat] = useState(0)
   const indexOfLastPost = offset * perPage;
   const indexOfFirstPost = indexOfLastPost - perPage;
   const currentPost = allapplicants.slice(indexOfFirstPost, indexOfLastPost);
   const handlePageClick = (e) => {
     const selectedPage = e.selected;
     setOffset(selectedPage + 1);
+    fetchJobs(selectedPage)
   };
 
   const scrollToTop = () => {
     window.scrollTo({
-        top:320,
-        behavior: "smooth"
+      top: 320,
+      behavior: "smooth"
     });
-};
+  };
+
 
   return (
     <div >
@@ -281,74 +352,28 @@ console.log('kkkkkkkk');
             <div className="col-xl-3 col-lg-3 col-md-6">
               <div className="sticky-top">
                 <div id="accordion">
-                  <div class="card">
-                    <div class="card-header" id="headingOne">
-                      <h5
-                        className="accordionItemHeading"
-                        data-toggle="collapse"
-                        data-target="#collapseOne"
-                        aria-expanded="true"
-                        aria-controls="collapseOne"
-                      >
-                        Applicant
-                      </h5>
-                    </div>
+                  <ApplicationFilter application={applicationFilter} setApplication={setapplicationFilter} />
 
-                    <div
-                      id="collapseOne"
-                      class="collapse show"
-                      aria-labelledby="headingOne"
-                      data-parent="#accordion"
-                    >
-                      <div class="card-body">
-                        <div className="accordionItemContent">
-                          <form action="#" className="acc_form">
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input"
-                                type="radio"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault2"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault2"
-                              >
-                                Profiles
-                              </label>
-                            </div>
-                            <div className="form-check my-1">
-                              <input
-                                className="form-check-input"
-                                type="radio"
-                                name="flexcheckboxDefault"
-                                id="flexcheckboxDefault1"
-                              />
-                              <label
-                                className="form-check-label pl-2"
-                                for="flexcheckboxDefault1"
-                              >
-                                Profiles + Resume
-                              </label>
-                            </div>
+                  <ExperienceFilter experience={experience} setExperience={setExperience} />
+                  <LocationFilter location={location} handleLocationAdd={handleLocationAdd} handleLocationRemove={handleLocationRemove} from={"student"} />
 
-                            <div className=" my-1 ml-4 mr-3">
-                              <span
-                                style={{ color: "green", fontSize: "12px" }}
-                              >
-                                Now search in candidate's resume to get more
-                                results
-                              </span>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <IndustryFilter industryType={industryType} handleIndustryTypeAdd={handleIndustryTypeAdd} handleIndustryTypeRemove={handleIndustryTypeRemove} />
+
+                  <DesignationFilter designation={designation} handleDesignationAdd={handleDesignationAdd} handleDesignationRemove={handleDesignationRemove} from={"student"} />
+
+                  {/* 6 */}
+
+                  <EducationFilter education={education} handleEducationAdd={handleEducationAdd} handleEducationRemove={handleEducationRemove} from={"student"} />
+
+                  {/* 7 */}
+
+                  <SalaryFilter salary={salary} setSalary={setSalary} />
+
+                  <SkillFilter skill={skill} handleSkillAdd={handleSkillAdd} handleSkillRemove={handleSkillRemove} from={"student"} />
 
                   {/* 5 */}
 
-                  <div class="card">
+                  {/* <div class="card">
                     <div class="card-header" id="headingFive">
                       <h5
                         class=" collapsed accordionItemHeading"
@@ -358,9 +383,9 @@ console.log('kkkkkkkk');
                         aria-controls="collapseFive"
                       >
                         Designation{" "}
-                        {/* <span className="float-right">
+                        <span className="float-right">
         <i className="fas fa-plus"></i>
-    </span> */}
+    </span>
                       </h5>
                     </div>
                     <div
@@ -456,11 +481,11 @@ console.log('kkkkkkkk');
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* 2 */}
 
-                  <div class="card">
+                  {/* <div class="card">
                     <div class="card-header" id="headingTwo">
                       <h5
                         class="collapsed accordionItemHeading"
@@ -471,7 +496,7 @@ console.log('kkkkkkkk');
                       >
                         Experience{" "}
                         <span className="float-right">
-                          {/* <i className="fas fa-plus"></i> */}
+                          <i className="fas fa-plus"></i>
                         </span>
                       </h5>
                     </div>
@@ -553,7 +578,7 @@ console.log('kkkkkkkk');
                                 className="form-check-input"
                                 type="radio"
                                 name="experience"
-                                // onChange={handleChange}
+                                 onChange={()=>alert()}
                                 id="experience5"
                                 value="15+ years"
                               />
@@ -568,14 +593,13 @@ console.log('kkkkkkkk');
                         </div>
                       </div>
                     </div>
-                  </div>
- 
+                  </div> */}
 
-                  <LocationFilter location={location} handleLocationAdd={handleLocationAdd} handleLocationRemove={handleLocationRemove} />
+
 
                   {/* 4 */}
 
-                  <div class="card">
+                  {/* <div class="card">
                     <div class="card-header" id="headingThree">
                       <h5
                         class=" collapsed accordionItemHeading"
@@ -585,9 +609,9 @@ console.log('kkkkkkkk');
                         aria-controls="collapseFour"
                       >
                         Industry{" "}
-                        {/* <span className="float-right">
+                        <span className="float-right">
                         <i className="fas fa-plus"></i>
-                    </span> */}
+                    </span>
                       </h5>
                     </div>
                     <div
@@ -673,13 +697,13 @@ console.log('kkkkkkkk');
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
 
 
                   {/* 6 */}
 
-                  <div class="card">
+                  {/* <div class="card">
                     <div class="card-header" id="headingSix">
                       <h5
                         class="accordionItemHeading collapsed"
@@ -690,7 +714,7 @@ console.log('kkkkkkkk');
                       >
                         Education
                         <span className="float-right">
-                          {/* <i className="fas fa-plus"></i> */}
+                          <i className="fas fa-plus"></i>
                         </span>
                       </h5>
                     </div>
@@ -787,11 +811,11 @@ console.log('kkkkkkkk');
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* 7 */}
 
-                  <div class="card">
+                  {/* <div class="card">
                     <div class="card-header" id="headingSeven">
                       <h5
                         class="accordionItemHeading collapsed"
@@ -802,10 +826,11 @@ console.log('kkkkkkkk');
                       >
                         Salary{" "}
                         <span className="float-right">
-                          {/* <i className="fas fa-plus"></i> */}
+                          <i className="fas fa-plus"></i>
                         </span>
                       </h5>
                     </div>
+
                     <div
                       id="collapseSeven"
                       class="collapse"
@@ -903,7 +928,8 @@ console.log('kkkkkkkk');
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
+
                   <div className="google_ads">
                     <Browseverads />
 
@@ -963,159 +989,157 @@ console.log('kkkkkkkk');
 
 
             <div className="list_view_width col-lg-7">
-              <div className='text-right list_student_count' > <p>Total Number of Candidates :<b>{allapplicants.length}</b> </p></div>
+              <div className='text-right list_student_count' > <p>Total Number of Candidates :<b>{applicationsCounat}</b> </p></div>
               {
                 allapplicants.length > 0 ?
-                  currentPost?.map((applicant, indexx) => {
+                  allapplicants?.map((applicant, indexx) => {
                     return (
                       <>
-                      {indexx % 3 == 0 && <div className='google_ads'>
-                        <Browsehomead /> </div>}
+                        {indexx % 3 == 0 && <div className='google_ads'>
+                          <Browsehomead /> </div>}
 
-                        <ul className="filter_list_job_post position-relative" style={{cursor:"pointer"}}>
+                        <ul className="filter_list_job_post position-relative" style={{ cursor: "pointer" }}>
                           <li >
                             {/* <Link to=''> */}
-                              <div className="filter_list_job_box">
-                                <div className="d-flex mb-4">
-                                  <div className="filter_list_job_company">
-                                    <img src={applicant.profileImage ? applicant.profileImage : `images/girl_avtar.png`} alt="" />
-                                  </div>
-                                  <div className="filter_list_job_info my-auto">
-                                    <h5 className="home_company_name"> {applicant?.name} </h5>
-                                    <ul>
-
-                                    </ul>
-                                  </div>
+                            <div className="filter_list_job_box">
+                              <div className="d-flex mb-4">
+                                <div className="filter_list_job_company">
+                                  <img src={applicant.profileImage ? applicant.profileImage : `images/girl_avtar.png`} alt="" />
                                 </div>
-                                <div className="row table_row">
-                                  <div className="col-md-6 ">
-                                    <div class="table table_row_right">
+                                <div className="filter_list_job_info my-auto">
+                                  <h5 className="home_company_name"> {applicant?.name} </h5>
+                                  <ul>
 
-                                      <div class="table-row">
-                                        <div class="table-cell table_data1">Education <span className='indicator_list'>:</span></div>
-                                        {
-                                          applicant?.education[0]?.highestgraduation ?
-                                            <div class="table-cell table_data2">{applicant?.education[0]?.highestgraduation} </div>
-                                            : <div class="table-cell table_data2">[Not Updated]</div>
-                                        }
+                                  </ul>
+                                </div>
+                              </div>
+                              <div className="row table_row">
+                                <div className="col-md-6 ">
+                                  <div class="table table_row_right">
 
-                                      </div>
+                                    <div class="table-row">
+                                      <div class="table-cell table_data1">Education <span className='indicator_list'>:</span></div>
+                                      {
+                                        applicant?.education?.[0]?.highestgraduation ?
+                                          <div class="table-cell table_data2">{applicant?.education[0]?.highestgraduation} </div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
+                                      }
 
-                                      <div class="table-row">
-                                        <div class="table-cell table_data1">ContactNumber<span className='indicator_list'>:</span></div>
-                                        {
-                                          applicant?.contactNumber ?
-                                            <div class="table-cell table_data2">
-                                              <span className='font-weight-bold' style={{ fontSize: "17px" }}>
+                                    </div>
+
+                                    <div class="table-row">
+                                      <div class="table-cell table_data1">ContactNumber<span className='indicator_list'>:</span></div>
+                                      {
+                                        applicant?.contactNumber ?
+                                          <div class="table-cell table_data2">
+                                            <span className='font-weight-bold' style={{ fontSize: "17px" }}>
                                               xxxxxx </span>{applicant?.contactNumber ? applicant.contactNumber.toString().slice(-4) : null}
-                                                {/* {applicant?.contactNumber} */}
-                                              </div>
-                                            : <div class="table-cell table_data2">[Not Updated]</div>
-                                        }
-
-                                      </div>
-
-                                      <div class="table-row">
-                                        <div class="table-cell table_data1">Email<span className='indicator_list'>:</span></div>
-                                        {
-                                          applicant?.email ?
-                                            <div class="table-cell table_data2"><span className='font-weight-bold' style={{ fontSize: "17px" }}>
-                                              xxxxxx </span>{applicant?.email ? applicant.email.toString().slice(-12) : null}
-                                              </div>
-                                            : <div class="table-cell table_data2">[Not Updated]</div>
-                                        }
-
-                                      </div>
-
-                                      <div class="table-row">
-                                        <div class="table-cell table_data1">Experience<span className='indicator_list'>:</span></div>
-                                        <div class="table-cell table_data2">
-                                          {
-                                            applicant?.experience?.experience ?
-                                              <span >{applicant?.experience?.experience.charAt(0).toUpperCase() + applicant?.experience?.experience.slice(1)}
-                                                ({applicant?.experience?.year} Years - {applicant?.experience?.month})
-                                              </span>
-                                              :
-                                              <span >{applicant?.experience?.charAt(0).toUpperCase() + applicant?.experience?.slice(1)}</span>
-
-
-                                          }
-
-
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div className="col-md-6 ">
-                                    <div class="table table_row_right">
-
-                                      <div class="table-row">
-                                        <div class="table-cell table_data1">Location<span className='indicator_list'>:</span></div>
-                                        {
-                                          applicant?.currentlocation[0] ?
-                                            <div class="table-cell table_data2">{applicant?.currentlocation}</div>
-                                            : <div class="table-cell table_data2">[Not Updated]</div>
-                                        }
-
-                                      </div>
-
-                                      <div class="table-row">
-                                        <div class="table-cell table_data1">Gender<span className='indicator_list'>:</span></div>
-                                        {
-                                          applicant?.personaldetails?.gender ?
-                                            <div class="table-cell table_data2">{applicant?.personaldetails?.gender}</div>
-                                            : <div class="table-cell table_data2">[Not Updated]</div>
-                                        }
-
-                                      </div>
-
-
-                                      <div class="table-row">
-                                        <div class="table-cell table_data1">Pincode<span className='indicator_list'>:</span></div>
-                                        {
-                                          applicant?.personaldetails?.pincode ?
-                                            <div class="table-cell table_data2">{applicant?.personaldetails?.pincode}</div>
-                                            : <div class="table-cell table_data2">[Not Updated]</div>
-                                        }
-
-                                      </div>
-
-
-                                      <div class="table-row">
-                                        <div class="table-cell table_data1">Maritl Status<span className='indicator_list'>:</span></div>
-                                        {
-                                          applicant?.personaldetails?.maritalStatus ?
-                                            <div class="table-cell table_data2">{applicant?.personaldetails?.maritalStatus}</div>
-                                            : <div class="table-cell table_data2">[Not Updated]</div>
-                                        }
-
-                                      </div>
-
-                                    </div>
-                                  </div>
-                                  <div className='col-lg-12'>
-                                    {applicant?.skills.map((skill) => {
-                                      return (
-                                        <>
-                                          <div className="application_skills d-inline-block">
-                                            <button class="php">{skill}</button>
+                                            {/* {applicant?.contactNumber} */}
                                           </div>
-                                        </>
-                                      );
-                                    })}
-                                  </div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
+                                      }
 
+                                    </div>
+
+                                    <div class="table-row">
+                                      <div class="table-cell table_data1">Email<span className='indicator_list'>:</span></div>
+                                      {
+                                        applicant?.email ?
+                                          <div class="table-cell table_data2"><span className='font-weight-bold' style={{ fontSize: "17px" }}>
+                                            xxxxxx </span>{applicant?.email ? applicant.email.toString().slice(-12) : null}
+                                          </div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
+                                      }
+
+                                    </div>
+
+                                    <div class="table-row">
+                                      <div class="table-cell table_data1">Experience<span className='indicator_list'>:</span></div>
+                                      <div class="table-cell table_data2">
+                                        {
+                                          applicant?.experience?.experience ?
+                                            <span >{applicant?.experience?.experience.charAt(0).toUpperCase() + applicant?.experience?.experience.slice(1)}
+                                              ({applicant?.experience?.year} Years - {applicant?.experience?.month})
+                                            </span>
+                                            :
+                                            <span >{applicant?.experience?.charAt(0).toUpperCase() + applicant?.experience?.slice(1)}</span>
+                                        }
+
+
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
 
-                                {/* <label className="wishlist">
+                                <div className="col-md-6 ">
+                                  <div class="table table_row_right">
+
+                                    <div class="table-row">
+                                      <div class="table-cell table_data1">Location<span className='indicator_list'>:</span></div>
+                                      {
+                                        applicant?.currentlocation?.[0] ?
+                                          <div class="table-cell table_data2">{applicant?.currentlocation}</div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
+                                      }
+
+                                    </div>
+
+                                    <div class="table-row">
+                                      <div class="table-cell table_data1">Gender<span className='indicator_list'>:</span></div>
+                                      {
+                                        applicant?.personaldetails?.gender ?
+                                          <div class="table-cell table_data2">{applicant?.personaldetails?.gender}</div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
+                                      }
+
+                                    </div>
+
+
+                                    <div class="table-row">
+                                      <div class="table-cell table_data1">Pincode<span className='indicator_list'>:</span></div>
+                                      {
+                                        applicant?.personaldetails?.pincode ?
+                                          <div class="table-cell table_data2">{applicant?.personaldetails?.pincode}</div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
+                                      }
+
+                                    </div>
+
+
+                                    <div class="table-row">
+                                      <div class="table-cell table_data1">Maritl Status<span className='indicator_list'>:</span></div>
+                                      {
+                                        applicant?.personaldetails?.maritalStatus ?
+                                          <div class="table-cell table_data2">{applicant?.personaldetails?.maritalStatus}</div>
+                                          : <div class="table-cell table_data2">[Not Updated]</div>
+                                      }
+
+                                    </div>
+
+                                  </div>
+                                </div>
+                                <div className='col-lg-12'>
+                                  {applicant?.skills && applicant?.skills?.map((skill) => {
+                                    return (
+                                      <>
+                                        <div className="application_skills d-inline-block">
+                                          <button class="php">{skill}</button>
+                                        </div>
+                                      </>
+                                    );
+                                  })}
+                                </div>
+
+                              </div>
+
+                              {/* <label className="wishlist">
                                 {result?.type === "applicant" ?
                                   <button className='btn job_details_applybtn filter_list_wishlist' > Apply </button> :
                                   result?.type === "recruiter" ? null :
                                     <Link to="/auth" > <button className='btn job_details_applybtn filter_list_wishlist'> Login to Apply </button>  </Link>}
                               </label> */}
 
-                              </div>
+                            </div>
                             {/* </Link> */}
 
 
@@ -1129,11 +1153,15 @@ console.log('kkkkkkkk');
 
                           </li>
                         </ul>
-                        </>
+                      </>
                     )
-                    
+
                   }) :
-                  null
+                  <div style={{ textAlign: "-webkit-center" }}>
+                    <p>There is no student to list with the current filter</p>
+                    <button
+                      className={`btn list_view mb-2 `} onClick={resetFilter}>Reset Filter</button>
+                  </div>
 
 
               }
@@ -1153,7 +1181,7 @@ console.log('kkkkkkkk');
                   containerClassName={"pagination"}
                   subContainerClassName={"pages pagination"}
                   activeClassName={"active"}
-                  onClick={()=>scrollToTop()}
+                  onClick={() => scrollToTop()}
                 />
               </div>
 

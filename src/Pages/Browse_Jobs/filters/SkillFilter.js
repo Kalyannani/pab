@@ -8,7 +8,7 @@ const SkillFilter = (props) => {
         if (e.target.checked) {
             skillsList.push(e.target.value)
             await props.handleSkillAdd(skillsList)
-        }else{
+        } else {
             let skillFilterList = []
             for (const educate of skillsList) {
                 if (educate !== e.target.value) {
@@ -19,7 +19,7 @@ const SkillFilter = (props) => {
             // skillsList = await skillsList.filter( educate => educate !== e.target.value )
             // console.log('skillsList --->>>>',skillsList);
         }
-        
+
     }
 
     return <>
@@ -50,33 +50,44 @@ const SkillFilter = (props) => {
 
                     <div className="accordionItemContent">
                         <form action="#" className="acc_form">
-                        {Skillsdata.skills.map(skill => {
+                            {Skillsdata.skills.map(skill => {
                                 return <div className="form-check my-1">
-                                <input
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    name="flexcheckboxDefault"
-                                    id="flexcheckboxDefault1"
-                                    value={skill.name}
-                                    onChange={handleCheckboxChange}
-                                />
-                                <label
-                                    className="form-check-label pl-2"
-                                    for="flexcheckboxDefault1"
-                                >
-                                    {skill.name}
-                                </label>
-                            </div>
+                                    <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        name="flexcheckboxDefault"
+                                        id="flexcheckboxDefault1"
+                                        value={skill.name}
+                                        onChange={handleCheckboxChange}
+                                    />
+                                    <label
+                                        className="form-check-label pl-2"
+                                        for="flexcheckboxDefault1"
+                                    >
+                                        {skill.name}
+                                    </label>
+                                </div>
                             })}
 
                             <div className="more">
-                                <Link
-                                    to="/skilljobs"
-                                    className="more_inner float-right mr-4 py-1"
-                                >
-                                    {" "}
-                                    more...{" "}
-                                </Link>
+                                {props.from ?
+                                    <Link
+                                        to="/skilljobs?from=student"
+                                        className="more_inner float-right mr-4 py-1"
+                                    >
+                                        {" "}
+                                        more...{" "}
+                                    </Link>
+                                    :
+
+                                    <Link
+                                        to="/skilljobs"
+                                        className="more_inner float-right mr-4 py-1"
+                                    >
+                                        {" "}
+                                        more...{" "}
+                                    </Link>
+                                }
                             </div>
                         </form>
                     </div>

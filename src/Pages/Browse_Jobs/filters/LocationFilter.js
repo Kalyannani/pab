@@ -27,8 +27,8 @@ const LocationFilter = (props) => {
 
     // useEffect(async () => {
     //     fetchLocations();
-    
-    
+
+
     //   }, [])
 
     const handleCheckboxChange = async (e) => {
@@ -36,7 +36,7 @@ const LocationFilter = (props) => {
         if (e.target.checked) {
             locationsList.push(e.target.value)
             await props.handleLocationAdd(locationsList)
-        }else{
+        } else {
             let locationFilterList = []
             for (const locate of locationsList) {
                 if (locate !== e.target.value) {
@@ -47,10 +47,10 @@ const LocationFilter = (props) => {
             // locationsList = await locationsList.filter( locate => locate !== e.target.value )
             // console.log('locationsList --->>>>',locationsList);
         }
-        
+
     }
 
-    
+
     return <>
         <div class="card" >
             <div class="card-header" id="headingThree">
@@ -81,31 +81,42 @@ const LocationFilter = (props) => {
                         <form action="#" className="acc_form">
                             {locations.locations.map(location => {
                                 return <div className="form-check my-1">
-                                <input
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    name="flexcheckboxDefault"
-                                    id="flexcheckboxDefault1"
-                                    value={location.name}
-                                    onChange={handleCheckboxChange}
-                                />
-                                <label
-                                    className="form-check-label pl-2"
-                                    for="flexcheckboxDefault1"
-                                >
-                                    {location.name}
-                                </label>
-                            </div>
+                                    <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        name="flexcheckboxDefault"
+                                        id="flexcheckboxDefault1"
+                                        value={location.name}
+                                        onChange={handleCheckboxChange}
+                                    />
+                                    <label
+                                        className="form-check-label pl-2"
+                                        for="flexcheckboxDefault1"
+                                    >
+                                        {location.name}
+                                    </label>
+                                </div>
                             })}
 
                             <div className="more">
-                                <Link
-                                    to="/locationaljobs"
-                                    className="more_inner float-right mr-4 py-1"
-                                >
-                                    {" "}
-                                    more...{" "}
-                                </Link>
+                                {props.from ?
+                                    <Link
+                                        to="/locationaljobs?from=student"
+                                        className="more_inner float-right mr-4 py-1"
+                                    >
+                                        {" "}
+                                        more...{" "}
+                                    </Link> :
+
+                                    <Link
+                                        to="/locationaljobs"
+                                        className="more_inner float-right mr-4 py-1"
+                                    >
+                                        {" "}
+                                        more...{" "}
+                                    </Link>
+                                }
+
                             </div>
                         </form>
                     </div>

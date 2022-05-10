@@ -8,7 +8,7 @@ const EducationFilter = (props) => {
         if (e.target.checked) {
             educationsList.push(e.target.value)
             await props.handleEducationAdd(educationsList)
-        }else{
+        } else {
             let educationFilterList = []
             for (const educate of educationsList) {
                 if (educate !== e.target.value) {
@@ -19,7 +19,7 @@ const EducationFilter = (props) => {
             // educationsList = await educationsList.filter( educate => educate !== e.target.value )
             // console.log('educationsList --->>>>',educationsList);
         }
-        
+
     }
 
     return <>
@@ -50,33 +50,43 @@ const EducationFilter = (props) => {
 
                     <div className="accordionItemContent">
                         <form action="#" className="acc_form">
-                        {educations.educations.map(education => {
+                            {educations.educations.map(education => {
                                 return <div className="form-check my-1">
-                                <input
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    name="flexcheckboxDefault"
-                                    id="flexcheckboxDefault1"
-                                    value={education.name}
-                                    onChange={handleCheckboxChange}
-                                />
-                                <label
-                                    className="form-check-label pl-2"
-                                    for="flexcheckboxDefault1"
-                                >
-                                    {education.name}
-                                </label>
-                            </div>
+                                    <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        name="flexcheckboxDefault"
+                                        id="flexcheckboxDefault1"
+                                        value={education.name}
+                                        onChange={handleCheckboxChange}
+                                    />
+                                    <label
+                                        className="form-check-label pl-2"
+                                        for="flexcheckboxDefault1"
+                                    >
+                                        {education.name}
+                                    </label>
+                                </div>
                             })}
 
                             <div className="more">
-                                <Link
-                                    to="/designationjobs"
-                                    className="more_inner float-right mr-4 py-1"
-                                >
-                                    {" "}
-                                    more...{" "}
-                                </Link>
+                                {props.from ?
+                                    <Link
+                                        to="/designationjobs?from=student"
+                                        className="more_inner float-right mr-4 py-1"
+                                    >
+                                        {" "}
+                                        more...{" "}
+                                    </Link>
+                                    :
+                                    <Link
+                                        to="/designationjobs"
+                                        className="more_inner float-right mr-4 py-1"
+                                    >
+                                        {" "}
+                                        more...{" "}
+                                    </Link>
+                                }
                             </div>
                         </form>
                     </div>

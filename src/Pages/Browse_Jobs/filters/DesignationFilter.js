@@ -50,7 +50,7 @@ const DesignationFilter = (props) => {
 
                     <div className="accordionItemContent">
                         <form action="#" className="acc_form">
-                        {data.designations.map(designation => {
+                            {data.designations.map(designation => {
                                 return <div className="form-check my-1">
                                     <input
                                         className="form-check-input"
@@ -70,13 +70,24 @@ const DesignationFilter = (props) => {
                             })}
 
                             <div className="more">
-                                <Link
-                                    to="/designationjobs"
-                                    className="more_inner float-right mr-4 py-1"
-                                >
-                                    {" "}
-                                    more...{" "}
-                                </Link>
+                                {
+                                    props.from ?
+                                        <Link
+                                            to="/designationjobs?from=student"
+                                            className="more_inner float-right mr-4 py-1"
+                                        >
+                                            {" "}
+                                            more...{" "}
+                                        </Link>
+                                        :
+                                        <Link
+                                            to="/designationjobs"
+                                            className="more_inner float-right mr-4 py-1"
+                                        >
+                                            {" "}
+                                            more...{" "}
+                                        </Link>
+                                }
                             </div>
                         </form>
                     </div>

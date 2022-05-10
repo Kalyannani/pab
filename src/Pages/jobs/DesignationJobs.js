@@ -6,34 +6,37 @@ import { useLocation } from 'react-router-dom'
 import SearchFilter from './SearchFilter'
 import DesignationjobAds from '../../ads/DesignationjobAds'
 const DesignationJobs = () => {
-    const [searchTerm , setsearchTerm] = useState('')
+    const [searchTerm, setsearchTerm] = useState('')
 
     const location = useLocation();
-    const [designation,setDesignation] = useState(data)
-    const handleSort =  (char) => {
+    let { search } = useLocation();
+
+    const query = new URLSearchParams(search);
+    const [designation, setDesignation] = useState(data)
+    const handleSort = (char) => {
         setDesignation(data.filter(post => {
             if (char === "") {
-              //if query is empty
-              return post;
+                //if query is empty
+                return post;
             } else if (post.Designation.charAt(0).toLowerCase().includes(char.toLowerCase())) {
-              //returns filtered array
-              return post;
+                //returns filtered array
+                return post;
             }
-          }) ) 
-    
+        }))
+
     }
 
     return (
         <div >
-              { location.pathname === '/designationjobs'?
-            <div className="jobs_sec_1_jobdesignation">
-                <div className="heading_pic_jobdesignation">
-                    <div className="container">
-                        <SearchFilter />
-                        <Subfilter />
+            {location.pathname === '/designationjobs' ?
+                <div className="jobs_sec_1_jobdesignation">
+                    <div className="heading_pic_jobdesignation">
+                        <div className="container">
+                            <SearchFilter />
+                            <Subfilter />
+                        </div>
                     </div>
-                </div>
-            </div>: null }
+                </div> : null}
 
 
             {/* <!-- sec 1 --> */}
@@ -43,203 +46,208 @@ const DesignationJobs = () => {
 
                     <div className='row'>
                         <div className='col-md-10'>
-                    <div className="jobcategory_sec_2_sub">
-                        {/* <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY DESIGNATION</h6> */}
-                        <div className='row'>
-                            <div className='col-md-6'>
-                                <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY DESIGNATION</h6>
-                            </div>
-                            <div className='col-md-6'>
-                            {
-                             location.pathname === '/designationjobs'?
-                                <form>
-                                    <div ng-app="angularsearch" ng-controller="searchsuggetions">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="Search" ng-model="in"  onChange={(event)=>{setsearchTerm(event.target.value);}}/>
-                                                <div class="input-group-btn">
-                                                    <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
-                                                </div>
-                                            </div>
-
-                                        </div>
+                            <div className="jobcategory_sec_2_sub">
+                                {/* <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY DESIGNATION</h6> */}
+                                <div className='row'>
+                                    <div className='col-md-6'>
+                                        <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY DESIGNATION</h6>
                                     </div>
-                                </form>
-                                :null}
-                            </div>
-                        </div>
-                        
-                        <hr className="bg-light" />
-                        { location.pathname === '/designationjobs'?
-                        <div class="company_jobs_section_2_buttons text-left my-4">
-                            {/* <button class="company_jobs_section_2_button_sub current d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white ">Top 100</button> */}
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('a')}>A</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('b')}>B</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('c')}>C</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('d')}>D</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('e')}>E</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('f')}>F</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('g')}>G</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('h')}>H</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('i')}>I</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('j')}>J</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('k')}>K</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('l')}>L</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('m')}>M</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('n')}>N</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('o')}>O</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('p')}>P</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('q')}>Q</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('r')}>R</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('s')}>S</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('t')}>T</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('u')}>U</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('v')}>V</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('w')}>W</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('x')}>X</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('y')}>Y</button>
-                            <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('z')}>Z</button>
-                            {/* <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white ">0-99</button> */}
+                                    <div className='col-md-6'>
+                                        {
+                                            location.pathname === '/designationjobs' ?
+                                                <form>
+                                                    <div ng-app="angularsearch" ng-controller="searchsuggetions">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control serach_input_1" id="se" placeholder="Search" ng-model="in" onChange={(event) => { setsearchTerm(event.target.value); }} />
+                                                                <div class="input-group-btn">
+                                                                    <button type="submit" class="btn search_btn_1"><i class="fa fa-search"></i></button>
+                                                                </div>
+                                                            </div>
 
-
-                        </div>:null }
-                        <div className="row">
-                            {
-                             location.pathname === '/designationjobs'?
-                             designation?.filter((val)=>
-                             {
-                                 if(searchTerm == "")
-                                 {
-                                     return val
-                                 }
-                                 else if(val.Designation.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
-                                 {
-                                     return val
-                                 }
-                             }).map(designation => {
-                                return <div class="col-lg-4 col-md-6">
-                                    <Link to={`/browsefilterlist?designate=${designation?.Designation}`}>
-                                        <a  class="company_jobs_anchor p-2">
-                                            <span class="company_jobs_img_1_text">{designation?.Designation}</span></a>
-                                    </Link>
-                                </div>
-                            }):
-                            // designation?.slice(0,15).map(designation => {
-                            //     return <div class="col-lg-3 col-md-6">
-                            //         <Link to={`/browsefilterlist?designate=${designation?.Designation}`}>
-                            //             <a  class="company_jobs_anchor p-2"><span>
-                                            
-                            //                 </span><span class="company_jobs_img_1_text">{designation?.Designation}</span></a>
-                            //         </Link>
-                            //     </div>
-                            // })
-                            <>
-                            
-                            <div class="col-lg-4 col-md-6">
-                                    <Link to='/browsefilterlist?designate=ABAP%20Consultant'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                            <span className='B_icon'><img src='images/sap.ico'/>
-                                        </span>
-                                        <span class="company_jobs_img_1_text align-self-center px-2">ABAP Consultant</span></a>
-                                    </Link>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                : null}
+                                    </div>
                                 </div>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <Link to='/browsefilterlist?designate=BPO%20Executive'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded">    <span className='B_icon'><img src='images/call_center_9dy_icon.ico'/>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">BPO Executive</span></a>
-                                    </Link>
-                                </div>
-                                
-                                <div class="col-lg-4 col-md-6">
-                                    <Link to='/browsefilterlist?designate=Chef'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><img src='images/chef_MWB_icon.ico'/>
-                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Chef</span></a>
-                                    </Link>
-                                </div>
+                                <hr className="bg-light" />
+                                {location.pathname === '/designationjobs' ?
+                                    <div class="company_jobs_section_2_buttons text-left my-4">
+                                        {/* <button class="company_jobs_section_2_button_sub current d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white ">Top 100</button> */}
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('a')}>A</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('b')}>B</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('c')}>C</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('d')}>D</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('e')}>E</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('f')}>F</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('g')}>G</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('h')}>H</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('i')}>I</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('j')}>J</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('k')}>K</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('l')}>L</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('m')}>M</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('n')}>N</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('o')}>O</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('p')}>P</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('q')}>Q</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('r')}>R</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('s')}>S</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('t')}>T</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('u')}>U</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('v')}>V</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('w')}>W</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('x')}>X</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('y')}>Y</button>
+                                        <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white " onClick={() => handleSort('z')}>Z</button>
+                                        {/* <button class="company_jobs_section_2_button_sub d-inline-block mr-1 mb-2 text-uppercase position-relative z-index-1 overflow-hidden align-middle rounded cursor-pointer text-center bg-dark text-height-2 font-weight-normal px-3 py-2 text-white ">0-99</button> */}
 
-                                <div class="col-lg-4 col-md-6">
-                                    <Link to='/browsefilterlist?designate=Database%20Developer'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                            <span className='B_icon'><img src='images/data_science_v68_icon.ico'/>
-                                        </span>
-                                        <span class="company_jobs_img_1_text align-self-center px-2">Database Developer</span></a>
-                                    </Link>
-                                </div>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <Link to='/browsefilterlist?designate=Editor'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                        <span className='B_icon'><img src='images/film_editor_BIB_icon.ico'/>
-                                        </span> 
-                                        <span class="company_jobs_img_1_text align-self-center px-2">Editor</span></a>
-                                    </Link>
-                                </div>
+                                    </div> : null}
+                                <div className="row">
+                                    {
+                                        location.pathname === '/designationjobs' ?
+                                            designation?.filter((val) => {
+                                                if (searchTerm == "") {
+                                                    return val
+                                                }
+                                                else if (val.Designation.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
+                                                    return val
+                                                }
+                                            }).map(designation => {
+                                                return <div class="col-lg-4 col-md-6">
+                                                    {
+                                                        query.get('from') ?
+                                                            <Link to={`/studentlist?designate=${designation?.Designation}`}>
+                                                                <a class="company_jobs_anchor p-2">
+                                                                    <span class="company_jobs_img_1_text">{designation?.Designation}</span></a>
+                                                            </Link>
+                                                            :
+                                                            <Link to={`/browsefilterlist?designate=${designation?.Designation}`}>
+                                                                <a class="company_jobs_anchor p-2">
+                                                                    <span class="company_jobs_img_1_text">{designation?.Designation}</span></a>
+                                                            </Link>
+                                                    }
+                                                </div>
+                                            }) :
+                                            // designation?.slice(0,15).map(designation => {
+                                            //     return <div class="col-lg-3 col-md-6">
+                                            //         <Link to={`/browsefilterlist?designate=${designation?.Designation}`}>
+                                            //             <a  class="company_jobs_anchor p-2"><span>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <Link to='/browsefilterlist?designate=Finance%20Manager'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                            <span  className='B_icon'><img src='images/assets_zmH_icon.ico'/>
-                                        </span>
-                                        <span class="company_jobs_img_1_text align-self-center px-2">Finance Manager</span></a>
-                                    </Link>
-                                </div>
+                                            //                 </span><span class="company_jobs_img_1_text">{designation?.Designation}</span></a>
+                                            //         </Link>
+                                            //     </div>
+                                            // })
+                                            <>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <Link to='/browsefilterlist?designate=Game%20Designer'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded">  
-                                         <span  className='B_icon'><img src='images/game_developer_x67_icon.ico'/>
-                                        </span>
-                                        <span class="company_jobs_img_1_text align-self-center px-2">Game Desiner</span></a>
-                                    </Link>
-                                </div>
+                                                <div class="col-lg-4 col-md-6">
+                                                    <Link to='/browsefilterlist?designate=ABAP%20Consultant'>
+                                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                                            <span className='B_icon'><img src='images/sap.ico' />
+                                                            </span>
+                                                            <span class="company_jobs_img_1_text align-self-center px-2">ABAP Consultant</span></a>
+                                                    </Link>
+                                                </div>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <Link to='/browsefilterlist?designate=HR%20Assistant'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                        <span  className='B_icon'><img src='images/hr_SWp_icon.ico'/>
-                                        </span>
-                                        <span class="company_jobs_img_1_text align-self-center px-2">HR Assistant</span></a>
-                                    </Link>
-                                </div>
+                                                <div class="col-lg-4 col-md-6">
+                                                    <Link to='/browsefilterlist?designate=BPO%20Executive'>
+                                                        <a class="company_jobs_anchor py-1 pr-2 rounded">    <span className='B_icon'><img src='images/call_center_9dy_icon.ico' />
+                                                        </span><span class="company_jobs_img_1_text align-self-center px-2">BPO Executive</span></a>
+                                                    </Link>
+                                                </div>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <Link to='/browsefilterlist?designate=Industrial%20Engineer'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                        <span  className='B_icon'><img src='images/engineer_22H_icon.ico'/>
-                                        </span>
-                                        <span class="company_jobs_img_1_text align-self-center px-2">Industrial Engineer</span></a>
-                                    </Link>
-                                </div>
+                                                <div class="col-lg-4 col-md-6">
+                                                    <Link to='/browsefilterlist?designate=Chef'>
+                                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon'><img src='images/chef_MWB_icon.ico' />
+                                                        </span><span class="company_jobs_img_1_text align-self-center px-2">Chef</span></a>
+                                                    </Link>
+                                                </div>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <Link to='/browsefilterlist?designate=Java%20Developer'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                            <span><img src='images/java_8TV_icon.ico'/>
-                                        </span>
-                                        <span class="company_jobs_img_1_text align-self-center px-2">Java Developer</span></a>
-                                    </Link>
-                                </div>
+                                                <div class="col-lg-4 col-md-6">
+                                                    <Link to='/browsefilterlist?designate=Database%20Developer'>
+                                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                                            <span className='B_icon'><img src='images/data_science_v68_icon.ico' />
+                                                            </span>
+                                                            <span class="company_jobs_img_1_text align-self-center px-2">Database Developer</span></a>
+                                                    </Link>
+                                                </div>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <Link to='/browsefilterlist?designate=Law%20Officer'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                        <span><img src='images/lawyer_9Tk_icon.ico'/>
-                                        </span>
-                                        <span class="company_jobs_img_1_text align-self-center px-2">Law Officer</span></a>
-                                    </Link>
-                                </div>
+                                                <div class="col-lg-4 col-md-6">
+                                                    <Link to='/browsefilterlist?designate=Editor'>
+                                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                                            <span className='B_icon'><img src='images/film_editor_BIB_icon.ico' />
+                                                            </span>
+                                                            <span class="company_jobs_img_1_text align-self-center px-2">Editor</span></a>
+                                                    </Link>
+                                                </div>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <Link to='/browsefilterlist?designate=Network%20Engineer'>
-                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
-                                        <span><img src='images/software_engineer_QTn_icon.ico'/>
-                                        </span>
-                                        <span class="company_jobs_img_1_text align-self-center px-2">Network Engineer</span></a>
-                                    </Link>
-                                </div>
+                                                <div class="col-lg-4 col-md-6">
+                                                    <Link to='/browsefilterlist?designate=Finance%20Manager'>
+                                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                                            <span className='B_icon'><img src='images/assets_zmH_icon.ico' />
+                                                            </span>
+                                                            <span class="company_jobs_img_1_text align-self-center px-2">Finance Manager</span></a>
+                                                    </Link>
+                                                </div>
 
-                                {/* <div class="col-lg-3 col-md-6">
+                                                <div class="col-lg-4 col-md-6">
+                                                    <Link to='/browsefilterlist?designate=Game%20Designer'>
+                                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                                            <span className='B_icon'><img src='images/game_developer_x67_icon.ico' />
+                                                            </span>
+                                                            <span class="company_jobs_img_1_text align-self-center px-2">Game Desiner</span></a>
+                                                    </Link>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6">
+                                                    <Link to='/browsefilterlist?designate=HR%20Assistant'>
+                                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                                            <span className='B_icon'><img src='images/hr_SWp_icon.ico' />
+                                                            </span>
+                                                            <span class="company_jobs_img_1_text align-self-center px-2">HR Assistant</span></a>
+                                                    </Link>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6">
+                                                    <Link to='/browsefilterlist?designate=Industrial%20Engineer'>
+                                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                                            <span className='B_icon'><img src='images/engineer_22H_icon.ico' />
+                                                            </span>
+                                                            <span class="company_jobs_img_1_text align-self-center px-2">Industrial Engineer</span></a>
+                                                    </Link>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6">
+                                                    <Link to='/browsefilterlist?designate=Java%20Developer'>
+                                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                                            <span><img src='images/java_8TV_icon.ico' />
+                                                            </span>
+                                                            <span class="company_jobs_img_1_text align-self-center px-2">Java Developer</span></a>
+                                                    </Link>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6">
+                                                    <Link to='/browsefilterlist?designate=Law%20Officer'>
+                                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                                            <span><img src='images/lawyer_9Tk_icon.ico' />
+                                                            </span>
+                                                            <span class="company_jobs_img_1_text align-self-center px-2">Law Officer</span></a>
+                                                    </Link>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6">
+                                                    <Link to='/browsefilterlist?designate=Network%20Engineer'>
+                                                        <a class="company_jobs_anchor py-1 pr-2 rounded">
+                                                            <span><img src='images/software_engineer_QTn_icon.ico' />
+                                                            </span>
+                                                            <span class="company_jobs_img_1_text align-self-center px-2">Network Engineer</span></a>
+                                                    </Link>
+                                                </div>
+
+                                                {/* <div class="col-lg-3 col-md-6">
                                     <Link to='/browsefilterlist?designate=Academic%20Associate'>
                                         <a class="company_jobs_anchor py-1 pr-2 rounded">
                                    
@@ -267,25 +275,25 @@ const DesignationJobs = () => {
                                         </span><span class="company_jobs_img_1_text align-self-center px-2">Account's Manager</span></a>
                                     </Link>
                                 </div> */}
-                            </>
-                            }
-                        </div>
-                        <div className='mb-5 mt-4' id='skill'>
-                        {
-                            location.pathname === '/designationjobs' ? null:<Link to="/designationjobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Designations</Link>
-                        }
-                        </div>
-                    </div>
-                    {/* 
+                                            </>
+                                    }
+                                </div>
+                                <div className='mb-5 mt-4' id='skill'>
+                                    {
+                                        location.pathname === '/designationjobs' ? null : <Link to="/designationjobs" className='float-right All-Links'><i class="fas fa-arrow-right pr-2"></i> View All Designations</Link>
+                                    }
+                                </div>
+                            </div>
+                            {/* 
             <!-- container --> */}
 
-                    {/* <div className="jobdesignation_sec_2_sub">
+                            {/* <div className="jobdesignation_sec_2_sub">
 
                         <h6 className="jobdesignation_sec_2_heading_1">BROWSE JOBS BY DESIGNATION</h6>
                         <hr className="bg-light" /> */}
 
-                        {/* <!-- buttons --> */}
-                        {/* <div className="jobdesignation_section_2_buttons text-left my-4">
+                            {/* <!-- buttons --> */}
+                            {/* <div className="jobdesignation_section_2_buttons text-left my-4">
                             <button className="jobdesignation_section_2_button_sub current">Top 100</button>
                             <button className="jobdesignation_section_2_button_sub">A</button>
                             <button className="jobdesignation_section_2_button_sub">B</button>
@@ -581,22 +589,22 @@ const DesignationJobs = () => {
 
                         </div>
 
-                        
-
-
-
-                                {/* ad */}
-                <div className='col-md-2 text-center google_ads'>
-                {/* <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" /> */}
-                {/* <img src='images/ashok.jpeg' style={{width:"160px",height:"452px"}}/> */}
-                <DesignationjobAds/>
-                </div>
 
 
 
 
-
+                        {/* ad */}
+                        <div className='col-md-2 text-center google_ads'>
+                            {/* <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" /> */}
+                            {/* <img src='images/ashok.jpeg' style={{width:"160px",height:"452px"}}/> */}
+                            <DesignationjobAds />
                         </div>
+
+
+
+
+
+                    </div>
                 </div>
             </div>
 

@@ -21,6 +21,7 @@
     "emailjs-com": "^3.2.0",
     "file-saver": "^2.0.5",
     "hover": "^3.0.0-alpha.6",
+    "javascript-time-ago": "^2.3.13",
     "material-ui-chip-input": "^2.0.0-beta.2",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.34",
@@ -44,7 +45,6 @@
     "react-responsive": "^9.0.0-beta.6",
     "react-responsive-carousel": "^3.2.22",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "5.0.0",
     "react-scroll": "^1.8.5",
     "react-select": "^5.2.2",
     "react-simple-star-rating": "^4.0.5",
@@ -82,5 +82,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
   }
 }
