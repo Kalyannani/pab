@@ -116,7 +116,7 @@ console.log(profile)
 
                             </div>
                             <NavLink to="/myprofile"><i className="fa fa-user pr-2"
-                                    aria-hidden="true"></i>Career Profile</NavLink>
+                                    aria-hidden="true"></i>Candidate Profile</NavLink>
                             <NavLink to="/myresume"><i
                                     className="far fa-file-alt pr-2"></i> My Resume</NavLink>
                             <NavLink  to="/appliedjobs"><i

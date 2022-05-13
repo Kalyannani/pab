@@ -627,7 +627,7 @@ nav {
   border-radius: 5px !important;
 }
 
-@@media screen and (min-width: 0px) and (max-width:991px) {
+@media screen and (min-width: 0px) and (max-width:991px) {
 
   #a1,
   #a2,
@@ -866,17 +866,46 @@ ul {
 
 /* ...........sec 1 starts........ */
 #sec1 {
-  background: url('/images/blur-1.jpg') rgba(0, 0, 0, 0.7);
+  background: url('/images/HCover.png');
   /* background: grey; */
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: darken;
-  margin-bottom: 40px;
-  padding-top: 150px;
+  /* margin-bottom: 40px; */
+  /* padding-top: 150px; */
   padding-bottom: 85px;
   width: 100% !important;
+  margin-top: 110px;
+  padding-top: 300px;
+  
 }
+@media screen and (max-width:1000px) {
+  #sec1
+  {
+    background: url(/images/blur-1.jpg) rgba(0, 0, 0, 0.7);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    padding-top: 100px;
+  }
+  
+}
+@media screen and (min-width:1000px) {
+ .am2
+  {
+display: none;
+  }
+}
+@media screen and (min-width:1000px) {
+  .browse_joblocation_list-search_box
+   {
+     width: 100% !important;
+   }
+ }
+
+
 
 .hm1 {
   vertical-align: center;
@@ -2382,7 +2411,7 @@ span {
 #sec7 .foot {
   padding: 59px 0 25px 0;
   /* background: #e7e7e7; */
-  background-image: url('images/1.jpg');
+  background-image: url('images/Footer21.png');
   color: #fff;
 }
 
@@ -4536,6 +4565,7 @@ button.alljob_buttons_sub:focus {
   padding: 15px !important;
   background: #ffffff33;
   border-radius: 10px;
+  width: 90% !important;
 }
 
 #search_box_btn_joblocation {
@@ -5215,7 +5245,7 @@ label {
 /* heading-pic */
 
 .heading_pic_filter_list {
-  background: url('/images/blur-3.jpg') rgba(0, 0, 0, 0.7);
+  background: url('/images/browse jobs (1).png') ;
   background-repeat: no-repeat;
   width: 100%;
   background-size: cover;
@@ -7025,7 +7055,7 @@ textarea {
 }
 
 .my_profile {
-  background: url(/images/blur-3.jpg) #000000d1;
+  background: url(/images/Resume.png) ;
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;
@@ -7685,8 +7715,9 @@ input[type="file"]::file-selector-button:hover {
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 10px 0 rgb(0 24 128 / 10%) !important;
-  padding: 26px 20px;
-  margin: 15px 0px;
+  padding: 15px 0px;
+  margin: 9px 0px;
+  cursor: pointer;
 }
 
 .education_content_1 {
@@ -15677,7 +15708,7 @@ text-align: left;
 
 /* train ends here */
 
-/job Guarantee/ .guarantee_text {
+job Guarantee/ .guarantee_text {
   padding-left: 30px;
 }
 
@@ -18727,7 +18758,7 @@ width: 40% !important;
 color: #ffffff !important;
 }
 .cards .card:before {
-  height: 160px;
+  height: 180px;
   width: calc(100% + 100px);
   content: "";
   position: absolute;
@@ -18798,18 +18829,19 @@ color: #ffffff !important;
 } */
 
 .cards .card article .pic {
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
   overflow: hidden;
   border-radius: 100%;
   margin: 10px 0;
   box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.3);
   transition: all 0.6s ease;
+  margin-top: 5px;
 }
 .cards .card article .pic img {
   width: 100%;
   -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  filter: grayscale(0%);
 }
 .cards .card .actions {
   width: 100%;
@@ -18985,13 +19017,7 @@ color: #ffffff !important;
   height:80px !important;
 } */
 
-@media screen and (max-width:1200px) {
-  .google_ads
-  {
-    display: none !important;
-  }
-  
-}
+
 
 /* @media screen and (min-width:1200px) {
   .mobile_ads

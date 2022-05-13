@@ -102,7 +102,7 @@ const Jobposting = () => {
                   <h2>Free</h2>
                   <div className="title"><i class="fas fa-rupee-sign"></i> 0</div>
                   <div className="pic">
-                    <img src="https://img.freepik.com/free-photo/cloud-solution-technology-3d-rendering_618100-138.jpg?w=740" />
+                    <img src="images/FreeNew.png" />
                   </div>
                   <div className="desc">
                     <label  className="font-weight-bold"> Description :</label>
@@ -126,7 +126,7 @@ const Jobposting = () => {
                   <h2>Premium</h2>
                   <div className="title"><i class="fas fa-rupee-sign"></i> 4000</div>
                   <div className="pic">
-                    <img src="https://img.freepik.com/free-photo/crown-icon-fortuna-gold-crown-symbol-golden-podium_154981-516.jpg?w=740" />
+                    <img src="images/PremiumNew.png" />
                   </div>
                   <div className="desc">
                   <label  className="font-weight-bold"> Description :</label>
@@ -150,7 +150,7 @@ const Jobposting = () => {
                   <h2>Express Hire</h2>
                   <div className="title"><i class="fas fa-rupee-sign"></i> 7000</div>
                   <div className="pic">
-                    <img src="https://img.freepik.com/free-photo/3d-render-blue-cloud-symbol-with-arrow-line-isolated-dark-backgroundcloud-storage-technologytransfer-data-informationminimal-style_265427-1139.jpg?size=338&ext=jpg&ga=GA1.2.1168831157.1644922700" />
+                    <img src="images/ExpressNew.png" />
                   </div>
                   <div className="desc">
                   <label className="font-weight-bold"> Description :</label>

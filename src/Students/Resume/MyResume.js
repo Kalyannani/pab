@@ -1264,7 +1264,9 @@ const MyResume = () => {
 
   const resumeonchangeHandling = (event) => {
     setResume(event.target.files[0])
+    
   }
+
 
   const verifyEmail = () => {
 
@@ -1612,6 +1614,7 @@ const MyResume = () => {
               </p>
               <div id="collapseExample">
                 <div className="sidebar" id="sidebar">
+                <a href="#AttachResume"> Upload Resume</a>
                   <a href="#Resume_Headline"> Resume Headline</a>
                   <a href="#ProfileSummary"> Profile Summary</a>
                   <a href="#KeySkills"> Keyskills</a>
@@ -1622,13 +1625,53 @@ const MyResume = () => {
                   <a href="#Accomplishment"> Accomplishments</a>
                   <a href="#DesiredCareer"> Desired Career Profile</a>
                   <a href="#PersonalDetails"> Personal Details</a>
-                  <a href="#AttachResume"> Attach Resume</a>
+                  
                 </div>
               </div>
             </div>
           </div>
           <div className="col-lg-9">
             <div className="wrapper">
+
+
+                          {/* Upload Resume Component */}
+
+
+                          <div className="content" id="AttachResume">
+                <div className="job-bx-title clearfix">
+                  <h5 className=" pull-left text-capitalize cp">
+                    Upload Resume
+                  </h5>
+                </div>
+                <p className="job_usa">
+                  Resume is the most important document recruiters look for.
+                  Recruiters generally do not look at profiles without resumes.
+                </p>
+                {/* <FileUploadInput 
+                handleInput={handleInput} 
+                identifier={"resume"}
+                setProfile={setProfile}
+                profile={profile}
+                handleUpdate={handleUpdate}
+                />
+                <ResumeFileUpload url={profile.resume.url} /> */}
+                <form>
+                  <div className="form-group">
+                    <label for="myfile" className="file_upload">
+                      Upload Resume
+                    </label>
+                    <input type="file" id="myfile" name="myfile" hidden
+                      onChange={(event) => resumeonchangeHandling(event)}
+                    />
+                  </div>
+                </form>
+                <h6>{profile.resume.filename}</h6>
+              </div>
+
+
+                        {/* Resume Headline Component */}
+
+
               <div className="right_content">
                 <div className="content">
                   <div className="job-bx-title clearfix">
@@ -4747,10 +4790,10 @@ const MyResume = () => {
                 </div>
               </div>
 
-              <div className="content" id="AttachResume">
+              {/* <div className="content" id="AttachResume">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">
-                    Attach Resume
+                    Upload Resume
                   </h5>
                 </div>
                 <p className="job_usa">
@@ -4764,11 +4807,11 @@ const MyResume = () => {
                 profile={profile}
                 handleUpdate={handleUpdate}
                 />
-                <ResumeFileUpload url={profile.resume.url} /> */}
+                <ResumeFileUpload url={profile.resume.url} /> *
                 <form>
                   <div className="form-group">
                     <label for="myfile" className="file_upload">
-                      Upload RESUME
+                      UPLOAD RESUME
                     </label>
                     <input type="file" id="myfile" name="myfile" hidden
                       onChange={(event) => resumeonchangeHandling(event)}
@@ -4776,7 +4819,7 @@ const MyResume = () => {
                   </div>
                 </form>
                 <h5>{profile.resume.filename}</h5>
-              </div>
+              </div> */}
 
               {/* <button onClick={()=>handleresumeUpload()}>upload</button> */}
 

@@ -396,6 +396,7 @@ const BrowseFilterList = () => {
   }
 
 
+
   useEffect(async () => {
 
     fetchJobs();
@@ -698,6 +699,8 @@ const BrowseFilterList = () => {
                                     )}
                                   </>
                                   : null}
+
+                                  
 
                               </li>
                             </ul>

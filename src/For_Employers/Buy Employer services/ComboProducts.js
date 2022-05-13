@@ -144,7 +144,7 @@ if(result){
                   <h2>Monthly</h2>
                   <div className="title"><i class="fas fa-rupee-sign"></i> 10000</div>
                   <div className="pic">
-                    <img src="https://img.freepik.com/free-photo/cloud-solution-technology-3d-rendering_618100-138.jpg?w=740" />
+                    <img src="images/MonthlyNew.png" />
                   </div>
                   <div className="desc ">
                     <label  className="font-weight-bold new_Job_lists"> Description :</label>
@@ -185,7 +185,7 @@ if(result){
                   <h2>3 Months</h2>
                   <div className="title"><i class="fas fa-rupee-sign"></i> 15000</div>
                   <div className="pic">
-                    <img src="https://img.freepik.com/free-photo/3d-render-blue-cloud-symbol-with-arrow-line-isolated-dark-backgroundcloud-storage-technologytransfer-data-informationminimal-style_265427-1116.jpg?w=740" />
+                    <img src="images/3 MonthsNew.png" />
                   </div>
                   <div className="desc">
                   <label  className="font-weight-bold"> Description :</label>
@@ -223,7 +223,7 @@ if(result){
                   <h2>6 Months</h2>
                   <div className="title"><i class="fas fa-rupee-sign"></i> 25000</div>
                   <div className="pic">
-                    <img src="https://img.freepik.com/free-photo/3d-render-blue-cloud-symbol-with-arrow-line-isolated-dark-backgroundcloud-storage-technologytransfer-data-informationminimal-style_265427-1139.jpg?size=338&ext=jpg&ga=GA1.2.1168831157.1644922700" />
+                    <img src="images/6 MonthsNew.png" />
                   </div>
                   <div className="desc">
                   <label className="font-weight-bold "> Description :</label>

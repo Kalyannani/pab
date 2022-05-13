@@ -121,8 +121,8 @@ export const Jobdetailes = (props) => {
                                             <ul>
                                                 {/* <li>
                                             <h5 className="home_company_name">Infosys - </h5>
-                                        </li> */}
-                                                {/* <li>
+                                        </li>
+                                                <li>
                                             <h6 className="star_box"> <span> 5<i className="fas fa-star star_rating"></i><a
                                                         href="#">(53 Reviews)</a></span></h6>
                                         </li> */}
