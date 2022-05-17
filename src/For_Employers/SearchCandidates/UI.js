@@ -71,14 +71,14 @@ const UI = () => {
                                             <div className='row search_content1_subnames'>
                                                 <div className='col-md-6' >
                                                     <input type="radio" id="Profiles" name="Profiles" value="Profiles" />
-                                                    <label className='search_label_size' for="Profiles">Profiles</label><br />
+                                                    <label className='search_label_size' for="Profiles">Profile without Resume</label><br />
                                                 </div>
 
                                                 <div className='col-md-6'>
                                                     <input type="radio" id="Profiles" name="Profiles" value="Resume" />
-                                                    <label className='search_label_size' for="Profiles">Profile + Resume</label><br />
-                                                    <span style={{ color: "green" }}>Now search in candidate's resume to get
-                                                        more results</span>
+                                                    <label className='search_label_size' for="Profiles">Profile with Resume</label><br />
+                                                    {/* <span style={{ color: "green" }}>Now search in candidate's resume to get
+                                                        more results</span> */}
                                                 </div>
                                             </div>
 
