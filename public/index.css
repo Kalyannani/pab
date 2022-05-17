@@ -6594,16 +6594,7 @@ span.input-list-icon {
   margin-top: 75px;
 }
 
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 265px;
-  background-color: #fff !important;
-  height: 100%;
-  overflow: auto;
-  box-shadow: 0 0 10px 0 rgb(0 24 128 / 10%);
-  margin-top: 75px;
-}
+
 
 .main_header {
   padding: 1px 0px 10px 0px;
@@ -6869,11 +6860,7 @@ textarea {
 
 
 @media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
+ 
 
   .sidebar a {
     text-align: center;
@@ -7266,16 +7253,7 @@ p {
     height: 40vh;
 } */
 
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 265px;
-  background-color: #fff !important;
-  height: 100%;
-  overflow: auto;
-  box-shadow: 0 0 10px 0 rgb(0 24 128 / 10%);
-  margin-top: 56px;
-}
+
 
 .pencil_clearfix {
   font-size: 12px;
@@ -7518,11 +7496,7 @@ textarea {
 }
 
 @media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
+  
 
   .sidebar a {
     text-align: center;
@@ -7819,16 +7793,7 @@ td {
   margin-top: 75px;
 }
 
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 265px;
-  background-color: #fff !important;
-  height: 100%;
-  overflow: auto;
-  box-shadow: 0 0 10px 0 rgb(0 24 128 / 10%);
-  margin-top: 57px;
-}
+
 
 .main_header {
   padding: 1px 0px 10px 0px;
@@ -8069,11 +8034,7 @@ textarea {
 }
 
 @media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
+
 
   .sidebar a {
     text-align: center;
@@ -11362,11 +11323,7 @@ textarea {
 }
 
 @media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
+ 
 
   .sidebar a {
     text-align: center;
@@ -11506,16 +11463,7 @@ input[type="file"] {
   margin-top: 75px;
 }
 
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 265px;
-  background-color: #fff !important;
-  height: 100%;
-  overflow: auto;
-  box-shadow: 0 0 10px 0 rgb(0 24 128 / 10%);
-  margin-top: 75px;
-}
+
 
 .main_header {
   padding: 1px 0px 10px 0px;
@@ -11760,11 +11708,7 @@ textarea {
 }
 
 @media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
+ 
 
   .sidebar a {
     text-align: center;
@@ -12081,16 +12025,7 @@ a {
   margin-top: 75px;
 }
 
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 265px;
-  background-color: #fff !important;
-  height: 100%;
-  overflow: auto;
-  box-shadow: 0 0 10px 0 rgb(0 24 128 / 10%);
-  margin-top: 75px;
-}
+
 
 .main_header {
   padding: 1px 0px 10px 0px;
@@ -12329,11 +12264,7 @@ textarea {
 }
 
 @media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
+
 
   .sidebar a {
     text-align: center;
@@ -19206,4 +19137,348 @@ color: #ffffff !important;
 .sys
 {
   background: url("images/stock-footage-abstract-technology-background-of-led-screen-with-moving-stripes-and-flickering-particles.webm");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* SearchCandidates */
+
+
+.Roll_Scroll
+{
+  height: 150px;
+  overflow-y: scroll;
+  margin-top: 15px;
+  
+}
+
+.search_label_size
+{
+  position: relative;
+  text-transform: inherit !important;
+  font-weight: normal;
+  font-size: 13px !important;
+  padding-left: 5px;
+}
+
+.search_sub_names
+{
+  margin-left: 25px;
+}
+
+.search_content1
+{
+  /* padding: 25px; */
+  box-shadow: 0 0 10px 0 rgb(0 24 128 / 10%);
+}
+
+.search_content1_sub
+{
+  border-bottom: 1px solid #b5abab;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #e7e7e7;
+}
+.search_content1_subnames
+{
+  padding: 0px 25px 20px;
+}
+
+
+input[type=checkbox]:checked~.remove-check {
+  display: none;
+}
+
+input[type=checkbox]:checked~#diploma {
+  display: block;
+}
+
+#diploma {
+  display: none;
+}
+
+input[type=checkbox]:checked~#graduate {
+  display: block;
+}
+
+#graduate {
+  display: none;
+}
+
+input[type=checkbox]:checked~#pg {
+  display: block;
+}
+
+#pg {
+  display: none;
+}
+
+
+.searchcandidate_sidebar
+{
+  margin-top: 75px !important;
+  background-color: #e7e7e7 !important;
+  
+}
+
+
+
+
+
+
+
+.seach_card {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.filter_para {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.card_header {
+  border-bottom: 1px solid gray;
+}
+.check_div {
+  height: 8em;
+  overflow-y: scroll;
+}
+.btn_link:hover {
+  text-decoration: none;
+  color: black;
+}
+.btn_link {
+  text-decoration: none;
+  color: black;
+}
+
+input[type="text"]:focus {
+  box-shadow: none;
+  border: 1px solid rgb(216, 181, 181);
+  border-radius: 0px;
+}
+.more_filter,
+.more_filter:hover {
+  padding: 5px 15px;
+  text-decoration: none;
+  color: #270d44;
+  border: none;
+}
+.apply_btn,
+.apply_btn:hover {
+  background-color: #270d44;
+  color: white;
+}
+.apply_btn:focus {
+  box-shadow: none;
+}
+.accordion-button_btn:focus{
+  box-shadow: none;
+  background-color: #ffff;
+  color: black;
+}
+.accordion-button_btn::before{
+    box-shadow: none;
+    background-color: #ffff;
+    color: black;
+  }
+.accordion-button_btn {
+  box-shadow: none;
+  background-color: #ffff;
+  color: black;
+  border: none;
+}
+.custom-control-input:focus {
+  box-shadow: none;
+  background-color: #ffff;
+  color: black;
+  border: none;
+}
+.accordion_bg .accordion-item_bg .accordion-button_btn{
+    border-radius: 0;
+    background-color: #ffff;
+    color:black;
+}
+
+.alert_close1
+{
+  z-index: -1 !important;
+}
+.search_close_modal
+{
+  border: none;
+  font-size: 15px;
+  padding: 3px 9px;
+
+  color: #fff !important;
+  background-color: #270D44;
+  border-radius: 50%;
+  float: right;
+  margin-top: -20px;
+  margin-right: -20px;
+}
+
+
+button.btn.btn-block.apply_btn {
+  border: 1px solid #270d44;
+}
+
+button.btn.btn-block.apply_btn:hover{
+  background-color: #270d44;
+  color: #ffffff;
+}
+
+
+/* Student List */
+.student_box {
+  border: 1px solid #e7e7e7;
+  box-shadow: 1px 2px 2px -3px rgb(105 105 105 / 90%);
+  border-radius: 3px;
+  margin-bottom: 15px;
+  position: relative;
+  width: 100%;
+  background: white;
+}
+.student_box:hover {
+  border: 1px solid #5c06bf;
+}
+
+.details_heading {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  padding: 10px 10px 10px 42px;
+  background: #f9f9f9;
+}
+
+.user_icon {
+  font-size: 26px;
+  padding: 2px 0px 3px 0px;
+  width: 42px;
+  height: 42px;
+  display: inline-block;
+  text-align: center;
+  color: #ffffff;
+  background: linear-gradient(90deg, #4ab2d9 50%, #43a4c8 51%);
+  border-radius: 50%;
+}
+.cand_name {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+.cand_age {
+  font-size: 12px;
+  padding-left: 5px;
+  color: #666;
+  font-weight: 100;
+  vertical-align: 0px;
+}
+.cand_address {
+  font-weight: normal;
+  color: #999;
+  font-size: 12px;
+}
+.action_sms button {
+  border: 1px solid #5c06bf;
+  margin-right: 10px;
+  padding: 6px 12px 4px;
+  line-height: inherit;
+  font-size: 14px;
+  color: #5c06bf;
+  background-color: #ffffff;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+
+.action_sms button:hover {
+  background-color: #5c06bf;
+  color: #ffffff;
+  cursor: pointer;
+}
+.cand_verify span img {
+  height: 27px;
+  width: 27px;
+}
+.cand_resume {
+  cursor: pointer;
+}
+.cand_resume span {
+  font-size: 13px;
+  color: #4ab2d9;
+}
+.cand_mobile i {
+  color: #5c06bf;
+  font-size: 18px;
+}
+.cand_mobile span {
+  color: #999999;
+  font-size: 13px;
+}
+
+.down_cand_content {
+  padding: 10px 15px 15px;
+}
+.more_details span {
+  color: #4a4242;
+  margin-right: 25px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.more_details span i {
+  padding-right: 4px;
+  font-weight: 600;
+  color: #0b90b4;
+}
+
+@media screen and (max-width: 767px) {
+  .action_sms,
+  .cand_verify {
+    text-align: center !important;
+  }
+}
+
+.cand_shift {
+  max-width: 360px;
+  font-weight: 500;
+  font-size: 13px;
+  margin-bottom: 15px;
+  color: #4d4949;
+  margin-top: 15px;
+}
+.main_data .left_content {
+  width: 50%;
+  display: inline-block;
+  color: #666;
+  word-wrap: break-word;
+  font-weight: 400;
+  font-size: 13px;
+}
+.main_data .right_content {
+  width: 44%;
+  font-size: 13px;
+  vertical-align: top;
+  text-align: start;
+  display: inline-block;
+  color: #555356;
+  font-weight: 500;
+}
+
+.main_data .inner {
+  padding-bottom: 10px;
+}
+
+.last_time span{
+  font-size: 12px;
+    color: #666;
 }
