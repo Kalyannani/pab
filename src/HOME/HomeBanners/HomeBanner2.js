@@ -22,13 +22,15 @@ const HomeBanner2 = () => {
             </h5>
             <p className="B_text">Unleash your profile's true capability to 10X your chance</p>
           </div>
-        
+
+          <div className="text-right">   
           <Link to="/careers" style={{ marginLeft: 'auto', marginTop: "-46px"}}> <button
           className="bg-primary text-white btn-lg"
           style={{  borderTopLeftRadius: "50px", border: 'none',cursor:"pointer"  }}
         >
           Click Here
         </button></Link>
+        </div>
         
   
     

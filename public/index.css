@@ -761,7 +761,7 @@ ul {
   background-color: #270D44 !important;
   font-weight: 600 !important;
   font-size: 15px !important;
-  color: #fff;
+  color: #fff !important;
   margin-left: 8px;
   margin-top: 5px;
   padding: 6px 25px !important;
@@ -774,13 +774,13 @@ ul {
 }
 
 .navbar-btn {
-  color: #fff;
-  background-color: #270D44;
+  color: #fff !important;
+  background-color: #270D44 !important;
   /* border-radius: 50% !important; */
 }
 .navbar-btn i:hover
 {
- color: #ffffff;
+ color: #ffffff !important;
 }
 
 .navbar-btn:hover {
@@ -17321,7 +17321,7 @@ strong {
 
 /* paytm payment */
 .payment_paytm {
-  margin-top: 150px;
+  /* margin-top: 150px !important; */
   margin-bottom: 50px;
   box-shadow: 0 0 8px rgb(0 0 0 / 16%);
   padding: 20px;
@@ -17340,10 +17340,10 @@ strong {
 
 .payment_submit {
   box-shadow: none;
-  background-color: #270D44;
+  background-color: #270D44 !important;
   font-size: 18px !important;
   padding: 8px 40px !important;
-  color: #fff;
+  color: #fff !important;
 
 }
 
@@ -18615,10 +18615,7 @@ width: 40% !important;
   padding-bottom: 50px;
 }
 
-/* .bg-primary{
-  border: none;
-  
-} */
+
 .B_media-body {
   margin-left: 30px;
 }
@@ -19272,11 +19269,7 @@ input[type="text"]:focus {
   color: #270d44;
   border: none;
 }
-.apply_btn,
-.apply_btn:hover {
-  background-color: #270d44;
-  color: white;
-}
+
 .apply_btn:focus {
   box-shadow: none;
 }
@@ -19327,13 +19320,13 @@ input[type="text"]:focus {
 }
 
 
-button.btn.btn-block.apply_btn {
-  border: 1px solid #270d44;
+.apply_btn {
+  border: 1px solid #270d44 !important;
 }
 
-button.btn.btn-block.apply_btn:hover{
-  background-color: #270d44;
-  color: #ffffff;
+.apply_btn:hover{
+  background-color: #270d44 !important; 
+  color: #ffffff !important;
 }
 
 
@@ -19439,6 +19432,9 @@ button.btn.btn-block.apply_btn:hover{
   padding-right: 4px;
   font-weight: 600;
   color: #0b90b4;
+}
+.cand_verify{
+  text-align: right;
 }
 
 @media screen and (max-width: 767px) {

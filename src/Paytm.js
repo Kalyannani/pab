@@ -82,7 +82,7 @@ getData(user).then(response=>{
             
         //     <button onClick={makePayment}>PAY USING PAYTM</button>
         // </div>
-        <div className="container">
+        <div className="container" style={{marginTop:"150px"}}>
         <div className="row payment_paytm">
           <div className="col-md-12">
           <div className="payment_heading text-center">

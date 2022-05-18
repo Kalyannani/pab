@@ -4717,6 +4717,125 @@ const MyResume = () => {
                               </div>
                             </div>
 
+                            <div className=" col-lg-6 col-md-6">
+                              <div className="form-group">
+                                <label> Address Proof</label>
+                                <select className="form_control" name="AddressProof"
+                                  // value={careerprofile.Desired_AvailableJoinMonths}
+                                  // onChange={(e) => careerprofileHandling(e)}
+                                  >
+                                  <option hidden>Add Adress Proof</option>
+                                  <option>Aadhar card</option>
+                                  <option>Driving license</option>
+                                  <option>Pan card</option>
+                                  <option>Voter card</option>
+                                  
+                            
+                                </select>
+                              </div>
+                            </div>
+
+                            <div className=" col-lg-6 col-md-6">
+                                    <div className="form-group">
+                                      <label>AdressProof Number</label>
+                                      <input
+                                        name="AdressProofNumber"
+                                        //  onChange={(e) => patentHandling(e)}
+                                        type="text"
+                                        className="form_control"
+                                        placeholder="Enter AdressProof Number"
+                                        // value={patent.Patent_Application_Number}
+                                      />
+                                    </div>
+                                  </div>
+
+                              <div className=" col-lg-6 col-md-6">
+                              <label className="my-2">Do You have Passport</label>
+                              <div className="form-group">
+                                <div className="form-group">
+                                  <div className="form-check form-check-inline">
+                                    <input
+                                      className="form-check-input"
+                                      type="radio"
+                                      name="passport"
+                                      id="passport"
+                                      value="yes"
+                                      // checked={profile.personaldetails.maritalStatus === "Married"}
+                                      // onChange={(e) => onchangeDetails(e)}
+                                    />
+                                    <label
+                                      className="form-check-label"
+                                      for="passport"
+                                    >
+                                      Yes
+                                    </label>
+                                  </div>
+                                  <div className="form-check form-check-inline">
+                                    <input
+                                      className="form-check-input"
+                                      type="radio"
+                                      name="passport"
+                                      id="passport1"
+                                      value="no"
+                                      // checked={profile.personaldetails.maritalStatus === "UnMarried"}
+                                      // onChange={(e) => onchangeDetails(e)}
+                                    />
+                                    <label
+                                      className="form-check-label"
+                                      for="passport1"
+                                    >
+                                     No
+                                    </label>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div className=" col-lg-6 col-md-6">
+                              <label className="my-2">Do you have marg accounting certification? :</label>
+                              <div className="form-group">
+                                <div className="form-group">
+                                  <div className="form-check form-check-inline">
+                                    <input
+                                      className="form-check-input"
+                                      type="radio"
+                                      name="passport"
+                                      id="passport"
+                                      value="yes"
+                                      // checked={profile.personaldetails.maritalStatus === "Married"}
+                                      // onChange={(e) => onchangeDetails(e)}
+                                    />
+                                    <label
+                                      className="form-check-label"
+                                      for="passport"
+                                    >
+                                      Yes
+                                    </label>
+                                  </div>
+                                  <div className="form-check form-check-inline">
+                                    <input
+                                      className="form-check-input"
+                                      type="radio"
+                                      name="passport"
+                                      id="passport1"
+                                      value="no"
+                                      // checked={profile.personaldetails.maritalStatus === "UnMarried"}
+                                      // onChange={(e) => onchangeDetails(e)}
+                                    />
+                                    <label
+                                      className="form-check-label"
+                                      for="passport1"
+                                    >
+                                     No
+                                    </label>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+
                             {/* <div className=" col-lg-12 col-md-12">
                   <div className="form-group">
                     <label>Passport Number</label>
@@ -4762,6 +4881,8 @@ const MyResume = () => {
                                 />
                               </div>
                             </div>
+
+                            
 
                             {/* <div className=" col-lg-12 col-md-12">
                   <div className="form-group">

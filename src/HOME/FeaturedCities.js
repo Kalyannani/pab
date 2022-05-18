@@ -23,7 +23,7 @@ import FeaturedcityAds from '../ads/FeaturedcityAds'
                     </div>
                 </div>
             </div> */}
-            <img className="card-img-top" src="images/Hyderabad Icon.png" alt="" />
+            <img className="card-img-top" src="images/Hyderabad-01.png" alt="" />
             <h3 style={{fontSize:"18px",paddingTop:"10px"}}>Hyderabad</h3>
             </Link>
         </div>
@@ -38,7 +38,7 @@ import FeaturedcityAds from '../ads/FeaturedcityAds'
                     </div>
                 </div>
             </div> */}
-            <img className="card-img-top" src="images/Mumbai Icon.png" alt="" />
+            <img className="card-img-top" src="images/Mumbai-01.png" alt="" />
             <h3 style={{fontSize:"18px",paddingTop:"10px"}}>Mumbai</h3>
             </Link>
         </div>
@@ -53,7 +53,7 @@ import FeaturedcityAds from '../ads/FeaturedcityAds'
                     </div>
                 </div>
             </div> */}
-            <img className="card-img-top" src="images/Chennai.png" alt="" />
+            <img className="card-img-top" src="images/Chennai-01.png" alt="" />
             <h3 style={{fontSize:"18px",paddingTop:"10px"}}>Chennai</h3>
             </Link>
         </div>
@@ -68,7 +68,7 @@ import FeaturedcityAds from '../ads/FeaturedcityAds'
                     </div>
                 </div>
             </div> */}
-             <img className="card-img-top" src="images/Pune.png" alt="" />
+             <img className="card-img-top" src="images/Pune-01.png" alt="" />
              <h3 style={{fontSize:"18px",paddingTop:"10px"}}>Pune</h3>
             </Link>
         </div>
@@ -83,7 +83,7 @@ import FeaturedcityAds from '../ads/FeaturedcityAds'
                     </div>
                 </div>
             </div> */}
-            <img className="card-img-top" src="images/Bangalore.png" alt="" />
+            <img className="card-img-top" src="images/Bengaluru-01.png" alt="" />
             <h3 style={{fontSize:"18px",paddingTop:"10px"}}>Bengaluru</h3>
             </Link>
         </div>
@@ -98,7 +98,7 @@ import FeaturedcityAds from '../ads/FeaturedcityAds'
                     </div>
                 </div>
             </div> */}
-            <img className="card-img-top" src="images/Delhi.png" alt="" />
+            <img className="card-img-top" src="images/Delhi-01.png" alt="" />
             <h3 style={{fontSize:"18px",paddingTop:"10px"}}>Delhi</h3>
             </Link>
         </div>

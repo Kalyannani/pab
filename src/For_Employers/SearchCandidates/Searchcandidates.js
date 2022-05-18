@@ -524,7 +524,7 @@ const Searchcandidates = () => {
                   <span className="cand_name">Ashok Kumar</span>
                   <span className="cand_age">23 years</span>
                   <div className="cand_address d-block">
-                    <span>Accountant from Jeedimetla, Hyderabad</span>
+                    <span>Accountant from Vinukonda, Guntur</span>
                   </div>
                 </div>
               </div>
@@ -536,7 +536,7 @@ const Searchcandidates = () => {
                     <button>Email</button>
                     <button>View Contact</button>
                   </div>
-                  <div className="col-md-6 cand_verify text-right my-1 pt-1 ">
+                  <div className="col-md-6 cand_verify  my-1 pt-1 ">
                     <span className="cand_resume">
                       <img src="img/resumedownload.svg" alt="" />
                       <span className="pl-2">Download Resume</span>
@@ -573,7 +573,7 @@ const Searchcandidates = () => {
                     <div className="main_data">
                       <div className="inner">
                         <div className="left_content">
-                          Hello English Score Minimum
+                          Hello English Score Minimum :
                         </div>
                         <div className="right_content">
                           <span>50</span>
@@ -581,14 +581,14 @@ const Searchcandidates = () => {
                       </div>
 
                       <div className="inner">
-                        <div className="left_content">Industry</div>
+                        <div className="left_content">Industry : </div>
                         <div className="right_content">
                           <span> Banking & Financial Services, Retail</span>
                         </div>
                       </div>
 
                       <div className="inner">
-                        <div className="left_content">Accountant Skills</div>
+                        <div className="left_content">Skills :</div>
                         <div className="right_content">
                           <span>
                             GST, TALLY, Cash Flow Statement, Balance Sheet, MS
@@ -598,28 +598,28 @@ const Searchcandidates = () => {
                       </div>
 
                       <div className="inner">
-                        <div className="left_content">Accountant Degree</div>
+                        <div className="left_content">Degree : </div>
                         <div className="right_content">
                           <span>Other</span>
                         </div>
                       </div>
 
                       <div className="inner">
-                        <div className="left_content">Address Proof</div>
+                        <div className="left_content">Address Proof : </div>
                         <div className="right_content">
                           <span>PAN Card, Aadhaar Card, Driving License</span>
                         </div>
                       </div>
 
                       <div className="inner">
-                        <div className="left_content">Company</div>
+                        <div className="left_content">Company :</div>
                         <div className="right_content">
                           <span>Sai Rama Association</span>
                         </div>
                       </div>
 
                       <div className="inner">
-                        <div className="left_content">Desired Cities</div>
+                        <div className="left_content">Desired Cities : </div>
                         <div className="right_content">
                           <span>Hyderabad</span>
                         </div>
@@ -631,7 +631,7 @@ const Searchcandidates = () => {
                     <div className="main_data">
                       <div className="inner">
                         <div className="left_content">
-                          Accountant Designation
+                           Designation : 
                         </div>
                         <div className="right_content">
                           <span>Accountant</span>
@@ -639,28 +639,28 @@ const Searchcandidates = () => {
                       </div>
 
                       <div className="inner">
-                        <div className="left_content">Accountant Type</div>
+                        <div className="left_content">Type : </div>
                         <div className="right_content">
                           <span>Clerk/Book Keeper</span>
                         </div>
                       </div>
 
                       <div className="inner">
-                        <div className="left_content">Languages known</div>
+                        <div className="left_content">Languages known : </div>
                         <div className="right_content">
                           <span>Hindi, Telugu, English</span>
                         </div>
                       </div>
 
                       <div className="inner">
-                        <div className="left_content"> Certifications</div>
+                        <div className="left_content"> Certifications : </div>
                         <div className="right_content">
                           <span>others</span>
                         </div>
                       </div>
 
                       <div className="inner">
-                        <div className="left_content">Photo ID Proof</div>
+                        <div className="left_content">Photo ID Proof : </div>
                         <div className="right_content">
                           <span>
                             Passport, Aadhaar Card, Voter ID Card, Driving
@@ -670,7 +670,7 @@ const Searchcandidates = () => {
                       </div>
 
                       <div className="inner">
-                        <div className="left_content">Passport</div>
+                        <div className="left_content">Passport : </div>
                         <div className="right_content">
                           <span>Yes </span>
                         </div>
@@ -678,7 +678,7 @@ const Searchcandidates = () => {
 
                       <div className="inner">
                         <div className="left_content">
-                          Do you have marg accounting certification?
+                          Do you have marg accounting certification? : 
                         </div>
                         <div className="right_content">
                           <span>Yes </span>
@@ -686,7 +686,7 @@ const Searchcandidates = () => {
                       </div>
 
                       <div className="inner">
-                        <div className="left_content"> Hello English score</div>
+                        <div className="left_content"> Hello English score : </div>
                         <div className="right_content">
                           <span> 50-70 </span>
                         </div>
