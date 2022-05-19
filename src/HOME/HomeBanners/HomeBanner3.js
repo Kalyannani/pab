@@ -12,7 +12,7 @@ const HomeBanner3 = () => {
     <div className=" col-md-3 text-center">
       <img
         className="align-self-center mr-3 B_img1 img-fluid"
-        src="images/intervie3.png"
+        src="images/2-01.png"
         alt="Generic placeholder image"
         style={{height:'150px',width:'auto'}}
         />
@@ -24,14 +24,14 @@ const HomeBanner3 = () => {
         <p className="B_text">80% of the resumes are rejected in 11 seconds.Don't want to be the 80%?</p>
       </div>
     
-      <div className="text-right">   
-      <Link to="/careers" style={{ marginLeft: 'auto', marginTop: "-46px"}}> <button
+
+      <Link to="/careers" style={{ marginLeft: 'auto', marginTop: "-46px"}} className="text-right"> <button
           className="bg-primary text-white btn-lg"
           style={{  borderTopLeftRadius: "50px", border: 'none',cursor:"pointer"  }}
         >
           Click Here
         </button></Link>
-    </div>
+ 
 
 
     </div>

@@ -21,14 +21,19 @@ const Searchcandidates = () => {
 
     const customStyles = {
         content: {
-          top: '50%',
+          top: '475px',
           left: '50%',
           right: 'auto',
           bottom: 'auto',
           marginRight: '-50%',
           transform: 'translate(-50%, -50%)',
-          height:"600px"
+          height:"600px",
+          padding:"20px 0px 0px"
+          // position:"relative"
         },
+        overlay:
+        {}
+
       };
 
     const [clickRadio, setClickRadio] = useState(true);
@@ -92,8 +97,8 @@ const Searchcandidates = () => {
               class="alert alert_radius  alert-dismissible fade show d-flex"
               role="alert"
             >
-              <p>Accountant</p>
-              <button
+              <p>Accountant  <a type="button" className="alert_close1" >X</a> </p>
+              {/* <button
                 type="button"
                 class="close alert_close alert_close1"
                 data-dismiss="alert"
@@ -101,7 +106,7 @@ const Searchcandidates = () => {
                 
               >
                 <span aria-hidden="true">&times;</span>
-              </button>
+              </button> */}
             </div>
             
             <div>
@@ -538,7 +543,7 @@ const Searchcandidates = () => {
                   </div>
                   <div className="col-md-6 cand_verify  my-1 pt-1 ">
                     <span className="cand_resume">
-                      <img src="img/resumedownload.svg" alt="" />
+                      <img src="images/resumedownload.svg" alt="" />
                       <span className="pl-2">Download Resume</span>
                     </span>
 

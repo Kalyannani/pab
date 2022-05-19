@@ -13,7 +13,7 @@ const HomeBanners = () => {
         <div className=" col-md-3 text-center">
           <img
             className="align-self-center mr-3 B_img1 img-fluid"
-            src="images/intervie.png"
+            src="images/1-01 (1).png"
             alt="Generic placeholder image"
             style={{ height: '150px', width: 'auto' }}
           />
@@ -24,14 +24,14 @@ const HomeBanners = () => {
           </h5>
           <p className="B_text">To get 5x more recruiter views on your profile</p>
         </div>
-<div className="text-right">     
-     <Link to="/careers"  style={{ marginLeft: 'auto', marginTop: "-46px"}}> <button
+   
+     <Link to="/careers"  style={{ marginLeft: 'auto', marginTop: "-46px"}}  className="text-right"> <button
           className="bg-primary text-white btn-lg"
           style={{  borderTopLeftRadius: "50px", border: 'none',cursor:"pointer"  }}
         >
           Click Here
         </button></Link>
-        </div>
+    
 
 
 

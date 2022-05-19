@@ -4504,6 +4504,25 @@ const MyResume = () => {
                         </p>
 
                       </div>
+
+                      <div className="career_profile_content">
+                        <h5 className="industry">AddressProof</h5>
+                        <p className="it_employees">
+                          {/* {profile.personaldetails.hometown}{" "} */}
+                          Aadhar Card
+
+                        </p>
+                      </div>
+
+                      <div className="career_profile_content">
+                        <h5 className="industry">Do you have marg accounting certification?  </h5>
+                        <p className="it_employees">
+                          {/* {profile.personaldetails.hometown}{" "} */}
+                          No
+
+                        </p>
+                      </div>
+
                     </div>
                     <div className="col-lg-6 col-md-6 career_profile_column">
                       <div className="career_profile_content">
@@ -4527,6 +4546,32 @@ const MyResume = () => {
 
                         </p>
                       </div>
+
+                      <div className="career_profile_content">
+                        <h5 className="industry">Do You Have Passport</h5>
+                        <p className="it_employees">
+                          {/* {profile.personaldetails.hometown}{" "} */}
+                          No
+
+                        </p>
+                      </div>
+
+
+
+                      <div className="career_profile_content">
+                        <h5 className="industry">AddressProof Number</h5>
+                        <p className="it_employees">
+                          {/* {profile.personaldetails.hometown}{" "} */}
+                          9425 2532 7892
+
+                        </p>
+                      </div>
+
+
+
+
+
+
                       {/* <div className="career_profile_content" id="AttachResume">
             <h5 className="industry">
               Work permit of other country
@@ -4724,7 +4769,7 @@ const MyResume = () => {
                                   // value={careerprofile.Desired_AvailableJoinMonths}
                                   // onChange={(e) => careerprofileHandling(e)}
                                   >
-                                  <option hidden>Add Adress Proof</option>
+                                  <option hidden>Add Address Proof</option>
                                   <option>Aadhar card</option>
                                   <option>Driving license</option>
                                   <option>Pan card</option>
@@ -4737,13 +4782,13 @@ const MyResume = () => {
 
                             <div className=" col-lg-6 col-md-6">
                                     <div className="form-group">
-                                      <label>AdressProof Number</label>
+                                      <label>Address Proof Number</label>
                                       <input
                                         name="AdressProofNumber"
                                         //  onChange={(e) => patentHandling(e)}
                                         type="text"
                                         className="form_control"
-                                        placeholder="Enter AdressProof Number"
+                                        placeholder="Enter Address Proof Number"
                                         // value={patent.Patent_Application_Number}
                                       />
                                     </div>

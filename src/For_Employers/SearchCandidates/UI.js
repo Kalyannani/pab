@@ -16,8 +16,8 @@ const UI = () => {
 
             <div className='container'>
                 <div className='row'>
-                    <div className="col-lg-3">
-                        <div className="sticky-top">
+                    <div className="col-lg-3" style={{marginTop:"-90px"}}>
+                        <div className="sticky-top sticky_candidates">
                             <p>
                                 <button
                                     className="sidebar_button"
@@ -33,7 +33,7 @@ const UI = () => {
                             </p>
                             <div id="collapseExample">
 
-                                <div className="sidebar searchcandidate_sidebar" id="sidebar">
+                                <div className="sidebar searchcandidate_sidebar" >
                                     <h4 style={{ padding: "10px" }}>Advance Filter</h4>
                                     <a href="#searchoption"> Search Option</a>
                                     <a href="#Role"> Role</a>
@@ -54,7 +54,7 @@ const UI = () => {
                         </div>
                     </div>
 
-                    <div className='col-md-9'>
+                    <div className='col-md-9' style={{marginTop:"-75px"}}>
                         <div className='wrapper'>
                             <div id='searchoption'>
                                 <div id="Role">
@@ -940,7 +940,7 @@ const UI = () => {
 
                                                 <div className='col-md-6'>
                                                     <input type="radio" id="feaale" name="female" value="female" />
-                                                    <label className='search_label_size' for="female">FeMale</label><br />
+                                                    <label className='search_label_size' for="female">Female</label><br />
                                                 </div>
 
                                             </div>

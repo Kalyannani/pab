@@ -11,7 +11,7 @@ const HomeBanner2 = () => {
         <div className=" col-md-3 text-center">
           <img
             className="align-self-center mr-3 B_img1 img-fluid"
-            src="images/intervie2.png"
+            src="images/3-01.png"
             alt="Generic placeholder image"
             style={{height:'150px',width:'auto'}}
             />
@@ -23,14 +23,14 @@ const HomeBanner2 = () => {
             <p className="B_text">Unleash your profile's true capability to 10X your chance</p>
           </div>
 
-          <div className="text-right">   
-          <Link to="/careers" style={{ marginLeft: 'auto', marginTop: "-46px"}}> <button
+
+          <Link to="/careers" style={{ marginLeft: 'auto', marginTop: "-46px"}} className="text-right"> <button
           className="bg-primary text-white btn-lg"
           style={{  borderTopLeftRadius: "50px", border: 'none',cursor:"pointer"  }}
         >
           Click Here
         </button></Link>
-        </div>
+
         
   
     
