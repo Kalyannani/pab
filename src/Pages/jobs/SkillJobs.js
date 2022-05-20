@@ -75,7 +75,7 @@ const SkillJobs = () => {
                                 {/* <h6 className="jobskill_sec_2_heading_1">BROWSE JOBS BY Skill</h6> */}
                                 <div className='row'>
                                     <div className='col-md-6'>
-                                        <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY Skill</h6>
+                                        <h6 className="jobcategory_sec_2_heading_1">BROWSE JOBS BY SKILL</h6>
                                     </div>
                                     <div className='col-md-6'>
                                         {

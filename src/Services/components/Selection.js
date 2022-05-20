@@ -7,23 +7,23 @@ const Selection = () => {
         <div className="selection_head">
           <h1>Selection Process</h1>
         </div>
-        <div className="row">
-          <div className="col-lg-4 col-md-4 col-sm-12 selection_one">
-            <span className="span">01</span>
+        <div className="row selection_one">
+          <div className="col-lg-4 col-md-4 col-sm-12  ">
+            {/* <span className="span">01</span> */}
             <span>
               <img
-                src="images/selectionone.png"
+                src="images/New Eligibility-02.png"
                 alt="image"
                 className="img-fluid"
               ></img>
             </span>
             <p>Eligibility as per Company's specifications</p>
           </div>
-          <div className="col-lg-4 col-md-4 col-sm-12 selection_one">
-            <span className="span">02</span>
+          <div className="col-lg-4 col-md-4 col-sm-12">
+            {/* <span className="span">02</span> */}
             <span>
               <img
-                src="images/selectiontwo.png"
+                src="images/02 Aptitude-01.png"
                 alt="image"
                 className="img-fluid"
               ></img>
@@ -34,10 +34,10 @@ const Selection = () => {
             </p>
           </div>
           <div className="col-lg-4 col-md-4 col-sm-12 selection_one">
-            <span className="span">03</span>
+            {/* <span className="span">03</span> */}
             <span>
               <img
-                src="images/selectionthree.png"
+                src="images/03 Training-01.png"
                 alt="image"
                 className="img-fluid"
               ></img>
@@ -50,10 +50,10 @@ const Selection = () => {
 
           </div>
           <div className="col-lg-3 col-md-3 col-sm-12 selection_one">
-            <span className="span">04</span>
+            {/* <span className="span">04</span> */}
             <span>
               <img
-                src="images/selectionfour.jpg"
+                src="images/04 Interview-01.png"
                 alt="image"
                 className="img-fluid"
               ></img>
@@ -64,10 +64,10 @@ const Selection = () => {
 
           </div>
           <div className="col-lg-3 col-md-3 col-sm-12 selection_one selection_five">
-            <span className="span">05</span>
+            {/* <span className="span">05</span> */}
             <span>
               <img
-                src="images/selectionfive.jpg"
+                src="images/05 Offer Letter-01.png"
                 alt="image"
                 className="img-fluid"
               ></img>
