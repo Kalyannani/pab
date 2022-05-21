@@ -497,20 +497,41 @@ const Searchcandidates = () => {
                 </div>
                 <div className="m-auto text-center pt-3">
                   {/* <a href="" className="more_filter">
-          <i class="fas fa-plus"></i> More Filters
+                    <i class="fas fa-plus"></i> More Filters
         </a> */}
 
                   {/* <input type="button"className="more_filter" value="Open modal" onClick={openModal} /> */}
-                  <button type="button" className="more_filter" onClick={openModal} ><i class="fas fa-plus"></i> More Filter</button>
-                  <Modal isOpen={isOpen} onRequestClose={closeModal} style={customStyles}>
+                  <button type="button" className="more_filter" data-toggle="modal" data-target="#exampleModalCenter"  ><i class="fas fa-plus"></i> More Filter</button>
+                 
+                  {/* <Modal isOpen={isOpen} onRequestClose={closeModal} style={customStyles}>
                     <a className="search_close_modal" onClick={closeModal}><i className="fas fa-times"></i></a>
-
                     <UI />
+                  </Modal> */}
+
+                  <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+                      <div class="modal-content search_candidates_modal">
+                        <div class="modal-body position-relative">
+                          <button type="button" class="btn filter_search_cand" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                          <UI />
+                        </div>
+                        <div class="modal-footer search_footer">
+                          <div className="fixed_apply d-inline-block">
+                            <div className="d-flex">
+                              <button className="btn reset_cand"> RESET</button>
+                              <button className="btn apply_cand"> APPLY</button>
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
 
 
-                    {/* <input type="button" value="Close modal" onClick={closeModal} /> */}
-
-                  </Modal>
 
                 </div>
                 <div className="text-center mt-2">
@@ -523,82 +544,82 @@ const Searchcandidates = () => {
               {/* <div>
           <i className="fas fa-map-marker-alt"></i>Hyderabad <i class="fas fa-chevron-circle-down"></i>
           </div> */}
-          <div className="row">
-                          <div className="col-md-3">
-                <li class="nav-item dropdown1">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: "black" }}>
-                    <i class="fas fa-map-marker-alt" ></i> Andra Pradesh
-                  </a>
-                  <div class="dropdown-menu scrollable_menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Delhi</a>
-                    <a class="dropdown-item" href="#">Madhya Pradesh</a>
-                    <a class="dropdown-item" href="#">Himachal Pradesh</a>
-                    <a class="dropdown-item" href="#">Odisha</a>
-                    <a class="dropdown-item" href="#">Goa</a>
-                    <a class="dropdown-item" href="#">Sikkim</a>
-                    <a class="dropdown-item" href="#">Kerala</a>
-                    <a class="dropdown-item" href="#">Uttarakhand</a>
-                    <a class="dropdown-item" href="#">Mizoram</a>
-                    <a class="dropdown-item" href="#">Manipur</a>
-                    <a class="dropdown-item" href="#">Telangana</a>
-                    <a class="dropdown-item" href="#">Arunachal Pradesh</a>
-                    <a class="dropdown-item" href="#">Nagaland</a>
-                    <a class="dropdown-item" href="#">Tamil Nadu</a>
-                    <a class="dropdown-item" href="#">Chhattisgarh</a>
-                    <a class="dropdown-item" href="#">Rajasthan</a>
-                    <a class="dropdown-item" href="#">Maharashtra</a>
-                    <a class="dropdown-item" href="#">Tripura</a>
-                    <a class="dropdown-item" href="#">Karnataka</a>
-                    <a class="dropdown-item" href="#">AndraPradesh</a>
-                    <a class="dropdown-item" href="#">Bihar</a>
-                    <a class="dropdown-item" href="#">Haryana</a>
-                    <a class="dropdown-item" href="#">Assam</a>
-                    <a class="dropdown-item" href="#">Uttar Pradesh</a>
-                    <a class="dropdown-item" href="#">Punjab</a>
+              <div className="row">
+                <div className="col-md-3">
+                  <li class="nav-item dropdown1">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: "black" }}>
+                      <i class="fas fa-map-marker-alt" ></i> Andra Pradesh
+                    </a>
+                    <div class="dropdown-menu scrollable_menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="#">Delhi</a>
+                      <a class="dropdown-item" href="#">Madhya Pradesh</a>
+                      <a class="dropdown-item" href="#">Himachal Pradesh</a>
+                      <a class="dropdown-item" href="#">Odisha</a>
+                      <a class="dropdown-item" href="#">Goa</a>
+                      <a class="dropdown-item" href="#">Sikkim</a>
+                      <a class="dropdown-item" href="#">Kerala</a>
+                      <a class="dropdown-item" href="#">Uttarakhand</a>
+                      <a class="dropdown-item" href="#">Mizoram</a>
+                      <a class="dropdown-item" href="#">Manipur</a>
+                      <a class="dropdown-item" href="#">Telangana</a>
+                      <a class="dropdown-item" href="#">Arunachal Pradesh</a>
+                      <a class="dropdown-item" href="#">Nagaland</a>
+                      <a class="dropdown-item" href="#">Tamil Nadu</a>
+                      <a class="dropdown-item" href="#">Chhattisgarh</a>
+                      <a class="dropdown-item" href="#">Rajasthan</a>
+                      <a class="dropdown-item" href="#">Maharashtra</a>
+                      <a class="dropdown-item" href="#">Tripura</a>
+                      <a class="dropdown-item" href="#">Karnataka</a>
+                      <a class="dropdown-item" href="#">AndraPradesh</a>
+                      <a class="dropdown-item" href="#">Bihar</a>
+                      <a class="dropdown-item" href="#">Haryana</a>
+                      <a class="dropdown-item" href="#">Assam</a>
+                      <a class="dropdown-item" href="#">Uttar Pradesh</a>
+                      <a class="dropdown-item" href="#">Punjab</a>
+                    </div>
+                  </li>
+                </div>
+
+                <div className="col-md-4"></div>
+
+                <div className="col-md-2">
+
+                  <div className="search_candidate_dropdownbtn">
+                    <span>Sort by:</span>
+                    <select
+                      className=""
+                      name=""
+                      style={{ border: "none" }}
+
+                    >
+                      <option hidden>Recent</option>
+                      <option value="Recent">Recent</option>
+                      <option value="Relavant">Relavant</option>
+                      <option value="VIP First">VIP First</option>
+
+                    </select>
                   </div>
-                </li>
-              </div>
 
-              <div className="col-md-4"></div>
 
-              <div className="col-md-2">
-                
-                <div className="search_candidate_dropdownbtn">
-                  <span>Sort by:</span>
-                  <select
-                    className=""
-                    name=""
-                    style={{border:"none"}}
-
-                  >
-                    <option hidden>Recent</option>
-                    <option value="Recent">Recent</option>
-                    <option value="Relavant">Relavant</option>
-                    <option value="VIP First">VIP First</option>
-
-                  </select>
                 </div>
+                <div className="col-md-3">
+                  <div className="search_candidate_dropdownbtn">
+                    <span>Result Per Page :</span>
+                    <select
+                      className=""
+                      name=""
+                      style={{ border: "none" }}
+
+                    >
+                      <option>20</option>
+                      <option value="30">30</option>
+                      <option value="40">40</option>
+                      <option value="50">50</option>
+                    </select>
+                  </div>
 
 
-              </div>
-              <div className="col-md-3">
-                <div className="search_candidate_dropdownbtn">
-                  <span>Result Per Page :</span>
-                  <select
-                    className=""
-                    name=""
-                    style={{border:"none"}}
-
-                  >
-                    <option>20</option>
-                    <option value="30">30</option>
-                    <option value="40">40</option>
-                    <option value="50">50</option>
-                  </select>
                 </div>
-
-
-              </div>
               </div>
 
 

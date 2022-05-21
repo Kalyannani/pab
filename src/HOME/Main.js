@@ -20,8 +20,8 @@ import React from 'react'
                         <div className="row">
                             <div className="col-lg-6 col-md-6">
                                 <div className="form-group">
-                                    <label>
-                                    </label>
+                                    {/* <label>
+                                    </label> */}
                                     <div className="input-group">
                                         <input type="text" className="form-control home_input"
                                             placeholder="Job Title, Keywords, or Phrase" />

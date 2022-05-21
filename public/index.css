@@ -7775,13 +7775,11 @@ td {
 }
 
 .modal-header {
-  padding: 1rem 1rem 0px 1rem !important;
+  /* padding: 1rem 1rem 0px 1rem !important; */
+  padding: 0px !important;
   border: none !important;
 }
 
-.modal-body {
-  padding: 1rem 1.5rem 0px 1.5rem !important;
-}
 
 /* candidate profile / myresume */
 
@@ -19248,16 +19246,11 @@ input[type=checkbox]:checked~#pg {
 
 .searchcandidate_sidebar
 {
-  margin-top: 75px !important;
   background-color: #e7e7e7 !important;
-  
 }
 
 
-
-
-
-
+/* ghdghd */
 
 .seach_card {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -19284,11 +19277,11 @@ input[type=checkbox]:checked~#pg {
 }
 
 
-input[type="text"]:focus {
+/* input[type="text"]:focus {
   box-shadow: none;
   border: 1px solid rgb(216, 181, 181);
   border-radius: 0px;
-}
+} */
 .more_filter,
 .more_filter:hover {
   padding: 5px 15px;
@@ -19551,4 +19544,126 @@ border: 1px solid #8d7f7f;
 padding: 2px;
 border-radius: 5px;
 width: fit-content;
+}
+
+.MuiInputLabel-formControl {
+  top: -3px !important;
+  left: 0;
+  position: absolute;
+  transform: translate(0, 24px) scale(1);
+}
+
+.MuiFormLabel-root.Mui-focused{
+  background-color: #ffffff !important;
+  padding:0px 3px
+}
+
+button.btn.search_btn_1 {
+  border: 1px solid #270D44;
+  color: #FFF;
+  background: #270D44;
+}
+
+.sidebar.searchcandidate_sidebar{
+  width: 100% !important;
+}
+
+.modal-dialog-scrollable .modal-content.search_candidates_modal{
+
+}
+
+@media screen and (min-width:0px) and (max-width:767px) {
+  .sidebar_button.search_sidebar{
+    margin-top: 80px !important;
+    display: block !important;
+  }
+}
+
+.sidebar_button.search_sidebar{
+  display: none ;
+}
+
+.modal-footer.search_footer{
+  justify-content: center !important;
+  }
+  
+  .fixed_apply .reset_cand{
+    width: 100px;
+    background: brown;
+    margin-right: 15px;
+  }
+  .fixed_apply .apply_cand{
+    width: 100px;
+    background: green;
+  }
+
+  @media screen and (min-width:420px) and (max-width:767px) {
+    .modal-footer.search_footer{
+      justify-content: center !important;
+      }
+      .fixed_apply .reset_cand{
+        width: 190px;
+        background: brown;
+        margin-right: 15px;
+      }
+      .fixed_apply .apply_cand{
+        width: 190px;
+        background: green;
+      }
+  }
+
+@media screen and (min-width:768px) and (max-width:991px) {
+  .fixed_apply .reset_cand{
+    width: 140px;
+    background: brown;
+    margin-right: 15px;
+  }
+  .fixed_apply .apply_cand{
+    width: 140px;
+    background: green;
+  }
+  .modal-footer.search_footer{
+    justify-content: flex-end !important;
+    }
+}
+
+@media screen and (min-width:991px) {
+  .fixed_apply .reset_cand{
+    width: 240px;
+    background: brown;
+    margin-right: 15px;
+  }
+  .fixed_apply .apply_cand{
+    width: 240px;
+    background: green;
+  }
+  .modal-footer.search_footer{
+    justify-content: flex-end !important;
+    }
+}
+
+@media screen and (max-width:767px) {
+  .search_cand_right_filter{
+    margin-top: 0px !important;
+  }
+}
+
+.btn.filter_search_cand{
+  font-size: 20px;
+    padding: 0px 9px 2px;
+    border-radius: 50%;
+    background: #270D44;
+    position: absolute;
+    top: 0px;
+    color: #FFF;
+    z-index: 9999;
+    right: 1px;
+}
+
+.btn.filter_search_cand:hover{
+  color: #FFF;
+}
+
+.modal-footer.search_footer{
+  margin: 10px 0px;
 }
