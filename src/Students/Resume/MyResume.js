@@ -122,6 +122,10 @@ const MyResume = () => {
       pincode: "",
       maritalStatus: "",
       hometown: "",
+      AddressProof:"",
+      AdressProofNumber:"",
+      passport:"",
+      margaccount:"",
       languages: [],
     },
     resume: {
@@ -4509,7 +4513,7 @@ const MyResume = () => {
                         <h5 className="industry">AddressProof</h5>
                         <p className="it_employees">
                           {/* {profile.personaldetails.hometown}{" "} */}
-                          Aadhar Card
+                          {profile.personaldetails.AddressProof}{" "}
 
                         </p>
                       </div>
@@ -4518,7 +4522,7 @@ const MyResume = () => {
                         <h5 className="industry">Do you have marg accounting certification?  </h5>
                         <p className="it_employees">
                           {/* {profile.personaldetails.hometown}{" "} */}
-                          No
+                          {profile.personaldetails.margaccount}{" "}
 
                         </p>
                       </div>
@@ -4551,7 +4555,7 @@ const MyResume = () => {
                         <h5 className="industry">Do You Have Passport</h5>
                         <p className="it_employees">
                           {/* {profile.personaldetails.hometown}{" "} */}
-                          No
+                          {profile.personaldetails.passport}{" "}
 
                         </p>
                       </div>
@@ -4562,7 +4566,7 @@ const MyResume = () => {
                         <h5 className="industry">AddressProof Number</h5>
                         <p className="it_employees">
                           {/* {profile.personaldetails.hometown}{" "} */}
-                          9425 2532 7892
+                          {profile.personaldetails.AdressProofNumber}{" "}
 
                         </p>
                       </div>
@@ -4766,14 +4770,14 @@ const MyResume = () => {
                               <div className="form-group">
                                 <label> Address Proof</label>
                                 <select className="form_control" name="AddressProof"
-                                  // value={careerprofile.Desired_AvailableJoinMonths}
-                                  // onChange={(e) => careerprofileHandling(e)}
+                                   value={profile.personaldetails.AddressProof}
+                                  onChange={(e) => onchangeDetails(e)}
                                   >
                                   <option hidden>Add Address Proof</option>
-                                  <option>Aadhar card</option>
-                                  <option>Driving license</option>
-                                  <option>Pan card</option>
-                                  <option>Voter card</option>
+                                  <option value="Aadhar Card">Aadhar card</option>
+                                  <option value="Driving License">Driving license</option>
+                                  <option value="Pan Card">Pan card</option>
+                                  <option value="Voter Card">Voter card</option>
                                   
                             
                                 </select>
@@ -4785,11 +4789,11 @@ const MyResume = () => {
                                       <label>Address Proof Number</label>
                                       <input
                                         name="AdressProofNumber"
-                                        //  onChange={(e) => patentHandling(e)}
+                                         onChange={(e) => onchangeDetails(e)}
                                         type="text"
                                         className="form_control"
                                         placeholder="Enter Address Proof Number"
-                                        // value={patent.Patent_Application_Number}
+                                        value={profile.personaldetails.AdressProofNumber}
                                       />
                                     </div>
                                   </div>
@@ -4804,9 +4808,9 @@ const MyResume = () => {
                                       type="radio"
                                       name="passport"
                                       id="passport"
-                                      value="yes"
+                                      value="Yes"
                                       // checked={profile.personaldetails.maritalStatus === "Married"}
-                                      // onChange={(e) => onchangeDetails(e)}
+                                      onChange={(e) => onchangeDetails(e)}
                                     />
                                     <label
                                       className="form-check-label"
@@ -4821,9 +4825,9 @@ const MyResume = () => {
                                       type="radio"
                                       name="passport"
                                       id="passport1"
-                                      value="no"
+                                      value="No"
                                       // checked={profile.personaldetails.maritalStatus === "UnMarried"}
-                                      // onChange={(e) => onchangeDetails(e)}
+                                      onChange={(e) => onchangeDetails(e)}
                                     />
                                     <label
                                       className="form-check-label"
@@ -4846,11 +4850,11 @@ const MyResume = () => {
                                     <input
                                       className="form-check-input"
                                       type="radio"
-                                      name="passport"
-                                      id="passport"
-                                      value="yes"
+                                      name="margaccount"
+                                      id="margaccount"
+                                      value="Yes"
                                       // checked={profile.personaldetails.maritalStatus === "Married"}
-                                      // onChange={(e) => onchangeDetails(e)}
+                                      onChange={(e) => onchangeDetails(e)}
                                     />
                                     <label
                                       className="form-check-label"
@@ -4863,15 +4867,15 @@ const MyResume = () => {
                                     <input
                                       className="form-check-input"
                                       type="radio"
-                                      name="passport"
-                                      id="passport1"
-                                      value="no"
+                                      name="margaccount"
+                                      id="margaccount1"
+                                      value="No"
                                       // checked={profile.personaldetails.maritalStatus === "UnMarried"}
-                                      // onChange={(e) => onchangeDetails(e)}
+                                      onChange={(e) => onchangeDetails(e)}
                                     />
                                     <label
                                       className="form-check-label"
-                                      for="passport1"
+                                      for="margaccount1"
                                     >
                                      No
                                     </label>

@@ -29,8 +29,8 @@ const JobGuarantee = () => {
               fees.
             </p> */}
           </div>
-          <div className="col-lg-5  col-md-6 guranatee_image">
-            <img src="images/guarantee.png" />
+          <div className="col-lg-5  col-md-6  text-center">
+            <img src="images/JOB G-01.png" className="guranatee_image img-fluid"/>
           </div>
           <div className="col-lg-1 col-md-1">
             

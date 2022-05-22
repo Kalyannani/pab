@@ -16334,12 +16334,25 @@ svg {
 
 }
 
-@media screen and (min-width:0px) and (max-width:425px) {
+/* @media screen and (min-width:0px) and (max-width:425px) {
   .guranatee_image {
     text-align: center;
     margin-left: -95px !important;
   }
 
+} */
+
+
+.guranatee_image
+{
+  height: 500px !important;
+}
+@media screen and (max-width:1040px) {
+  .guranatee_image {
+    /* text-align: center; */
+    /* margin-left: -95px !important; */
+    height: auto;
+  }
 }
 
 @media screen and (min-width:767px) and (max-width:991px) {
@@ -17117,7 +17130,8 @@ strong {
 .Exam_Welcome {
   color: #270D44;
   font-weight: 900;
-  margin-top: 120px;
+  margin-top: 180px;
+  /* margin-bottom: auto !important; */
 }
 
 .Exam_Instuctions {
@@ -19667,3 +19681,6 @@ button.btn.search_btn_1 {
 .modal-footer.search_footer{
   margin: 10px 0px;
 }
+
+
+
