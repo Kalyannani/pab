@@ -5,10 +5,22 @@ import { toast } from 'react-toastify'
 import apiList from '../../lib/apiList'
 import Subfilter from './subfilter'
 import data from "../../JsonData/Skill.json"
-import { useLocation } from 'react-router-dom'
+import { useLocation,useNavigate } from 'react-router-dom'
 import SearchFilter from './SearchFilter'
 import SkilljobAds from '../../ads/SkilljobAds'
+import { useDispatch, useSelector } from "react-redux";
+//chip from material-ui
+import Chip from '@material-ui/core/Chip';
+//import useHistory
+
 const SkillJobs = () => {
+    const Selected = useSelector(state => state.selectedSkills);
+    let navigate = useNavigate();
+    let Show = Selected.length > 0 ? true : false;
+    const dispatch = useDispatch();
+
+
+
     const [searchTerm, setsearchTerm] = useState('')
 
     const location = useLocation();
@@ -44,6 +56,15 @@ const SkillJobs = () => {
     // useEffect(async () => {
     //     fetchSkills();
     // }, [])
+    const handleDelete = (chipToDelete) => {
+        // setChipData((chips) => Selected.filter((chip) => chip.key !== chipToDelete.key));
+        // console.log(chipToDelete.key, "chipToDelete");
+        dispatch({
+            type: "SELECTED_SKILLS",
+            payload: chipToDelete.value
+        })
+    };
+
 
     return (
         <div >
@@ -130,6 +151,36 @@ const SkillJobs = () => {
 
 
                                     </div> : null}
+
+
+                                    {
+                                    location.pathname === '/skilljobs' && Show ? (
+                                        <> <div className="d-flex" style={{
+                                            justifyContent: "space-evenly",
+                                            marginTop: "20px",
+                                        }}>
+                                            {
+                                                Selected.map((item, index) => (
+                                                    <Chip key={index} color="primary" label={item.value} onDelete={() => handleDelete(item)}></Chip>
+                                                ))
+
+                                            }
+                                        </div>
+                                            {Selected.length > 0 && <center>
+                                                <button class="btn btn-primary mt-4"
+                                                    onClick={async () => {
+                                                        //  alert("onclick")
+                                                        await dispatch({ type: "FROM_MAIN_SKILL" });
+                                                        navigate("/browsefilterlist");
+                                                    }}
+                                                >
+                                                    Filter Selected Skills &nbsp;  <i class="fas fa-search"></i>
+                                                </button></center>}</>) : null}
+
+
+
+
+
                                 <div className="row">
                                     {
                                         location.pathname === '/skilljobs' ?
@@ -150,10 +201,10 @@ const SkillJobs = () => {
                                                             </Link>
                                                             :
 
-                                                            <Link to={"/browsefilterlist?skill=" + res.Skill}>
-                                                                <a class="company_jobs_anchor p-2">
+                                                            // <Link to={"/browsefilterlist?skill=" + res.Skill}>
+                                                                <a class="company_jobs_anchor p-2"  onClick={() => dispatch({ type: "SELECTED_SKILLS", payload: res.Skill })}>
                                                                     <span class="company_jobs_img_1_text">{res.Skill}</span></a>
-                                                            </Link>
+                                                            // </Link>
 
                                                     }
                                                 </div>

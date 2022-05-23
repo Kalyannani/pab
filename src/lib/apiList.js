@@ -32,6 +32,7 @@ const apiList = {
   allapplicants: `${server}/api/allapplicants`,
   searchApplicats: `${server}/api/allapplicants/search`,
   notification: `${server}/api/notification`,
+  multiCategory: `${server}/api/role/list/filter`,
   sendEmailOtp: `${server}/auth/email/send-otp`,
   verifyEmailOtp: `${server}/auth/email/verify-otp`,
   sendPhoneOtp: `${server}/auth/mobile/contact/send-otp`,

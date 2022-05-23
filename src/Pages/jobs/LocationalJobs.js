@@ -2,9 +2,20 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import data from '../../JsonData/locations.json'
 import Subfilter from './subfilter'
-import { useLocation } from 'react-router-dom'
+// import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import SearchFilter from './SearchFilter'
+import { useDispatch, useSelector } from "react-redux";
+import Chip from '@material-ui/core/Chip';
+
 const LocationalJobs = () => {
+    const Selected = useSelector(state => state.selectedLocations);
+    let navigate = useNavigate();
+    let Show = Selected.length > 0 ? true : false;
+    const dispatch = useDispatch();
+
+
+
     let { search } = useLocation();
 
     const query = new URLSearchParams(search);
@@ -25,6 +36,14 @@ const LocationalJobs = () => {
 
 
     }
+    const handleDelete = (chipToDelete) => {
+        // setChipData((chips) => Selected.filter((chip) => chip.key !== chipToDelete.key));
+        // console.log(chipToDelete.key, "chipToDelete");
+        dispatch({
+            type: "SELECTED_LOCATIONS",
+            payload: chipToDelete.value
+        })
+    };
 
     return (
         <div >  {location.pathname === '/locationaljobs' ?
@@ -103,17 +122,45 @@ const LocationalJobs = () => {
 
 
                         </div> : null}
+
+
+                        {
+                                    location.pathname === '/locationaljobs' && Show ? (
+                                        <> <div className="d-flex" style={{
+                                            justifyContent: "space-evenly",
+                                            marginTop: "20px",
+                                        }}>
+                                            {
+                                                Selected.map((item, index) => (
+                                                    <Chip key={index} color="primary" label={item.value} onDelete={() => handleDelete(item)}></Chip>
+                                                ))
+
+                                            }
+                                        </div>
+                                            {Selected.length > 0 && <center>
+                                                <button class="btn btn-primary mt-4"
+                                                    onClick={async () => {
+                                                        //  alert("onclick")
+                                                        await dispatch({ type: "FROM_MAIN_LOCATION" });
+                                                        navigate("/browsefilterlist");
+                                                    }}
+                                                >
+                                                    Filter Selected Locations &nbsp;  <i class="fas fa-search"></i>
+                                                </button></center>}</>) : null}
+
+
+
                     <div className="row">
                         {
                             location.pathname === '/locationaljobs' ?
-                                locations.filter((val) => {
+                                locations.filter((val,index) => {
                                     if (searchTerm == "") {
                                         return val
                                     }
                                     else if (val.location.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
                                         return val
                                     }
-                                }).map(res => {
+                                }).map((res,index) => {
                                     return <div class="col-lg-3 col-md-6">
                                         {
                                             query.get('from') ?
@@ -123,10 +170,10 @@ const LocationalJobs = () => {
                                                 </Link>
                                                 :
 
-                                                <Link to={`/browsefilterlist?locate=${res.location}`}>
-                                                    <a class="company_jobs_anchor p-2">
+                                                // <Link to={`/browsefilterlist?locate=${res.location}`}>
+                                                    <a class="company_jobs_anchor p-2" key={index} onClick={() => dispatch({ type: "SELECTED_LOCATIONS", payload: res.location })}>
                                                         <span class="company_jobs_img_1_text">{res.location}</span></a>
-                                                </Link>
+                                                // </Link>
                                         }
                                     </div>
                                 })

@@ -60,7 +60,9 @@ import HomeBanner3 from './HOME/HomeBanners/HomeBanner3';
 import HomeBanner4 from './HOME/HomeBanners/HomeBanner4';
 import CareerServices from '../src/HOME/career/CareerServices';
 import SellSkill from './Services/SellYourSkill/SellSkill';
-import Searchcandidates from '../../PAB_Jobs_Client/src/For_Employers/SearchCandidates/Searchcandidates'
+import Searchcandidates from "./For_Employers/SearchCandidates/Searchcandidates"
+// import Searchcandidates from "../src/Pages/Searchcandidates/Searchcandidates";
+// import Searchcandidates from '../../PAB_Jobs_Client/src/For_Employers/SearchCandidates/Searchcandidates'
 
 
 
@@ -120,7 +122,7 @@ export const App = (props) => {
    :
       result?.type === "applicant"? 
     <>
-    <Route exact path="/myprofile" element={<MyProfile/>} />
+    <Route exact path="/myprofile" element={<MyProfile/>} />categoryjobs
     <Route exact path="/myresume" element={<MyResume />} />
     <Route exact path="/appliedjobs" element={<AppliedJobs />} />
     <Route exact path="/jobalerts" element={<JobAlerts />} />

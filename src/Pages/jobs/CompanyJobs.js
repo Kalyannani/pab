@@ -6,10 +6,19 @@ import { Link } from 'react-router-dom'
 import { toast } from "react-toastify";
 import apiList from "../../lib/apiList";
 import Subfilter from './subfilter';
-import { useLocation} from 'react-router-dom'
+import { useLocation,useNavigate} from 'react-router-dom'
 import SearchFilter from './SearchFilter';
 import CjobsAds from '../../ads/CjobsAds';
+import { useDispatch, useSelector } from "react-redux";
+import Chip from '@material-ui/core/Chip';
+
 const CompanyJobs = () => {
+    const Selected = useSelector(state => state.selectedCompanies);
+    let navigate = useNavigate();
+    let Show = Selected.length > 0 ? true : false;
+    const dispatch = useDispatch();
+
+
     const [searchTerm , setsearchTerm] = useState('')
     const location = useLocation();
     console.log(location.pathname)
@@ -17,9 +26,9 @@ const CompanyJobs = () => {
     const [isReadMore, setIsReadMore] = useState(true);
 
     
-    const toggleReadMore = () => {
-        setIsReadMore(!isReadMore);
-      };
+    // const toggleReadMore = () => {
+    //     setIsReadMore(!isReadMore);
+    //   };
     const fetchCompanies = async () => {
         await axios.get(apiList.listCompanies)
             .then((response) => {
@@ -30,13 +39,10 @@ const CompanyJobs = () => {
                 toast.error(err.response.data.message)
             });
     }
-
+        
     useEffect(async () => {
         fetchCompanies();
     }, [])
-
-    
-   
 
     const handleSort = async (char) => {
         await axios.get(apiList.listCompanies + '?q=' + char)
@@ -48,6 +54,15 @@ const CompanyJobs = () => {
                 toast.error(err.response.data.message)
             });
     }
+    const handleDelete = (chipToDelete)=> {
+        // setChipData((chips) => Selected.filter((chip) => chip.key !== chipToDelete.key));
+        // console.log(chipToDelete, "chipToDelete");
+        dispatch({
+            type: "SELECTED_COMPANIES",
+            payload: chipToDelete
+        })
+      };
+
 
     return (
         <div >
@@ -137,7 +152,30 @@ const CompanyJobs = () => {
 
                         </div>:null }
 
-                        {/* <!-- img and text --> */}
+                        {
+                                    location.pathname === '/companyjobs' && Show ? (
+                                        <>
+                                         <div className="d-flex" style={{
+                                            justifyContent: "space-evenly",
+                                            marginTop: "20px",
+                                        }}>
+                                            {
+                                                Selected.map((item, index) => (
+                                                    <Chip key={index} color="primary" label={item.value} onDelete={() => handleDelete(item)}></Chip>
+                                                ))
+
+                                            }
+                                        </div>
+                                            {Selected.length > 0 && <center>
+                                                <button class="btn btn-primary mt-4"
+                                                    onClick={async () => {
+                                                        //  alert("onclick")
+                                                        await dispatch({ type: "FROM_MAIN_COMPANY" });
+                                                        navigate("/browsefilterlist");
+                                                    }}
+                                                >
+                                                    Filter Selected Companies &nbsp;  <i class="fas fa-search"></i>
+                                                </button></center>}</>) : null}
 
                         <div class="row">
                             {
@@ -154,10 +192,10 @@ const CompanyJobs = () => {
                                 }
                             }).map(company => {
                                 return <div class="col-lg-3 col-md-6">
-                                    <Link to={`/browsefilterlist?company=${company.userId}`}>
-                                    <a class="company_jobs_anchor p-2">
+                                    {/* <Link to={`/browsefilterlist?company=${company.userId}`}> */}
+                                    <a class="company_jobs_anchor p-2" onClick={() => dispatch({ type: "SELECTED_COMPANIES", payload: company })}>
                                         <span class="company_jobs_img_1_text">{company.companyname}</span></a>
-                                        </Link>
+                                        {/* </Link> */}
                                 </div>
                             })
                             :
