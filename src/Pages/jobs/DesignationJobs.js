@@ -2,10 +2,19 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import data from '../../JsonData/Designation.json'
 import Subfilter from './subfilter'
-import { useLocation } from 'react-router-dom'
+import { useLocation,useNavigate } from 'react-router-dom'
 import SearchFilter from './SearchFilter'
 import DesignationjobAds from '../../ads/DesignationjobAds'
+import { useDispatch, useSelector } from "react-redux";
+import Chip from '@material-ui/core/Chip';
+
 const DesignationJobs = () => {
+    const Selected = useSelector(state => state.selectedDesignations);
+    let navigate = useNavigate();
+    let Show = Selected.length > 0 ? true : false;
+    const dispatch = useDispatch();
+
+
     const [searchTerm, setsearchTerm] = useState('')
 
     const location = useLocation();
@@ -25,6 +34,14 @@ const DesignationJobs = () => {
         }))
 
     }
+    const handleDelete = (chipToDelete) => {
+        // setChipData((chips) => Selected.filter((chip) => chip.key !== chipToDelete.key));
+        // console.log(chipToDelete.key, "chipToDelete");
+        dispatch({
+            type: "SELECTED_DESIGNATIONS",
+            payload: chipToDelete.value
+        })
+    };
 
     return (
         <div >
@@ -106,6 +123,30 @@ const DesignationJobs = () => {
 
 
                                     </div> : null}
+
+                                    {
+                                    location.pathname === '/designationjobs' && Show ? (
+                                        <> <div className="d-flex" style={{
+                                            justifyContent: "space-evenly",
+                                            marginTop: "20px",
+                                        }}>
+                                            {
+                                                Selected.map((item, index) => (
+                                                    <Chip key={index} color="primary" label={item.value} onDelete={() => handleDelete(item)}></Chip>
+                                                ))
+
+                                            }
+                                        </div>
+                                            {Selected.length > 0 && <center>
+                                                <button class="btn btn-primary mt-4"
+                                                    onClick={async () => {
+                                                        //  alert("onclick")
+                                                        await dispatch({ type: "FROM_MAIN_DES" });
+                                                        navigate("/browsefilterlist");
+                                                    }}
+                                                >
+                                                    Filter Selected Designations &nbsp;  <i class="fas fa-search"></i>
+                                                </button></center>}</>) : null}
                                 <div className="row">
                                     {
                                         location.pathname === '/designationjobs' ?
@@ -125,10 +166,10 @@ const DesignationJobs = () => {
                                                                     <span class="company_jobs_img_1_text">{designation?.Designation}</span></a>
                                                             </Link>
                                                             :
-                                                            <Link to={`/browsefilterlist?designate=${designation?.Designation}`}>
-                                                                <a class="company_jobs_anchor p-2">
+                                                            // <Link to={`/browsefilterlist?designate=${designation?.Designation}`}>
+                                                                <a class="company_jobs_anchor p-2" onClick={() => dispatch({ type: "SELECTED_DESIGNATIONS", payload: designation.Designation })}>
                                                                     <span class="company_jobs_img_1_text">{designation?.Designation}</span></a>
-                                                            </Link>
+                                                            // </Link>
                                                     }
                                                 </div>
                                             }) :

@@ -120,7 +120,7 @@ export const App = (props) => {
    :
       result?.type === "applicant"? 
     <>
-    <Route exact path="/myprofile" element={<MyProfile/>} />
+    <Route exact path="/myprofile" element={<MyProfile/>} />categoryjobs
     <Route exact path="/myresume" element={<MyResume />} />
     <Route exact path="/appliedjobs" element={<AppliedJobs />} />
     <Route exact path="/jobalerts" element={<JobAlerts />} />

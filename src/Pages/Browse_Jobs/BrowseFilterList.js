@@ -7,6 +7,7 @@ import ReactPaginate from 'react-paginate';
 import ReactLoading from 'react-loading';
 import { toast } from 'react-toastify';
 import moment from 'moment';
+// import {  useSelector } from "react-redux";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
@@ -26,7 +27,7 @@ import ReactTimeAgo from 'react-time-ago'
 import DesignationFilter from './filters/DesignationFilter';
 
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Autocomplete } from '@mui/material';
 import { TextField } from '@material-ui/core';
 // import skillsdata from '../JsonData/Skill.json';
@@ -37,11 +38,27 @@ import Browsehrads from '../../ads/Browsehrads';
 import Browseverads from '../../ads/Browseverads';
 import Browsehomead from '../../ads/Browsehomead';
 import SkillFilter from './filters/SkillFilter';
-
+import Chip from '@material-ui/core/Chip';
+// import { SelectedCategories } from '../../redux/action';
+import { useNavigate } from 'react-router-dom';
 
 // import data from '../JsonData/locations.json'
 
 const BrowseFilterList = () => {
+  const isItFromMain = useSelector(state => state.isItFromMain);
+  const company = useSelector(state => state.company);
+  const newLocation = useSelector(state => state.location);
+  const newSkills = useSelector(state => state.skill);
+  const selectedCategories = useSelector(state => state.selectedCategories);
+  const selectedCompanies = useSelector(state => state.selectedCompanies);
+  const selectedLocations = useSelector(state => state.selectedLocations);
+  // const selectedLocations = useSelector(state => state.selectedLocations);
+  const selectedSkills = useSelector(state => state.selectedSkills);
+  const selectedDesignations = useSelector(state => state.selectedDesignations);
+  const newDesignation = useSelector(state => state.designation);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
   const [post, setPost] = useState({
     skillsets: [],
@@ -50,12 +67,13 @@ const BrowseFilterList = () => {
 
   const result = useSelector(state => state.data)
   let { search } = useLocation();
+  let locate = useLocation();
 
 
 
 
   const query = new URLSearchParams(search);
-  console.log('serch ', query.get('keyword'));
+  console.log('search ', query.get('category'));
   let paramKeyword = ''
   let paramQLocation = ''
   let paramTopCompanies = []
@@ -130,6 +148,7 @@ const BrowseFilterList = () => {
   const [onHold, setOnHold] = useState(false)
   const [keywordError, setKeywordError] = useState("");
   const [locationError, setLocationError] = useState("");
+  const [presentData, setPresentData] = useState([]);
 
   const list = [1, 2, 3, 4, 5, 6];
 
@@ -141,6 +160,7 @@ const BrowseFilterList = () => {
   //   const [data, setData] = useState([]);
   const [perPage, setPerPage] = useState(30);
   const [pageCount, setPageCount] = useState(0);
+  const [presentType, setPresentType] = useState("");
   // const indexOfLastPost = offset * perPage;
   // const indexOfFirstPost = indexOfLastPost - perPage;
   // const currentPosts = jobs.slice(indexOfFirstPost, indexOfLastPost);
@@ -224,7 +244,7 @@ const BrowseFilterList = () => {
   const handleEducationRemove = async (educations) => {
     setEducation(educations)
     // fetchJobs();
-
+    // resetFilter
   }
 
   const handleSkillAdd = async (educations) => {
@@ -299,6 +319,7 @@ const BrowseFilterList = () => {
       return
     }
     setOnHold(true)
+    // if(isItFromMain){
     await axios.get(apiList.wishlist + 'remove/' + id, {
       headers,
     })
@@ -354,6 +375,131 @@ const BrowseFilterList = () => {
     if (post.skillsets.length > 0) {
       data.skills = post.skillsets;
     }
+    //from here
+    if (isItFromMain && !company && !newLocation && !newSkills && !newDesignation) {
+      setPresentData(selectedCategories)
+      setPresentType("category")
+      delete data.category;
+      let rawData = [...selectedCategories]
+      let result = rawData?.map(({ value }) => value)
+      data.category = result
+      await axios.post(apiList.jobSearch + '?page=' + page, data, {
+        headers,
+      })
+        .then((response) => {
+          setPageCount(Math.ceil(response.data.counts) / 20)
+          console.log('Yoooooo', response.data.posts);
+          setJobs(response.data.posts)
+          setLoading(false)
+          return;
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          toast.error(err.response.data.message)
+        });
+    }
+    else if (company && !newLocation && !newSkills && !newDesignation) {
+      setPresentData(selectedCompanies)
+      setPresentType("company")
+      delete data.companies;
+      let rawData = [...selectedCompanies]
+      let result = rawData?.map(({ key }) => key)
+      data.companies = result
+      await axios.post(apiList.jobSearch + '?page=' + page, data, {
+        headers,
+      })
+        .then((response) => {
+          setPageCount(Math.ceil(response.data.counts) / 20)
+          setJobs(response.data.posts)
+          setLoading(false)
+          return;
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          toast.error(err.response.data.message)
+        });
+    }
+    else if (!company && newLocation && !newSkills && !newDesignation) {
+      setPresentData(selectedLocations)
+      setPresentType("location")
+      delete data.location;
+      let rawData = [...selectedLocations]
+      let result = rawData?.map(({ value }) => value)
+      data.location = result
+      await axios.post(apiList.jobSearch + '?page=' + page, data, {
+        headers,
+      })
+        .then((response) => {
+          setPageCount(Math.ceil(response.data.counts) / 20)
+          console.log('Yoooooo', response.data.posts);
+          setJobs(response.data.posts)
+          setLoading(false)
+          return;
+        })
+        .catch((err) => {
+          console.log(err.response.data, "Yoooooo");
+          toast.error(err.response.data.message)
+        });
+    }
+    else if (!company && !newLocation && newSkills && !newDesignation) {
+      setPresentType("skill")
+      setPresentData(selectedSkills)
+      delete data.skills
+      let rawData = [...selectedSkills]
+      let result = rawData?.map(({ value }) => value)
+      data.skills = result
+      await axios.post(apiList.jobSearch + '?page=' + page, data, {
+        headers,
+      })
+        .then((response) => {
+          setPageCount(Math.ceil(response.data.counts) / 20)
+          console.log('Yoooooo', response.data.posts);
+          setJobs(response.data.posts)
+          setLoading(false)
+          return;
+        })
+        .catch((err) => {
+          console.log(err.response.data, "Yoooooo");
+          toast.error(err.response.data.message)
+        });
+    }
+    else if (!company && !newLocation && !newSkills && newDesignation) {
+      setPresentData(selectedDesignations.length > 0 ? selectedDesignations : [])
+      setPresentType("designation")
+      delete data.industryType
+      let rawData = [...selectedDesignations]
+      let result = rawData?.map(({ value }) => value)
+      data.industryType = result
+      await axios.post(apiList.jobSearch + '?page=' + page, data, {
+        headers,
+      })
+        .then((response) => {
+          setPageCount(Math.ceil(response.data.counts) / 20)
+          console.log('Yoooooo', response.data.posts);
+          setJobs(response.data.posts)
+          setLoading(false)
+          return;
+        })
+        .catch((err) => {
+          console.log(err.response.data, "Yoooooo");
+          toast.error(err.response.data.message)
+        });
+    }
+    else {
+      await axios.post(apiList.jobSearch + '?page=' + page, data, {
+        headers,
+      })
+        .then((response) => {
+          setPageCount(Math.ceil(response.data.counts) / 20)
+          console.log('posts', response.data.posts);
+          setJobs(response.data.posts)
+          setLoading(false)
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          toast.error(err.response.data.message)
+        });
+    }
     // if (salary) {
     //   data.salaryMin = salary.salaryMin
     //   data.salaryMax = salary.salaryMax
@@ -364,22 +510,49 @@ const BrowseFilterList = () => {
     // if (qlocation !== '') {
     //   data.qlocation = qlocation
     // }
-    await axios.post(apiList.jobSearch + '?page=' + page, data, {
-      headers,
-    })
-      .then((response) => {
-        setPageCount(Math.ceil(response.data.counts) / 20)
-        console.log('posts', response.data.posts);
-        setJobs(response.data.posts)
-        setLoading(false)
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        toast.error(err.response.data.message)
-      });
+    //   if(!isItFromMain ){
+    // if (!isItFromMain) {
+    //   if (!company) {
+    //     // alert(newLocation)
+    //     if (!newLocation) {
+    //       // alert("386")
+    //       if (newDesignation) {
+
+    //       } else {
+    //         // alert("407")
+    //         if (newSkills) {
+
+    //         }
+    //       }
+    //     } else {
+    //       // alert("430")
+    //       if (!!newLocation) {
+
+    //       } else {
+
+
+    //       }
+
+    //     }
+    //   }
+    //   else {
+    //     // alert("395")
+
+
+    //   }
+    // }
+    // else {
+    //   // alert("421")
+    //   //  else{
+
+    // }
+    // }
+
+    // }
+
   }
 
-
+  
   const handleSearch = e => {
     let haveError = false
     if (keyword == '') {
@@ -397,12 +570,72 @@ const BrowseFilterList = () => {
 
 
 
-  useEffect(async () => {
-
+  useEffect(() => {
     fetchJobs();
-  }, [topCompanies, experience, location, education, salary, industryType, designation])
+
+    return () => {
+      // console.log('unmounting')
+      dispatch({ type: "NEW_CLEAR" })
+      dispatch({ type: "FROM_MAIN_COMPANY_CLEAR" })
+      // FROM_MAIN_DES_CLEAR
+      // FROM_MAIN_LOCATION_CLEAR
+      dispatch({ type: "FROM_MAIN_LOCATION_CLEAR" })
+      dispatch({ type: "FROM_MAIN_DES_CLEAR" })
+      dispatch({ type: "FROM_MAIN_SKILL_CLEAR" })
+    }
+  }, [topCompanies, experience, location, education, salary, industryType])
+
+
 
   console.log('kkkkkkkk', keyword, qlocation);
+  const handleDelete = (chipToDelete) => {
+    //based on conditions delete the chip
+    // console.log('chipToDelete', chipToDelete);
+    // alert()
+    let newData = [...presentData];
+    let index = newData.findIndex(item => item.value === chipToDelete.value);
+    newData.splice(index, 1);
+    setPresentData(newData);    
+    if (presentType === 'category') {  
+      dispatch({
+        type: "SELECTED_CATEGORIES",
+        payload: chipToDelete.value
+      })
+    }
+    else if (presentType === 'company') {
+      // alert("company")
+      // let newData = [...presentData];
+      // let index = newData.findIndex(item => item.value === chipToDelete.value);
+      // newData.splice(index, 1);
+      // setPresentData(newData);
+      dispatch({
+        type: "SELECTED_COMPANIES",
+        payload: chipToDelete
+      })
+    }
+    else if (presentType === 'location') {
+      // alert("loca")
+      dispatch({
+        type: "SELECTED_LOCATIONS",
+        payload: chipToDelete.value
+      })
+    }
+    else if (presentType === 'skill') {
+      // alert("skills")
+      dispatch({
+        type: "SELECTED_SKILLS",
+        payload: chipToDelete.value
+      })
+    }
+    else if (presentType === 'designation') {
+      // alert("des")
+      dispatch({
+        type: "SELECTED_DESIGNATIONS",
+        payload: chipToDelete.value
+      })
+    }
+  };
+
 
   return (
     <div >
@@ -436,14 +669,14 @@ const BrowseFilterList = () => {
                         value={post.skillsets}
                         options={skillsdata.map((res) => {
                           return res.Skill
-                      
+
                         })}
                         getOptionLabel={(option) => option}
                         onChange={(e, value) => {
                           setPost({
                             ...post,
                             skillsets: value
-                            
+
                           });
                         }}
 
@@ -454,10 +687,12 @@ const BrowseFilterList = () => {
                             label="Job Title, Keywords, or Phrase"
                             variant="outlined"
                             fullWidth
-                            name='keyword' 
-                            value={keyword} 
-                            onChange={(e) => {setKeyword(e.target.value)
-                              setKeywordError("")}}
+                            // name='keyword' 
+                            value={keyword}
+                            onChange={(e) => {
+                              setKeyword(e.target.value)
+                              setKeywordError("")
+                            }}
                           />
                         )}
                       />
@@ -505,7 +740,8 @@ const BrowseFilterList = () => {
                           label="City ,Province or Region"
                           variant="outlined"
                           fullWidth
-                          name='qlocation' value={qlocation} onChange={(e) => { setQLocation(e.target.value) }}
+                          // name='qlocation' 
+                          value={qlocation} onChange={(e) => { setQLocation(e.target.value) }}
                         />
                       )}
                     />
@@ -603,11 +839,32 @@ const BrowseFilterList = () => {
               </div>
             </div>
 
-
-
-
-
             <div className="list_view_width col-lg-6">
+              {
+               presentData && presentData?.length > 0 ? (
+                  <> 
+                  <div className="d-flex" style={{
+                    justifyContent: "space-evenly",
+                    marginTop: "20px",
+                  }}>
+                    {presentData &&
+                      presentData?.map((item, index) => (
+                        <Chip key={index} color="primary" label={item?.value} onDelete={() => handleDelete(item)}></Chip>
+                      ))
+                    }
+                  </div>
+                    {presentData.length > 0 && <center>
+                      <button class="btn btn-primary mt-4"
+                        onClick={() => {
+                          //  alert("onclick")
+                          // await dispatch({ type: "FROM_MAIN_LOCATION" });
+                          // navigate("/browsefilterlist");
+                          fetchJobs();
+                        }}
+                      >
+                        Filter Selected &nbsp;  <i class="fas fa-search"></i>
+                      </button></center>}
+                      </>) : null}
               {listType === 'list' ?
                 <>
                   {
@@ -620,9 +877,6 @@ const BrowseFilterList = () => {
 
                               <div className='google_ads'>
                                 <Browsehomead /> </div>}
-
-
-
                             <ul className="filter_list_job_post ">
                               <li>
                                 <Link to={`/jobdetailes/${job._id}`}>
@@ -700,7 +954,7 @@ const BrowseFilterList = () => {
                                   </>
                                   : null}
 
-                                  
+
 
                               </li>
                             </ul>
@@ -920,10 +1174,6 @@ const BrowseFilterList = () => {
 
             {/* <ins className="adsbygoogle" style={{display: 'block'}} data-ad-client="ca-pub-3502028008615885" data-ad-slot={4102552451} data-ad-format="auto" data-full-width-responsive="true" /> */}
           </div>
-
-
-
-
         </div>
       </div>
     </div>

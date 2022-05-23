@@ -4649,7 +4649,7 @@ const MyResume = () => {
                                 <label>PIN-Code</label>
                                 <input
                                   name="pincode"
-                                  type="text"
+                                  type="number"
                                   className="form_control"
                                   placeholder="Enter PIN-Code"
                                   value={profile.personaldetails.pincode}
