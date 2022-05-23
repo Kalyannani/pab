@@ -60,7 +60,7 @@ import HomeBanner3 from './HOME/HomeBanners/HomeBanner3';
 import HomeBanner4 from './HOME/HomeBanners/HomeBanner4';
 import CareerServices from '../src/HOME/career/CareerServices';
 import SellSkill from './Services/SellYourSkill/SellSkill';
-
+import Searchcandidates from '../../PAB_Jobs_Client/src/For_Employers/SearchCandidates/Searchcandidates'
 
 
 
@@ -98,7 +98,7 @@ export const App = (props) => {
    <Route exact path="/signin" element={<Login />} />
    <Route exact path="/signup" element={<Signup />} />
    <Route exact path='/studentlist' element={<StudentList/>}/>
-
+   <Route exact path="/searchcandidate" element={<Searchcandidates/>}/>
    <Route exact path='/homebanners' element={<HomeBanners/>}/>
    <Route exact path="/homebanner1" element={<HomeBanner2/>}/>
    <Route exact path='/homebanner3' element={<HomeBanner3/>}/>

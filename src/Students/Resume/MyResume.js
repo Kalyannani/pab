@@ -122,6 +122,10 @@ const MyResume = () => {
       pincode: "",
       maritalStatus: "",
       hometown: "",
+      AddressProof:"",
+      AdressProofNumber:"",
+      passport:"",
+      margaccount:"",
       languages: [],
     },
     resume: {
@@ -4504,6 +4508,25 @@ const MyResume = () => {
                         </p>
 
                       </div>
+
+                      <div className="career_profile_content">
+                        <h5 className="industry">AddressProof</h5>
+                        <p className="it_employees">
+                          {/* {profile.personaldetails.hometown}{" "} */}
+                          {profile.personaldetails.AddressProof}{" "}
+
+                        </p>
+                      </div>
+
+                      <div className="career_profile_content">
+                        <h5 className="industry">Do you have marg accounting certification?  </h5>
+                        <p className="it_employees">
+                          {/* {profile.personaldetails.hometown}{" "} */}
+                          {profile.personaldetails.margaccount}{" "}
+
+                        </p>
+                      </div>
+
                     </div>
                     <div className="col-lg-6 col-md-6 career_profile_column">
                       <div className="career_profile_content">
@@ -4527,6 +4550,32 @@ const MyResume = () => {
 
                         </p>
                       </div>
+
+                      <div className="career_profile_content">
+                        <h5 className="industry">Do You Have Passport</h5>
+                        <p className="it_employees">
+                          {/* {profile.personaldetails.hometown}{" "} */}
+                          {profile.personaldetails.passport}{" "}
+
+                        </p>
+                      </div>
+
+
+
+                      <div className="career_profile_content">
+                        <h5 className="industry">AddressProof Number</h5>
+                        <p className="it_employees">
+                          {/* {profile.personaldetails.hometown}{" "} */}
+                          {profile.personaldetails.AdressProofNumber}{" "}
+
+                        </p>
+                      </div>
+
+
+
+
+
+
                       {/* <div className="career_profile_content" id="AttachResume">
             <h5 className="industry">
               Work permit of other country
@@ -4717,6 +4766,125 @@ const MyResume = () => {
                               </div>
                             </div>
 
+                            <div className=" col-lg-6 col-md-6">
+                              <div className="form-group">
+                                <label> Address Proof</label>
+                                <select className="form_control" name="AddressProof"
+                                   value={profile.personaldetails.AddressProof}
+                                  onChange={(e) => onchangeDetails(e)}
+                                  >
+                                  <option hidden>Add Address Proof</option>
+                                  <option value="Aadhar Card">Aadhar card</option>
+                                  <option value="Driving License">Driving license</option>
+                                  <option value="Pan Card">Pan card</option>
+                                  <option value="Voter Card">Voter card</option>
+                                  
+                            
+                                </select>
+                              </div>
+                            </div>
+
+                            <div className=" col-lg-6 col-md-6">
+                                    <div className="form-group">
+                                      <label>Address Proof Number</label>
+                                      <input
+                                        name="AdressProofNumber"
+                                         onChange={(e) => onchangeDetails(e)}
+                                        type="text"
+                                        className="form_control"
+                                        placeholder="Enter Address Proof Number"
+                                        value={profile.personaldetails.AdressProofNumber}
+                                      />
+                                    </div>
+                                  </div>
+
+                              <div className=" col-lg-6 col-md-6">
+                              <label className="my-2">Do You have Passport</label>
+                              <div className="form-group">
+                                <div className="form-group">
+                                  <div className="form-check form-check-inline">
+                                    <input
+                                      className="form-check-input"
+                                      type="radio"
+                                      name="passport"
+                                      id="passport"
+                                      value="Yes"
+                                      // checked={profile.personaldetails.maritalStatus === "Married"}
+                                      onChange={(e) => onchangeDetails(e)}
+                                    />
+                                    <label
+                                      className="form-check-label"
+                                      for="passport"
+                                    >
+                                      Yes
+                                    </label>
+                                  </div>
+                                  <div className="form-check form-check-inline">
+                                    <input
+                                      className="form-check-input"
+                                      type="radio"
+                                      name="passport"
+                                      id="passport1"
+                                      value="No"
+                                      // checked={profile.personaldetails.maritalStatus === "UnMarried"}
+                                      onChange={(e) => onchangeDetails(e)}
+                                    />
+                                    <label
+                                      className="form-check-label"
+                                      for="passport1"
+                                    >
+                                     No
+                                    </label>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div className=" col-lg-6 col-md-6">
+                              <label className="my-2">Do you have marg accounting certification? :</label>
+                              <div className="form-group">
+                                <div className="form-group">
+                                  <div className="form-check form-check-inline">
+                                    <input
+                                      className="form-check-input"
+                                      type="radio"
+                                      name="margaccount"
+                                      id="margaccount"
+                                      value="Yes"
+                                      // checked={profile.personaldetails.maritalStatus === "Married"}
+                                      onChange={(e) => onchangeDetails(e)}
+                                    />
+                                    <label
+                                      className="form-check-label"
+                                      for="passport"
+                                    >
+                                      Yes
+                                    </label>
+                                  </div>
+                                  <div className="form-check form-check-inline">
+                                    <input
+                                      className="form-check-input"
+                                      type="radio"
+                                      name="margaccount"
+                                      id="margaccount1"
+                                      value="No"
+                                      // checked={profile.personaldetails.maritalStatus === "UnMarried"}
+                                      onChange={(e) => onchangeDetails(e)}
+                                    />
+                                    <label
+                                      className="form-check-label"
+                                      for="margaccount1"
+                                    >
+                                     No
+                                    </label>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+
                             {/* <div className=" col-lg-12 col-md-12">
                   <div className="form-group">
                     <label>Passport Number</label>
@@ -4762,6 +4930,8 @@ const MyResume = () => {
                                 />
                               </div>
                             </div>
+
+                            
 
                             {/* <div className=" col-lg-12 col-md-12">
                   <div className="form-group">

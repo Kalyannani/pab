@@ -192,10 +192,12 @@ const Home = () => {
   const executeScroll = () => myRef.current.scrollIntoView();
   return (
     <div>
+      <div><img src="images/H&T2.png" alt="image" className="home_content_content"/></div>
       <div className="container-fluid home_content">
-        <div className="row home_content_content">
-          
-          <div className="col-lg-4 col-md-4 col-sm-4 home_image_one">
+      
+        <div className="row ">
+       
+          {/* <div className="col-lg-4 col-md-4 col-sm-4 home_image_one">
             <div className="row">
               <div className="col-lg-8 col-md-9 col-sm-6 home_1">
                 <img src="images/home_one.jpg" className="img-fluid img_one" />
@@ -215,18 +217,18 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           {/* <div className="col-lg-1 col-md-1"></div> */}
           
-          <div className="col-lg-4 col-md-4 col-sm-4 home_text text-center">
+          {/* <div className="col-lg-4 col-md-4 col-sm-4 home_text text-center">
             <h1>PAB JOBS</h1>
             <img
               src="images/clipart530434.png"
               className="img-fluid  pr-3 img_office"
             />
-          </div>
+          </div> */}
           {/* <div className="col-lg-1 col-md-1"></div> */}
-          <div className="col-lg-4 col-md-4 col-sm-4">
+          {/* <div className="col-lg-4 col-md-4 col-sm-4">
             <div className="row">
               <div className="col-lg-3 col-md-3">
                 <div id="arrowAnim" className="home_arrow_two">
@@ -245,8 +247,10 @@ const Home = () => {
                 <img src="images/home_two.jpg" className="img-fluid img_two" />
               </div>
             </div>
-          </div>
+          </div> */}
+         
         </div>
+
         <div className="home_button">
           {/* <button className="btn btn-primary">Register Now</button> */}
 

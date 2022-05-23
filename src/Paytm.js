@@ -82,7 +82,7 @@ getData(user).then(response=>{
             
         //     <button onClick={makePayment}>PAY USING PAYTM</button>
         // </div>
-        <div className="container">
+        <div className="container" style={{marginTop:"150px"}}>
         <div className="row payment_paytm">
           <div className="col-md-12">
           <div className="payment_heading text-center">
@@ -159,7 +159,7 @@ getData(user).then(response=>{
           </div>
 
           <div className="col-lg-5 sticky-top" order-lg-2 order-sm-1 >
-            <img src='images/payment.png' alt='dinesh' className='img-fluid' style={{height:"100%"}}/>
+            <img src='images/Payments.png' alt='dinesh' className='img-fluid' style={{height:"100%"}}/>
           </div>
         </div>
       </div>

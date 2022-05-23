@@ -82,7 +82,7 @@ console.log(allquestions)
                  </div>
                  <div className='col-md-6 text-center ' style={{marginTop:"160px"}}>
                    
-                    <img src="images/onlineexam.png" alt="image" style={{transform:"rotateY(550deg)"}}/>
+                    <img src="images/Online Test (2).png" className="img-fluid" alt="image" />
                  </div>
              </div>
          </div>

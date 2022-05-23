@@ -52,7 +52,7 @@ const Employer_Navbar = () => {
 
           <li className="nav-item">
             <Link className="nav-link font-weight-bold" style={{ color: state.color }} id="a1"
-              to="/studentlist" data-toggle={collapse} data-target={id}>SEARCH CANDIDATES</Link>
+              to="/searchcandidate" data-toggle={collapse} data-target={id}>SEARCH CANDIDATES</Link>
           </li>
 
         </ul>

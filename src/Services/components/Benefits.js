@@ -10,16 +10,18 @@ const Benefits = () => {
         <div className='row align-items-center'>
             <div className=' col-lg-6 col-md-6 col-sm-12 benefits_image text-center'  data-aos="fade-right" data-aos-offset="200" data-aos-delay="20"
                     data-aos-duration="1500" data-aos-easing="ease-in-out">
-              <img src='images/train.png' className='img-fluid' />
+              <img src='images/H&T Benefits-01 (1).png' className='img-fluid' style={{height:"500px"}} />
             </div>
             <div className=' col-lg-6 col-md-6 col-sm-12 benefits_text'>
             <p className='benefits_text_p'>Get multi-skilled and fast-track your career growth</p>
             <ul>
                 <li>
+
                 <p>
                   {" "}
                   <img className="img-fluid" src="images/tick.jpg" />
                 </p>
+                
                 <p>
                   {" "}
                   Best-in-class trainers and mentors
