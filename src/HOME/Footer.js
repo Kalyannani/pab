@@ -4,13 +4,14 @@ import { a } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux'
 const Footer = () => {
-  const result = useSelector(state=>state.data)
+  const result = useSelector(state => state.data)
   return (
     <div>
       <footer id="sec7">
         <div className="foot">
           <div className="container">
             <div className="row">
+
               <div className="col-lg-3 col-md-6 foot_add">
                 <img
                   className="img-fluid logo_img_footer"
@@ -27,74 +28,74 @@ const Footer = () => {
                   available on the site. Results can be filtered on work
                   experience, venue, from location, employer type, and date
                   range. */}
-                </p> 
-                <div className="mt-5" style={{fontSize:'15px'}}>Toll Free Number: <p  style={{fontSize:'20px'}}><b><i className="fas fa-phone pr-2"></i> 1800 833 9448 </b></p></div>
+                </p>
+                <div className="mt-5" style={{ fontSize: '15px' }}>Toll Free Number: <p style={{ fontSize: '20px' }}><b><i className="fas fa-phone pr-2"></i> 1800 833 9448 </b></p></div>
               </div>
               {
-                result?(
-                  result.type === "applicant"?(
-                  <div className="col-lg-3 offset-lg-1 col-md-6 foot_icon">
-                <h4>For Candidates</h4>
-                <ul>
-                  <li>
-                    <i className="fas fa-chevron-right"></i>
-                    <Link to="/myprofile">Candidate Profile</Link>
-                  </li>
-                  <li>
-                    <i className="fas fa-chevron-right"></i>
-                    <Link to="/myresume">My Resume</Link>
-                  </li>
-                  <li>
-                    <i className="fas fa-chevron-right"></i>
-                    <Link to="/appliedjobs">Applied Jobs</Link>
-                  </li>
-                  <li>
-                    <i className="fas fa-chevron-right"></i>
-                    <Link to="/jobalerts">Job Alert</Link>
-                  </li>
-                  <li>
-                    <i className="fas fa-chevron-right"></i>
-                    <Link to="/changepassword">Change Password</Link>
-                  </li>
-                </ul>
-              </div> 
-                  ):(
-                     <div className="col-lg-2 offset-lg-1 col-md-6 foot_icon">
-                <h4>For Employers</h4>
-                <ul>
-                  <li>
-                    <i className="fas fa-chevron-right"></i>{" "}
-                    <Link to="/company_profile">Company Profile</Link>
-                  </li>
+                result ? (
+                  result.type === "applicant" ? (
+                    <div className="col-lg-3 offset-lg-1 col-md-6 foot_icon">
+                      <h4>For Candidates</h4>
+                      <ul>
+                        <li>
+                          <i className="fas fa-chevron-right"></i>
+                          <Link to="/myprofile">Candidate Profile</Link>
+                        </li>
+                        <li>
+                          <i className="fas fa-chevron-right"></i>
+                          <Link to="/myresume">My Resume</Link>
+                        </li>
+                        <li>
+                          <i className="fas fa-chevron-right"></i>
+                          <Link to="/appliedjobs">Applied Jobs</Link>
+                        </li>
+                        <li>
+                          <i className="fas fa-chevron-right"></i>
+                          <Link to="/jobalerts">Job Alert</Link>
+                        </li>
+                        <li>
+                          <i className="fas fa-chevron-right"></i>
+                          <Link to="/changepassword">Change Password</Link>
+                        </li>
+                      </ul>
+                    </div>
+                  ) : (
+                    <div className="col-lg-2 offset-lg-1 col-md-6 foot_icon">
+                      <h4>For Employers</h4>
+                      <ul>
+                        <li>
+                          <i className="fas fa-chevron-right"></i>{" "}
+                          <Link to="/company_profile">Company Profile</Link>
+                        </li>
 
-                  <li>
-                    <i className="fas fa-chevron-right"></i>{" "}
-                    <Link to="/post_jobs">Post a Job</Link>
-                  </li>
-                  <li>
-                    <i className="fas fa-chevron-right"></i>{" "}
-                    <Link to="/Manage_jobs">My Jobs</Link>
-                  </li>
-                </ul>
-              </div> 
+                        <li>
+                          <i className="fas fa-chevron-right"></i>{" "}
+                          <Link to="/post_jobs">Post a Job</Link>
+                        </li>
+                        <li>
+                          <i className="fas fa-chevron-right"></i>{" "}
+                          <Link to="/Manage_jobs">My Jobs</Link>
+                        </li>
+                      </ul>
+                    </div>
                   )
-                ):(
-                   <div className="col-lg-3 offset-lg-1 col-md-6 foot_icon">
-                <h4>Home</h4>
-                <ul>
-                  <li>
-                    <i className="fas fa-chevron-right"></i>
-                    <Link to="/companies">LogIn</Link>
-                  </li>
-                  <li>
-                    <i className="fas fa-chevron-right"></i>
-                    <Link to="/browsefilterlist">Browse Filter List</Link>
-                  </li>
-                </ul>
-              </div>)
+                ) : (
+                  <div className="col-lg-3 offset-lg-1 col-md-6 foot_icon">
+                    <h4>Home</h4>
+                    <ul>
+                      <li>
+                        <i className="fas fa-chevron-right"></i>
+                        <Link to="/companies">LogIn</Link>
+                      </li>
+                      <li>
+                        <i className="fas fa-chevron-right"></i>
+                        <Link to="/browsefilterlist">Browse Filter List</Link>
+                      </li>
+                    </ul>
+                  </div>)
               }
-              
-             
+
+
               <div className="col-lg-3  col-md-6 foot_icon">
                 <h4>Jobs</h4>
                 <ul>
@@ -124,7 +125,7 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-              
+
               <div className="col-lg-2 col-md-6 foot_icon">
                 <h4>Browse Jobs</h4>
                 <ul>
@@ -141,31 +142,31 @@ const Footer = () => {
                     <i className="fas fa-chevron-right"></i>{" "}
                     <Link to="/alljobs">Jobs</Link>
                   </li>
-                  </ul>
-               
-                  <h4>Information</h4>
+                </ul>
 
-                  <ul>
+                <h4>Information</h4>
+
+                <ul>
                   <li>
                     <i className="fas fa-chevron-right"></i>{" "}
-                    <Link to='/termsandconditions'> Terms & conditions</Link> 
+                    <Link to='/termsandconditions'> Terms & conditions</Link>
                   </li>
                   <li>
                     <i className="fas fa-chevron-right"></i>{" "}
-                    <Link to='/Privacypolicy'> Privacy Policy</Link> 
+                    <Link to='/Privacypolicy'> Privacy Policy</Link>
                   </li>
                   <li>
                     <i className="fas fa-chevron-right"></i>{" "}
-                    <Link to='/fakejobalert'> Fraud Alert</Link> 
+                    <Link to='/fakejobalert'> Fraud Alert</Link>
                   </li>
                 </ul>
-                
+
               </div>
-             
+
             </div>
 
-    
-            
+
+
             <div className="row crt"></div>
             <div className="copyright-option">
               <div className="row">

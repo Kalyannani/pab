@@ -22,18 +22,19 @@ import NoticePerioddata from '../../JsonData/Noticeperiod.json'
 
 const customStyles = {
   content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
   },
 };
 
 const MyResume = () => {
   const [file, setFile] = useState("");
   const [resume, setResume] = useState("")
+
   const dispatch = useDispatch();
   const [projectType, setProjectType] = useState(false);
   const [progressBar, setProgressBar] = useState(0);
@@ -114,7 +115,7 @@ const MyResume = () => {
     careerprofile: [],
     presentation: [],
     publication: [],
-    patent:[],
+    patent: [],
     personaldetails: {
       dateofbirth: "",
       address: "",
@@ -122,10 +123,10 @@ const MyResume = () => {
       pincode: "",
       maritalStatus: "",
       hometown: "",
-      AddressProof:"",
-      AdressProofNumber:"",
-      passport:"",
-      margaccount:"",
+      AddressProof: "",
+      AdressProofNumber: "",
+      passport: "",
+      margaccount: "",
       languages: [],
     },
     resume: {
@@ -433,7 +434,7 @@ const MyResume = () => {
         console.log(err.response);
       });
   };
-  
+
 
   // publication replace modal
 
@@ -498,230 +499,230 @@ const MyResume = () => {
     }
 
   };
-  
 
-    //patent state
-    const [patent, setpatent] = useState([
-      {
-        Patent_Title: '',
-        Patent_URL: '',
-        Patent_Office: '',
-        Patent_Status: '',
-        Patent_Application_Number: '',
-        Patent_Description:''
-      }
-    ])
-  
-    // patent Initial Data
-    const patentInitialData = () => {
-      setpatent({
-        Patent_Title: '',
-        Patent_URL: '',
-        Patent_Office: '',
-        Patent_Status: '',
-        Patent_Application_Number: '',
-        Patent_Description:''
-      })
+
+  //patent state
+  const [patent, setpatent] = useState([
+    {
+      Patent_Title: '',
+      Patent_URL: '',
+      Patent_Office: '',
+      Patent_Status: '',
+      Patent_Application_Number: '',
+      Patent_Description: ''
     }
-  
-    // deleting patent  data
-    const deletepatent = (id) => {
-      // e.preventDefault()
-      console.log(localStorage.getItem("token"))
+  ])
+
+  // patent Initial Data
+  const patentInitialData = () => {
+    setpatent({
+      Patent_Title: '',
+      Patent_URL: '',
+      Patent_Office: '',
+      Patent_Status: '',
+      Patent_Application_Number: '',
+      Patent_Description: ''
+    })
+  }
+
+  // deleting patent  data
+  const deletepatent = (id) => {
+    // e.preventDefault()
+    console.log(localStorage.getItem("token"))
+    axios
+      .delete(`${apiList.user}/${id}/patent`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data)
+        console.log("funtion working")
+        toast.success(response.data.message)
+        getData();
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message)
+        console.log(err.response);
+      });
+  };
+
+
+  // patent replace modal
+
+  const replacepatentItem = (id) => {
+    console.log("working")
+    setProfile({
+      ...profile,
+      requiredItem: id
+    })
+    setpatent(profile.patent[id])
+  }
+
+
+  //onChange patent
+  const patentHandling = (e) => {
+    setpatent({
+      ...patent,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+
+  //patent submit
+  const handlepatent = (e, id) => {
+    e.preventDefault()
+    if (id) {
+      axios.put(`${apiList.user}/${id}/patent`, patent, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        getData();
+      })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    }
+    else {
+      let updatedDetails = {
+        ...profile,
+        patent: [...profile.patent, patent]
+      }
       axios
-        .delete(`${apiList.user}/${id}/patent`, {
+        .put(apiList.user, updatedDetails, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
+
+
+
         })
         .then((response) => {
           console.log(response.data)
-          console.log("funtion working")
-          toast.success(response.data.message)
           getData();
         })
         .catch((err) => {
-          toast.error(err.response.data.message)
+
           console.log(err.response);
         });
-    };
-  
-  
-    // patent replace modal
-  
-    const replacepatentItem = (id) => {
-      console.log("working")
-      setProfile({
+    }
+
+  };
+
+
+
+  //certification state
+  const [certification, setcertification] = useState([
+    {
+      Certification_Name: '',
+      Certification_ID: '',
+      Certification_URL: '',
+      Certification_Validity_From: '',
+      Certification_Validity_To: ''
+
+    }
+  ])
+
+  // certification Initial Data
+  const certificationInitialData = () => {
+    setcertification({
+      Certification_Name: '',
+      Certification_ID: '',
+      Certification_URL: '',
+      Certification_Validity_From: '',
+      Certification_Validity_To: ''
+    })
+  }
+
+  // deleting certification  data
+  const deletecertification = (id) => {
+    // e.preventDefault()
+    console.log(localStorage.getItem("token"))
+    axios
+      .delete(`${apiList.user}/${id}/certification`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data)
+        console.log("funtion working")
+        toast.success(response.data.message)
+        getData();
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message)
+        console.log(err.response);
+      });
+  };
+
+
+  // certification replace modal
+
+  const replacecertificationItem = (id) => {
+    console.log("working")
+    setProfile({
+      ...profile,
+      requiredItem: id
+    })
+    setcertification(profile.certification[id])
+  }
+
+
+  //onChange certification
+  const certificationHandling = (e) => {
+    setcertification({
+      ...certification,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+
+  //certification submit
+  const handlecertification = (e, id) => {
+    e.preventDefault()
+    if (id) {
+      axios.put(`${apiList.user}/${id}/certification`, patent, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        getData();
+      })
+        .catch((err) => {
+
+          console.log(err.response);
+        });
+    }
+    else {
+      let updatedDetails = {
         ...profile,
-        requiredItem: id
-      })
-      setpatent(profile.patent[id])
-    }
-  
-  
-    //onChange patent
-    const patentHandling = (e) => {
-      setpatent({
-        ...patent,
-        [e.target.name]: e.target.value,
-      })
-    }
-  
-  
-    //patent submit
-    const handlepatent = (e, id) => {
-      e.preventDefault()
-      if (id) {
-        axios.put(`${apiList.user}/${id}/patent`, patent, {
+        certification: [...profile.certification, certification]
+      }
+      axios
+        .put(apiList.user, updatedDetails, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
-          }
-        }).then((response) => {
+          },
+
+
+
+        })
+        .then((response) => {
           console.log(response.data)
           getData();
         })
-          .catch((err) => {
-  
-            console.log(err.response);
-          });
-      }
-      else {
-        let updatedDetails = {
-          ...profile,
-          patent: [...profile.patent, patent]
-        }
-        axios
-          .put(apiList.user, updatedDetails, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-  
-  
-  
-          })
-          .then((response) => {
-            console.log(response.data)
-            getData();
-          })
-          .catch((err) => {
-  
-            console.log(err.response);
-          });
-      }
-  
-    };
+        .catch((err) => {
 
+          console.log(err.response);
+        });
+    }
 
-
-        //certification state
-        const [certification, setcertification] = useState([
-          {
-            Certification_Name: '',
-            Certification_ID: '',
-            Certification_URL: '',
-            Certification_Validity_From: '',
-            Certification_Validity_To: ''
-           
-          }
-        ])
-      
-        // certification Initial Data
-        const certificationInitialData = () => {
-          setcertification({
-            Certification_Name: '',
-            Certification_ID: '',
-            Certification_URL: '',
-            Certification_Validity_From: '',
-            Certification_Validity_To: ''
-          })
-        }
-      
-        // deleting certification  data
-        const deletecertification = (id) => {
-          // e.preventDefault()
-          console.log(localStorage.getItem("token"))
-          axios
-            .delete(`${apiList.user}/${id}/certification`, {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            })
-            .then((response) => {
-              console.log(response.data)
-              console.log("funtion working")
-              toast.success(response.data.message)
-              getData();
-            })
-            .catch((err) => {
-              toast.error(err.response.data.message)
-              console.log(err.response);
-            });
-        };
-      
-      
-        // certification replace modal
-      
-        const replacecertificationItem = (id) => {
-          console.log("working")
-          setProfile({
-            ...profile,
-            requiredItem: id
-          })
-          setcertification(profile.certification[id])
-        }
-      
-      
-        //onChange certification
-        const certificationHandling = (e) => {
-          setcertification({
-            ...certification,
-            [e.target.name]: e.target.value,
-          })
-        }
-      
-      
-        //certification submit
-        const handlecertification = (e, id) => {
-          e.preventDefault()
-          if (id) {
-            axios.put(`${apiList.user}/${id}/certification`, patent, {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              }
-            }).then((response) => {
-              console.log(response.data)
-              getData();
-            })
-              .catch((err) => {
-      
-                console.log(err.response);
-              });
-          }
-          else {
-            let updatedDetails = {
-              ...profile,
-              certification: [...profile.certification, certification]
-            }
-            axios
-              .put(apiList.user, updatedDetails, {
-                headers: {
-                  Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-      
-      
-      
-              })
-              .then((response) => {
-                console.log(response.data)
-                getData();
-              })
-              .catch((err) => {
-      
-                console.log(err.response);
-              });
-          }
-      
-        };
+  };
 
 
 
@@ -1043,7 +1044,7 @@ const MyResume = () => {
     if (data.resumeHeadline && data.resumeHeadline != '') {
       progressPercentage += 10
     }
-    
+
     setProgressBar(progressPercentage)
   }
 
@@ -1268,13 +1269,13 @@ const MyResume = () => {
 
   const resumeonchangeHandling = (event) => {
     setResume(event.target.files[0])
-    
+
   }
 
 
   const verifyEmail = () => {
 
-    axios.post(apiList.sendEmailOtp, {},{
+    axios.post(apiList.sendEmailOtp, {}, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "multipart/form-data"
@@ -1283,7 +1284,7 @@ const MyResume = () => {
       .then((response) => {
         setVerifyType("email")
         setIsOpen(true)
-       
+
       })
       .catch((err) => {
         console.log(err.response);
@@ -1296,7 +1297,7 @@ const MyResume = () => {
 
     axios.post(apiList.sendPhoneOtp, {
       phone: profile.contactNumber
-    },{
+    }, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "multipart/form-data"
@@ -1305,7 +1306,7 @@ const MyResume = () => {
       .then((response) => {
         setVerifyType("phone")
         setIsOpen(true)
-       
+
       })
       .catch((err) => {
         console.log(err.response);
@@ -1335,6 +1336,7 @@ const MyResume = () => {
         toast.error(err.response.data.message)
       });
   }
+
   const handleresumeUpload = () => {
     const data = new FormData();
     console.log(resume)
@@ -1374,11 +1376,11 @@ const MyResume = () => {
 
   const handleContactOTPVerify = (e) => {
     e.preventDefault();
-    console.log('oooo',e.target.otp.value);
-    if(verifyType === "email") {
+    console.log('oooo', e.target.otp.value);
+    if (verifyType === "email") {
       axios.post(apiList.verifyEmailOtp, {
-        otp:e.target.otp.value
-      },{
+        otp: e.target.otp.value
+      }, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "multipart/form-data"
@@ -1397,8 +1399,8 @@ const MyResume = () => {
     } else if (verifyType === "phone") {
       console.log("Tesinggg")
       axios.post(apiList.verifyPhoneOtp, {
-        otp:e.target.otp.value
-      },{
+        otp: e.target.otp.value
+      }, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "multipart/form-data"
@@ -1415,32 +1417,33 @@ const MyResume = () => {
           toast.error(err.response.data.message)
         });
     }
-    
+
 
   }
 
   return (
     <div>
       <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={() => setIsOpen(false)}
-            style={customStyles}
-            contentLabel="Example Modal"
-        >
-            <div class="  text-center">
-                <h6>Please enter the one time password <br /> to verify your account</h6>
-                {/* <div> <span>A code has been sent to</span> <small>***9897</small> </div> */}
-                <form onSubmit={handleContactOTPVerify}>
-                    <div id="otp" class="inputs d-flex flex-row justify-content-center mt-4">
-                        <input type="text" className="form-control w-50" id="exampleInputName" placeholder="Enter OTP" maxLength="6" name="otp" required />
-                    </div>
-                    <div> <button type="submit" class="btn btn-verify px-4 validate mt-4" aria-label="Close" data-dismiss="modal" >Validate</button> </div>
-                </form>
+        isOpen={modalIsOpen}
+        onRequestClose={() => setIsOpen(false)}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div class="  text-center">
+          <h6>Please enter the one time password <br /> to verify your account</h6>
+          {/* <div> <span>A code has been sent to</span> <small>***9897</small> </div> */}
+          <form onSubmit={handleContactOTPVerify}>
+            <div id="otp" class="inputs d-flex flex-row justify-content-center mt-4">
+              <input type="text" className="form-control w-50" id="exampleInputName" placeholder="Enter OTP" maxLength="6" name="otp" required />
             </div>
-            <div class="card-2 mt-3">
-                <div class="content d-flex justify-content-center align-items-center"> <span>Didn't get the code</span> <a href="#" class="text-decoration-none ms-3"> Resend</a> </div>
-            </div>
-        </Modal>
+            <div> <button type="submit" class="btn btn-verify px-4 validate mt-4" aria-label="Close" data-dismiss="modal" >Validate</button> </div>
+          </form>
+        </div>
+        <div class="card-2 mt-3">
+          <div class="content d-flex justify-content-center align-items-center"> <span>Didn't get the code</span> <a href="#" class="text-decoration-none ms-3"> Resend</a> </div>
+        </div>
+      </Modal>
+      
       <div className="container-fluid my_profile">
         <div className="container">
           <div className="row">
@@ -1506,12 +1509,12 @@ const MyResume = () => {
                             <i className="fas fa-mobile-alt mobile_icon ml-1"></i>
                           </span>{" "}
                           <span className="mobile_resume">{profile.contactNumber}</span>
-                          {profile.isPhoneVerified ?  
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{height: "13px"}} >
+                          {profile.isPhoneVerified ?
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{ height: "13px" }} >
                               <path fill="#388e3c" d="M0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM371.8 211.8C382.7 200.9 382.7 183.1 371.8 172.2C360.9 161.3 343.1 161.3 332.2 172.2L224 280.4L179.8 236.2C168.9 225.3 151.1 225.3 140.2 236.2C129.3 247.1 129.3 264.9 140.2 275.8L204.2 339.8C215.1 350.7 232.9 350.7 243.8 339.8L371.8 211.8z" />
-                            </svg> 
-                          : 
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{height: "13px"}} onClick={sendPhoneOtp}  >
+                            </svg>
+                            :
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{ height: "13px" }} onClick={sendPhoneOtp}  >
                               <path fill="#ffa000" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM232 152C232 138.8 242.8 128 256 128s24 10.75 24 24v128c0 13.25-10.75 24-24 24S232 293.3 232 280V152zM256 400c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 385.9 273.4 400 256 400z" />
                             </svg>
                           }
@@ -1525,18 +1528,18 @@ const MyResume = () => {
                           </span>{" "}
                           <span className="mobile_resume">
                             {profile.email}
-                            
+
                           </span>
-                          {profile.isEmailVerified ?  
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{height: "13px"}} >
+                          {profile.isEmailVerified ?
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{ height: "13px" }} >
                               <path fill="#388e3c" d="M0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM371.8 211.8C382.7 200.9 382.7 183.1 371.8 172.2C360.9 161.3 343.1 161.3 332.2 172.2L224 280.4L179.8 236.2C168.9 225.3 151.1 225.3 140.2 236.2C129.3 247.1 129.3 264.9 140.2 275.8L204.2 339.8C215.1 350.7 232.9 350.7 243.8 339.8L371.8 211.8z" />
-                            </svg> 
-                          : 
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{height: "13px"}} onClick={verifyEmail} >
+                            </svg>
+                            :
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{ height: "13px" }} onClick={verifyEmail} >
                               <path fill="#ffa000" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM232 152C232 138.8 242.8 128 256 128s24 10.75 24 24v128c0 13.25-10.75 24-24 24S232 293.3 232 280V152zM256 400c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 385.9 273.4 400 256 400z" />
                             </svg>
                           }
-            
+
 
 
                         </p>
@@ -1569,6 +1572,8 @@ const MyResume = () => {
                         ></div>
                       </div>
                     </div> */}
+
+
                   </div>
                 </div>
               </div>
@@ -1618,7 +1623,7 @@ const MyResume = () => {
               </p>
               <div id="collapseExample">
                 <div className="sidebar" id="sidebar">
-                <a href="#AttachResume"> Upload Resume</a>
+                  <a href="#AttachResume"> Upload Resume</a>
                   <a href="#Resume_Headline"> Resume Headline</a>
                   <a href="#ProfileSummary"> Profile Summary</a>
                   <a href="#KeySkills"> Keyskills</a>
@@ -1629,7 +1634,7 @@ const MyResume = () => {
                   <a href="#Accomplishment"> Accomplishments</a>
                   <a href="#DesiredCareer"> Desired Career Profile</a>
                   <a href="#PersonalDetails"> Personal Details</a>
-                  
+
                 </div>
               </div>
             </div>
@@ -1638,10 +1643,10 @@ const MyResume = () => {
             <div className="wrapper">
 
 
-                          {/* Upload Resume Component */}
+              {/* Upload Resume Component */}
 
 
-                          <div className="content" id="AttachResume">
+              <div className="content" id="AttachResume">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">
                     Upload Resume
@@ -1651,14 +1656,6 @@ const MyResume = () => {
                   Resume is the most important document recruiters look for.
                   Recruiters generally do not look at profiles without resumes.
                 </p>
-                {/* <FileUploadInput 
-                handleInput={handleInput} 
-                identifier={"resume"}
-                setProfile={setProfile}
-                profile={profile}
-                handleUpdate={handleUpdate}
-                />
-                <ResumeFileUpload url={profile.resume.url} /> */}
                 <form>
                   <div className="form-group">
                     <label for="myfile" className="file_upload">
@@ -1671,9 +1668,13 @@ const MyResume = () => {
                 </form>
                 <h6>{profile.resume.filename}</h6>
               </div>
+              
+             
+
+             
 
 
-                        {/* Resume Headline Component */}
+              {/* Resume Headline Component */}
 
 
               <div className="right_content">
@@ -2194,6 +2195,7 @@ const MyResume = () => {
                                   />
                                 </div>
                               </div>
+
                               <div className="col-lg-12">
                                 <label> Is This Your Current Company ?</label>
                                 <div className="form-group">
@@ -2299,6 +2301,97 @@ const MyResume = () => {
                                 )}
                               </div>
 
+                              <div className="row">
+              <div className="col-lg-6">
+                <div className="content" id="AttachResume">
+                  <div className="job-bx_offer-title clearfix">
+                    <h5 className=" pull-left text-capitalize cp1">
+                      Offer Letter
+                    </h5>
+                  </div>
+                  <form>
+                    <div className="form-group">
+                      <label for="myfile" className="letter_upload">
+                        Upload Offer Letter
+                      </label>
+                      <input type="file" id="myfile" name="myfile" hidden
+                        onChange={(event) => resumeonchangeHandling(event)}
+                      />
+                    </div>
+                  </form>
+                  <h6 className="offer_name">{profile.resume.filename}</h6>
+                </div>
+              </div>
+          
+
+            
+                <div className="col-lg-6">
+                <div className="content" id="AttachResume">
+                  <div className="job-bx_offer-title clearfix">
+                    <h5 className=" pull-left text-capitalize cp1">
+                      Experience Letter
+                    </h5>
+                  </div>
+                  <form>
+                    <div className="form-group">
+                      <label for="myfile" className="letter_upload">
+                        Upload Experience Letter
+                      </label>
+                      <input type="file" id="myfile" name="myfile" hidden
+                        onChange={(event) => resumeonchangeHandling(event)}
+                      />
+                    </div>
+                  </form>
+                  <h6 className="offer_name">{profile.resume.filename}</h6>
+                </div>
+              </div>
+             
+              
+
+              
+              <div className="col-lg-6">
+                <div className="content" id="AttachResume">
+                  <div className="job-bx_offer-title clearfix">
+                    <h5 className=" pull-left text-capitalize cp1">
+                      Salary Slips
+                    </h5>
+                  </div>
+                  <form>
+                    <div className="form-group">
+                      <label for="myfile" className="letter_upload">
+                        Upload Salary Slips
+                      </label>
+                      <input type="file" id="myfile" name="myfile" hidden
+                        onChange={(event) => resumeonchangeHandling(event)}
+                      />
+                    </div>
+                  </form>
+                  <h6 className="offer_name">{profile.resume.filename}</h6>
+                </div>
+              </div>
+
+              <div className="col-lg-6">
+                <div className="content" id="AttachResume">
+                  <div className="job-bx_offer-title clearfix">
+                    <h5 className=" pull-left text-capitalize cp1">
+                      Bank Statements
+                    </h5>
+                  </div>
+                  <form>
+                    <div className="form-group">
+                      <label for="myfile" className="letter_upload">
+                        Upload Bank Statements
+                      </label>
+                      <input type="file" id="myfile" name="myfile" hidden
+                        onChange={(event) => resumeonchangeHandling(event)}
+                      />
+                    </div>
+                  </form>
+                  <h6 className="offer_name">{profile.resume.filename}</h6>
+                </div>
+              </div>
+              </div>
+
                               <div className="col-lg-12">
                                 <div className="form-group my-2">
                                   <label> Describe Your Job Profile </label>
@@ -2358,6 +2451,10 @@ const MyResume = () => {
                             </div>
                           </form>
                         </div>
+
+
+
+
                         <div className="modal-footer">
                           <button type="button" className="update" onClick={(e) => handleEmployment(e, employment._id)} data-dismiss="modal">
                             Save changes
@@ -3567,8 +3664,8 @@ const MyResume = () => {
                       </span>{" "}
                     </a>
                   </div>
-            
-            
+
+
                   {
                     profile?.patent ?
                       profile?.patent?.map((patent, pini) => {
@@ -3695,7 +3792,7 @@ const MyResume = () => {
                                   <div className="form-check form-check-inline">
                                     <input
                                       name='Patent_Status'
-                                       onChange={(e)=>patentHandling(e)}
+                                      onChange={(e) => patentHandling(e)}
                                       className="form-check-input"
                                       type="radio"
                                       // name="inlineRadioOptions"
@@ -3719,8 +3816,8 @@ const MyResume = () => {
                                       // name="inlineRadioOptions"
                                       id="inlineRadio2"
                                       value="Patent Pending"
-                                    // onClick={() => patentpendingButton()}
-                                    onChange={(e) => patentHandling(e)}
+                                      // onClick={() => patentpendingButton()}
+                                      onChange={(e) => patentHandling(e)}
                                     />
                                     <label
                                       className="form-check-label"
@@ -3739,7 +3836,7 @@ const MyResume = () => {
                                       <label>Application Number</label>
                                       <input
                                         name="Patent_Application_Number"
-                                         onChange={(e) => patentHandling(e)}
+                                        onChange={(e) => patentHandling(e)}
                                         type="text"
                                         className="form_control"
                                         placeholder="Enter Application Number"
@@ -3798,24 +3895,24 @@ const MyResume = () => {
                     </a>
 
                     {
-                    profile?.certification ?
-                      profile?.certification?.map((certification,cert) => {
-                        return (<>
-                          <h5 className="junior_edit">
-                            {certification?.Certification_Name}{" "}
-                            <a href="#" data-toggle="modal" data-target="#Certification" >
-                              {" "}
-                              <i className="fas fa-pencil-alt pencil_clearfix pencil"
-                                onClick={() => replacecertificationItem(cert)}
-                              ></i>
-                            </a>
-                            <a href="#" data-toggle="modal" onClick={() => deletecertification(certification._id)}>
+                      profile?.certification ?
+                        profile?.certification?.map((certification, cert) => {
+                          return (<>
+                            <h5 className="junior_edit">
+                              {certification?.Certification_Name}{" "}
+                              <a href="#" data-toggle="modal" data-target="#Certification" >
+                                {" "}
+                                <i className="fas fa-pencil-alt pencil_clearfix pencil"
+                                  onClick={() => replacecertificationItem(cert)}
+                                ></i>
+                              </a>
+                              <a href="#" data-toggle="modal" onClick={() => deletecertification(certification._id)}>
 
-                              {" "}
-                              <i class="far fa-trash-alt remove" ></i>
-                            </a>
-                          </h5>
-                          {/* <p className="job_usa">{project?.ProjectClient}</p>
+                                {" "}
+                                <i class="far fa-trash-alt remove" ></i>
+                              </a>
+                            </h5>
+                            {/* <p className="job_usa">{project?.ProjectClient}</p>
                         <p className="job_usa">
                           {moment(project?.ProjectStartDate).format('YYYY MMMM')} to {" "}
                           {
@@ -3839,14 +3936,14 @@ const MyResume = () => {
                           )
                         </p> */}
 
-                          <p className="job_usa">{certification?.Certification_ID}</p>
-                          <p className="job_usa">{certification?.Certification_URL}</p>
-                          <p className="job_usa">{certification?.Certification_Validity_From}  to   {certification?.Certification_Validity_To}</p>
-                          
-                          
-                        </>)
-                      }) : null
-                  }
+                            <p className="job_usa">{certification?.Certification_ID}</p>
+                            <p className="job_usa">{certification?.Certification_URL}</p>
+                            <p className="job_usa">{certification?.Certification_Validity_From}  to   {certification?.Certification_Validity_To}</p>
+
+
+                          </>)
+                        }) : null
+                    }
 
                     <div
                       className="modal fade"
@@ -4770,35 +4867,35 @@ const MyResume = () => {
                               <div className="form-group">
                                 <label> Address Proof</label>
                                 <select className="form_control" name="AddressProof"
-                                   value={profile.personaldetails.AddressProof}
+                                  value={profile.personaldetails.AddressProof}
                                   onChange={(e) => onchangeDetails(e)}
-                                  >
+                                >
                                   <option hidden>Add Address Proof</option>
                                   <option value="Aadhar Card">Aadhar card</option>
                                   <option value="Driving License">Driving license</option>
                                   <option value="Pan Card">Pan card</option>
                                   <option value="Voter Card">Voter card</option>
-                                  
-                            
+
+
                                 </select>
                               </div>
                             </div>
 
                             <div className=" col-lg-6 col-md-6">
-                                    <div className="form-group">
-                                      <label>Address Proof Number</label>
-                                      <input
-                                        name="AdressProofNumber"
-                                         onChange={(e) => onchangeDetails(e)}
-                                        type="text"
-                                        className="form_control"
-                                        placeholder="Enter Address Proof Number"
-                                        value={profile.personaldetails.AdressProofNumber}
-                                      />
-                                    </div>
-                                  </div>
+                              <div className="form-group">
+                                <label>Address Proof Number</label>
+                                <input
+                                  name="AdressProofNumber"
+                                  onChange={(e) => onchangeDetails(e)}
+                                  type="text"
+                                  className="form_control"
+                                  placeholder="Enter Address Proof Number"
+                                  value={profile.personaldetails.AdressProofNumber}
+                                />
+                              </div>
+                            </div>
 
-                              <div className=" col-lg-6 col-md-6">
+                            <div className=" col-lg-6 col-md-6">
                               <label className="my-2">Do You have Passport</label>
                               <div className="form-group">
                                 <div className="form-group">
@@ -4833,7 +4930,7 @@ const MyResume = () => {
                                       className="form-check-label"
                                       for="passport1"
                                     >
-                                     No
+                                      No
                                     </label>
                                   </div>
 
@@ -4877,7 +4974,7 @@ const MyResume = () => {
                                       className="form-check-label"
                                       for="margaccount1"
                                     >
-                                     No
+                                      No
                                     </label>
                                   </div>
 
@@ -4931,7 +5028,7 @@ const MyResume = () => {
                               </div>
                             </div>
 
-                            
+
 
                             {/* <div className=" col-lg-12 col-md-12">
                   <div className="form-group">

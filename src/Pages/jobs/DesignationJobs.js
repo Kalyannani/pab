@@ -132,13 +132,13 @@ const DesignationJobs = () => {
                                         }}>
                                             {
                                                 Selected.map((item, index) => (
-                                                    <Chip key={index} color="primary" label={item.value} onDelete={() => handleDelete(item)}></Chip>
+                                                    <Chip key={index} className="jobs_new_filter" label={item.value} onDelete={() => handleDelete(item)}></Chip>
                                                 ))
 
                                             }
                                         </div>
                                             {Selected.length > 0 && <center>
-                                                <button class="btn btn-primary mt-4"
+                                                <button class="btn btn-primary mt-4 job_new_filter_sub"
                                                     onClick={async () => {
                                                         //  alert("onclick")
                                                         await dispatch({ type: "FROM_MAIN_DES" });

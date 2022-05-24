@@ -135,7 +135,7 @@ const CategoryJobs = () => {
                                         }}>
                                             {
                                                 Selected.map((item, index) => (
-                                                    <Chip key={index} color="primary" label={item.value} onDelete={() => handleDelete(item)}></Chip>
+                                                    <Chip key={index}  label={item.value} onDelete={() => handleDelete(item)} className="jobs_new_filter"></Chip>
                                                 ))
 
                                             }
