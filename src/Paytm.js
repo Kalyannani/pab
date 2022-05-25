@@ -159,7 +159,7 @@ getData(user).then(response=>{
           </div>
 
           <div className="col-lg-5 sticky-top" order-lg-2 order-sm-1 >
-            <img src='images/Payments.png' alt='dinesh' className='img-fluid' style={{height:"100%"}}/>
+            <img src='images/Payments (1).png' alt='dinesh' className='img-fluid' style={{height:"100%"}}/>
           </div>
         </div>
       </div>

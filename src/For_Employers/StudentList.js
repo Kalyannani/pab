@@ -96,7 +96,7 @@ const StudentList = () => {
     fetchJobs();
 
   }
-  
+
   const handleLocationRemove = async (locations) => {
     setLocation(locations)
     // fetchJobs();
@@ -445,7 +445,7 @@ const StudentList = () => {
                           <Browsehomead /> </div>}
 
                         <ul className="filter_list_job_post position-relative" style={{ cursor: "pointer" }}>
-                          <li >
+                          <li>
                             {/* <Link to=''> */}
                             <div className="filter_list_job_box">
                               <div className="d-flex mb-4">
@@ -568,9 +568,12 @@ const StudentList = () => {
                                   {applicant?.skills && applicant?.skills?.map((skill) => {
                                     return (
                                       <>
-                                        <div className="application_skills d-inline-block">
-                                          <button class="php">{skill}</button>
-                                        </div>
+                                        {
+                                          applicant?.personaldetails?.maritalStatus ?
+                                            <div className="application_skills d-inline-block">
+                                              <button class="php">{skill}</button>
+                                            </div> : <div class="table-cell table_data2">[Not Updated]</div>
+                                        }
                                       </>
                                     );
                                   })}
