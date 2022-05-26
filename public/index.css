@@ -510,35 +510,31 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 button.close {
-  background-color: #270D44 !important;
+  background-color: #FFFFFF !important;
   border: 0;
-  padding: 3px 10px 3px 10px !important;
+  padding: 5px 10px 7px 10px !important;
   border-radius: 50%;
-  color: #fff !important;
+  color: #270D44 !important;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px !important;
   -webkit-appearance: none;
   outline: none !important;
-  position: absolute;
-  top: -20px;
-  right: -1px;
+  margin-top: -75px !important;
+  margin-right: -30px !important;
 }
 
 button.close {
   float: right;
-  font-weight: 700;
-  line-height: 1;
-  z-index: 999;
-  color: #fff;
-  font-size: 35px;
-  background-color: #270D44 !;
-  text-shadow: 0 1px 0 #fff;
-  opacity: 1 !important;
+    font-weight: 400;
+    line-height: 1;
+    z-index: 999;
+    color: #fff;
+    font-size: 20px;
+    background-color: #270D44 !;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 1 !important;
 }
 
-button.close:hover {
-  background-color: #270D44;
-  color: #fff;
-  z-index: 9999;
-}
+
 
 .login_mbtn {
   box-shadow: none !important;
@@ -874,7 +870,7 @@ ul {
 
 /* ...........sec 1 starts........ */
 #sec1 {
-  background: url('/images/HCover.png');
+  background: url('/images/Demo Home Page.gif');
   /* background: grey; */
   background-position: center;
   background-size: cover;
@@ -885,9 +881,20 @@ ul {
   padding-bottom: 85px;
   width: 100% !important;
   margin-top: 110px;
-  padding-top: 300px;
+  padding-top: 400px;
   margin-bottom: 20px !important;
   
+}
+
+.container.hm1 {
+  margin-top: -350px !important;
+}
+
+@media screen and (min-width:0px) and (max-width:1000px) {
+ .container.hm1 {
+  margin-top: -350px !important;
+}
+
 }
 @media screen and (max-width:1000px) {
   #sec1
@@ -897,7 +904,7 @@ ul {
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: darken;
-    padding-top: 100px;
+    padding-top: 350px;
   }
   
 }
@@ -4574,7 +4581,7 @@ button.alljob_buttons_sub:focus {
   padding: 15px !important;
   background: #ffffff33;
   border-radius: 10px;
-  width: 90% !important;
+  width: 100% !important;
 }
 
 #search_box_btn_joblocation {
@@ -7808,8 +7815,6 @@ td {
 }
 
 .modal-header {
-  /* padding: 1rem 1rem 0px 1rem !important; */
-  padding: 0px !important;
   border: none !important;
 }
 
@@ -9704,7 +9709,6 @@ a {
     font-size: 12px;
     border-radius: 3px;
     padding: 5px 10px;
-    margin-top: -29px;
     border: 1px solid #270D44;
     margin-left: 27px;
   }
