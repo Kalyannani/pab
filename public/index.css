@@ -894,7 +894,7 @@ ul {
 
 @media screen and (max-width:1000px) {
   #sec1 {
-    background: url('/images/New Home Cover.gif') rgba(0, 0, 0, 0.7);
+    background: url('/images/blur-1.jpg') rgba(0, 0, 0, 0.7);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
