@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import '../../src/For_Employers/Searchcandidates/'
 // import { Link } from 'react-router-dom'
 import { useCallback } from "react";
-import Modal from "react-modal";
+
 import UI from '../SearchCandidates/UI'
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -294,36 +294,12 @@ const Searchcandidates = () => {
   };
 
 
-
-
-
-  const [isOpen, setIsOpen] = useState(false);
-  const openModal = useCallback(() => setIsOpen(true), []);
-  const closeModal = useCallback(() => setIsOpen(false), []);
-
   // const [status, setStatus] = React.useState(0); // 0: no show, 1: show yes, 2: show no.
 
   // const radioHandler = (status) => {
   //     setStatus(status);
   // };
 
-
-  const customStyles = {
-    content: {
-      top: '475px',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      height: "600px",
-      padding: "20px 0px 0px"
-      // position:"relative"
-    },
-    overlay:
-      {}
-
-  };
 
   const [clickRadio, setClickRadio] = useState(true);
 
@@ -789,24 +765,43 @@ const Searchcandidates = () => {
                     <i class="fas fa-plus"></i> More Filters
         </a> */}
 
-                  {/* <input type="button"className="more_filter" value="Open modal" onClick={openModal} /> */}
-                  <button type="button" className="more_filter" data-toggle="modal" data-target="#exampleModalCenter"  ><i class="fas fa-plus"></i> More Filter</button>
+                  
+                  <button type="button" className="more_filter" data-toggle="modal" data-target="#filtration"  ><i class="fas fa-plus"></i> More Filter</button>
 
-                  {/* <Modal isOpen={isOpen} onRequestClose={closeModal} style={customStyles}>
-                    <a className="search_close_modal" onClick={closeModal}><i className="fas fa-times"></i></a>
-                    <UI />
-                  </Modal> */}
-
-                  <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
-                      <div class="modal-content search_candidates_modal">
-                        <div class="modal-body position-relative">
-                          <button type="button" class="btn filter_search_cand" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                          <UI />
+                  <div
+                  className="modal fade"
+                  id="filtration"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div
+                    className="modal-dialog modal-dialog-centered modal-dialog-scrollable  modal-lg"
+                    role="document"
+                  >
+                    <div className="modal-content">
+                      <div className="modal-header modal-header--sticky">
+                        {/* <h5 className="modal-title" id="exampleModalLabel">
+                          {" "}
+                          Serach Candidates Filtration
+                        </h5> */}
+                        <button
+                          type="button"
+                          className="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div className="modal-body ">
+                        <div className="modal_content">
+                         <UI/>
                         </div>
-                        <div class="modal-footer search_footer">
+                       
+                      </div>
+                      <div class="modal-footer modal-footer--sticky search_footer">
                           <div className="fixed_apply d-inline-block">
                             <div className="d-flex">
                               <button className="btn reset_cand"> RESET</button>
@@ -815,10 +810,9 @@ const Searchcandidates = () => {
                           </div>
 
                         </div>
-
-                      </div>
                     </div>
                   </div>
+                </div>
 
 
 

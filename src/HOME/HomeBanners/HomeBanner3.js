@@ -5,8 +5,8 @@ const HomeBanner3 = () => {
   return (
 
 
-    <div className='container'>
-    <div className='row B_color1'>
+    <div className='container  position-relative'>
+    <div className='row B_color1'  style={{paddingRight:"0px"}}>
     
      
     <div className=" col-md-3 text-center">
@@ -22,19 +22,16 @@ const HomeBanner3 = () => {
         How to stand out from the millions of other resumes?
         </h5>
         <p className="B_text">80% of the resumes are rejected in 11 seconds.Don't want to be the 80%?</p>
-      </div>
-    
 
-      <Link to="/careers" style={{ marginLeft: 'auto', marginTop: "-46px"}} className="text-right"> <button
+       
+      </div>
+    </div>
+    <Link to="/careers" style={{ position:"absolute",bottom:"0",right:"0"}} className="text-right"> <button
           className="bg-primary text-white btn-lg"
-          style={{  borderTopLeftRadius: "50px", border: 'none',cursor:"pointer"  }}
+          style={{  borderTopLeftRadius: "50px", borderBottomRightRadius:'0px',borderTopRightRadius:'0px',borderBottomLeftRadius: '0px', border: 'none',cursor:"pointer"  }}
         >
           Click Here
         </button></Link>
- 
-
-
-    </div>
 </div>
   )
 }

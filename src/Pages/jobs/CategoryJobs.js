@@ -174,7 +174,8 @@ const CategoryJobs = () => {
 
                                                 <div class="col-lg-4 col-md-6" >
                                                     <Link to='/browsefilterlist?category=Airline' >
-                                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon' style={{ color: "#FF6B6B" }}><i class="fas fa-plane-departure"></i>
+                                                        <a class="company_jobs_anchor py-1 pr-2 rounded"><span className='B_icon' style={{ color: "#FF6B6B" }}>
+                                                            <i class="fas fa-plane-departure"></i>
                                                         </span><span class="company_jobs_img_1_text align-self-center px-2">Airline</span></a>
                                                     </Link>
                                                 </div>

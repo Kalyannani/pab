@@ -8,12 +8,12 @@ import React from 'react'
         <div id="sec1" className="container-fluid">
             <div className="container hm1">
                 <div className="home1">
-                    <Link id="am1" className="main_text "
+                    {/* <Link id="am1" className="main_text "
                         to="/browsefilterlist">Find Jobs, Employment
                         &amp; Career
                         Opportunities</Link>
                     <h2 className="am2">Search Between More Than <br /> <span className="num_text">50,000</span> Open Jobs.
-                    </h2>
+                    </h2> */}
                 </div>
                 <div className="hm2">
                     <form className="form-control">

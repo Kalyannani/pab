@@ -2034,7 +2034,7 @@ const MyResume = () => {
                           {
                             moment(employment?.endYear).diff(moment(employment?.startYear), "years") === 1 ? " Year" : " Years"
                           }
-                          {" "}-{" "}
+                          -
                           {
                             moment(employment?.endYear).diff(moment(employment?.startYear).add(moment(employment?.endYear).diff(moment(employment?.startYear), 'year'), 'years'), 'months')
                           }
@@ -4141,7 +4141,7 @@ const MyResume = () => {
                       <div className="career_profile_content">
                         <h5 className="industry">Available to Join </h5>
                         <p className="it_employees">
-                          {careerprofile.Desired_AvailableJoinYears}/{careerprofile.Desired_AvailableJoinMonths}
+                          {careerprofile.Desired_AvailableJoinYears} - {careerprofile.Desired_AvailableJoinMonths}
 
                         </p>
                       </div>
@@ -4564,7 +4564,7 @@ const MyResume = () => {
                       <div className="career_profile_content">
                         <h5 className="industry">Date Of Birth</h5>
                         <p className="it_employees">
-                          {moment(profile.personaldetails.dateofbirth).format("DD-MM-YYYY")}
+                          {moment(profile.personaldetails.dateofbirth).format("YYYY-MM-DD")}
 
                         </p>
                       </div>

@@ -16,7 +16,7 @@ const UI = () => {
 
 
             <div className='row'>
-                <div className="col-md-4" style={{ marginTop: "-90px" }}>
+                <div className="col-md-4" style={{ marginTop: "-19px"}}>
                     <div className="sticky-top sticky_candidates">
                         <div>
                             <button
