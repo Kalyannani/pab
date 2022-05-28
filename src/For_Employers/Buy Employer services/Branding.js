@@ -78,7 +78,7 @@ const Branding = () => {
                   </p>
                 </div>
                 <div className="col-md-4 text-center buy_branding">
-                  <button className="buy_now btn" onClick={openEnquire}>Enquire Now</button>
+                  <button className="enquire_now " onClick={openEnquire}>Enquire Now</button>
       
                     <Modal
                       contentLabel="My dialog"

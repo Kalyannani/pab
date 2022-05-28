@@ -90,8 +90,8 @@ getData(user).then(response=>{
           </div>
            </div>
           
-          <div className="col-lg-7 payment_form" order-lg-1 order-sm-2>
-            <form >
+          <div className="col-md-6 payment_form" order-lg-1 order-sm-2>
+            <form className='payment_main'>
               <div className="form-group hire_group my-3">
                 <label>Name :</label>
                 <label className="input mt-1 mb-2">
@@ -157,9 +157,11 @@ getData(user).then(response=>{
               </div>
             </form>
           </div>
+ 
+ 
 
-          <div className="col-lg-5 sticky-top" order-lg-2 order-sm-1 >
-            <img src='images/Payments (1).png' alt='dinesh' className='img-fluid' style={{height:"100%"}}/>
+          <div className="col-md-6 m-auto paytm_img" order-lg-2 order-sm-1 >
+            <img src='images/Payments (1).png' alt='dinesh' className='img-fluid' style={{width:'90%'}} />
           </div>
         </div>
       </div>

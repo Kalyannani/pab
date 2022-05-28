@@ -81,21 +81,26 @@ const Navbar = () => {
                                 {/* <li className="nav-item">
                                     <Link className="nav-link font-weight-bold" style={{ color: state.color }} id="a1" to="/companies" data-toggle={collapse} data-target={id}>COMPANIES</Link>
                                 </li> */}
+
+{ 
+                                    result?.type === "recruiter" ?
+                                        null
+                                    :
                                 <li className="nav-item dropdown position-relative d-inline-block">
                                     <a className="nav-link dropdown-toggle  font-weight-bold" href="#" id="a2" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: state.color }}>
                                         BROWSE JOBS
                                     </a>
-                                    {/* toggler  changes */}
+                                    
                                     <div className="dropdown-menu dropdown-content d-none position-absolute ml-4 bg-white rounded"
                                         data-toggle={collapse} data-target={id}
                                         aria-labelledby="a2">
                                         <Link className="dropdown-item" to="/browsefilterlist" >My
                                             Browse Filter List</Link>
-                                        {/* <Link className="dropdown-item"  to="/browsefiltergrid" >My
-                                  Browse Filter Grid</Link> */}
+                                        
                                     </div>
                                 </li>
+                                 }
 
                                  { 
                                     result?.type === "recruiter" ?
