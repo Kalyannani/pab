@@ -1,4 +1,4 @@
-export const server = "https://api.pabjobs.com";
+export const server = "http://localhost:4444";
 
 const apiList = {
   login: `${server}/auth/login`,
